@@ -1,0 +1,15 @@
+#build and target
+target/
+build/
+
+#python cache
+*.pyc
+
+#python venv
+*_venv/
+
+#ipython checkpoint
+.ipynb_checkpoints/
+
+#macos
+.DS_Store
