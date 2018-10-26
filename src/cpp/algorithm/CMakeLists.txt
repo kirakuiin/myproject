@@ -1,0 +1,18 @@
+project(algorithm)
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_POLICY(VERSION 2.8)
+
+INCLUDE($ENV{MYCMAKE}/common/header.cmake)
+
+SET(NEED_GTEST TRUE)
+SET(TARGET_NAME algout)
+SET(TARGET_TYPE RUNTIME)
+SET(AUTO_RUN ON)
+SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+SOURCE_DIRS(./src
+            ./sort
+            ./misc)
+
+INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)

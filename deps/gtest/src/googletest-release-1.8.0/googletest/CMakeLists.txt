@@ -1,0 +1,17 @@
+PROJECT(googletest)
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_POLICY(VERSION 2.8)
+
+INCLUDE($ENV{MYCMAKE}/common/header.cmake)
+
+SET(TARGET_NAME gtest)
+SET(TARGET_TYPE ARCHIVE)
+
+INCLUDE_DIRECTORIES(include
+                    src)
+
+SET(INCLUDE_SOURCE_FILES src/gtest-all.cc)
+
+INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)
+

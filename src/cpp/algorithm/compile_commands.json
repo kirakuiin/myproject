@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build",
+  "command": "/usr/bin/g++  -D_DEBUG -D_GNU_SOURCE -D__ENABLE_CXX0X__ -D__ENABLE_CXX11__ -D__ENABLE_CXX14__ -D__IS_LITTLE_ENDIAN__ -D__LITTLE_ENDIAN__ -D__USING_GTEST__ -I/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build -I/Users/lambda/Develop/code/MyProject/src/cpp/algorithm -I/Users/lambda/Develop/code/MyProject/deps/gtest/include   -m64 -pipe -O0 -Wall -pthread -std=c++14 -g   -o CMakeFiles/algout.dir/src/hash_ut.cc.o -c /Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/hash_ut.cc",
+  "file": "/Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/hash_ut.cc"
+},
+{
+  "directory": "/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build",
+  "command": "/usr/bin/g++  -D_DEBUG -D_GNU_SOURCE -D__ENABLE_CXX0X__ -D__ENABLE_CXX11__ -D__ENABLE_CXX14__ -D__IS_LITTLE_ENDIAN__ -D__LITTLE_ENDIAN__ -D__USING_GTEST__ -I/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build -I/Users/lambda/Develop/code/MyProject/src/cpp/algorithm -I/Users/lambda/Develop/code/MyProject/deps/gtest/include   -m64 -pipe -O0 -Wall -pthread -std=c++14 -g   -o CMakeFiles/algout.dir/src/main.cc.o -c /Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/main.cc",
+  "file": "/Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/main.cc"
+},
+{
+  "directory": "/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build",
+  "command": "/usr/bin/g++  -D_DEBUG -D_GNU_SOURCE -D__ENABLE_CXX0X__ -D__ENABLE_CXX11__ -D__ENABLE_CXX14__ -D__IS_LITTLE_ENDIAN__ -D__LITTLE_ENDIAN__ -D__USING_GTEST__ -I/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build -I/Users/lambda/Develop/code/MyProject/src/cpp/algorithm -I/Users/lambda/Develop/code/MyProject/deps/gtest/include   -m64 -pipe -O0 -Wall -pthread -std=c++14 -g   -o CMakeFiles/algout.dir/src/misc_ut.cc.o -c /Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/misc_ut.cc",
+  "file": "/Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/misc_ut.cc"
+},
+{
+  "directory": "/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build",
+  "command": "/usr/bin/g++  -D_DEBUG -D_GNU_SOURCE -D__ENABLE_CXX0X__ -D__ENABLE_CXX11__ -D__ENABLE_CXX14__ -D__IS_LITTLE_ENDIAN__ -D__LITTLE_ENDIAN__ -D__USING_GTEST__ -I/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build -I/Users/lambda/Develop/code/MyProject/src/cpp/algorithm -I/Users/lambda/Develop/code/MyProject/deps/gtest/include   -m64 -pipe -O0 -Wall -pthread -std=c++14 -g   -o CMakeFiles/algout.dir/src/sort_ut.cc.o -c /Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/sort_ut.cc",
+  "file": "/Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/sort_ut.cc"
+},
+{
+  "directory": "/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build",
+  "command": "/usr/bin/g++  -D_DEBUG -D_GNU_SOURCE -D__ENABLE_CXX0X__ -D__ENABLE_CXX11__ -D__ENABLE_CXX14__ -D__IS_LITTLE_ENDIAN__ -D__LITTLE_ENDIAN__ -D__USING_GTEST__ -I/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build -I/Users/lambda/Develop/code/MyProject/src/cpp/algorithm -I/Users/lambda/Develop/code/MyProject/deps/gtest/include   -m64 -pipe -O0 -Wall -pthread -std=c++14 -g   -o CMakeFiles/algout.dir/src/struct_ut.cc.o -c /Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/struct_ut.cc",
+  "file": "/Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/struct_ut.cc"
+},
+{
+  "directory": "/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build",
+  "command": "/usr/bin/g++  -D_DEBUG -D_GNU_SOURCE -D__ENABLE_CXX0X__ -D__ENABLE_CXX11__ -D__ENABLE_CXX14__ -D__IS_LITTLE_ENDIAN__ -D__LITTLE_ENDIAN__ -D__USING_GTEST__ -I/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build -I/Users/lambda/Develop/code/MyProject/src/cpp/algorithm -I/Users/lambda/Develop/code/MyProject/deps/gtest/include   -m64 -pipe -O0 -Wall -pthread -std=c++14 -g   -o CMakeFiles/algout.dir/src/tree_ut.cc.o -c /Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/tree_ut.cc",
+  "file": "/Users/lambda/Develop/code/MyProject/src/cpp/algorithm/src/tree_ut.cc"
+},
+{
+  "directory": "/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build",
+  "command": "/usr/bin/g++  -D_DEBUG -D_GNU_SOURCE -D__ENABLE_CXX0X__ -D__ENABLE_CXX11__ -D__ENABLE_CXX14__ -D__IS_LITTLE_ENDIAN__ -D__LITTLE_ENDIAN__ -D__USING_GTEST__ -I/Users/lambda/Develop/code/MyProject/target/Darwin_17_x64/build/Debug/src/cpp/algorithm/Build -I/Users/lambda/Develop/code/MyProject/src/cpp/algorithm -I/Users/lambda/Develop/code/MyProject/deps/gtest/include   -m64 -pipe -O0 -Wall -pthread -std=c++14 -g   -o CMakeFiles/algout.dir/misc/max_subarray.cc.o -c /Users/lambda/Develop/code/MyProject/src/cpp/algorithm/misc/max_subarray.cc",
+  "file": "/Users/lambda/Develop/code/MyProject/src/cpp/algorithm/misc/max_subarray.cc"
+}
+]
