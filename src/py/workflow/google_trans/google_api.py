@@ -220,7 +220,8 @@ class TranslateResult:
         result = ''
         try:
             text = self._result[0]
-            result = ''.join([trans[0] for trans in text[:-1]])
+            index = -1 if len(text) > 1 else 2
+            result = ''.join([trans[0] for trans in text[:index]])
         except TypeError:
             pass
         return result
@@ -231,7 +232,8 @@ class TranslateResult:
         result = ''
         try:
             text = self._result[0]
-            result = ''.join([trans[1] for trans in text[:-1]])
+            index = -1 if len(text) > 1 else 2
+            result = ''.join([trans[1] for trans in text[:index]])
         except (IndexError, TypeError):
             pass
         return result
@@ -241,8 +243,9 @@ class TranslateResult:
         """获得源语言的音标(如果有的话)"""
         result = ''
         try:
-            transcription = self._result[0][-1]
-            result = transcription[3]
+            if len(self._result[0]) > 1:
+                transcription = self._result[0][-1]
+                result = transcription[3]
         except (IndexError, TypeError):
             pass
         return result
@@ -252,8 +255,9 @@ class TranslateResult:
         """获得目标语言的音标"""
         result = ''
         try:
-            transcription = self._result[0][-1]
-            result = transcription[2]
+            if len(self._result[0]) > 1:
+                transcription = self._result[0][-1]
+                result = transcription[2]
         except (IndexError, TypeError):
             pass
         return result
@@ -318,4 +322,7 @@ class TranslateResult:
 
 
 if __name__ == '__main__':
+    import pdb
+    req = TranslateRequest('hello world', 'en', 'fr')
     trans = GoogleTranslate()
+    ret = trans.translate(req)
