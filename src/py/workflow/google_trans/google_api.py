@@ -220,7 +220,7 @@ class TranslateResult:
         result = ''
         try:
             text = self._result[0]
-            index = -1 if len(text) > 1 else 2
+            index = -1 if len(text) > 1 else 2 # 处理没有音标项的情况
             result = ''.join([trans[0] for trans in text[:index]])
         except TypeError:
             pass
@@ -322,7 +322,6 @@ class TranslateResult:
 
 
 if __name__ == '__main__':
-    import pdb
     req = TranslateRequest('hello world', 'en', 'fr')
     trans = GoogleTranslate()
     ret = trans.translate(req)

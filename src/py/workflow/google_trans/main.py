@@ -15,9 +15,10 @@
 import sys
 
 from google_api import TranslateRequest, GoogleTranslate as Trans
+from workflow import (WorkflowItem, WorkflowList, IconSubItem, ModsSubItem)
 
 
-def parse_argv(args: list) -> TranslateRequest:
+def parse_argv(args: list = None) -> TranslateRequest:
     """解析输入的命令行参数
 
     命令行参数的开头和结尾存在s_开头的字符串(到空格结束), 则将其解释为:
@@ -28,11 +29,6 @@ def parse_argv(args: list) -> TranslateRequest:
 
     argv: 命令行参数
     return: TranslateOption对象
-
-    >>> parse_argv(['python', 's_ja', 'hello', 't_en', 'world'])
-    TranslateRequest(query='hello world', s_lang='ja', t_lang='en')
-    >>> parse_argv(['python', 't_ja', 'hello', 'world'])
-    TranslateRequest(query='hello world', s_lang='auto', t_lang='ja')
 
     """
     def set_lang(request: TranslateRequest, arg: str) -> bool:
@@ -46,12 +42,15 @@ def parse_argv(args: list) -> TranslateRequest:
             result = False
         return result
 
-    request = TranslateRequest('')
+
+    if args is None:
+        args = sys.argv
     argv_list = args[1:]    # 排除脚本名称
     argv_list.extend(argv_list[0].split(' '))   # 如果第一个元素包含空格, 拆分
     argv_list = argv_list[1:]   # 去除第一个重复元素
 
     query_list = []
+    request = TranslateRequest('')
     for arg in argv_list:
         if set_lang(request, arg):
             pass
@@ -62,13 +61,35 @@ def parse_argv(args: list) -> TranslateRequest:
     return request
 
 
+def handle_output(trans_res):
+    """处理翻译结果
+
+    将翻译结果转换为Alfred可以接受的形式
+    """
+    wf_list = WorkflowList()
+
+    icon_item = IconSubItem(path='icon.png') # 图标
+    cmd_sub_item = ModsSubItem.CmdSubSubItem(subtitle=trans_res.s_transcription)
+    alt_sub_item = ModsSubItem.AltSubSubItem(subtitle=trans_res.t_transcription)
+    mods_item = ModsSubItem(alt=alt_sub_item, cmd=cmd_sub_item) # 可选条目
+    first_item = WorkflowItem(title=trans_res.trans_text, icon=icon_item,
+                              subtitle='翻译结果', mods=mods_item)
+    wf_list.add_item(first_item)
+
+    for word in trans_res.dictionary:
+        title = '[{}] {}'.format(word.type, word.text)
+        other_item = WorkflowItem(title=title, subtitle=word.synonym)
+        wf_list.add_item(other_item)
+
+    wf_list.output_to_alfred()
+
+
 def main():
     """主函数, 负责处理输入和输出"""
-    argv = sys.argv
-    req = parse_argv(argv)
+    req = parse_argv()
     exector = Trans()
     result = exector.translate(req)
-    print(result.trans_text)
+    handle_output(result)
 
 
 if __name__ == '__main__':
