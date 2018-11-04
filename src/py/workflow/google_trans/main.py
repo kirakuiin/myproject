@@ -68,17 +68,26 @@ def handle_output(trans_res):
     """
     wf_list = WorkflowList()
 
-    icon_item = IconSubItem(path='icon.png') # 图标
+    icon_item = IconSubItem(path='result.png') # 图标
     cmd_sub_item = ModsSubItem.CmdSubSubItem(subtitle=trans_res.s_transcription)
     alt_sub_item = ModsSubItem.AltSubSubItem(subtitle=trans_res.t_transcription)
-    mods_item = ModsSubItem(alt=alt_sub_item, cmd=cmd_sub_item) # 可选条目
-    first_item = WorkflowItem(title=trans_res.trans_text, icon=icon_item,
-                              subtitle='翻译结果', mods=mods_item)
-    wf_list.add_item(first_item)
+    ctrl_url = '{url}/#{s_lang}/{t_lang}/{text}'.format(
+        url=Trans.GOOGLE_TRANSLATE_URL, text=trans_res.origin_text,
+        s_lang=trans_res.s_lang, t_lang=trans_res.t_lang
+    )
+    ctrl_sub_item = ModsSubItem.CtrlSubSubItem(subtitle='进入Google翻译页面',
+                                               arg=ctrl_url, web=True)
+    mods_item = ModsSubItem(alt=alt_sub_item, cmd=cmd_sub_item,
+                            ctrl=ctrl_sub_item) # 可选条目
+    trans_item = WorkflowItem(title=trans_res.trans_text, icon=icon_item,
+                              subtitle='翻译结果', mods=mods_item,)
+    wf_list.add_item(trans_item)
 
+    icon_item = IconSubItem(path='dict.png')
     for word in trans_res.dictionary:
         title = '[{}] {}'.format(word.type, word.text)
-        other_item = WorkflowItem(title=title, subtitle=word.synonym)
+        other_item = WorkflowItem(title=title, subtitle=word.synonym,
+                                  icon=icon_item)
         wf_list.add_item(other_item)
 
     wf_list.output_to_alfred()

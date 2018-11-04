@@ -83,8 +83,9 @@ class GoogleTranslate:
 
     """
 
+    GOOGLE_TRANSLATE_URL = 'https://translate.google.cn'
+
     _SUPPORT_LANG = ('zh-CN', 'zh-TW', 'en', 'ja', 'ru', 'fr', 'es', 'de')
-    _GOOGLE_TRANSLATE_URL = 'https://translate.google.cn'
     _GOOGLE_TRANSLATE_SINGLE = 'https://translate.google.cn/translate_a/single'
     _HTTPS_OK = 200
 
@@ -161,7 +162,7 @@ class GoogleTranslate:
 
     def _get_TKK_value(self) -> str:
         """在Google翻译的页面里获得TKK的值"""
-        text = requests.get(self._GOOGLE_TRANSLATE_URL).text
+        text = requests.get(self.GOOGLE_TRANSLATE_URL).text
         PATTERN = r"TKK='(?P<TKK>.+?)'"
         result = re.search(PATTERN, text)
         return result.group('TKK') if result else ''

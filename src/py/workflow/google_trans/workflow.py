@@ -73,17 +73,28 @@ class TextSubItem(BaseItem):
 
 
 class ModsSubItem(BaseItem):
-    """Alfred模块子对象"""
+    """Alfred模块子对象
+
+    目前支持alt, cmd, ctrl. 分别代表了键盘左下方的三个功能键触发对应的功能
+
+    >>> alt = ModsSubItem.AltSubSubItem('alt', var='alt')
+    >>> cmd = ModsSubItem.CmdSubSubItem('cmd', var='cmd')
+    >>> ctrl = ModsSubItem.CtrlSubSubItem('ctrl', var='ctrl')
+    >>> mod_item = ModsSubItem(alt=alt, cmd=cmd, ctrl=ctrl)
+    >>> mod_item.get_json_repr() #doctest: +ELLIPSIS
+    {'alt': {'subtitle': 'alt', 'valid': True, 'arg': 'alt', 'variables': {'var': 'alt'}}, ...}
+    """
 
     class ModsSubSubItem(BaseItem):
         """隶属于ModsSubItem的子属性"""
 
-        def __init__(self, subtitle, arg=None, valid=True):
+        def __init__(self, subtitle, *, arg=None, valid=True, **kwargs):
             self.subtitle = subtitle
             self.valid = valid
             if arg is None:
                 arg = subtitle
             self.arg = arg
+            self.variables = kwargs
 
     class AltSubSubItem(ModsSubSubItem):
         """Alt属性"""
@@ -93,9 +104,14 @@ class ModsSubItem(BaseItem):
         """Cmd属性"""
         pass
 
-    def __init__(self, alt, cmd):
+    class CtrlSubSubItem(ModsSubSubItem):
+        """Ctrl属性"""
+        pass
+
+    def __init__(self, *, alt, cmd, ctrl):
         self.alt = alt  # 按住alt键时显示的信息
         self.cmd = cmd  # 按住cmd键时显示的信息
+        self.ctrl = ctrl # 按住ctrl键时显示的信息
 
 
 class WorkflowItem(BaseItem):
@@ -110,16 +126,16 @@ class WorkflowItem(BaseItem):
     >>> icon_item = IconSubItem('/usr/bin/flow.png')
     >>> item.icon = icon_item
     >>> item.get_json_repr()
-    {'title': 'hi', 'subtitle': 'halo', 'valid': True, 'icon': {'path': '/usr/bin/flow.png'}, 'uid': '0'}
+    {'title': 'hi', 'subtitle': 'halo', 'arg': 'hi', 'valid': True, 'icon': {'path': '/usr/bin/flow.png'}, 'uid': '0'}
 
     """
 
     _base_uid = 0
 
     # pylint: disable=too-many-arguments
-    def __init__(self, title, subtitle=None, arg=None, valid=True,
+    def __init__(self, title, *, subtitle=None, arg=None, valid=True,
                  autocomplete=None, quicklookurl=None, icon=None,
-                 mods=None, text=None):
+                 mods=None, text=None, **variables):
         self.title = title                      # 标题
         self.subtitle = subtitle                # 副标题
         if arg is None:
@@ -131,6 +147,7 @@ class WorkflowItem(BaseItem):
         self.icon = icon    # 图标属性
         self.mods = mods    # 模组属性(按住alt或者cmd时展示的信息)
         self.text = text    # 文本属性(粘贴板[cmd+C]和字符放大[cmd+L])
+        self.variables = variables  # 全局变量
 
         self.uid = str(type(self)._base_uid)    # 唯一标识uid
         type(self)._base_uid += 1
@@ -150,7 +167,7 @@ class WorkflowList:
     >>> wf_list.add_item(WorkflowItem('hello'))
     >>> wf_list.add_item(WorkflowItem('world'))
     >>> wf_list.output_to_alfred()
-    {"items": [{"title": "hello", "valid": true, "uid": "1"}, {"title": "world", "valid": true, "uid": "2"}]}
+    {"items": [{"title": "hello", "arg": "hello", "valid": true, "uid": "1"}, {"title": "world", "arg": "world", "valid": true, "uid": "2"}]}
     """
 
     def __init__(self):
