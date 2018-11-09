@@ -113,9 +113,7 @@ class GoogleTranslate:
     def translate(self, request: TranslateRequest) -> list:
         """将内容从源语言翻译为目标语言
 
-        query: 被翻译的字符串
-        src_lang: 源语言, 默认为自动识别
-        target_lang: 目标语言, 默认简体中文
+        request: 翻译对象, 包含源语言, 目标语言等信息
         return: TranslateResult对象
 
         >>> api = GoogleTranslate()
@@ -214,6 +212,12 @@ class TranslateResult:
         return "{}(target_lang='{}', result={})".format(cls_name,
                                                         self.t_lang,
                                                         result)
+
+
+    def __iter__(self):
+        yield from (self.origin_text, self.s_lang, self.t_lang, self.trans_text,
+                    ';'.join(self.dictionary))
+
 
     @property
     def trans_text(self) -> str:

@@ -14,7 +14,8 @@
 
 import sys
 
-from google_api import TranslateRequest, GoogleTranslate as Trans
+from google_api import (TranslateRequest, GoogleTranslate as Trans,
+                        TranslateResult)
 from workflow import (WorkflowItem, WorkflowList, IconSubItem, ModsSubItem)
 
 
@@ -61,7 +62,7 @@ def parse_argv(args: list = None) -> TranslateRequest:
     return request
 
 
-def handle_output(trans_res):
+def handle_output(trans_res: TranslateResult):
     """处理翻译结果
 
     将翻译结果转换为Alfred可以接受的形式
@@ -84,11 +85,17 @@ def handle_output(trans_res):
     wf_list.add_item(trans_item)
 
     icon_item = IconSubItem(path='dict.png')
+    dict_list = []
     for word in trans_res.dictionary:
         title = '[{}] {}'.format(word.type, word.text)
+        dict_list.append(title)
         other_item = WorkflowItem(title=title, subtitle=word.synonym,
                                   icon=icon_item)
         wf_list.add_item(other_item)
+
+    wf_list.add_variables(word=trans_res.origin_text, s_l=trans_res.s_lang,
+                          t_l=trans_res.t_lang, meaning=trans_res.trans_text,
+                          dict_def=';'.join(dict_list))
 
     wf_list.output_to_alfred()
 

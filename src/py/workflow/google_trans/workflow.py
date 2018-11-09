@@ -166,12 +166,14 @@ class WorkflowList:
     >>> wf_list = WorkflowList()
     >>> wf_list.add_item(WorkflowItem('hello'))
     >>> wf_list.add_item(WorkflowItem('world'))
+    >>> wf_list.add_variables(a='1')
     >>> wf_list.output_to_alfred()
-    {"items": [{"title": "hello", "arg": "hello", "valid": true, "uid": "1"}, {"title": "world", "arg": "world", "valid": true, "uid": "2"}]}
+    {"items": [{"title": "hello", "arg": "hello", "valid": true, "uid": "1"}, {"title": "world", "arg": "world", "valid": true, "uid": "2"}], "variables": {"a": "1"}}
     """
 
     def __init__(self):
-        self.items = []
+        self._items = []
+        self._variables = {}
 
     def __repr__(self):
         cls_name = type(self).__name__
@@ -183,10 +185,19 @@ class WorkflowList:
         wf_item: 一个WorkflowItem对象, 包含了一行的信息
 
         """
-        self.items.append(wf_item)
+        self._items.append(wf_item)
+
+    def add_variables(self, **kwargs) -> None:
+        """向Alfred列表里追加全局属性
+
+        kwargs: 关键字参数
+
+        """
+        self._variables.update(kwargs)
 
     def output_to_alfred(self) -> None:
         """向标准输出stdout输出对象的json字符串格式"""
         json_repr = {}
-        json_repr['items'] = [item.get_json_repr() for item in self.items]
+        json_repr['items'] = [item.get_json_repr() for item in self._items]
+        json_repr['variables'] = self._variables
         sys.stdout.write(json.dumps(json_repr))
