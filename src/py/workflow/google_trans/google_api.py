@@ -161,7 +161,7 @@ class GoogleTranslate:
     def _get_TKK_value(self) -> str:
         """在Google翻译的页面里获得TKK的值"""
         text = requests.get(self.GOOGLE_TRANSLATE_URL).text
-        PATTERN = r"TKK='(?P<TKK>.+?)'"
+        PATTERN = r"tkk:'(?P<TKK>.+?)'"
         result = re.search(PATTERN, text)
         return result.group('TKK') if result else ''
 
