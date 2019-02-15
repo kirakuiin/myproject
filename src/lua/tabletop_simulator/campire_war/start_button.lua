@@ -1,4 +1,4 @@
---[[ This script quick start script for campfire war card game. --]]
+--[[ This is quick start script for campfire war card game. --]]
 -- author:wang.zhuowei@foxmail.com
 -- date: Feb 11, 2019
 -- license: GPL.v3
@@ -95,7 +95,9 @@ function put_card_to_shop()
                 rotation={0, 0, 0},
                 top=true,
             }
-            deck.takeObject(params)
+            if #shop_zone.getObjects() == 1 then
+                deck.takeObject(params)
+            end
         end
     end
     Wait.condition(toRunFunc, watchFunc, timeout)
@@ -107,7 +109,8 @@ function dispatch_hero(selected_style)
         for k, card_guid in ipairs(Global.getTable('hero_table')) do
             local card_obj = getObjectFromGUID(card_guid)
             if not card_obj then
-                print('Heros card not found, maybe in a deck.')
+                broadcastToAll('Heros card not found, maybe in a deck.',
+                                {r=1, g=0, b=0})
                 return
             end
             local basic_info = Global.call('getCardBasicInfo', card_obj)
@@ -135,12 +138,12 @@ end
 
 function click_func(obj, color, alt_click)
     if (color == 'White' or color == 'Grey') then
-        print('Please select a player color.')
+        broadcastToAll('Please select a player color.', {r=1, b=0, g=0})
         return
     end
     local public_zone = getObjectFromGUID(Global.getVar('public_card_pile'))
     if (#public_zone.getObjects() > 1) then
-        print('Player already put deck on public card pile. Just place card.')
+        broadcastToAll('Move card to empty shop zone.', {r=0, b=0, g=1})
         self.editButton({index=0, tooltip='在商店放置5张牌.'})
         put_card_to_shop()
         return
@@ -155,7 +158,7 @@ function click_func(obj, color, alt_click)
         end
     end
     if remain_pile_num < 3 then
-        print('Remain card pile less then 3.')
+        broadcastToAll('Remain card pile less then 3.', {r=1, g=0, b=0})
         return
     end
 

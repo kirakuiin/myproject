@@ -1,11 +1,9 @@
---[[ This script is global script for campfire war card game. --]]
+--[[ This is global script for campfire war card game. --]]
 -- author:wang.zhuowei@foxmail.com
 -- date: Feb 8, 2019
 -- license: GPL.v3
 
---[[ Global scriptzone guid --]]
-
-heros_zone = 'e948da'
+--[[ Global zone guid --]]
 
 public_card_pile = 'f212eb'
 campire_card_pile = 'f0982c'
@@ -38,13 +36,18 @@ shop_zone = {
     shop_slot_1, shop_slot_2, shop_slot_3, shop_slot_4, shop_slot_5
 }
 
-drop_zone = {
-    player_drop_zone_1, player_drop_zone_2
-}
+--[[ Global object guid --]]
 
-hand_zone = {
-    player_hand_zone_1, player_hand_zone_2
-}
+quick_start_token = 'd1937e'
+
+first_hand_token_1 = '12997a'
+first_hand_token_2 = '6cad06'
+power_token_1 = '43de29'
+power_token_2 = '688c09'
+fire_token_1 = 'fb325f'
+fire_token_2 = 'e423d3'
+lp_token_1 = 'ac4036'
+lp_token_2 = '54ec57'
 
 --[[ Hero card guid --]]
 
@@ -64,10 +67,6 @@ hero_table = {
 
 function isCard(obj)
     return obj.tag == 'Card'
-end
-
-function isHero(basic_info)
-    return basic_info.type == 'hero'
 end
 
 function isDeck(obj)
