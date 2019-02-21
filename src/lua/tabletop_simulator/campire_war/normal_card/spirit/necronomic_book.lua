@@ -6,5 +6,8 @@ basic_info = {
         style='spirit',
         value=7,
         defense=3,
+        resource={},
+        effect={},
+        keyword={},
     },
 }

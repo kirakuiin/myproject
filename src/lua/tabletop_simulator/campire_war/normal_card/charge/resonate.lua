@@ -6,5 +6,10 @@ basic_info = {
         style='charge',
         value=5,
         defense=2,
+        resource={},
+        effect={
+            double_spell=true,
+        },
+        keyword={},
     },
 }

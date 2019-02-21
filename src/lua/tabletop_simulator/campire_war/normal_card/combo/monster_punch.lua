@@ -5,5 +5,10 @@ basic_info = {
         type='spell',
         style='combo',
         value=6,
+        resource={},
+        effect={
+            put=2,
+        },
+        keyword={},
     },
 }

@@ -6,5 +6,21 @@ basic_info = {
         lp=32,
         zone_guid='12b623',
         skill_num=3,
+        skill={
+            draw=2,
+            keyword={
+                type='or',
+                resource={
+                    fire=-3,
+                },
+                charge_3={
+                    resource={
+                        power=3,
+                        life=3,
+                        type='or',
+                    }
+                }
+            }
+        }
     },
 }

@@ -24,8 +24,12 @@ function click_func(obj, color, alt_click)
     if Global.call('isDisable') then
         return
     end
-    local obj = getObjectFromGUID('58b247')
-    local obj1 = getObjectFromGUID('31405f')
-    print('deck=', obj.is_face_down)
-    print('card=', obj1.is_face_down)
+    print(color)
+end
+
+function onObjectDrop(color, ob)
+    if Global.call('isDisable') then
+        return
+    end
+    print(color)
 end

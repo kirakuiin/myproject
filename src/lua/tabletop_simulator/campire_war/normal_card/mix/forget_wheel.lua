@@ -6,5 +6,14 @@ basic_info = {
         style='mix',
         value=3,
         defense=2,
+        resource={},
+        effect={
+            exile_public=true,
+        },
+        keyword={
+            gain={
+                exile_self_zone=1,
+            },
+        },
     },
 }

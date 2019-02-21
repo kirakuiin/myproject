@@ -8,5 +8,13 @@ basic_info = {
         resource={
             power=2,
         },
+        effect={
+            liver=true,
+        },
+        keyword={
+            gain={
+                put_on_top=true,
+            },
+        },
     },
 }

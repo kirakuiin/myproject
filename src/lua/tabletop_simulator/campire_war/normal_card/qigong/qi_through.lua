@@ -8,7 +8,8 @@ basic_info = {
         resource={
             fire=2,
             life=1,
-            type='and'
         },
+        effect={},
+        keyword={},
     },
 }

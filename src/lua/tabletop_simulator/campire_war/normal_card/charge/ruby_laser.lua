@@ -8,7 +8,17 @@ basic_info = {
         defense=2,
         resource={
             fire=1,
-            type='turn'
-        }
+        },
+        effect={},
+        keyword={
+            charge={
+                charge_6={
+                    loss_lp={
+                        value=4,
+                        object={'another'},
+                    }
+                },
+            }
+        },
     },
 }

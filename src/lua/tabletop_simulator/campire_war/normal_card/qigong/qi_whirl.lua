@@ -8,5 +8,12 @@ basic_info = {
         resource={
             fire=2,
         },
+        effect={
+            discard_to_hand={
+                num=1,
+                type='martial',
+            }
+        },
+        keyword={},
     },
 }

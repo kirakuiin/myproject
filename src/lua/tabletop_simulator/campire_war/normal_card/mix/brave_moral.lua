@@ -5,5 +5,14 @@ basic_info = {
         type='martial',
         style='mix',
         value=4,
+        resource={},
+        effect={
+            style_calc={
+                resource={
+                    power=1,
+                },
+            },
+        },
+        keyword={},
     },
 }

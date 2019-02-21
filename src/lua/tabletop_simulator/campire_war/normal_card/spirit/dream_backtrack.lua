@@ -8,5 +8,11 @@ basic_info = {
         resource={
             life=1,
         },
+        effect={
+            discard_to_card=3,
+        },
+        keyword={
+            probe=3,
+        },
     },
 }

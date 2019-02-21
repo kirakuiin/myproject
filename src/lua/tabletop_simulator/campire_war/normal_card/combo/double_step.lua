@@ -5,5 +5,17 @@ basic_info = {
         type='martial',
         style='combo',
         value=4,
+        resource={},
+        effect={
+            draw=1,
+            exile_hand=true,
+        },
+        keyword={
+            combo={
+                combo_3={
+                    draw=1,
+                },
+            },
+        },
     },
 }

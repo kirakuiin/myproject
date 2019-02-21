@@ -8,5 +8,12 @@ basic_info = {
         resource={
             power=2,
         },
+        effect={
+            order={'discard_to_card', 'shuffle', 'put'},
+            discard_to_card=0,
+            shuffle=true,
+            put=7,
+        },
+        keyword={},
     },
 }

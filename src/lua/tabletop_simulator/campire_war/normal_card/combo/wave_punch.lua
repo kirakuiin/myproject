@@ -8,5 +8,15 @@ basic_info = {
         resource={
             power=1,
         },
+        effect={},
+        keyword={
+           combo_2={
+               type='or',
+               resource={
+                   power=1,
+               },
+               draw=1,
+           },
+        },
     },
 }

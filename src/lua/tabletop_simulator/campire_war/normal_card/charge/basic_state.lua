@@ -5,8 +5,24 @@ basic_info = {
         type='special',
         style='charge',
         value=1,
-        resource = {
+        resource={
             fire=1,
         },
+        effect={},
+        keyword={
+            charge={
+                type='or',
+                charge_1={
+                    resource={
+                        life=1,
+                    },
+                },
+                charge_2={
+                    resource={
+                        life=2,
+                    },
+                }
+            },
+        }
     },
 }

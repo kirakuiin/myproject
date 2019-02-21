@@ -5,8 +5,16 @@ basic_info = {
         type='martial',
         style='combo',
         value=1,
-        exile={
-            life=1,
+        resource={},
+        effect={
+            draw=1,
+        },
+        keyword={
+            exile={
+                resource={
+                    life=1,
+                },
+            },
         },
     },
 }

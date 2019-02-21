@@ -8,7 +8,7 @@ function onLoad()
     self.createInput({
         input_function = "input_func",
         function_owner = self,
-        label          = "0",
+        value          = 0,
         alignment      = 1,
         position       = {x=0, y=0.1, z=0},
         width          = 800,

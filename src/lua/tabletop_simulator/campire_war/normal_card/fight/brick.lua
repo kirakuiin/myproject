@@ -5,5 +5,12 @@ basic_info = {
         type='special',
         style='fight',
         value=1,
+        resource={},
+        effect={},
+        keyword={
+            exile={
+                brick=true,
+            },
+        },
     },
 }

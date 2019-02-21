@@ -5,8 +5,25 @@ basic_info = {
         type='spell',
         style='charge',
         value=4,
-        exile={
-            fire=1,
-        }
+        resource={},
+        effect={
+            order={'discount', 'type_check'},
+            discount=1,
+            type_check={
+                card='next_discard_card',
+                order={'type', 'resource'},
+                type='spell',
+                resource={
+                    power=2,
+                },
+            },
+        },
+        keyword={
+            exile={
+                resource={
+                    fire=1,
+                },
+            },
+        },
     },
 }

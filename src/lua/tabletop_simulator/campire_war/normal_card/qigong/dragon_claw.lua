@@ -8,5 +8,16 @@ basic_info = {
         resource={
             power=1,
         },
+        effect={},
+        keyword={
+            air={
+                air_5={
+                    resource={
+                        power=1,
+                    },
+                    draw=1,
+                }
+            }
+        },
     },
 }

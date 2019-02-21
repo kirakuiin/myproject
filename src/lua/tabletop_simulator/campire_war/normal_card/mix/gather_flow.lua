@@ -5,5 +5,8 @@ basic_info = {
         type='spell',
         style='mix',
         value=7,
+        resource={},
+        effect={},
+        keyword={},
     },
 }

@@ -5,8 +5,23 @@ basic_info = {
         type='martial',
         style='fight',
         value=4,
-        exile={
-            life=1,
+        resource={},
+        effect={
+            order={'loss_lp', 'resource'},
+            loss_lp={
+                value=2,
+                object={'self'},
+            },
+            resource={
+                power=3,
+            }
+        },
+        keyword={
+            exile={
+                resource={
+                    life=1,
+                },
+            },
         },
     },
 }

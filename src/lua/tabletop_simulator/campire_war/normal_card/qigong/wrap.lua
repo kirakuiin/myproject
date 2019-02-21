@@ -8,5 +8,13 @@ basic_info = {
         resource={
             fire=2,
         },
+        effect={},
+        keyword={
+            air={
+                air_4={
+                    exile_hand=true,
+                }
+            },
+        },
     },
 }

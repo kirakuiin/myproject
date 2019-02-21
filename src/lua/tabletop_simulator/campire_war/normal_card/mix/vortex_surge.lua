@@ -8,5 +8,18 @@ basic_info = {
         resource={
             power=3,
         },
+        effect={
+            type_calc={
+                resource={
+                    power=1,
+                },
+            },
+            style_calc={
+                resource={
+                    power=1,
+                },
+            },
+        },
+        keyword={},
     },
 }

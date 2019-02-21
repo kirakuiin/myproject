@@ -80,6 +80,7 @@ function put_card_to_shop()
                 position=shop_zone.getPosition(),
                 rotation={0, 0, 0},
                 top=true,
+                smooth=false,
             }
             if #shop_zone.getObjects() == 1 then
                 deck.takeObject(params)
@@ -96,8 +97,8 @@ function dispatch_hero()
         for k, card_guid in ipairs(Global.getTable('hero_table')) do
             local card_obj = getObjectFromGUID(card_guid)
             if not card_obj then
-                broadcastToAll('Heros card not found, maybe in a deck.',
-                                {r=1, g=0, b=0})
+                broadcastToAll('无法找到英雄卡, 也许在牌组里',
+                               Global.getTable('Purple'))
                 return
             end
             local basic_info = Global.call('getCardBasicInfo', card_obj)
@@ -108,7 +109,7 @@ function dispatch_hero()
         end
     end
     if #heros ~= 4 then
-        broadcastToAll('Selected style != 3!', {r=1, g=0, b=0})
+        broadcastToAll('选择风格不等于3, 无效!', Global.getTable('Purple'))
         return
     end
     local players = getSeatedPlayers()
@@ -139,7 +140,7 @@ function click_func(obj, color, alt_click)
         return
     end
     if (not Global.call('isValidColor', color)) then
-        broadcastToAll('Please select a player color.', {r=1, b=0, g=0})
+        broadcastToAll('请选择一个玩家颜色.', Global.getTable('Purple'))
         return
     end
     local public_zone = getObjectFromGUID(Global.getVar('public_card_pile'))
@@ -152,7 +153,8 @@ function click_func(obj, color, alt_click)
             end
         end
         if remain_pile_num < 3 then
-            broadcastToAll('Remain style less then 3.', {r=1, g=0, b=0})
+            broadcastToAll('剩余可选英雄风格数小于3.',
+                           Global.getTable('Purple'))
             return
         end
         move_card_pile_to_public()

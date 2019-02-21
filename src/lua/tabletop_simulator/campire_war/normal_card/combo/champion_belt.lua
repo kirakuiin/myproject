@@ -6,5 +6,20 @@ basic_info = {
         style='combo',
         value=7,
         defense=3,
+        resource={},
+        effect={
+            play_is_life=true,
+        },
+        keyword={
+            gain={
+                type_calc={
+                    type='martial',
+                    max=5,
+                    resource={
+                        life=1,
+                    }
+                },
+            },
+        },
     },
 }

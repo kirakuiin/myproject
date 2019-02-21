@@ -8,5 +8,13 @@ basic_info = {
         resource={
             fire=2,
         },
+        effect={},
+        keyword={
+            charge={
+                charge_1={
+                    draw=1,
+                }
+            },
+        },
     },
 }

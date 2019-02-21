@@ -8,7 +8,12 @@ basic_info = {
         defense=3,
         resource={
             power=2,
-            type='turn',
+        },
+        effect={},
+        keyword={
+            gain={
+                power_is_money=true,
+            },
         },
     },
 }

@@ -5,5 +5,10 @@ basic_info = {
         type='special',
         style='mix',
         value=5,
+        resource={},
+        effect={
+            put=3,
+        },
+        keyword={},
     },
 }

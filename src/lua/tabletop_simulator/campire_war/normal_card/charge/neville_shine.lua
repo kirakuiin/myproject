@@ -5,10 +5,18 @@ basic_info = {
         type='martial',
         style='charge',
         value=3,
-        disadv={
-            fire=1,
-            power=1,
-            type='or'
+        resource={},
+        effect={
+            exile_self_zone=1,
+        },
+        keyword={
+            disadv={
+                resource={
+                    fire=1,
+                    power=1,
+                    type='or',
+                },
+            },
         },
     },
 }

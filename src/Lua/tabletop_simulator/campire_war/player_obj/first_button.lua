@@ -6,10 +6,9 @@
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
     print("Player first hand button onLoad!")
-    local other_objs = Global.call('getAnotherColorsObjs',
-                             Global.call('getObjsColor', self))
-    local self_objs = Global.call('getColorsObjs',
-                             Global.call('getObjsColor', self))
+    self_color = Global.call('getObjsColor', self)
+    local other_objs = Global.call('getAnotherColorsObjs', self_color)
+    local self_objs = Global.call('getColorsObjs', self_color)
 
     ano_lp_zone = other_objs.lp_token
     another_btn = other_objs.first_hand_token
@@ -33,7 +32,7 @@ function isPlayerAllReady()
         local zone = getObjectFromGUID(player_guid)
         local card = Global.call('getAboveZoneObj', zone)
         if card then
-            if not zone.call('isHeroCard', card) then
+            if not Global.call('isHeroCard', card) then
                 return false
             end
         else
@@ -44,15 +43,16 @@ function isPlayerAllReady()
 end
 
 function addTwoLife()
-    local lp_obj = getObjectFromGUID(ano_lp_zone)
-    Global.call('modifyInputValue', {obj=lp_obj, offset=2})
+    local ano_color = Global.call('getAnotherColor', self_color)
+    local current_life = Global.call('getPlayerLp', ano_color)
+    Global.call('setPlayerLp', {color=ano_color, value=current_life+2})
 end
 
 function removeFirstHandBtn()
     another = getObjectFromGUID(another_btn)
-    another.removeButton(0)
+    Global.call('removeButton', another)
     another.setInvisibleTo(getSeatedPlayers())
-    self.removeButton(0)
+    Global.call('removeButton', self)
     self.setInvisibleTo(getSeatedPlayers())
 end
 
@@ -69,7 +69,7 @@ function shuffleAndDraw()
     end
 end
 
-function createEndBtn(color)
+function createEndBtn()
     end_btn = getObjectFromGUID(end_btn_guid)
     params = {
         click_function = "click_func",
@@ -77,33 +77,38 @@ function createEndBtn(color)
         width          = 800,
         height         = 800,
         font_size      = 400,
-        font_color     = Global.getTable(color),
+        font_color     = Global.getTable(self_color),
         tooltip        = "回合结束",
     }
     end_btn.createButton(params)
+end
+
+function setGlobalInfo()
+    Global.call('setGameInfo', {turn_color=self_color})
 end
 
 function click_func(obj, color, alt_click)
     if Global.call('isDisable') then
         return
     end
-    if color ~= Global.call('getObjsColor', self) then
+    if color ~= self_color then
         return
     end
-    if (not Global.call('isValidColor', color)) then
-        broadcastToAll('Please select a player color.',
+    if (not Global.call('isValidColor', self_color)) then
+        broadcastToAll('请选择一个玩家颜色[红/蓝]!',
                         Global.getTable('Orange'))
         return
     end
     if not isPlayerAllReady() then
-        broadcastToAll('Some player not place hero card.',
+        broadcastToAll('有玩家没有选择英雄卡!',
                         Global.getTable('Orange'))
         return
     end
     addTwoLife()
     removeFirstHandBtn()
     shuffleAndDraw()
-    createEndBtn(color)
-    broadcastToAll("Player " .. Player[color].steam_name.. " get first hand",
-                   Global.getTable(color))
+    createEndBtn()
+    setGlobalInfo()
+    broadcastToAll("玩家 " .. Player[self_color].steam_name.. " 获得先手!",
+                   Global.getTable(self_color))
 end

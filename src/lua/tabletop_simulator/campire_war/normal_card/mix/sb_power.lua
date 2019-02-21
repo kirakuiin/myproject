@@ -5,5 +5,14 @@ basic_info = {
         type='spell',
         style='mix',
         value=3,
+        resource={},
+        effect={
+            style_calc={
+                resource={
+                    fire=1,
+                },
+            },
+        },
+        keyword={},
     },
 }

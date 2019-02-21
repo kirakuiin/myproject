@@ -10,5 +10,7 @@ basic_info = {
             power=3,
             type='or'
         },
+        effect={},
+        keyword={},
     },
 }

@@ -8,5 +8,9 @@ basic_info = {
         resource={
             life=1,
         },
+        effect={
+            exile_drop=true,
+        },
+        keyword={},
     },
 }

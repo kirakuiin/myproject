@@ -5,8 +5,19 @@ basic_info = {
         type='martial',
         style='charge',
         value=4,
-        resource = {
+        resource={
             power=2,
+        },
+        effect={
+        },
+        keyword={
+            charge={
+                charge_3={
+                    resource={
+                        power=2,
+                    },
+                },
+            },
         },
     },
 }

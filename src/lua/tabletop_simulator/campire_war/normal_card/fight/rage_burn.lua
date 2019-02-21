@@ -5,5 +5,14 @@ basic_info = {
         type='spell',
         style='fight',
         value=6,
+        resource={},
+        effect={
+            draw=2,
+        },
+        keyword={
+            gain={
+                rage=true,
+            },
+        },
     },
 }

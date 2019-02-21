@@ -8,7 +8,15 @@ basic_info = {
         defense=2,
         resource={
             power=1,
-            type='turn'
-        }
+        },
+        effect={},
+        keyword={
+            gain={
+                discard_to_hand={
+                    num=1,
+                    type='martial',
+                }
+            }
+        },
     },
 }

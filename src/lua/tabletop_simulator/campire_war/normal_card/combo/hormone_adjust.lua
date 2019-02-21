@@ -5,5 +5,16 @@ basic_info = {
         type='spell',
         style='combo',
         value=2,
+        resource={},
+        effect={
+            exile_self_zone=true,
+        },
+        keyword={
+            combo={
+                combo_2={
+                    draw=1,
+                },
+            },
+        },
     },
 }

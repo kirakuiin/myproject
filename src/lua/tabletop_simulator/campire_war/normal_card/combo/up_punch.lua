@@ -8,5 +8,14 @@ basic_info = {
         resource={
             power=1,
         },
+        effect={},
+        keyword={
+            combo={
+                combo_1={
+                    draw=1,
+                    discard=1,
+                }
+            }
+        },
     },
 }

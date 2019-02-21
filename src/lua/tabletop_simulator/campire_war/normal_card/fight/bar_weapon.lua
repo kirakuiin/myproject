@@ -8,10 +8,14 @@ basic_info = {
         defense=2,
         resource={
             power=1,
-            type='turn'
         },
-        exile={
-            life=1,
+        effect={},
+        keyword={
+            exile={
+                resource={
+                    life=1,
+                },
+            },
         },
     },
 }

@@ -5,5 +5,8 @@ basic_info = {
         type='spell',
         style='spirit',
         value=8,
+        resource={},
+        effect={},
+        keyword={},
     },
 }

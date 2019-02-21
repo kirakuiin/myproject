@@ -6,5 +6,11 @@ basic_info = {
         lp=34,
         zone_guid='293ca0',
         skill_num=4,
+        skill={
+            resource={
+                fire=-1,
+            },
+            probe=1,
+        },
     },
 }

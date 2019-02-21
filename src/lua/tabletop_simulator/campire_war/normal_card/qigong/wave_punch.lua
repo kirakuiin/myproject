@@ -8,5 +8,14 @@ basic_info = {
         resource={
             fire=3,
         },
+        effect={},
+        keyword={
+            air={
+                air_8={
+                    draw=1,
+                    exchange=ture,
+                },
+            },
+        },
     },
 }

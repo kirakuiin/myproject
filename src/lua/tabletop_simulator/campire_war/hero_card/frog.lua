@@ -6,5 +6,8 @@ basic_info = {
         lp=26,
         zone_guid='',
         skill_num=0,
+        skill={
+            exile_lp_modify=true,
+        },
     },
 }

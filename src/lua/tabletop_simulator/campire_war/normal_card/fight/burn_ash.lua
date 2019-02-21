@@ -8,5 +8,15 @@ basic_info = {
         resource={
             power=1,
         },
+        effect={
+            order={'hand_calc', 'discard'},
+            hand_calc={
+                resource={
+                    power=1,
+                },
+            },
+            discard=0,
+        },
+        keyword={},
     },
 }

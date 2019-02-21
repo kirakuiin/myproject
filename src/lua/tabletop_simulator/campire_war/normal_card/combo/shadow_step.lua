@@ -5,5 +5,15 @@ basic_info = {
         type='spell',
         style='combo',
         value=4,
+        resource={},
+        effect={
+            value_check={
+                card='prev_drop_card',
+                le_4={
+                    replay=true,
+                },
+            },
+        },
+        keyword={},
     },
 }

@@ -5,5 +5,16 @@ basic_info = {
         type='special',
         style='spirit',
         value=5,
+        resource={},
+        effect={
+            value_calc={
+                ge_3 = {
+                    resource={
+                        power=1,
+                    },
+                },
+            },
+        },
+        keyword={},
     },
 }

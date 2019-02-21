@@ -8,5 +8,7 @@ basic_info = {
         resource = {
             power=1,
         },
+        effect={},
+        keyword={},
     },
 }

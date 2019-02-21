@@ -6,5 +6,13 @@ basic_info = {
         style='qigong',
         value=8,
         defense=3,
+        resource={},
+        effect={},
+        keyword={
+            guard=true,
+            gain={
+                equip=true,
+            }
+        }
     },
 }

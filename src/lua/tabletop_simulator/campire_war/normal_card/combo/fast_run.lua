@@ -8,5 +8,9 @@ basic_info = {
         resource={
             fire=2,
         },
+        effect={
+            discard_to_card=1,
+        },
+        keyword={},
     },
 }

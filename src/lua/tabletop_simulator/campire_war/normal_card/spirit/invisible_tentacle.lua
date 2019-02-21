@@ -5,5 +5,10 @@ basic_info = {
         type='spell',
         style='spirit',
         value=1,
+        resource={},
+        effect={
+            put=1,
+        },
+        keyword={},
     },
 }

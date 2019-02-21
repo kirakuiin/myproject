@@ -6,5 +6,9 @@ basic_info = {
         lp=33,
         zone_guid='a26060',
         skill_num=2,
+        skill={
+            exile_public=2,
+            discount=1,
+        }
     },
 }
