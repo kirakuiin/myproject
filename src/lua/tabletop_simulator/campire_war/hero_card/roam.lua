@@ -7,8 +7,10 @@ basic_info = {
         zone_guid='a26060',
         skill_num=2,
         skill={
+            drop_effect={
+                roam_discount=1,
+            },
             exile_public=2,
-            discount=1,
         }
     },
 }

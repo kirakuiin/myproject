@@ -9,7 +9,10 @@ basic_info = {
             power=2,
         },
         effect={
-            liver=true,
+            drop_effect={
+                liver=true,
+                object={'self',},
+            },
         },
         keyword={
             gain={

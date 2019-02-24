@@ -18,7 +18,9 @@ function onLoad()
         exile_lp_modify = 0,
         guard = false,
         exile_public = false,
-        discount = false,
+        discount = 0,
+        extra_fire = 0,
+        extra_draw = 0,
     }
     prev_fire = 0
 end
@@ -62,6 +64,19 @@ function onObjectDrop(color, obj)
     end
 end
 
+function hashObj(obj, ext)
+    local card_info = Global.call('getCardInfo', obj)
+    if not ext then ext = '' end
+    return Global.call('hashConvert', card_info.name).. ext
+end
+
+function isDropOp(name)
+    for _, v in ipairs({'resource', 'drop_effect'}) do
+        if name == v then return true end
+    end
+    return false
+end
+
 function setPlayerEffect(params)
     for k, v in pairs(params) do
         player_passive_effect[k] = v
@@ -82,9 +97,7 @@ end
 
 function executeCardEffect(obj)
     calcDropZoneEffect(obj)
-    calcCardResource(obj)
     calcCardEffect(obj)
-    calcCardKeyword(obj)
     calcPlayCardInfo(obj)
 end
 
@@ -141,55 +154,14 @@ function selectBtn2(obj, color, alt_click)
     Global.call('removeButton', obj)
 end
 
-function createSelectBtn(obj, resource)
-    if not obj.getButtons() then
-        local x_pos = -1.5
-        local index = 0
-        for k, v in pairs(resource) do
-            index = index + 1
-            x_pos = x_pos + 1
-            local info = Global.call('getResourceInfo', k)
-            local color = info.color
-            local tooltip = info.tooltip
-            obj.createButton({
-                    click_function = "selectBtn".. index,
-                    function_owner = self,
-                    position       = {x=x_pos, y=1, z=0},
-                    width          = 300,
-                    height         = 300,
-                    font_size      = 250,
-                    color          = Global.getTable(color),
-                    tooltip        = tooltip,
-                    label          = tostring(v),
-                })
-        end
-    end
-end
-
-function calcCardResource(obj)
-    local card_info = Global.call('getCardInfo', obj)
-    if card_info.resource.type then
-        local tp = card_info.resource.type
-        card_info.resource['type'] = nil
-        if tp == 'or' then
-            createSelectBtn(obj, card_info.resource)
-            return
-        end
-    end
-    for k, v in pairs(card_info.resource) do
-        local info = Global.call('getResourceInfo', k)
-        local prev = tonumber(Global.call(info.getfunc, self_color))
-        Global.call(info.setfunc, {color=self_color, value=prev+v})
-        if k == 'fire' then prev_fire = prev end
-    end
-end
-
 function calcCardEffect(obj)
     local card_info = Global.call('getCardInfo', obj)
-end
-
-function calcCardKeyword(obj)
-    local card_info = Global.call('getCardInfo', obj)
+    local resource={}
+    for k, v in pairs(card_info.resource) do
+        resource[k] = v
+    end
+    parseCardInfo({resource=resource}, obj)
+    parseCardInfo(card_info, obj)
 end
 
 function calcPlayCardInfo(obj)
@@ -213,4 +185,190 @@ function calcPlayCardInfo(obj)
 end
 
 function removeItemEffect(obj)
+    local card_info = Global.call('getCardInfo', obj)
+    if card_info.effect.drop_effect then
+        dropEffect(card_info.effect.drop_effect, true)
+    end
+    if card_info.keyword.drop_effect then
+        dropEffect(card_info.keyword.drop_effect, true)
+    end
+end
+
+function createChargeClick(charge_info)
+    return function(obj, color, alt_click)
+        if Global.call('isDisable') then
+            return
+        end
+        if color ~= self_color then
+            return
+        end
+        for fee, effect in pairs(charge_info) do
+            local cost = tonumber(string.sub(fee, -1))
+            local cur_fire = Global.call('getPlayerFire', color)
+            if cost > prev_fire then
+                break
+            else
+                local new_v = cur_fire - cost
+                Global.call('setPlayerFire', {color=color, value=new_v})
+                parseCardInfo(effect, obj)
+            end
+        end
+    end
+end
+
+function createResourceClick(resource_info)
+    return function(obj, color, alt_click)
+        if Global.call('isDisable') then
+            return
+        end
+        if color ~= self_color then
+            return
+        end
+        for k, v in pairs(resource_info) do
+            local info = Global.call('getResourceInfo', k)
+            local prev = tonumber(Global.call(info.getfunc, self_color))
+            Global.call(info.setfunc, {color=self_color, value=prev+v})
+            if k == 'fire' then prev_fire = prev end
+        end
+        Global.call('removeAllUI', obj)
+    end
+end
+
+function createBtn(params)
+    params.obj.createButton({
+            click_function = params.func_name,
+            function_owner = self,
+            position       = params.pos,
+            color          = params.color,
+            tooltip        = params.tooltip,
+            width          = 300,
+            height         = 300,
+            font_size      = 250,
+        })
+    if not self.getVar(params.func_name) then
+        if params.charge then
+            local charge_info = params.charge
+            self.setVar(params.func_name, createChargeClick(charge_info))
+        elseif params.resource then
+            local resource_info = params.resource
+            self.setVar(params.func_name, createResourceClick(resource_info))
+        end
+    end
+end
+
+function charge(arg, obj)
+    local card_info = Global.call('getCardInfo', obj)
+    local params = {
+        tooltip='发动充能',
+        func_name=hashObj(obj, 'charge'),
+        pos={0, 1, 0},
+        color=Global.getTable('Yellow'),
+        charge=arg,
+        obj=obj,
+    }
+    createBtn(params)
+end
+
+function air(arg)
+end
+
+function resource(arg, obj)
+    if arg.type then
+        if arg.type == 'or' then
+            local index = -1.5
+            for k, v in pairs(arg) do
+                if k ~= 'type' then
+                    index = index + 1
+                    local resource_info = {}
+                    resource_info[k] = v
+                    local info = Global.call('getResourceInfo', k)
+                    createBtn({
+                        func_name=hashObj(obj, k.. tostring(v)),
+                        resource=resource_info,
+                        pos={x=index, y=1, z=0},
+                        tooltip=info.tooltip,
+                        color=Global.getTable(info.color),
+                        obj=obj,
+                    })
+                end
+            end
+        end
+    end
+    for k, v in pairs(arg) do
+        if k ~= 'type' then
+            local info = Global.call('getResourceInfo', k)
+            local prev = tonumber(Global.call(info.getfunc, self_color))
+            Global.call(info.setfunc, {color=self_color, value=prev+v})
+            if k == 'fire' then prev_fire = prev end
+        end
+    end
+end
+
+function dropEffect(arg, remove)
+    local ano_drop = getObjectFromGUID(
+        Global.call('getAnotherColorsObjs', self_color).player_drop_zone)
+    local drop_zones = {}
+    if arg.object then
+        for _, v in ipairs(arg.object) do
+            if v == 'self' then
+                table.insert(drop_zones, self)
+            elseif v == 'another' then
+                table.insert(drop_zones, ano_drop)
+            end
+        end
+    end
+    for k, v in pairs(arg) do
+        if k ~= 'object' then
+            local params = {color=self_color}
+            if remove then
+                params[k] = false
+            else
+                params[k] = v
+            end
+            for _, obj in ipairs(drop_zones) do
+                obj.call('setPlayerEffect', params)
+            end
+        end
+    end
+end
+
+function executeCardOp(params)
+    local key = params.key
+    local arg = params.arg
+    local obj = params.obj
+    local result = false
+    if key == 'resource' then
+        result = resource(arg, obj)
+    elseif key == 'drop_effect' then
+        result = dropEffect(arg)
+    elseif key == 'drop_effect' then
+        result = charge(arg, obj)
+    elseif key == 'air' then
+        result = air(arg)
+    end
+    return result
+end
+
+function parseCardInfo(info, obj)
+    if info.keyword then
+        parseCardInfo(info.effect, obj)
+        parseCardInfo(info.keyword, obj)
+    else
+        for k, v in pairs(info) do
+            if k == 'order' then
+                for _, arg in ipairs(v) do
+                    local params = {}
+                    params[arg] = Global.call('clone', info[arg])
+                    parseCardInfo(params, obj)
+                end
+                break
+            elseif isDropOp(k) then
+                local arg = Global.call('clone', v)
+                executeCardOp({key=k, arg=arg, obj=obj})
+            elseif Global.call('isCardOp', k) then
+                local arg = Global.call('clone', v)
+                Global.call('executeCardOp', {key=k, arg=arg, color=self_color})
+            end
+        end
+    end
 end

@@ -1,7 +1,5 @@
 -- author:wang.zhuowei@foxmail.com
--- date: Feb 8, 2019
--- license: GPL.v3
-
+-- date: Feb 8, 2019 -- license: GPL.v3
 --[[ Global zone guid --]]
 
 public_card_pile = '010589'
@@ -128,6 +126,8 @@ player2_obj = {
 --[[ Constants --]]
 
 timeout = 10
+show_timeout = 3
+wait_timeout = 0.5
 
 White = {r=1, g=1, b=1}
 Brown = {r=0.443, g=0.231, b=0.09}
@@ -206,6 +206,42 @@ function printTable(tab_obj)
     else
         print('Not a table!')
     end
+end
+
+function clone(object)
+    local lookup_table = {}
+    local function copy(object)
+        if type(object) ~= "table" then
+            return object
+        elseif lookup_table[object] then
+            return lookup_table[object]
+        end
+        local new_table = {}
+        lookup_table[object] = new_table
+        for key, value in pairs(object) do
+            new_table[copy(key)] = copy(value)
+        end
+        return setmetatable(new_table, getmetatable(object))
+    end
+    return copy(object)
+end
+
+function hashConvert(v)
+    local ch = 0
+    local val = 0
+    if(v) then
+        for i=1,#v do
+            ch = v:byte(i)
+            if( ch >= 65 and ch <= 90 ) then
+                ch = ch + 32
+            end
+            val = val*0.7 + ch  --0.7是加权
+        end
+    end
+    val = val .. ''
+    val = val:gsub("+","")
+    val = val:gsub("%.","")
+    return string.format('%s',val)
 end
 
 function getCardBasicInfo(obj)
@@ -354,38 +390,79 @@ function isCloseEnough(params)
     return true
 end
 
+function getZoneCardNum(params)
+    local color = params.color
+    local zone = params.zone
+    local objs = getAboveZoneObjs(zone)
+    local total = 0
+    if objs then
+        for _, obj in pairs(objs) do
+            if isCard(obj) or isDeck(obj) then
+                local tmp = obj.getQuantity()
+                if tmp == -1 then tmp = 1 end
+                total = total + tmp
+            end
+        end
+    end
+    return total
+end
+
+function getCardPileNum(color)
+    local zone = getObjectFromGUID(getColorsObjs(color).player_card_pile)
+    return getZoneCardNum({color=color, zone=zone})
+end
+
 --[[ color: player_color, src: src_zone, dest: dest_zone, ready: return value --]]
 --[[ flip: is flip object, quick: is instant move, no_shuffle: not shuffle --]]
 function moveZoneToZone(params)
     local src = params.src
     local dest = params.dest
     local objs = getAboveZoneObjs(src)
-    local src_num = 0
-    local dest_obj = getAboveZoneObj(dest)
-    local dest_num = 0
-    if dest_obj then
-        dest_num = dest_obj.getQuantity()
-        if dest_num == -1 then dest_num = 1 end
-    end
-
+    local card_objs = getAboveZoneObjs(dest)
+    local color = params.color
+    local src_num = getZoneCardNum({zone=src, color=color})
+    local dest_num = getZoneCardNum({zone=dest, color=color})
     local dest_rot = {0, 180, 0}
-    if objs then
-        for _, obj in ipairs(objs) do
-            if isCard(obj) or isDeck(obj) then
-                local tmp = obj.getQuantity()
-                if tmp == -1 then tmp = 1 end
-                local dest_pos = dest.getPosition()
-                if dest_pos.z > 0 then dest_rot = {0, 360, 0} end
-                if params.quick then
-                    obj.setPosition(dest_pos)
-                    obj.setRotation(dest_rot)
-                else
-                    obj.setPositionSmooth(dest_pos, false, true)
-                    obj.setRotationSmooth(dest_rot, false, true)
-                end
-                src_num = src_num + tmp
+
+    local flip_done = false
+    if card_objs then
+        for _, card_obj in pairs(card_objs) do
+            if card_obj.is_face_down then
+                card_obj.flip()
             end
         end
+        local watchFunc = function()
+            for _, card_obj in pairs(card_objs) do
+                if card_obj.is_face_down then return false end
+            end
+            return true
+        end
+        local toRunFunc = function()
+            Wait.time(function() flip_done = true end, wait_timeout)
+        end
+        Wait.condition(toRunFunc, watchFunc, timeout)
+    else
+        flip_done = true
+    end
+
+    if objs then
+        local watchFunc = function() return flip_done end
+        local toRunFunc = function()
+            for _, obj in ipairs(objs) do
+                if isCard(obj) or isDeck(obj) then
+                    local dest_pos = dest.getPosition()
+                    if dest_pos.z > 0 then dest_rot = {0, 360, 0} end
+                    if params.quick then
+                        obj.setPosition(dest_pos)
+                        obj.setRotation(dest_rot)
+                    else
+                        obj.setPositionSmooth(dest_pos, false, true)
+                        obj.setRotationSmooth(dest_rot, false, true)
+                    end
+                end
+            end
+        end
+        Wait.condition(toRunFunc, watchFunc, timeout)
     else
         params.ready = true
         return src_num
@@ -399,8 +476,7 @@ function moveZoneToZone(params)
                     return true
             end
             if #dest_objs == 1 then
-                local obj_num = dest_objs[1].getQuantity()
-                if obj_num < 0 then obj_num = 1 end
+                local obj_num = getZoneCardNum({color=color, zone=dest})
                 -- make sure all card in zone
                 if (obj_num == src_num + dest_num) and
                     isCloseEnough({obj1=dest, obj2=dest_objs[1]}) then
@@ -460,19 +536,10 @@ function moveHandToDiscard(params)
     local objs = getColorsObjs(params.color)
     local hand = getObjectFromGUID(objs.player_hand_zone)
     local discard = getObjectFromGUID(objs.player_discard_pile)
-    params.src = discard
+    params.src = hand
     params.dest = discard
     params.quick = true
-    params.no_shuffle = true
-    -- move discard to discard, make all card in center
     moveZoneToZone(params)
-    watchFunc = function() return params.ready end
-    toRunFunc = function()
-        params.src = hand
-        params.ready = false
-        moveZoneToZone(params)
-    end
-    Wait.condition(toRunFunc, watchFunc, timeout)
 end
 
 --[[ guid: item zone guid --]]
@@ -507,7 +574,7 @@ function drawCard(params)
         end
     end
     local wFunc = function()
-        local card_obj = getAboveZoneObj(card_pile_zone)
+        local card_obj = getAboveZoneObjs(card_pile_zone)
         if not card_obj then
             return true
         end
@@ -521,7 +588,7 @@ function drawCard(params)
             local toRunFunc = function()
                 local new_deck = getAboveZoneObj(card_pile_zone)
                 Wait.time(function() new_deck.deal(need_num, params.color) end,
-                          1)
+                          wait_timeout)
             end
             Wait.condition(toRunFunc, watchFunc, timeout)
         end
@@ -591,6 +658,121 @@ end
 function setPlayerPower(params)
     local lp_obj = getObjectFromGUID(getColorsObjs(params.color).power_token)
     lp_obj.editInput({index=0, value=params.value})
+end
+
+function show(color)
+    local card_num = getCardPileNum(color)
+    local card_pile = getObjectFromGUID(getColorsObjs(color).player_card_pile)
+    local deck = getAboveZoneObj(card_pile)
+    local card = nil
+    if card_num > 1 then
+        card = deck.takeObject({
+            position=card_pile.getPosition(),
+            flip=true,
+        })
+    elseif card_num == 1 then
+        card = deck
+        deck.flip()
+    else
+        return
+    end
+    Wait.time(function() card.flip() end, show_timeout)
+end
+
+function probe(color, num)
+    local card_num = getCardPileNum(color)
+    if card_num >= num then
+        drawCard({color=color, num=num})
+    elseif card_num ~= 0 then
+        drawCard({color=color, num=card_num})
+    end
+end
+
+function shuffle(color)
+    local color = color
+    local card_num = getCardPileNum(color)
+    local card_pile = getObjectFromGUID(getColorsObjs(color).player_card_pile)
+    local deck = getAboveZoneObj(card_pile)
+    if deck then
+        deck.shuffle()
+    end
+end
+
+function put(color, num)
+    local objs = getColorsObjs(color)
+    local card = getObjectFromGUID(objs.player_card_pile)
+    local show = getObjectFromGUID(objs.player_show_zone)
+    local card_num = getCardPileNum(color)
+    local deck = getAboveZoneObj(card)
+    local put_num = num
+    if put_num > card_num then put_num = card_num end
+    local x, y, z = table.unpack(show.getPosition())
+    if card_num == 1 then
+        deck.flip()
+        deck.setPositionSmooth({x-3, y, z}, false, true)
+    elseif card_num > 1 then
+        for x_base = -3,3 do
+            deck.takeObject({
+                position={x_base+x, y, z},
+                flip=true,
+            })
+            put_num = put_num - 1
+            if put_num == 0 then break end
+        end
+    end
+end
+
+function randomDiscard(color, num)
+    local objs = Global.call('getColorsObjs', color)
+    local hand = getObjectFromGUID(objs.player_hand_zone)
+    local discard = getObjectFromGUID(objs.player_discard_pile)
+    local all_card = getAboveZoneObjs(hand)
+    local discard_num = num
+    if all_card then
+        local card_num = #all_card
+        if card_num < discard_num then
+            discard_num = card_num
+        end
+        for i=1,discard_num do
+            local index = math.random(1, card_num)
+            local obj = table.remove(all_card, index)
+            obj.setPosition(discard.getPosition())
+            card_num = card_num - 1
+        end
+    end
+end
+
+function isCardOp(name)
+    for _, v in pairs({'draw', 'show', 'probe', 'put', 'random_discard',
+                       'shuffle', 'discard_to_card'}) do
+        if name == v then
+            return true
+        end
+    end
+end
+
+--[[ name: effect name, color: player color, arg: effect arguments ]]
+function executeCardOp(params)
+    local color = params.color
+    local key = params.key
+    local arg = params.arg
+    local result = false
+    if key == 'draw' then
+        result = drawCard({color=color, num=arg})
+    elseif key == 'show' then
+        result = show(color)
+    elseif key == 'probe' then
+        result = probe(color, arg)
+    elseif key == 'discard_to_card' and arg == 0 then
+        result = moveDiscardToCard({color=color})
+    elseif key == 'shuffle' then
+        result = shuffle(color)
+    elseif key == 'random_discard' then
+        result = randomDiscard(color, arg)
+    elseif key == 'put' then
+        result = put(color, arg)
+    end
+    return result
 end
 
 --[[ Global save var --]]

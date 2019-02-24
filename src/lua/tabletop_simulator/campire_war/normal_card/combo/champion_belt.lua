@@ -8,7 +8,10 @@ basic_info = {
         defense=3,
         resource={},
         effect={
-            play_is_life=true,
+            drop_effect={
+                play_is_life=true,
+                object={'self'},
+            },
         },
         keyword={
             gain={

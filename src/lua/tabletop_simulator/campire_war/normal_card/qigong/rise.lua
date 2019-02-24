@@ -9,7 +9,10 @@ basic_info = {
             power=1,
         },
         effect={
-            rise=true,
+            drop_effect={
+                rise=true,
+                object={self},
+            },
         },
         keyword={},
     },

@@ -7,9 +7,9 @@ basic_info = {
         zone_guid='1d2a03',
         skill_num=2,
         skill={
-            resource={
-                fire=1,
-            }
+            drop_effect={
+                extra_fire=true,
+            },
         },
     },
 }

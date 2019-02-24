@@ -100,7 +100,7 @@ function setAnoPlayerInitResource()
     for k, item in pairs(getPlayerAllItem(ano_color)) do
         if item then
             local ano_drop = getObjectFromGUID(other_drop_guid)
-            ano_drop.call('calcCardResource', item)
+            ano_drop.call('calcCardEffect', item)
         end
     end
 end

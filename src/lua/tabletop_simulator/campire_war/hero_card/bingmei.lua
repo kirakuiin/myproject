@@ -7,7 +7,9 @@ basic_info = {
         zone_guid='fcde40',
         skill_num=2,
         skill={
-            extra_draw=1,
+            drop_effect={
+                extra_draw=1,
+            },
         },
     },
 }

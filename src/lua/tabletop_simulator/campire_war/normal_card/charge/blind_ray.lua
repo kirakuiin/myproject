@@ -9,7 +9,10 @@ basic_info = {
             power=1,
         },
         effect={
-            first_invalid=true,
+            drop_effect={
+                first_invalid=true,
+                object={'another'},
+            },
         },
         keyword={
         },

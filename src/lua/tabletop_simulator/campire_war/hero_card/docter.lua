@@ -8,19 +8,14 @@ basic_info = {
         skill_num=3,
         skill={
             draw=2,
-            keyword={
-                type='or',
+            charge_3={
                 resource={
-                    fire=-3,
-                },
-                charge_3={
-                    resource={
-                        power=3,
-                        life=3,
-                        type='or',
-                    }
+                    power=3,
+                    life=3,
+                    type='or',
                 }
-            }
+            },
+            type='or'
         }
     },
 }

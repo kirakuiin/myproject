@@ -7,8 +7,11 @@ basic_info = {
         value=4,
         resource={},
         effect={
-            order={'discount', 'type_check'},
-            discount=1,
+            order={'drop_effect', 'type_check'},
+            drop_effect={
+                discount=1,
+                object={'self'},
+            },
             type_check={
                 card='next_discard_card',
                 order={'type', 'resource'},

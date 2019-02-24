@@ -9,7 +9,10 @@ basic_info = {
         resource={},
         effect={},
         keyword={
-            guard=true,
+            drop_effect={
+                guard=true,
+                object={'self'},
+            },
             gain={
                 equip=true,
             }

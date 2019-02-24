@@ -53,11 +53,21 @@ function initHeroSkill(obj)
                                            self_color).player_drop_zone)
         local self_drop = getObjectFromGUID(Global.call('getColorsObjs',
                                             self_color).player_drop_zone)
-        if hero_info.skill.exile_lp_modify then
-            self_drop.call('setPlayerEffect', {exile_lp_modify=1})
-            ano_drop.call('setPlayerEffect', {exile_lp_modify=-1})
+        if hero_info.skill.drop_effect then
+            if hero_info.skill.drop_effect.exile_lp_modify then
+                self_drop.call('setPlayerEffect', {exile_lp_modify=1,})
+                ano_drop.call('setPlayerEffect', {exile_lp_modify=-1,})
+            end
         end
+    elseif hero_info.style == 'charge' then
+        Global.call('removeAllUI', obj)
+        initChargeButton(obj)
     else
+        executeHeroSkill = function()
+            if hero_info.skill.passive_effect then
+            else
+            end
+        end
     end
 end
 
@@ -88,6 +98,7 @@ function click_func(obj, color, alt_click)
     end
     local value = tonumber(obj.getInputs()[1].value)
     if value > 0 then
+        executeHeroSkill()
         value = value - 1
         if Player[self_color].steam_name then
             broadcastToAll('玩家 '.. Player[self_color].steam_name..
@@ -104,6 +115,21 @@ end
 function FiniPlayerCharacterInfo(obj)
     Global.call('setPlayerLp', {color=self_color, value=0})
     Global.call('removeAllUI', obj)
+end
+
+function selectBtn1(obj, color, alt_click)
+end
+
+function selectBtn2(obj, color, alt_click)
+end
+
+function selectBtn3(obj, color, alt_click)
+end
+
+function initChargeButton(obj)
+    local card_info = Global.call('getCardInfo', obj)
+    for k, v in pairs(card_info.skill) do
+    end
 end
 
 --[[ Called when any object enters any scripting zone. --]]

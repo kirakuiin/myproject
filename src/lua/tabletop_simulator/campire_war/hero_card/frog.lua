@@ -7,7 +7,9 @@ basic_info = {
         zone_guid='',
         skill_num=0,
         skill={
-            exile_lp_modify=true,
+            drop_effect={
+                exile_lp_modify=true,
+            }
         },
     },
 }

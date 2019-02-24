@@ -8,7 +8,10 @@ basic_info = {
         defense=2,
         resource={},
         effect={
-            double_spell=true,
+            drop_effect={
+                double_spell=true,
+                object={'self'},
+            },
         },
         keyword={},
     },
