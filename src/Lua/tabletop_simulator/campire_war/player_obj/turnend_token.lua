@@ -72,6 +72,15 @@ function resetPlayerResource()
         if item then
             local defense = Global.call('getCardInfo', item).defense
             item.editInput({index=0, value=defense})
+            -- remove skill button
+            local self_drop_guid = Global.call('getColorsObjs',
+                self_color).player_drop_zone
+            local self_drop = getObjectFromGUID(self_drop_guid)
+            for _, btn in ipairs(item.getButtons()) do
+                if btn.function_owner == self_drop then
+                    item.removeButton(btn.index)
+                end
+            end
         end
     end
     for _, item in pairs(getPlayerAllItem(ano_color)) do

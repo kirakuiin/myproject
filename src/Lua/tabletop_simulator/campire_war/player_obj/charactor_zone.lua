@@ -62,12 +62,6 @@ function initHeroSkill(obj)
     elseif hero_info.style == 'charge' then
         Global.call('removeAllUI', obj)
         initChargeButton(obj)
-    else
-        executeHeroSkill = function()
-            if hero_info.skill.passive_effect then
-            else
-            end
-        end
     end
 end
 
@@ -98,7 +92,7 @@ function click_func(obj, color, alt_click)
     end
     local value = tonumber(obj.getInputs()[1].value)
     if value > 0 then
-        executeHeroSkill()
+        executeHeroSkill(obj)
         value = value - 1
         if Player[self_color].steam_name then
             broadcastToAll('玩家 '.. Player[self_color].steam_name..
@@ -117,19 +111,53 @@ function FiniPlayerCharacterInfo(obj)
     Global.call('removeAllUI', obj)
 end
 
-function selectBtn1(obj, color, alt_click)
-end
-
-function selectBtn2(obj, color, alt_click)
-end
-
-function selectBtn3(obj, color, alt_click)
-end
-
 function initChargeButton(obj)
     local card_info = Global.call('getCardInfo', obj)
+    local self_drop = getObjectFromGUID(Global.call('getColorsObjs',
+        self_color).player_drop_zone)
     for k, v in pairs(card_info.skill) do
+        if k == 'draw' then
+            local other = {}
+            other[k] = v
+            local params = {
+                func_name=Global.call('hashConvert', card_info.name).. k,
+                other=other,
+                pos={x=0, y=1, z=0},
+                tooltip='ドロ一',
+                color=Global.getTable('Green'),
+                obj=obj,
+            }
+            self_drop.call('createBtn', params)
+        elseif k == 'charge_3' then
+            local index = 0
+            for name, value in pairs(v.resource) do
+                if name ~= 'type' then
+                    local info = Global.call('getResourceInfo', name)
+                    local resource_info = {resource={},}
+                    resource_info.resource[name] = value
+                    local charge_info = {}
+                    charge_info[k] = resource_info
+                    local params = {
+                        func_name=Global.call('hashConvert', card_info.name).. name,
+                        charge=charge_info,
+                        pos={x=index-0.5, y=1, z=0},
+                        tooltip=info.tooltip,
+                        color=Global.getTable(info.color),
+                        obj=obj,
+                    }
+                    self_drop.call('createBtn', params)
+                    index = index + 1
+                end
+            end
+        end
     end
+end
+
+function executeHeroSkill(obj)
+    local card_info = Global.call('getCardInfo', obj)
+    local self_drop = getObjectFromGUID(Global.call('getColorsObjs',
+        self_color).player_drop_zone)
+    self_drop.call('parseCardInfo', card_info.skill)
 end
 
 --[[ Called when any object enters any scripting zone. --]]

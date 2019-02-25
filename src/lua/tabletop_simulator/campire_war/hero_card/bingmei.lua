@@ -8,8 +8,9 @@ basic_info = {
         skill_num=2,
         skill={
             drop_effect={
+                object={'self'},
                 extra_draw=1,
-            },
+            }
         },
     },
 }

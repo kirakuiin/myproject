@@ -479,7 +479,7 @@ function moveZoneToZone(params)
                 local obj_num = getZoneCardNum({color=color, zone=dest})
                 -- make sure all card in zone
                 if (obj_num == src_num + dest_num) and
-                    isCloseEnough({obj1=dest, obj2=dest_objs[1]}) then
+                    isCloseEnough({obj1=dest, obj2=dest_objs[1], err=0.5}) then
                     return true
                 end
             end
