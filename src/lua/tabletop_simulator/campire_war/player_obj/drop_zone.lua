@@ -294,7 +294,8 @@ function air(arg, obj)
     for k, v in pairs(arg) do
         if string.find(k, 'air') then
             local fee = tonumber(string.sub(k, -1))
-            local current_fire = Global.call('getPlayerFire', self_color)
+            local cur_fire = tonumber(Global.call(
+                'getPlayerFire', self_color))
             if cur_fire >= fee then
                 parseCardInfo(v, obj)
             end
