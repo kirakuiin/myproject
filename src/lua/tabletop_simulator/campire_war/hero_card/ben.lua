@@ -8,8 +8,9 @@ basic_info = {
         skill_num=2,
         skill={
             drop_effect={
-                extra_fire=true,
-            },
+                object={'self'},
+                extra_fire=1,
+            }
         },
     },
 }

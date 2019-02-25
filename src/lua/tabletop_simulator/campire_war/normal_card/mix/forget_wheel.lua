@@ -9,8 +9,8 @@ basic_info = {
         resource={},
         effect={
             drop_effect={
-                exile_public=true,
                 object={'self'},
+                exile_public=1,
             }
         },
         keyword={

@@ -57,8 +57,8 @@ end
 
 function calcDropZoneEffect(obj)
     local card_info = Global.call('getCardInfo', obj)
-    drop = getObjectFromGUID(Global.call('getColorsObjs',
-                             self_color).player_drop_zone)
+    local drop = getObjectFromGUID(Global.call('getColorsObjs',
+        self_color).player_drop_zone)
     local effect = drop.call('getPlayerEffect')
     local modify = effect.exile_lp_modify
     if card_info.style == 'basic' and modify ~= 0 then
@@ -70,10 +70,11 @@ end
 function calcExileEffect(obj)
     local card_info = Global.call('getCardInfo', obj)
     if card_info.keyword.exile then
-        local exile = card_info.keyword.exile
-        for k, v in pairs(exile) do
-            if k == 'resource' then setExileResource(v) end
-            if k == 'brick' then setBrickDamage() end
+        local drop = getObjectFromGUID(Global.call('getColorsObjs',
+            self_color).player_drop_zone)
+        drop.call('parseCardInfo', card_info.keyword.exile)
+        if card_info.keyword.exile.brick then
+            setBrickDamage()
         end
     end
 end
@@ -82,14 +83,6 @@ function calcPlayCardInfo(obj)
     local card_info = Global.call('getCardInfo', obj)
     if card_info.name == '板砖' then
         exile_cards_info['brick'] = exile_cards_info['brick'] + 1
-    end
-end
-
-function setExileResource(resource)
-    for k, v in pairs(resource) do
-        local info = Global.call('getResourceInfo', k)
-        local prev = tonumber(Global.call(info.getfunc, self_color))
-        Global.call(info.setfunc, {color=self_color, value=prev+v})
     end
 end
 

@@ -24,6 +24,7 @@ function click_func(obj, color, alt_click)
     if Global.call('isDisable') then
         return
     end
-    local drop = getObjectFromGUID('0a6cc0')
+    local drop = getObjectFromGUID(Global.call('getColorsObjs', color).player_drop_zone)
     Global.call('printTable', drop.call('getPlayerEffect'))
+    Global.call('printTable', drop.getTable('played_card_info'))
 end
