@@ -5,7 +5,6 @@
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
-    print("Player first hand button onLoad!")
     self_color = Global.call('getObjsColor', self)
     local other_objs = Global.call('getAnotherColorsObjs', self_color)
     local self_objs = Global.call('getColorsObjs', self_color)

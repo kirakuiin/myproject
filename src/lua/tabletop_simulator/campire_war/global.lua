@@ -20,6 +20,7 @@ player_character_zone_1 = '9efac3'
 player_item_zone_one_1 = '4756a7'
 player_item_zone_two_1 = '602a7d'
 player_hand_zone_1 = '1629b4'
+player_dice6_1 = '64073e'
 
 player_show_zone_2 = 'c4a79b'
 player_card_pile_2 = '7359e7'
@@ -30,6 +31,7 @@ player_character_zone_2 = '8a29d9'
 player_item_zone_one_2 = 'b78edb'
 player_item_zone_two_2 = 'c99fae'
 player_hand_zone_2 = '1d9376'
+player_dice6_2 = 'e9404d'
 
 --[[ Global object guid --]]
 
@@ -104,6 +106,7 @@ player1_obj = {
     power_token=power_token_1,
     fire_token=fire_token_1,
     lp_token=lp_token_1,
+    player_dice6=player_dice6_1,
 }
 
 player2_obj = {
@@ -121,6 +124,7 @@ player2_obj = {
     power_token=power_token_2,
     fire_token=fire_token_2,
     lp_token=lp_token_2,
+    player_dice6=player_dice6_2,
 }
 
 --[[ Constants --]]
@@ -635,29 +639,29 @@ end
 
 function getPlayerLp(color)
     local lp_obj = getObjectFromGUID(getColorsObjs(color).lp_token)
-    return lp_obj.getInputs()[1].value
+    return tonumber(lp_obj.getButtons()[1].label)
 end
 function setPlayerLp(params)
     local lp_obj = getObjectFromGUID(getColorsObjs(params.color).lp_token)
-    lp_obj.editInput({index=0, value=params.value})
+    lp_obj.editButton({index=0, label=tostring(params.value)})
 end
 
 function getPlayerFire(color)
     local lp_obj = getObjectFromGUID(getColorsObjs(color).fire_token)
-    return lp_obj.getInputs()[1].value
+    return tonumber(lp_obj.getButtons()[1].label)
 end
 function setPlayerFire(params)
     local lp_obj = getObjectFromGUID(getColorsObjs(params.color).fire_token)
-    lp_obj.editInput({index=0, value=params.value})
+    lp_obj.editButton({index=0, label=tostring(params.value)})
 end
 
 function getPlayerPower(color)
     local lp_obj = getObjectFromGUID(getColorsObjs(color).power_token)
-    return lp_obj.getInputs()[1].value
+    return tonumber(lp_obj.getButtons()[1].label)
 end
 function setPlayerPower(params)
     local lp_obj = getObjectFromGUID(getColorsObjs(params.color).power_token)
-    lp_obj.editInput({index=0, value=params.value})
+    lp_obj.editButton({index=0, label=tostring(params.value)})
 end
 
 function show(color)
@@ -823,7 +827,6 @@ end
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
-    print('Global onLoad!')
 end
 
 --[[ The onUpdate event is called once per frame. --]]

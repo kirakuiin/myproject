@@ -29,7 +29,7 @@ function click_func(obj, color, alt_click)
     local public_zone = getObjectFromGUID(public_pile_guid)
     if bag.getQuantity() == 1 then
         Global.call('addNewStyle', combo_bag)
-        broadcastToAll('Select combo style!', {r=0, g=1, b=0})
+        broadcastToAll('选择连击风格!', {r=0, g=1, b=0})
         local params = {
             position=public_zone.getPosition(),
             rotation={0, 0, 0},

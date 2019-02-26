@@ -35,7 +35,7 @@ effect = {
     type_check[table]: 类型检定
     equip[bool]: 直接装备
     put_on_top[bool]: 放到牌库顶
-    passive_effect[bool]: 被动效果
+    drop_effect[bool]: 被动效果
     ======================================
     charge_and_fire[bool]: 佩里夫特效果
     play_is_life[bool]: 冠军腰带效果

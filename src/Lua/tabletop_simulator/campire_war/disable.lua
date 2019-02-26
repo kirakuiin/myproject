@@ -5,7 +5,6 @@
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
-    print('Disable button onLoad!')
     params = {
         click_function = "click_func",
         function_owner = self,
@@ -25,10 +24,10 @@ function click_func(obj, color, alt_click)
     if disable then
         Global.call('enableAllScript')
         self.editButton({index=0, tooltip='关闭脚本'})
-        broadcastToAll('Enable All Script.', {r=0, g=0, b=1})
+        broadcastToAll('关闭所有脚本.', {r=0, g=0, b=1})
     else
         Global.call('disableAllScript')
         self.editButton({index=0, tooltip='打开脚本'})
-        broadcastToAll('Disable All Script.', {r=1, g=0, b=0})
+        broadcastToAll('启动所有脚本.', {r=1, g=0, b=0})
     end
 end

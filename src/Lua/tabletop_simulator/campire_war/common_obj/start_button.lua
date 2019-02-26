@@ -5,7 +5,6 @@
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
-    print('Start button onLoad!')
     common_decks = Global.getTable('common_decks')
 
     params = {
