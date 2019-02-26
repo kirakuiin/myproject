@@ -5,7 +5,6 @@
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
-    print('Test button onLoad!')
     params = {
         click_function = "click_func",
         function_owner = self,

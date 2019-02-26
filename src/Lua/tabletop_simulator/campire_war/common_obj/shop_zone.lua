@@ -28,14 +28,18 @@ function sellCard(picking_info)
         return
     end
     local objs = Global.call('getColorsObjs', picking_info.color)
-    local fire = tonumber(Global.call('getPlayerFire', picking_info.color))
     local drop = getObjectFromGUID(objs.player_drop_zone)
     local effect = drop.call('getPlayerEffect')
+    if effect.exile_public > 0 then
+        drop.call('setPlayerEffect', {exile_public=effect.exile_public-1})
+        return
+    end
+    local fire = tonumber(Global.call('getPlayerFire', picking_info.color))
     local card_value = Global.call('getCardInfo', picking_info.obj).value
     fire = fire - card_value
     if effect.discount then
         fire = fire + effect.discount
-        drop.call('setPlayerEffect', {discount=nil})
+        drop.call('setPlayerEffect', {discount=0})
     end
     Global.call('setPlayerFire', {color=picking_info.color, value=fire})
 end

@@ -71,7 +71,7 @@ end
 
 function isDropOp(name)
     for _, v in ipairs({'resource', 'drop_effect', 'charge', 'loss_lp',
-                        'air'}) do
+                        'air', 'combo'}) do
         if name == v then return true end
     end
     return false
@@ -79,14 +79,17 @@ end
 
 function setPlayerEffect(params)
     for k, v in pairs(params) do
-        if type(v) == 'number' then
-            if player_passive_effect[k] == nil then
-                player_passive_effect[k] = v
+        if k ~= 'add' then
+            if params.add then
+                if player_passive_effect[k] == nil then
+                    player_passive_effect[k] = tonumber(v)
+                else
+                    player_passive_effect[k] =
+                        player_passive_effect[k] + tonumber(v)
+                end
             else
-                player_passive_effect[k] = player_passive_effect[k] + v
+                player_passive_effect[k] = v
             end
-        else
-            player_passive_effect[k] = v
         end
     end
 end
@@ -175,18 +178,24 @@ function createChargeClick(charge_info, func_name)
             return
         end
         for fee, effect in pairs(charge_info) do
-            local cost = tonumber(string.sub(fee, -1))
-            local cur_fire = tonumber(Global.call('getPlayerFire', color))
-            if cost > cur_fire then
-                break
-            else
-                local new_v = cur_fire - cost
-                Global.call('setPlayerFire', {color=color, value=new_v})
-                parseCardInfo(effect, obj)
-                for _, btn in ipairs(obj.getButtons()) do
-                    if btn.click_function == func_name then
-                        obj.removeButton(btn.index)
-                        break
+            if fee ~= 'remove' then
+                local cost = tonumber(string.sub(fee, -1))
+                local cur_fire = tonumber(Global.call('getPlayerFire', color))
+                if cost > cur_fire then
+                    break
+                else
+                    local new_v = cur_fire - cost
+                    Global.call('setPlayerFire', {color=color, value=new_v})
+                    parseCardInfo(effect, obj)
+                    if charge_info.remove then
+                        Global.call('removeAllUI', obj)
+                    else
+                        for _, btn in ipairs(obj.getButtons()) do
+                            if btn.click_function == func_name then
+                                obj.removeButton(btn.index)
+                                break
+                            end
+                        end
                     end
                 end
             end
@@ -220,10 +229,14 @@ function createOtherClick(other_info, func_name)
             return
         end
         parseCardInfo(other_info, obj)
-        for _, btn in ipairs(obj.getButtons()) do
-            if btn.click_function == func_name then
-                obj.removeButton(btn.index)
-                break
+        if other_info.remove then
+            Global.call('removeAllUI', obj)
+        else
+            for _, btn in ipairs(obj.getButtons()) do
+                if btn.click_function == func_name then
+                    obj.removeButton(btn.index)
+                    break
+                end
             end
         end
     end
@@ -270,7 +283,7 @@ function charge(arg, obj)
                 params['tooltip']='发动充能'.. cost
                 params['pos']={index-0.5, 1, 0}
                 params['func_name']=hashObj(obj, 'charge_'.. cost)
-                local charge_info = {}
+                local charge_info = {remove=true,}
                 charge_info[k] = Global.call('clone', v)
                 params['charge']=charge_info
                 createBtn(params)
@@ -298,6 +311,49 @@ function air(arg, obj)
                 'getPlayerFire', self_color))
             if cur_fire >= fee then
                 parseCardInfo(v, obj)
+            end
+        end
+    end
+end
+
+function combo(arg, obj)
+    local card_info = Global.call('getCardInfo', obj)
+    for k, v in pairs(arg) do
+        if string.find(k, 'combo') then
+            local num = tonumber(string.sub(k, -1))
+            local cur_num = played_card_info.type[card_info.type]
+            if cur_num >= num then
+                if v.type and v.type == 'or' then
+                    local index = 0
+                    for name, arg in pairs(v) do
+                        if name ~= 'type' then
+                            local tooltip = ''
+                            local color = 'Green'
+                            if name == 'draw' then
+                                tooltip = '抽牌'
+                                color = Global.getTable('Blue')
+                            elseif name == 'resource' then
+                                tooltip = '战力'
+                                color = Global.getTable('Red')
+                            end
+                            local other_info = {}
+                            other_info[name] = Global.call('clone', arg)
+                            other_info['remove'] = true
+                            local params = {
+                                func_name=hashObj(obj, name),
+                                tooltip=tooltip,
+                                pos={index-0.5, 1, 0},
+                                other=other_info,
+                                color=color,
+                                obj=obj,
+                            }
+                            createBtn(params)
+                            index = index + 1
+                        end
+                    end
+                else
+                    parseCardInfo(v, obj)
+                end
             end
         end
     end
@@ -371,6 +427,7 @@ function dropEffect(arg, remove)
     for k, v in pairs(arg) do
         if k ~= 'object' then
             local params = {color=self_color}
+            if string.find(k, 'extra') then params['add'] = true end
             if remove then
                 params[k] = false
             else
@@ -398,6 +455,8 @@ function executeCardOp(params)
         result = air(arg, obj)
     elseif key == 'loss_lp' then
         result = loss_lp(arg, obj)
+    elseif key == 'combo' then
+        result = combo(arg, obj)
     end
     return result
 end
@@ -410,9 +469,12 @@ function parseCardInfo(info, obj)
         for k, v in pairs(info) do
             if k == 'order' then
                 for _, arg in ipairs(v) do
+                    local wait_time = 0
                     local params = {}
                     params[arg] = Global.call('clone', info[arg])
-                    parseCardInfo(params, obj)
+                    Wait.time(function() parseCardInfo(params, obj) end,
+                              wait_time)
+                    time = time + 2
                 end
                 break
             elseif isDropOp(k) then
@@ -421,7 +483,7 @@ function parseCardInfo(info, obj)
             elseif Global.call('isCardOp', k) then
                 local arg = Global.call('clone', v)
                 if k == 'draw' then
-                    arg = arg + player_passive_effect.extra_draw
+                    arg = tonumber(arg) + player_passive_effect.extra_draw
                     player_passive_effect['extra_draw'] = 0
                 end
                 Global.call('executeCardOp', {key=k, arg=arg, color=self_color})

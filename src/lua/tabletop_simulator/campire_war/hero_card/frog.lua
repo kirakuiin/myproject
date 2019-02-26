@@ -8,6 +8,7 @@ basic_info = {
         skill_num=0,
         skill={
             drop_effect={
+                object={'self', 'another'},
                 exile_lp_modify=true,
             }
         },

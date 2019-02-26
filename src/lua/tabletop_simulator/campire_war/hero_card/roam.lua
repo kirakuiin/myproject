@@ -9,6 +9,7 @@ basic_info = {
         skill={
             drop_effect={
                 exile_public=2,
+                object={'self'},
             }
         }
     },

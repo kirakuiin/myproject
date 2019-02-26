@@ -29,7 +29,7 @@ function click_func(obj, color, alt_click)
     local public_zone = getObjectFromGUID(public_pile_guid)
     if bag.getQuantity() == 1 then
         Global.call('addNewStyle', fight_bag)
-        broadcastToAll('Select fight style!', {r=0, g=1, b=0})
+        broadcastToAll('选择街斗风格!', {r=0, g=1, b=0})
         local params = {
             position=public_zone.getPosition(),
             rotation={0, 0, 0},

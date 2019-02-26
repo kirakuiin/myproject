@@ -10,13 +10,15 @@ basic_info = {
         },
         effect={},
         keyword={
-           combo_2={
-               type='or',
-               resource={
-                   power=1,
-               },
-               draw=1,
-           },
+            combo={
+                combo_2={
+                    type='or',
+                    resource={
+                        power=1,
+                    },
+                    draw=1,
+                },
+            }
         },
     },
 }
