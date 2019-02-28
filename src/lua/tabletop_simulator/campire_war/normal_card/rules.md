@@ -21,10 +21,10 @@ effect = {
     card_check[table]: 卡牌检定
     value_check[table]: 费用检定
     style_check[table]: 风格检定
-    hand_check[table]: 手牌计算
     value_calc[table]: 费用数计算
     style_calc[table]: 风格数计算
     type_calc[table]: 类型计算
+    hand_calc[table]: 计算手牌数
     exile_hand[bool]: 放逐手牌
     exile_drop[bool]: 放逐打出区
     exile_self_zone[bool]: 放逐打出区或弃牌区

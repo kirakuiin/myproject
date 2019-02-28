@@ -10,11 +10,12 @@ function onLoad()
     on_zone_cards = {}
     played_card_info = {
         type={martial=0, spell=0, item=0, special=0},
-        style={}, num=0
+        style={}, num=0, pil_num=0,
     }
     player_passive_effect = {
         double_spell = false,
         first_invalid = false,
+        play_is_life = false,
         guard = false,
         exile_lp_modify = 0,
         exile_public = 0,
@@ -71,7 +72,8 @@ end
 
 function isDropOp(name)
     for _, v in ipairs({'resource', 'drop_effect', 'charge', 'loss_lp',
-                        'air', 'combo', 'disadv'}) do
+                        'air', 'combo', 'disadv', 'type_calc', 'style_calc',
+                        'hand_calc',}) do
         if name == v then return true end
     end
     return false
@@ -101,7 +103,7 @@ end
 function resetDropZoneInfo()
     played_card_info = {
         type={martial=0, spell=0, item=0, special=0},
-        style={}, num=0
+        style={}, num=0, pil_num=0,
     }
 end
 
@@ -155,6 +157,14 @@ function calcPlayCardInfo(obj)
         played_card_info.style[card_info.style] = 1
     else
         played_card_info.style[card_info.style] = this_style_num + 1
+    end
+    if player_passive_effect.play_is_life then
+        local pil_num = played_card_info.pil_num + 1
+        played_card_info['pil_num'] = pil_num
+        if pil_num % 3 == 0 then
+            local cur_lp = Global.call('getPlayerLp', self_color)
+            Global.call('setPlayerLp', {color=self_color, value=cur_lp+1})
+        end
     end
     played_card_info.num = played_card_info.num + 1
 end
@@ -386,6 +396,33 @@ function disadv(arg, obj)
     end
 end
 
+function hand_calc(arg, obj)
+    local hand = getObjectFromGUID(Global.call('getColorsObjs',
+                                               self_color).player_hand_zone)
+    local cards = Global.call('getAboveZoneObjs', hand)
+    if cards then
+        for k, v in ipairs(cards) do
+            parseCardInfo(arg, obj)
+        end
+    end
+end
+
+function type_calc(arg, obj)
+    for k, v in pairs(played_card_info.type) do
+        if v > 0 then
+            parseCardInfo(arg, obj)
+        end
+    end
+end
+
+function style_calc(arg, obj)
+    for k, v in pairs(played_card_info.style) do
+        if v > 0 then
+            parseCardInfo(arg, obj)
+        end
+    end
+end
+
 function resource(arg, obj)
     if arg.type then
         if arg.type == 'or' then
@@ -471,6 +508,12 @@ function executeCardOp(params)
         result = combo(arg, obj)
     elseif key == 'disadv' then
         result = disadv(arg, obj)
+    elseif key == 'type_calc' then
+        result = type_calc(arg, obj)
+    elseif key == 'style_calc' then
+        result = style_calc(arg, obj)
+    elseif key == 'hand_calc' then
+        result = hand_calc(arg, obj)
     end
     return result
 end

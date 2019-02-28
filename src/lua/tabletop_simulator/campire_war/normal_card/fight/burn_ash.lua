@@ -9,13 +9,13 @@ basic_info = {
             power=1,
         },
         effect={
-            order={'hand_calc', 'discard'},
+            order={'hand_calc', 'random_discard'},
             hand_calc={
                 resource={
                     power=1,
                 },
             },
-            discard=0,
+            random_discard=0,
         },
         keyword={},
     },

@@ -11,36 +11,21 @@ function onLoad()
     on_zone_hero = {}
 end
 
-function createCardInput(obj, basic_info)
-    local skill_num = basic_info.card_info.skill_num
-    if skill_num > 0 then
-        obj.createInput({
-                input_function = "input_func",
-                function_owner = self,
-                value          = skill_num,
-                alignment      = 3,
-                position       = {x=-0.5, y=1, z=0},
-                width          = 300,
-                height         = 300,
-                font_size      = 250,
-                tooltip        = '技能次数',
-                validation     = 2,
-            })
-    end
-end
-
 function createCardButton(obj, basic_info)
     local skill_num = basic_info.card_info.skill_num
     if skill_num > 0 then
         obj.createButton({
                 click_function = "click_func",
                 function_owner = self,
-                position       = {x=0.5, y=1, z=0},
-                width          = 300,
-                height         = 300,
-                font_size      = 250,
-                color          = Global.getTable('Yellow'),
+                position       = {x=0, y=1, z=0},
+                width          = 400,
+                height         = 400,
+                font_size      = 300,
+                alignment      = 3,
+                font_color     = {1, 1, 0, 100},
+                color          = {0, 0, 0, 0},
                 tooltip        = "发动技能",
+                label          = tostring(skill_num),
             })
     end
 end
@@ -70,7 +55,6 @@ function initPlayerCharacterInfo(obj)
     local basic_info = Global.call('getCardBasicInfo', obj)
     Global.call('setPlayerLp',
                 {color=self_color, value=basic_info.card_info.lp})
-    createCardInput(obj, basic_info)
     createCardButton(obj, basic_info)
     if Player[self_color].steam_name then
         broadcastToAll('玩家 '.. Player[self_color].steam_name.. ' 选择英雄'..
@@ -80,9 +64,6 @@ function initPlayerCharacterInfo(obj)
     initHeroSkill(obj)
 end
 
-function input_func(obj, color, input, stillEditing)
-end
-
 function click_func(obj, color, alt_click)
     if Global.call('isDisable') then
         return
@@ -90,7 +71,7 @@ function click_func(obj, color, alt_click)
     if color ~= self_color then
         return
     end
-    local value = tonumber(obj.getInputs()[1].value)
+    local value = tonumber(obj.getButtons()[1].label)
     if value > 0 then
         executeHeroSkill(obj)
         value = value - 1
@@ -101,7 +82,7 @@ function click_func(obj, color, alt_click)
         if value == 0 then
             Global.call('removeAllUI', obj)
         else
-            obj.editInput({index=0, value=value})
+            obj.editButton({index=0, label=tostring(value)})
         end
     end
 end

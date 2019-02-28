@@ -11,8 +11,8 @@ function onLoad()
     is_equiping = false
 end
 
-function createCardInput(obj, basic_info)
-    local defense = basic_info.card_info.defense
+function createCardInput(obj, card_info)
+    local defense = card_info.defense
     if not obj.getInputs() then
         obj.createInput({
                 input_function = "input_func",
@@ -20,16 +20,18 @@ function createCardInput(obj, basic_info)
                 value          = defense,
                 alignment      = 3,
                 position       = {x=-0.5, y=1, z=0},
-                width          = 300,
-                height         = 300,
-                font_size      = 250,
+                width          = 400,
+                height         = 400,
+                font_size      = 300,
+                font_color     = {1, 1, 0, 100},
+                color          = {0, 0, 0, 0},
                 tooltip        = '装备耐久',
                 validation     = 2,
             })
     end
 end
 
-function createCardButton(obj, basic_info)
+function createCardButton(obj, card_info)
     if not obj.getButtons() then
         obj.createButton({
                 click_function = "click_func",
@@ -44,13 +46,35 @@ function createCardButton(obj, basic_info)
     end
 end
 
+function createPeresvet(obj, card_info)
+    if not obj.getButtons() then
+        obj.createButton({
+                click_function = "add_minus",
+                function_owner = self,
+                position       = {x=0, y=1, z=0},
+                width          = 800,
+                height         = 800,
+                font_size      = 600,
+                alignment      = 3,
+                font_color     = {1, 1, 0, 100},
+                color          = {0, 0, 0, 0},
+                tooltip        = "充能点数",
+                label          = "0",
+            })
+    end
+end
+
 function initPlayerItemInfo(obj)
-    local basic_info = Global.call('getCardBasicInfo', obj)
-    createCardInput(obj, basic_info)
-    createCardButton(obj, basic_info)
+    local card_info = Global.call('getCardInfo', obj)
+    if card_info.name == '佩里夫特' then
+        createPeresvet(obj, card_info)
+    else
+        createCardInput(obj, card_info)
+        createCardButton(obj, card_info)
+    end
     if Player[self_color].steam_name then
         broadcastToAll('玩家 '.. Player[self_color].steam_name.. ' 装备了'..
-                       ' "'.. basic_info.card_info.name.. '"!',
+                       ' "'.. card_info.name.. '"!',
                        Global.getTable(self_color))
     end
 end
@@ -78,12 +102,23 @@ function click_func(obj, color, alt_click)
     end
 end
 
+function add_minus(obj, color, alt_click)
+    if Global.call('isDisable') then
+        return
+    end
+    local val = alt_click and -1 or 1
+    local cur_val = tonumber(obj.getButtons()[1].label)
+    local new_val = cur_val + val
+    if new_val < 0 then new_val = 0 end
+    obj.editButton({index=0, label=tostring(new_val)})
+end
+
 function finiPlayerItemInfo(obj)
     Global.call('removeAllUI', obj)
-    local basic_info = Global.call('getCardBasicInfo', obj)
+    local card_info = Global.call('getCardInfo', obj)
     if Player[self_color].steam_name then
         broadcastToAll('玩家 '.. Player[self_color].steam_name..
-                       ' 移除了装备 "'.. basic_info.card_info.name.. '"!',
+                       ' 移除了装备 "'.. card_info.name.. '"!',
                        Global.getTable(self_color))
     end
 end
@@ -95,7 +130,8 @@ function onObjectEnterScriptingZone(zone, obj)
         return
     end
     if (self == zone) and self_color == turn_color then
-        if Global.call('isItemCard', obj) then
+        if Global.call('isItemCard', obj) or
+            Global.call('getCardInfo', obj).name == '佩里夫特' then
             on_zone_item[obj.guid] = obj
         end
     end
@@ -121,13 +157,16 @@ function onObjectLeaveScriptingZone(zone, obj)
     if Global.call('isDisable') then
         return
     end
-    if self == zone and Global.call('isItemCard', obj) then
-        on_zone_item[obj.guid] = nil
-        if is_equiping then
-            finiPlayerItemInfo(obj)
-            is_equiping = false
-            drop_zone = getObjectFromGUID(self_drop_guid)
-            drop_zone.call('removeItemEffect', obj)
+    if self == zone then
+        if Global.call('isItemCard', obj) or
+            Global.call('getCardInfo', obj).name == '佩里夫特' then
+            on_zone_item[obj.guid] = nil
+            if is_equiping then
+                finiPlayerItemInfo(obj)
+                is_equiping = false
+                drop_zone = getObjectFromGUID(self_drop_guid)
+                drop_zone.call('removeItemEffect', obj)
+            end
         end
     end
 end

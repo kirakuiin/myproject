@@ -140,7 +140,7 @@ Orange = {r=0.956, g=0.392, b=0.113}
 Yellow = {r=0.905, g=0.898, b=0.172}
 Green = {r=0.192, g=0.701, b=0.168}
 Teal = {r=0.129, g=0.694, b=0.607}
-Blue = {r=0.118, g=0.118, b=0.531}
+Blue = {r=0.109, g=0.52, b=1}
 Purple = {r=0.627, g=0.125, b=0.941}
 Pink = {r=0.96, g=0.439, b=0.807}
 Grey = {r=0.5, g=0.5, b=0.5}
@@ -734,7 +734,7 @@ function randomDiscard(color, num)
     local discard_num = num
     if all_card then
         local card_num = #all_card
-        if card_num < discard_num then
+        if card_num < discard_num or discard_num == 0 then
             discard_num = card_num
         end
         for i=1,discard_num do
