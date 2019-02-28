@@ -13,7 +13,7 @@ basic_info = {
         keyword={
             exile={
                 resource={
-                    fire=1,
+                    power=1,
                 },
             },
         },

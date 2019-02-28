@@ -7,7 +7,6 @@ basic_info = {
         value=3,
         resource={},
         effect={
-            order={'random_discard', 'resource'},
             random_discard=1,
             resource={
                 power=2,

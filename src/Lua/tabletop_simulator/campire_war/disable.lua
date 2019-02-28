@@ -1,4 +1,4 @@
---[[ This is test script for campfire war card game. --]]
+--[[ This is disable script for campfire war card game. --]]
 -- author:wang.zhuowei@foxmail.com
 -- date: Feb 8, 2019
 -- license: GPL.v3

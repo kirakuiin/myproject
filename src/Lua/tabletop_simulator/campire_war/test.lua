@@ -25,5 +25,4 @@ function click_func(obj, color, alt_click)
     end
     local drop = getObjectFromGUID(Global.call('getColorsObjs', color).player_drop_zone)
     Global.call('printTable', drop.call('getPlayerEffect'))
-    Global.call('printTable', drop.getTable('played_card_info'))
 end

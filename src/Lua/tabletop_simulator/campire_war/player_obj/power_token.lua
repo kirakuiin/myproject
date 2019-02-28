@@ -24,8 +24,8 @@ end
 
 function click_func(obj, color, alt_click)
     local val = alt_click and -1 or 1
-    local cur_val = Global.call('getPlayerFire', self_color)
+    local cur_val = Global.call('getPlayerPower', self_color)
     local new_val = cur_val + val
     if new_val < 0 then new_val = 0 end
-    Global.call('setPlayerFire', {color=self_color, value=new_val})
+    Global.call('setPlayerPower', {color=self_color, value=new_val})
 end

@@ -8,10 +8,10 @@ basic_info = {
         defense=2,
         resource={},
         effect={
-            drop_effect={
-                object={'self'},
-                exile_public=1,
-            }
+            -- drop_effect={
+            --     object={'self'},
+            --     exile_public=1,
+            -- }
         },
         keyword={
             gain={

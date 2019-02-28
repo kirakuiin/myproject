@@ -7,11 +7,10 @@ basic_info = {
         zone_guid='363384',
         skill_num=4,
         skill={
-            order={'random_discard', 'loss_lp'},
             random_discard=1,
             loss_lp={
                 object={'self', 'another'},
-                value=-2,
+                value=2,
             },
         },
     },

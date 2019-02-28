@@ -71,7 +71,7 @@ end
 
 function isDropOp(name)
     for _, v in ipairs({'resource', 'drop_effect', 'charge', 'loss_lp',
-                        'air', 'combo'}) do
+                        'air', 'combo', 'disadv'}) do
         if name == v then return true end
     end
     return false
@@ -370,7 +370,19 @@ function loss_lp(arg, obj)
     end
     for _, color in ipairs(player_colors) do
         local prev = tonumber(Global.call('getPlayerLp', color))
-        Global.call('setPlayerLp', {color=color, value=prev+arg.value})
+        Global.call('setPlayerLp', {color=color, value=prev-arg.value})
+    end
+end
+
+function disadv(arg, obj)
+    local self_lp = Global.call('getPlayerLp', self_color)
+    local ano_lp = Global.call('getPlayerLp', ano_color)
+    if self_lp < ano_lp then
+        for k, v in pairs(arg) do
+            local new_arg = {}
+            new_arg[k] = Global.call('clone', v)
+            parseCardInfo(new_arg, obj)
+        end
     end
 end
 
@@ -457,6 +469,8 @@ function executeCardOp(params)
         result = loss_lp(arg, obj)
     elseif key == 'combo' then
         result = combo(arg, obj)
+    elseif key == 'disadv' then
+        result = disadv(arg, obj)
     end
     return result
 end
@@ -468,13 +482,13 @@ function parseCardInfo(info, obj)
     else
         for k, v in pairs(info) do
             if k == 'order' then
+                local wait_time = 0
                 for _, arg in ipairs(v) do
-                    local wait_time = 0
                     local params = {}
                     params[arg] = Global.call('clone', info[arg])
                     Wait.time(function() parseCardInfo(params, obj) end,
                               wait_time)
-                    time = time + 2
+                    wait_time = wait_time + 1
                 end
                 break
             elseif isDropOp(k) then

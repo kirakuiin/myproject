@@ -52,7 +52,17 @@ function checkGuard()
     if effect.guard then
         local power = tonumber(Global.call('getPlayerPower',
             self_color))
-        local diff = power - card_info.defense
+        local defense = 3
+        local guid = ''
+        for k, v in pairs(getPlayerAllItem(ano_color)) do
+            local card_info = Global.call('getCardInfo', v)
+            if card_info.name == '心源道服' then
+                defense = v.getInputs()[1].value
+                guid = k
+                break
+            end
+        end
+        local diff = power - defense
         if diff < 0 then
             Global.call('setPlayerPower', {color=self_color, value=0})
         else

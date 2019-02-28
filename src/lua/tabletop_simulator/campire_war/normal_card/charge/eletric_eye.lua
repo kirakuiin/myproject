@@ -7,7 +7,6 @@ basic_info = {
         value=8,
         resource={},
         effect={
-            order={'draw', 'discard', 'double_resource'},
             draw=3,
             discard=3,
             double_resource={

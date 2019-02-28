@@ -7,7 +7,6 @@ basic_info = {
         value=4,
         resource={},
         effect={
-            order={'loss_lp', 'resource'},
             loss_lp={
                 value=2,
                 object={'self'},
