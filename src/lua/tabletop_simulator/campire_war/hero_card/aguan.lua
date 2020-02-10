@@ -8,7 +8,7 @@ basic_info = {
         skill_num=4,
         skill={
             loss_lp={
-                object={'self', 'another'},
+                object={'another'},
                 value=2,
             },
         },

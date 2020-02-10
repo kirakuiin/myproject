@@ -61,7 +61,7 @@ function calcDropZoneEffect(obj)
         self_color).player_drop_zone)
     local effect = drop.call('getPlayerEffect')
     local modify = effect.exile_lp_modify
-    if card_info.style == 'basic' and modify ~= 0 then
+    if card_info.value == 0 and not card_info.type and modify ~= 0 then
         local lp = tonumber(Global.call('getPlayerLp', self_color))
         Global.call('setPlayerLp', {color=self_color, value=lp + modify})
     end
