@@ -1,0 +1,3 @@
+[submodule "src/vim/cvimrc"]
+	path = src/vim/cvimrc
+	url = git@github.com:kirakuiin/cvimrc.git
