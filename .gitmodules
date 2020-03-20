@@ -1,3 +1,6 @@
 [submodule "src/vim/cvimrc"]
 	path = src/vim/cvimrc
 	url = git@github.com:kirakuiin/cvimrc.git
+[submodule "src/vim/vftplug"]
+	path = src/vim/vftplug
+	url = git@github.com:kirakuiin/vftplug.git
