@@ -27,7 +27,7 @@ PyExecJS==1.5.1
 pygame==1.9.4
 Pygments==2.2.0
 pylint==2.4.4
-requests==2.19.1
+requests==2.20.0
 simplegeneric==0.8.1
 six==1.14.0
 thrift==0.11.0
