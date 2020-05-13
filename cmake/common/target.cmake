@@ -53,6 +53,12 @@ IF(${NEED_GTEST})
     FIND_PACKAGE(gtest REQUIRED)
 ENDIF()
 
+# 配置GLFW依赖
+IF(${NEED_GLFW})
+    FIND_PACKAGE(glfw REQUIRED)
+ENDIF()
+
+
 
 #
 # 配置 内部相关依赖

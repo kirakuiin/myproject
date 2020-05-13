@@ -47,6 +47,11 @@ IF(${NEED_GTEST})
     FIND_PACKAGE(gtest REQUIRED)
 ENDIF()
 
+# 配置GLFW依赖
+IF(${NEED_GLFW})
+    FIND_PACKAGE(glfw REQUIRED)
+ENDIF()
+
 # 配置sdl2 相关依赖
 IF(${NEED_SDL2})
     FIND_PACKAGE(SDL2 REQUIRED)
@@ -70,7 +75,8 @@ ENDIF()
 # 设置所有的链接库
 
 SET(LINK_ALL_LIBS   ${LINK_SDL2_LIBS}
-                    ${LINK_GTEST_LIBS})
+                    ${LINK_GTEST_LIBS}
+                    ${LINK_GLFW_LIBS})
 
 MESSAGE(STATUS "SET LINK_ALL_LIBS = ${LINK_ALL_LIBS}")
 
