@@ -20,7 +20,7 @@
 using gl::Shader;
 using gl::Camera;
 
-Camera camera(glm::vec3(0, 0, 10));
+static Camera camera(glm::vec3(0, 0, 10));
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ static void mouse_callback(GLFWwindow*, double x, double y)
     last_y = y;
 }
 
-void scroll_callback(GLFWwindow* window, double x, double y)
+static void scroll_callback(GLFWwindow* window, double x, double y)
 {
     camera.ProcessScroll(y);
 }
