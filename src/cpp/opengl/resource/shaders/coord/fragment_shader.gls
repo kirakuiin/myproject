@@ -1,0 +1,13 @@
+#version 330 core
+
+in vec2 otexcoord;
+
+out vec4 frag_color;
+
+uniform sampler2D t1;
+uniform sampler2D t2;
+
+void main()
+{
+    frag_color = mix(texture(t1, otexcoord), texture(t2, otexcoord), 0.5);
+}

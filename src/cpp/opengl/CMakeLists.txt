@@ -7,11 +7,17 @@ INCLUDE($ENV{MYCMAKE}/common/header.cmake)
 
 SET(NEED_GTEST TRUE)
 SET(NEED_GLFW TRUE)
+SET(NEED_STB_IMAGE TRUE)
 SET(TARGET_NAME gl)
 SET(TARGET_TYPE RUNTIME)
+SET(NEED_COPY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/resource/)
 SET(AUTO_RUN ON)
+SET(RUN_ARGS --gtest_filter=CAMUT.HelloCamera)
 SET(CMAKE_EXPORT_COMPILE_COMMANDS OFF)
 
-SOURCE_DIRS(./src)
+SOURCE_DIRS(./src
+            ./src/getting_started
+            ./src/object
+            ./src/lighting)
 
 INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)
