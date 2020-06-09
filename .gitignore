@@ -2,6 +2,9 @@
 target/
 build/
 
+#cpp dir
+/src/cpp/test/*
+
 #python cache
 *.pyc
 
