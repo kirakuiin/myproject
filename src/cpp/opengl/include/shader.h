@@ -9,6 +9,7 @@
 #define __OPENGL_INCLUDE_SHADER_H__
 
 #include "exception.h"
+#include "include/glm/glm.hpp"
 
 namespace gl {
 
@@ -42,10 +43,6 @@ class FragmentShader: public Shader {
     void Init(const std::string& path, int type) override;
 };
 
-enum class UniformType {
-    MATRIX4 = 4,
-};
-
 // openGL着色器链接程序
 class ShaderProgram {
   public:
@@ -62,10 +59,10 @@ class ShaderProgram {
     void SetUniform(const std::string& name, bool value) const;
     void SetUniform(const std::string& name, int value) const;
     void SetUniform(const std::string& name, float value) const;
-    void SetUniform(const std::string& name,
-                    const std::vector<float>& values) const;
-    void SetUniform(const std::string& name, UniformType type,
-                    const float* value);
+    void SetUniform(const std::string& name, const glm::vec3& value) const;
+    void SetUniform(const std::string& name, const glm::vec4& value) const;
+    void SetUniform(const std::string& name, const glm::mat3& value) const;
+    void SetUniform(const std::string& name, const glm::mat4& value) const;
 
   private:
     unsigned int _program_id;

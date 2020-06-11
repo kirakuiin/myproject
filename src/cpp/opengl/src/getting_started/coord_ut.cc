@@ -226,8 +226,7 @@ TEST_F(CORUT, HelloCoord) {
             }
             glm::mat4 transform = projection * view * model;
             program.Use();
-            program.SetUniform("transform", gl::UniformType::MATRIX4,
-                    glm::value_ptr(transform));
+            program.SetUniform("transform", transform);
             // draw
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }

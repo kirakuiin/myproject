@@ -1,0 +1,26 @@
+#version 330 core
+
+out vec4 frag_color;
+
+in vec3 onormal;
+in vec3 frag_pos;
+
+uniform vec3 light_color;
+uniform vec3 object_color;
+uniform vec3 light_pos;
+uniform mat3 normal_matrix;
+
+void main()
+{
+    float ambient_factor = 0.1;
+    float specular_strength = 1.0;
+    float specular_shininess = 64;
+
+    vec3 normal = normalize(normal_matrix * onormal);
+    vec3 lightdir = normalize(light_pos - frag_pos);
+    vec3 diffuse_factor = max(dot(lightdir, normal), 0) * light_color;
+    vec3 viewdir = normalize(-frag_pos);
+    vec3 specular_factor = vec3(pow(max(dot(reflect(-lightdir, normal), viewdir), 0), specular_shininess) * specular_strength);
+    vec3 light = (ambient_factor+diffuse_factor+specular_factor) * light_color;
+    frag_color = vec4(light * object_color, 1.0);
+}

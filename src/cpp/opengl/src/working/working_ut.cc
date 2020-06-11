@@ -23,7 +23,7 @@ using std::endl;
 using glm::vec3;
 using glm::mat4;
 
-static gl::Camera camera(glm::vec3(0, 2, 3));
+static gl::Camera camera(glm::vec3(0, -0.5, 2));
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ static void scroll_callback(GLFWwindow* window, double x, double y)
     camera.ProcessScroll(y);
 }
 
-class COLUT : public testing::Test {
+class WOKUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -83,7 +83,7 @@ class COLUT : public testing::Test {
     void TearDown() override {}
 };
 
-void COLUT::SetUpTestCase() {
+void WOKUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -98,7 +98,7 @@ void COLUT::SetUpTestCase() {
 
 }
 
-TEST_F(COLUT, HelloColor) {
+TEST_F(WOKUT, Hello) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
@@ -122,9 +122,9 @@ TEST_F(COLUT, HelloColor) {
 
     glEnable(GL_DEPTH_TEST);
     // set shader
-    gl::VertexShader v_shader("shaders/color/vertex_shader.gls");
-    gl::FragmentShader of_shader("shaders/color/o_frag_shader.gls");
-    gl::FragmentShader lf_shader("shaders/color/l_frag_shader.gls");
+    gl::VertexShader v_shader("shaders/basiclight/vertex_shader.gls");
+    gl::FragmentShader of_shader("shaders/basiclight/o_frag_shader.gls");
+    gl::FragmentShader lf_shader("shaders/basiclight/l_frag_shader.gls");
     std::vector<gl::Shader*> shaders;
     shaders.push_back(&v_shader);
     shaders.push_back(&of_shader);
@@ -138,110 +138,68 @@ TEST_F(COLUT, HelloColor) {
     }
 
     float vertexs[] = {
-        -0.5f, -0.5f, -0.5f,
-        0.5f,  -0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        -0.5f, 0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+        0.5f,  -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+        0.5f,  0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+        0.5f,  0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+        -0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
 
-        -0.5f, -0.5f,  0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,
+        -0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+        0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+        0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+        0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 
-        -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f, -1.0f, 0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f, -1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f, -1.0f, 0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f, -1.0f, 0.0f, 0.0f,
 
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
+        0.5f,  0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
+        0.5f,  0.5f, -0.5f, 1.0f, 0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f,
+        0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
+        0.5f,  0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
 
-        -0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f,
+        0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f, 0.0f, -1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f, 0.0f, -1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f, 0.0f, -1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f,
 
-        -0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f,
+        -0.5f,  0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
     };
 
-    float lights[] = {
-        -0.5f, -0.5f, -0.5f,
-        0.5f,  -0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        -0.5f, 0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-
-        -0.5f, -0.5f,  0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,
-
-        -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-
-        -0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f, -0.5f,
-
-        -0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f,
-    };
-
-    unsigned int vao[2], vbo[2];
-    glGenBuffers(2, vbo);
+    unsigned int vao[2], vbo;
+    glGenBuffers(1, &vbo);
     glGenVertexArrays(2, vao);
 
     // set object vertexs
     glBindVertexArray(vao[0]);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexs), vertexs, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*3, (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*6, (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float)*6,
+                          (void*)(sizeof(float)*3));
+    glEnableVertexAttribArray(1);
     vec3 obj_color(1.0f, 0.5f, 0.31f);
 
     // set light vertexs
     glBindVertexArray(vao[1]);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(lights), lights, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*3, (void*)0);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*6, (void*)0);
     glEnableVertexAttribArray(0);
     vec3 light_color(1.0f, 1.0f, 1.0f);
 
@@ -259,15 +217,19 @@ TEST_F(COLUT, HelloColor) {
         // input
         // -----
         processInput(window, delta_time);
+        mat4 view = camera.GetViewMatrix();
 
         // draw light
         light_program.Use();
         light_program.SetUniform("light_color", light_color);
         mat4 model(1.0f);
-        model = glm::translate(model, vec3(1.0f, 1.0f, 1.0f));
+        float angle = glfwGetTime();
+        model = glm::rotate(model, 100*glm::radians(angle), vec3(0, 1, 0));
+        model = glm::translate(model, vec3(1, 1, 2));
         model = glm::scale(model, vec3(0.2f));
+        vec3 light_pos = vec3(view * model * glm::vec4(0, 0, 0, 1.0f));
         light_program.SetUniform("model", model);
-        light_program.SetUniform("view", camera.GetViewMatrix());
+        light_program.SetUniform("view", view);
         mat4 projection(1.0f);
         projection = glm::perspective(glm::radians(camera.zoom),
                                       (float)gldef::SCR_WIDTH/gldef::SCR_HEIGHT,
@@ -282,8 +244,11 @@ TEST_F(COLUT, HelloColor) {
         obj_program.SetUniform("light_color", light_color);
         obj_program.SetUniform("object_color", obj_color);
         obj_program.SetUniform("model", model);
+        glm::mat3 nor_mat = glm::mat3(glm::transpose(glm::inverse(view*model)));
+        obj_program.SetUniform("normal_matrix", nor_mat);
         obj_program.SetUniform("projection", projection);
-        obj_program.SetUniform("view", camera.GetViewMatrix());
+        obj_program.SetUniform("view", view);
+        obj_program.SetUniform("light_pos", light_pos);
         glBindVertexArray(vao[0]);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -293,7 +258,7 @@ TEST_F(COLUT, HelloColor) {
         glfwPollEvents();
     }
     glDeleteVertexArrays(2, vao);
-    glDeleteBuffers(2, vbo);
+    glDeleteBuffers(1, &vbo);
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------

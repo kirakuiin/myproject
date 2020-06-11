@@ -13,6 +13,7 @@
 #include <sstream>
 #include <vector>
 
+#include "include/glm/gtc/type_ptr.hpp"
 #include "glad/glad.h"
 #include "include/commondef.h"
 
@@ -137,35 +138,27 @@ void ShaderProgram::SetUniform(const string& name, float value) const {
 }
 
 void ShaderProgram::SetUniform(const string& name,
-                               const std::vector<float>& values) const {
-    size_t len = values.size();
-    if (len < 1) {
-        return;
-    }
+                               const glm::vec3& value) const {
     auto pos = glGetUniformLocation(_program_id, name.c_str());
-    switch (len) {
-        case 1:
-            glUniform1f(pos, values[0]);
-        case 2:
-            glUniform2f(pos, values[0], values[1]);
-            break;
-        case 3:
-            glUniform3f(pos, values[0], values[1], values[2]);
-            break;
-        case 4:
-        default:
-            glUniform4f(pos, values[0], values[1], values[2], values[3]);
-    }
+    glUniform3f(pos, value.x, value.y, value.z);
 }
 
-void ShaderProgram::SetUniform(const std::string& name, UniformType type,
-                               const float* value) {
+void ShaderProgram::SetUniform(const string& name,
+                               const glm::vec4& value) const {
     auto pos = glGetUniformLocation(_program_id, name.c_str());
-    switch (type) {
-        case UniformType::MATRIX4:
-            glUniformMatrix4fv(pos, 1, GL_FALSE, value);
-            break;
-    }
+    glUniform4f(pos, value.x, value.y, value.z, value.w);
+}
+
+void ShaderProgram::SetUniform(const string& name,
+                               const glm::mat3& value) const {
+    auto pos = glGetUniformLocation(_program_id, name.c_str());
+    glUniformMatrix3fv(pos, 1, GL_FALSE, glm::value_ptr(value));
+}
+
+void ShaderProgram::SetUniform(const string& name,
+                               const glm::mat4& value) const {
+    auto pos = glGetUniformLocation(_program_id, name.c_str());
+    glUniformMatrix4fv(pos, 1, GL_FALSE, glm::value_ptr(value));
 }
 
 unsigned int ShaderProgram::GetPos(const string& name) const {
