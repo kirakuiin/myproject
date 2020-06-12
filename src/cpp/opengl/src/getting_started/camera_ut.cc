@@ -134,14 +134,14 @@ TEST_F(CAMUT, HelloCamera) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    text1.LoadImage("images/texture/container.jpg", GL_RGB);
+    text1.LoadImage("images/texture/container.jpg");
 
     gl::Texture2D text2;
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    text2.LoadImage("images/texture/awesomeface.png", GL_RGBA);
+    text2.LoadImage("images/texture/awesomeface.png");
 
     float vertexs[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,

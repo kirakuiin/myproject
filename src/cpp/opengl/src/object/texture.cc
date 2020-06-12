@@ -36,11 +36,21 @@ Texture::~Texture() noexcept {
 }
 
 void
-Texture::LoadImage(const string& path, int format) {
+Texture::LoadImage(const string& path) {
     stbi_set_flip_vertically_on_load(true);
     unsigned char* data = stbi_load(path.c_str(), &height, &width,
                                     &nr_channels, 0);
-    this->format = format;
+    switch (nr_channels) {
+        case 1:
+            format = GL_RED;
+            break;
+        case 3:
+            format = GL_RGB;
+            break;
+        case 4:
+            format = GL_RGBA;
+            break;
+    }
     if (data) {
         BindImage(data);
         stbi_image_free(data);
@@ -51,14 +61,23 @@ Texture::LoadImage(const string& path, int format) {
 }
 
 void
-Texture::LoadImage(const char* path, int format) {
-    LoadImage(string(path), format);
+Texture::LoadImage(const char* path) {
+    LoadImage(string(path));
+}
+
+void
+Texture::SetParam(int dimen, int type, int value) {
+    glTexParameteri(dimen, type, value);
 }
 
 // Texture2D implement
 Texture2D::Texture2D()
     : Texture() {
     glBindTexture(GL_TEXTURE_2D, this->texture);
+    Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 }
 
 Texture2D::Texture2D(unsigned int texture)
@@ -77,12 +96,16 @@ Texture2D::BindImage(unsigned char* data) {
 // Texture3D implement
 Texture3D::Texture3D()
     : Texture() {
-    glBindTexture(GL_TEXTURE_2D, this->texture);
+    glBindTexture(GL_TEXTURE_3D, this->texture);
+    Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 }
 
 Texture3D::Texture3D(unsigned int texture)
     : Texture(texture) {
-    glBindTexture(GL_TEXTURE_2D, this->texture);
+    glBindTexture(GL_TEXTURE_3D, this->texture);
 }
 
 void

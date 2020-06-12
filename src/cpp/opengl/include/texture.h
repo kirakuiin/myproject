@@ -19,8 +19,10 @@ class Texture {
     explicit Texture(unsigned int texture);
     virtual ~Texture() noexcept;
 
-    void LoadImage(const std::string& path, int format);
-    void LoadImage(const char* path, int format);
+    static void SetParam(int dimen, int type, int value);
+
+    void LoadImage(const std::string& path);
+    void LoadImage(const char* path);
 
     unsigned int texture = 0;       // 纹理地址
     int format = 0;                 // 纹理格式GL_RGB
