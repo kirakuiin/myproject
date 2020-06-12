@@ -1,0 +1,68 @@
+#version 330 core
+
+struct Material {
+    sampler2D diffuse;
+    sampler2D specular;
+    float shininess;
+};
+
+struct Light {
+    vec4 position;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+    vec4 direct;
+    float cutoff;
+    float outoff;
+
+    float constant;
+    float linear;
+    float quadratic;
+};
+
+in vec3 onormal;
+in vec3 frag_pos;
+in vec2 texcoords;
+
+out vec4 frag_color;
+
+uniform mat3 normal_mat;
+uniform vec3 light_color;
+uniform Material material;
+uniform Light light;
+
+void main()
+{
+    vec3 normal = normalize(normal_mat * onormal);
+    vec3 lightdir = vec3(1.0);
+    if (light.position.w == 1.0) {
+        lightdir = normalize(light.position.xyz - frag_pos);
+    } else if (light.position.w == 0.0) {
+        lightdir = normalize(-light.position.xyz);
+    }
+    vec3 viewdir = normalize(-frag_pos);
+    vec3 refdir = reflect(-lightdir, normal);
+
+    // calc phong factor
+    vec3 ambient = light.ambient * vec3(texture(material.diffuse, texcoords));
+    vec3 diffuse = light.diffuse * max(dot(normal, lightdir), 0) * vec3( texture(material.diffuse, texcoords));
+    vec3 specular = light.specular * pow(max(dot(viewdir, refdir), 0), material.shininess) * vec3(texture(material.specular, texcoords));
+
+    // spotlight
+    float theta = dot(lightdir, normalize(-light.direct.xyz));
+    float epsilon = light.cutoff - light.outoff;
+    float intensity = clamp((theta - light.cutoff)/epsilon, 0.0, 1.0);
+    diffuse *= intensity;
+    specular *= intensity;
+
+    // calc attenuation
+    float distance = length(light.position.xyz - frag_pos);
+    float attenuation = 1.0 / (light.constant + light.linear*distance + light.quadratic*pow(distance, 2));
+    ambient *= attenuation;
+    diffuse *= attenuation;
+    specular *= attenuation;
+
+    vec3 mix_color = ambient + diffuse+ specular;
+    frag_color = vec4(mix_color, 1.0);
+}
