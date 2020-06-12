@@ -1,0 +1,15 @@
+#version 330 core
+
+layout (location = 0) in vec3 apos;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+out vec4 frag_pos;
+
+void main()
+{
+    frag_pos = view * model * vec4(apos, 1.0);
+    gl_Position = projection * frag_pos;
+}
