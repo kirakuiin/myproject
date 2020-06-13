@@ -463,7 +463,7 @@ endfunction()
 MESSAGE(STATUS "function(install_target type target_name dest)")
 
 #
-## 一下四个seek函数，path1为outputpath path2为库源目录
+## 以下四个seek函数，path1为outputpath path2为库源目录
 #
 
 # 在两个目录中搜索可变参数指定的库
@@ -494,6 +494,7 @@ MESSAGE(STATUS "function(seek_deps_library_no_install path1 path2)")
 
 # 寻找库是否在path1或者path2中
 function(seek_deps_library path1 path2)
+    MESSAGE(STATUS "path1=${path1} path2=${path2}")
     seek_deps_library_no_install(${path1} ${path2} ${ARGN})
     # 将源目录文件拷贝到当前目录
     IF(ENABLE_PACKAGE)
