@@ -123,8 +123,10 @@ TEST_F(WOKUT, Hello) {
     }
 
     glEnable(GL_DEPTH_TEST);
-    // glDepthMask(GL_FALSE);
+    glDepthMask(GL_TRUE);
     glDepthFunc(GL_LESS);
+    glEnable(GL_STENCIL_TEST);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
     float cube_vertices[] = {
         // positions          // texture Coords
@@ -205,15 +207,18 @@ TEST_F(WOKUT, Hello) {
     glBindVertexArray(0);
 
     // set shader
-    gl::VertexShader v_shader("shaders/depthtest/shader.vert");
-    gl::FragmentShader f_shader("shaders/depthtest/shader.frag");
+    gl::VertexShader v_shader("shaders/stenciltest/shader.vert");
+    gl::FragmentShader f_shader("shaders/stenciltest/shader.frag");
+    gl::FragmentShader out_shader("shaders/stenciltest/out_shader.frag");
     std::vector<gl::Shader*> shaders;
     shaders.push_back(&v_shader);
     shaders.push_back(&f_shader);
     gl::ShaderProgram program(shaders);
-    for (auto& i: shaders) {
-        i->Delete();
-    }
+    shaders.clear();
+    shaders.push_back(&v_shader);
+    shaders.push_back(&out_shader);
+    gl::ShaderProgram out_program(shaders);
+
     // load textures
     // -------------
     gl::Texture2D t_cube;
@@ -244,34 +249,49 @@ TEST_F(WOKUT, Hello) {
         // render
         // ------
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-        program.Use();
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)gldef::SCR_WIDTH / gldef::SCR_HEIGHT, 0.1f, 100.0f);
+        program.Use();
         program.SetUniform("view", view);
         program.SetUniform("projection", projection);
+        out_program.Use();
+        out_program.SetUniform("view", view);
+        out_program.SetUniform("projection", projection);
+
+        program.Use();
+        // floor
+        glBindVertexArray(p_vao);
+        glBindTexture(GL_TEXTURE_2D, t_plane.texture);
+        program.SetUniform("model", model);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+
         // cubes
+        glStencilFunc(GL_ALWAYS, 1, 0xff);
+        glStencilMask(0xff);
         glBindVertexArray(c_vao);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, t_cube.texture);
         model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
         program.SetUniform("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
-        program.SetUniform("model", model);
+
+        glStencilFunc(GL_NOTEQUAL, 1, 0xff);
+        glStencilMask(0x00);
+        glDisable(GL_DEPTH_TEST);
+        model = glm::scale(model, (float)1.1*vec3(1.0));
+        out_program.Use();
+        out_program.SetUniform("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);
-        // floor
-        glBindVertexArray(p_vao);
-        glBindTexture(GL_TEXTURE_2D, t_plane.texture);
-        program.SetUniform("model", glm::mat4(1.0f));
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-        glBindVertexArray(0);
+        glEnable(GL_DEPTH_TEST);
+        glStencilFunc(GL_ALWAYS, 0, 0xff);// 这里必须设置为0, 可能影响glClear
+        glStencilMask(0xff);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
+        glBindVertexArray(0);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
