@@ -12,6 +12,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <map>
 
 #include "include/glm/gtc/type_ptr.hpp"
 #include "glad/glad.h"
@@ -56,7 +57,7 @@ void Shader::Init(const string& shader_path, int type) {
     glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(shader, gldef::INFO_LEN, NULL, info_log);
-        string msg("Type: " + std::to_string(type) + " msg: "
+        string msg("Type: " + ShaderException::GetErrorType(type) + " Msg: "
                 + string(info_log));
         throw ShaderException(msg);
     }
@@ -118,7 +119,7 @@ ShaderProgram::ShaderProgram(const std::vector<Shader*>& shaders) {
     glGetProgramiv(_program_id, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(_program_id, gldef::INFO_LEN, NULL, info_log);
-        string msg(string("Link error,") + string("msg: ") + string(info_log));
+        string msg(string("Link error,") + string("Msg: ") + string(info_log));
         throw ShaderProgramException(msg);
     }
 }
@@ -165,6 +166,16 @@ void ShaderProgram::SetUniform(const string& name,
 
 unsigned int ShaderProgram::GetPos(const string& name) const {
     return glGetUniformLocation(_program_id, name.c_str());
+}
+
+// ShaderException implement
+std::string
+ShaderException::GetErrorType(int type) {
+    std::map<int, std::string> msg_tab {
+        {GL_FRAGMENT_SHADER, "fragment shader"},
+        {GL_VERTEX_SHADER, "vertex shader"},
+    };
+    return msg_tab[type];
 }
 
 } // namespace gl

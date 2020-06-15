@@ -72,6 +72,7 @@ class ShaderException: public GlException {
   public:
     explicit ShaderException(const std::string& error_message)
         : GlException(error_message) {}
+    static std::string GetErrorType(int type);
 };
 
 class ShaderProgramException: public GlException {
