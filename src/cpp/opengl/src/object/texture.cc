@@ -19,6 +19,11 @@ namespace gl {
 using std::string;
 
 // Texture implement
+std::map<TextureType, std::string> Texture::_m_type_name{
+    {TextureType::DIFFUSE, "texture_diffuse"},
+    {TextureType::SPECULAR, "texture_specular"},
+};
+
 Texture::Texture() {
     glGenTextures(1, &texture);
 }
@@ -30,6 +35,7 @@ Texture::Texture(unsigned int texture) {
 Texture::~Texture() noexcept {
     try {
         glDeleteTextures(1, &texture);
+        std::cout << "Release texture object." << std::endl;
     } catch (...) {
         std::cout << "Release texture failed." << std::endl;
     }
@@ -37,6 +43,7 @@ Texture::~Texture() noexcept {
 
 void
 Texture::LoadImage(const string& path) {
+    this->path = path;
     stbi_set_flip_vertically_on_load(true);
     unsigned char* data = stbi_load(path.c_str(), &height, &width,
                                     &nr_channels, 0);
@@ -73,6 +80,7 @@ Texture::SetParam(int dimen, int type, int value) {
 // Texture2D implement
 Texture2D::Texture2D()
     : Texture() {
+    dimension = GL_TEXTURE_2D;
     glBindTexture(GL_TEXTURE_2D, this->texture);
     Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -96,6 +104,7 @@ Texture2D::BindImage(unsigned char* data) {
 // Texture3D implement
 Texture3D::Texture3D()
     : Texture() {
+    dimension = GL_TEXTURE_3D;
     glBindTexture(GL_TEXTURE_3D, this->texture);
     Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);

@@ -8,9 +8,15 @@
 #ifndef __OPENGL_INCLUDE_TEXTURE_H__
 #define __OPENGL_INCLUDE_TEXTURE_H__
 
+#include <map>
 #include "exception.h"
 
 namespace gl {
+
+enum class TextureType {
+    DIFFUSE = 0,
+    SPECULAR = 1,
+};
 
 // openGL纹理加载类
 class Texture {
@@ -20,17 +26,24 @@ class Texture {
     virtual ~Texture() noexcept;
 
     static void SetParam(int dimen, int type, int value);
+    static std::string GetName(TextureType type) { return _m_type_name[type]; }
 
     void LoadImage(const std::string& path);
     void LoadImage(const char* path);
 
-    unsigned int texture = 0;       // 纹理地址
-    int format = 0;                 // 纹理格式GL_RGB
-    int width = 0;                  // 图像宽度
-    int height = 0;                 // 图像高度
-    int nr_channels = 0;            // 图像通道数
+    unsigned int texture = 0;                   // 纹理地址
+    TextureType type = TextureType::DIFFUSE;    // 纹理类型
+
+    int dimension = 0;                          // 图片纬度
+    int format = 0;                             // 纹理格式RGBA
+    int width = 0;                              // 图像宽度
+    int height = 0;                             // 图像高度
+    int nr_channels = 0;                        // 图像通道数
+    std::string path = "";                      // 图片路径
   private:
     virtual void BindImage(unsigned char* data) = 0;
+
+    static std::map<TextureType, std::string> _m_type_name; // 保存类型到名字的映射
 };
 
 class Texture2D: public Texture {

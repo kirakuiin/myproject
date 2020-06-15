@@ -1,0 +1,21 @@
+#version 330 core
+
+layout (location = 0) in vec3 apos;
+layout (location = 1) in vec3 anormal;
+layout (location = 2) in vec2 atexcoords;
+
+out vec3 onormal;
+out vec3 frag_pos;
+out vec2 texcoords;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+void main()
+{
+    frag_pos = vec3(view * model * vec4(apos, 1.0));
+    onormal = anormal;
+    texcoords = atexcoords;
+    gl_Position = projection * vec4(frag_pos, 1.0);
+}

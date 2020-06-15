@@ -1,8 +1,8 @@
-// color_ut.cc -
+// working_ut.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jun 09
+// Last Change: 2020 Jun 15
 // License: GPL.v3
 
 #include <iostream>
@@ -17,6 +17,7 @@
 #include "include/glm/glm.hpp"
 #include "include/glm/gtc/matrix_transform.hpp"
 #include "include/glm/gtc/type_ptr.hpp"
+#include "include/model.h"
 
 using std::cout;
 using std::endl;
@@ -123,10 +124,8 @@ TEST_F(WOKUT, Hello) {
 
     glEnable(GL_DEPTH_TEST);
     // set shader
-    gl::VertexShader ov_shader("shaders/multicaster/ov_shader.gls");
-    gl::VertexShader lv_shader("shaders/multicaster/lv_shader.gls");
-    gl::FragmentShader of_shader("shaders/multicaster/of_shader.gls");
-    gl::FragmentShader lf_shader("shaders/multicaster/lf_shader.gls");
+    gl::VertexShader ov_shader("shaders/model/ov_shader.gls");
+    gl::FragmentShader of_shader("shaders/model/of_shader.gls");
     std::vector<gl::Shader*> shaders;
     shaders.push_back(&ov_shader);
     shaders.push_back(&of_shader);
@@ -134,71 +133,8 @@ TEST_F(WOKUT, Hello) {
     for (auto& i: shaders) {
         i->Delete();
     }
-    shaders.clear();
-    shaders.push_back(&lv_shader);
-    shaders.push_back(&lf_shader);
-    gl::ShaderProgram light_program(shaders);
-    for (auto& i: shaders) {
-        i->Delete();
-    }
-
-    float vertexs[] = {
-        // positions          // normals           // texture coords
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
-
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-
-        0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
-
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
-    };
-
-    vec3 cubes[] = {
-        vec3( 0.0f,  0.0f, -0.0f),
-        vec3( 2.0f,  5.0f, -15.0f),
-        vec3(-1.5f, -2.2f, -2.5f),
-        vec3(-3.8f, -2.0f, -12.3f),
-        vec3( 2.4f, -0.4f, -3.5f),
-        vec3(-1.7f,  3.0f, -7.5f),
-        vec3( 1.3f, -2.0f, -2.5f),
-        vec3( 1.5f,  2.0f, -2.5f),
-        vec3( 1.5f,  0.2f, -1.5f),
-        vec3(-1.3f,  1.0f, -1.5f),
-    };
+    // set model
+    gl::Model nanoobj("model/nanosuit/nanosuit.obj");
 
     const int light_nums = 4;
     vec3 point_positions[] = {
@@ -216,40 +152,6 @@ TEST_F(WOKUT, Hello) {
     float point_color_ambients[] = {
         0.05f, 0.05f, 0.05f, 0.05f,
     };
-
-    // set texture
-    gl::Texture2D text1;
-    text1.LoadImage("images/texture/container2.png");
-    gl::Texture2D text2;
-    text2.LoadImage("images/texture/container2_specular.png");
-
-    unsigned int vao[2], vbo;
-    glGenBuffers(1, &vbo);
-    glGenVertexArrays(2, vao);
-
-    // set object vertexs
-    glBindVertexArray(vao[0]);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexs), vertexs, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*8, (void*)0);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float)*8,
-                          (void*)(sizeof(float)*3));
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float)*8,
-                          (void*)(sizeof(float)*6));
-    glEnableVertexAttribArray(2);
-
-    // set light vertexs
-    glBindVertexArray(vao[1]);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*8, (void*)0);
-    glEnableVertexAttribArray(0);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, text1.texture);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, text2.texture);
 
     // render loop
     // -----------
@@ -272,33 +174,21 @@ TEST_F(WOKUT, Hello) {
         projection = glm::perspective(glm::radians(camera.zoom),
                                       (float)gldef::SCR_WIDTH/gldef::SCR_HEIGHT,
                                       0.1f, 100.0f);
-
-        // draw light
-        light_program.Use();
-        light_program.SetUniform("projection", projection);
-        light_program.SetUniform("view", view);
-        glBindVertexArray(vao[1]);
-        for (int i = 0; i < light_nums; ++i) {
-            mat4 model(1.0f);
-            model = glm::translate(model, point_positions[i]);
-            model = glm::scale(model, vec3(0.2f));
-            light_program.SetUniform("light_color", point_colors[i]);
-            light_program.SetUniform("model", model);
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
+        mat4 model(1.0f);
+        model = glm::scale(model, vec3(0.3, 0.3, 0.3));
 
         // draw object
         obj_program.Use();
-        obj_program.SetUniform("material.diffuse", 0);
-        obj_program.SetUniform("material.specular", 1);
-        obj_program.SetUniform("material.shininess", 64.0f);
         obj_program.SetUniform("projection", projection);
         obj_program.SetUniform("view", view);
+        obj_program.SetUniform("model", model);
+        obj_program.SetUniform("material.shininess", 64.0f);
+        obj_program.SetUniform("normal_mat", glm::mat3(glm::transpose(glm::inverse(view * model))));
         // set direction light
         obj_program.SetUniform("dir_light.direction", vec3(0, -1, 0));
         obj_program.SetUniform("dir_light.diffuse", vec3(0.4, 0.4, 0.4));
         obj_program.SetUniform("dir_light.specular", vec3(0.5, 0.5, 0.5));
-        obj_program.SetUniform("dir_light.ambient", vec3(0.05, 0.05, 0.05));
+        obj_program.SetUniform("dir_light.ambient", vec3(0.40, 0.40, 0.40));
         // set point light
         for (int i = 0; i < light_nums; ++i) {
             std::string prefix("point_lights[");
@@ -330,24 +220,13 @@ TEST_F(WOKUT, Hello) {
         obj_program.SetUniform("spot_light.linear", 0.09f);
         obj_program.SetUniform("spot_light.quadratic", 0.032f);
 
-        glBindVertexArray(vao[0]);
-        for (auto& cube: cubes) {
-            mat4 model(1.0f);
-            model = glm::translate(model, cube);
-            model = glm::rotate(model, (float)glm::radians(30.0), vec3(0, 0, 1));
-            obj_program.SetUniform("model", model);
-            glm::mat3 nor_mat = glm::mat3(glm::transpose(glm::inverse(view*model)));
-            obj_program.SetUniform("normal_mat", nor_mat);
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
+        nanoobj.Draw(obj_program);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    glDeleteVertexArrays(2, vao);
-    glDeleteBuffers(1, &vbo);
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------

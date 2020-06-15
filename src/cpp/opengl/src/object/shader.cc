@@ -29,6 +29,7 @@ Shader::~Shader() noexcept {
         if (!result) {
             glDeleteShader(shader);
         }
+        std::cout << "Release shader object." << std::endl;
     }
     catch (...) {
         std::cout<<"Release shader failed."<<std::endl;
@@ -99,6 +100,7 @@ ShaderProgram::~ShaderProgram() noexcept {
         if (GL_FALSE == result) {
             glDeleteProgram(_program_id);
         }
+        std::cout<<"Release shader program object."<<endl;
     }
     catch (...) {
         std::cout<<"Release shader program failed."<<endl;
