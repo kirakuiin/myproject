@@ -1,4 +1,4 @@
-// working_ut.cc -
+// stenciltest_ut.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <vector>
-#include <map>
 #include <gtest/gtest.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -101,7 +100,7 @@ void WOKUT::SetUpTestCase() {
 
 }
 
-TEST_F(WOKUT, Hello) {
+TEST_F(STCUT, HelloStencilTest) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
@@ -124,11 +123,10 @@ TEST_F(WOKUT, Hello) {
     }
 
     glEnable(GL_DEPTH_TEST);
-    // glDepthMask(GL_FALSE);
+    glDepthMask(GL_TRUE);
     glDepthFunc(GL_LESS);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glBlendEquation(GL_FUNC_ADD);
+    glEnable(GL_STENCIL_TEST);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
     float cube_vertices[] = {
         // positions          // texture Coords
@@ -183,22 +181,6 @@ TEST_F(WOKUT, Hello) {
         -5.0f, -0.5f, -5.0f,  0.0f, 2.0f,
         5.0f, -0.5f, -5.0f,  2.0f, 2.0f
     };
-    float glass_vertices[] = {
-        -0.5f, -0.5f, 0,  0.0f, 0.0f,
-        0.5f, -0.5f, 0,  1.0f, 0.0f,
-        0.5f,  0.5f, 0,  1.0f, 1.0f,
-        0.5f,  0.5f, 0,  1.0f, 1.0f,
-        -0.5f,  0.5f, 0,  0.0f, 1.0f,
-        -0.5f, -0.5f, 0,  0.0f, 0.0f,
-    };
-
-    std::vector<vec3> glasses;
-    glasses.push_back(vec3(-1.5, 0, 3-0.48));
-    glasses.push_back(vec3(1.5, 0, 3+0.51));
-    glasses.push_back(vec3(0, 0, 3.7));
-    glasses.push_back(vec3(-0.3, 0, 3-2.3));
-    glasses.push_back(vec3(-0.3, 0, 3-0.6));
-
     // cube VAO
     unsigned int c_vao, c_vbo;
     glGenVertexArrays(1, &c_vao);
@@ -222,38 +204,27 @@ TEST_F(WOKUT, Hello) {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    // glass VAO
-    unsigned int g_vao, g_vbo;
-    glGenVertexArrays(1, &g_vao);
-    glGenBuffers(1, &g_vbo);
-    glBindVertexArray(g_vao);
-    glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(glass_vertices), &glass_vertices, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glBindVertexArray(0);
 
     // set shader
-    gl::VertexShader v_shader("shaders/blend/shader.vert");
-    gl::FragmentShader f_shader("shaders/blend/shader.frag");
+    gl::VertexShader v_shader("shaders/stenciltest/shader.vert");
+    gl::FragmentShader f_shader("shaders/stenciltest/shader.frag");
+    gl::FragmentShader out_shader("shaders/stenciltest/out_shader.frag");
     std::vector<gl::Shader*> shaders;
     shaders.push_back(&v_shader);
     shaders.push_back(&f_shader);
     gl::ShaderProgram program(shaders);
-    for (auto& i: shaders) {
-        i->Delete();
-    }
+    shaders.clear();
+    shaders.push_back(&v_shader);
+    shaders.push_back(&out_shader);
+    gl::ShaderProgram out_program(shaders);
+
     // load textures
     // -------------
     gl::Texture2D t_cube;
     t_cube.LoadImage("images/texture/awesomeface.png");
     gl::Texture2D t_plane;
     t_plane.LoadImage("images/texture/container.jpg");
-    gl::Texture2D t_glass;
-    t_glass.LoadImage("images/texture/blending_transparent_window.png");
-
 
     // shader configuration
     // --------------------
@@ -278,50 +249,49 @@ TEST_F(WOKUT, Hello) {
         // render
         // ------
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-        program.Use();
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)gldef::SCR_WIDTH / gldef::SCR_HEIGHT, 0.1f, 100.0f);
+        program.Use();
         program.SetUniform("view", view);
         program.SetUniform("projection", projection);
+        out_program.Use();
+        out_program.SetUniform("view", view);
+        out_program.SetUniform("projection", projection);
+
+        program.Use();
+        // floor
+        glBindVertexArray(p_vao);
+        glBindTexture(GL_TEXTURE_2D, t_plane.texture);
+        program.SetUniform("model", model);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+
         // cubes
+        glStencilFunc(GL_ALWAYS, 1, 0xff);
+        glStencilMask(0xff);
         glBindVertexArray(c_vao);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, t_cube.texture);
         model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
         program.SetUniform("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
-        program.SetUniform("model", model);
+
+        glStencilFunc(GL_NOTEQUAL, 1, 0xff);
+        glStencilMask(0x00);
+        glDisable(GL_DEPTH_TEST);
+        model = glm::scale(model, (float)1.1*vec3(1.0));
+        out_program.Use();
+        out_program.SetUniform("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);
-        // floor
-        glBindVertexArray(p_vao);
-        glBindTexture(GL_TEXTURE_2D, t_plane.texture);
-        program.SetUniform("model", glm::mat4(1.0f));
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-        // glass
-        glBindVertexArray(g_vao);
-        glBindTexture(GL_TEXTURE_2D, t_glass.texture);
-
-        std::map<float, vec3> sorted;
-        for (auto& iter: glasses) {
-            float distance = glm::length(camera.position - iter);
-            sorted[distance] = iter;
-        }
-        for (auto rit = sorted.rbegin(); rit != sorted.rend(); ++rit) {
-            model = mat4(1.0f);
-            model = glm::translate(model, rit->second);
-            program.SetUniform("model", model);
-            glDrawArrays(GL_TRIANGLES, 0, 6);
-        }
-        glBindVertexArray(0);
-
+        glEnable(GL_DEPTH_TEST);
+        glStencilFunc(GL_ALWAYS, 0, 0xff);// 这里必须设置为0, 可能影响glClear
+        glStencilMask(0xff);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
+        glBindVertexArray(0);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

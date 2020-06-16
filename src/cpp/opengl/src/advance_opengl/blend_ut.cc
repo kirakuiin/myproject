@@ -1,4 +1,4 @@
-// working_ut.cc -
+// blend_ut.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
@@ -78,7 +78,7 @@ static void scroll_callback(GLFWwindow* window, double x, double y)
     camera.ProcessScroll(y);
 }
 
-class WOKUT : public testing::Test {
+class BLDUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -86,7 +86,7 @@ class WOKUT : public testing::Test {
     void TearDown() override {}
 };
 
-void WOKUT::SetUpTestCase() {
+void BLDUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -101,7 +101,7 @@ void WOKUT::SetUpTestCase() {
 
 }
 
-TEST_F(WOKUT, Hello) {
+TEST_F(BLDUT, HelloBlend) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
