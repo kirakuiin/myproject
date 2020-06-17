@@ -82,39 +82,39 @@ Texture2D::Texture2D()
     : Texture() {
     dimension = GL_TEXTURE_2D;
     glBindTexture(GL_TEXTURE_2D, this->texture);
-    Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    Texture::SetParam(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    Texture::SetParam(dimension, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    Texture::SetParam(dimension, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 }
 
 Texture2D::Texture2D(unsigned int texture)
     : Texture(texture) {
-    glBindTexture(GL_TEXTURE_2D, this->texture);
+    glBindTexture(dimension, this->texture);
 }
 
 void
 Texture2D::BindImage(unsigned char* data) {
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glTexImage2D(GL_TEXTURE_2D, 0, format, width,
+    glBindTexture(dimension, texture);
+    glTexImage2D(dimension, 0, format, width,
                  height, 0, format, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
+    glGenerateMipmap(dimension);
 }
 
 // Texture3D implement
 Texture3D::Texture3D()
     : Texture() {
     dimension = GL_TEXTURE_3D;
-    glBindTexture(GL_TEXTURE_3D, this->texture);
-    Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    Texture::SetParam(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glBindTexture(dimension, this->texture);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    Texture::SetParam(dimension, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    Texture::SetParam(dimension, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 }
 
 Texture3D::Texture3D(unsigned int texture)
     : Texture(texture) {
-    glBindTexture(GL_TEXTURE_3D, this->texture);
+    glBindTexture(dimension, this->texture);
 }
 
 void

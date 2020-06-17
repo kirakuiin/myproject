@@ -14,8 +14,9 @@
 namespace gl {
 
 enum class TextureType {
-    DIFFUSE = 0,
-    SPECULAR = 1,
+    NONE = 0,
+    DIFFUSE,
+    SPECULAR,
 };
 
 // openGL纹理加载类
@@ -28,11 +29,12 @@ class Texture {
     static void SetParam(int dimen, int type, int value);
     static std::string GetName(TextureType type) { return _m_type_name[type]; }
 
+    // 加载外部图像
     void LoadImage(const std::string& path);
     void LoadImage(const char* path);
 
     unsigned int texture = 0;                   // 纹理地址
-    TextureType type = TextureType::DIFFUSE;    // 纹理类型
+    TextureType type = TextureType::NONE;       // 纹理类型
 
     int dimension = 0;                          // 图片纬度
     int format = 0;                             // 纹理格式RGBA
