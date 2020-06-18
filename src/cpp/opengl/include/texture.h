@@ -9,6 +9,7 @@
 #define __OPENGL_INCLUDE_TEXTURE_H__
 
 #include <map>
+#include <vector>
 #include "exception.h"
 
 namespace gl {
@@ -31,7 +32,6 @@ class Texture {
 
     // 加载外部图像
     void LoadImage(const std::string& path);
-    void LoadImage(const char* path);
 
     unsigned int texture = 0;                   // 纹理地址
     TextureType type = TextureType::NONE;       // 纹理类型
@@ -62,6 +62,18 @@ class Texture3D: public Texture {
     explicit Texture3D(unsigned int texture);
   private:
     void BindImage(unsigned char* data) override;
+};
+
+class TextureCube: public Texture {
+    public:
+        TextureCube();
+        explicit TextureCube(unsigned int texture);
+
+        void LoadImages(const std::vector<std::string>& paths);
+    private:
+        void BindImage(unsigned char* data) override;
+
+        int     _idx; // 记录图片下标
 };
 
 class TextureException: public GlException {

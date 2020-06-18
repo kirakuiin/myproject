@@ -44,8 +44,7 @@ Texture::~Texture() noexcept {
 void
 Texture::LoadImage(const string& path) {
     this->path = path;
-    stbi_set_flip_vertically_on_load(true);
-    unsigned char* data = stbi_load(path.c_str(), &height, &width,
+    unsigned char* data = stbi_load(path.c_str(), &width, &height,
                                     &nr_channels, 0);
     switch (nr_channels) {
         case 1:
@@ -68,11 +67,6 @@ Texture::LoadImage(const string& path) {
 }
 
 void
-Texture::LoadImage(const char* path) {
-    LoadImage(string(path));
-}
-
-void
 Texture::SetParam(int dimen, int type, int value) {
     glTexParameteri(dimen, type, value);
 }
@@ -81,15 +75,12 @@ Texture::SetParam(int dimen, int type, int value) {
 Texture2D::Texture2D()
     : Texture() {
     dimension = GL_TEXTURE_2D;
-    glBindTexture(GL_TEXTURE_2D, this->texture);
-    Texture::SetParam(dimension, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    Texture::SetParam(dimension, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    Texture::SetParam(dimension, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    Texture::SetParam(dimension, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glBindTexture(dimension, this->texture);
 }
 
 Texture2D::Texture2D(unsigned int texture)
     : Texture(texture) {
+    dimension = GL_TEXTURE_2D;
     glBindTexture(dimension, this->texture);
 }
 
@@ -106,20 +97,55 @@ Texture3D::Texture3D()
     : Texture() {
     dimension = GL_TEXTURE_3D;
     glBindTexture(dimension, this->texture);
-    Texture::SetParam(dimension, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    Texture::SetParam(dimension, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    Texture::SetParam(dimension, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    Texture::SetParam(dimension, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 }
 
 Texture3D::Texture3D(unsigned int texture)
     : Texture(texture) {
+    dimension = GL_TEXTURE_3D;
     glBindTexture(dimension, this->texture);
 }
 
 void
 Texture3D::BindImage(unsigned char* data) {
     throw TextureException(string("Not implement."));
+}
+
+// TextureCube implement
+TextureCube::TextureCube()
+    : Texture(), _idx(0) {
+    dimension = GL_TEXTURE_CUBE_MAP;
+    glBindTexture(dimension, this->texture);
+}
+
+TextureCube::TextureCube(unsigned int texture)
+    : Texture(texture), _idx(0) {
+    dimension = GL_TEXTURE_CUBE_MAP;
+    glBindTexture(dimension, this->texture);
+}
+
+void
+TextureCube::LoadImages(const std::vector<std::string>& paths) {
+    if (6 != paths.size()) {
+        string msg(string("Only receive six path"));
+        throw TextureException(msg);
+    }
+    for (const auto& path: paths) {
+        LoadImage(path);
+    }
+    Texture::SetParam(dimension, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    Texture::SetParam(dimension, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    _idx = 0;
+}
+
+void
+TextureCube::BindImage(unsigned char* data) {
+    glBindTexture(dimension, texture);
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X+_idx, 0, format, width,
+                 height, 0, format, GL_UNSIGNED_BYTE, data);
+    ++_idx;
 }
 
 } // namespace gl
