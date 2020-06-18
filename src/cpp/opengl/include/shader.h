@@ -64,8 +64,7 @@ class ShaderProgram {
     void SetUniform(const std::string& name, const glm::mat3& value) const;
     void SetUniform(const std::string& name, const glm::mat4& value) const;
 
-  private:
-    unsigned int _program_id;
+    unsigned int program_id;
 };
 
 class ShaderException: public GlException {
@@ -80,6 +79,14 @@ class ShaderProgramException: public GlException {
     explicit ShaderProgramException(const std::string& error_message)
         : GlException(error_message) {}
 };
+
+// uniform buffer
+// 将着色器中指定名称的块绑定到index上
+void BindProgramBlockToIndex(const ShaderProgram& program,
+                         const std::string& name, int index);
+
+// 创建一个指定大小uniformbuffer并绑定到index上
+unsigned int BindUniformBufferToIndex(size_t size, int index);
 
 } // namespace gl
 #endif // __OPENGL_INCLUDE_SHADER_H__

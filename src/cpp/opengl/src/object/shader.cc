@@ -97,9 +97,9 @@ void FragmentShader::Init(const string& shader_path, int type) {
 ShaderProgram::~ShaderProgram() noexcept {
     try {
         int result;
-        glGetProgramiv(_program_id, GL_DELETE_STATUS, &result);
+        glGetProgramiv(program_id, GL_DELETE_STATUS, &result);
         if (GL_FALSE == result) {
-            glDeleteProgram(_program_id);
+            glDeleteProgram(program_id);
         }
         std::cout<<"Release shader program object."<<endl;
     }
@@ -109,63 +109,63 @@ ShaderProgram::~ShaderProgram() noexcept {
 }
 
 ShaderProgram::ShaderProgram(const std::vector<Shader*>& shaders) {
-    _program_id = glCreateProgram();
+    program_id = glCreateProgram();
     for (auto shader: shaders) {
-        glAttachShader(_program_id, shader->shader);
+        glAttachShader(program_id, shader->shader);
     }
-    glLinkProgram(_program_id);
+    glLinkProgram(program_id);
     int success;
     char info_log[gldef::INFO_LEN];
-    glGetProgramiv(_program_id, GL_LINK_STATUS, &success);
+    glGetProgramiv(program_id, GL_LINK_STATUS, &success);
     if (!success) {
-        glGetProgramInfoLog(_program_id, gldef::INFO_LEN, NULL, info_log);
+        glGetProgramInfoLog(program_id, gldef::INFO_LEN, NULL, info_log);
         string msg(string("Link error,") + string("Msg: ") + string(info_log));
         throw ShaderProgramException(msg);
     }
 }
 
 void ShaderProgram::Use() {
-    glUseProgram(_program_id);
+    glUseProgram(program_id);
 }
 
 void ShaderProgram::SetUniform(const string& name, bool value) const {
-    glUniform1i(glGetUniformLocation(_program_id, name.c_str()), (int)value);
+    glUniform1i(glGetUniformLocation(program_id, name.c_str()), (int)value);
 }
 
 void ShaderProgram::SetUniform(const string& name, int value) const {
-    glUniform1i(glGetUniformLocation(_program_id, name.c_str()), value);
+    glUniform1i(glGetUniformLocation(program_id, name.c_str()), value);
 }
 
 void ShaderProgram::SetUniform(const string& name, float value) const {
-    glUniform1f(glGetUniformLocation(_program_id, name.c_str()), value);
+    glUniform1f(glGetUniformLocation(program_id, name.c_str()), value);
 }
 
 void ShaderProgram::SetUniform(const string& name,
                                const glm::vec3& value) const {
-    auto pos = glGetUniformLocation(_program_id, name.c_str());
+    auto pos = glGetUniformLocation(program_id, name.c_str());
     glUniform3f(pos, value.x, value.y, value.z);
 }
 
 void ShaderProgram::SetUniform(const string& name,
                                const glm::vec4& value) const {
-    auto pos = glGetUniformLocation(_program_id, name.c_str());
+    auto pos = glGetUniformLocation(program_id, name.c_str());
     glUniform4f(pos, value.x, value.y, value.z, value.w);
 }
 
 void ShaderProgram::SetUniform(const string& name,
                                const glm::mat3& value) const {
-    auto pos = glGetUniformLocation(_program_id, name.c_str());
+    auto pos = glGetUniformLocation(program_id, name.c_str());
     glUniformMatrix3fv(pos, 1, GL_FALSE, glm::value_ptr(value));
 }
 
 void ShaderProgram::SetUniform(const string& name,
                                const glm::mat4& value) const {
-    auto pos = glGetUniformLocation(_program_id, name.c_str());
+    auto pos = glGetUniformLocation(program_id, name.c_str());
     glUniformMatrix4fv(pos, 1, GL_FALSE, glm::value_ptr(value));
 }
 
 unsigned int ShaderProgram::GetPos(const string& name) const {
-    return glGetUniformLocation(_program_id, name.c_str());
+    return glGetUniformLocation(program_id, name.c_str());
 }
 
 // ShaderException implement
@@ -176,6 +176,24 @@ ShaderException::GetErrorType(int type) {
         {GL_VERTEX_SHADER, "vertex shader"},
     };
     return msg_tab[type];
+}
+
+void BindProgramBlockToIndex(const ShaderProgram& program,
+                         const std::string& name, int index) {
+    unsigned int uniform_block_index = glGetUniformBlockIndex(
+        program.program_id, name.c_str()
+            );
+    glUniformBlockBinding(program.program_id, uniform_block_index, index);
+}
+
+unsigned BindUniformBufferToIndex(size_t size, int index) {
+    unsigned int id;
+    glGenBuffers(1, &id);
+    glBindBuffer(GL_UNIFORM_BUFFER, id);
+    glBufferData(GL_UNIFORM_BUFFER, size, NULL, GL_STATIC_DRAW);
+    glBindBuffer(GL_UNIFORM_BUFFER, 0);
+    glBindBufferRange(GL_UNIFORM_BUFFER, index, id, 0, size);
+    return id;
 }
 
 } // namespace gl
