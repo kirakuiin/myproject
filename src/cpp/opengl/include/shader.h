@@ -43,6 +43,15 @@ class FragmentShader: public Shader {
     void Init(const std::string& path, int type) override;
 };
 
+// 几何着色器
+class GeometryShader: public Shader {
+  public:
+    explicit GeometryShader(const std::string& shader_path);
+    explicit GeometryShader(const char* shader_path);
+
+    void Init(const std::string& path, int type) override;
+};
+
 // openGL着色器链接程序
 class ShaderProgram {
   public:

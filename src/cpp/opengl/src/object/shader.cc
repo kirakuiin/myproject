@@ -93,6 +93,19 @@ void FragmentShader::Init(const string& shader_path, int type) {
     Shader::Init(shader_path, type);
 }
 
+// GeometryShader implement
+GeometryShader::GeometryShader(const string& shader_path) {
+    Init(shader_path, GL_GEOMETRY_SHADER);
+}
+
+GeometryShader::GeometryShader(const char* shader_path)
+    : GeometryShader(string(shader_path)) {
+}
+
+void GeometryShader::Init(const string& shader_path, int type) {
+    Shader::Init(shader_path, type);
+}
+
 // ShaderProgram
 ShaderProgram::~ShaderProgram() noexcept {
     try {
@@ -174,6 +187,7 @@ ShaderException::GetErrorType(int type) {
     std::map<int, std::string> msg_tab {
         {GL_FRAGMENT_SHADER, "fragment shader"},
         {GL_VERTEX_SHADER, "vertex shader"},
+        {GL_GEOMETRY_SHADER, "geometry shader"},
     };
     return msg_tab[type];
 }

@@ -1,8 +1,8 @@
-// working_ut.cc -
+// geometryshader_ut.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jun 16
+// Last Change: 2020 Jun 20
 // License: GPL.v3
 
 #include <iostream>
@@ -80,7 +80,7 @@ static void scroll_callback(GLFWwindow* window, double x, double y)
     camera.ProcessScroll(y);
 }
 
-class WOKUT : public testing::Test {
+class GSHUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -88,7 +88,7 @@ class WOKUT : public testing::Test {
     void TearDown() override {}
 };
 
-void WOKUT::SetUpTestCase() {
+void GSHUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -103,7 +103,7 @@ void WOKUT::SetUpTestCase() {
 
 }
 
-TEST_F(WOKUT, Hello) {
+TEST_F(GSHUT, HelloGeometryShader) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
