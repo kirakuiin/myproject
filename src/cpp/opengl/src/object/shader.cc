@@ -153,6 +153,12 @@ void ShaderProgram::SetUniform(const string& name, float value) const {
     glUniform1f(glGetUniformLocation(program_id, name.c_str()), value);
 }
 
+void ShaderProgram::SetUniform(const std::string& name,
+                               const glm::vec2& value) const {
+    auto pos = glGetUniformLocation(program_id, name.c_str());
+    glUniform2f(pos, value.x, value.y);
+}
+
 void ShaderProgram::SetUniform(const string& name,
                                const glm::vec3& value) const {
     auto pos = glGetUniformLocation(program_id, name.c_str());

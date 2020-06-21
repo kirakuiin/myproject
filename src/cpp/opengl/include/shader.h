@@ -68,6 +68,7 @@ class ShaderProgram {
     void SetUniform(const std::string& name, bool value) const;
     void SetUniform(const std::string& name, int value) const;
     void SetUniform(const std::string& name, float value) const;
+    void SetUniform(const std::string& name, const glm::vec2& value) const;
     void SetUniform(const std::string& name, const glm::vec3& value) const;
     void SetUniform(const std::string& name, const glm::vec4& value) const;
     void SetUniform(const std::string& name, const glm::mat3& value) const;

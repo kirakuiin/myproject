@@ -7,7 +7,9 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 #include <map>
+#include <time.h>
 #include <gtest/gtest.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -28,14 +30,22 @@ using glm::vec4;
 using glm::mat4;
 using glm::mat3;
 
-static gl::Camera camera(glm::vec3(0, 0, 4));
+static gl::Camera camera(glm::vec3(0, 50, 0));
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 inline void processInput(GLFWwindow *window, float delta)
 {
-    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS)
+    static float speed = camera.movement_speed;
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+        camera.movement_speed = 5*speed;
+    }
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE) {
+        camera.movement_speed = speed;
+    }
+    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, true);
+    }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         camera.ProcessKeyboard(gl::CAMERA_DIRECT::FORWARD, delta);
     }
@@ -126,73 +136,59 @@ TEST_F(WOKUT, Hello) {
         cout << "Failed to initialize GLAD" << endl;
     }
 
-    float point_vertices[] = {
-        // back
-        -1, 1, -1, 0, 0, 1, 0, 0, -1,
-        -1, -1, -1, 0, 0, 1, 0, 0, -1,
-        1, -1, -1, 0, 0, 1, 0, 0, -1,
-        1, -1, -1, 0, 0, 1, 0, 0, -1,
-        1, 1, -1, 0, 0, 1, 0, 0, -1,
-        -1, 1, -1, 0, 0, 1, 0, 0, -1,
-        // front
-        -1, 1, 1, 1, 0, 0, 0, 0, 1,
-        1, 1, 1, 1, 0, 0, 0, 0, 1,
-        1, -1, 1, 1, 0, 0, 0, 0, 1,
-        1, -1, 1, 1, 0, 0, 0, 0, 1,
-        -1, -1, 1, 1, 0, 0, 0, 0, 1,
-        -1, 1, 1, 1, 0, 0, 0, 0, 1,
-        // left
-        -1, 1, 1, 1, 0, 0, -1, 0, 0,
-        -1, -1, 1, 1, 0, 0, -1, 0, 0,
-        -1, -1, -1, 1, 0, 0, -1, 0, 0,
-        -1, -1, -1, 1, 0, 0, -1, 0, 0,
-        -1, 1, -1, 1, 0, 0, -1, 0, 0,
-        -1, 1, 1, 1, 0, 0, -1, 0, 0,
-        // right
-        1, 1, 1, 0, 0, 1, 1, 0, 0,
-        1, 1, -1, 0, 0, 1, 1, 0, 0,
-        1, -1, -1, 0, 0, 1, 1, 0, 0,
-        1, -1, -1, 0, 0, 1, 1, 0, 0,
-        1, -1, 1, 0, 0, 1, 1, 0, 0,
-        1, 1, 1, 0, 0, 1, 1, 0, 0,
-        // bottom
-        -1, -1, -1, 0, 1, 0, 0, -1, 0,
-        -1, -1, 1, 0, 1, 0, 0, -1, 0,
-        1, -1, 1, 0, 1, 0, 0, -1, 0,
-        1, -1, 1, 0, 1, 0, 0, -1, 0,
-        1, -1, -1, 0, 1, 0, 0, -1, 0,
-        -1, -1, -1, 0, 1, 0, 0, -1, 0,
-        // top
-        -1, 1, -1, 0, 1, 0, 0, 1, 0,
-        1, 1, -1, 0, 1, 0, 0, 1, 0,
-        1, 1, 1, 0, 1, 0, 0, 1, 0,
-        1, 1, 1, 0, 1, 0, 0, 1, 0,
-        -1, 1, 1, 0, 1, 0, 0, 1, 0,
-        -1, 1, -1, 0, 1, 0, 0, 1, 0,
-    };
+    gl::Model planet("model/planet/planet.obj");
+    gl::Model rock("model/rock/rock.obj");
 
-    // cube VAO
-    unsigned int p_vao, p_vbo;
-    glGenVertexArrays(1, &p_vao);
-    glGenBuffers(1, &p_vbo);
-    glBindVertexArray(p_vao);
-    glBindBuffer(GL_ARRAY_BUFFER, p_vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(point_vertices), &point_vertices, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float),
-                          (void*)(3*sizeof(float)));
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float),
-                          (void*)(6*sizeof(float)));
+    // for (int i = 0; i < rock._meshes.size(); ++i) {
+    //     unsigned int vao = rock._meshes[i]->_vao;
+    //     glBindVertexArray(vao);
+    //     size_t vec4size = sizeof(vec4);
+    //     glEnableVertexAttribArray(3);
+    //     glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4*vec4size, (void*)0);
+    //     glEnableVertexAttribArray(4);
+    //     glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4*vec4size, (void*)(vec4size));
+    //     glEnableVertexAttribArray(5);
+    //     glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, 4*vec4size, (void*)(vec4size*2));
+    //     glEnableVertexAttribArray(6);
+    //     glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 4*vec4size, (void*)(vec4size*3));
+    //
+    //     glVertexAttribDivisor(3, 1);
+    //     glVertexAttribDivisor(4, 1);
+    //     glVertexAttribDivisor(5, 1);
+    //     glVertexAttribDivisor(6, 1);
+    //
+    //     glBindVertexArray(0);
+    // }
+
+    const unsigned int amount(2000);
+    std::shared_ptr<mat4> models(new mat4[amount]);
+    srand(glfwGetTime());
+    float radius = 20.0;
+    float offset = 2.5;
+    for (int i = 0; i < amount; ++i) {
+        mat4 model(1.0);
+        float angle = (float)i / (float)amount * 360.0;
+        float displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
+        float x = cos(angle) * radius + displacement;
+        displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
+        float y = displacement * 0.5;
+        displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
+        float z = sin(angle) * radius + displacement;
+        model = glm::translate(model, vec3(x, y, z));
+
+        float scale = (rand() % 20) / 100 + 0.05;
+        model = glm::scale(model, vec3(scale));
+
+        float rot = (rand() % 360);
+        model = glm::rotate(model, rot, vec3(0.4, 0.6, 0.8));
+
+        models.get()[i] = model;
+    }
 
     // set shader
     std::vector<gl::Shader*> shaders;
-    gl::VertexShader v_shader("shaders/geometryshader/shader.vert");
-    gl::FragmentShader f_shader("shaders/geometryshader/shader.frag");
-    gl::GeometryShader g_shader("shaders/geometryshader/shader.geom");
-    shaders.push_back(&g_shader);
+    gl::VertexShader v_shader("shaders/instancing/shader.vert");
+    gl::FragmentShader f_shader("shaders/instancing/shader.frag");
     shaders.push_back(&v_shader);
     shaders.push_back(&f_shader);
     gl::ShaderProgram program(shaders);
@@ -218,19 +214,29 @@ TEST_F(WOKUT, Hello) {
 
         // render
         // ------
-        glClearColor(0.5, 0.5, 0.5, 0);
+        glClearColor(0, 0, 0, 0);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         mat4 view = camera.GetViewMatrix();
         mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)gldef::SCR_WIDTH / gldef::SCR_HEIGHT, 0.1f, 100.0f);
-        mat4 model(1.0);
 
         program.Use();
         program.SetUniform("projection", projection);
         program.SetUniform("view", view);
-        program.SetUniform("model", model);
-        glBindVertexArray(p_vao);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        program.SetUniform("model", mat4(1));
+        planet.Draw(program);
+
+        for (int i = 0; i < amount; ++i) {
+            program.SetUniform("model", models.get()[i]);
+            rock.Draw(program);
+        }
+        // for(unsigned int i = 0; i < rock._meshes.size(); i++)
+        // {
+        //     glBindVertexArray(rock._meshes[i]->_vao);
+        //     glDrawElementsInstanced(
+        //             GL_TRIANGLES, rock._meshes[i]->indices.size(), GL_UNSIGNED_INT, 0, amount
+        //             );
+        // }
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
@@ -238,8 +244,6 @@ TEST_F(WOKUT, Hello) {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    glDeleteVertexArrays(1, &p_vao);
-    glDeleteBuffers(1, &p_vbo);
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
     glfwTerminate();
