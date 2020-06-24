@@ -8,35 +8,107 @@
 #ifndef __CPP_OPENGL_INCLUDE_FRAME_H__
 #define __CPP_OPENGL_INCLUDE_FRAME_H__
 
+#include <memory>
+
 #include "exception.h"
 
 namespace gl {
 
-enum class FrameBufferType {
-    RENDER,
-    TEXTURE,
-};
+class ColorAttachment;
+class DepthStencilAttachment;
 
 // openGL帧缓冲类
 class Framebuffer {
   public:
-    Framebuffer(int width, int height,
-                FrameBufferType type = FrameBufferType::RENDER);
+    Framebuffer();
     ~Framebuffer() noexcept;
 
-    unsigned int id;        // 帧缓冲id
-    unsigned int color_id;  // 颜色缓冲id
+    // 附加颜色缓冲附件和深度模板附件
+    void Attach(std::shared_ptr<ColorAttachment> ca,
+                std::shared_ptr<DepthStencilAttachment> da);
+
+    unsigned int id;                            // 帧缓冲id
+    std::shared_ptr<ColorAttachment> color;
+    std::shared_ptr<DepthStencilAttachment> depths;
   private:
-    void Init();
-    void Release();
+};
 
-    unsigned int GenerateTextureAttachment(FrameBufferType type);
-    unsigned int GenerateRenderAttachment();
+// 附件类
+class BufferAttachment {
+  public:
+    BufferAttachment(int width, int height)
+        : id(0), _width(width), _height(height) {}
+    virtual ~BufferAttachment() {}
 
+    // 将附件附加到帧缓冲上
+    virtual void Attach() = 0;
+
+    unsigned int id;        // 附件id
+
+  protected:
     int _width;             // 屏幕宽度
     int _height;            // 屏幕高度
-    FrameBufferType _type;  // 深度和模版缓冲类型
-    unsigned int _dc_id;    // 深度和模版缓冲id
+};
+
+class ColorAttachment: public BufferAttachment {
+  public:
+    ColorAttachment(int width, int height): BufferAttachment(width, height) {}
+
+    virtual void Attach() = 0;
+};
+
+class TextureColorAttachment: public ColorAttachment {
+  public:
+    TextureColorAttachment(int width, int height);
+    ~TextureColorAttachment() noexcept;
+
+    void Attach() override;
+};
+
+class MultisampleColorAttachment: public ColorAttachment {
+  public:
+    MultisampleColorAttachment(int width, int height, int samples);
+    ~MultisampleColorAttachment() noexcept;
+
+    void Attach() override;
+
+  private:
+    int _samples;        // 采样数
+};
+
+class DepthStencilAttachment: public BufferAttachment {
+  public:
+    DepthStencilAttachment(int width, int height)
+        : BufferAttachment(width, height) {}
+
+    virtual void Attach() = 0;
+};
+
+class TextureDepthStencilAttachment: public DepthStencilAttachment {
+  public:
+    TextureDepthStencilAttachment(int width, int height);
+    ~TextureDepthStencilAttachment() noexcept;
+
+    void Attach() override;
+};
+
+class RenderDepthStencilAttachment: public DepthStencilAttachment {
+  public:
+    RenderDepthStencilAttachment(int width, int height);
+    ~RenderDepthStencilAttachment() noexcept;
+
+    void Attach() override;
+};
+
+class MultisampleDepthStencilAttachment: public RenderDepthStencilAttachment {
+  public:
+    MultisampleDepthStencilAttachment(int width, int height, int samples);
+    ~MultisampleDepthStencilAttachment() noexcept;
+
+    void Attach() override;
+
+  private:
+    int _samples;        // 采样数
 };
 
 class FramebufferException: public GlException {

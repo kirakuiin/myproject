@@ -15,14 +15,14 @@
 namespace gl {
 
 // Framebuffer implement
-Framebuffer::Framebuffer(int width, int height, FrameBufferType type)
-    : _width(width), _height(height), _type(type) {
-    Init();
+Framebuffer::Framebuffer()
+    : id(0) {
+    glGenFramebuffers(1, &id);
 }
 
 Framebuffer::~Framebuffer() noexcept {
     try {
-        Release();
+        glDeleteFramebuffers(1, &id);
         std::cout << "Release Framebuffer object." << std::endl;
     } catch (...) {
         std::cout << "Release Framebuffer failed." << std::endl;
@@ -30,29 +30,13 @@ Framebuffer::~Framebuffer() noexcept {
 }
 
 void
-Framebuffer::Init() {
-    glGenFramebuffers(1, &id);
+Framebuffer::Attach(std::shared_ptr<ColorAttachment> ca,
+                    std::shared_ptr<DepthStencilAttachment> da) {
+    color = ca;
+    depths = da;
     glBindFramebuffer(GL_FRAMEBUFFER, id);
-
-    // bind color buffer
-    color_id = GenerateTextureAttachment(FrameBufferType::TEXTURE);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-                           GL_TEXTURE_2D, color_id, 0);
-
-    // bind depth and stencil buffer
-    switch (_type) {
-        case FrameBufferType::TEXTURE:
-            _dc_id = GenerateTextureAttachment(FrameBufferType::RENDER);
-            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,
-                                   GL_TEXTURE_2D, _dc_id, 0);
-            break;
-        case FrameBufferType::RENDER:
-            _dc_id = GenerateRenderAttachment();
-            glFramebufferRenderbuffer(GL_FRAMEBUFFER,
-                                      GL_DEPTH_STENCIL_ATTACHMENT,
-                                      GL_RENDERBUFFER, _dc_id);
-            break;
-    }
+    color->Attach();
+    depths->Attach();
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
         std::string msg("Framebuffer is not complete!");
         throw FramebufferException(msg);
@@ -60,48 +44,102 @@ Framebuffer::Init() {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void
-Framebuffer::Release() {
-    glDeleteFramebuffers(1, &id);
-    glDeleteTextures(1, &color_id);
-    switch (_type) {
-        case FrameBufferType::TEXTURE:
-            glDeleteTextures(1, &_dc_id);
-            break;
-        case FrameBufferType::RENDER:
-            glDeleteRenderbuffers(1, &_dc_id);
-    }
-}
-
-unsigned int
-Framebuffer::GenerateTextureAttachment(FrameBufferType type) {
-    unsigned int texbuffer;
-    glGenTextures(1, &texbuffer);
-    glBindTexture(GL_TEXTURE_2D, texbuffer);
-    switch (type) {
-        case FrameBufferType::TEXTURE:
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _width, _height, 0, GL_RGB,
-                         GL_UNSIGNED_BYTE, NULL);
-            break;
-        case FrameBufferType::RENDER:
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, _width, _height,
-                         0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
-            break;
-    }
+TextureColorAttachment::TextureColorAttachment(int width, int height)
+    : ColorAttachment(width, height) {
+    glGenTextures(1, &id);
+    glBindTexture(GL_TEXTURE_2D, id);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _width, _height, 0, GL_RGB,
+            GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glBindTexture(GL_TEXTURE_2D, 0);
-    return texbuffer;
 }
 
-unsigned int
-Framebuffer::GenerateRenderAttachment() {
-    unsigned int rendbuffer;
-    glGenRenderbuffers(1, &rendbuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER, rendbuffer);
+TextureColorAttachment::~TextureColorAttachment() noexcept {
+    glDeleteTextures(1, &id);
+}
+
+void
+TextureColorAttachment::Attach() {
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                           GL_TEXTURE_2D, id, 0);
+}
+
+MultisampleColorAttachment::MultisampleColorAttachment(int width, int height, int samples)
+    : ColorAttachment(width, height), _samples(samples) {
+    glGenTextures(1, &id);
+    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, id);
+    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, _samples, GL_RGB, _width,
+                            _height, GL_TRUE);
+    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
+}
+
+MultisampleColorAttachment::~MultisampleColorAttachment() noexcept {
+    glDeleteTextures(1, &id);
+}
+
+void
+MultisampleColorAttachment::Attach() {
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                           GL_TEXTURE_2D_MULTISAMPLE, id, 0);
+}
+
+TextureDepthStencilAttachment::TextureDepthStencilAttachment(int width, int height)
+    : DepthStencilAttachment(width, height) {
+    glGenTextures(1, &id);
+    glBindTexture(GL_TEXTURE_2D, id);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, _width, _height,
+                 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+TextureDepthStencilAttachment::~TextureDepthStencilAttachment() noexcept {
+    glDeleteTextures(1, &id);
+}
+
+void
+TextureDepthStencilAttachment::Attach() {
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,
+                           GL_TEXTURE_2D, id, 0);
+}
+
+RenderDepthStencilAttachment::RenderDepthStencilAttachment(int width, int height)
+    : DepthStencilAttachment(width, height) {
+    glGenRenderbuffers(1, &id);
+    glBindRenderbuffer(GL_RENDERBUFFER, id);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, _width, _height);
     glBindRenderbuffer(GL_RENDERBUFFER, 0);
-    return rendbuffer;
+}
+
+RenderDepthStencilAttachment::~RenderDepthStencilAttachment() noexcept {
+    glDeleteRenderbuffers(1, &id);
+}
+
+void
+RenderDepthStencilAttachment::Attach() {
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER,
+                              GL_DEPTH_STENCIL_ATTACHMENT,
+                              GL_RENDERBUFFER, id);
+}
+
+MultisampleDepthStencilAttachment::MultisampleDepthStencilAttachment(int width, int height, int samples)
+    : RenderDepthStencilAttachment(width, height), _samples(samples) {
+    glGenRenderbuffers(1, &id);
+    glBindRenderbuffer(GL_RENDERBUFFER, id);
+    glRenderbufferStorageMultisample(GL_RENDERBUFFER, _samples,
+                                     GL_DEPTH24_STENCIL8, _width, _height);
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+}
+
+MultisampleDepthStencilAttachment::~MultisampleDepthStencilAttachment() noexcept {
+    glDeleteRenderbuffers(1, &id);
+}
+
+void
+MultisampleDepthStencilAttachment::Attach() {
+    RenderDepthStencilAttachment::Attach();
 }
 
 } // namespace gl

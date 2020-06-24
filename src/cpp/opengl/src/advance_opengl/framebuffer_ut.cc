@@ -2,7 +2,7 @@
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jun 17
+// Last Change: 2020 Jun 24
 // License: GPL.v3
 
 #include <iostream>
@@ -186,8 +186,12 @@ TEST_F(FRBUT, HelloFramebuffer) {
     };
 
     // 创建帧缓冲
-    gl::Framebuffer fb(gldef::SCR_WIDTH, gldef::SCR_HEIGHT,
-                       gl::FrameBufferType::TEXTURE);
+    gl::Framebuffer fb;
+    std::shared_ptr<gl::TextureColorAttachment> ca(
+            new gl::TextureColorAttachment(gldef::SCR_WIDTH, gldef::SCR_HEIGHT));
+    std::shared_ptr<gl::TextureDepthStencilAttachment> da(
+            new gl::TextureDepthStencilAttachment(gldef::SCR_WIDTH, gldef::SCR_HEIGHT));
+    fb.Attach(ca, da);
 
     // cube VAO
     unsigned int c_vao, c_vbo;
@@ -282,7 +286,7 @@ TEST_F(FRBUT, HelloFramebuffer) {
         // render
         // ------
         glBindFramebuffer(GL_FRAMEBUFFER, fb.id);
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClearColor(1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_DEPTH_TEST);
 
@@ -318,7 +322,7 @@ TEST_F(FRBUT, HelloFramebuffer) {
         program.Use();
         glBindVertexArray(f_vao);
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, fb.color_id);
+        glBindTexture(GL_TEXTURE_2D, fb.color->id);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
 
