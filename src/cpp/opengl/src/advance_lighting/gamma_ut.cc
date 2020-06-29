@@ -1,13 +1,12 @@
-// framebuffer_ut.cc -
+// gamma_ut.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jun 24
+// Last Change: 2020 Jun 27
 // License: GPL.v3
 
 #include <iostream>
 #include <vector>
-#include <map>
 #include <gtest/gtest.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -15,16 +14,17 @@
 #include "include/shader.h"
 #include "include/camera.h"
 #include "include/texture.h"
-#include "include/frame.h"
 #include "include/glm/glm.hpp"
 #include "include/glm/gtc/matrix_transform.hpp"
 #include "include/glm/gtc/type_ptr.hpp"
+#include "include/model.h"
 
 using std::cout;
 using std::endl;
 using glm::vec3;
 using glm::vec4;
 using glm::mat4;
+using glm::mat3;
 
 static gl::Camera camera(glm::vec3(0, -0.5, 2));
 
@@ -32,6 +32,13 @@ static gl::Camera camera(glm::vec3(0, -0.5, 2));
 // ---------------------------------------------------------------------------------------------------------
 inline void processInput(GLFWwindow *window, float delta)
 {
+    static float speed = camera.movement_speed;
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+        camera.movement_speed = 5*speed;
+    }
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE) {
+        camera.movement_speed = speed;
+    }
     if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
@@ -42,6 +49,9 @@ inline void processInput(GLFWwindow *window, float delta)
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
         camera.ProcessKeyboard(gl::CAMERA_DIRECT::LEFT, delta);
+    }
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+        camera.ProcessKeyboard(gl::CAMERA_DIRECT::RIGHT, delta);
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
         camera.ProcessKeyboard(gl::CAMERA_DIRECT::RIGHT, delta);
@@ -78,7 +88,7 @@ static void scroll_callback(GLFWwindow* window, double x, double y)
     camera.ProcessScroll(y);
 }
 
-class FRBUT : public testing::Test {
+class GAMUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -86,7 +96,7 @@ class FRBUT : public testing::Test {
     void TearDown() override {}
 };
 
-void FRBUT::SetUpTestCase() {
+void GAMUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -101,7 +111,7 @@ void FRBUT::SetUpTestCase() {
 
 }
 
-TEST_F(FRBUT, HelloFramebuffer) {
+TEST_F(GAMUT, HelloGamma) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
@@ -123,76 +133,63 @@ TEST_F(FRBUT, HelloFramebuffer) {
         cout << "Failed to initialize GLAD" << endl;
     }
 
+    glEnable(GL_DEPTH_TEST);
+    // glDepthMask(GL_FALSE);
+    glDepthFunc(GL_LESS);
+
     float cube_vertices[] = {
-        // back
-        -0.5, 0.5, -0.5, 0, 1,
-        -0.5, -0.5, -0.5, 0, 0,
-        0.5, -0.5, -0.5, 1, 0,
-        0.5, -0.5, -0.5, 1, 0,
-        0.5, 0.5, -0.5, 1, 1,
-        -0.5, 0.5, -0.5, 0, 1,
-        // front
-        -0.5, 0.5, 0.5, 1, 1,
-        0.5, 0.5, 0.5, 0, 1,
-        0.5, -0.5, 0.5, 0, 0,
-        0.5, -0.5, 0.5, 0, 0,
-        -0.5, -0.5, 0.5, 1, 0,
-        -0.5, 0.5, 0.5, 1, 1,
-        // left
-        -0.5, 0.5, 0.5, 0, 1,
-        -0.5, -0.5, 0.5, 0, 0,
-        -0.5, -0.5, -0.5, 1, 0,
-        -0.5, -0.5, -0.5, 1, 0,
-        -0.5, 0.5, -0.5, 1, 1,
-        -0.5, 0.5, 0.5, 0, 1,
-        // right
-        0.5, 0.5, 0.5, 1, 1,
-        0.5, 0.5, -0.5, 0, 1,
-        0.5, -0.5, -0.5, 0, 0,
-        0.5, -0.5, -0.5, 0, 0,
-        0.5, -0.5, 0.5, 1, 0,
-        0.5, 0.5, 0.5, 1, 1,
-        // bottom
-        -0.5, -0.5, -0.5, 0, 1,
-        -0.5, -0.5, 0.5, 0, 0,
-        0.5, -0.5, 0.5, 1, 0,
-        0.5, -0.5, 0.5, 1, 0,
-        0.5, -0.5, -0.5, 1, 1,
-        -0.5, -0.5, -0.5, 0, 1,
-        // top
-        -0.5, 0.5, -0.5, 1, 1,
-        0.5, 0.5, -0.5, 0, 1,
-        0.5, 0.5, 0.5, 0, 0,
-        0.5, 0.5, 0.5, 0, 0,
-        -0.5, 0.5, 0.5, 1, 0,
-        -0.5, 0.5, -0.5, 1, 1,
+        // positions          // texture Coords
+        -0.5f, -0.5f, -0.5f, 0, 0, -1, 0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,  0, 0, -1, 1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,  0, 0, -1, 1.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,  0, 0, -1, 1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,  0, 0, -1, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0, 0, -1, 0.0f, 0.0f,
+
+        -0.5f, -0.5f,  0.5f,  0, 0, 1, 0.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,  0, 0, 1, 1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,  0, 0, 1, 1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,  0, 0, 1, 1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f, 0, 0, 1, 0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0, 0, 1, 0.0f, 0.0f,
+
+        -0.5f,  0.5f,  0.5f, -1, 0, 0, 1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  -1, 0, 0, 1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  -1, 0, 0, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  -1, 0, 0, 0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  -1, 0, 0, 0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  -1, 0, 0, 1.0f, 0.0f,
+
+        0.5f,  0.5f,  0.5f, 1, 0, 0, 1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f, 1, 0, 0, 1.0f, 1.0f,
+        0.5f, -0.5f, -0.5f, 1, 0, 0, 0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f, 1, 0, 0, 0.0f, 1.0f,
+        0.5f, -0.5f,  0.5f, 1, 0, 0, 0.0f, 0.0f,
+        0.5f,  0.5f,  0.5f, 1, 0, 0, 1.0f, 0.0f,
+
+        -0.5f, -0.5f, -0.5f, 0, -1, 0, 0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f, 0, -1, 0, 1.0f, 1.0f,
+        0.5f, -0.5f,  0.5f, 0, -1, 0, 1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f, 0, -1, 0, 1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f, 0, -1, 0, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, 0, -1, 0, 0.0f, 1.0f,
+
+        -0.5f,  0.5f, -0.5f, 0, 1, 0, 0.0f, 1.0f,
+        0.5f,  0.5f, -0.5f, 0, 1, 0, 1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f, 0, 1, 0, 1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f, 0, 1, 0, 1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f, 0, 1, 0, 0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f, 0, 1, 0, 0.0f, 1.0f
     };
     float plane_vertices[] = {
-        -5.0f, -0.5f,  -5.0f,  0.0f, 2.0f,
-        -5.0f, -0.5f, 5.0f,  0.0f, 0.0f,
-        5.0f, -0.5f, 5.0f,  2.0f, 0.0f,
-        5.0f, -0.5f,  5.0f,  2.0f, 0.0f,
-        5.0f, -0.5f,  -5.0f,  2.0f, 2.0f,
-        -5.0f, -0.5f, -5.0f,  0.0f, 2.0f
+        5.0f, -0.5f,  5.0f, 0, 1, 0, 2.0f, 0.0f,
+        -5.0f, -0.5f,  5.0f, 0, 1, 0, 0.0f, 0.0f,
+        -5.0f, -0.5f, -5.0f, 0, 1, 0, 0.0f, 2.0f,
+
+        5.0f, -0.5f,  5.0f, 0, 1, 0, 2.0f, 0.0f,
+        -5.0f, -0.5f, -5.0f, 0, 1, 0, 0.0f, 2.0f,
+        5.0f, -0.5f, -5.0f, 0, 1, 0, 2.0f, 2.0f
     };
-
-    float frame_vertices[] = {
-        -1, 1, 0, 0, 1,
-        1, 1, 0, 1, 1,
-        1, -1, 0, 1, 0,
-        1, -1, 0, 1, 0,
-        -1, -1, 0, 0, 0,
-        -1, 1, 0, 0, 1,
-    };
-
-    // 创建帧缓冲
-    gl::Framebuffer fb;
-    std::shared_ptr<gl::TextureColorAttachment> ca(
-            new gl::TextureColorAttachment(gldef::SCR_WIDTH, gldef::SCR_HEIGHT));
-    std::shared_ptr<gl::TextureDepthStencilAttachment> da(
-            new gl::TextureDepthStencilAttachment(gldef::SCR_WIDTH, gldef::SCR_HEIGHT));
-    fb.Attach(ca, da);
-
     // cube VAO
     unsigned int c_vao, c_vbo;
     glGenVertexArrays(1, &c_vao);
@@ -201,9 +198,13 @@ TEST_F(FRBUT, HelloFramebuffer) {
     glBindBuffer(GL_ARRAY_BUFFER, c_vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(cube_vertices), &cube_vertices, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+                          (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+                          (void*)(6 * sizeof(float)));
     glBindVertexArray(0);
     // plane VAO
     unsigned int p_vao, p_vbo;
@@ -213,60 +214,37 @@ TEST_F(FRBUT, HelloFramebuffer) {
     glBindBuffer(GL_ARRAY_BUFFER, p_vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(plane_vertices), &plane_vertices, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glBindVertexArray(0);
-    // frame VAO
-    unsigned int f_vao, f_vbo;
-    glGenVertexArrays(1, &f_vao);
-    glGenBuffers(1, &f_vbo);
-    glBindVertexArray(f_vao);
-    glBindBuffer(GL_ARRAY_BUFFER, f_vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(frame_vertices), &frame_vertices, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+                          (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+                          (void*)(6 * sizeof(float)));
     glBindVertexArray(0);
 
-    // set frame shader
-    gl::VertexShader fv_shader("shaders/framebuffer/frame_shader.vert");
-    gl::FragmentShader ff_shader("shaders/framebuffer/frame_shader.frag");
+    // set shader
+    gl::VertexShader v_shader("shaders/gamma/shader.vert");
+    gl::FragmentShader f_shader("shaders/gamma/shader.frag");
     std::vector<gl::Shader*> shaders;
-    shaders.push_back(&fv_shader);
-    shaders.push_back(&ff_shader);
-    gl::ShaderProgram frame_program(shaders);
-    for (auto& i: shaders) {
-        i->Delete();
-    }
-    shaders.clear();
-
-    // set default shader
-    gl::VertexShader v_shader("shaders/framebuffer/shader.vert");
-    gl::FragmentShader f_shader("shaders/framebuffer/shader.frag");
     shaders.push_back(&v_shader);
     shaders.push_back(&f_shader);
     gl::ShaderProgram program(shaders);
     for (auto& i: shaders) {
         i->Delete();
     }
-
     // load textures
     // -------------
     gl::Texture2D t_cube;
-    t_cube.LoadImage("images/texture/awesomeface.png");
+    t_cube.LoadImage("images/texture/awesomeface.png", true);
     gl::Texture2D t_plane;
-    t_plane.LoadImage("images/texture/container.jpg");
+    // 如果是镜面光贴图, 由于本身就处在线性空间, 使用srgb会导致贴图损坏
+    t_plane.LoadImage("images/texture/container.jpg", true);
 
     // shader configuration
     // --------------------
     program.Use();
     program.SetUniform("tex", 0);
-
-    // enable cull face
-    glEnable(GL_CULL_FACE);
-    glFrontFace(GL_CW);
 
     // render loop
     // -----------
@@ -285,44 +263,38 @@ TEST_F(FRBUT, HelloFramebuffer) {
 
         // render
         // ------
-        glBindFramebuffer(GL_FRAMEBUFFER, fb.id);
-        glClearColor(1.0f, 0.1f, 0.1f, 1.0f);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glEnable(GL_DEPTH_TEST);
 
-        frame_program.Use();
+        program.Use();
+        program.SetUniform("isblinn", 1);
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)gldef::SCR_WIDTH / gldef::SCR_HEIGHT, 0.1f, 100.0f);
-        frame_program.SetUniform("view", view);
-        frame_program.SetUniform("projection", projection);
+        program.SetUniform("view", view);
+        program.SetUniform("projection", projection);
+        program.SetUniform("alightpos", vec3(1, 1, 1));
         // cubes
         glBindVertexArray(c_vao);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, t_cube.texture);
         model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
-        frame_program.SetUniform("model", model);
+        program.SetUniform("model", model);
+        program.SetUniform("normal_mat",
+                           mat3(glm::transpose(glm::inverse(view * model))));
         glDrawArrays(GL_TRIANGLES, 0, 36);
         model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
-        frame_program.SetUniform("model", model);
+        program.SetUniform("model", model);
+        program.SetUniform("normal_mat",
+                           mat3(glm::transpose(glm::inverse(view * model))));
         glDrawArrays(GL_TRIANGLES, 0, 36);
         // floor
-        glDisable(GL_CULL_FACE);
         glBindVertexArray(p_vao);
         glBindTexture(GL_TEXTURE_2D, t_plane.texture);
-        frame_program.SetUniform("model", glm::mat4(1.0f));
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-        // frame
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        glDisable(GL_DEPTH_TEST);
-        glClearColor(1, 1, 1, 1);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        program.Use();
-        glBindVertexArray(f_vao);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, fb.color->id);
+        program.SetUniform("model", glm::mat4(1.0f));
+        program.SetUniform("normal_mat",
+                           mat3(glm::transpose(glm::inverse(view * model))));
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
 
@@ -331,12 +303,7 @@ TEST_F(FRBUT, HelloFramebuffer) {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    glDeleteVertexArrays(1, &c_vao);
-    glDeleteVertexArrays(1, &p_vao);
-    glDeleteVertexArrays(1, &f_vao);
-    glDeleteBuffers(1, &c_vbo);
-    glDeleteBuffers(1, &p_vbo);
-    glDeleteBuffers(1, &f_vbo);
+
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
     glfwTerminate();

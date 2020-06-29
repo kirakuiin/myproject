@@ -19,8 +19,10 @@ SET(CMAKE_EXPORT_COMPILE_COMMANDS OFF)
 SOURCE_DIRS(./src
             ./src/object
             ./src/working
-            # ./src/getting_started
-            # ./src/lighting
+            #./src/practice
+            #./src/advance_opengl
+            #./src/getting_started
+            #./src/lighting
             )
 
 INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)

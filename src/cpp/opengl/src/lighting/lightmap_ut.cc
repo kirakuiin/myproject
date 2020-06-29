@@ -29,8 +29,9 @@ static gl::Camera camera(glm::vec3(0, -0.5, 2));
 // ---------------------------------------------------------------------------------------------------------
 inline void processInput(GLFWwindow *window, float delta)
 {
-    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, true);
+    }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         camera.ProcessKeyboard(gl::CAMERA_DIRECT::FORWARD, delta);
     }
@@ -75,7 +76,7 @@ static void scroll_callback(GLFWwindow* window, double x, double y)
     camera.ProcessScroll(y);
 }
 
-class LMTUT : public testing::Test {
+class LTMUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -83,7 +84,7 @@ class LMTUT : public testing::Test {
     void TearDown() override {}
 };
 
-void LMTUT::SetUpTestCase() {
+void LTMUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();

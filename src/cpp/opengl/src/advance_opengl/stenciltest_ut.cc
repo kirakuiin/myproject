@@ -77,7 +77,7 @@ static void scroll_callback(GLFWwindow* window, double x, double y)
     camera.ProcessScroll(y);
 }
 
-class WOKUT : public testing::Test {
+class STCUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -85,7 +85,7 @@ class WOKUT : public testing::Test {
     void TearDown() override {}
 };
 
-void WOKUT::SetUpTestCase() {
+void STCUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();

@@ -34,8 +34,16 @@ static gl::Camera camera(glm::vec3(0, -0.5, 2));
 // ---------------------------------------------------------------------------------------------------------
 inline void processInput(GLFWwindow *window, float delta)
 {
-    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS)
+    static float speed = camera.movement_speed;
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+        camera.movement_speed = 5*speed;
+    }
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE) {
+        camera.movement_speed = speed;
+    }
+    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, true);
+    }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         camera.ProcessKeyboard(gl::CAMERA_DIRECT::FORWARD, delta);
     }

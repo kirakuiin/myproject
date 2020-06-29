@@ -31,13 +31,14 @@ class Texture {
     static std::string GetName(TextureType type) { return _m_type_name[type]; }
 
     // 加载外部图像
-    void LoadImage(const std::string& path);
+    void LoadImage(const std::string& path, bool is_srgb = false);
 
     unsigned int texture = 0;                   // 纹理地址
     TextureType type = TextureType::NONE;       // 纹理类型
 
     int dimension = 0;                          // 图片纬度
     int format = 0;                             // 纹理格式RGBA
+    int s_format = 0;                          // srgb格式
     int width = 0;                              // 图像宽度
     int height = 0;                             // 图像高度
     int nr_channels = 0;                        // 图像通道数

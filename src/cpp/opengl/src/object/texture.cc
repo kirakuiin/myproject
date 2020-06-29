@@ -42,19 +42,30 @@ Texture::~Texture() noexcept {
 }
 
 void
-Texture::LoadImage(const string& path) {
+Texture::LoadImage(const string& path, bool is_srgb) {
     this->path = path;
     unsigned char* data = stbi_load(path.c_str(), &width, &height,
                                     &nr_channels, 0);
     switch (nr_channels) {
         case 1:
             format = GL_RED;
+            s_format = GL_RED;
             break;
         case 3:
             format = GL_RGB;
+            if (is_srgb) {
+                s_format = GL_SRGB;
+            } else {
+                s_format = format;
+            }
             break;
         case 4:
             format = GL_RGBA;
+            if (is_srgb) {
+                s_format = GL_SRGB_ALPHA;
+            } else {
+                s_format = format;
+            }
             break;
     }
     if (data) {
@@ -87,7 +98,7 @@ Texture2D::Texture2D(unsigned int texture)
 void
 Texture2D::BindImage(unsigned char* data) {
     glBindTexture(dimension, texture);
-    glTexImage2D(dimension, 0, format, width,
+    glTexImage2D(dimension, 0, s_format, width,
                  height, 0, format, GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(dimension);
 }
@@ -143,7 +154,7 @@ TextureCube::LoadImages(const std::vector<std::string>& paths) {
 void
 TextureCube::BindImage(unsigned char* data) {
     glBindTexture(dimension, texture);
-    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X+_idx, 0, format, width,
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X+_idx, 0, s_format, width,
                  height, 0, format, GL_UNSIGNED_BYTE, data);
     ++_idx;
 }

@@ -1,8 +1,8 @@
-// working_ut.cc -
+// blackhole_ut.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jun 28
+// Last Change: 2020 Jun 29
 // License: GPL.v3
 
 #include <iostream>
@@ -133,7 +133,7 @@ std::shared_ptr<float> generate_sphere(int r, size_t u_num, size_t v_num) {
     return ptr;
 }
 
-class WOKUT : public testing::Test {
+class BLHUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -141,7 +141,7 @@ class WOKUT : public testing::Test {
     void TearDown() override {}
 };
 
-void WOKUT::SetUpTestCase() {
+void BLHUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -156,7 +156,7 @@ void WOKUT::SetUpTestCase() {
 
 }
 
-TEST_F(WOKUT, Hello) {
+TEST_F(BLHUT, HelloBlackHole) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
