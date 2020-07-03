@@ -35,8 +35,12 @@ Framebuffer::Attach(std::shared_ptr<ColorAttachment> ca,
     color = ca;
     depths = da;
     glBindFramebuffer(GL_FRAMEBUFFER, id);
-    color->Attach();
-    depths->Attach();
+    if (color.get()) {
+        color->Attach();
+    }
+    if (depths.get()) {
+        depths->Attach();
+    }
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
         std::string msg("Framebuffer is not complete!");
         throw FramebufferException(msg);
@@ -140,6 +144,33 @@ MultisampleDepthStencilAttachment::~MultisampleDepthStencilAttachment() noexcept
 void
 MultisampleDepthStencilAttachment::Attach() {
     RenderDepthStencilAttachment::Attach();
+}
+
+ShadowDepthAttachment::ShadowDepthAttachment(int width, int height)
+    : DepthStencilAttachment(width, height) {
+    glGenTextures(1, &id);
+    glBindTexture(GL_TEXTURE_2D, id);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, _width, _height,
+                 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+    float border[] = {1, 1, 1, 1};
+    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, border);
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+ShadowDepthAttachment::~ShadowDepthAttachment() noexcept {
+    glDeleteTextures(1, &id);
+}
+
+void
+ShadowDepthAttachment::Attach() {
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+                           GL_TEXTURE_2D, id, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
 }
 
 } // namespace gl

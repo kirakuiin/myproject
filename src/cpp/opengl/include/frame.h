@@ -111,6 +111,14 @@ class MultisampleDepthStencilAttachment: public RenderDepthStencilAttachment {
     int _samples;        // 采样数
 };
 
+class ShadowDepthAttachment: public DepthStencilAttachment {
+  public:
+    ShadowDepthAttachment(int width, int height);
+    ~ShadowDepthAttachment() noexcept;
+
+    void Attach() override;
+};
+
 class FramebufferException: public GlException {
   public:
     explicit FramebufferException(const std::string& error_message)
