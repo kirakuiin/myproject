@@ -119,6 +119,14 @@ class ShadowDepthAttachment: public DepthStencilAttachment {
     void Attach() override;
 };
 
+class CubeShadowAttachment: public DepthStencilAttachment {
+  public:
+    CubeShadowAttachment(int width, int height);
+    ~CubeShadowAttachment() noexcept;
+
+    void Attach() override;
+};
+
 class FramebufferException: public GlException {
   public:
     explicit FramebufferException(const std::string& error_message)

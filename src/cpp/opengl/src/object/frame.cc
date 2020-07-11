@@ -60,6 +60,7 @@ TextureColorAttachment::TextureColorAttachment(int width, int height)
 }
 
 TextureColorAttachment::~TextureColorAttachment() noexcept {
+    std::cout<<"Release texture attachment!"<<std::endl;
     glDeleteTextures(1, &id);
 }
 
@@ -79,6 +80,7 @@ MultisampleColorAttachment::MultisampleColorAttachment(int width, int height, in
 }
 
 MultisampleColorAttachment::~MultisampleColorAttachment() noexcept {
+    std::cout<<"Release ms attachment!"<<std::endl;
     glDeleteTextures(1, &id);
 }
 
@@ -100,6 +102,7 @@ TextureDepthStencilAttachment::TextureDepthStencilAttachment(int width, int heig
 }
 
 TextureDepthStencilAttachment::~TextureDepthStencilAttachment() noexcept {
+    std::cout<<"Release texture attachment!"<<std::endl;
     glDeleteTextures(1, &id);
 }
 
@@ -118,6 +121,7 @@ RenderDepthStencilAttachment::RenderDepthStencilAttachment(int width, int height
 }
 
 RenderDepthStencilAttachment::~RenderDepthStencilAttachment() noexcept {
+    std::cout<<"Release render attachment!"<<std::endl;
     glDeleteRenderbuffers(1, &id);
 }
 
@@ -138,6 +142,7 @@ MultisampleDepthStencilAttachment::MultisampleDepthStencilAttachment(int width, 
 }
 
 MultisampleDepthStencilAttachment::~MultisampleDepthStencilAttachment() noexcept {
+    std::cout<<"Release ms attachment!"<<std::endl;
     glDeleteRenderbuffers(1, &id);
 }
 
@@ -162,6 +167,7 @@ ShadowDepthAttachment::ShadowDepthAttachment(int width, int height)
 }
 
 ShadowDepthAttachment::~ShadowDepthAttachment() noexcept {
+    std::cout<<"Release shadow attachment!"<<std::endl;
     glDeleteTextures(1, &id);
 }
 
@@ -169,6 +175,35 @@ void
 ShadowDepthAttachment::Attach() {
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
                            GL_TEXTURE_2D, id, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+}
+
+CubeShadowAttachment::CubeShadowAttachment(int width, int height)
+    : DepthStencilAttachment(width, height) {
+    glGenTextures(1, &id);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, id);
+    for (int i = 0; i < 6; ++i) {
+        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0,
+                GL_DEPTH_COMPONENT, _width, _height,
+                0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    }
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+}
+
+CubeShadowAttachment::~CubeShadowAttachment() noexcept {
+    std::cout<<"Release cube attachment!"<<std::endl;
+    glDeleteTextures(1, &id);
+}
+
+void
+CubeShadowAttachment::Attach() {
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, id, 0);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
 }

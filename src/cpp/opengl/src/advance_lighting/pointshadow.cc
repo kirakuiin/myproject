@@ -1,8 +1,8 @@
-// working_ut.cc -
+// pointshadow.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jun 28
+// Last Change: 2020 Jul 11
 // License: GPL.v3
 
 #include <iostream>
@@ -132,7 +132,7 @@ void RenderScene(unsigned int vao, gl::ShaderProgram& pro, bool is_real)
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
-class WOKUT : public testing::Test {
+class POSUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -140,7 +140,7 @@ class WOKUT : public testing::Test {
     void TearDown() override {}
 };
 
-void WOKUT::SetUpTestCase() {
+void POSUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -156,7 +156,7 @@ void WOKUT::SetUpTestCase() {
 
 }
 
-TEST_F(WOKUT, Hello) {
+TEST_F(POSUT, HelloPointShadow) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
