@@ -89,7 +89,7 @@ static void scroll_callback(GLFWwindow* window, double x, double y)
     camera.ProcessScroll(y);
 }
 
-void RenderScene(unsigned int vao, gl::ShaderProgram& pro, bool is_real)
+static void RenderScene(unsigned int vao, gl::ShaderProgram& pro, bool is_real)
 {
     glBindVertexArray(vao);
     mat4 view = camera.GetViewMatrix();

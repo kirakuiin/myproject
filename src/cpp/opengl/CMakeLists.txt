@@ -21,6 +21,7 @@ SOURCE_DIRS(./src
             ./src/working
             #./src/practice
             #./src/advance_opengl
+            #./src/advance_lighting
             #./src/getting_started
             #./src/lighting
             )
