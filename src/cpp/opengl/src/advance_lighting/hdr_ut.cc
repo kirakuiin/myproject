@@ -1,8 +1,8 @@
-// working_ut.cc -
+// hdr_ut.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jun 28
+// Last Change: 2020 Jul 14
 // License: GPL.v3
 
 #include <iostream>
@@ -145,7 +145,7 @@ void WOKUT::SetUpTestCase() {
 
 }
 
-TEST_F(WOKUT, Hello) {
+TEST_F(WOKUT, HelloHDR) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);

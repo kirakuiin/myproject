@@ -65,6 +65,14 @@ class TextureColorAttachment: public ColorAttachment {
     void Attach() override;
 };
 
+class FloatColorAttachment: public ColorAttachment {
+  public:
+    FloatColorAttachment(int width, int height, int format);
+    ~FloatColorAttachment() noexcept;
+
+    void Attach() override;
+};
+
 class MultisampleColorAttachment: public ColorAttachment {
   public:
     MultisampleColorAttachment(int width, int height, int samples);
