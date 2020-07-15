@@ -9,6 +9,7 @@
 #define __CPP_OPENGL_INCLUDE_FRAME_H__
 
 #include <memory>
+#include <vector>
 
 #include "exception.h"
 
@@ -27,8 +28,9 @@ class Framebuffer {
     void Attach(std::shared_ptr<ColorAttachment> ca,
                 std::shared_ptr<DepthStencilAttachment> da);
 
-    unsigned int id;                            // 帧缓冲id
+    unsigned int id;                                        // 帧缓冲id
     std::shared_ptr<ColorAttachment> color;
+    std::vector<std::shared_ptr<ColorAttachment>> colors;
     std::shared_ptr<DepthStencilAttachment> depths;
   private:
 };
@@ -52,14 +54,18 @@ class BufferAttachment {
 
 class ColorAttachment: public BufferAttachment {
   public:
-    ColorAttachment(int width, int height): BufferAttachment(width, height) {}
+    ColorAttachment(int width, int height, int index=0)
+        : BufferAttachment(width, height), _index(index) {}
 
     virtual void Attach() = 0;
+
+  protected:
+    int _index;             // 颜色缓冲索引
 };
 
 class TextureColorAttachment: public ColorAttachment {
   public:
-    TextureColorAttachment(int width, int height);
+    TextureColorAttachment(int width, int height, int index=0);
     ~TextureColorAttachment() noexcept;
 
     void Attach() override;
@@ -67,7 +73,7 @@ class TextureColorAttachment: public ColorAttachment {
 
 class FloatColorAttachment: public ColorAttachment {
   public:
-    FloatColorAttachment(int width, int height, int format);
+    FloatColorAttachment(int width, int height, int format, int index=0);
     ~FloatColorAttachment() noexcept;
 
     void Attach() override;
@@ -75,7 +81,7 @@ class FloatColorAttachment: public ColorAttachment {
 
 class MultisampleColorAttachment: public ColorAttachment {
   public:
-    MultisampleColorAttachment(int width, int height, int samples);
+    MultisampleColorAttachment(int width, int height, int samples, int index=0);
     ~MultisampleColorAttachment() noexcept;
 
     void Attach() override;

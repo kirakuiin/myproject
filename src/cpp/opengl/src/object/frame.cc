@@ -32,14 +32,15 @@ Framebuffer::~Framebuffer() noexcept {
 void
 Framebuffer::Attach(std::shared_ptr<ColorAttachment> ca,
                     std::shared_ptr<DepthStencilAttachment> da) {
-    color = ca;
+    colors.push_back(ca);
+    color = colors[0];
     depths = da;
     glBindFramebuffer(GL_FRAMEBUFFER, id);
-    if (color.get()) {
-        color->Attach();
+    if (ca.get()) {
+        ca->Attach();
     }
-    if (depths.get()) {
-        depths->Attach();
+    if (da.get()) {
+        da->Attach();
     }
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
         std::string msg("Framebuffer is not complete!");
@@ -48,8 +49,8 @@ Framebuffer::Attach(std::shared_ptr<ColorAttachment> ca,
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-TextureColorAttachment::TextureColorAttachment(int width, int height)
-    : ColorAttachment(width, height) {
+TextureColorAttachment::TextureColorAttachment(int width, int height, int index)
+    : ColorAttachment(width, height, index) {
     glGenTextures(1, &id);
     glBindTexture(GL_TEXTURE_2D, id);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _width, _height, 0, GL_RGB,
@@ -66,18 +67,20 @@ TextureColorAttachment::~TextureColorAttachment() noexcept {
 
 void
 TextureColorAttachment::Attach() {
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + _index,
                            GL_TEXTURE_2D, id, 0);
 }
 
-FloatColorAttachment::FloatColorAttachment(int width, int height, int format)
-    : ColorAttachment(width, height) {
+FloatColorAttachment::FloatColorAttachment(int width, int height, int format, int index)
+    : ColorAttachment(width, height, index) {
     glGenTextures(1, &id);
     glBindTexture(GL_TEXTURE_2D, id);
     glTexImage2D(GL_TEXTURE_2D, 0, format, _width, _height, 0, GL_RGB,
             GL_FLOAT, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
@@ -88,12 +91,12 @@ FloatColorAttachment::~FloatColorAttachment() noexcept {
 
 void
 FloatColorAttachment::Attach() {
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + _index,
                            GL_TEXTURE_2D, id, 0);
 }
 
-MultisampleColorAttachment::MultisampleColorAttachment(int width, int height, int samples)
-    : ColorAttachment(width, height), _samples(samples) {
+MultisampleColorAttachment::MultisampleColorAttachment(int width, int height, int samples, int index)
+    : ColorAttachment(width, height, index), _samples(samples) {
     glGenTextures(1, &id);
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, id);
     glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, _samples, GL_RGB, _width,
@@ -108,7 +111,7 @@ MultisampleColorAttachment::~MultisampleColorAttachment() noexcept {
 
 void
 MultisampleColorAttachment::Attach() {
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + _index,
                            GL_TEXTURE_2D_MULTISAMPLE, id, 0);
 }
 
