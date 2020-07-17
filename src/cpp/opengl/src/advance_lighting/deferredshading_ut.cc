@@ -1,8 +1,8 @@
-// working_ut.cc -
+// deferredshading_ut.cc -
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jun 28
+// Last Change: 2020 Jul 17
 // License: GPL.v3
 
 #include <iostream>
@@ -132,7 +132,7 @@ static void RenderScene(unsigned int vao, gl::Model& mod, gl::ShaderProgram& pro
     mod.Draw(pro);
 }
 
-class WOKUT : public testing::Test {
+class DFSUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -140,7 +140,7 @@ class WOKUT : public testing::Test {
     void TearDown() override {}
 };
 
-void WOKUT::SetUpTestCase() {
+void DFSUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -156,7 +156,7 @@ void WOKUT::SetUpTestCase() {
 
 }
 
-TEST_F(WOKUT, Hello) {
+TEST_F(DFSUT, HelloDeferredShading) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
@@ -335,6 +335,7 @@ TEST_F(WOKUT, Hello) {
         float light_max = std::fmaxf(std::fmaxf(light_colors[i].r,
                                                 light_colors[i].g),
                                      light_colors[i].b);
+        // 计算光体积
         float radius =
             (-linear +  std::sqrtf(linear * linear - 4 * quadratic *
                                    (constant- (256.0 / 5.0) * light_max))
