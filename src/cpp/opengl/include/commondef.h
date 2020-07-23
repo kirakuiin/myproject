@@ -14,6 +14,8 @@
 #include <sstream>
 #include <memory>
 
+#include "include/glm/glm.hpp"
+
 using std::cout;
 using std::endl;
 using std::ifstream;
@@ -27,6 +29,17 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 const unsigned int INFO_LEN = 512;
 
+inline void PrintVec(glm::vec2 vect) {
+    cout<<"("<<vect.x<<", "<<vect.y<<")"<<endl;
+}
+
+inline void PrintVec(glm::vec3 vect) {
+    cout<<"("<<vect.x<<", "<<vect.y<<", "<<vect.z<<")"<<endl;
+}
+
+inline void PrintVec(glm::vec4 vect) {
+    cout<<"("<<vect.x<<", "<<vect.y<<", "<<vect.z<<", "<<vect.w<<")"<<endl;
+}
 
 } // namespace gldef
 
