@@ -15,6 +15,7 @@ uniform mat4 projection;
 const vec2 noise_scale = vec2(800.0/4, 600.0/4);
 const int kernel_size = 64;
 const float radius = 1.0;
+const float bias = 0.025;
 
 void main()
 {
@@ -38,9 +39,9 @@ void main()
         offset.xyz /= offset.w; // 透视除法
         offset.xyz = offset.xyz * 0.5 + 0.5; // 变换到ndc坐标
 
-        float sample_depth = texture(g_position, offset.xy).w;
+        float sample_depth = texture(g_position, offset.xy).z;
         float range_check = smoothstep(0.0, 1.0, radius/abs(frag_pos.z-sample_depth));
-        occlusion += (sample_depth >= sample.z ? 1.0 : 0.0) * range_check;
+        occlusion += (sample_depth >= sample.z+bias ? 1.0 : 0.0) * range_check;
     }
     occlusion = 1.0 - (occlusion / kernel_size);
     frag_color = vec4(occlusion);

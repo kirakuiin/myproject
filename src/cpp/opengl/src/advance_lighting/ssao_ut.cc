@@ -2,7 +2,7 @@
 // Version: 1.0
 // Author: Wang Zhuowei wang.zhuowei@foxmail.com
 // Copyright: (c) wang.zhuowei@foxmail.com All rights reserved.
-// Last Change: 2020 Jul 23
+// Last Change: 2020 Jul 24
 // License: GPL.v3
 
 #include <iostream>
@@ -120,6 +120,13 @@ static void RenderScene(unsigned int vao, gl::Model& mod, gl::ShaderProgram& pro
     model = glm::rotate(model, glm::radians(180.0f), vec3(0, 0, 1));
     pro.SetUniform("model", model);
     mod.Draw(pro);
+
+    model = mat4(1);
+    model = glm::translate(model, vec3(0, -1.4, 1));
+    model = glm::scale(model, vec3(20, 20, 20));
+    pro.SetUniform("model", model);
+    glBindVertexArray(vao);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
 class SAOUT : public testing::Test {
@@ -146,7 +153,7 @@ void SAOUT::SetUpTestCase() {
 
 }
 
-TEST_F(SAOUT, HelloSsao) {
+TEST_F(SAOUT, HelloSSAO) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
@@ -172,47 +179,12 @@ TEST_F(SAOUT, HelloSsao) {
     // set vertex
     float cube_vertices[] = {
         // positions        //normal  // texture Coords
-        -0.5f, -0.5f, -0.5f, 0, 0, -1, 0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f, 0, 0, -1, 0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  0, 0, -1, 1.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  0, 0, -1, 1.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0, 0, -1, 1.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f, 0, 0, -1, 0.0f, 0.0f,
-
-        -0.5f, -0.5f,  0.5f, 0, 0, 1, 0.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  0, 0, 1, 1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  0, 0, 1, 1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  0, 0, 1, 1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f, 0, 0, 1, 0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f, 0, 0, 1, 0.0f, 0.0f,
-
-        -0.5f,  0.5f,  0.5f, -1, 0, 0, 1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f, -1, 0, 0, 0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, -1, 0, 0, 0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f, -1, 0, 0, 0.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f, -1, 0, 0, 1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f, -1, 0, 0, 1.0f, 1.0f,
-
-        0.5f,  0.5f,  0.5f, 1, 0, 0, 1.0f, 1.0f,
-        0.5f, -0.5f,  0.5f, 1, 0, 0, 1.0f, 0.0f,
-        0.5f, -0.5f, -0.5f, 1, 0, 0, 0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f, 1, 0, 0, 0.0f, 0.0f,
-        0.5f,  0.5f, -0.5f, 1, 0, 0, 0.0f, 1.0f,
-        0.5f,  0.5f,  0.5f, 1, 0, 0, 1.0f, 1.0f,
-
-        -0.5f, -0.5f, -0.5f, 0, -1, 0, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0, -1, 0, 1.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  0, -1, 0, 1.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  0, -1, 0, 1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f, 0, -1, 0, 0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f, 0, -1, 0, 0.0f, 1.0f,
-
-        -0.5f,  0.5f, -0.5f, 0, 1, 0, 0.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f, 0, 1, 0, 0.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  0, 1, 0, 1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  0, 1, 0, 1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  0, 1, 0, 1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f, 0, 1, 0, 0.0f, 1.0f
+        -0.5f,  0, -0.5f, 0, 1, 0, 0.0f, 1.0f,
+        -0.5f,  0,  0.5f, 0, 1, 0, 0.0f, 0.0f,
+        0.5f,  0,  0.5f,  0, 1, 0, 1.0f, 0.0f,
+        0.5f,  0,  0.5f,  0, 1, 0, 1.0f, 0.0f,
+        0.5f,  0, -0.5f,  0, 1, 0, 1.0f, 1.0f,
+        -0.5f,  0, -0.5f, 0, 1, 0, 0.0f, 1.0f
     };
 
     unsigned vao, vbo;
@@ -334,7 +306,6 @@ TEST_F(SAOUT, HelloSsao) {
     fb.Attach(flura, nullptr);
 
     // set light
-    const int LIGHT_NUMS = 1;
     light_posis.push_back(vec3(-10, 10, 10));
     light_colors.push_back(vec3(0, 0, 80));
 
@@ -365,6 +336,15 @@ TEST_F(SAOUT, HelloSsao) {
             0.0f
         );
         ssao_noise.push_back(noise);
+    }
+    sp.Use();
+    mat4 projection = glm::perspective(
+            glm::radians(45.0f),
+            (float)gldef::SCR_WIDTH/gldef::SCR_HEIGHT, 0.1f, 75.0f
+            );
+    sp.SetUniform("projection", projection);
+    for (int i = 0; i < 64; ++i) {
+        sp.SetUniform("samples[" + std::to_string(i) + "]", ssao_kernel[i]);
     }
     unsigned int noise_tex;
     glGenTextures(1, &noise_tex);
@@ -409,30 +389,21 @@ TEST_F(SAOUT, HelloSsao) {
         glDrawBuffers(3, attachments);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        RenderScene(pvao, nanosuit, gp);
+        RenderScene(vao, nanosuit, gp);
 
         // ssao
         glBindFramebuffer(GL_FRAMEBUFFER, sb.id);
         glClear(GL_COLOR_BUFFER_BIT);
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < 2; ++i) {
             glActiveTexture(GL_TEXTURE0 + i);
             glBindTexture(GL_TEXTURE_2D, gb.colors[i]->id);
         }
-        glActiveTexture(GL_TEXTURE3);
+        glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, noise_tex);
         sp.Use();
-        mat4 projection = glm::perspective(
-            glm::radians(45.0f),
-            (float)gldef::SCR_WIDTH/gldef::SCR_HEIGHT, 0.1f, 75.0f
-        );
         sp.SetUniform("g_position", 0);
         sp.SetUniform("g_normal", 1);
-        sp.SetUniform("g_albedospec", 2);
-        sp.SetUniform("noise_tex", 3);
-        sp.SetUniform("projection", projection);
-        for (int i = 0; i < 64; ++i) {
-            sp.SetUniform("samples[" + std::to_string(i) + "]", ssao_kernel[i]);
-        }
+        sp.SetUniform("tex_noise", 2);
         glBindVertexArray(pvao);
         glDrawArrays(GL_TRIANGLES, 0, 6);
 

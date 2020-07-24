@@ -1,8 +1,8 @@
 #version 330 core
 
-layout (location = 0) out vec4 g_position;
+layout (location = 0) out vec3 g_position;
 layout (location = 1) out vec3 g_normal;
-layout (location = 2) out vec4 g_albedospec;
+layout (location = 2) out vec3 g_albedospec;
 
 in VS_OUT {
     vec3 frag_pos;
@@ -22,8 +22,7 @@ float LinearizeDepth(float depth) {
 
 void main()
 {
-    g_position.xyz = vs_in.frag_pos;
-    g_position.w = LinearizeDepth(gl_FragCoord.z);
+    g_position = vs_in.frag_pos;
     g_normal = normalize(vs_in.normal);
-    g_albedospec.rgb = vec3(1);
+    g_albedospec = vec3(0.95);
 }
