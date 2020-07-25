@@ -71,6 +71,11 @@ IF(${NEED_ASSIMP})
     FIND_PACKAGE(Assimp REQUIRED)
 ENDIF()
 
+# 配置freetype依赖
+IF(${NEED_FREETYPE})
+    FIND_PACKAGE(freetype REQUIRED)
+ENDIF()
+
 IF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../public)
     GET_FILENAME_COMPONENT(PARENT_PATH ${CMAKE_CURRENT_SOURCE_DIR} PATH)
     # 设置自定义idl路径
@@ -93,6 +98,7 @@ SET(LINK_ALL_LIBS   ${LINK_SDL2_LIBS}
                     ${LINK_GLFW_LIBS}
                     ${LINK_STB_IMAGE_LIBS}
                     ${LINK_ASSIMP_LIBS}
+                    ${LINK_FREETYPE_LIBS}
                     )
 
 MESSAGE(STATUS "SET LINK_ALL_LIBS = ${LINK_ALL_LIBS}")
