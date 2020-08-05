@@ -29,16 +29,13 @@ struct Character {
 class Font {
   public:
     // 字体路径和字体高度
-    explicit Font(const std::string& ttf_path, int height = 48);
+    explicit Font(float width, float height);
     ~Font() noexcept;
 
-    void SetScreenSize(float width, float height);
+    void Load(const std::string& ttf_path, int height = 48);
 
-    void SetFontColor(const glm::vec3& color);
-
-    void SetFontSizeScale(float scale);
-
-    void Draw(const std::string& text, const glm::vec2& pos);
+    void Draw(const std::string& text, const glm::vec2& pos,
+              const glm::vec3& color = glm::vec3(1.0), float scale = 1.0f);
 
   private:
 
@@ -52,8 +49,6 @@ class Font {
 
     float                           _width;
     float                           _height;
-    glm::vec3                       _color;
-    float                           _scale;
 };
 
 class FontException: public GlException {

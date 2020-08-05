@@ -6,23 +6,14 @@
 // License: GPL.v3
 
 #include <iostream>
-#include <random>
-#include <vector>
-#include <map>
 #include <gtest/gtest.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <stb_image.h>
 #include "include/commondef.h"
-#include "include/shader.h"
 #include "include/frame.h"
-#include "include/camera.h"
-#include "include/model.h"
-#include "include/texture.h"
 #include "include/glm/glm.hpp"
-#include "include/glm/gtc/matrix_transform.hpp"
-#include "include/glm/gtc/type_ptr.hpp"
-#include "include/font.h"
+#include "game.h"
+#include "gameobj.h"
 
 using std::cout;
 using std::endl;
@@ -32,67 +23,27 @@ using glm::vec4;
 using glm::mat4;
 using glm::mat3;
 
-static gl::Camera camera(glm::vec3(0, 10, 10));
-
-static std::vector<vec3> light_posis;
-static std::vector<vec3> light_colors;
+// global variables
+namespace {
+Game breakout(gldef::SCR_WIDTH, gldef::SCR_HEIGHT);
+} // namespace
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-inline void processInput(GLFWwindow *window, float delta)
+inline void KeyCallback(GLFWwindow *window, int key, int scancode, int action,
+                        int mode)
 {
-    static float speed = camera.movement_speed;
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
-        camera.movement_speed = 5*speed;
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, GL_TRUE);
     }
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE) {
-        camera.movement_speed = speed;
+    if (key >= 0 && key < 1024) {
+        if (action == GLFW_PRESS) {
+            breakout.keys[key] = true;
+        } else if (action == GLFW_RELEASE) {
+            breakout.keys[key] = false;
+            breakout.keys_just_rel[key] = true;
+        }
     }
-    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS) {
-        glfwSetWindowShouldClose(window, true);
-    }
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        camera.ProcessKeyboard(gl::CAMERA_DIRECT::FORWARD, delta);
-    }
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        camera.ProcessKeyboard(gl::CAMERA_DIRECT::BACKWARD, delta);
-    }
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        camera.ProcessKeyboard(gl::CAMERA_DIRECT::LEFT, delta);
-    }
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        camera.ProcessKeyboard(gl::CAMERA_DIRECT::RIGHT, delta);
-    }
-}
-
-// glfw: whenever the window size changed (by OS or user resize) this callback function executes
-// ---------------------------------------------------------------------------------------------
-inline void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-    // make sure the viewport matches the new window dimensions; note that width and
-    // height will be significantly larger than specified on retina displays.
-    glViewport(0, 0, width, height);
-}
-
-// glfw: whenever the mouse move. this callback function execute
-static void mouse_callback(GLFWwindow*, double x, double y)
-{
-    static bool first_move = true;
-    static float last_x, last_y;
-    if (first_move) {
-        first_move = false;
-    } else {
-        float x_offset = x - last_x;
-        float y_offset = last_y - y;
-        camera.ProcessMouse(x_offset, y_offset);
-    }
-    last_x = x;
-    last_y = y;
-}
-
-static void scroll_callback(GLFWwindow* window, double x, double y)
-{
-    camera.ProcessScroll(y);
 }
 
 class WOKUT : public testing::Test {
@@ -111,7 +62,8 @@ void WOKUT::SetUpTestCase() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_DOUBLEBUFFER,GL_TRUE);
-    glfwWindowHint(GLFW_SAMPLES ,4);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_SAMPLES, 4);
 
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -122,18 +74,14 @@ void WOKUT::SetUpTestCase() {
 TEST_F(WOKUT, Hello) {
     // glfw window creation
     // --------------------
-    GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "Breakout", NULL, NULL);
     if (window == NULL)
     {
         cout << "Failed to create GLFW window" << endl;
         glfwTerminate();
     }
     glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    glfwSetCursorPosCallback(window, mouse_callback);
-    glfwSetScrollCallback(window, scroll_callback);
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    stbi_set_flip_vertically_on_load(true);
+    glfwSetKeyCallback(window, KeyCallback);
 
     // glad: load all OpenGL function pointers
     // ---------------------------------------
@@ -143,47 +91,41 @@ TEST_F(WOKUT, Hello) {
     }
 
     // enable something
-    glEnable(GL_DEPTH_TEST);
-    // glEnable(GL_CULL_FACE);
-    // glCullFace(GL_FRONT);
-    // glEnable(GL_MULTISAMPLE);
-    gl::Font menlo("/System/Library/Fonts/Menlo.ttc");
+    glViewport(0, 0, gldef::SCR_WIDTH, gldef::SCR_HEIGHT);
+    glEnable(GL_MULTISAMPLE);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    breakout.Init();
 
     // render loop
     // -----------
     float deltaTime = 0;
     float lastFrame = 0;
-    while (!glfwWindowShouldClose(window)) {
+    while (!glfwWindowShouldClose(window)
+           || breakout.state == GameState::GAME_EXIT) {
         // per-frame time logic
         // --------------------
         float currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
+        glfwPollEvents();
 
         // input
-        // -----
-        processInput(window, deltaTime);
+        breakout.ProcessInput(deltaTime);
+
+        breakout.Update(deltaTime);
 
         // render
         // ------
-        // 几何计算
-        glClearColor(0, 1, 1, 0);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        menlo.SetFontColor(vec3(1, 0, 0));
-        menlo.SetFontSizeScale(0.5);
-        menlo.Draw("hello world!", vec2(250, 200));
-        menlo.SetFontColor(vec3(0, 0, 1));
-        menlo.SetFontSizeScale(0.75);
-        menlo.Draw("hello world!", vec2(250, 300));
-        menlo.SetFontColor(vec3(0, 1, 0));
-        menlo.SetFontSizeScale(1.5);
-        menlo.Draw("hello world!", vec2(250, 400));
+        glClearColor(0, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
+        breakout.Render();
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
-        glBindVertexArray(0);
         glfwSwapBuffers(window);
-        glfwPollEvents();
     }
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------

@@ -145,9 +145,9 @@ TextureCube::LoadImages(const std::vector<std::string>& paths) {
     }
     Texture::SetParam(dimension, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     Texture::SetParam(dimension, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    Texture::SetParam(dimension, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    Texture::SetParam(dimension, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    Texture::SetParam(dimension, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    Texture::SetParam(dimension, GL_TEXTURE_WRAP_R, GL_REPEAT);
     _idx = 0;
 }
 

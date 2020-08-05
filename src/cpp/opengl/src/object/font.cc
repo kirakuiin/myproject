@@ -23,9 +23,25 @@ using glm::ivec2;
 
 // ascii 字符集
 
-Font::Font(const string& ttf_path, int height)
+Font::Font(float width, float height)
     : _pshader(nullptr),
-      _width(800), _height(600), _color(0), _scale(1.0) {
+      _width(width), _height(height) {
+    InitShader();
+    InitMemory();
+}
+
+Font::~Font() noexcept {
+    try {
+        glDeleteBuffers(1, &_vbo);
+        std::cout << "Release font object." << std::endl;
+    }
+    catch (...) {
+        std::cout<<"Release font failed."<<std::endl;
+    }
+}
+
+void
+Font::Load(const string& ttf_path, int height) {
     FT_Library ft;
     if (FT_Init_FreeType(&ft)) {
         string err_msg("Error: Could not init freetype library.");
@@ -68,39 +84,11 @@ Font::Font(const string& ttf_path, int height)
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
-
-    InitShader();
-    InitMemory();
-}
-
-Font::~Font() noexcept {
-    try {
-        glDeleteBuffers(1, &_vbo);
-        std::cout << "Release font object." << std::endl;
-    }
-    catch (...) {
-        std::cout<<"Release font failed."<<std::endl;
-    }
 }
 
 void
-Font::SetScreenSize(float width, float height) {
-    _width = width;
-    _height = height;
-}
-
-void
-Font::SetFontColor(const glm::vec3& color) {
-    _color = color;
-}
-
-void
-Font::SetFontSizeScale(float scale) {
-    _scale = scale;
-}
-
-void
-Font::Draw(const std::string& text, const glm::vec2& pos) {
+Font::Draw(const std::string& text, const glm::vec2& pos,
+           const glm::vec3& color, float scale) {
     // save content
     GLboolean value(false);
     glGetBooleanv(GL_BLEND, &value);
@@ -110,8 +98,8 @@ Font::Draw(const std::string& text, const glm::vec2& pos) {
     float x = pos.x;
     float y = pos.y;
     _pshader->Use();
-    _pshader->SetUniform("texcolor", _color);
-    glm::mat4 projection = glm::ortho(0.0f, _width, 0.0f, _height);
+    _pshader->SetUniform("texcolor", color);
+    glm::mat4 projection = glm::ortho(0.0f, _width, _height, 0.0f, -1.0f, 1.0f);
     _pshader->SetUniform("projection", projection);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(_vao);
@@ -119,19 +107,19 @@ Font::Draw(const std::string& text, const glm::vec2& pos) {
     for (const auto& c: text) {
         const Character& ch = _characters[c];
 
-        float x_pos = x + ch.bearing.x * _scale;
-        float y_pos = y - (ch.size.y - ch.bearing.y) * _scale;
+        float x_pos = x + ch.bearing.x * scale;
+        float y_pos = y + (_characters['H'].bearing.y - ch.bearing.y) * scale;
 
-        float w = ch.size.x * _scale;
-        float h = ch.size.y * _scale;
+        float w = ch.size.x * scale;
+        float h = ch.size.y * scale;
 
         float vertices[6][4] = {
-            {x_pos, y_pos + h, 0, 0},
-            {x_pos, y_pos, 0, 1},
-            {x_pos + w, y_pos, 1, 1},
-            {x_pos, y_pos + h, 0, 0},
-            {x_pos + w, y_pos, 1, 1},
-            {x_pos + w, y_pos + h, 1, 0},
+            {x_pos, y_pos + h, 0, 1},
+            {x_pos + w, y_pos, 1, 0},
+            {x_pos, y_pos, 0, 0},
+            {x_pos, y_pos + h, 0, 1},
+            {x_pos + w, y_pos + h, 1, 1},
+            {x_pos + w, y_pos, 1, 0},
         };
 
         glBindTexture(GL_TEXTURE_2D, ch.texture_id);
@@ -140,7 +128,7 @@ Font::Draw(const std::string& text, const glm::vec2& pos) {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glDrawArrays(GL_TRIANGLES, 0, 6);
 
-        x += (ch.advance >> 6) * _scale;
+        x += (ch.advance >> 6) * scale;
     }
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);

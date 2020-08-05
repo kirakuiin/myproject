@@ -147,7 +147,8 @@ TEST_F(FOTUT, HelloFont) {
     // glEnable(GL_CULL_FACE);
     // glCullFace(GL_FRONT);
     // glEnable(GL_MULTISAMPLE);
-    gl::Font menlo("/System/Library/Fonts/Menlo.ttc");
+    gl::Font menlo(gldef::SCR_WIDTH, gldef::SCR_HEIGHT);
+    menlo.Load("images/fonts/NewYork.ttf");
 
     // render loop
     // -----------
@@ -169,14 +170,8 @@ TEST_F(FOTUT, HelloFont) {
         // 几何计算
         glClearColor(0, 1, 1, 0);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        menlo.SetFontColor(vec3(1, 0, 0));
-        menlo.SetFontSizeScale(0.5);
         menlo.Draw("hello world!", vec2(250, 200));
-        menlo.SetFontColor(vec3(0, 0, 1));
-        menlo.SetFontSizeScale(0.75);
         menlo.Draw("hello world!", vec2(250, 300));
-        menlo.SetFontColor(vec3(0, 1, 0));
-        menlo.SetFontSizeScale(1.5);
         menlo.Draw("hello world!", vec2(250, 400));
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)

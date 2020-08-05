@@ -10,6 +10,7 @@ SET(NEED_GLFW TRUE)
 SET(NEED_ASSIMP TRUE)
 SET(NEED_FREETYPE TRUE)
 SET(NEED_STB_IMAGE TRUE)
+SET(NEED_IRRKLANG TRUE)
 SET(TARGET_NAME gl)
 SET(TARGET_TYPE RUNTIME)
 SET(NEED_COPY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/resource/)
@@ -20,11 +21,16 @@ SET(CMAKE_EXPORT_COMPILE_COMMANDS OFF)
 SOURCE_DIRS(./src
             ./src/object
             ./src/working
-            #./src/practice
-            #./src/advance_opengl
-            #./src/advance_lighting
-            #./src/getting_started
-            #./src/lighting
+            ./src/practice/breakout
+            ./src/practice/breakout/src
+            ./src/practice
+            ./src/advance_opengl
+            ./src/advance_lighting
+            ./src/getting_started
+            ./src/lighting
+            ./src/model
             )
+
+INCLUDE_DIRECTORIES(./src/practice/breakout/include)
 
 INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)

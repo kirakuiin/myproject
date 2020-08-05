@@ -121,7 +121,7 @@ static void RenderScene(unsigned int vao, gl::ShaderProgram& pro)
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
-class WOKUT : public testing::Test {
+class HDRUT : public testing::Test {
   public:
     static void SetUpTestCase();
     static void TearDownTestCase() {}
@@ -129,7 +129,7 @@ class WOKUT : public testing::Test {
     void TearDown() override {}
 };
 
-void WOKUT::SetUpTestCase() {
+void HDRUT::SetUpTestCase() {
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -145,7 +145,7 @@ void WOKUT::SetUpTestCase() {
 
 }
 
-TEST_F(WOKUT, HelloHDR) {
+TEST_F(HDRUT, HelloHDR) {
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(gldef::SCR_WIDTH, gldef::SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
