@@ -5,6 +5,10 @@ build/
 #cpp dir
 /src/cpp/test/*
 
+#compile infomation
+compile_commands.json
+.clangd/
+
 #python cache
 *.pyc
 

@@ -16,21 +16,24 @@ SET(TARGET_TYPE RUNTIME)
 SET(NEED_COPY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/resource/)
 SET(AUTO_RUN ON)
 SET(RUN_ARGS --gtest_filter=WOKUT.Hello)
-SET(CMAKE_EXPORT_COMPILE_COMMANDS OFF)
+# 开启生成compile_commands.json 用于代码分析
+SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+INCLUDE_DIRECTORIES(./src/practice/breakout/include)
+# 手动包含标准库是为了在compile_commands.json中生成带有-I/stdlib的命令
+include_directories(/Library/Developer/CommandLineTools/usr/include/c++/v1)
 
 SOURCE_DIRS(./src
             ./src/object
             ./src/working
             ./src/practice/breakout
             ./src/practice/breakout/src
-            ./src/practice
-            ./src/advance_opengl
-            ./src/advance_lighting
-            ./src/getting_started
-            ./src/lighting
-            ./src/model
+            #./src/practice
+            #./src/advance_opengl
+            #./src/advance_lighting
+            #./src/getting_started
+            #./src/lighting
+            #./src/model
             )
-
-INCLUDE_DIRECTORIES(./src/practice/breakout/include)
 
 INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)
