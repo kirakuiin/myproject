@@ -4,3 +4,6 @@
 [submodule "src/vim/vftplug"]
 	path = src/vim/vftplug
 	url = git@github.com:kirakuiin/vftplug.git
+[submodule "src/emacs/cemacs"]
+	path = src/emacs/cemacs
+	url = git@github.com:kirakuiin/cemacs.git

@@ -52,32 +52,37 @@ plugins=(git brew node npm)   #自己按需把要用的 plugin 写上
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+export MVIM=/Applications/MacVim.app/Contents/bin
+export EMAC=/Applications/Emacs.app/Contents/MacOS
 export ZSH=/Users/lambda/.oh-my-zsh
 export HOSTCONN=/Users/lambda/.host_conn
-export PYSITE36=/Users/lambda/Library/Python/3.6/bin
-export PATH=$PATH:$HOSTCONN:$PYSITE36:/usr/local/opt/gettext/bin
+export PYSITE37=/Users/lambda/Library/Python/3.7/bin
+export OPENSSL=/usr/local/opt/openssl/bin
+export LLVM=/usr/local/opt/llvm/bin
+export GTEXT=/usr/local/opt/gettext/bin
+export PATH=$HOSTCONN:$PYSITE37:$MVIM:$OPENSSL:$GTEXT:$PATH
 export MYDEV=~/Develop/code/MyProject
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # some function
 #######################################
@@ -182,10 +187,10 @@ function RemovePyVenv() {
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # general alias
-alias ep="vi ~/.zshrc"
+alias ep="vim ~/.zshrc"
 alias sp="source ~/.zshrc"
 alias zshupate="upgrade_oh_my_zsh"
-alias vi="mvim"
+alias vi="vim"
 
 # git alias
 alias gr="git reset --hard HEAD"
@@ -205,7 +210,7 @@ alias mc="makec debug cleanall"
 alias mrc="makec release cleanall"
 
 # ssh alias
-alias sshc7="ssh root@192.168.248.95"
+alias sshc7="ssh root@192.168.53.156"
 alias sshse="ssh root@192.168.244.124"
 
 # pyenv alias
