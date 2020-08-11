@@ -1,0 +1,30 @@
+project(boostlite)
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_POLICY(VERSION 2.8)
+
+INCLUDE($ENV{MYCMAKE}/common/header.cmake)
+SET(TARGET_NAME boostlite)
+SET(TARGET_TYPE LIBRARY)
+
+# context缺少大量文件, 不编译影响未知
+SOURCE_DIRS(./libs/system/src
+            ./libs/timer/src
+            ./libs/thread/src
+            ./libs/thread/src/pthread
+            ./libs/serialization/src
+            ./libs/regex/src
+            ./libs/program_options/src
+            ./libs/filesystem/src
+            ./libs/exception/src
+            ./libs/date_time/src/posix_time
+            ./libs/coroutine/src
+            ./libs/coroutine/src/detail
+            ./libs/coroutine/src/posix
+            # ./libs/context/src
+            ./libs/chrono/src
+            ./libs/atomic/src
+            )
+
+INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)
+

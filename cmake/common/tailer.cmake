@@ -105,6 +105,8 @@ SET(LINK_ALL_LIBS   ${LINK_SDL2_LIBS}
                     ${LINK_ASSIMP_LIBS}
                     ${LINK_FREETYPE_LIBS}
                     ${LINK_IRRKLANG_LIBS}
+                    ${LINK_BOOST_LIBS}
+                    ${LINK_ALL_LIBS}
                     )
 
 MESSAGE(STATUS "SET LINK_ALL_LIBS = ${LINK_ALL_LIBS}")
