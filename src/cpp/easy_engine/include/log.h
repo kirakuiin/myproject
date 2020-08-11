@@ -16,6 +16,7 @@
 #include <string>
 
 namespace easy_engine {
+namespace tools {
 
 // 日志级别. 级别由低到高为DEBUG->CRITICAL
 enum class LoggingLevel {
@@ -87,6 +88,8 @@ class Logging {
   boost::format _output_fmt;   // 输出格式
   std::ofstream _output_file;  // 输出文件
 };
+
+}  // namespace tools
 }  // namespace easy_engine
 
-#endif // __CPP_EASY_ENGINE_INCLUDE_LOG_H__
+#endif  // __CPP_EASY_ENGINE_INCLUDE_LOG_H__

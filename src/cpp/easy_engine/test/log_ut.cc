@@ -8,13 +8,11 @@
 #include <gtest/gtest.h>
 
 #include <iostream>
-#include <mutex>
-#include <shared_mutex>
 
 #include "log.h"
 
-using easy_engine::Logging;
-using easy_engine::LoggingLevel;
+using easy_engine::tools::Logging;
+using easy_engine::tools::LoggingLevel;
 using std::cout;
 using std::endl;
 
@@ -42,5 +40,3 @@ TEST_F(LOGUT, BasicTest) {
   logger->Error("It's a error message");
   logger->Debug("It's a debug message");
 }
-
-TEST_F(LOGUT, BOOSTTEST) {}

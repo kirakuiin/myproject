@@ -20,6 +20,7 @@ boost::shared_mutex Mutex;
 }  // namespace
 
 namespace easy_engine {
+namespace tools {
 
 std::map<std::string, std::shared_ptr<Logging>> Logging::_sm_loggers;
 std::shared_ptr<Logging>                        Logging::_sp_global_logger;
@@ -118,4 +119,5 @@ void Logging::Output(const std::string &msg) {
   }
 }
 
+}  // namespace tools
 }  // namespace easy_engine
