@@ -21,7 +21,9 @@ include_directories(
   /Library/Developer/CommandLineTools/usr/include/c++/v1
   ./include)
 
-SOURCE_DIRS(./src)
+SOURCE_DIRS(
+  ./src/tools
+  ./src/opengl)
 
 INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)
 

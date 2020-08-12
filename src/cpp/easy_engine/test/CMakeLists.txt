@@ -21,4 +21,9 @@ include_directories(
 # 包含easy_engine动态库
 SET(LINK_ALL_LIBS easy_engine)
 
+SOURCE_DIRS(
+  #./tools
+  ./opengl
+  )
+
 INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)
