@@ -197,7 +197,7 @@ alias gr="git reset --hard HEAD"
 alias gd="git diff | cdiff -s"
 alias gcd="git diff --cached | cdiff -s"
 alias gs="git status -bs"
-alias gl="git lg"
+alias gl="git log --graph --decorate --oneline --all"
 
 # eisoo alias
 alias cddev="cd ~/Develop/code/MyProject/src"
