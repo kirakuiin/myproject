@@ -17,9 +17,12 @@ namespace opengl {
 class Framebuffer;
 
 // 帧缓冲附件, 分为颜色附件和深度附件
+// 必须要附着到帧缓冲之中才能生效
 class Attachment {
  public:
-  Attachment(int width, int height)
+  // @param width: 缓冲宽度
+  // @param height: 缓冲高度
+  Attachment(unsigned int width, unsigned int height)
       : _id(0), _frame_width(width), _frame_height(height) {}
   virtual ~Attachment(){};
 
@@ -28,12 +31,12 @@ class Attachment {
   const unsigned int Id() { return _id; }
 
   // 返回帧缓冲附件宽度
-  // return int: 桢宽度
-  const int Width() { return _frame_width; }
+  // return unsigned int: 桢宽度
+  const unsigned int Width() { return _frame_width; }
 
   // 返回帧缓冲附件高度
-  // return int: 桢高度
-  const int Height() { return _frame_height; }
+  // return unsigned int: 桢高度
+  const unsigned int Height() { return _frame_height; }
 
  protected:
   // 执行附件的附加操作
@@ -42,24 +45,25 @@ class Attachment {
   friend class Framebuffer;  // 帧缓冲为友元
 
   unsigned int _id;            // 附件id
-  int          _frame_width;   // 帧缓冲宽度
-  int          _frame_height;  // 帧缓冲高度
+  unsigned int _frame_width;   // 帧缓冲宽度
+  unsigned int _frame_height;  // 帧缓冲高度
 };
 
 // 颜色缓冲附件
 class ColorAttachment : public Attachment {
  public:
-  ColorAttachment(int width, int height, int index)
+  ColorAttachment(unsigned int width, unsigned int height, unsigned int index)
       : Attachment(width, height), _index(index) {}
 
  protected:
-  int _index;  // 颜色附件的下标, 用于同时输出多个颜色附件标记自身
+  unsigned int _index;  // 颜色附件的下标, 用于同时输出多个颜色附件标记自身
 };
 
 // 纹理颜色缓冲附件
 class TextureColorAttachment : public ColorAttachment {
  public:
-  TextureColorAttachment(int width, int height, int index = 0);
+  TextureColorAttachment(unsigned int width, unsigned int height,
+                         unsigned int index = 0);
   ~TextureColorAttachment();
 
  private:
@@ -69,7 +73,8 @@ class TextureColorAttachment : public ColorAttachment {
 // 浮点颜色缓冲附件(rgb值可以突破1.0, 一般用于hdr)
 class FloatColorAttachment : public ColorAttachment {
  public:
-  FloatColorAttachment(int width, int height, int index = 0);
+  FloatColorAttachment(unsigned int width, unsigned int height,
+                       unsigned int index = 0);
   ~FloatColorAttachment();
 
  private:
@@ -79,26 +84,27 @@ class FloatColorAttachment : public ColorAttachment {
 // 多重采样颜色缓冲附件
 class MultiSampleColorAttachment : public ColorAttachment {
  public:
-  MultiSampleColorAttachment(int width, int height, int samples = 4,
-                             int index = 0);
+  MultiSampleColorAttachment(unsigned int width, unsigned int height,
+                             unsigned int samples = 4, unsigned int index = 0);
   ~MultiSampleColorAttachment();
 
  private:
   void Attach() override;
 
-  int _samples;  // 多重采样数
+  unsigned int _samples;  // 多重采样数
 };
 
 // 深度模版缓冲附件
 class DepthAttachment : public Attachment {
  public:
-  DepthAttachment(int width, int height) : Attachment(width, height) {}
+  DepthAttachment(unsigned int width, unsigned int height)
+      : Attachment(width, height) {}
 };
 
 // 渲染器深度模板缓冲附件
 class RenderDepthAttachment : public DepthAttachment {
  public:
-  RenderDepthAttachment(int width, int height);
+  RenderDepthAttachment(unsigned int width, unsigned int height);
   ~RenderDepthAttachment();
 
  private:
@@ -106,6 +112,7 @@ class RenderDepthAttachment : public DepthAttachment {
 };
 
 // 帧缓冲, 存储成像需要的所有像素
+// 至少要附着一个颜色缓冲才能生效
 class Framebuffer {
  public:
   Framebuffer();
@@ -114,6 +121,10 @@ class Framebuffer {
   // 向帧缓冲上附加附件
   void Attach(std::shared_ptr<ColorAttachment> attach);
   void Attach(std::shared_ptr<DepthAttachment> attach);
+
+  // 激活帧缓冲, 使之作为着色器的输出接受者, 所有设置的接受者
+  // @param id: 帧缓冲id, 如果为0则代表激活默认窗口缓冲
+  void Bind();
 
   // 返回帧缓冲id
   // @return unsigned int: 帧缓冲id
@@ -127,12 +138,12 @@ class Framebuffer {
   }
 
   // 返回帧缓冲宽度
-  // return int: 桢宽度
-  const int Width();
+  // return unsigned int: 桢宽度
+  const unsigned int Width();
 
   // 返回帧缓冲高度
-  // return int: 桢高度
-  const int Height();
+  // return unsigned int: 桢高度
+  const unsigned int Height();
 
  private:
   unsigned int _id;  // 帧缓冲id
@@ -142,9 +153,8 @@ class Framebuffer {
   std::shared_ptr<DepthAttachment> _depth_attachment;
 };
 
-// 激活帧缓冲, 使之作为着色器的输出接受者, 所有设置的接受者
-// @param id: 帧缓冲id, 如果为0则代表激活默认窗口缓冲
-void ActivateFramebuffer(unsigned int id = 0);
+// 将当前帧缓冲重置为屏幕缓冲
+void UnbindFramebuffer();
 
 // 设置帧缓冲的默认清空颜色
 // @param r: 红色分量(0-1)

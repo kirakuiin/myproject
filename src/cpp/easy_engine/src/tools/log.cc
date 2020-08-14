@@ -12,11 +12,13 @@
 #include <iostream>
 
 namespace {
-const std::string kGlobalLoggerName("@global@");
 
-using ReadLock  = boost::shared_lock<boost::shared_mutex>;
-using WriteLock = boost::unique_lock<boost::shared_mutex>;
-boost::shared_mutex Mutex;
+const std::string   kGlobalLoggerName("@global@");  // 全局日志名称
+boost::shared_mutex Mutex;                          // 共享锁
+
+using ReadLock  = boost::shared_lock<boost::shared_mutex>;  // 读取锁
+using WriteLock = boost::unique_lock<boost::shared_mutex>;  // 写入锁
+
 }  // namespace
 
 namespace easy_engine {

@@ -26,7 +26,11 @@ using ScrollCallback    = void (*)(GLFWwindow* w, double pos_x, double pos_y);
 // 窗口类, 每一个实例代表屏幕上的一个窗口
 class Window {
  public:
-  Window(int screen_width, int screen_height, const std::string& window_name);
+  // @param screen_width: 窗口宽度
+  // @param screen_height: 窗口高度
+  // @param window_name: 窗口名称
+  Window(unsigned int screen_width, unsigned int screen_height,
+         const std::string& window_name);
   ~Window();
 
   // 激活当前窗口, 成为上下文环境

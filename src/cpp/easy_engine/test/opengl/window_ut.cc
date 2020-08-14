@@ -12,6 +12,7 @@
 #include <memory>
 
 #include "opengl/framebuffer.h"
+#include "opengl/shader.h"
 #include "opengl/window.h"
 
 using boost::format;
@@ -65,8 +66,26 @@ TEST_F(WINUT, FrameBufferTest) {
       new TextureColorAttachment(SCREEN_WIDTH, SCREEN_HEIGHT));
   Framebuffer fb;
   fb.Attach(color_attachment);
+  fb.Bind();
 
-  ActivateFramebuffer(fb.Id());
+  DefaultFramebufferColor(0, 0, 0, 0);
+  while (!w.ShouldClose()) {
+    ClearFramebuffer();
+    w.Update();
+  }
+  UnbindFramebuffer();
+}
+
+TEST_F(WINUT, ShaderTest) {
+  Window w(1024, 768, "shadertest");
+
+  std::shared_ptr<VertexShader>   vs(new VertexShader("shaders/test.vert"));
+  std::shared_ptr<FragmentShader> fs(new FragmentShader("shaders/test.frag"));
+  ShaderProgram                   pro;
+  pro.Attach(vs);
+  pro.Attach(fs);
+  pro.Bind();
+
   DefaultFramebufferColor(0, 0, 0, 0);
   while (!w.ShouldClose()) {
     ClearFramebuffer();

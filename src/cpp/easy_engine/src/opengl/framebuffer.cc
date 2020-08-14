@@ -15,7 +15,9 @@
 namespace easy_engine {
 namespace opengl {
 
-TextureColorAttachment::TextureColorAttachment(int width, int height, int index)
+TextureColorAttachment::TextureColorAttachment(unsigned int width,
+                                               unsigned int height,
+                                               unsigned int index)
     : ColorAttachment(width, height, index) {
   glGenTextures(1, &_id);
   glBindTexture(GL_TEXTURE_2D, _id);
@@ -33,7 +35,9 @@ void TextureColorAttachment::Attach() {
                          GL_TEXTURE_2D, _id, 0);
 }
 
-FloatColorAttachment::FloatColorAttachment(int width, int height, int index)
+FloatColorAttachment::FloatColorAttachment(unsigned int width,
+                                           unsigned int height,
+                                           unsigned int index)
     : ColorAttachment(width, height, index) {
   glGenTextures(1, &_id);
   glBindTexture(GL_TEXTURE_2D, _id);
@@ -53,8 +57,10 @@ void FloatColorAttachment::Attach() {
                          GL_TEXTURE_2D, _id, 0);
 }
 
-MultiSampleColorAttachment::MultiSampleColorAttachment(int width, int height,
-                                                       int samples, int index)
+MultiSampleColorAttachment::MultiSampleColorAttachment(unsigned int width,
+                                                       unsigned int height,
+                                                       unsigned int samples,
+                                                       unsigned int index)
     : ColorAttachment(width, height, index), _samples(samples) {
   glGenTextures(1, &_id);
   glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, _id);
@@ -72,7 +78,8 @@ void MultiSampleColorAttachment::Attach() {
                          GL_TEXTURE_2D_MULTISAMPLE, _id, 0);
 }
 
-RenderDepthAttachment::RenderDepthAttachment(int width, int height)
+RenderDepthAttachment::RenderDepthAttachment(unsigned int width,
+                                             unsigned int height)
     : DepthAttachment(width, height) {
   glGenRenderbuffers(1, &_id);
   glBindRenderbuffer(GL_RENDERBUFFER, _id);
@@ -95,7 +102,7 @@ Framebuffer::Framebuffer() : _id(0) { glGenFramebuffers(1, &_id); }
 
 Framebuffer::~Framebuffer() { glDeleteFramebuffers(1, &_id); }
 
-const int Framebuffer::Width() {
+const unsigned int Framebuffer::Width() {
   if (_color_attachments.empty()) {
     return 0;
   } else {
@@ -103,7 +110,7 @@ const int Framebuffer::Width() {
   }
 }
 
-const int Framebuffer::Height() {
+const unsigned int Framebuffer::Height() {
   if (_color_attachments.empty()) {
     return 0;
   } else {
@@ -137,9 +144,9 @@ void Framebuffer::Attach(std::shared_ptr<DepthAttachment> attach) {
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void ActivateFramebuffer(unsigned int id) {
-  glBindFramebuffer(GL_FRAMEBUFFER, id);
-}
+void Framebuffer::Bind() { glBindFramebuffer(GL_FRAMEBUFFER, _id); }
+
+void UnbindFramebuffer() { glBindFramebuffer(GL_FRAMEBUFFER, 0); }
 
 void DefaultFramebufferColor(float r, float g, float b, float a) {
   glClearColor(r, g, b, a);

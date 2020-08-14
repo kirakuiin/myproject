@@ -29,7 +29,7 @@ void Window::InitOpenGl() {
   }
 }
 
-Window::Window(int window_width, int window_height,
+Window::Window(unsigned int window_width, unsigned int window_height,
                const std::string& window_name) {
   InitWindow();
   _window = glfwCreateWindow(window_width, window_height, window_name.c_str(),
