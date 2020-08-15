@@ -5,12 +5,12 @@
 // Last Change: 2020 Aug 13
 // License: GPL.v3
 
-#include "opengl/framebuffer.h"
+#include "include/opengl/framebuffer.h"
 
 #include <string>
 
-#include "opengl/exception.h"
-#include "opengl/glad/glad.h"
+#include "include/opengl/exception.h"
+#include "include/opengl/glad/glad.h"
 
 namespace easy_engine {
 namespace opengl {

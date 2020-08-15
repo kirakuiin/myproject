@@ -19,7 +19,7 @@
         https://glad.dav1d.de/#profile=core&language=c&specification=gl&loader=on&api=gl%3D3.3
 */
 
-#include "opengl/glad/glad.h"
+#include "include/opengl/glad/glad.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -9,10 +9,10 @@
 
 #include <iostream>
 
-#include "tools/log.h"
+#include "utility/log.h"
 
-using easy_engine::tools::Logging;
-using easy_engine::tools::LoggingLevel;
+using easy_engine::utility::Logging;
+using easy_engine::utility::LoggingLevel;
 using std::cout;
 using std::endl;
 

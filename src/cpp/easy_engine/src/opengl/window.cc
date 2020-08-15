@@ -5,7 +5,7 @@
 // Last Change: 2020  8 12
 // License: GPL.v3
 
-#include "opengl/window.h"
+#include "include/opengl/window.h"
 
 #include <functional>
 #include <iostream>
@@ -13,8 +13,8 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include "opengl/exception.h"
-#include "opengl/glad/glad.h"
+#include "include/opengl/exception.h"
+#include "include/opengl/glad/glad.h"
 
 namespace easy_engine {
 namespace opengl {
@@ -32,10 +32,10 @@ void Window::InitOpenGl() {
 Window::Window(unsigned int window_width, unsigned int window_height,
                const std::string& window_name) {
   InitWindow();
-  _window = glfwCreateWindow(window_width, window_height, window_name.c_str(),
-                             NULL, NULL);
+  _p_window = glfwCreateWindow(window_width, window_height, window_name.c_str(),
+                               NULL, NULL);
   // 创建失败
-  if (!_window) {
+  if (!_p_window) {
     glfwTerminate();
     throw GlException("Create window failed");
   }
@@ -47,54 +47,57 @@ Window::Window(unsigned int window_width, unsigned int window_height,
   // 开启混合
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  SetChangeSizeCallback();
 }
 
-Window::~Window() { glfwDestroyWindow(_window); }
+Window::~Window() { glfwDestroyWindow(_p_window); }
 
 void Window::Activate() {
-  glfwMakeContextCurrent(_window);
+  glfwMakeContextCurrent(_p_window);
   // 激活之后才能初始化opengl环境
   InitOpenGl();
 }
 
 bool Window::ShouldClose() {
-  return static_cast<bool>(glfwWindowShouldClose(_window));
+  return static_cast<bool>(glfwWindowShouldClose(_p_window));
 }
 
 void Window::Update() {
   // 交换缓冲
-  glfwSwapBuffers(_window);
+  glfwSwapBuffers(_p_window);
   // 检查触发事件, 更新窗口状态, 调用回调函数
   glfwPollEvents();
 }
 
 void Window::GetWindowSize(int* width, int* height) {
-  glfwGetWindowSize(_window, width, height);
+  glfwGetWindowSize(_p_window, width, height);
 }
 
 void Window::SetCursorInvisble(bool hide) {
   if (hide) {
-    glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    glfwSetInputMode(_p_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
   } else {
-    glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    glfwSetInputMode(_p_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
   }
 }
 
 void Window::SetKeyboardCallback(KeyboardCallback callback) {
-  glfwSetKeyCallback(_window, callback);
+  glfwSetKeyCallback(_p_window, callback);
 }
 
 void Window::SetScrollCallback(ScrollCallback callback) {
-  glfwSetScrollCallback(_window, callback);
+  glfwSetScrollCallback(_p_window, callback);
 }
 
 void Window::SetMouseBtnCallback(MouseBtnCallback callback) {
-  glfwSetMouseButtonCallback(_window, callback);
+  glfwSetMouseButtonCallback(_p_window, callback);
 }
 
 void Window::SetCursorPosCallback(CursorPosCallback callback) {
-  glfwSetCursorPosCallback(_window, callback);
+  glfwSetCursorPosCallback(_p_window, callback);
+}
+
+void Window::SetWindowSizeCallback(WindowSizeCallback callback) {
+  glfwSetFramebufferSizeCallback(_p_window, callback);
 }
 
 void Window::InitWindow() {
@@ -120,13 +123,6 @@ void Window::InitWindow() {
 #endif
     is_first_time = false;
   }
-}
-
-void Window::SetChangeSizeCallback() {
-  GLFWframebuffersizefun func = [](GLFWwindow* win, int w, int h) {
-    glViewport(0, 0, w, h);
-  };
-  glfwSetFramebufferSizeCallback(_window, func);
 }
 
 }  // namespace opengl

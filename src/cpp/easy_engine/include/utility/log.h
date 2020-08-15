@@ -5,8 +5,8 @@
 // Last Change: 2020 Aug 11
 // License: GPL.v3
 
-#ifndef __CPP_EASY_ENGINE_INCLUDE_LOG_H__
-#define __CPP_EASY_ENGINE_INCLUDE_LOG_H__
+#ifndef __EASY_ENGINE_INCLUDE_UTILITY_LOG_H__
+#define __EASY_ENGINE_INCLUDE_UTILITY_LOG_H__
 
 #include <boost/date_time.hpp>
 #include <boost/format.hpp>
@@ -16,7 +16,7 @@
 #include <string>
 
 namespace easy_engine {
-namespace tools {
+namespace utility {
 
 // 日志级别. 级别由低到高为DEBUG->CRITICAL
 enum class LoggingLevel {
@@ -29,7 +29,7 @@ enum class LoggingLevel {
 
 // 简单日志记录
 // 只有等级大于日志等级的函数方能输出, 默认为DEBUG
-class Logging {
+class Logging final {
  public:
   ~Logging(){};
 
@@ -89,7 +89,7 @@ class Logging {
   std::ofstream _output_file;  // 输出文件
 };
 
-}  // namespace tools
+}  // namespace utility
 }  // namespace easy_engine
 
-#endif  // __CPP_EASY_ENGINE_INCLUDE_LOG_H__
+#endif  // __EASY_ENGINE_INCLUDE_UTILITY_LOG_H__

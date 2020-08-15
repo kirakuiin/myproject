@@ -5,7 +5,7 @@
 // Last Change: 2020 Aug 11
 // License: GPL.v3
 
-#include "tools/log.h"
+#include "include/utility/log.h"
 
 #include <boost/thread/lock_types.hpp>
 #include <boost/thread/shared_mutex.hpp>
@@ -22,7 +22,7 @@ using WriteLock = boost::unique_lock<boost::shared_mutex>;  // 写入锁
 }  // namespace
 
 namespace easy_engine {
-namespace tools {
+namespace utility {
 
 std::map<std::string, std::shared_ptr<Logging>> Logging::_sm_loggers;
 std::shared_ptr<Logging>                        Logging::_sp_global_logger;
@@ -121,5 +121,5 @@ void Logging::Output(const std::string &msg) {
   }
 }
 
-}  // namespace tools
+}  // namespace utility
 }  // namespace easy_engine

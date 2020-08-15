@@ -29,7 +29,8 @@ class Texture {
 };
 
 // 2D纹理类
-class Texture2D : public Texture {
+class Texture2D final : public Texture {
+ public:
   // 2D纹理构造函数
   // @param wrap_s: x轴环绕模式, 是指当x轴纹理坐标不在[0,
   // 1]内部时纹理的表现形式, 默认为GL_REPEAT, 可选(GL_MIRRORED_REPEAT,

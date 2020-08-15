@@ -5,25 +5,32 @@
 // Last Change: 2020  8 12
 // License: GPL.v3
 
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
 #include <gtest/gtest.h>
 
 #include <boost/format.hpp>
+#include <ctime>
 #include <iostream>
 #include <memory>
 
+#include "graphics/camera.h"
+#include "graphics/sprite.h"
 #include "opengl/framebuffer.h"
 #include "opengl/shader.h"
 #include "opengl/window.h"
 
 using boost::format;
 using namespace easy_engine::opengl;
+using namespace easy_engine::graphics;
 using std::cout;
 using std::endl;
 
 namespace {
 const int SCREEN_WIDTH  = 800;
 const int SCREEN_HEIGHT = 600;
-void      Pos(GLFWwindow* w, double x, double y) {
+
+void Pos(GLFWwindow* w, double x, double y) {
   cout << format("x=%f, y=%f") % x % y << endl;
 }
 void Btn(GLFWwindow* w, int k, int a, int m) {
@@ -32,6 +39,24 @@ void Btn(GLFWwindow* w, int k, int a, int m) {
 void Key(GLFWwindow* w, int k, int s, int a, int m) {
   cout << format("key=%d, scancode=%d, action=%d, mods=%d") % k % s % a % m
        << endl;
+}
+
+std::shared_ptr<Camera2D> g_camera(
+    new Camera2D(vec2(0, SCREEN_HEIGHT), vec2(SCREEN_WIDTH, SCREEN_HEIGHT)));
+void ProcessInput(GLFWwindow* w, int k, int s, int a, int m) {
+  static vec2 start(0, SCREEN_HEIGHT);
+  if (glfwGetKey(w, GLFW_KEY_W) == GLFW_PRESS) {
+    g_camera->Move(start += vec2(0, -10));
+  }
+  if (glfwGetKey(w, GLFW_KEY_S) == GLFW_PRESS) {
+    g_camera->Move(start += vec2(0, 10));
+  }
+  if (glfwGetKey(w, GLFW_KEY_D) == GLFW_PRESS) {
+    g_camera->Move(start += vec2(10, 0));
+  }
+  if (glfwGetKey(w, GLFW_KEY_A) == GLFW_PRESS) {
+    g_camera->Move(start += vec2(-10, 0));
+  }
 }
 }  // namespace
 
@@ -89,6 +114,21 @@ TEST_F(WINUT, ShaderTest) {
   DefaultFramebufferColor(0, 0, 0, 0);
   while (!w.ShouldClose()) {
     ClearFramebuffer();
+    w.Update();
+  }
+}
+
+TEST_F(WINUT, SpriteTest) {
+  Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "spritetest");
+  w.SetKeyboardCallback(ProcessInput);
+  DefaultFramebufferColor(0, 0, 0, 0);
+  SpriteRender render(g_camera);
+
+  std::shared_ptr<Texture2D> sprite(new Texture2D());
+  sprite->LoadImage("texture/awesomeface.png");
+  while (!w.ShouldClose()) {
+    ClearFramebuffer();
+    render.DrawSprite(sprite, vec2(400, 300), vec2(100, 100));
     w.Update();
   }
 }

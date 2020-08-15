@@ -5,8 +5,8 @@
 // Last Change: 2020  8 12
 // License: GPL.v3
 
-#ifndef __CPP_EASY_ENGINE_INCLUDE_EXCEPTION_H__
-#define __CPP_EASY_ENGINE_INCLUDE_EXCEPTION_H__
+#ifndef __EASY_ENGINE_INCLUDE_COMMON_EXCEPTION_H__
+#define __EASY_ENGINE_INCLUDE_COMMON_EXCEPTION_H__
 
 #include <exception>
 #include <string>
@@ -26,4 +26,4 @@ class Exception : public std::exception {
 
 }  // namespace easy_engine
 
-#endif  // __CPP_EASY_ENGINE_INCLUDE_EXCEPTION_H__
+#endif // __EASY_ENGINE_INCLUDE_COMMON_EXCEPTION_H__

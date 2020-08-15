@@ -10,11 +10,11 @@
 #include <map>
 #include <string>
 
-#ifndef __CPP_EASY_ENGINE_INCLUDE_CONFIG_H__
-#define __CPP_EASY_ENGINE_INCLUDE_CONFIG_H__
+#ifndef __EASY_ENGINE_INCLUDE_UTILITY_CONFIG_H__
+#define __EASY_ENGINE_INCLUDE_UTILITY_CONFIG_H__
 
 namespace easy_engine {
-namespace tools {
+namespace utility {
 
 using boost::property_tree::ptree;
 
@@ -120,7 +120,7 @@ class FlatConfigurator : public Configurator {
   }
 };
 
-}  // namespace tools
+}  // namespace utility
 }  // namespace easy_engine
 
-#endif // __CPP_EASY_ENGINE_INCLUDE_CONFIG_H__
+#endif // __EASY_ENGINE_INCLUDE_UTILITY_CONFIG_H__

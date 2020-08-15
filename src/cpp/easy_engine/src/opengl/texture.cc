@@ -5,11 +5,11 @@
 // Last Change: 2020 Aug 14
 // License: GPL.v3
 
-#include "opengl/texture.h"
+#include "include/opengl/texture.h"
 
 #include <stb_image.h>
 
-#include "opengl/exception.h"
+#include "include/opengl/exception.h"
 
 namespace {
 // 通道数类型

@@ -11,15 +11,15 @@
 #include <iostream>
 
 #include "boost/serialization/level_enum.hpp"
-#include "tools/config.h"
+#include "utility/config.h"
 
 namespace {
 const std::string ConfPath("/Users/lambda/conf.json");
 }
 
 using boost::property_tree::ptree;
-using easy_engine::tools::Configurator;
-using easy_engine::tools::FlatConfigurator;
+using easy_engine::utility::Configurator;
+using easy_engine::utility::FlatConfigurator;
 using std::cout;
 using std::endl;
 

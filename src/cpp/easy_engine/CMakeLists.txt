@@ -16,13 +16,12 @@ SET(NEED_COPY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/res/)
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # 手动包含标准库是为了在compile_commands.json中生成带有-I/stdlib的命令
-include_directories(
-  /Library/Developer/CommandLineTools/usr/include/c++/v1
-  ./include)
+include_directories(/Library/Developer/CommandLineTools/usr/include/c++/v1)
 
 SOURCE_DIRS(
-  ./src/tools
-  ./src/opengl)
+  ./src/utility
+  ./src/opengl
+  ./src/graphics)
 
 INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)
 

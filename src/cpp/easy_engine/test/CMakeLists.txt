@@ -11,7 +11,7 @@ SET(TARGET_TYPE RUNTIME)
 SET(NEED_COPY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/config/)
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 SET(AUTO_RUN ON)
-# SET(RUN_ARGS --gtest_filter=LOGUT.*)
+SET(RUN_ARGS --gtest_filter=WINUT.SpriteTest)
 
 # 手动包含标准库是为了在compile_commands.json中生成带有-I/stdlib的命令
 include_directories(

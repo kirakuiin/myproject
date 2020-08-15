@@ -5,14 +5,14 @@
 // Last Change: 2020 Aug 14
 // License: GPL.v3
 
-#include "opengl/shader.h"
+#include "include/opengl/shader.h"
 
 #include <fstream>
 #include <map>
 #include <sstream>
 
-#include "opengl/exception.h"
-#include "opengl/glad/glad.h"
+#include "include/opengl/exception.h"
+#include "include/opengl/glad/glad.h"
 
 namespace {
 
@@ -95,11 +95,11 @@ ShaderProgram::~ShaderProgram() {
 }
 
 void ShaderProgram::Attach(std::shared_ptr<Shader> shader) {
-  _shader_ids.push_back(shader);
+  _v_shader_ids.push_back(shader);
 }
 
 void ShaderProgram::Compile() {
-  for (auto& shader : _shader_ids) {
+  for (auto& shader : _v_shader_ids) {
     glAttachShader(_id, shader->Id());
   }
   glLinkProgram(_id);
@@ -112,6 +112,9 @@ void ShaderProgram::Compile() {
     throw GlException(msg);
   }
   _is_compile = true;
+  for (auto& shader : _v_shader_ids) {
+    shader->Delete();
+  }
 }
 
 void ShaderProgram::Bind() {
@@ -119,6 +122,53 @@ void ShaderProgram::Bind() {
     Compile();
   }
   glUseProgram(_id);
+}
+
+void ShaderProgram::SetUniform(const std::string& name, bool value) const {
+  glUniform1i(glGetUniformLocation(_id, name.c_str()), (int)value);
+}
+
+void ShaderProgram::SetUniform(const std::string& name, int value) const {
+  glUniform1i(glGetUniformLocation(_id, name.c_str()), value);
+}
+
+void ShaderProgram::SetUniform(const std::string& name,
+                               unsigned int       value) const {
+  glUniform1i(glGetUniformLocation(_id, name.c_str()), value);
+}
+
+void ShaderProgram::SetUniform(const std::string& name, float value) const {
+  glUniform1f(glGetUniformLocation(_id, name.c_str()), value);
+}
+
+void ShaderProgram::SetUniform(const std::string& name,
+                               const vec2&        value) const {
+  auto pos = glGetUniformLocation(_id, name.c_str());
+  glUniform2f(pos, value.x, value.y);
+}
+
+void ShaderProgram::SetUniform(const std::string& name,
+                               const vec3&        value) const {
+  auto pos = glGetUniformLocation(_id, name.c_str());
+  glUniform3f(pos, value.x, value.y, value.z);
+}
+
+void ShaderProgram::SetUniform(const std::string& name,
+                               const vec4&        value) const {
+  auto pos = glGetUniformLocation(_id, name.c_str());
+  glUniform4f(pos, value.x, value.y, value.z, value.w);
+}
+
+void ShaderProgram::SetUniform(const std::string& name,
+                               const mat3&        value) const {
+  auto pos = glGetUniformLocation(_id, name.c_str());
+  glUniformMatrix3fv(pos, 1, GL_FALSE, value_ptr(value));
+}
+
+void ShaderProgram::SetUniform(const std::string& name,
+                               const mat4&        value) const {
+  auto pos = glGetUniformLocation(_id, name.c_str());
+  glUniformMatrix4fv(pos, 1, GL_FALSE, value_ptr(value));
 }
 
 };  // namespace opengl

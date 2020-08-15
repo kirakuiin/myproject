@@ -16,15 +16,16 @@ struct GLFWwindow;
 namespace easy_engine {
 namespace opengl {
 
-using KeyboardCallback  = void (*)(GLFWwindow* w, int key, int scancode,
+using KeyboardCallback   = void (*)(GLFWwindow* w, int key, int scancode,
                                   int action, int mods);
-using CursorPosCallback = void (*)(GLFWwindow* w, double pos_x, double pos_y);
-using MouseBtnCallback  = void (*)(GLFWwindow* w, int button, int action,
+using CursorPosCallback  = void (*)(GLFWwindow* w, double pos_x, double pos_y);
+using MouseBtnCallback   = void (*)(GLFWwindow* w, int button, int action,
                                   int mods);
-using ScrollCallback    = void (*)(GLFWwindow* w, double pos_x, double pos_y);
+using ScrollCallback     = void (*)(GLFWwindow* w, double pos_x, double pos_y);
+using WindowSizeCallback = void (*)(GLFWwindow* w, int width, int height);
 
 // 窗口类, 每一个实例代表屏幕上的一个窗口
-class Window {
+class Window final {
  public:
   // @param screen_width: 窗口宽度
   // @param screen_height: 窗口高度
@@ -76,6 +77,12 @@ class Window {
   //   @action(int): 按住还是松开, @mods(int): 是否按下辅助键(ctrl, etc)
   void SetKeyboardCallback(KeyboardCallback callback);
 
+  // 设置窗口大小变化回调函数
+  // @param callback: 变化回调函数
+  //   @w(GLFWwindow*): 无意义, @width(int): 窗口新宽度
+  // @height(int): 窗口新高度
+  void SetWindowSizeCallback(WindowSizeCallback callback);
+
  private:
   // 初始化opengl函数
   static void InitOpenGl();
@@ -83,10 +90,7 @@ class Window {
   // 窗口类初始化
   void InitWindow();
 
-  // 绑定调整窗口大小回调函数
-  void SetChangeSizeCallback();
-
-  GLFWwindow* _window;  // 实际的窗口指针
+  GLFWwindow* _p_window;  // 实际的窗口指针
 };
 
 }  // namespace opengl

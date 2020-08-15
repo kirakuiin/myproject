@@ -5,14 +5,14 @@
 // Last Change: 2020 Aug 11
 // License: GPL.v3
 
-#include "tools/config.h"
+#include "include/utility/config.h"
 
 #include <boost/property_tree/json_parser.hpp>
 #include <fstream>
 #include <sstream>
 
 namespace easy_engine {
-namespace tools {
+namespace utility {
 
 void Configurator::LoadConfig(const std::string &file_path) {
   std::ifstream     config_file(file_path);
@@ -34,5 +34,5 @@ void Configurator::SaveConfig(const std::string &file_path) {
   config_file.close();
 }
 
-}  // namespace tools
+}  // namespace utility
 }  // namespace easy_engine
