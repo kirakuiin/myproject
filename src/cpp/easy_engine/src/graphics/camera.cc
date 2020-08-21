@@ -8,5 +8,15 @@
 #include "include/graphics/camera.h"
 
 namespace easy_engine {
-namespace graphics {}  // namespace graphics
+namespace graphics {
+
+void Camera2D::CalcProjection() {
+  // 由于屏幕坐标在y轴上是相反的, 因此顶底互换
+  _projection = ortho(static_cast<float>(_tl_pos.x),
+                      static_cast<float>(_tl_pos.x + _size.x),
+                      static_cast<float>(_tl_pos.y),
+                      static_cast<float>(_tl_pos.y - _size.y), -1.0f, 1.0f);
+}
+
+}  // namespace graphics
 }  // namespace easy_engine

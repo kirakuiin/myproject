@@ -58,16 +58,48 @@ class Texture2D final : public Texture {
         _filter_mag(filter_mag),
         _image_format(image_format),
         _text_format(text_format),
-        _is_in_srgb(is_in_srgb) {}
+        _is_in_srgb(is_in_srgb),
+        _auto_release(true) {
+    glGenTextures(1, &_id);
+  }
   ~Texture2D();
 
+  // 加载的图像资源会自动释放
   void LoadImage(const std::string& image_path) override;
 
   void Bind() override;
 
+  // 根据数据生成一个纹理, 生成的资源不会自动释放
+  // @param width: 纹理宽度
+  // @param height: 纹理高度
+  // @param data_type: 数据类型
+  // @param data: 数据
+  template <typename T>
+  void Generate(int width, int height, int data_type, T* data) {
+    _width  = width;
+    _height = height;
+    glBindTexture(GL_TEXTURE_2D, _id);
+    glTexImage2D(GL_TEXTURE_2D, 0, _text_format, _width, _height, 0,
+                 _image_format, data_type, data);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, _wrap_s);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, _wrap_t);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, _filter_min);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, _filter_mag);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    _auto_release = false;
+  }
+
   // 返回纹理id
   // @return int: 纹理id
   unsigned int Id() const { return _id; }
+
+  // 返回纹理宽度
+  // @return unsigned int: 纹理宽度
+  unsigned int Width() const { return _width; }
+
+  // 返回纹理高度
+  // @return unsigned int: 纹理高度
+  unsigned int Height() const { return _height; }
 
  private:
   // 根据通道数识别图片格式
@@ -83,6 +115,7 @@ class Texture2D final : public Texture {
   unsigned int _image_format;  // 加载的图像格式
   unsigned int _text_format;   // 纹理格式
   bool         _is_in_srgb;    // 是否位于标准颜色空间
+  bool         _auto_release;  // 是否自动释放资源
 };
 
 // 清除当前绑定的纹理

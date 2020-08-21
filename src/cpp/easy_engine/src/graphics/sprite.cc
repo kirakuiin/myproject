@@ -12,11 +12,38 @@
 namespace easy_engine {
 namespace graphics {
 
-SpriteRender::~SpriteRender() { glDeleteVertexArrays(1, &_vao); }
+SpriteRender::~SpriteRender() {
+  glDeleteVertexArrays(1, &_vao);
+  glDeleteBuffers(1, &_vbo);
+}
+
+void SpriteRender::SetTextureCoordPer(const vec2 &pos, const vec2 &size) {
+  fvec2 top_left(pos);
+  fvec2 bottom_left(pos + vec2(0, size.y));
+  fvec2 bottom_right(pos + size);
+  fvec2 top_right(pos + vec2(size.x, 0));
+  // 注意, 纹理坐标和opengl坐标在y轴是相反的
+  float vertices[] = {
+      0.0f,          1.0f,        bottom_left.x, bottom_left.y,  1.0f,
+      0.0f,          top_right.x, top_right.y,   0.0f,           0.0f,
+      top_left.x,    top_left.y,  0.0f,          1.0f,           bottom_left.x,
+      bottom_left.y, 1.0f,        1.0f,          bottom_right.x, bottom_right.y,
+      1.0f,          0.0f,        top_right.x,   top_right.y,
+  };
+  glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void SpriteRender::SetTextureCoordAbs(const vec2 &texsize, const vec2 &pos,
+                                      const vec2 &size) {
+  fvec2 ts(texsize), p(pos), s(size);
+  SetTextureCoordPer(p / ts, s / ts);
+}
 
 void SpriteRender::DrawSprite(std::shared_ptr<opengl::Texture2D> sprite,
-                              const vec2& position, const vec2& size, float rot,
-                              const vec3& color) {
+                              const vec2 &position, const vec2 &size, float rot,
+                              const vec3 &color) {
   _p_shader->Bind();
 
   mat4 model(1.0f);
@@ -56,24 +83,23 @@ void SpriteRender::InitShader() {
 
 void SpriteRender::InitVertex() {
   // 初始化顶点数据
-  unsigned int vbo;
-  float        vertices[] = {
+  float vertices[] = {
       0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
       0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,
   };
 
   glGenVertexArrays(1, &_vao);
-  glGenBuffers(1, &vbo);
+  glGenBuffers(1, &_vbo);
 
-  glBindBuffer(GL_ARRAY_BUFFER, vbo);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+  glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
   glBindVertexArray(_vao);
   glEnableVertexAttribArray(0);
-  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(1);
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float),
-                        (void*)(2 * sizeof(float)));
+                        (void *)(2 * sizeof(float)));
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);

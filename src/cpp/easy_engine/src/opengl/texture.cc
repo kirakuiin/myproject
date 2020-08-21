@@ -23,7 +23,11 @@ enum class ChannelType {
 namespace easy_engine {
 namespace opengl {
 
-Texture2D::~Texture2D() { glDeleteTextures(1, &_id); }
+Texture2D::~Texture2D() {
+  if (_auto_release) {
+    glDeleteTextures(1, &_id);
+  }
+}
 
 void Texture2D::LoadImage(const std::string& image_path) {
   int            nr_channels;  // 文件通道数
@@ -37,7 +41,7 @@ void Texture2D::LoadImage(const std::string& image_path) {
 
   if (data) {
     Bind();
-    glTexImage2D(GL_TEXTURE_2D, 0, _text_format, width, height, 0,
+    glTexImage2D(GL_TEXTURE_2D, 0, _text_format, _width, _height, 0,
                  _image_format, GL_UNSIGNED_BYTE, data);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, _wrap_s);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, _wrap_t);
@@ -50,6 +54,7 @@ void Texture2D::LoadImage(const std::string& image_path) {
     std::string msg("Load image: " + image_path + " failed");
     throw GlException(msg);
   }
+  _auto_release = true;
 }
 
 void Texture2D::IdentifyFormat(int channel_nums) {
@@ -81,7 +86,7 @@ void Texture2D::IdentifyFormat(int channel_nums) {
 
 void Texture2D::Bind() { glBindTexture(GL_TEXTURE_2D, _id); }
 
-void UnbindTexture() { glad_glBindTexture(GL_TEXTURE_2D, 0); }
+void UnbindTexture() { glBindTexture(GL_TEXTURE_2D, 0); }
 
 }  // namespace opengl
 }  // namespace easy_engine

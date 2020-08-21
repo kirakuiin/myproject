@@ -26,11 +26,25 @@ class SpriteRender final {
   // projection)
   explicit SpriteRender(std::shared_ptr<Camera2D>              camera,
                         std::shared_ptr<opengl::ShaderProgram> shader = nullptr)
-      : _p_camera(camera), _p_shader(shader), _vao(0) {
+      : _p_camera(camera), _p_shader(shader), _vao(0), _vbo(0) {
     InitVertex();
     InitShader();
   }
   ~SpriteRender();
+
+  // 设置待渲染纹理的纹理坐标(决定渲染纹理的那一部分, 默认全部渲染)
+  // 输入值代表百分比, 对于宽度来说, 0.5代表宽度一半的像素
+  // @param pos: 待渲染区域的左上角坐标
+  // @param size: 待渲染区域的宽度和高度
+  void SetTextureCoordPer(const vec2& pos, const vec2& size);
+
+  // 设置待渲染纹理的纹理坐标(决定渲染纹理的那一部分, 默认全部渲染)
+  // 输入值代表绝对值, 对于宽度来说, 50代表50像素宽
+  // @param texsize: 带渲染纹理的宽度和高度
+  // @param pos: 待渲染区域的左上角坐标
+  // @param size: 待渲染区域的宽度和高度
+  void SetTextureCoordAbs(const vec2& texsize, const vec2& pos,
+                          const vec2& size);
 
   // 渲染精灵
   // @param sprite: 精灵资源
@@ -52,6 +66,7 @@ class SpriteRender final {
   std::shared_ptr<opengl::ShaderProgram> _p_shader;  // 着色器
 
   unsigned int _vao;  // 顶点数据
+  unsigned int _vbo;  // 对象数组
 };
 
 }  // namespace graphics

@@ -15,6 +15,7 @@
 #include <memory>
 
 #include "graphics/camera.h"
+#include "graphics/font.h"
 #include "graphics/sprite.h"
 #include "opengl/framebuffer.h"
 #include "opengl/shader.h"
@@ -44,18 +45,18 @@ void Key(GLFWwindow* w, int k, int s, int a, int m) {
 std::shared_ptr<Camera2D> g_camera(
     new Camera2D(vec2(0, SCREEN_HEIGHT), vec2(SCREEN_WIDTH, SCREEN_HEIGHT)));
 void ProcessInput(GLFWwindow* w, int k, int s, int a, int m) {
-  static vec2 start(0, SCREEN_HEIGHT);
+  static vec2 start(450, 350);
   if (glfwGetKey(w, GLFW_KEY_W) == GLFW_PRESS) {
-    g_camera->Move(start += vec2(0, -10));
+    g_camera->MoveCentral(start += vec2(0, -10));
   }
   if (glfwGetKey(w, GLFW_KEY_S) == GLFW_PRESS) {
-    g_camera->Move(start += vec2(0, 10));
+    g_camera->MoveCentral(start += vec2(0, 10));
   }
   if (glfwGetKey(w, GLFW_KEY_D) == GLFW_PRESS) {
-    g_camera->Move(start += vec2(10, 0));
+    g_camera->MoveCentral(start += vec2(10, 0));
   }
   if (glfwGetKey(w, GLFW_KEY_A) == GLFW_PRESS) {
-    g_camera->Move(start += vec2(-10, 0));
+    g_camera->MoveCentral(start += vec2(-10, 0));
   }
 }
 }  // namespace
@@ -125,10 +126,26 @@ TEST_F(WINUT, SpriteTest) {
   SpriteRender render(g_camera);
 
   std::shared_ptr<Texture2D> sprite(new Texture2D());
-  sprite->LoadImage("texture/awesomeface.png");
+  sprite->LoadImage("texture/weapons.png");
+  g_camera->MoveCentral(vec2(450, 350));
+  render.SetTextureCoordAbs(vec2(512, 1024), vec2(136, 676), vec2(18, 36));
   while (!w.ShouldClose()) {
     ClearFramebuffer();
-    render.DrawSprite(sprite, vec2(400, 300), vec2(100, 100));
+    render.DrawSprite(sprite, vec2(400, 300), vec2(180, 360));
+    w.Update();
+  }
+}
+
+TEST_F(WINUT, FontTest) {
+  Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "fonttest");
+  w.SetKeyboardCallback(ProcessInput);
+  DefaultFramebufferColor(0, 0, 0, 0);
+  Font f(g_camera);
+  f.Load("/Users/lambda/Library/Fonts/Minecraft.ttf");
+  g_camera->MoveCentral(vec2(450, 350));
+  while (!w.ShouldClose()) {
+    ClearFramebuffer();
+    f.Draw("hello world", vec2(400, 300), vec3(1, 0, 0));
     w.Update();
   }
 }

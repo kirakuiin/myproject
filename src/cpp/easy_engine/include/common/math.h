@@ -14,6 +14,7 @@
 
 namespace easy_engine {
 // 常用数据类型
+using glm::fvec2;
 using glm::ivec2;
 using glm::mat2;
 using glm::mat3;

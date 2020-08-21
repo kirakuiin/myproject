@@ -24,11 +24,17 @@ class Camera2D final {
     CalcProjection();
   }
 
-  // 移动摄像机到制定坐标
+  // 移动摄像机到指定坐标
   // @param pos: 新的摄像机左上角坐标
   void Move(const vec2& pos) {
     _tl_pos = pos;
     CalcProjection();
+  }
+
+  // 移动摄像机到指定坐标
+  // @param pos: 新的摄像机中心坐标
+  void MoveCentral(const vec2& central_pos) {
+    Move(vec2(central_pos.x - _size.x / 2, central_pos.y + _size.y / 2));
   }
 
   // 设置摄像机的宽度和高度
@@ -44,13 +50,7 @@ class Camera2D final {
 
  private:
   // 重新计算投影矩阵
-  void CalcProjection() {
-    // 由于屏幕坐标在y轴上是相反的, 因此顶底互换
-    _projection = ortho(static_cast<float>(_tl_pos.x),
-                        static_cast<float>(_tl_pos.x + _size.x),
-                        static_cast<float>(_tl_pos.y),
-                        static_cast<float>(_tl_pos.y - _size.y), -1.0f, 1.0f);
-  }
+  void CalcProjection();
 
   ivec2 _tl_pos;      // 摄像机左上角坐标
   ivec2 _size;        // 摄像机宽度和高度
