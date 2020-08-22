@@ -14,22 +14,28 @@
 #include <iostream>
 #include <memory>
 
+#include "common/timer.h"
 #include "graphics/camera.h"
 #include "graphics/font.h"
+#include "graphics/particle.h"
 #include "graphics/sprite.h"
 #include "opengl/framebuffer.h"
 #include "opengl/shader.h"
 #include "opengl/window.h"
+#include "utility/config.h"
 
 using boost::format;
+using namespace easy_engine;
+using namespace easy_engine::utility;
 using namespace easy_engine::opengl;
 using namespace easy_engine::graphics;
 using std::cout;
 using std::endl;
 
 namespace {
-const int SCREEN_WIDTH  = 800;
-const int SCREEN_HEIGHT = 600;
+const int SCREEN_WIDTH    = 800;
+const int SCREEN_HEIGHT   = 600;
+const int PARTICLE_AMOUNT = 500;
 
 void Pos(GLFWwindow* w, double x, double y) {
   cout << format("x=%f, y=%f") % x % y << endl;
@@ -42,9 +48,12 @@ void Key(GLFWwindow* w, int k, int s, int a, int m) {
        << endl;
 }
 
+// 摄像机
 std::shared_ptr<Camera2D> g_camera(
     new Camera2D(vec2(0, SCREEN_HEIGHT), vec2(SCREEN_WIDTH, SCREEN_HEIGHT)));
-void ProcessInput(GLFWwindow* w, int k, int s, int a, int m) {
+
+// 处理摄像机移动的回调函数
+void ProcessInputCam(GLFWwindow* w, int k, int s, int a, int m) {
   static vec2 start(450, 350);
   if (glfwGetKey(w, GLFW_KEY_W) == GLFW_PRESS) {
     g_camera->MoveCentral(start += vec2(0, -10));
@@ -59,18 +68,40 @@ void ProcessInput(GLFWwindow* w, int k, int s, int a, int m) {
     g_camera->MoveCentral(start += vec2(-10, 0));
   }
 }
+
+// 模拟对象
+Particle dummy_obj;
+
+// 处理对象移动的回掉函数
+void ProcessInputObj(GLFWwindow* w, int k, int s, int a, int m) {
+  if (glfwGetKey(w, GLFW_KEY_W) == GLFW_PRESS) {
+    dummy_obj.Position += vec2(0, -10);
+  }
+  if (glfwGetKey(w, GLFW_KEY_S) == GLFW_PRESS) {
+    dummy_obj.Position += vec2(0, 10);
+  }
+  if (glfwGetKey(w, GLFW_KEY_D) == GLFW_PRESS) {
+    dummy_obj.Position += vec2(10, 0);
+  }
+  if (glfwGetKey(w, GLFW_KEY_A) == GLFW_PRESS) {
+    dummy_obj.Position += vec2(-10, 0);
+  }
+}
 }  // namespace
 
 class WINUT : public testing::Test {
  public:
-  static void SetUpTestCase() {}
+  static void SetUpTestCase() { config.LoadConfig("winut.json"); }
   static void TearDownTestCase() {}
   void        SetUp() override {}
   void        TearDown() override {}
-};
 
-TEST_F(WINUT, BasicTest) {
-  Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "basictest");
+  static FlatConfigurator config;  // 配置读取
+};
+FlatConfigurator WINUT::config;
+
+TEST_F(WINUT, WindowTest) {
+  Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "windowtest");
   w.SetCursorInvisble(true);
   w.SetCursorPosCallback(Pos);
   w.SetMouseBtnCallback(Btn);
@@ -102,26 +133,9 @@ TEST_F(WINUT, FrameBufferTest) {
   UnbindFramebuffer();
 }
 
-TEST_F(WINUT, ShaderTest) {
-  Window w(1024, 768, "shadertest");
-
-  std::shared_ptr<VertexShader>   vs(new VertexShader("shaders/test.vert"));
-  std::shared_ptr<FragmentShader> fs(new FragmentShader("shaders/test.frag"));
-  ShaderProgram                   pro;
-  pro.Attach(vs);
-  pro.Attach(fs);
-  pro.Bind();
-
-  DefaultFramebufferColor(0, 0, 0, 0);
-  while (!w.ShouldClose()) {
-    ClearFramebuffer();
-    w.Update();
-  }
-}
-
 TEST_F(WINUT, SpriteTest) {
   Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "spritetest");
-  w.SetKeyboardCallback(ProcessInput);
+  w.SetKeyboardCallback(ProcessInputCam);
   DefaultFramebufferColor(0, 0, 0, 0);
   SpriteRender render(g_camera);
 
@@ -138,7 +152,7 @@ TEST_F(WINUT, SpriteTest) {
 
 TEST_F(WINUT, FontTest) {
   Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "fonttest");
-  w.SetKeyboardCallback(ProcessInput);
+  w.SetKeyboardCallback(ProcessInputCam);
   DefaultFramebufferColor(0, 0, 0, 0);
   Font f(g_camera);
   f.Load("/Users/lambda/Library/Fonts/Minecraft.ttf");
@@ -147,5 +161,30 @@ TEST_F(WINUT, FontTest) {
     ClearFramebuffer();
     f.Draw("hello world", vec2(400, 300), vec3(1, 0, 0));
     w.Update();
+  }
+}
+
+TEST_F(WINUT, ParticleTest) {
+  Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "particletest");
+  w.SetKeyboardCallback(ProcessInputObj);
+  DefaultFramebufferColor(0, 0, 0, 0);
+  std::shared_ptr<SpriteRender> render(new SpriteRender(g_camera));
+  std::shared_ptr<Texture2D>    sprite(new Texture2D());
+  sprite->LoadImage("texture/weapons.png");
+  SimpleParticleRender part(render, sprite, PARTICLE_AMOUNT);
+  part.SetDrawRange(vec2(136, 676), vec2(18, 36));
+  DefaultParticleGenerator gene(vec2(10, 20), 8.0f, vec2(5));
+  dummy_obj.Position = vec2(395, 290);
+
+  double prev = Now<>();
+  while (!w.ShouldClose()) {
+    double curr       = Now<>();
+    double delta_time = curr - prev;
+    ClearFramebuffer();
+    part.Update(delta_time, gene(dummy_obj.Position, vec2(0, 200)),
+                config.GetValue<int>("particle_gene_num"));
+    part.Draw();
+    w.Update();
+    prev = curr;
   }
 }

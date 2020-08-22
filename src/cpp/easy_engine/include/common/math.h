@@ -8,6 +8,8 @@
 #ifndef __EASY_ENGINE_INCLUDE_COMMON_MATH_H__
 #define __EASY_ENGINE_INCLUDE_COMMON_MATH_H__
 
+#include <random>
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
@@ -47,6 +49,24 @@ using glm::transpose;
 
 // 获取数据
 using glm::value_ptr;
+
+// 生成左闭右开区间内的随机数, 默认生成浮点数
+template <typename T = float>
+class Random {
+ public:
+  // @param left: 左闭区间
+  // @param right: 右开区间
+  Random(const double& left, const double& right) : _generator(left, right) {}
+
+  // 返回一个生成的随机数
+  // @return T: 返回的随机数
+  T operator()() { return static_cast<T>(_generator(_engine)); }
+
+ private:
+  std::uniform_real_distribution<> _generator;  // 随机数生成器
+  std::default_random_engine       _engine;     // 默认随机引擎
+};
+
 }  // namespace easy_engine
 
 #endif  // __EASY_ENGINE_INCLUDE_COMMON_MATH_H__

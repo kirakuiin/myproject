@@ -7,6 +7,7 @@
 
 #include "include/utility/log.h"
 
+#include <boost/date_time.hpp>
 #include <boost/thread/lock_types.hpp>
 #include <boost/thread/shared_mutex.hpp>
 #include <iostream>

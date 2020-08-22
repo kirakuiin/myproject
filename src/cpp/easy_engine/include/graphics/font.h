@@ -23,7 +23,8 @@ namespace graphics {
 class Font final {
  public:
   // @param camera: 摄像机
-  Font(std::shared_ptr<Camera2D> camera) : _p_camera(camera), _vao(0), _vbo(0) {
+  explicit Font(std::shared_ptr<Camera2D> camera)
+      : _p_camera(camera), _vao(0), _vbo(0) {
     InitVertex();
     InitShader();
   }

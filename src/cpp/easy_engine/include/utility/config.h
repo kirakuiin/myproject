@@ -24,6 +24,15 @@ class Configurator {
   Configurator() {}
   virtual ~Configurator() {}
 
+  // 将配置信息读取到内存中
+  // @param file_path: 文件的路径
+  void LoadConfig(const std::string& file_path);
+
+  // 将配置信息存储到文件中
+  // @param file_path: 文件的路径
+  void SaveConfig(const std::string& file_path);
+
+ protected:
   // 为指定的ptree设定一个简单值
   // @param key: 配置项名称
   // @param value: 配置项的值
@@ -87,15 +96,6 @@ class Configurator {
     return tree.get_child(key);
   }
 
-  // 将配置信息读取到内存中
-  // @param file_path: 文件的路径
-  void LoadConfig(const std::string& file_path);
-
-  // 将配置信息存储到文件中
-  // @param file_path: 文件的路径
-  void SaveConfig(const std::string& file_path);
-
- protected:
   // 存储所有键值对的容器
   ptree _elements;
 };
@@ -123,4 +123,4 @@ class FlatConfigurator : public Configurator {
 }  // namespace utility
 }  // namespace easy_engine
 
-#endif // __EASY_ENGINE_INCLUDE_UTILITY_CONFIG_H__
+#endif  // __EASY_ENGINE_INCLUDE_UTILITY_CONFIG_H__

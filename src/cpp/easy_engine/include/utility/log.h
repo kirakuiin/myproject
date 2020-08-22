@@ -8,7 +8,6 @@
 #ifndef __EASY_ENGINE_INCLUDE_UTILITY_LOG_H__
 #define __EASY_ENGINE_INCLUDE_UTILITY_LOG_H__
 
-#include <boost/date_time.hpp>
 #include <boost/format.hpp>
 #include <fstream>
 #include <map>
