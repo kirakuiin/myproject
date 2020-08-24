@@ -5,6 +5,7 @@
 // Last Change: 2020  8 12
 // License: GPL.v3
 
+#include <string>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <gtest/gtest.h>
@@ -15,6 +16,7 @@
 #include <memory>
 
 #include "common/timer.h"
+#include "graphics/animation.h"
 #include "graphics/camera.h"
 #include "graphics/font.h"
 #include "graphics/particle.h"
@@ -33,9 +35,10 @@ using std::cout;
 using std::endl;
 
 namespace {
-const int SCREEN_WIDTH    = 800;
-const int SCREEN_HEIGHT   = 600;
-const int PARTICLE_AMOUNT = 500;
+const int    SCREEN_WIDTH    = 800;
+const int    SCREEN_HEIGHT   = 600;
+const int    PARTICLE_AMOUNT = 500;
+const double FRAME_RATE      = 0.025;
 
 void Pos(GLFWwindow* w, double x, double y) {
   cout << format("x=%f, y=%f") % x % y << endl;
@@ -155,7 +158,7 @@ TEST_F(WINUT, FontTest) {
   w.SetKeyboardCallback(ProcessInputCam);
   DefaultFramebufferColor(0, 0, 0, 0);
   Font f(g_camera);
-  f.Load("/Users/lambda/Library/Fonts/Minecraft.ttf");
+  f.Load(config.GetValue<std::string>("font_path"));
   g_camera->MoveCentral(vec2(450, 350));
   while (!w.ShouldClose()) {
     ClearFramebuffer();
@@ -176,15 +179,73 @@ TEST_F(WINUT, ParticleTest) {
   DefaultParticleGenerator gene(vec2(10, 20), 8.0f, vec2(5));
   dummy_obj.Position = vec2(395, 290);
 
-  double prev = Now<>();
+  double prev       = Now<>();
+  double curr       = 0;
+  double delta_time = 0;
   while (!w.ShouldClose()) {
-    double curr       = Now<>();
-    double delta_time = curr - prev;
+    curr = Now<>();
+    delta_time += (curr - prev);
+    prev = curr;
     ClearFramebuffer();
-    part.Update(delta_time, gene(dummy_obj.Position, vec2(0, 200)),
-                config.GetValue<int>("particle_gene_num"));
+    while (delta_time >= FRAME_RATE) {
+      part.Update(gene(dummy_obj.Position, vec2(0, 200)),
+                  config.GetValue<int>("particle_gene_num"));
+      delta_time -= FRAME_RATE;
+    }
     part.Draw();
     w.Update();
+  }
+}
+
+TEST_F(WINUT, AnimationTest) {
+  Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "animationtest");
+  DefaultFramebufferColor(0, 0, 0, 0);
+  std::shared_ptr<Texture2D>    background(new Texture2D());
+  std::shared_ptr<SpriteRender> render(new SpriteRender(g_camera));
+  std::shared_ptr<Animation>    anime(new Animation());
+  background->LoadImage(config.GetValue<std::string>("animation_bg"));
+  anime->AddAnimation(config.GetValue<std::string>("animation_path"));
+  Font f_render(g_camera);
+  f_render.Load(config.GetValue<std::string>("font_path"), 30);
+
+  AnimationRender anime_render(render);
+  anime_render.SetAnimation(anime);
+  anime_render.SetPlayMode(
+      AnimationPlayMode::PLAY_CYCLE | AnimationPlayMode::PLAY_BACKWARD, 22.5);
+  anime_render.Playing();
+
+  double prev       = Now<>();
+  double curr       = 0;
+  double delta_time = 0;
+  int    count      = 0;
+  int    fps        = 60;
+  float  time       = 0;
+  while (!w.ShouldClose()) {
+    ++count;
+    curr       = Now<>();
+    delta_time = (curr - prev);
+    time += delta_time;
     prev = curr;
+    ClearFramebuffer();
+    render->DrawSprite(background, vec2(0, 0), vec2(800, 600));
+    anime_render.DrawAnimation(vec2(0, 75), vec2(800, 450));
+    if (count % 60 == 0) {
+      fps = (int)(1.0 / delta_time);
+    }
+    if ((int)time % 10 == 0) {
+      anime_render.Pause();
+    }
+    if ((int)time % 3 == 0) {
+      anime_render.Continue();
+    }
+    if (time >= 20 && time < 22) {
+      if (anime_render.IsPlaying()) anime_render.Stop();
+    } else if (time >= 22 and time < 24) {
+      anime_render.Playing();
+    }
+    f_render.Draw("fps: " + std::to_string(fps), vec2(0));
+    f_render.Draw("time: " + std::to_string((int)(time * 1000)) + "ms",
+                  vec2(600, 0));
+    w.Update();
   }
 }

@@ -30,8 +30,10 @@ double Now() {
 
 // 休眠指定秒数
 // @param duration: 持续时间
+template <typename T = Sec>
 void Sleep(double duration) {
-  std::this_thread::sleep_for(Us(static_cast<int>(duration * Us::period::den)));
+  std::this_thread::sleep_for(
+      Us(static_cast<int>(duration * Us::period::den / T::period::den)));
 }
 }  // namespace easy_engine
 

@@ -27,10 +27,12 @@ using glm::vec4;
 
 // 常用的矩阵运算
 using glm::abs;
+using glm::ceil;
 using glm::clamp;
 using glm::cos;
 using glm::cross;
 using glm::dot;
+using glm::floor;
 using glm::inverse;
 using glm::length;
 using glm::max;
@@ -40,6 +42,7 @@ using glm::ortho;
 using glm::pow;
 using glm::radians;
 using glm::rotate;
+using glm::round;
 using glm::scale;
 using glm::sin;
 using glm::sqrt;

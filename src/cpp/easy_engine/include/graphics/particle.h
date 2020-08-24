@@ -35,17 +35,16 @@ class SimpleParticleRender {
   SimpleParticleRender(std::shared_ptr<SpriteRender>      render,
                        std::shared_ptr<opengl::Texture2D> sprite,
                        unsigned int                       amount)
-      : _p_render(render), _p_sprite(sprite), _amount(amount) {
+      : _p_render(render), _p_sprite(sprite), _amount(amount), _prev_time(-1) {
     Init();
   }
 
   virtual ~SimpleParticleRender() {}
 
   // 更新所有粒子状态
-  // @param delta_time: 距离上次调用经过的时间(单位:s)
   // @param particle: 需要被绘制的粒子数据
   // @param gene_num: 每次更新生成的新粒子数量, 默认两个
-  void Update(float delta_time, const Particle& particle, int gene_num);
+  void Update(const Particle& particle, int gene_num);
 
   // 设置纹理的被绘制区域, 默认绘制全部纹理
   // @param pos: 被绘制区域左上角坐标
@@ -64,8 +63,10 @@ class SimpleParticleRender {
 
   std::shared_ptr<SpriteRender>      _p_render;     // 渲染器
   std::shared_ptr<opengl::Texture2D> _p_sprite;     // 精灵
-  unsigned int                       _amount;       // 粒子总数量
   std::vector<Particle>              _v_particles;  // 粒子容器
+  unsigned int                       _amount;       // 粒子总数量
+  double                             _prev_time;    // 之前的时间
+  double                             _curr_time;    // 当前时间
 };
 
 // 默认粒子生成器, 以某点为中心生成均匀随机分布的粒子

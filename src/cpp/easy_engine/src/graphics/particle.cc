@@ -7,6 +7,8 @@
 
 #include "include/graphics/particle.h"
 
+#include "include/common/timer.h"
+
 namespace {
 // alpha分量变化率
 const float AlphaChangeRate = 1.5f;
@@ -15,8 +17,15 @@ const float AlphaChangeRate = 1.5f;
 namespace easy_engine {
 namespace graphics {
 
-void SimpleParticleRender::Update(float delta_time, const Particle& particle,
-                                  int gene_num) {
+void SimpleParticleRender::Update(const Particle& particle, int gene_num) {
+  // 计算时间
+  _curr_time = Now();
+  if (_prev_time < 0) {
+    _prev_time = _curr_time;
+  }
+  float delta_time = _curr_time - _prev_time;
+  _prev_time       = _curr_time;
+
   for (int i = 0; i < gene_num; ++i) {
     int unused_index           = FindFirstUnusedIndex();
     _v_particles[unused_index] = particle;
