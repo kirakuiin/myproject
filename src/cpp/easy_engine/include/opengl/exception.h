@@ -13,12 +13,12 @@
 #include "../common/exception.h"
 #include "../utility/log.h"
 
+namespace easy_engine {
+namespace opengl {
+
 const std::string ModuleName("OpenGl");
 const std::string ErrorFile("EasyEngineOpenGl.err");
 const std::string ErrorFmt("OpenGl Error: %s.");
-
-namespace easy_engine {
-namespace opengl {
 
 class GlException : public Exception {
  public:

@@ -5,26 +5,16 @@
 // Last Change: 2020  8 12
 // License: GPL.v3
 
-#include <string>
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
 #include <gtest/gtest.h>
 
 #include <boost/format.hpp>
 #include <ctime>
 #include <iostream>
 #include <memory>
+#include <string>
 
-#include "common/timer.h"
-#include "graphics/animation.h"
-#include "graphics/camera.h"
-#include "graphics/font.h"
-#include "graphics/particle.h"
-#include "graphics/sprite.h"
-#include "opengl/framebuffer.h"
-#include "opengl/shader.h"
-#include "opengl/window.h"
-#include "utility/config.h"
+#define __EASY_ENGINE_ALL__
+#include "easy_engine.h"
 
 using boost::format;
 using namespace easy_engine;

@@ -8,7 +8,6 @@
 #ifndef __EASY_ENGINE_INCLUDE_UTILITY_LOG_H__
 #define __EASY_ENGINE_INCLUDE_UTILITY_LOG_H__
 
-#include <boost/format.hpp>
 #include <fstream>
 #include <map>
 #include <memory>
@@ -83,8 +82,8 @@ class Logging final {
   bool         _enable_time;  // 是否记录时间
   std::string  _module_name;  // 模块名称
 
-  boost::format _time_fmt;     // 时间格式
-  boost::format _output_fmt;   // 输出格式
+  std::string   _time_fmt;     // 时间格式
+  std::string   _output_fmt;   // 输出格式
   std::ofstream _output_file;  // 输出文件
 };
 

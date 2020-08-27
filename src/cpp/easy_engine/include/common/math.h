@@ -70,6 +70,14 @@ class Random {
   std::default_random_engine       _engine;     // 默认随机引擎
 };
 
+// 计算二元向量的叉乘
+// @param lhs: 向量
+// @param rhs: 向量
+// @return float: 叉乘结果
+inline float cross(const vec2& lhs, const vec2& rhs) {
+  return lhs.x * rhs.y - rhs.x * lhs.y;
+}
+
 }  // namespace easy_engine
 
 #endif  // __EASY_ENGINE_INCLUDE_COMMON_MATH_H__

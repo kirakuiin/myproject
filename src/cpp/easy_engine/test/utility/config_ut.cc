@@ -46,21 +46,3 @@ TEST_F(CONFIGUT, Read) {
   conf.LoadConfig(ConfPath);
   cout << conf.GetValue<float>("c") << endl;
 }
-
-TEST_F(CONFIGUT, Struct) {
-  ptree root;
-  ptree obj;
-  Configurator::Set("v", 1.5f, &obj);
-  Configurator::Set("n", 2.5f, &obj);
-  Configurator::Set("n", 3.5f, &obj);
-  std::vector<float> v{1.5, 2.2, 3.3};
-  FlatConfigurator::SetVector("vec", v, &obj);
-  Configurator::SetObject("obj1", obj, &root);
-  Configurator::SetObject("obj2", obj, &root);
-  Configurator::SetVector("vec", v, &root);
-  ptree res = Configurator::GetObject(root, "obj1");
-  v.clear();
-  Configurator::GetVector(res, "vec", &v);
-  cout << Configurator::Get<float>(res, "v") << endl;
-  cout << v[0] << v[1] << v[2] << endl;
-}
