@@ -5,25 +5,22 @@
 // Last Change: 2020  8 12
 // License: GPL.v3
 
-#include "include/opengl/window.h"
+#include "include/widget/window.h"
 
 #include <functional>
 #include <iostream>
 
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
-
-#include "include/opengl/exception.h"
 #include "include/opengl/glad/glad.h"
+#include "include/widget/exception.h"
 
 namespace easy_engine {
-namespace opengl {
+namespace widget {
 
 void Window::InitOpenGl() {
   static bool is_first_time = true;
   if (is_first_time) {
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-      throw GlException("Init OpenGl library failed");
+      throw WidgetException("Init OpenGl library failed");
     }
     is_first_time = false;
   }
@@ -37,7 +34,7 @@ Window::Window(unsigned int window_width, unsigned int window_height,
   // 创建失败
   if (!_p_window) {
     glfwTerminate();
-    throw GlException("Create window failed");
+    throw WidgetException("Create window failed");
   }
   Activate();
   // 设定视口
@@ -125,5 +122,5 @@ void Window::InitWindow() {
   }
 }
 
-}  // namespace opengl
+}  // namespace widget
 }  // namespace easy_engine

@@ -19,6 +19,7 @@ SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories(/Library/Developer/CommandLineTools/usr/include/c++/v1)
 
 SOURCE_DIRS(
+  ./src/widget
   ./src/utility
   ./src/opengl
   ./src/graphics

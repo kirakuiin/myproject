@@ -24,6 +24,14 @@ class Exception : public std::exception {
   std::string _error_message;
 };
 
+// 带有位置的异常抛出
+#define THROW_WITH_LOC(exc_class, msg)                     \
+  {                                                        \
+    std::string line(std::to_string(__LINE__));            \
+    std::string file(__FILE__);                            \
+    throw exc_class("[" + file + "][" + line + "]" + msg); \
+  }
+
 }  // namespace easy_engine
 
-#endif // __EASY_ENGINE_INCLUDE_COMMON_EXCEPTION_H__
+#endif  // __EASY_ENGINE_INCLUDE_COMMON_EXCEPTION_H__

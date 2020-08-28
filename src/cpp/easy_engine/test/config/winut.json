@@ -2,5 +2,7 @@
     "font_path": "/Users/lambda/Library/Fonts/Minecraft.ttf",
     "particle_gene_num": 2,
     "animation_path": "animation/ammonomicon_intro_001.png",
-    "animation_bg": "/Users/lambda/Pictures/Andromeda galaxy.jpg"
+    "animation_bg": "/Users/lambda/Pictures/Andromeda galaxy.jpg",
+    "button_bg": "/Users/lambda/Pictures/anime_girl.bmp",
+    "button_img": "texture/powerup_stop.png"
 }

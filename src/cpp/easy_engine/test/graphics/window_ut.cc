@@ -13,6 +13,11 @@
 #include <memory>
 #include <string>
 
+#include "physics/collision.h"
+#include "widget/button.h"
+#include "widget/container.h"
+#include "widget/widget.h"
+
 #define __EASY_ENGINE_ALL__
 #include "easy_engine.h"
 
@@ -21,6 +26,7 @@ using namespace easy_engine;
 using namespace easy_engine::utility;
 using namespace easy_engine::opengl;
 using namespace easy_engine::graphics;
+using namespace easy_engine::widget;
 using std::cout;
 using std::endl;
 
@@ -237,5 +243,42 @@ TEST_F(WINUT, AnimationTest) {
     f_render.Draw("time: " + std::to_string((int)(time * 1000)) + "ms",
                   vec2(600, 0));
     w.Update();
+  }
+}
+
+TEST_F(WINUT, ButtonTest) {
+  std::shared_ptr<Window> w(
+      new Window(SCREEN_WIDTH, SCREEN_HEIGHT, "buttontest"));
+  std::shared_ptr<Texture2D>    background(new Texture2D());
+  std::shared_ptr<Texture2D>    anobak(new Texture2D());
+  std::shared_ptr<Texture2D>    curbak(background);
+  std::shared_ptr<Texture2D>    button(new Texture2D());
+  std::shared_ptr<SpriteRender> render(new SpriteRender(g_camera));
+  background->LoadImage(config.GetValue<std::string>("animation_bg"));
+  anobak->LoadImage(config.GetValue<std::string>("button_bg"));
+  button->LoadImage(config.GetValue<std::string>("button_img"));
+  DefaultFramebufferColor(0, 0, 0, 0);
+  std::shared_ptr<Button> btn(
+      new Button(w, vec2(300, 300), vec2(100, 20), button));
+  WidgetContainer               container;
+  std::function<ButtonCallBack> callback([&](int btn) {
+    if (btn == GLFW_MOUSE_BUTTON_LEFT) {
+      curbak = anobak;
+    } else {
+      curbak = background;
+    }
+  });
+  btn->SetCallback(callback);
+  std::shared_ptr<physics::CircleBox> hitbox(
+      new physics::CircleBox(vec2(350, 310), 100));
+  btn->SetHitBox(hitbox);
+  container.Add("switch_bg", btn);
+
+  while (!w->ShouldClose()) {
+    ClearFramebuffer();
+    render->DrawSprite(curbak, vec2(0, 0), vec2(800, 600));
+    container.Update();
+    container.Draw(render);
+    w->Update();
   }
 }

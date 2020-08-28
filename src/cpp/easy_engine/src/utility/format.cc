@@ -29,11 +29,21 @@ void Format(const char* format, std::stringstream& ss) {
       if (*(format + 1) == '%') {
         ++format;
       } else {
-        throw std::runtime_error("invalid format string: missing arguments");
+        throw UtilityException("invalid format string: missing arguments");
       }
     }
     ss << *format++;
   }
+}
+
+std::ostream& operator<<(std::ostream& out, const vec2& val) {
+  out << "vec2(x=" << val.x << ", y=" << val.y << ")";
+  return out;
+}
+
+std::ostream& operator<<(std::ostream& out, const vec3& val) {
+  out << "vec2(x=" << val.x << ", y=" << val.y << ", z=" << val.z << ")";
+  return out;
 }
 
 }  // namespace utility

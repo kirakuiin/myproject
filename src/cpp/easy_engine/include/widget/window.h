@@ -5,16 +5,16 @@
 // Last Change: 2020  8 12
 // License: GPL.v3
 
-#ifndef __EASY_ENGINE_INCLUDE_OPENGL_WINDOW_H__
-#define __EASY_ENGINE_INCLUDE_OPENGL_WINDOW_H__
+#ifndef __EASY_ENGINE_INCLUDE_WIDGET_WINDOW_H__
+#define __EASY_ENGINE_INCLUDE_WIDGET_WINDOW_H__
 
 #include <string>
 
-// 底层窗口尸体
-struct GLFWwindow;
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
 
 namespace easy_engine {
-namespace opengl {
+namespace widget {
 
 using KeyboardCallback   = void (*)(GLFWwindow* w, int key, int scancode,
                                   int action, int mods);
@@ -83,6 +83,10 @@ class Window final {
   // @height(int): 窗口新高度
   void SetWindowSizeCallback(WindowSizeCallback callback);
 
+  // 得到窗口原始指针
+  // @return GLFWwindow*: 窗口原始指针
+  GLFWwindow* GetPtr() { return _p_window; }
+
  private:
   // 初始化opengl函数
   static void InitOpenGl();
@@ -93,7 +97,7 @@ class Window final {
   GLFWwindow* _p_window;  // 实际的窗口指针
 };
 
-}  // namespace opengl
+}  // namespace widget
 }  // namespace easy_engine
 
-#endif  // __EASY_ENGINE_INCLUDE_OPENGL_WINDOW_H__
+#endif  // __EASY_ENGINE_INCLUDE_WIDGET_WINDOW_H__

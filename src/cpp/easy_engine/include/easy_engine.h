@@ -22,10 +22,12 @@
 #define __EASY_ENGINE_OPENGL__    // 引入OPENGL模块
 #define __EASY_ENGINE_UTILITY__   // 引入工具模块
 #define __EASY_ENGINE_PHYSICS__   // 引入物理模块
+#define __EASY_ENGINE_WIDGET__    // 引入部件模块
 
 #endif  // __EASY_ENGINE_ALL__
 
 #ifdef __EASY_ENGINE_COMMON__
+#include "common/const.h"
 #include "common/math.h"
 #include "common/timer.h"
 #endif  // __EASY_ENGINE_COMMON__
@@ -42,7 +44,6 @@
 #include "opengl/framebuffer.h"
 #include "opengl/shader.h"
 #include "opengl/texture.h"
-#include "opengl/window.h"
 #endif  // __EASY_ENGINE_OPENGL__
 
 #ifdef __EASY_ENGINE_UTILITY__
@@ -50,6 +51,11 @@
 #include "utility/format.h"
 #include "utility/log.h"
 #endif  // __EASY_ENGINE_UTILITY__
+
+#ifdef __EASY_ENGINE_WIDGET__
+#include "widget/window.h"
+#include "widget/button.h"
+#endif  // __EASY_ENGINE_WIDGET__
 
 #ifdef __EASY_ENGINE_PHYSICS__
 #include "physics/collision.h"
