@@ -20,7 +20,7 @@ namespace easy_engine {
 namespace widget {
 
 // 按钮回调函数原型
-using ButtonCallBack = void(int button);
+using ButtonCallBack = std::function<void(int button)>;
 
 // 按钮基类
 class Button : public Widget {
@@ -46,9 +46,7 @@ class Button : public Widget {
   // 设置鼠标点击的回调函数
   //
   // @param callback: 当点击按钮时触发的函数
-  void SetCallback(std::function<ButtonCallBack> callback) {
-    _callback = callback;
-  }
+  void SetCallback(ButtonCallBack callback) { _callback = callback; }
 
   // 设置碰撞盒
   //
@@ -73,7 +71,7 @@ class Button : public Widget {
   std::shared_ptr<physics::HitBox>   _p_hitbox;  // 碰撞盒
   std::shared_ptr<Window>            _p_window;  // 窗口
   std::shared_ptr<opengl::Texture2D> _p_sprite;  // 按钮图标
-  std::function<ButtonCallBack>      _callback;  // 回掉函数
+  ButtonCallBack                     _callback;  // 回调函数
 };
 
 }  // namespace widget

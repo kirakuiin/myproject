@@ -13,6 +13,7 @@
 #include <memory>
 #include <string>
 
+#include "opengl/framebuffer.h"
 #include "physics/collision.h"
 #include "widget/button.h"
 #include "widget/container.h"
@@ -36,15 +37,16 @@ const int    SCREEN_HEIGHT   = 600;
 const int    PARTICLE_AMOUNT = 500;
 const double FRAME_RATE      = 0.025;
 
-void Pos(GLFWwindow* w, double x, double y) {
-  cout << format("x=%f, y=%f") % x % y << endl;
-}
-void Btn(GLFWwindow* w, int k, int a, int m) {
+void Pos(double x, double y) { cout << format("x=%f, y=%f") % x % y << endl; }
+void Btn(int k, int a, int m) {
   cout << format("key=%d, action=%d, mods=%d") % k % a % m << endl;
 }
-void Key(GLFWwindow* w, int k, int s, int a, int m) {
+void Key(int k, int s, int a, int m) {
   cout << format("key=%d, scancode=%d, action=%d, mods=%d") % k % s % a % m
        << endl;
+}
+void Winsize(int w, int h) {
+  cout << format("width=%d, height=%d") % w % h << endl;
 }
 
 // 摄像机
@@ -52,18 +54,18 @@ std::shared_ptr<Camera2D> g_camera(
     new Camera2D(vec2(0, SCREEN_HEIGHT), vec2(SCREEN_WIDTH, SCREEN_HEIGHT)));
 
 // 处理摄像机移动的回调函数
-void ProcessInputCam(GLFWwindow* w, int k, int s, int a, int m) {
+void ProcessInputCam(Window* w) {
   static vec2 start(450, 350);
-  if (glfwGetKey(w, GLFW_KEY_W) == GLFW_PRESS) {
+  if (w->GetKey(GLFW_KEY_W) == GLFW_PRESS) {
     g_camera->MoveCentral(start += vec2(0, -10));
   }
-  if (glfwGetKey(w, GLFW_KEY_S) == GLFW_PRESS) {
+  if (w->GetKey(GLFW_KEY_S) == GLFW_PRESS) {
     g_camera->MoveCentral(start += vec2(0, 10));
   }
-  if (glfwGetKey(w, GLFW_KEY_D) == GLFW_PRESS) {
+  if (w->GetKey(GLFW_KEY_D) == GLFW_PRESS) {
     g_camera->MoveCentral(start += vec2(10, 0));
   }
-  if (glfwGetKey(w, GLFW_KEY_A) == GLFW_PRESS) {
+  if (w->GetKey(GLFW_KEY_A) == GLFW_PRESS) {
     g_camera->MoveCentral(start += vec2(-10, 0));
   }
 }
@@ -72,17 +74,17 @@ void ProcessInputCam(GLFWwindow* w, int k, int s, int a, int m) {
 Particle dummy_obj;
 
 // 处理对象移动的回掉函数
-void ProcessInputObj(GLFWwindow* w, int k, int s, int a, int m) {
-  if (glfwGetKey(w, GLFW_KEY_W) == GLFW_PRESS) {
+void ProcessInputObj(Window* w) {
+  if (w->GetKey(GLFW_KEY_W) == GLFW_PRESS) {
     dummy_obj.Position += vec2(0, -10);
   }
-  if (glfwGetKey(w, GLFW_KEY_S) == GLFW_PRESS) {
+  if (w->GetKey(GLFW_KEY_S) == GLFW_PRESS) {
     dummy_obj.Position += vec2(0, 10);
   }
-  if (glfwGetKey(w, GLFW_KEY_D) == GLFW_PRESS) {
+  if (w->GetKey(GLFW_KEY_D) == GLFW_PRESS) {
     dummy_obj.Position += vec2(10, 0);
   }
-  if (glfwGetKey(w, GLFW_KEY_A) == GLFW_PRESS) {
+  if (w->GetKey(GLFW_KEY_A) == GLFW_PRESS) {
     dummy_obj.Position += vec2(-10, 0);
   }
 }
@@ -106,8 +108,11 @@ TEST_F(WINUT, WindowTest) {
   w.SetMouseBtnCallback(Btn);
   w.SetScrollCallback(Pos);
   w.SetKeyboardCallback(Key);
+  w.SetWindowSizeCallback(Winsize);
+  DefaultFramebufferColor(0, 0, 0, 0);
   while (!w.ShouldClose()) {
     w.Update();
+    ClearFramebuffer();
   }
   int wd, hi;
   w.GetWindowSize(&wd, &hi);
@@ -134,7 +139,6 @@ TEST_F(WINUT, FrameBufferTest) {
 
 TEST_F(WINUT, SpriteTest) {
   Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "spritetest");
-  w.SetKeyboardCallback(ProcessInputCam);
   DefaultFramebufferColor(0, 0, 0, 0);
   SpriteRender render(g_camera);
 
@@ -146,26 +150,26 @@ TEST_F(WINUT, SpriteTest) {
     ClearFramebuffer();
     render.DrawSprite(sprite, vec2(400, 300), vec2(180, 360));
     w.Update();
+    ProcessInputCam(&w);
   }
 }
 
 TEST_F(WINUT, FontTest) {
   Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "fonttest");
-  w.SetKeyboardCallback(ProcessInputCam);
   DefaultFramebufferColor(0, 0, 0, 0);
   Font f(g_camera);
   f.Load(config.GetValue<std::string>("font_path"));
   g_camera->MoveCentral(vec2(450, 350));
   while (!w.ShouldClose()) {
+    w.Update();
+    ProcessInputCam(&w);
     ClearFramebuffer();
     f.Draw("hello world", vec2(400, 300), vec3(1, 0, 0));
-    w.Update();
   }
 }
 
 TEST_F(WINUT, ParticleTest) {
   Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "particletest");
-  w.SetKeyboardCallback(ProcessInputObj);
   DefaultFramebufferColor(0, 0, 0, 0);
   std::shared_ptr<SpriteRender> render(new SpriteRender(g_camera));
   std::shared_ptr<Texture2D>    sprite(new Texture2D());
@@ -190,6 +194,7 @@ TEST_F(WINUT, ParticleTest) {
     }
     part.Draw();
     w.Update();
+    ProcessInputObj(&w);
   }
 }
 
@@ -253,15 +258,19 @@ TEST_F(WINUT, ButtonTest) {
   std::shared_ptr<Texture2D>    anobak(new Texture2D());
   std::shared_ptr<Texture2D>    curbak(background);
   std::shared_ptr<Texture2D>    button(new Texture2D());
+  std::shared_ptr<Texture2D>    icon(new Texture2D());
   std::shared_ptr<SpriteRender> render(new SpriteRender(g_camera));
   background->LoadImage(config.GetValue<std::string>("animation_bg"));
   anobak->LoadImage(config.GetValue<std::string>("button_bg"));
   button->LoadImage(config.GetValue<std::string>("button_img"));
+  icon->LoadImage(config.GetValue<std::string>("cursor_icon"));
   DefaultFramebufferColor(0, 0, 0, 0);
   std::shared_ptr<Button> btn(
       new Button(w, vec2(300, 300), vec2(100, 20), button));
-  WidgetContainer               container;
-  std::function<ButtonCallBack> callback([&](int btn) {
+  std::shared_ptr<Cursor> cursor(
+      new Cursor(w, vec2(300, 300), vec2(20, 20), icon));
+  WidgetContainer container;
+  ButtonCallBack  callback([&](int btn) {
     if (btn == GLFW_MOUSE_BUTTON_LEFT) {
       curbak = anobak;
     } else {
@@ -269,16 +278,18 @@ TEST_F(WINUT, ButtonTest) {
     }
   });
   btn->SetCallback(callback);
-  std::shared_ptr<physics::CircleBox> hitbox(
-      new physics::CircleBox(vec2(350, 310), 100));
-  btn->SetHitBox(hitbox);
+  // std::shared_ptr<physics::CircleBox> hitbox(
+  // new physics::CircleBox(vec2(350, 310), 100));
+  // btn->SetHitBox(hitbox);
   container.Add("switch_bg", btn);
 
   while (!w->ShouldClose()) {
     ClearFramebuffer();
     render->DrawSprite(curbak, vec2(0, 0), vec2(800, 600));
     container.Update();
+    cursor->Update();
     container.Draw(render);
+    cursor->Draw(render);
     w->Update();
   }
 }

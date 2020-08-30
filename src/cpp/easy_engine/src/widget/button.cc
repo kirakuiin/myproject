@@ -28,15 +28,13 @@ void Button::Update() {
     return;
   }
   double x, y;
-  glfwGetCursorPos(_p_window->GetPtr(), &x, &y);
+  _p_window->GetCursor(&x, &y);
 
   CollisionResult res = CheckCollision(DotBox(vec2(x, y)), *_p_hitbox.get());
   if (res.IsIntersect) {
-    _status = ButtonStatus::CURSOR_ON;
-    int left_press =
-        glfwGetMouseButton(_p_window->GetPtr(), GLFW_MOUSE_BUTTON_LEFT);
-    int right_press =
-        glfwGetMouseButton(_p_window->GetPtr(), GLFW_MOUSE_BUTTON_RIGHT);
+    _status         = ButtonStatus::CURSOR_ON;
+    int left_press  = _p_window->GetMouse(GLFW_MOUSE_BUTTON_LEFT);
+    int right_press = _p_window->GetMouse(GLFW_MOUSE_BUTTON_RIGHT);
     if (left_press == GLFW_PRESS || right_press == GLFW_PRESS) {
       _status = ButtonStatus::CLICK;
       if (left_press == GLFW_PRESS && _callback) {

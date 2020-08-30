@@ -23,6 +23,7 @@
 #define __EASY_ENGINE_UTILITY__   // 引入工具模块
 #define __EASY_ENGINE_PHYSICS__   // 引入物理模块
 #define __EASY_ENGINE_WIDGET__    // 引入部件模块
+#define __EASY_ENGINE_AUDIO__     // 引入音频模块
 
 #endif  // __EASY_ENGINE_ALL__
 
@@ -53,12 +54,18 @@
 #endif  // __EASY_ENGINE_UTILITY__
 
 #ifdef __EASY_ENGINE_WIDGET__
-#include "widget/window.h"
 #include "widget/button.h"
+#include "widget/container.h"
+#include "widget/cursor.h"
+#include "widget/window.h"
 #endif  // __EASY_ENGINE_WIDGET__
 
 #ifdef __EASY_ENGINE_PHYSICS__
 #include "physics/collision.h"
 #endif  // __EASY_ENGINE_PHYSICS__
+
+#ifdef __EASY_ENGINE_AUDIO__
+#include "audio/soundengine.h"
+#endif  // __EASY_ENGINE_AUDIO__
 
 #endif  // __CPP_EASY_ENGINE_INCLUDE_EASY_ENGINE_H__
