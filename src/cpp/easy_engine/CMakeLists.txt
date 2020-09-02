@@ -24,6 +24,8 @@ SOURCE_DIRS(
   ./src/opengl
   ./src/graphics
   ./src/physics
+  ./src/common
+  ./src/audio
   )
 
 INCLUDE($ENV{MYCMAKE}/common/tailer.cmake)

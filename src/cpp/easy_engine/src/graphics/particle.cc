@@ -7,7 +7,7 @@
 
 #include "include/graphics/particle.h"
 
-#include "include/common/timer.h"
+#include "include/common/time.h"
 
 namespace {
 // alpha分量变化率

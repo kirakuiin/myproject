@@ -13,6 +13,7 @@
 #include <memory>
 #include <string>
 
+#include "audio/soundengine.h"
 #include "opengl/framebuffer.h"
 #include "physics/collision.h"
 #include "widget/button.h"
@@ -28,6 +29,7 @@ using namespace easy_engine::utility;
 using namespace easy_engine::opengl;
 using namespace easy_engine::graphics;
 using namespace easy_engine::widget;
+using namespace easy_engine::audio;
 using std::cout;
 using std::endl;
 
@@ -281,6 +283,7 @@ TEST_F(WINUT, ButtonTest) {
   // std::shared_ptr<physics::CircleBox> hitbox(
   // new physics::CircleBox(vec2(350, 310), 100));
   // btn->SetHitBox(hitbox);
+  // cursor->Disable();
   container.Add("switch_bg", btn);
 
   while (!w->ShouldClose()) {
@@ -292,4 +295,45 @@ TEST_F(WINUT, ButtonTest) {
     cursor->Draw(render);
     w->Update();
   }
+}
+
+TEST_F(WINUT, SoundTest) {
+  SoundEngine engine;
+  vec3        lis(0, 0, 0);
+  engine.SetListener(lis, vec3(0, 0, 1));
+  engine.Play(MusicInfo(config.GetValue<std::string>("music_03"), 1, true,
+                        false, true, 0.5, 0.5));
+  engine.Play(MusicInfo(config.GetValue<std::string>("music_02"), 2, true, true,
+                        true, 1, 1, vec3(0, 0, 0), 1));
+  while (true) {
+    char c;
+    std::cin >> c;
+    if (c == 'e') {
+      break;
+    }
+    switch (c) {
+      case '+':
+        engine.Play(MusicInfo(config.GetValue<std::string>("music_01"), 3, true,
+                              false, true));
+        break;
+      case 'w':
+        lis.z += 1;
+        break;
+      case 's':
+        lis.z -= 1;
+        break;
+      case 'a':
+        lis.x -= 1;
+        break;
+      case 'd':
+        lis.x += 1;
+        break;
+      case 'q':
+        engine.StopMusic(1);
+        break;
+    }
+    engine.SetListener(lis, vec3(0, 0, 1));
+    cout << Format("%", lis) << endl;
+  }
+  engine.Stop();
 }

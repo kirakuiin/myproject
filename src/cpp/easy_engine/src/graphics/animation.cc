@@ -14,7 +14,7 @@
 #include <regex>
 #include <string>
 
-#include "include/common/timer.h"
+#include "include/common/time.h"
 #include "include/graphics/exception.h"
 #include "include/utility/log.h"
 

@@ -29,8 +29,10 @@
 
 #ifdef __EASY_ENGINE_COMMON__
 #include "common/const.h"
+#include "common/format.h"
 #include "common/math.h"
-#include "common/timer.h"
+#include "common/queue.h"
+#include "common/time.h"
 #endif  // __EASY_ENGINE_COMMON__
 
 #ifdef __EASY_ENGINE_GRAPHICS__
@@ -49,7 +51,6 @@
 
 #ifdef __EASY_ENGINE_UTILITY__
 #include "utility/config.h"
-#include "utility/format.h"
 #include "utility/log.h"
 #endif  // __EASY_ENGINE_UTILITY__
 
