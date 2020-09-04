@@ -82,6 +82,11 @@ struct HitBox {
   //
   // @param axis: 额外的轴
   virtual void SetExtraAxis(const vec2& axis) = 0;
+
+  // 返回AABB
+  //
+  // @return Rect: 碰撞盒的AABB矩形
+  virtual Rect GetAABB() const = 0;
 };
 
 // 点碰撞盒
@@ -94,6 +99,7 @@ struct DotBox : public HitBox {
   DotBox&           Translate(const vec2& offset) override;
   vec2              GetCenter() const override { return Pos; }
   void              SetExtraAxis(const vec2& axis) override {}
+  Rect              GetAABB() const override { return Rect(Pos, vec2(0)); }
 
   // 以当前点为基础生成一个新的点
   //
@@ -114,6 +120,7 @@ struct LineBox : public HitBox {
   LineBox&          Translate(const vec2& offset) override;
   vec2              GetCenter() const override { return (Begin + End) * 0.5f; }
   void              SetExtraAxis(const vec2& axis) override {}
+  Rect              GetAABB() const override;
 
   // 以当前点为基础生成一个新的线
   //
@@ -136,6 +143,7 @@ struct PolygonBox : public HitBox {
   PolygonBox&       Translate(const vec2& offset) override;
   vec2              GetCenter() const override;
   void              SetExtraAxis(const vec2& axis) override {}
+  Rect              GetAABB() const override;
 
   // 以当前点为基础生成一个新的多边形
   //
@@ -157,6 +165,9 @@ struct CircleBox : public HitBox {
   CircleBox&        Translate(const vec2& offset) override;
   vec2              GetCenter() const override { return Origin; }
   void              SetExtraAxis(const vec2& axis) override { _axis = axis; }
+  Rect              GetAABB() const override {
+    return Rect(Origin - vec2(Radius), vec2(2 * Radius));
+  }
 
   // 以当前点为基础生成一个新的圆
   //

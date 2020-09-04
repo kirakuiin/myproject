@@ -52,31 +52,6 @@ vec2 GetNearestPointToPoint(const vec2& begin, const vec2& end,
   }
 }
 
-// 向量比较类
-//
-// @param lhs: 操作数
-// @param rhs: 操作数
-// @return bool: 如果lhs < rhs
-template <typename T>
-class VecLess {
- public:
-  bool operator()(T& lhs, T& rhs) const;
-};
-
-template <>
-class VecLess<vec2> {
- public:
-  bool operator()(const vec2& lhs, const vec2& rhs) const {
-    if (lhs.x < rhs.x) {
-      return true;
-    } else if (lhs.x == rhs.x) {
-      if (lhs.y < rhs.y) {
-        return true;
-      }
-    }
-    return false;
-  }
-};
 }  // namespace
 
 namespace easy_engine {
@@ -115,6 +90,12 @@ LineBox& LineBox::Translate(const vec2& offset) {
   Begin += offset;
   End += offset;
   return *this;
+}
+
+Rect LineBox::GetAABB() const {
+  vec2 tl(min(Begin.x, End.x), min(Begin.y, End.y));
+  vec2 br(max(Begin.x, End.x), max(Begin.y, End.y));
+  return Rect(tl, br - tl);
 }
 
 LineBox LineBox::Add(const vec2& offset) const {
@@ -159,6 +140,25 @@ vec2 PolygonBox::GetCenter() const {
     c += vert;
   }
   return c / static_cast<float>(Vertices.size());
+}
+
+Rect PolygonBox::GetAABB() const {
+  vec2 tl(Vertices[0]), br(Vertices[0]);
+  for (const auto& vert : Vertices) {
+    if (vert.x < tl.x) {
+      tl.x = vert.x;
+    }
+    if (vert.x > br.x) {
+      br.x = vert.x;
+    }
+    if (vert.y < tl.y) {
+      tl.y = vert.y;
+    }
+    if (vert.y > br.y) {
+      br.y = vert.y;
+    }
+  }
+  return Rect(tl, br - tl);
 }
 
 PolygonBox PolygonBox::Add(const vec2& offset) const {

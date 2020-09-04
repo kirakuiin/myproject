@@ -298,7 +298,7 @@ TEST_F(WINUT, ButtonTest) {
 }
 
 TEST_F(WINUT, SoundTest) {
-  SoundEngine engine;
+  SoundEngine engine(50);
   vec3        lis(0, 0, 0);
   engine.SetListener(lis, vec3(0, 0, 1));
   engine.Play(MusicInfo(config.GetValue<std::string>("music_03"), 1, true,

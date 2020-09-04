@@ -11,6 +11,7 @@
 #include <ostream>
 #include <sstream>
 #include <string>
+#include <vector>
 
 #include "exception.h"
 #include "math.h"
@@ -44,6 +45,17 @@ std::ostream& operator<<(std::ostream& out, const vec2& val);
 // @param val: 输出向量
 // @return ostream: 输出对象
 std::ostream& operator<<(std::ostream& out, const vec3& val);
+
+// vector的输出重载函数
+template <typename T>
+std::ostream& operator<<(std::ostream& out, const std::vector<T> val) {
+  out << "vector{";
+  for (const auto& iter : val) {
+    out << iter << " ,";
+  }
+  out << "}";
+  return out;
+}
 
 template <typename First, typename... Other>
 void Format(const char* format, std::stringstream& ss, const First& first,

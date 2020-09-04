@@ -31,6 +31,7 @@
 #include "common/const.h"
 #include "common/format.h"
 #include "common/math.h"
+#include "common/quadtree.h"
 #include "common/queue.h"
 #include "common/time.h"
 #endif  // __EASY_ENGINE_COMMON__

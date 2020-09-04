@@ -19,7 +19,8 @@ using WriteLock = boost::unique_lock<boost::shared_mutex>;  // 写入锁
 template <typename T>
 class MessageQueue {
  public:
-  MessageQueue(size_t max_size) : _max_size(max_size), _buffer(max_size) {}
+  explicit MessageQueue(size_t max_size)
+      : _max_size(max_size), _buffer(max_size) {}
 
   // 入队
   //

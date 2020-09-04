@@ -22,9 +22,6 @@
 namespace easy_engine {
 namespace audio {
 
-// 默认音乐播放请求数量
-const int DEFAULT_AUDIO_REQUEST = 100;
-
 // 音乐资源
 struct MusicInfo {
   MusicInfo(){};
@@ -57,7 +54,7 @@ struct MusicInfo {
 class SoundEngine final {
  public:
   // @param max_sound_request: 最大播放请求数量
-  SoundEngine(int max_sound_request = DEFAULT_AUDIO_REQUEST);
+  explicit SoundEngine(int max_sound_request);
   ~SoundEngine();
 
   // 关闭引擎

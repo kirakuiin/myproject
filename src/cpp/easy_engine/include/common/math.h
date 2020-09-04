@@ -70,6 +70,76 @@ class Random {
   std::default_random_engine       _engine;     // 默认随机引擎
 };
 
+// 向量比较仿函数
+//
+// @param lhs: 操作数
+// @param rhs: 操作数
+// @return bool: 如果lhs < rhs
+template <typename T>
+struct VecLess {
+  bool operator()(T& lhs, T& rhs) const;
+};
+
+// 二维向量比较函数
+template <>
+struct VecLess<vec2> {
+  bool operator()(const vec2& lhs, const vec2& rhs) const {
+    if (lhs.x < rhs.x) {
+      return true;
+    } else if (lhs.x == rhs.x && lhs.y < rhs.y) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
+
+// 平行于坐标轴矩形(AABB)
+struct Rect {
+  Rect() {}
+  // @param top_left: 矩形左上角位置
+  // @param size: 矩形的宽和高
+  Rect(const vec2 top_left, const vec2 size)
+      : Pos(top_left), Size(size), EndPos(Pos.x + Size.x, Pos.y + Size.y) {}
+
+  // 判断两个矩形是否相交
+  //
+  // @param other: 另一个矩形
+  // @return bool: 是否包含
+  bool Intersect(const Rect& other) const {
+    bool x = (Pos.x <= other.EndPos.x) && (other.Pos.x <= EndPos.x);
+    bool y = (Pos.y <= other.EndPos.y) && (other.Pos.y <= EndPos.y);
+    return x && y;
+  }
+
+  // 判断此矩形是否包含另一个矩形
+  //
+  // @param other: 另一个矩形
+  // @return bool: 是否包含
+  bool Contain(const Rect& other) const {
+    bool x = (Pos.x <= other.Pos.x) && (other.EndPos.x <= EndPos.x);
+    bool y = (Pos.y <= other.Pos.y) && (other.EndPos.y <= EndPos.y);
+    return x && y;
+  }
+
+  vec2 Pos;     // 矩形左上角位置
+  vec2 Size;    // 矩形大小
+  vec2 EndPos;  // 矩形右上角位置
+};
+
+// 矩形比较函数
+struct RectLess {
+  bool operator()(const Rect& lhs, const Rect& rhs) {
+    if (VecLess<vec2>()(lhs.Pos, rhs.Pos)) {
+      return true;
+    } else if (lhs.Pos == rhs.Pos && VecLess<vec2>()(lhs.EndPos, rhs.EndPos)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
+
 // 计算二元向量的叉乘
 // @param lhs: 向量
 // @param rhs: 向量
