@@ -18,6 +18,10 @@
 namespace easy_engine {
 namespace audio {
 
+namespace {
+
+const int CleanSize = 10;  // 达到多少个音乐时清理资源
+
 // irr资源删除器
 template <typename T>
 struct IrrDeleter {
@@ -32,8 +36,12 @@ irrklang::vec3df ConvertVec3(const vec3& vec) {
   return irrklang::vec3df(vec.x, vec.y, vec.z);
 }
 
+}  // namespace
+
 SoundEngine::SoundEngine(int max_sound_request)
-    : _is_running(true), _q_messages(max_sound_request) {
+    : _is_running(true),
+      _q_messages(max_sound_request),
+      _clean_size(CleanSize) {
   Init();
 }
 
@@ -50,7 +58,8 @@ void SoundEngine::Play(const MusicInfo& music) {
 
 void SoundEngine::StopMusic(int id) {
   MusicInfo stop_info;
-  stop_info.Id = id;
+  stop_info.Id     = id;
+  stop_info.IsPlay = false;
   Play(stop_info);
 }
 
@@ -64,6 +73,8 @@ void SoundEngine::SetListener(const vec3& listen_pos, const vec3& look_dir) {
   _p_sound_engine->setListenerPosition(ConvertVec3(listen_pos),
                                        ConvertVec3(look_dir));
 }
+
+void SoundEngine::StopAllMusic() { _p_sound_engine->stopAllSounds(); }
 
 void SoundEngine::Init() {
   _p_sound_engine.reset(irrklang::createIrrKlangDevice(),
@@ -81,9 +92,7 @@ void SoundEngine::Fini() {
     _is_running = false;
     _cond.notify_one();
     _p_thread->join();
-    for (const auto& iter : _m_music) {
-      iter.second->stop();
-    }
+    _p_sound_engine->stopAllSounds();
   }
 }
 
@@ -122,6 +131,20 @@ void SoundEngine::Run() {
           }
         }
         _q_messages.Dequeue();
+      }
+      // 清理残留音乐资源
+      if (_m_music.size() > _clean_size) {
+        std::vector<int> delete_list;
+        for (const auto& iter : _m_music) {
+          if (iter.second->isFinished()) {
+            delete_list.push_back(iter.first);
+          }
+        }
+        for (const auto& iter : delete_list) {
+          _m_music.erase(iter);
+        }
+        // 动态平衡
+        _clean_size = _m_music.size() + CleanSize;
       }
     }
   } catch (std::exception& e) {

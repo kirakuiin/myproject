@@ -76,6 +76,10 @@ class SoundEngine final {
   // @param id: 音乐唯一标识
   void StopMusic(int id);
 
+  // 停止所有音乐
+  //
+  void StopAllMusic();
+
  private:
   // 初始化引擎
   void Init();
@@ -93,6 +97,7 @@ class SoundEngine final {
 
   bool                    _is_running;  // 是否正在运行
   MessageQueue<MusicInfo> _q_messages;  // 消息队列
+  int                     _clean_size;  // 清理界限
 
   std::mutex              _mutex;  // 锁
   std::condition_variable _cond;   // 条件变量

@@ -52,6 +52,7 @@
 
 #ifdef __EASY_ENGINE_UTILITY__
 #include "utility/config.h"
+#include "utility/loader.h"
 #include "utility/log.h"
 #endif  // __EASY_ENGINE_UTILITY__
 

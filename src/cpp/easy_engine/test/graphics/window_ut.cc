@@ -13,13 +13,6 @@
 #include <memory>
 #include <string>
 
-#include "audio/soundengine.h"
-#include "opengl/framebuffer.h"
-#include "physics/collision.h"
-#include "widget/button.h"
-#include "widget/container.h"
-#include "widget/widget.h"
-
 #define __EASY_ENGINE_ALL__
 #include "easy_engine.h"
 
@@ -305,6 +298,7 @@ TEST_F(WINUT, SoundTest) {
                         false, true, 0.5, 0.5));
   engine.Play(MusicInfo(config.GetValue<std::string>("music_02"), 2, true, true,
                         true, 1, 1, vec3(0, 0, 0), 1));
+  int i = 3;
   while (true) {
     char c;
     std::cin >> c;
@@ -313,8 +307,8 @@ TEST_F(WINUT, SoundTest) {
     }
     switch (c) {
       case '+':
-        engine.Play(MusicInfo(config.GetValue<std::string>("music_01"), 3, true,
-                              false, true));
+        engine.Play(MusicInfo(config.GetValue<std::string>("music_01"), i++,
+                              true, false, true));
         break;
       case 'w':
         lis.z += 1;
@@ -336,4 +330,16 @@ TEST_F(WINUT, SoundTest) {
     cout << Format("%", lis) << endl;
   }
   engine.Stop();
+}
+
+TEST_F(WINUT, ResTest) {
+  Window w(SCREEN_WIDTH, SCREEN_HEIGHT, "restest");
+  ResourceLocator::Audio()->LoadAudio("abc", "first");
+  cout << ResourceLocator::Audio()->GetAudio("first").Path << endl;
+  ResourceLocator::Image()->LoadImage("animation/ammonomicon_intro_001.png",
+                                      "third");
+  cout << ResourceLocator::Image()->GetImage("third")->Width() << endl;
+  ResourceLocator::Shader()->LoadShader("shaders/test.vert", "",
+                                        "shaders/test.frag", "second");
+  cout << ResourceLocator::Shader()->GetShader("second")->Id() << endl;
 }

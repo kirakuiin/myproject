@@ -5,12 +5,12 @@
 // Last Change: 2020  8 12
 // License: GPL.v3
 
+#ifndef __EASY_ENGINE_INCLUDE_OPENGL_TEXTURE_H__
+#define __EASY_ENGINE_INCLUDE_OPENGL_TEXTURE_H__
+
 #include <string>
 
 #include "glad/glad.h"
-
-#ifndef __EASY_ENGINE_INCLUDE_OPENGL_TEXTURE_H__
-#define __EASY_ENGINE_INCLUDE_OPENGL_TEXTURE_H__
 
 namespace easy_engine {
 namespace opengl {
