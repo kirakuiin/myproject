@@ -7,6 +7,9 @@
 
 #include "include/widget/window.h"
 
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+
 #include <boost/circular_buffer.hpp>
 #include <functional>
 #include <iostream>

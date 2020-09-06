@@ -21,15 +21,7 @@ namespace widget {
 class Cursor : public Widget {
  public:
   Cursor(std::shared_ptr<Window> window, const vec2& pos, const vec2& size,
-         std::shared_ptr<opengl::Texture2D> icon)
-      : _cursor_pos(pos),
-        _size(size),
-        _enable(true),
-        _p_window(window),
-        _p_sprite(icon) {
-    _cursor_mode = _p_window->GetWindowMode(GLFW_CURSOR);
-    _p_window->SetCursorInvisble(true);
-  }
+         std::shared_ptr<opengl::Texture2D> icon);
   ~Cursor() {}
 
   void Update() override;

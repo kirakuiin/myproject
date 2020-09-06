@@ -7,13 +7,14 @@
 
 #include "include/audio/soundengine.h"
 
+#include <irrKlang.h>
+
 #include <future>
 #include <memory>
 #include <mutex>
 #include <stdexcept>
 
 #include "include/audio/exception.h"
-#include "irrKlang.h"
 
 namespace easy_engine {
 namespace audio {
@@ -103,7 +104,7 @@ void SoundEngine::Run() {
       _cond.wait(lock, [&]() { return !_q_messages.Empty() || !_is_running; });
       while (!_q_messages.Empty() && _is_running) {
         const MusicInfo& info = _q_messages.Top();
-        if (info.IsPlay) {
+        if (info.IsPlay) {  // 播放音乐
           std::shared_ptr<irrklang::ISound> music;
           if (info.Is3d) {
             music.reset(_p_sound_engine->play3D(info.Path.c_str(),
@@ -124,7 +125,7 @@ void SoundEngine::Run() {
           music->setPlaybackSpeed(info.Speed);
           music->setVolume(info.Volume);
           music->setIsPaused(false);
-        } else {
+        } else {  // 停止音乐
           if (_m_music.count(info.Id)) {
             _m_music[info.Id]->stop();
             _m_music.erase(info.Id);

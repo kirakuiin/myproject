@@ -13,6 +13,9 @@
 #include <memory>
 #include <string>
 
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+
 #define __EASY_ENGINE_ALL__
 #include "easy_engine.h"
 
