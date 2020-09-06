@@ -5,7 +5,7 @@
     "animation_bg": "/Users/lambda/Pictures/Andromeda galaxy.jpg",
     "button_bg": "/Users/lambda/Pictures/anime_girl.bmp",
     "button_img": "texture/powerup_stop.png",
-    "cursor_icon": "texture/cursor.jpg",
+    "cursor_icon": "texture/cursor.png",
     "music_01": "music/bleep.mp3",
     "music_02": "music/breakout.mp3",
     "music_03": "music/solid.wav"
