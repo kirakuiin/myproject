@@ -10,7 +10,6 @@
 
 #include "../common/math.h"
 #include "../opengl/texture.h"
-#include "GLFW/glfw3.h"
 #include "sprite.h"
 
 #ifndef __EASY_ENGINE_INCLUDE_GRAPHICS_PARTICLE_H__

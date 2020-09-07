@@ -7,13 +7,14 @@
 
 #include "include/audio/soundengine.h"
 
+#include <irrKlang.h>
+
 #include <future>
 #include <memory>
 #include <mutex>
 #include <stdexcept>
 
 #include "include/audio/exception.h"
-#include "irrKlang.h"
 
 namespace easy_engine {
 namespace audio {

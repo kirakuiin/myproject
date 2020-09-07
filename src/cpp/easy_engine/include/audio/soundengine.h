@@ -8,8 +8,6 @@
 #ifndef __EASY_ENGINE_INCLUDE_AUDIO_SOUNDENGINE_H__
 #define __EASY_ENGINE_INCLUDE_AUDIO_SOUNDENGINE_H__
 
-#include <irrKlang.h>
-
 #include <condition_variable>
 #include <future>
 #include <map>
@@ -18,6 +16,11 @@
 
 #include "../common/math.h"
 #include "../common/queue.h"
+
+namespace irrklang {
+class ISound;
+class ISoundEngine;
+}  // namespace irrklang
 
 namespace easy_engine {
 namespace audio {

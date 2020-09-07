@@ -48,6 +48,11 @@ class Camera2D final {
   // @return mat4: 投影矩阵
   mat4 GetProjectionMatrix() const { return _projection; }
 
+  // 得到区域矩形
+  //
+  // @return Rect: 摄像头区域
+  Rect GetRect() const { return Rect(_tl_pos, _size); }
+
  private:
   // 重新计算投影矩阵
   void CalcProjection();
