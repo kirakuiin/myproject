@@ -1,0 +1,5 @@
+ 
+* minigames结构
+** 贪吃蛇（snake）
+** 俄罗斯方块（Tetris)
+** 坦克大战(tank)

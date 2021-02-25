@@ -14,6 +14,7 @@
 #include <regex>
 #include <string>
 
+#include "include/common/format.h"
 #include "include/common/time.h"
 #include "include/graphics/exception.h"
 #include "include/utility/log.h"
@@ -53,10 +54,9 @@ void Animation::AddRectAnimation(const std::string& sprite_path,
   for (int i = 0; i < row; ++i) {
     for (int j = 0; j < column; ++j) {
       if (i * column + j < image_num) {
-        _v_images.push_back(text);
-        _v_pos.push_back(
-            vec2(per_pos.x + j * x_interval, per_pos.y + i * y_interval));
-        _v_size.push_back(vec2(x_interval, y_interval));
+        _v_drawinfos.emplace_back(
+            text, vec2(per_pos.x + j * x_interval, per_pos.y + i * y_interval),
+            vec2(x_interval, y_interval), NoDuration);
       }
     }
   }
@@ -98,9 +98,7 @@ void Animation::AddAnimation(const std::vector<std::string>& animation_vec) {
   for (const auto& path : animation_vec) {
     std::shared_ptr<opengl::Texture2D> text(new opengl::Texture2D());
     text->LoadImage(path);
-    _v_images.push_back(text);
-    _v_pos.push_back(vec2(0));
-    _v_size.push_back(vec2(1));
+    _v_drawinfos.emplace_back(text, vec2(0), vec2(1), NoDuration);
   }
 }
 
@@ -137,6 +135,9 @@ void AnimationRender::DrawAnimation(const vec2& pos, const vec2& size,
     }
   }
   AnimationDrawInfo info = _p_animation->GetDrawInfo(_index);
+  if (_duration <= 0) {
+    _duration = info.Duration;
+  }
   _p_render->SetTextureCoordPer(info.Pos, info.Size);
   _p_render->DrawSprite(info.Sprite, pos, size, rot, color);
 }
@@ -151,11 +152,16 @@ void AnimationRender::SetPlayMode(int mode, float fps, float time) {
   _curr_time      = 0.0f;
   _prev_time      = 0.0f;
   _delta_time     = 0.0f;
+  _duration       = 0.0f;
   _play_mode      = mode;
   _index          = 0;
 }
 
 void AnimationRender::CalcNextFrameIndex() {
+  _duration -= _delta_time;
+  if (_duration > 0) {  // 如果某一帧没有播放完成, 则继续播放
+    return;
+  }
   size_t top = _p_animation->Size();
   if (_play_mode >> 2 & AnimationPlayMode::PLAY_FORWARD >> 2) {
     _index += 1;

@@ -7,6 +7,9 @@
 
 #include "include/utility/loader.h"
 
+#include "include/common/format.h"
+#include "include/utility/exception.h"
+
 namespace easy_engine {
 namespace utility {
 
@@ -18,6 +21,10 @@ void DefaultImageLoader::LoadImage(const string &path, const string &name) {
 }
 
 shared_ptr<Texture2D> DefaultImageLoader::GetImage(const string &name) {
+  if (_m_images[name].get() == nullptr) {
+    std::string msg(Format("Texture % is empty pointer!", name));
+    throw UtilityException(msg);
+  }
   return _m_images[name];
 }
 
@@ -26,6 +33,10 @@ void DefaultAudioLoader::LoadAudio(const string &path, const string &name) {
 }
 
 MusicInfo DefaultAudioLoader::GetAudio(const string &name) {
+  if (_m_audios[name].Path.empty()) {
+    std::string msg(Format("Music % is empty path!", name));
+    throw UtilityException(msg);
+  }
   return _m_audios[name];
 }
 
@@ -45,6 +56,10 @@ void DefaultShaderLoader::LoadShader(const string &vert, const string &geom,
 }
 
 shared_ptr<ShaderProgram> DefaultShaderLoader::GetShader(const string &name) {
+  if (_m_shaders[name].get()) {
+    std::string msg(Format("Shader % is empty pointer!", name));
+    throw UtilityException(msg);
+  }
   return _m_shaders[name];
 }
 

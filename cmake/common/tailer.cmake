@@ -81,6 +81,11 @@ IF(${NEED_IRRKLANG})
     FIND_PACKAGE(irrKlang REQUIRED)
 ENDIF()
 
+# 配置easyengine依赖
+IF(${NEED_EASYENGINE})
+    FIND_PACKAGE(easyengine REQUIRED)
+ENDIF()
+
 IF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../public)
     GET_FILENAME_COMPONENT(PARENT_PATH ${CMAKE_CURRENT_SOURCE_DIR} PATH)
     # 设置自定义idl路径
@@ -106,6 +111,7 @@ SET(LINK_ALL_LIBS   ${LINK_SDL2_LIBS}
                     ${LINK_FREETYPE_LIBS}
                     ${LINK_IRRKLANG_LIBS}
                     ${LINK_BOOST_LIBS}
+                    ${LINK_EASYENGINE_LIBS}
                     ${LINK_ALL_LIBS}
                     )
 

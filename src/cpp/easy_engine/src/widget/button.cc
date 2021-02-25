@@ -36,16 +36,21 @@ void Button::Update() {
     int left_press  = _p_window->GetMouse(GLFW_MOUSE_BUTTON_LEFT);
     int right_press = _p_window->GetMouse(GLFW_MOUSE_BUTTON_RIGHT);
     if (left_press == GLFW_PRESS || right_press == GLFW_PRESS) {
-      _status = ButtonStatus::CLICK;
-      if (left_press == GLFW_PRESS && _callback) {
+      _status   = ButtonStatus::CLICK;
+      _is_press = true;
+    } else if (left_press == GLFW_RELEASE || right_press == GLFW_RELEASE) {
+      if (left_press == GLFW_RELEASE && _is_press && _callback) {
         _callback(GLFW_MOUSE_BUTTON_LEFT);
       }
-      if (right_press == GLFW_PRESS && _callback) {
+      if (right_press == GLFW_RELEASE && _is_press && _callback) {
         _callback(GLFW_MOUSE_BUTTON_RIGHT);
       }
+      _status   = ButtonStatus::CURSOR_OFF;
+      _is_press = false;
     }
   } else {
-    _status = ButtonStatus::CURSOR_OFF;
+    _status   = ButtonStatus::CURSOR_OFF;
+    _is_press = false;
   }
 }
 

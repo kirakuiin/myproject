@@ -191,6 +191,8 @@ alias ep="vim ~/.zshrc"
 alias sp="source ~/.zshrc"
 alias zshupate="upgrade_oh_my_zsh"
 alias vi="vim"
+alias ase="/Users/lambda/Library/ApplicationSupport/Steam/steamapps/common/Aseprite/Aseprite.app/Contents/MacOS/aseprite"
+alias asef="ase -b --filename-format '{title}_{frame001}.{extension}'"
 
 # git alias
 alias gr="git reset --hard HEAD"

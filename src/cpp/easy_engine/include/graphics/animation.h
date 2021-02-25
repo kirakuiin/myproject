@@ -21,11 +21,12 @@ namespace graphics {
 // 绘制一桢动画所需要的图像信息
 struct AnimationDrawInfo {
   AnimationDrawInfo(std::shared_ptr<opengl::Texture2D> sprite, vec2 pos,
-                    vec2 size)
-      : Sprite(sprite), Pos(pos), Size(size) {}
+                    vec2 size, float duration)
+      : Sprite(sprite), Pos(pos), Size(size), Duration(duration) {}
   std::shared_ptr<opengl::Texture2D> Sprite;  // 纹理
-  vec2 Pos;   // 纹理待绘制区域左上角坐标
-  vec2 Size;  // 待绘制区域大小
+  vec2  Pos;       // 纹理待绘制区域左上角坐标
+  vec2  Size;      // 待绘制区域大小
+  float Duration;  // 播放时间
 };
 
 // 播放模式
@@ -38,6 +39,7 @@ enum AnimationPlayMode {
 
 // enum
 const float PlayInfiniteTime = 0.0f;
+const float NoDuration       = 0.0f;
 const float DefaultFps       = 24.0f;
 
 // 存储连续图像类
@@ -67,31 +69,33 @@ class Animation final {
   // @param animation_vec: 待加载图片的序列, 加载顺序为向量内图片路径的顺序
   void AddAnimation(const std::vector<std::string>& animation_vec);
 
+  // 设置动画每一帧的持续时间
+  //
+  // @param index: 下标
+  // @param duration: 持续时间
+  void SetDuration(unsigned int index, float duration) {
+    _v_drawinfos[index].Duration = duration;
+  }
+
   // 得到总图像数量
   // @return size_t: 图像数量
-  size_t Size() const { return _v_images.size(); }
+  size_t Size() const { return _v_drawinfos.size(); }
 
   // 是否已经加载图像
   // @return bool: 结果是否为空
-  bool Empty() const { return _v_images.empty(); }
+  bool Empty() const { return _v_drawinfos.empty(); }
 
   // 清除所有存储
-  void Clear() {
-    _v_images.clear();
-    _v_pos.clear();
-    _v_size.clear();
-  }
+  void Clear() { _v_drawinfos.clear(); }
 
   // 得到渲染一帧动画所需要的图像信息
   // @param index: 图像下标
-  AnimationDrawInfo GetDrawInfo(unsigned int index) {
-    return AnimationDrawInfo(_v_images[index], _v_pos[index], _v_size[index]);
+  AnimationDrawInfo GetDrawInfo(unsigned int index) const {
+    return AnimationDrawInfo(_v_drawinfos[index]);
   }
 
  private:
-  std::vector<std::shared_ptr<opengl::Texture2D>> _v_images;  // 图像序列
-  std::vector<vec2>                               _v_pos;     // 位置序列
-  std::vector<vec2>                               _v_size;    // 大小序列
+  std::vector<AnimationDrawInfo> _v_drawinfos;  // 画面信息
 };
 
 // 动画渲染类, 渲染一些列连续的图像
@@ -149,9 +153,10 @@ class AnimationRender final {
   int    _index;           // 当前播放下标
   double _prev_time;       // 上次播放时间
   double _curr_time;       // 当前时间
-  float  _delta_time;      // 间隔时间
+  double _delta_time;      // 间隔时间
   double _already_play;    // 已播放时间
   double _total_time;      // 总播放时间
+  double _duration;        // 一帧画面播放时间
   int    _play_mode;       // 播放模式
   float  _fps;             // 每秒钟播放帧数
   float  _frame_interval;  // 两桢之间的时间间隔

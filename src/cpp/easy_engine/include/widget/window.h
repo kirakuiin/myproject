@@ -42,6 +42,9 @@ class Window final {
   // 更新窗口状态, 包括缓冲, 事件, 回调等等
   void Update();
 
+  // 关闭窗口
+  void Close();
+
   // 获得窗口大小
   // @param width: 窗口宽度
   // @param height: 窗口高度

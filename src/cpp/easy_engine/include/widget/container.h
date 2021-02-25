@@ -19,7 +19,7 @@ namespace widget {
 // 组件容器
 class WidgetContainer : public Widget {
  public:
-  WidgetContainer() : _enable(true) {}
+  WidgetContainer() : _enable(false), _p_parent(nullptr) {}
   ~WidgetContainer() {}
 
   void Update() override;
@@ -31,11 +31,33 @@ class WidgetContainer : public Widget {
   //
   // @param widget_name: 组件名称
   // @param widget: 组件指针
-  void Add(const std::string& widget_name, std::shared_ptr<Widget> widget) {
+  // @param prior: 优先级
+  void Add(const std::string& widget_name, std::shared_ptr<Widget> widget,
+           int prior = 0) {
     _m_widgets[widget_name] = widget;
+    _m_prior[prior].push_back(widget_name);
   }
 
-  // 移除组件中容器, 如无此组件无事发生
+  // 向容器中添加容器
+  //
+  // @param widget_name: 组件名称
+  // @param widget: 组件指针
+  // @param prior: 优先级
+  void Add(const std::string&               widget_name,
+           std::shared_ptr<WidgetContainer> widget, int prior = 0);
+
+  // 得到子容器
+  //
+  // @param widget_name: 组件名称
+  // @return WidgetContainer*: 子容器
+  WidgetContainer* Get(const std::string& widget_name) {
+    if (_m_widgets.count(widget_name)) {
+      return dynamic_cast<WidgetContainer*>(_m_widgets[widget_name].get());
+    }
+    return nullptr;
+  }
+
+  // 移除容器中组件, 如无此组件无事发生
   //
   // @param widget_name: 组件名称
   void Remove(const std::string& widget_name) {
@@ -44,9 +66,19 @@ class WidgetContainer : public Widget {
     }
   }
 
+  // 设置父容器指针
+  void SetParent(WidgetContainer* parent) { _p_parent = parent; }
+
+  // 得到父容器指针
+  //
+  // @return shared_ptr<WidgetContainer>: 父组件
+  WidgetContainer* Parent() { return _p_parent; }
+
  private:
   bool                                           _enable;  // 是否启用组件
   std::map<std::string, std::shared_ptr<Widget>> _m_widgets;  // 组件容器
+  std::map<int, std::vector<std::string>>        _m_prior;    // 优先级容器
+  WidgetContainer*                               _p_parent;   // 父容器
 };
 
 }  // namespace widget

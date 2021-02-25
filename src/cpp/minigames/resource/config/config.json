@@ -1,0 +1,15 @@
+{
+    "graphics": {
+        "screen_width": 1024,
+        "screen_height": 768
+    },
+    "audios": {
+        "volume": 100
+    },
+    "controls": {
+        "up": "W",
+        "down": "S",
+        "left": "A",
+        "right": "D"
+    }
+}

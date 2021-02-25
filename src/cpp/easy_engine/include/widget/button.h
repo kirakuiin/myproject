@@ -30,6 +30,7 @@ class Button : public Widget {
       : _btn_pos(pos),
         _size(size),
         _enable(true),
+        _is_press(false),
         _p_window(window),
         _p_sprite(sprite),
         _callback(nullptr) {
@@ -63,10 +64,11 @@ class Button : public Widget {
     CLICK      = 2,  // 光标按下
   };
 
-  vec2         _btn_pos;  // 按钮位置
-  vec2         _size;     // 按钮大小
-  ButtonStatus _status;   // 按钮状态
-  bool         _enable;   // 按钮是否启用
+  vec2         _btn_pos;   // 按钮位置
+  vec2         _size;      // 按钮大小
+  ButtonStatus _status;    // 按钮状态
+  bool         _enable;    // 按钮是否启用
+  bool         _is_press;  // 按钮是否按下
 
   std::shared_ptr<physics::HitBox>   _p_hitbox;  // 碰撞盒
   std::shared_ptr<Window>            _p_window;  // 窗口

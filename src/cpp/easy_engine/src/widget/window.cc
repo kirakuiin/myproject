@@ -180,6 +180,8 @@ void Window::Update() {
   PushEvents();
 }
 
+void Window::Close() { glfwSetWindowShouldClose(_p_window, GLFW_TRUE); }
+
 void Window::GetWindowSize(int* width, int* height) {
   glfwGetWindowSize(_p_window, width, height);
 }

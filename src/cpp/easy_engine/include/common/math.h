@@ -59,7 +59,10 @@ class Random {
  public:
   // @param left: 左闭区间
   // @param right: 右开区间
-  Random(const double& left, const double& right) : _generator(left, right) {}
+  Random(const double& left, const double& right) : _generator(left, right) {
+    std::random_device rd;
+    _engine.seed(rd());
+  }
 
   // 返回一个生成的随机数
   // @return T: 返回的随机数
@@ -146,6 +149,19 @@ struct RectLess {
 // @return float: 叉乘结果
 inline float cross(const vec2& lhs, const vec2& rhs) {
   return lhs.x * rhs.y - rhs.x * lhs.y;
+}
+
+// 计算二元向量旋转
+//
+// @param v: 被旋转向量
+// @param angle: 旋转角度(弧度)
+// @param o: 旋转中心
+// @return vec2: 旋转结果
+inline vec2 rotate(const vec2& v, float angle, const vec2& o) {
+  vec2 src(v - o);
+  return vec2(src.x * cos(angle) - src.y * sin(angle),
+              src.x * sin(angle) + src.y * cos(angle)) +
+         o;
 }
 
 }  // namespace easy_engine
