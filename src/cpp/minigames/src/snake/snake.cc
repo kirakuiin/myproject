@@ -61,7 +61,7 @@ void SnakeComponent::SetVelocity(const vec2& velocity) {
 }
 
 Snake::Snake(const vec2& pos, const vec2& size, const vec2& velocity)
-    : _body_size(size) {
+    : _body_size(size), _eated_egg(0) {
   for (int i = 2; i >= 0; --i) {
     _v_body.emplace_back(
         pos - easy_engine::normalize(velocity) * size * (float)i, size,
@@ -78,10 +78,14 @@ void Snake::Draw(std::shared_ptr<SpriteRender> render) {
 }
 
 void Snake::SetVelocity(const vec2& velocity) {
-  _v_body.back().SetVelocity(velocity);
+  auto& head = _v_body.back();
+  head.SetVelocity(velocity);
 }
 
-void Snake::Eat(Egg* egg) { egg->Eaten(this); }
+void Snake::Eat(Egg* egg) {
+  egg->Eaten(this);
+  ++_eated_egg;
+}
 
 bool Snake::CheckSelfCollision() {
   // check body collision

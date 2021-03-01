@@ -40,16 +40,16 @@ void NormalEgg::RespawnEgg(Snake* p_snake) {
 
   easy_engine::Random<int> rand(0, easy_engine::max(range.x, range.y));
 
-  vec2 pos(_left_top.x + rand() % (int)(range.x),
-           _left_top.y + rand() % (int)(range.y));
   while (true) {
+    vec2 pos(_left_top.x + rand() % (int)(range.x),
+             _left_top.y + rand() % (int)(range.y));
     _hitbox = PolygonBox{pos, pos + vec2(_size.x, 0), pos + _size,
                          pos + vec2(0, _size.y)};
     if (p_snake->CheckEggPos(this)) {
+      _pos = pos;
       break;
     }
   }
-  _pos = pos;
 }
 
 }  // namespace snake

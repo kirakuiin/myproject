@@ -113,7 +113,12 @@ class Snake : public GameObj {
   void Grow();
 
   // 检测是否碰撞到身体的任一部分
+  //
+  // @param egg: 被吃掉的蛋
   bool CheckEggPos(Egg* egg);
+
+  // 获得吃蛋数目
+  int GetEggNumber() const { return _eated_egg; }
 
  private:
   void IntervalUpdate() override;
@@ -131,6 +136,8 @@ class Snake : public GameObj {
 
   std::shared_ptr<Texture2D> _body_sprite;  // 蛇身精灵
   vec2                       _body_size;    // 蛇身大小
+
+  int _eated_egg;  // 吃蛋数目
 };
 
 }  // namespace snake

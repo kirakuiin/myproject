@@ -13,14 +13,13 @@
 #include <common/math.h>
 #include <utility/log.h>
 
+#include <string>
+
 namespace minigames {
 
 using easy_engine::Direction;
 using easy_engine::Format;
 using easy_engine::vec2;
-
-#define DEBUG(MSG) \
-  { easy_engine::utility::Logging::GetLogger()->Debug(MSG); }
 
 // 根据方向计算单位向量
 //

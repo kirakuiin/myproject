@@ -13,6 +13,8 @@
 #include <memory>
 #include <string>
 
+#include "../common/format.h"
+
 namespace easy_engine {
 namespace utility {
 
@@ -88,6 +90,11 @@ class Logging final {
 };
 
 }  // namespace utility
+#define DEBUG(MSG)                                                             \
+  {                                                                            \
+    std::string msg(easy_engine::Format("[%][%]:%", __FILE__, __LINE__, MSG)); \
+    easy_engine::utility::Logging::GetLogger()->Debug(msg);                    \
+  }
 }  // namespace easy_engine
 
 #endif  // __EASY_ENGINE_INCLUDE_UTILITY_LOG_H__
