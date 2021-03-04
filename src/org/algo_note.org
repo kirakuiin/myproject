@@ -1,0 +1,43 @@
+#+TAGS: 栈(s) 位操作(b) 图(g) 递归(r) 回溯(h) 动态规划(d) 贪心(g) 数学(m) 字符串(t)
+
+* 问题
+** 中缀表达式转后缀表达式                                          :栈:数学:
+*** 情景
+将表达式a+b*(c-d)转化为abcd-*+
+*** 解法
+1. 创建一个*栈*用来存放操作符
+2. 从左向右扫描表达式，如果是数字直接输出，如果不是数字的话分三种情况
+   - 如果是左括号的话，直接入栈
+   - 如果是右括号的话，依次弹出栈中操作符输出，直到弹出左括号为止
+   - 如果是操作符的话，也分两种情况
+     * 如果栈为空或栈顶操作符的优先级小于当前操作符的时候，直接入栈
+     * 否则依次弹出栈顶操作符输出，直到当栈顶作符优先级小于当前操作符优先级时，直接入栈
+3. 将盏内操作符依次弹出输出
+*** 伪代码
+#+BEGIN_SRC python
+  def suffix(exp: str):
+    for item in exp:
+      if item is digital:
+        OUT(item)
+      else:
+        if item is (:
+          PUSH(item)
+        elif item is ):
+          while True:
+            if TOP() is (:
+              break
+            else:
+              OUT(POP())
+        else:
+          if EMPTY() or P(TOP()) < P(item):
+            PUSH(item)
+          elif P(TOP()) >= P(item):
+            while not EMPTY():
+              if P(TOP()) >= P(item):
+                OUT(POP())
+              else:
+                PUSH(ITEM)
+                break
+    while not EMPTY():
+      OUT(POP())
+#+END_SRC
