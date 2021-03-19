@@ -15,7 +15,7 @@ SET(RUN_ARGS --gtest_filter=WINUT.ButtonTest)
 
 # 手动包含标准库是为了在compile_commands.json中生成带有-I/stdlib的命令
 include_directories(
-  /Library/Developer/CommandLineTools/usr/include/c++/v1
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/
   ../include)
 
 # 包含easy_engine动态库
