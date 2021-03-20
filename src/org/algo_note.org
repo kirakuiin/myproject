@@ -1,0 +1,789 @@
+#+TAGS: 位操作(b) 递归(r) 回溯(j) 动态规划(d) 贪心(e) 排序(o) 深度优先搜索(a) 广度优先搜索(f) 启发式(i) 指针(p) 二分(k) 分治(c)
+#+TAGS: 并查集(u) 栈(s) 图(g) 数学(m) 序列(t) 堆(h) 队列(q)
+
+* 问题
+** 单源最短路径算法                                                     :图:
+*** 情景 
+给定一个带权有向图G=（V,E），其中每条边的权是一个实数。另外，还给定V中的一个顶点，称为源。
+要计算从源到其他所有各顶点的最短路径长度。这里的长度就是指路上各边权之和。
+*** 解法
+**** Dijkstra算法                                                   :贪心:
+设所有节点集合为V，起始点为s, 图的稀疏矩阵为graph
+1. 设置集合S{s}，集合U=V-S，集合dist维护从原点s到各个点的距离
+2. 从dist中找到距离s最短的点v且v∈U，将其加入集合S中
+3. 对所有的点t∈U, 更新dist[t] = min(dist[t], dist[v] + graph[v][t])
+4. 重复2-3，直到S==V，U中没有节点，此时dist即为结果
+**** Bellman-Ford算法
+设所有节点集合为V, 起始点为s，边集合为E
+1. 设置集合dist维护s到各个点之间的距离
+2. 对每一个e∈E执行松弛操作，设e的起点终点为u, v。即dist[v] = min(dist[v], dist[u]+e)
+3. 因为每次松弛至少更新一个节点距离，所以执行操作2 |V|-1 次
+4. 此时dist即为结果
+如果出现负权环，则第|V|次更新一定会出现更短距离, 可以用来检测负权环
+*** 伪代码
+**** Dijkstra算法                                                   :贪心:
+#+BEGIN_SRC python
+  def DIJKSTRA(graph, V, s):
+    S = {s}
+    dist = []
+    for vert in V:
+      dist[vert] = graph[s][vert]
+    while S != V:
+      v = FIND_MIN_DIST_IN_V(dist, V-S)
+      S += v
+      for vert in V-S:
+        dist[vert] = MIN(dist[vert], dist[v] + graph[v][vert])
+    return dist
+#+END_SRC
+**** Bellman-Ford算法
+#+BEGIN_SRC python
+  def BELLMANFORD(V, E, s):
+    dist = []
+    for v in V:
+      dist[v] = ∞
+    dist[s] = 0
+    for v in |V|-1:
+      for u, v in E:
+        dist[v] = MIN(dist[v], dist[u] + E[u, v])
+    for u, v in E:
+       if E[u, v] + dist[u] < dist[v]:
+         ERROR("negative weight circle")
+    return dist
+#+END_SRC
+** 多源最短路径算法                                                     :图:
+*** 情景
+给定一个带权有向图G=（V,E），其中每条边的权是一个实数。
+要计算任一节点到其他所有各顶点的最短路径长度。这里的长度就是指路上各边权之和。
+*** 解法
+**** Floyd算法                                                  :动态规划:
+设图的稀疏矩阵为graph，节点集合为V，处理完毕节点集合为U
+想要求任意两点之间i， j的距离只有两种情况，要么是从i到j最短，要么就是先从i经过若干点到k，
+然后通过k到j最短，根据以上分析可知算法如下:
+1. 从V中取出任一节点v且v不属于U
+2. 遍历graph中所有边，使graph[i][j]为graph[i][j]和graph[i][v] + graph[v][j]中较小者
+3. 将v加入U中，重复过程1
+*** 伪代码
+**** Floyd算法                                                  :动态规划:
+#+BEGIN_SRC python
+  def FLOYD(graph, V):
+    for k in V:
+      for i in V:
+        for j in V:
+          graph[i][j] = MIN(graph[i][j], graph[i][k] + graph[k][j])
+#+END_SRC
+** 静态网路求解最短路径                                                 :图:
+*** 情景
+在一个静态的(即节点之间的权值不会改变）路网中寻找两个点之间的最短路径
+*** 解法
+**** A*算法                                                       :启发式:
+设所有路径集合为E，起始点为s，终点为e
+1. 创建一个最小优先队列open, 一个表close，将s加入到open之中
+2. 将open中优先级最高的节点p取出, 并将其周围的可达点v且v不属于close加入到open之中，
+同时在记录v的前驱路径p
+3. 将p放入close之中
+4. 重复过程2-3，直到节点p和节点e相等为止
+5. 根据e和他的前驱路径即可求出最短路径
+优先级计算公式为: $priority(n) = g(n) + h(n)$
+其中g(n)代表从起点s到当前点n的距离, h(n)是代表当前点n到终点e预计距离的启发函数, 
+根据情景有常用的三种距离函数:
+  - 曼哈顿距离: 适用于只允许上下左右移动, h(n) = ∆x + ∆y
+  - 对角距离: 允许8方向移动, h(n) = ∆x + ∆y + (√2 - 2) * min(∆x, ∆y)
+  - 欧几里得距离: 允许任意方向移动, h(n) = √(∆x² + ∆y²)
+**** 广度优先搜索                                           :广度优先搜索:
+设所有路径集合为E，起始点为s，终点为e
+1. 创建一个队列open, 一个表close, 将s加入到open之中
+2. 将open中队首取出，并将其周围的可达点v且v不属于close加入到open之中, 同时在记录
+v的前驱路径p
+3. 将p放入close之中
+4. 重复过程2-3，直到节点p和节点e相等为止
+5. 根据e和他的前驱路径即可求出最短路径
+*** 伪代码
+**** A*算法                                                       :启发式:
+#+BEGIN_SRC python
+  def A_ASTER(E, s, e):
+    open = PRIOR_QUEUE(s, PRIORITY) #priority(n) = g(n) + h(n)
+    close = SET()
+    parent = []
+    while not EMPTY(open):
+      p = open.POP()
+      if p == e:
+        return parent
+      for v in E[p]:
+        if v not in close and REACHABLE(v):
+          open.PUSH(v)
+          parent[v] = p
+      close.ADD(p)
+#+END_SRC
+**** 广度优先搜索                                           :广度优先搜索:
+#+BEGIN_SRC python
+  def BFS(E, s, e):
+    open = QUEUE(s)
+    close = SET()
+    parent = []
+    while not EMPTY(open):
+      p = open.POP()
+      if p == e:
+        return parent
+      for v in E[p]:
+        if v not in close and REACHABLE(v):
+          open.PUSH(v)
+          parent[v] = p
+      close.ADD(p)
+#+END_SRC
+** 判断图的连通性                                                       :图:
+*** 情景
+设有图G(V, E), 判断此图是否为连通图(任意节点之间可达)
+*** 解法
+**** 并查集                                                       :并查集:
+使用一种并查集的数据结构可以解决此问题, 将G存入并查集，依次判断所有的v∈V是否在
+同一个集合内即可
+并查集有3个基本操作:
+  - 建立集合, 用一个元素建立一个新的集合
+  - 连接集合, 将两个集合连接到一起成为一个新的集合
+  - 判断集合, 判断某元素是否属于这个集合
+*** 伪代码
+**** 并查集                                                       :并查集:
+#+BEGIN_SRC python
+  class Node: { v, rank, parent } #值， 秩， 父节点
+
+  def MAKE_SET(v):
+    n = Node(v, 0, NONE)
+    n.parent = n
+
+  def FIND_SET(n):
+    if n != n.parent:
+      n.parent = FIND_SET(n.parent) # 路径压缩
+    return n.parent
+
+  def UNION_SET(n1, n2):
+    a, b = FIND_SET(n1), FIND_SET(n2)
+    if a.rank < b.rank: # 按秩合并
+      a.parent = b
+    else:
+      b.parent = a
+      if a.rank == b.rank:
+        a.rank += 1
+      
+        def IS_CONNECT(V, E):
+    n = {}
+    for v in V:
+      n[v] = MAKE_SET(v)
+    for v1, v2 in E:
+      if FIND_SET(n[v1]) != FIND_SET(n[v2]):
+        UNION_SET(n[v1], n[v2])
+    for v in V:
+      if FIND_SET(n[v]) != FIND_SET(n[V[0]]):
+        return FALSE
+    return TRUE
+#+END_SRC
+** 最大公约数                                                         :数学:
+*** 情景
+求两个整数的最大公约数，如gcd(18, 12)的最大公约数为6
+*** 解法
+**** 辗转相除法
+设两数为a, b
+1. 用两者中较大的数m取模较小的数n(m mod n)，得到余数r分两种情况:
+   - r为0，则最大公约数为较小的数n
+   - r不为0，则设置较大数为n，较小数为r，重复过程1
+即: gcd(m, n) = gcd(n, m mod n)
+**** 更相减损法
+设两数为a, b
+1. 用两者中较大的数m减去较小的数n(m - n)，得到结果s分两种情况:
+   - s等于n，则最大公约数为较小的数n
+   - s不等于n，则设置较大数为n和r之间较大者，较小数为n和r之间较小者，重复过程1
+即: gcd(m, n) = gcd(max(n, m - n), min(n, m - n))
+*** 伪代码
+**** 辗转相除法
+#+BEGIN_SRC python
+  def GCD(a, b):
+    m = MAX(a, b)
+    n = MIN(a, b)
+    while m % n != 0:
+      remainder = m % n
+      m = n
+      n = remainder
+    return n
+#+END_SRC
+**** 更相减损法
+#+BEGIN_SRC python
+  def GCD(a, b):
+    m = MAX(a, b)
+    n = MIN(a, b)
+    while m - n != n:
+      sub = m - n
+      m, n = MAX(n, sub), MIN(n, sub)
+    return n
+#+END_SRC
+
+** 小于n的全部素数                                                    :数学:
+*** 情景
+求小于正整数n的全部素数. 素数大于1且除了1和自身没有其他因数的正整数
+*** 解法
+**** 筛法
+像一个筛子一样，将素数的全部倍数一轮一轮筛掉
+1. 对于从2到n的全部正整数, 将他们全部放到一个数组vec之中
+2. 从数组的第一个元素x开始, 将vec之中所有能够整除x的数(不包含x)去除
+3. 移动到数组的下一个元素y, 将vec之中所有能够整除y的数(不包含y)去除
+4. 重复过程3直到处理完vec中全部元素
+**** 试除法
+依次判断从2..n之间的数是否为素数
+如何判断一个数x为素数, 只需要判断从2..√x中有没有x的因数即可, 有则不为素数
+而已知若x不为素数, x一定可以写为若干素数的积, 所以只需要判断从2..√x中所有的
+素数是否为x的因数即可
+*** 伪代码
+**** 筛法
+#+BEGIN_SRC python
+  def PRIME(n):
+    vec = [2..n]
+    i = 0
+    while i < LEN(vec):
+      vec = [j for j in vec if j <= vec[i] or j%vec[i] == 0]
+      i += 1
+    return vec
+#+END_SRC
+**** 试除法
+#+BEGIN_SRC python
+  def PRIME(n):
+    prime = []
+    for i in 2..n:
+      is_prime = TRUE
+      for j in prime:
+        if j*j > i:
+          break
+        if i % j == 0:
+          is_prime = FALSE
+          break
+      if is_prime:
+        prime.append(i)
+    return prime
+#+END_SRC
+
+** 0-1背包问题                                                    :动态规划:
+*** 情景
+有n个物品，每个物品各有自己的重量和价值。现给定背包容量，每个物品只能装入一个，
+如何让背包内装入的物品总价值最大?
+*** 解法
+设背包容量为c, 有n个物品, 物品表格为:
+| 序号 | 重量 | 价值 |
+|------+------+------|
+|    1 | w1   | v1   |
+|    2 | w2   | v2   |
+|    3 | w3   | v3   |
+|  ... | ...  | ...  |
+|    n | wn   | vn   |
+设V(i, j)为当背包剩余j空间，前i个物品的最大总价值，X(i)代表是否向背包中装入第i个物品
+那么所求目标可转化为求max(v1*X(1) + v2*X(2) + ... + vn*X(n))，并且
+w1*X(1) + w2*X(2) + ... + wn*X(n) <= c
+对前i个物品的V(i, j)来说只有两种可能:
+- 当前物品的重量wi > j无法装入背包, 那么V(i, j) = V(i-1, j)
+- 当前物品的重量wi <= j, 那么V(i, j) = max(V(i-1, j), V(i-1, j-wi)+vi)
+*** 伪代码
+#+BEGIN_SRC python
+  def ZERO_ONE_BAG(c, n, w, v):
+    V = [][]
+    MAX_V = 0
+    for i in 1..n:
+      for j in 1..c:
+        if w[i] > j:
+          V[i][j] = V[i-1][j]
+        else:
+          V[i][j] = MAX(V[i-1][j], V[i-1][j-w[i]] + vi)
+        MAX_V = MAX(MAX_V, V[i][j])
+    return MAX_V
+#+END_SRC
+
+** 完全背包问题                                                   :动态规划:
+*** 情景
+有n个物品，每个物品各有自己的重量和价值。现给定背包容量，每个物品可以装入任意多个,
+如何让背包内装入的物品总价值最大?
+*** 解法
+设背包容量为c, 有n个物品, 物品表格为:
+| 序号 | 重量 | 价值 |
+|------+------+------|
+|    1 | w1   | v1   |
+|    2 | w2   | v2   |
+|    3 | w3   | v3   |
+|  ... | ...  | ...  |
+|    n | wn   | vn   |
+设V(i, j)为当背包剩余j空间，前i个物品的最大总价值，X(i)代表向背包中装入第i个物品的数量
+那么所求目标可转化为求max(v1*X(1) + v2*X(2) + ... + vn*X(n))，并且
+w1*X(1) + w2*X(2) + ... + wn*X(n) <= c
+对前i个物品的V(i, j)来说只有一种可能:
+- 当前物品的重量{wi*k <= j|k >= 0, k <= j/wi}
+  V(i, j) = max(V(i-1, j-wi*0)+vi*0, V(i-1, j-wi*1)+vi*1, ..., V(i-1, j-wi*k)+vi*k)
+*** 伪代码
+#+BEGIN_SRC python
+  def COMPLETE_BAG(c, n, w, v):
+    V = [][]
+    MAX_V = 0
+    for i in 0..n:
+      for j in 0..c:
+        for k in 0..FLOOR(j/wi):
+          V[i][j] = MAX(V[i][j], V[i-1][j-w[i]*k] + vi*k)
+        MAX_V = MAX(MAX_V, V[i][j])
+    return MAX_V
+#+END_SRC
+
+** 中缀表达式转后缀表达式                                           :序列:
+*** 情景
+将表达式a+b*(c-d)转化为abcd-*+
+*** 解法
+**** 栈算法                                                           :栈:
+设表达式为exp
+1. 创建一个栈用来存放操作符
+2. 从左向右扫描表达式，如果是数字直接输出，如果不是数字的话分三种情况
+   - 如果是左括号的话，直接入栈
+   - 如果是右括号的话，依次弹出栈中操作符输出，直到弹出左括号为止
+   - 如果是操作符的话，也分两种情况
+     * 如果栈为空或栈顶操作符的优先级小于当前操作符的时候，直接入栈
+     * 否则依次弹出栈顶操作符输出，直到当栈顶作符优先级小于当前操作符优先级时，直接入栈
+3. 将栈内操作符依次弹出输出
+*** 伪代码
+**** 栈算法                                                           :栈:
+#+BEGIN_SRC python
+  def SUFFIX(exp):
+    for item in exp:
+      if item is digital:
+        OUT(item)
+      else:
+        if item is '(':
+          PUSH(item)
+        elif item is ')':
+          while True:
+            if TOP() is '(':
+              break
+            else:
+              OUT(POP())
+        else:
+          if EMPTY() or P(TOP()) < P(item):
+            PUSH(item)
+          elif P(TOP()) >= P(item):
+            while not EMPTY():
+              if P(TOP()) >= P(item):
+                OUT(POP())
+              else:
+                PUSH(ITEM)
+                break
+    while not EMPTY():
+      OUT(POP())
+#+END_SRC
+
+** 字符串匹配                                                       :序列:
+*** 情景
+设有字符串txt和目标pat, 求在txt中是否存在pat, 如存在返回起始下标, 不存在返回-1
+*** 解法
+**** KMP算法
+设文本为txt, 模式字符串为pat
+KMP算法的核心在于建立根据pat建立一个部分匹配表，通过这个表来实现当出现失配的时候，
+回退尽可能少的步数来继续进行匹配, 而不是回退全部。
+部分匹配表next的含义为: 当下标为index时, pat[0..index]构成的字符串的最长前后缀相等长度
+对于字符串'abcabd'来说，next[5] = 2, 因为'abcab'中最长前后缀相等缀为'ab'
+求解next的思路为:
+  1. 设next[0] = -1
+  2. 从模式字符串的第一位开始对自身进行匹配运算, 在任一位置，能匹配的最长长度就是当前位置的next值
+  如何理解j = next[j]:
+  假设有字符串:
+  --------------------------- pat
+  ^  ^     ^  ^        ^
+  0 n[j]   j i-j-1     i
+  当 pat[i] != pat[j]时, 此时可知等式(1){pat[0..j] = pat[i-j-1..i]}. 若想求的次短的相同前后缀，
+  则前缀必须缩短为pat[0..k], 后缀必须缩短为pat[i-k-1..i], 且pat[0..k] = pat[i-k-1..i]
+  当已知n[j]为pat[0..j]的最长公共前后缀, 则pat[0..n[j]] = pat[j-n[j]+1..n[j]], 而因为等式(1)
+  所以pat[0..n[j]] = pat[i-n[j]+1..i], 所以k = n[j]
+
+然后根据求出来的next数组一一比对即可, 如果出现失配, 则根据next数组将跟踪pat的下标回退, 继续进行比对
+直到字符串到尽头或者模式字符串到尽头
+*** 伪代码
+**** KMP算法
+#+BEGIN_SRC python
+  def KMP(txt, pat):
+    i, j = 0, -1
+    next = []
+    while i < pat.LENGTH
+      if j == -1 or pat[i] == pat[j]:
+        i += 1
+        j += 1
+        next[i] = j
+      else:
+        j = next[j]
+
+    i, j = 0, 0
+    while i < txt.LENGTH and j < pat.LENGTH:
+      if (j == -1 or txt[i] == pat[j]):
+        i += 1
+        j += 1
+      else:
+        j = next[j]
+    if  j == pat.LENGTH:
+      return i - j
+    else:
+      return -1
+#+END_SRC
+** 最长公共子序列                                                   :序列:
+*** 情景
+已知两个序列s1, s2, 求两个序列共有的最长公共子序列(LCS)。
+所谓子序列是指通过去除某些序列中的元素但不破坏余下元素的相对位置得到的序列 
+*** 解法
+**** 动态规划                                                   :动态规划:
+设dp[i][j]的含义为子序列s1[0..i]和s2[0..j]中最长公共子序列的长度,
+当i==0或者j==0时，那么dp[i][j]一定为0, 对于其他情况: 
+  当s1[i]==s1[j]时, dp[i][j] = dp[i-1][j-1] + 1,
+  当s1[i]!=s2[j]时, dp[i][j] = max(dp[i][j-1], dp[i-1][j]),
+最后dp[len(s1)][len(s2)]向前回溯就可以找到最长子序列
+*** 伪代码
+**** 动态规划                                                   :动态规划:
+#+BEGIN_SRC python
+  def LCS(s1, s2):
+    m = s1.LENGTH
+    n = s2.LENGTH
+    dp = [][]
+    for i in 0..m+1:
+      for j in 0..n+1:
+        if i == 0 or j == 0:
+          dp[i][j] = 0
+        else:
+          if s1[i-1] == s2[j-1]:
+            dp[i][j] = dp[i-1][j-1] + 1
+          else:
+            dp[i][j] = MAX(dp[i-1][j], dp[i][j-1])
+    i = m
+    j = n
+    res = []
+    while dp[i][j] != 0:
+      if s1[i-1] == s2[j-1]:
+        res.append(s1[i-1])
+        i -= 1
+        j -= 1
+      else:
+        if dp[i-1][j] >= dp[i][j-1]:
+          i -= 1
+        else:
+          j -= 1
+    return REVERSE(res)
+#+END_SRC
+
+** 最长公共字串                                                        :序列:
+*** 情景
+已知两个序列s1, s2, 求两个序列共有的最长公共子串(LCS)。
+所谓字串是指内部连续的子序列, 可以理解为只去除原序列的前缀或后缀生成的子序列
+*** 解法
+**** 动态规划                                                   :动态规划:
+设dp[i][j]的含义为以s1[i]和s2[j]为结尾的最长公共子串
+当i==0或者j==0时，那么dp[i][j]一定为0, 对于其他情况: 
+  当s1[i]==s1[j]时, dp[i][j] = dp[i-1][j-1] + 1,
+  当s1[i]!=s2[j]时, dp[i][j] = 0
+最后根据dp中最大的长度下标和长度就可以找到最长子串
+*** 伪代码
+**** 动态规划                                                   :动态规划:
+#+BEGIN_SRC python
+  def LCS(s1, s2):
+    m = s1.LENGTH
+    n = s2.LENGTH
+    dp = [][]
+    max_i = 0
+    max_s = 0
+    for i in 0..m+1:
+      for j in 0..n+1:
+        if i == 0 or j == 0:
+          dp[i][j] = 0
+        else:
+          if s1[i-1] == s2[j-1]:
+            dp[i][j] = dp[i-1][j-1] + 1
+            if dp[i][j] > max_s:
+              max_s = dp[i][j]
+              max_i = i
+          else:
+            dp[i][j] = 0
+    return s1[max_i-max_s..max_i]
+#+END_SRC
+
+** 最长回文字串                                                     :序列:
+*** 情景
+已知一个字符串s，求s之中最长的回文子串。
+回文串是指颠倒之后和之前相等的字符串
+*** 解法
+**** 动态规划                                                   :动态规划:
+设dp[i][j]的含义为从s[i..j]是否为回文串, 那么可知:
+  当j <= i+1时, dp[i][j]=TRUE
+  当s[i]==s[j-1]时, dp[i][j] = dp[i+1][j-1]
+  当s[i]!=s[j-1]时, dp[i][j] = FALSE
+最后根据dp之中的最大值即可得出最长回文串的下标
+**** 左右指针                                                       :指针:
+对s之中每(1|2)个字符为中心向两边扩散，如果两边相等就继续扩散直至出现不等，
+实时统计每个中心扩散的最大回文串长度，最后可以得出最长回文子串
+*** 伪代码
+**** 动态规划                                                   :动态规划:
+#+BEGIN_SRC python
+  def LCP(s):
+    dp = [][]
+    max_i, max_j = 0, 0
+    for l in 0..s.LENGTH+1:
+      for i in 0..s.LENGTH+1-l:
+        j = i + l
+        if j <= i+1:
+          dp[i][j] = TRUE
+        else:
+          if s[i] == s[j-1]:
+            dp[i][j] = dp[i+1][j-1]
+            if dp[i][j] and j-i > max_j-max_i:
+              max_i, max_j = i, j
+          else:
+            dp[i][j] = FALSE
+    return s[max_i..max_j]
+#+END_SRC
+
+**** 左右指针                                                       :指针:
+#+BEGIN_SRC python
+  def ISPALINDROME(s, i, j):
+    max_len = 0
+    while i >= 0 and j < s.LENGTH and s[i] == s[j]:
+      max_len = j-i+1
+      i -= 1
+      j += 1
+    return max_len
+
+  def LCP(s):
+    max_i = 0
+    max_len = 0
+    for i in 0..s.LENGTH-1:
+      l1 = ISPALINDROME(s, i, i)
+      l2 = ISPALINDROME(s, i, i+1)
+      if l1 > l2 and l1 > max_len:
+        max_len = l1
+        max_i = i
+      if l2 > l1 and l2 > max_len:
+        max_len = l2
+        max_i = i+1
+    base = max_i-FLOOR(max_len/2)
+    return s[base..base+max_len]
+#+END_SRC
+
+** 有序数组去除重复元素                                               :序列:
+*** 情景
+当一个数组内的全部数据有序且可能存在重复数据, 如何去掉重复的数据
+*** 解法
+**** 快慢指针                                                       :指针:
+设数组为a
+设置一个满指针slow和快指针fast均指向a的开始，然后增长fast，每当a[fast]!=a[slow]时
+增长slow并让a[slow]=a[fast], 这样可以使得a[0..slow+1]永远保持为递增无重复数组，
+当fast遍历完毕时, a[0..slow+1]即为没用重复元素的数组
+*** 伪代码
+**** 快慢指针                                                       :指针:
+#+BEGIN_SRC python
+  def REMOVE_DUP(a):
+    slow = fast = 0
+    for fast in 0..a.LENGTH:
+      if a[fast] != a[slow]:
+        slow += 1
+        a[slow] = a[fast]
+    return  a[0..slow+1]
+#+END_SRC
+
+** 对数组进行排序                                                     :序列:
+*** 情景
+对一个序列从小到大排序
+*** 解法
+**** 快速排序                                                  :递归:二分:
+设数组为arr, b=左边界, e=右边界, 不稳定
+1. 设arr[b]==k， 遍历arr[b..e]，将小于k的放在k左边，大于k的放在k右边
+2. 若arr[x]==k, 则继续对arr[b..x]和arr[x..e]重复过程1-2, 直到b>=e
+**** 堆排序                                                              :堆:
+设数组为arr, n初始为数组末尾下标, 不稳定
+最大堆是一种二叉树，它确保父节点必定大于子节点，根据这个性质，可以将arr建
+为最大堆，然后进行排序:
+1. 将堆的根节点arr[0](即最大元素)和arr[n]交换
+2. 将arr[0..n]堆化，n减小1
+3. 重复1-2，直到n==1
+此时arr已经排序
+二叉堆有两个操作:
+  - 堆化: 假设只有当前节点不符合堆性质，子堆均符合堆性质，通过置换可以将此堆变得符合堆性质
+  - 建堆: 从n/2开始降序到0依次堆化，相当于自底向上使得arr符合堆性质
+**** 归并排序                                                  :递归:分治:
+设数组为arr, b=左边界，e=右边界, 稳定
+1. 求得mid=(b+e)/2, 对arr[b..mid], arr[mid..e]进行归并排序
+2. 当两个子数组归并完成后，申请一个新数组大小为e-b, 使用两个指针跟踪
+   arr[b..mid]和arr[mid..e]的头部，将较小的放入新数组中，然后移动
+   其指针到下一个位置
+3. 重复比较并将小的放入新数组，当两个指针均到子数组结束位置，归并完成
+*** 伪代码
+**** 快速排序                                                  :递归:二分:
+#+BEGIN_SRC python
+  def PARTITION(arr, b, e):
+    key = arr[e-1]
+    i = b-1
+    for j in b..e-1:
+      if arr[j] < key:
+        i += 1
+        SWAP(arr[j], arr[i])
+    SWAP(arr[i+1], arr[e-1])
+    return i+1
+
+  def QUICK_SORT(arr, b, e):
+    if b < e:
+      k = PARTITION(arr, b, e)
+      QUICK_SORT(arr, b, k)
+      QUICK_SORT(arr, k+1, e)
+#+END_SRC
+**** 堆排序                                                              :堆:
+#+BEGIN_SRC python
+  def L_CHILD(i):
+    return i*2+1
+
+  def R_CHILD(i):
+    return i*2+2
+
+  def HEAPIFY(arr, i, n):  # 这里假设除了arr[i]以外，其子节点均符合堆规则
+    largest = i
+    l, r = L_CHILD(i), R_CHILD(i)
+    if l < n and arr[largest] < arr[l]:
+      largest = l
+    if r < n and arr[largest] < arr[r]:
+      largest = r
+    if largest != i:
+      SWAP(arr[largest], arr[i])
+      HEAPIFY(arr, largest, n)
+
+  def MAKE_HEAP(arr, n):
+    for i in n/2..0:
+      HEAPIFY(arr, i, n)
+
+  def HEAP_SORT(arr):
+    n = arr.LENGTH
+    MAKE_HEAP(arr, n)
+    for i in n-1..1:
+      SWAP(arr[0], arr[i])
+      HEAPIFY(arr, 0, i)
+#+END_SRC
+**** 归并排序                                                  :递归:分治:
+#+BEGIN_SRC python
+  def MERGE_SORT(arr, b, e):
+    if b == e or b == e-1:
+      return
+    mid = (b+e)/2
+    MERGE_SORT(arr, b, mid)
+    MERGE_SORT(arr, mid, e)
+    i, j = b, mid
+    tmp = []
+    while i != mid and j != e:
+      if arr[i] < arr[j]:
+        tmp.append(arr[i])
+        i += 1
+      else:
+        tmp.append(arr[j])
+        j += 1
+    if i != mid:
+      tmp += arr[i:mid]
+    if j != e:
+      tmp += arr[j:e]
+    arr[b..e] = tmp
+#+END_SRC
+
+** 数组中下一个较大元素                                               :序列:
+*** 情景
+求解数组中每个元素的第一个大于此元素的元素
+*** 解法
+**** 单调栈                                                           :栈:
+设数组为arr, 栈为s
+遍历数组中的每个元素c:
+  1. 当s为空或者c等于小于栈顶元素时, 将c入栈
+  2. c大于栈顶元素时, 弹出栈顶元素t并设元素t的第一个大于元素为c,
+  3. 重复过程2直到满足1
+遍历完毕之后即可得出所求目标
+*** 伪代码
+**** 单调栈                                                           :栈:
+#+BEGIN_SRC python
+  def NEXT_BIGGER(arr):
+    s = STACK()
+    result = [-1] * arr.LENGTH
+    i = 0
+    while i < arr.LENGTH:
+      if s.EMPTY() or arr[i] < arr[s.TOP()]:
+        s.PUSH(i)
+        i += 1
+      else:
+        result[s.POP()] = i
+    while not s.EMPTY():
+        result[s.POP()] = -1
+    return result
+#+END_SRC
+
+** 接雨水                                                              :序列:
+*** 情景
+给定n个非负整数序列表示每个宽度为1的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+|
+|       |
+| |***|*|
+| |*|*|*|**|
+o------------------
+[02010203001]
+如上图可以承载9单位水
+*** 解法
+**** 左右指针                                                       :指针:
+此问题的核心在于单独考虑每一个位置可以承载多少水而不是总体性的进行考虑。
+任意一个位置能承载的水一定是它左右两边最高柱子中最小的那一个的值减去自
+身的高度, 只要用两个指针从两边向中间遍历并记录当前的左右最大值，然后在
+总量里加上最大值中较小值减去较小方向指针所指向的位置的高度值即可。
+*** 伪代码
+**** 左右指针                                                       :指针:
+#+BEGIN_SRC python
+  def CALC_RAIN(height):
+    i, j = 0, arr.LENGTH-1
+    total = 0
+    max_l = -INF
+    max_r = -INF
+    while i <= j:
+      max_l = MAX(max_l, height[i])
+      max_r = MAX(max_r, height[j])
+      if max_l < max_r:
+        total += (max_l - height[i])
+        i += 1
+      else:
+        total += (max_r - height[j])
+        j -= 1
+    return total
+#+END_SRC
+
+** 在有序数组中查找指定元素的首尾位置                                 :序列:
+*** 情景
+给定一个按照升序排列的整数数组nums，和一个目标值target。找出给定目标值在数组中的
+开始位置和结束位置。
+*** 解法
+**** 二分算法                                                       :二分:
+思路很简单，细节是魔鬼
+这里只说一下要点:
+- 首先默认采用左闭右开区间，这样left = 0, right = nums.LENGTH判断二分结束
+的条件为left<right, 因为当left==right时[x, x)内部是没有元素的。
+- 对于寻找最左，要点是当nums[mid] == target时，要缩小区间为[left, mid)
+当退出循环时，最左节点应为left。
+- 对于寻找最右，要点是当nums[mid] == target时，要缩小区间为[mid+1, right)
+当退出循环时，最右节点应为right-1
+*** 伪代码
+**** 二分算法                                                       :二分:
+#+BEGIN_SRC python
+  def SEARCH_LEFT(nums, target):
+    l, r = 0, nums.LENGTH
+      while l < r:
+        mid = l + (r-l)/2
+        if nums[mid] == target:
+          r = mid
+        elif nums[mid] > target:
+          r = mid
+        elif nums[mid] < target:
+          l = mid+1
+      if l == nums.LENGTH or nums[l] != target:
+        return -1
+      return l
+    def SEARCH_RIGHT(nums, target):
+      l, r = 0, nums.LENGTH
+        while l < r:
+          mid = l + (r-l)/2
+          if nums[mid] == target:
+            l = mid+1
+          elif nums[mid] < target:
+            l = mid+1
+          elif nums[mid] > target:
+            r = mid
+        if l == 0 or nums[l-1] != target:
+          return -1
+        return r-1
+#+END_SRC
