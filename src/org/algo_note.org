@@ -787,3 +787,99 @@ o------------------
           return -1
         return r-1
 #+END_SRC
+
+** 寻找数组内的重复和缺失元素                                          :序列:
+*** 情景
+给一个长度为N的数组nums，其中本来装着[1..N]这N个元素，数组无序。
+但是现在出现了一些错误，nums中的一个元素出现了重复，也就同时导致了
+另一个元素的缺失。请你写一个算法，找到nums中的重复元素和缺失元素的值
+*** 解法
+**** 映射法
+假设数组内的元素内容为[0..N-1], 那么数组内元素便可以理解为指向数组位置
+的指针，如果有两个元素重复，那么相当于有两个指针指向了同一个位置，由此可以
+得出一个简单的算法:
+1. 从头开始遍历数组，每次取出一个元素并检查它指向的位置(nums[nums[i]])
+  - 如果为正数，证明是第一次指向这个位置，那么将这个值改为负数
+  - 如果为负数，证明之前指向过这个位置，那么nums[i]即为重复的值
+2. 重新遍历一次数组，如果是正数，说明这个位置从来没有被指向过，所以i即为
+   缺失的值
+实际处理时要映射到[1..N], 且要注意下标可能为负数导致错误的问题
+*** 伪代码
+**** 映射法
+#+BEGIN_SRC python
+  def MAP_SOLVE(nums):
+    lost, dup = -1, -1
+    for i in 0..nums.LENGTH:
+      index = ABS(nums[i])-1
+      if nums[index] < 0:
+        dup = index+1
+      else:
+        nums[index] = -nums[index]
+    for i in 0..nums.LENGTH:
+      if nums[i] > 0:
+        lost = i+1
+    return dup, lost
+#+END_SRC
+** 寻找链表环的入口                                                   :序列:
+*** 情景
+对一个存在环的单向链表l，求此环的入口位置。
+n1 → n2 → n3
+     ↑    ↓ 
+     n5 ← n4
+此时n2即为入口
+*** 解法
+**** 快慢指针                                                       :指针:
+设置一个快指针和一个慢指针同时指向l的起点s，快指针每次走两个节点，慢指针每次走一个节点
+1. 让快慢指针按各自步长前进直到两者指向同一个节点，设此节点为p。
+2. 让慢指针指向l的起点s，同时将快指针的步长也调整为一个节点，继续行进
+3. 当快慢指针指向同一个节点e时，此节点即为环的入口
+可以假设从起点到入口的距离为a，入口到p的距离为b，第一次相交慢节点走了k==a+b步，快节点
+走了2k步，设环长度为c，快节点直到相交前绕环前进了n圈，那么可知2k==2(a+b)=a+b+nc, 所
+以{a+b==nc|n>=1}
+因为当前快指针指向p, 而p距离起点为b，当快指针前进a步到达p+a==a+b时，此时距离起点的距离
+为nc，而慢指针从起点前进a步也正好到达起点，此时快慢相交，并且此节点为环入口
+*** 伪代码
+**** 快慢指针                                                       :指针:
+#+BEGIN_SRC python
+  def FIND_CYCLE_ENTRANCE(l):
+    fast = slow = l
+    while TRUE:
+      fast = fast.next.next
+      slow = slow.next
+      if fast == slow:
+        slow = l
+        while fast != slow:
+          slow = slow.next
+          fast = fast.next
+        return fast
+#+END_SRC
+
+** 无重复的最长子串                                                   :序列:
+*** 情景
+给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度
+*** 解法
+**** 滑动窗口法                                                     :指针:
+设置两个指针i，j，s[i..j+1]即为窗口window
+1. 增大j直到s[j]∈window, 说明window中存在了重复元素，保存当前的最长长度j-i+1
+2. 增大i直到s[i-1] == s[j], 此过程中移除不属于window的元素，最后window中不存在重复元素
+3. 重复过程2-3，直到j到达字符串末尾，此时返回最大程度
+*** 伪代码
+**** 滑动窗口法                                                     :指针:
+#+BEGIN_SRC python
+  def LONGEST_NO_REPEAT_SUBSTRING(s):
+    i, j = 0, 0
+    max_len = 0
+    S = SET()
+    while j < s.LENGTH:
+      cur = s[j]
+      j += 1
+      if cur in S:
+        S += {cur}
+        max_len = MAX(max_len, j-i)
+      else:
+        while s[i] != cur:
+          S -= {s[i]}
+          i += 1
+        i += 1
+    return max_len
+#+END_SRC
