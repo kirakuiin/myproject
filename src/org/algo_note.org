@@ -462,7 +462,7 @@ KMP算法的核心在于建立根据pat建立一个部分匹配表，通过这�
     return REVERSE(res)
 #+END_SRC
 
-** 最长公共字串                                                        :序列:
+** 最长公共字串                                                       :序列:
 *** 情景
 已知两个序列s1, s2, 求两个序列共有的最长公共子串(LCS)。
 所谓字串是指内部连续的子序列, 可以理解为只去除原序列的前缀或后缀生成的子序列
@@ -882,4 +882,52 @@ n1 → n2 → n3
           i += 1
         i += 1
     return max_len
+#+END_SRC
+** 最长递增子序列                                                     :序列:
+*** 情景
+给你一个整数数组nums，找到其中最长严格递增子序列的长度
+所谓子序列是指通过去除某些序列中的元素但不破坏余下元素的相对位置得到的序列 
+*** 解法
+**** 动态规划                                                   :动态规划:
+设dp[i]含义为以nums[i]为结尾的子数组中最长子序列的长度。
+递推公式为:
+dp[i] = max{ dp[j] + 1 | 所有的j∈[0..i) 且 dp[j] < dp[i] }
+        1 | 所有的j∈[0..i) 且 dp[j] > dp[i]
+**** 二分法                                                         :二分:
+维护一个初始为空的最长递增序列inc，从头开始遍历nums, 迭代器为i
+用nums[i]当作键值在inc中二分搜索右侧边界r
+- 当nums[i]大于inc中所有元素时，即inc[r-1] < target时, inc追加元素nums[i]
+- 当nums[i]中有相等的元素时，即inc[r-1] == target时，不做任何处理
+  因为重复的元素不会增加inc的长度
+- 当nums[i]中没有相同元素时，此时inc[r]即为大于target的第一个元素，
+  用较小的target替换较大的元素inc[r], 即inc[r] = target
+最后inc的长度即为数组内最长的递增子序列的长度
+*** 伪代码
+**** 动态规划                                                   :动态规划:
+#+BEGIN_SRC python
+  def LIS(nums):
+    dp = [1]
+    for i in 1..nums.LENGTH:
+      max_l = 1
+      for j in 0..i:
+        if nums[i] > nums[j]:
+          max_l = MAX(max_l, dp[j] + 1)
+      dp[i] = max_l
+    return MAX(dp)
+#+END_SRC
+**** 二分法                                                         :二分:
+#+BEGIN_SRC python
+  def LIS(nums):
+    inc = [nums[0]]
+    for target in nums[1..nums.LENGTH]:
+      if target > inc[-1]:
+        inc.append(target)
+      else:
+        # 这里假设返回的是大于target的第一个位置
+        idx  = SEARCH_RIGHT(inc, target)
+        if idx == 0 or inc[idx-1] != target:
+          inc[idx] = target
+        if inc[idx-1] == target:
+          inc[idx-1] = target
+    return inc.LENGTH
 #+END_SRC
