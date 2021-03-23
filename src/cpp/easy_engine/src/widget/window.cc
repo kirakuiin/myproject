@@ -148,7 +148,7 @@ Window::Window(unsigned int window_width, unsigned int window_height,
   // 激活窗口
   Activate();
   // 设定视口
-  glViewport(0, 0, window_width, window_height);
+  glViewport(0, 0, window_width*2, window_height*2);
   // 开启多重采样
   glEnable(GL_MULTISAMPLE);
   // 开启混合

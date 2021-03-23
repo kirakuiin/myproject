@@ -60,7 +60,7 @@ export PYSITE37=/Users/lambda/Library/Python/3.7/bin
 export OPENSSL=/usr/local/opt/openssl/bin
 export LLVM=/usr/local/opt/llvm/bin
 export GTEXT=/usr/local/opt/gettext/bin
-export PATH=$HOSTCONN:$PYSITE37:$MVIM:$OPENSSL:$GTEXT:$PATH
+export PATH=$HOSTCONN:$PYSITE37:$MVIM:$OPENSSL:$GTEXT:$PATH:$EMAC
 export MYDEV=~/Develop/code/MyProject
 source $ZSH/oh-my-zsh.sh
 

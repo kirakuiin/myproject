@@ -20,3 +20,7 @@ compile_commands.json
 
 #macos
 .DS_Store
+
+#lua
+yarn.lock
+node_modules/
