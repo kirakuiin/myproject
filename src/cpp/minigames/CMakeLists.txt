@@ -16,8 +16,7 @@ SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 SET(AUTO_RUN ON)
 
 # 手动包含标准库是为了在compile_commands.json中生成带有-I/stdlib的命令
-include_directories(
-  /Library/Developer/CommandLineTools/usr/include/c++/v1)
+include_directories(/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/)
 
 SOURCE_DIRS(
   src
