@@ -14,8 +14,8 @@ case $OSNAME in
         KERNEL_VERSION=`uname -r`
         PROCESSOR=`uname -m`
         case "$KERNEL_VERSION" in
-            *19*)
-                source ./Darwin_19_x64_env.sh
+            *20*)
+                source ./Darwin_x64_env.sh
                 ;;
             *)
                 echo NOT_SUPPORT_VERSION
