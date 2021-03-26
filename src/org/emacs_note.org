@@ -10,4 +10,6 @@
    很大可能是源的问题，导致包不完整，最后导致启动出现奇奇怪怪的错误
 ** py lsp 无法正常启动，显示name 'platform_system' is not defined    :plugin:
    请更新pip和setuptools
-   pip install --upgrade **
+   pip install --upgrade
+** windows下emacs无法找到spacemacs                                    :app:
+   请设置环境变量$HOME为.emacs.d所在的目录，这样emacs才能找到配置文件
