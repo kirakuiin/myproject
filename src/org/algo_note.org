@@ -7,6 +7,7 @@
 ** 属性
 ~TRUE~      : 真值
 ~FALSE~     : 假值
+~NONE~      : 空值
 ~x.LENGTH~  : 序列的的长度
 ** 函数
 ~MAX()~     : 多个元素中的最大值
@@ -1102,5 +1103,66 @@ $ 1/i * (i/(i+1)) * ... * ((n-1)/n) = 1/n $, 最后可得概率为1/n。
       chance = RANDOM(0, i)
       if chance == 0:
         result = nums[chance]
+    return result
+#+END_SRC
+
+** 霍夫曼编码                                                         :贪心:
+*** 情景
+实现一种高效的变长前缀编码，可以将文本转换为二进制数据，也可以通过某种手段
+还原回来。
+*** 解法
+既然我们希望高效，那么可以将问题抽象为字符串的加权和最小，即出现频率越高的字符
+对应的编码越短，这样总体加权和就最小。
+1. 遍历字符串，根据频率将其放入到一个优先队列之中，每个字符
+   对应一个节点
+2. 出队优先队列中频率最低的两个节点，以这两个节点作为左右子
+   节点生成一个新的节点，频率为两者之和，将新节点入队
+3. 重复过程2直到只剩下一个节点，此时以此节点构成了一棵二叉树
+4. 左节点为0，右节点为1，从根到叶子遍历，路上经过的节点序列
+   即为叶子字符的编码
+因为所有的字符都是叶子，所以他们的前缀是不可能相同的。
+因为频率越高，离根节点的距离也就越近，编码长度就越短，所以符合最小加权和。
+*** 伪代码
+#+BEGIN_SRC python
+  class Node { char, weight, left=NONE, right=NONE }
+
+  def GENERATE_ENCODE_FROM_TREE(tree, encode, encodes):
+    if tree.char.LENGTH == 1: # 叶子结点
+      encodes[tree.char] = encode
+    else:
+      GENERATE_ENCODE_FROM_TREE(tree.left, encode + '0', encodes)
+      GENERATE_ENCODE_FROM_TREE(tree.right, encode + '1', encodes)
+
+  def HUFFMAN_ENCODE(s):
+    pq = PRIORQUEUE()
+    nodes = {} # 所有元素默认初始化为0
+    for c in s:
+      nodes[c] += 1
+    for char, weight in nodes:
+      pq.ENQUEUE(Node(char, weight), weight) # 根据权重决定优先级
+    while pq.LENGTH != 1:
+      left = pq.DEQUEUE()
+      right = pq.DEQUEUE()
+      new_node = Node('node', left.weight+right.weight, left, right)
+      pq.ENQUEUE(new_node, new_node.weight)
+    encodes = {}
+    tree = pq.DEQUEUE()
+    GENERATE_ENCODE_FROM_TREE(tree, '', encodes)
+    encode = ''
+    for c in s:
+      encode += encodes[c]
+    return encode, tree
+
+  def HUFFMAN_DECODE(encode, tree)
+    ptr = tree
+    result = ''
+    for c in encode:
+      if c == '0':
+        ptr = ptr.left
+      else:
+        ptr = ptr.right
+      if ptr.char.LENGTH == 1:
+        result += ptr.char
+        ptr = tree
     return result
 #+END_SRC

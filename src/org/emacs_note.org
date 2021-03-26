@@ -5,7 +5,7 @@
    这个问题是由于cmake生成的compile_commands.json中是不包含标准库的路径的，
    即不包含-I/.../include/c++/v1，因此需要在CmakeLists.txt中使用INCLUDE_DIRECTORIES
    命令手动将标准库路径包含在其中。
-   另外有时候包含这个标准可可能会导致编译错误，这个时候就只能换一个不出错的标准库
+   另外有时候包含这个标准可能会导致编译错误，这个时候就只能换一个不出错的标准库
 ** 更新时出现大量包找不到，或者是spacemacs启动出错                      :app:
    很大可能是源的问题，导致包不完整，最后导致启动出现奇奇怪怪的错误
 ** py lsp 无法正常启动，显示name 'platform_system' is not defined    :plugin:
