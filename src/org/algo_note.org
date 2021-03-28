@@ -1,5 +1,5 @@
-#+TAGS: 位操作(b) 递归(r) 回溯(j) 动态规划(d) 贪心(e) 排序(o) 深度优先搜索(l) 广度优先搜索(f) 启发式(i) 指针(p) 二分(k) 分治(c) 概率(t)
-#+TAGS: 并查集(u) 栈(s) 图(g) 数学(m) 序列(a) 堆(h) 队列(q)
+#+TAGS: 位操作(b) 递归(r) 回溯(j) 动态规划(d) 贪心(e) 排序(o) 深度优先搜索(l) 广度优先搜索(f) 启发式(i) 指针(p) 二分(k) 分治(c) 概率(n)
+#+TAGS: 并查集(u) 栈(s) 图(g) 数学(m) 序列(a) 堆(h) 队列(q) 树(t) 数据结构(z)
 
 * 伪代码标记说明
 ** 记号
@@ -347,6 +347,68 @@ w1*X(1) + w2*X(2) + ... + wn*X(n) <= c
     return MAX_V
 #+END_SRC
 
+** 编码                                                               :数学:
+*** 情景
+实现一种高效的编码算法，可以将文本转换为二进制数据，也可以通过某种手段
+还原回来。
+*** 解法
+**** 霍夫曼编码                                                     :贪心:
+既然我们希望高效，那么可以将问题抽象为字符串的加权和最小，即出现频率越高的字符
+对应的编码越短，这样总体加权和就最小。
+1. 遍历字符串，根据频率将其放入到一个优先队列之中，每个字符
+   对应一个节点
+2. 出队优先队列中频率最低的两个节点，以这两个节点作为左右子
+   节点生成一个新的节点，频率为两者之和，将新节点入队
+3. 重复过程2直到只剩下一个节点，此时以此节点构成了一棵二叉树
+4. 左节点为0，右节点为1，从根到叶子遍历，路上经过的节点序列
+   即为叶子字符的编码
+因为所有的字符都是叶子，所以他们的前缀是不可能相同的。
+因为频率越高，离根节点的距离也就越近，编码长度就越短，所以符合最小加权和。
+*** 伪代码
+**** 霍夫曼编码                                                     :贪心:
+#+BEGIN_SRC python
+  class Node { char, weight, left=NONE, right=NONE }
+
+  def GENERATE_ENCODE_FROM_TREE(tree, encode, encodes):
+    if tree.char.LENGTH == 1: # 叶子结点
+      encodes[tree.char] = encode
+    else:
+      GENERATE_ENCODE_FROM_TREE(tree.left, encode + '0', encodes)
+      GENERATE_ENCODE_FROM_TREE(tree.right, encode + '1', encodes)
+
+  def HUFFMAN_ENCODE(s):
+    pq = PRIORQUEUE()
+    nodes = {} # 所有元素默认初始化为0
+    for c in s:
+      nodes[c] += 1
+    for char, weight in nodes:
+      pq.ENQUEUE(Node(char, weight), weight) # 根据权重决定优先级
+    while pq.LENGTH != 1:
+      left = pq.DEQUEUE()
+      right = pq.DEQUEUE()
+      new_node = Node('node', left.weight+right.weight, left, right)
+      pq.ENQUEUE(new_node, new_node.weight)
+    encodes = {}
+    tree = pq.DEQUEUE()
+    GENERATE_ENCODE_FROM_TREE(tree, '', encodes)
+    encode = ''
+    for c in s:
+      encode += encodes[c]
+    return encode, tree
+
+  def HUFFMAN_DECODE(encode, tree)
+    ptr = tree
+    result = ''
+    for c in encode:
+      if c == '0':
+        ptr = ptr.left
+      else:
+        ptr = ptr.right
+      if ptr.char.LENGTH == 1:
+        result += ptr.char
+        ptr = tree
+    return result
+#+END_SRC
 ** 中缀表达式转后缀表达式                                           :序列:
 *** 情景
 将表达式a+b*(c-d)转化为abcd-*+
@@ -1106,63 +1168,19 @@ $ 1/i * (i/(i+1)) * ... * ((n-1)/n) = 1/n $, 最后可得概率为1/n。
     return result
 #+END_SRC
 
-** 霍夫曼编码                                                         :贪心:
+** 满足快速增删改查序列数据结构                                    :数据结构:
 *** 情景
-实现一种高效的变长前缀编码，可以将文本转换为二进制数据，也可以通过某种手段
-还原回来。
+    设计一种数据结构，能够在O(lgn)的时间复杂度内完成增删改查。
 *** 解法
-既然我们希望高效，那么可以将问题抽象为字符串的加权和最小，即出现频率越高的字符
-对应的编码越短，这样总体加权和就最小。
-1. 遍历字符串，根据频率将其放入到一个优先队列之中，每个字符
-   对应一个节点
-2. 出队优先队列中频率最低的两个节点，以这两个节点作为左右子
-   节点生成一个新的节点，频率为两者之和，将新节点入队
-3. 重复过程2直到只剩下一个节点，此时以此节点构成了一棵二叉树
-4. 左节点为0，右节点为1，从根到叶子遍历，路上经过的节点序列
-   即为叶子字符的编码
-因为所有的字符都是叶子，所以他们的前缀是不可能相同的。
-因为频率越高，离根节点的距离也就越近，编码长度就越短，所以符合最小加权和。
+**** 跳跃表                                                       :概率:序列:
+     常见的数组满足O(1)时间内的查询，但是增删需要O(n)复杂度，链表可以实现O(1)的增删，
+     但是查询需要O(n), 为了给链表的查询增速，可以利用二分的思想，额外加一层链表，数量
+     底层链表的一半，这样查询的速度变为O(n/2), 而新加的这层也可以利用这个思想增速查询，
+     最后经过多层链表查询的速度为O(lgn)。
+     这样的数据结构如何来决定哪个节点有二层，三层链表呢？常用的策略是投掷硬币法，每插入
+     一个节点，投一次币来决定他是否有下一级链表。我们假设最底层为高度为1，高度为2的链表
+     概率为50%，高度为3的链表概率为25%，以此类推，因此用这种方法可以符合二分的定义。
+**** TODO 红黑树                                                         :树:
 *** 伪代码
-#+BEGIN_SRC python
-  class Node { char, weight, left=NONE, right=NONE }
-
-  def GENERATE_ENCODE_FROM_TREE(tree, encode, encodes):
-    if tree.char.LENGTH == 1: # 叶子结点
-      encodes[tree.char] = encode
-    else:
-      GENERATE_ENCODE_FROM_TREE(tree.left, encode + '0', encodes)
-      GENERATE_ENCODE_FROM_TREE(tree.right, encode + '1', encodes)
-
-  def HUFFMAN_ENCODE(s):
-    pq = PRIORQUEUE()
-    nodes = {} # 所有元素默认初始化为0
-    for c in s:
-      nodes[c] += 1
-    for char, weight in nodes:
-      pq.ENQUEUE(Node(char, weight), weight) # 根据权重决定优先级
-    while pq.LENGTH != 1:
-      left = pq.DEQUEUE()
-      right = pq.DEQUEUE()
-      new_node = Node('node', left.weight+right.weight, left, right)
-      pq.ENQUEUE(new_node, new_node.weight)
-    encodes = {}
-    tree = pq.DEQUEUE()
-    GENERATE_ENCODE_FROM_TREE(tree, '', encodes)
-    encode = ''
-    for c in s:
-      encode += encodes[c]
-    return encode, tree
-
-  def HUFFMAN_DECODE(encode, tree)
-    ptr = tree
-    result = ''
-    for c in encode:
-      if c == '0':
-        ptr = ptr.left
-      else:
-        ptr = ptr.right
-      if ptr.char.LENGTH == 1:
-        result += ptr.char
-        ptr = tree
-    return result
-#+END_SRC
+**** TODO 跳跃表                                                  :概率:序列:
+**** TODO 红黑树                                                         :树:
