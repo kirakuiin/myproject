@@ -6,7 +6,7 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
-DEADLINE: <2021-03-30 周二 21:00 +1d>
+DEADLINE: <2021-03-30 周二 21:20 +1d>
 :PROPERTIES:
 :LAST_REPEAT: [2021-03-29 周一 21:11]
 :END:
@@ -35,16 +35,21 @@ CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
 * Project
 ** TODO [#C] 完成leetcode两道题                                     :learn:
 SCHEDULED: <2021-03-29 周一 21:00 +1d>
-#+PROPERTY:
+:PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
-** SCH [#B] 完成python150题 [20%]                                   :learn:
+:END:
+** SCH [#B] 完成python150题 [20%]                                    :learn:
 SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>
-#+PROPERTY:
-:REFERENCE: [[file:../ref/python150题.org][python150题]]
 *** DONE 完成1-30题
 CLOSED: [2021-03-29 周一 21:08] DEADLINE: <2021-03-29 周一 21:00>
+:PROPERTIES:
+:REFERENCE: [[file:../ref/python150题.org::*语言特性][python150题:1-30]]
+:END:
 *** SCH 完成31-60题
 DEADLINE: <2021-03-30 周二 21:00>
+:PROPERTIES:
+:REFERENCE: [[file:../ref/python150题.org::*列表][python150题:31-60]]
+:END:
 *** SCH 完成61-90题
 DEADLINE: <2021-03-31 周三 21:00>
 *** SCH 完成91-120题
@@ -59,3 +64,4 @@ DEADLINE: <2021-04-03 周六 21:00>
 
 * Someday
 ** 学习《Unity3D 游戏开发》                                         :learn:
+** 学习《Lua程序设计》                                               :learn:
