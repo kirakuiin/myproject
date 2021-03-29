@@ -1,0 +1,61 @@
+#+STARTUP: INDENT LOGDONE OVERVIEW
+#+TAGS: { learn(l) work(w) }
+#+TODO: TODO(t) SCH(s) WAIT(w) | DONE(d) CANCELED(c)
+
+
+* Inbox
+* Next Action
+** TODO [#A] 完成每日日报                                            :work:
+DEADLINE: <2021-03-30 周二 21:00 +1d>
+:PROPERTIES:
+:LAST_REPEAT: [2021-03-29 周一 21:11]
+:END:
+
+- State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
+** DONE [#A] 完成每周周报                                            :work:
+CLOSED: [2021-03-29 周一 10:36] DEADLINE: <2021-03-29 周一 12:00 +1w>
+** DONE [#A] 和导师会面                                              :work:
+CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
+- Note taken on [2021-03-29 周一 12:25] \\
+  导师没有特殊要求，按照新入入门导引学习即可。
+* Appointment
+** 组装一台性价比高的台式机用于开发和娱乐 [0/11]                    :learn:
+<2021-05-11 周二>--<2021-06-18 周五>
+- [ ] 主板
+- [ ] 散热
+- [ ] CPU
+- [ ] 内存
+- [ ] 显卡
+- [ ] SSD硬盘
+- [ ] 电源
+- [ ] 机箱
+- [ ] 显示器
+- [ ] 键盘
+- [ ] 耳机
+* Project
+** TODO [#C] 完成leetcode两道题                                     :learn:
+SCHEDULED: <2021-03-29 周一 21:00 +1d>
+#+PROPERTY:
+:LINK: [[https://leetcode-cn.com][leetcode]]
+** SCH [#B] 完成python150题 [20%]                                   :learn:
+SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>
+#+PROPERTY:
+:REFERENCE: [[file:../ref/python150题.org][python150题]]
+*** DONE 完成1-30题
+CLOSED: [2021-03-29 周一 21:08] DEADLINE: <2021-03-29 周一 21:00>
+*** SCH 完成31-60题
+DEADLINE: <2021-03-30 周二 21:00>
+*** SCH 完成61-90题
+DEADLINE: <2021-03-31 周三 21:00>
+*** SCH 完成91-120题
+DEADLINE: <2021-04-01 周四 21:00>
+*** SCH 完成121-150题
+** SCH [#B] 学习《python核心编程》[50%]                             :learn:
+DEADLINE: <2021-04-03 周六 21:00> SCHEDULED: <2021-03-29 周一 12:00>
+*** DONE 学习1-7章
+CLOSED: [2021-03-29 周一 17:41] DEADLINE: <2021-03-31 周三 21:00>
+*** SCH 学习8-14章
+DEADLINE: <2021-04-03 周六 21:00>
+
+* Someday
+** 学习《Unity3D 游戏开发》                                         :learn:

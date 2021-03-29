@@ -1,0 +1,108 @@
+#+STARTUP: INDENT OVERVIEW
+#+TAGS: { FEATURES(f) STANDARD(s) STRING(t) LIST(l) DICT(d) }
+
+* python 150题 [40%]
+** TODO 语言特性 [1/6]                                           :FEATURES:
+  1. [ ] 谈谈对Python和其他语言的区别
+  2. [ ] 简述解释型和编译型编程语言
+  3. [ ] Python的解释器种类及相关特点?
+  4. [ ] 说说你知道的Python3和Python2之间的区别?
+  5. [ ] Python3和Python2中int和long的区别?
+  6. [X] xrange和range的区别?
+     xrange返回一个惰性求值数据生成器对象, 即便范围很大也不会占用大量内存，而
+     range则会直接生成一个列表，如果范围大会占用大量内存。
+** TODO 编码规范 [5/12]                                          :STANDARD:
+  7. [X] 什么时PEP8?
+     PEP(Python Enchantment Proposal) 8, 内容是python代码风格指南
+  8. [X] 了解python之禅吗?
+     ~import this~ 可以看到，主要描述的是python编程的一般性准则。
+  9. [X] 了解docstring么?
+       出现在模块，函数，类里的第一行的字符串常量，会被当做__doc__属性，成为
+       对象的帮助文档
+  10. [ ] 了解类型注解吗?
+  11. [ ] 例举你知道Python对象的命名规范，例如方法或者类等?
+  12. [ ] Python中的注释有几种?
+  13. [ ] 如何优雅的给一个函数加注释?
+  14. [ ] 如何给变量加注释?
+  15. [X] Python代码缩进中是否支持Tab键和空格混用。
+      不支持, 混用可能会抛出异常. 因为不同平台默认tab缩进可能不一致, 代码移植时可能
+      导致缩进不对齐.
+  16. [X] 是否可以在一句import导入多个库
+      语法上可以, 实际上一般每一行只导入一个库
+  17. [ ] 再给Py文件命名的时候需要注意什么?
+  18. [ ] 例举几个规范Python代码风格的工具数据类型字符串
+** DONE 字符串 [11/11]                                             :STRING:
+  1. [X] 列举Python中的基本数据类型?
+     数字(Numbers), 字符串(String), 列表(List), 元组(Tuple), 字典(Dict),
+     集合(Set)。
+  2. [X] 如何区别可变数据类型和不可变数据类型
+     简单来说, 指向内存值不可变即为不可变数据类型, 否则为可变数据类型可以使用
+     hash函数, 如果抛出异常的就是可变数据类型。
+  3. [X] 将"hello world"转换为首字母大写"Hello World"
+     ~"hello world".title()~
+  4. [X] 如何检测字符串中只含数字?
+     ~str.isdigit()~
+  5. [X] 将字符串"ilovechina"进行反转
+     ~"ilovechina"[::-1]~
+  6. [X] Python格式字符串方式你知道哪些?
+     1. %格式化, ~'%d=%d' % (1, 2)~
+     2. format函数 ~'{}={}'.format(1, 2)~
+     3. 字符串模板 ~Template('${a} = ${b}').substitute(a=1, b=2)~
+  7. [X] 有一个字符串开头和末尾都有空格, 比如" adabdw ", 要求写一个函数把
+     这个字符串的前后空格都去掉。
+     #+BEGIN_SRC python
+       def strip(s):
+           for i in range(len(s)):
+               if s[i] != ' ':
+                   break
+           for j in range(len(s)-1, -1, -1):
+               if s[j] != ' ':
+                   break
+           return s[i:j+1]
+     #+END_SRC
+  8. [X] 获取字符串"123456"最后的两个字符。
+     ~"123456"[-2:]~
+  9. [X] 一个编码为GBK的字符串S, 要将其转为UTF-8编码的字符串, 应如何操作?
+     ~S.decode('gbk').encode('utf-8')~
+  10. [X]
+      1) s="info: xiaoZhang 33 shandong", 用正则切分字符串输出['info',
+         'xiaoZhang', '33', 'shandong']
+         ~re.split(r': | ', s)~
+      2) a="你好中国 ", 去除多余空格只留一个空格.
+         ~a.rstrip()~
+  11. [X]
+      1) 如何将字符串转为小写?
+         ~str.tolower()~
+      2) 单引号、双引号、三引号的区别？
+         单引号和双引号没有区别，不过当双引号字符串里有单引号时不需要转义，单引号字符串
+         同理。三引号可以包括各种特殊字符，比如换行，引号，制表等等，一般用来表示多行文
+         本。
+** DONE 列表 [6/6]                                                   :LIST:
+  1. [X] 已知AList = [1, 2, 3, 1, 2], 对AList列表元素去重, 写出具体过程。
+     ~set(AList)~
+  2. [X] 如何实现"1,2,3"变成["1","2","3"]
+     ~"1,2,3".split(',')~
+  3. [X] 给定两个list, A和B, 找出相同元素和不同元素
+     ~set(A)|set(B); set(A)^set(B)~
+  4. [X] [[1,2],[3,4],[5,6]]一行代码展开该列表, 得出[1,2,3,4,5,6]
+     ~reduce(lambda x, y: x + y, a)~
+  5. [X] 合并列表[1,5,7,9]和[2,2,6,8]
+     ~[1,5,7,9].extend([2,2,6,8])~
+  6. [X] 如何打乱一个列表的元素
+     #+BEGIN_SRC python
+       import random
+       arr = [...]
+       for i in range(len(arr)-1, 0, -1):
+         rpos = random.randint(0, i)
+         arr[rpos], arr[i] = arr[i], arr[rpos]
+     #+END_SRC
+
+** TODO 字典 [3/5]                                                   :DICT:
+  1. [X] 字典操作中的del和pop有什么区别
+     pop会返回移除的元素, 而且可以指定key未命中的默认返回值, 而del如果key未命中则直接抛出异常.
+  2. [X] 按照字典内的年龄排序 d1 = [{'name': 'alice', 'age':38}, ...}
+     ~sorted(d1, key=lambda x: x['age'])~
+  3. [X] 请合并下面两个字典a = {"A": 1, "B":2}, b={"C":3, "D":4}
+     ~a.update(b)~
+  4. [ ] 
+  5. [ ] 
