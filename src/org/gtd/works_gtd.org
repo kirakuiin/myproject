@@ -19,6 +19,8 @@ CLOSED: [2021-03-29 周一 10:36] DEADLINE: <2021-03-29 周一 12:00 +1w>
 CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
 - Note taken on [2021-03-29 周一 12:25] \\
   导师没有特殊要求，按照新入入门导引学习即可。
+** WAIT [#A] 完成python考试                                           :work:
+DEADLINE: <2021-04-01 Thu 21:00>
 * Appointment
 ** 组装一台性价比高的台式机用于开发和娱乐 [0/11]                    :learn:
 <2021-05-11 周二>--<2021-06-18 周五>
@@ -34,12 +36,13 @@ CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
 - [ ] 键盘
 - [ ] 耳机
 * Project
-** TODO [#C] 完成leetcode两道题                                     :learn:
-SCHEDULED: <2021-03-30 周二 21:00 +1d>
+** TODO [#C] 完成leetcode两道题                                      :learn:
+SCHEDULED: <2021-03-31 Wed 21:00 +1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
-:LAST_REPEAT: [2021-03-30 周二 09:49]
+:LAST_REPEAT: [2021-03-30 Tue 23:41]
 :END:
+- State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** SCH [#B] 完成python150题 [40%]                                   :learn:
 SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>
@@ -73,10 +76,13 @@ DEADLINE: <2021-04-03 周六 21:00> SCHEDULED: <2021-03-29 周一 12:00>
 CLOSED: [2021-03-29 周一 17:41] DEADLINE: <2021-03-31 周三 21:00>
 *** DONE 学习8-11章
 CLOSED: [2021-03-30 周二 21:09] DEADLINE: <2021-03-30 周二 21:00>
-
 *** TODO 学习12-14章
 DEADLINE: <2021-03-31 周三 21:20>
 
 * Someday
 ** 学习《Unity3D 游戏开发》                                         :learn:
 ** 学习《Lua程序设计》                                               :learn:
+** 学习 org-mode                                                     :learn:
+:PROPERTIES:
+:LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
+:END:
