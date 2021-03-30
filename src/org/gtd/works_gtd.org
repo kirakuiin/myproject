@@ -6,11 +6,12 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
-DEADLINE: <2021-03-30 周二 21:20 +1d>
+DEADLINE: <2021-03-31 周三 21:20 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-03-29 周一 21:11]
+:LAST_REPEAT: [2021-03-30 周二 21:06]
 :END:
 
+- State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
 ** DONE [#A] 完成每周周报                                            :work:
 CLOSED: [2021-03-29 周一 10:36] DEADLINE: <2021-03-29 周一 12:00 +1w>
@@ -34,33 +35,47 @@ CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
 - [ ] 耳机
 * Project
 ** TODO [#C] 完成leetcode两道题                                     :learn:
-SCHEDULED: <2021-03-29 周一 21:00 +1d>
+SCHEDULED: <2021-03-30 周二 21:00 +1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
+:LAST_REPEAT: [2021-03-30 周二 09:49]
 :END:
-** SCH [#B] 完成python150题 [20%]                                    :learn:
+- State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
+** SCH [#B] 完成python150题 [40%]                                   :learn:
 SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>
 *** DONE 完成1-30题
 CLOSED: [2021-03-29 周一 21:08] DEADLINE: <2021-03-29 周一 21:00>
 :PROPERTIES:
-:REFERENCE: [[file:../ref/python150题.org::*语言特性][python150题:1-30]]
+:REFERENCE: [[file:../ref/python150题.org::第一题][python150题:1-30]]
 :END:
-*** SCH 完成31-60题
-DEADLINE: <2021-03-30 周二 21:00>
+*** DONE 完成31-60题
+CLOSED: [2021-03-30 周二 14:40] DEADLINE: <2021-03-30 周二 21:00>
 :PROPERTIES:
-:REFERENCE: [[file:../ref/python150题.org::*列表][python150题:31-60]]
+:REFERENCE: [[file:../ref/python150题.org::第三十一题][python150题:31-60]]
 :END:
-*** SCH 完成61-90题
+*** TODO 完成61-90题
+:PROPERTIES:
+:REFERENCE: [[file:../ref/python150题.org::第六十一题][python150题:61-90]]
+:END:
 DEADLINE: <2021-03-31 周三 21:00>
 *** SCH 完成91-120题
 DEADLINE: <2021-04-01 周四 21:00>
+:PROPERTIES:
+:REFERENCE: [[file:../ref/python150题.org::第九十一题][python150题:91-120]]
+:END:
 *** SCH 完成121-150题
-** SCH [#B] 学习《python核心编程》[50%]                             :learn:
+:PROPERTIES:
+:REFERENCE: [[file:../ref/python150题.org::第一百二十一题][python150题:121-150]]
+:END:
+** SCH [#B] 学习《python核心编程》[66%]                             :learn:
 DEADLINE: <2021-04-03 周六 21:00> SCHEDULED: <2021-03-29 周一 12:00>
 *** DONE 学习1-7章
 CLOSED: [2021-03-29 周一 17:41] DEADLINE: <2021-03-31 周三 21:00>
-*** SCH 学习8-14章
-DEADLINE: <2021-04-03 周六 21:00>
+*** DONE 学习8-11章
+CLOSED: [2021-03-30 周二 21:09] DEADLINE: <2021-03-30 周二 21:00>
+
+*** TODO 学习12-14章
+DEADLINE: <2021-03-31 周三 21:20>
 
 * Someday
 ** 学习《Unity3D 游戏开发》                                         :learn:
