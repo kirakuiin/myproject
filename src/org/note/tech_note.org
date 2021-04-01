@@ -3,7 +3,7 @@
 
 * 工具相关
 ** 更好看的git log                                                    :git:
-   在终端输入:
+在终端输入:
    #+BEGIN_SRC bash
      git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
    #+END_SRC

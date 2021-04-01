@@ -1,5 +1,6 @@
+#+STARTUP: OVERVIEW
 #+TAGS: 位操作(b) 递归(r) 回溯(j) 动态规划(d) 贪心(e) 排序(o) 深度优先搜索(l) 广度优先搜索(f) 启发式(i) 指针(p) 二分(k) 分治(c) 概率(n)
-#+TAGS: 并查集(u) 栈(s) 图(g) 数学(m) 序列(a) 堆(h) 队列(q) 树(t) 数据结构(z)
+#+TAGS: 并查集(u) 栈(s) 图(g) 数学(m) 序列(a) 堆(h) 队列(q) 树(t) 数据结构(z) 其他(x)
 
 * 伪代码标记说明
 ** 记号
@@ -12,10 +13,11 @@
 ** 函数
 ~MAX()~     : 多个元素中的最大值
 ~MIN()~     : 多个元素中的最小值
+~EMPTY()~   : 容器是否为空
 ~[]~        : 序列，可以代表堆，栈，数组, 链表等等
-~PUSH()~    : 向栈顶追加元素
-~POP()~     : 弹出栈顶元素
-~TOP()~     : 返回栈顶元素
+~PUSH()~    : 向堆或栈顶追加元素
+~POP()~     : 弹出堆或栈顶元素
+~TOP()~     : 返回堆或栈顶元素
 ~ENQUEUE()~ : 入队
 ~DEQUEUE()~ : 出队
 ~APPEND()~  : 向数组末尾追加元素
@@ -199,6 +201,40 @@ v的前驱路径p
         return FALSE
     return TRUE
 #+END_SRC
+** 如何判断有向图是否有环                                               :图:
+*** 情景
+设有有向图图G(V, E), 判断此图是否存在环.
+*** 解法
+**** 拓扑排序                                                       :排序:
+对这个图进行拓扑排序:
+1. 找出图中所有入度为0节点的放入队列, 剩下的未处理节点记为R
+2. 出队队列中的节点, 并其将所有以此节点为起点的终点节点的入度减1
+3. 检查R中的未处理节点, 如果有入度为0的则入队
+4. 重复步骤2-3, 直到队列为空
+如果R中存在节点, 那么这些节点一定构成环.
+也可以把这种排序方式理解为处理依赖关系的顺序, 优先处理不被依赖的.
+*** 伪代码
+**** 拓扑排序                                                       :排序:
+#+BEGIN_SRC python
+  def TOPOLOGY_SORT(V, E):
+    queue = []
+    in_degree = {}
+    for e in E:
+      in_degree[e.end] += 1
+    for vert in in_degree:
+      if in_degree[vert] == 0:
+        queue.ENQUEUE(vert)
+    processed_order = []
+    while queue:
+      cur = queue.DEQUEUE()
+      processed_order.APPEND(cur)
+      for e in E:
+        if e.begin == cur:
+          in_degree[e.end] -= 1
+          if in_degree[e.end] == 0:
+            queue.ENQUEUE(e.end)
+    return processed_order
+#+END_SRC
 ** 最大公约数                                                         :数学:
 *** 情景
 求两个整数的最大公约数，如gcd(18, 12)的最大公约数为6
@@ -347,69 +383,7 @@ w1*X(1) + w2*X(2) + ... + wn*X(n) <= c
     return MAX_V
 #+END_SRC
 
-** 编码                                                               :数学:
-*** 情景
-实现一种高效的编码算法，可以将文本转换为二进制数据，也可以通过某种手段
-还原回来。
-*** 解法
-**** 霍夫曼编码                                                     :贪心:
-既然我们希望高效，那么可以将问题抽象为字符串的加权和最小，即出现频率越高的字符
-对应的编码越短，这样总体加权和就最小。
-1. 遍历字符串，根据频率将其放入到一个优先队列之中，每个字符
-   对应一个节点
-2. 出队优先队列中频率最低的两个节点，以这两个节点作为左右子
-   节点生成一个新的节点，频率为两者之和，将新节点入队
-3. 重复过程2直到只剩下一个节点，此时以此节点构成了一棵二叉树
-4. 左节点为0，右节点为1，从根到叶子遍历，路上经过的节点序列
-   即为叶子字符的编码
-因为所有的字符都是叶子，所以他们的前缀是不可能相同的。
-因为频率越高，离根节点的距离也就越近，编码长度就越短，所以符合最小加权和。
-*** 伪代码
-**** 霍夫曼编码                                                     :贪心:
-#+BEGIN_SRC python
-  class Node { char, weight, left=NONE, right=NONE }
-
-  def GENERATE_ENCODE_FROM_TREE(tree, encode, encodes):
-    if tree.char.LENGTH == 1: # 叶子结点
-      encodes[tree.char] = encode
-    else:
-      GENERATE_ENCODE_FROM_TREE(tree.left, encode + '0', encodes)
-      GENERATE_ENCODE_FROM_TREE(tree.right, encode + '1', encodes)
-
-  def HUFFMAN_ENCODE(s):
-    pq = PRIORQUEUE()
-    nodes = {} # 所有元素默认初始化为0
-    for c in s:
-      nodes[c] += 1
-    for char, weight in nodes:
-      pq.ENQUEUE(Node(char, weight), weight) # 根据权重决定优先级
-    while pq.LENGTH != 1:
-      left = pq.DEQUEUE()
-      right = pq.DEQUEUE()
-      new_node = Node('node', left.weight+right.weight, left, right)
-      pq.ENQUEUE(new_node, new_node.weight)
-    encodes = {}
-    tree = pq.DEQUEUE()
-    GENERATE_ENCODE_FROM_TREE(tree, '', encodes)
-    encode = ''
-    for c in s:
-      encode += encodes[c]
-    return encode, tree
-
-  def HUFFMAN_DECODE(encode, tree)
-    ptr = tree
-    result = ''
-    for c in encode:
-      if c == '0':
-        ptr = ptr.left
-      else:
-        ptr = ptr.right
-      if ptr.char.LENGTH == 1:
-        result += ptr.char
-        ptr = tree
-    return result
-#+END_SRC
-** 中缀表达式转后缀表达式                                           :序列:
+** 中缀表达式转后缀表达式                                             :序列:
 *** 情景
 将表达式a+b*(c-d)转化为abcd-*+
 *** 解法
@@ -666,7 +640,7 @@ KMP算法的核心在于建立根据pat建立一个部分匹配表，通过这�
 
 ** 对数组进行排序                                                     :序列:
 *** 情景
-对一个序列从小到大排序
+对一个序列从小到大排序.
 *** 解法
 **** 快速排序                                                  :递归:二分:
 设数组为arr, b=左边界, e=右边界, 不稳定
@@ -762,8 +736,40 @@ KMP算法的核心在于建立根据pat建立一个部分匹配表，通过这�
       tmp += arr[j:e]
     arr[b..e] = tmp
 #+END_SRC
+** 在数据流中寻找中位数                                              :序列:
+*** 情景
+有一个源源不断地吐出整数的数据流, 要求设计一种方法可以随时快速的得到中位数.
+*** 解法
+**** 双堆法                                                           :堆:
+用一个最大堆来存放数据流的前半段数据, 用一个最小堆来存放数据流后半段数据,
+只要能够保证大小堆的长度相差不超过1, 则中位数要么是某一个堆得堆顶, 要么是
+两个堆堆顶的平均数.
+*** 伪代码
+**** 双堆法                                                           :堆:
+#+BEGIN_SRC python
+  def ADD_NUM(min_heap, max_heap, num):
+    if max_heap.EMPTY() or num < max_heap.TOP():
+      max_heap.PUSH(num)
+    else:
+      min_heap.PUSH(num)
+    BALANCE(max_heap, min_heap)
 
-** 数组中下一个较大元素                                               :序列:
+  def BALANCE(heap1, heap2):
+    if heap1.LENGTH == heap2.LENGTH + 2:
+      heap2.PUSH(heap1.POP())
+    if heap2.LENGTH == heap1.LENGTH + 2:
+      heap1.PUSH(heap2.POP())
+
+  def MIDIAN(heap1, heap2):
+    if (heap1.LENGTH + heap2.LENGTH) % 2 == 0:
+      return (heap1.TOP() + heap2.TOP())/2
+    else:
+      if heap1.LENGTH > heap2.LENGTH:
+        return heap1.TOP()
+      else:
+        return heap2.TOP()
+#+END_SRC
+** 数组中下一个较大元素                                              :序列:
 *** 情景
 求解数组中每个元素的第一个大于此元素的元素
 *** 解法
@@ -1168,19 +1174,70 @@ $ 1/i * (i/(i+1)) * ... * ((n-1)/n) = 1/n $, 最后可得概率为1/n。
     return result
 #+END_SRC
 
-** 满足快速增删改查序列数据结构                                    :数据结构:
+** 编码问题                                                           :其他:
 *** 情景
-    设计一种数据结构，能够在O(lgn)的时间复杂度内完成增删改查。
+实现一种高效的编码算法，可以将文本转换为二进制数据，也可以通过某种手段
+还原回来。
 *** 解法
-**** 跳跃表                                                       :概率:序列:
-     常见的数组满足O(1)时间内的查询，但是增删需要O(n)复杂度，链表可以实现O(1)的增删，
-     但是查询需要O(n), 为了给链表的查询增速，可以利用二分的思想，额外加一层链表，数量
-     底层链表的一半，这样查询的速度变为O(n/2), 而新加的这层也可以利用这个思想增速查询，
-     最后经过多层链表查询的速度为O(lgn)。
-     这样的数据结构如何来决定哪个节点有二层，三层链表呢？常用的策略是投掷硬币法，每插入
-     一个节点，投一次币来决定他是否有下一级链表。我们假设最底层为高度为1，高度为2的链表
-     概率为50%，高度为3的链表概率为25%，以此类推，因此用这种方法可以符合二分的定义。
-**** TODO 红黑树                                                         :树:
+**** 霍夫曼编码                                                     :贪心:
+既然我们希望高效，那么可以将问题抽象为字符串的加权和最小，即出现频率越高的字符
+对应的编码越短，这样总体加权和就最小。
+1. 遍历字符串，根据频率将其放入到一个优先队列之中，每个字符
+   对应一个节点
+2. 出队优先队列中频率最低的两个节点，以这两个节点作为左右子
+   节点生成一个新的节点，频率为两者之和，将新节点入队
+3. 重复过程2直到只剩下一个节点，此时以此节点构成了一棵二叉树
+4. 左节点为0，右节点为1，从根到叶子遍历，路上经过的节点序列
+   即为叶子字符的编码
+因为所有的字符都是叶子，所以他们的前缀是不可能相同的。
+因为频率越高，离根节点的距离也就越近，编码长度就越短，所以符合最小加权和。
 *** 伪代码
-**** TODO 跳跃表                                                  :概率:序列:
-**** TODO 红黑树                                                         :树:
+**** 霍夫曼编码                                                     :贪心:
+#+BEGIN_SRC python
+  class Node { char, weight, left=NONE, right=NONE }
+
+  def GENERATE_ENCODE_FROM_TREE(tree, encode, encodes):
+    if tree.char.LENGTH == 1: # 叶子结点
+      encodes[tree.char] = encode
+    else:
+      GENERATE_ENCODE_FROM_TREE(tree.left, encode + '0', encodes)
+      GENERATE_ENCODE_FROM_TREE(tree.right, encode + '1', encodes)
+
+  def HUFFMAN_ENCODE(s):
+    pq = PRIORQUEUE()
+    nodes = {} # 所有元素默认初始化为0
+    for c in s:
+      nodes[c] += 1
+    for char, weight in nodes:
+      pq.ENQUEUE(Node(char, weight), weight) # 根据权重决定优先级
+    while pq.LENGTH != 1:
+      left = pq.DEQUEUE()
+      right = pq.DEQUEUE()
+      new_node = Node('node', left.weight+right.weight, left, right)
+      pq.ENQUEUE(new_node, new_node.weight)
+    encodes = {}
+    tree = pq.DEQUEUE()
+    GENERATE_ENCODE_FROM_TREE(tree, '', encodes)
+    encode = ''
+    for c in s:
+      encode += encodes[c]
+    return encode, tree
+
+  def HUFFMAN_DECODE(encode, tree)
+    ptr = tree
+    result = ''
+    for c in encode:
+      if c == '0':
+        ptr = ptr.left
+      else:
+        ptr = ptr.right
+      if ptr.char.LENGTH == 1:
+        result += ptr.char
+        ptr = tree
+    return result
+#+END_SRC
+
+** TODO 八皇后问题                                                    :其他:
+*** 情景
+*** 解法
+*** 伪代码

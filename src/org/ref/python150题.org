@@ -1,6 +1,6 @@
 #+STARTUP: INDENT OVERVIEW
 
-* python 150题 [75%]
+* python 150题 [100%]
 ** DONE 语言特性 [6/6]
   1. [X] 谈谈对Python和其他语言的区别. *第一题*
      1) 不用大括号来表示缩进
@@ -444,40 +444,315 @@
    31. [X] 怎么声明多个变量并赋值. *第一百二十一题*
        - ~a = b = c = 1~
 
-** TODO 算法和数据结构 [0/16]
-   1. [ ]
-   2. [ ]
-   3. [ ]
-   4. [ ]
-   5. [ ]
-   6. [ ]
-   7. [ ]
-   8. [ ]
-   9. [ ]
-   10. [ ]
-   11. [ ]
-   12. [ ]
-   13. [ ]
-   14. [ ]
-   15. [ ]
-   16. [ ]
+** DONE 算法和数据结构 [16/16]
+   1. [X] 已知AList = [1, 2, 3], BSet = {1, 2, 3}
+      1) 从AList和BSet中查找4, 最坏时间复杂度那个大?.
+         - AList复杂度高,使用2分搜索O(lgn)
+      2) 从AList和BSet中插入4, 最坏时间复杂度那个大?
+         - AList复杂度高, 插入开头O(n)
+   2. [X] 用Python实现一个二分查找函数.
+      #+BEGIN_SRC python
+        def bin_search(arr, value):
+            left, right = 0, len(arr)
+            while left < right:
+                mid = (left+right)//2
+                if arr[mid] == value:
+                    return mid
+                elif arr[mid] < value:
+                    left = mid+1
+                elif arr[mid] > value:
+                    right = mid
+            if arr[mid] == value:
+                return mid
+            else:
+                return -1
+      #+END_SRC
+   3. [X] python单例模式实现方法.
+      #+BEGIN_SRC python
+        class Singleton(object):
+            _instance_lock = threading.Lock()
 
-** TODO 网络编程 [0/3]
-   1. [ ]
-   2. [ ]
-   3. [ ]
+            def __init__(self):
+                pass
 
-** TODO 并发 [0/10]
-   1. [ ]
-   2. [ ]
-   3. [ ]
-   4. [ ]
-   5. [ ]
-   6. [ ]
-   7. [ ]
-   8. [ ]
-   9. [ ]
-   10. [ ]
+            def __new__(cls):
+                if not hasattr(cls, '_instance'):
+                    with Singleton._instance_lock:
+                        if not hasattr(cls, '_instance'):
+                            Singleton._instance = super().__new__(cls)
+
+                return Singleton._instance
+      #+END_SRC
+   4. [X] 使用Python实现一个斐波那契数列.
+      #+BEGIN_SRC python
+        def fib(n):
+        if n <= 2:
+        return 1
+        else:
+            a, b = 1, 1
+        for i in range(2, n):
+            a, b =b, a + b
+        return b
+      #+END_SRC
+   5. [X] 找出列表中重复的数字.
+      #+BEGIN_SRC python
+        arr = [1, 2, 3, 1]
+        c = collections.Counter(arr)
+        for k in c:
+            if c[k] > 1:
+                print(k)
+      #+END_SRC
+   6. [X] 找出列表中的单个数字.
+      #+BEGIN_SRC python
+        arr = [1, 2, 3, 1]
+        c = collections.Counter(arr)
+        for k in c:
+            if c[k] == 1:
+                print(k)
+      #+END_SRC
+   7. [X] 写一个冒泡排序.
+      #+BEGIN_SRC python
+        def bubble_sort(arr):
+            n = len(arr)
+            for i in range(1, n):
+              for j in range(n-i):
+                  if arr[j] > arr[j+1]:
+                      arr[j], arr[j+1] = arr[j+1], arr[j]
+      #+END_SRC
+   8. [X] 写一个快速排序.
+      #+BEGIN_SRC python
+        def quick_sort(arr):
+            def _quick_sort(arr, ahead, end):
+                if ahead < end:
+                    index = randint(ahead, end-1)
+                    arr[end-1], arr[index] = arr[index], arr[end-1]
+                    mid = partition(arr, ahead, end)
+                    _quick_sort(arr, ahead, mid)
+                    _quick_sort(arr, mid+1, end)
+            _quick_sort(arr, 0, len(arr))
+
+        def partition(arr, ahead, end):
+            i = ahead-1
+            pivot = arr[end-1]
+            for j in range(ahead, end):
+                if arr[j] < pivot:
+                    i += 1
+                    arr[i], arr[j] = arr[j], arr[i]
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+            return i
+      #+END_SRC
+   9. [X] 写一个拓扑排序.
+      #+BEGIN_SRC python
+        class Graph(object):
+            def __init__(self, verts, edges):
+                self.verts = verts
+                self.edges = edges # 假设存储的是以结尾为键, 值为起始的序列
+
+        # 注意, 只能对有向无环图进行排序
+        def topology_sort(graph):
+            in_map = {node: len(graph.edges[node]) for node in graph.verts}
+            queue = [node for node in in_map if in_map[node] == 0]
+            result = []
+            while queue:
+                node = queue.pop()
+                result.append(node)
+                for key in graph.verts:
+                    if node in graph.edges[key]:
+                        in_map[key] -= 1
+                        if in_map[key] == 0:
+                            queue.append(key)
+            return result
+      #+END_SRC
+   10. [X] python实现一个二进制计算.
+      #+BEGIN_SRC python
+        def binary_add(a: str, b: str):
+            """二进制加法"""
+            a = a[::-1]
+            b = b[::-1]
+            la = len(a)
+            lb = len(b)
+            result = []
+            carry = 0
+            i = 0
+            max_l = max(la, lb)
+            while i < max_l or carry == 1:
+                lhs = int(a[i]) if i < la else 0
+                rhs = int(b[i]) if i < lb else 0
+                s = lhs + rhs + carry
+                carry = s//2
+                result.append(str(s%2))
+                i += 1
+            return ''.join(result[::-1])
+      #+END_SRC
+   11. [X] 有一组'+'和'-'符号, 要求将+排到左边, -排到右边, 写出具体写法.
+      #+BEGIN_SRC python
+        arr = ['+', '-', '+', '-']
+        arr.sort()
+      #+END_SRC
+   12. [X] 单链表反转.
+      #+BEGIN_SRC python
+        class Node(object):
+            def __init__(self, v, next=None):
+                self.v = v
+                self.next = next
+
+        def reverse_list(node):
+            if node.next is None:
+                return node
+            head = reverse_list(node.next)
+            node.next.next = node
+            return head
+      #+END_SRC
+   13. [X] 交叉链表求交点.
+      #+BEGIN_SRC python
+        def find_intersect(node):
+          """
+          快慢指针, 当两指针重合时将慢指针放到起点并且快指针速度设为和慢指针一致
+          下次相遇就是交点
+          """
+          slow = fast = node
+          while True:
+              slow = slow.next
+              fast = fast.next.next
+              if slow == fast:
+                  break
+          slow = node
+          while slow != fast:
+              slow = slow.next
+              fast = fast.next
+          return slow
+      #+END_SRC
+   14. [X] 用队列实现栈.
+      #+BEGIN_SRC python
+        class Stack(object):
+            def __init__(self):
+                self._queue_1 = collections.deque()
+                self._queue_2 = collections.deque()
+
+            def push(self, val):
+                self._queue_1.appendleft(val)
+                while self._queue_2:
+                    self._queue_1.appendleft(self._queue_2.pop())
+                self._queue_1, self._queue_2 = self._queue_2, self._queue_1
+
+            def pop(self):
+                if self._queue_2:
+                    return self._queue_2.pop()
+      #+END_SRC
+   15. [X] 找出数据流的中位数.
+      #+BEGIN_SRC python
+        class MedianContainer(object):
+            def __init__(self):
+                # 存储后半段数据
+                self._min_heap = MinHeap()
+                # 存储前半段数据
+                self._max_heap = MaxHeap()
+
+            def add_num(self, num):
+                if not self._max_heap or num < self._max_heap.top():
+                    self._max_heap.push(num)
+                else:
+                    self._min_heap.push(num)
+                self.adjust_size(self):
+
+            def adjust_size(self):
+                # 保证两堆大小不超过1
+                if len(self._max_heap) == len(self._min_heap) + 2:
+                    self._min_heap.push(self._max_heap.pop())
+                if len(self._min_heap) == len(self._max_heap) + 2:
+                    self._max_heap.push(self._min_heap.pop())
+
+            def get_median(self):
+                lmin = len(self._min_heap)
+                lmax = len(self._max_heap)
+                if (lmin + lmax)%2 == 0:
+                    return (self._min_heap.top()+self._max_heap.top())/2
+                else:
+                    if lmin > lmax:
+                        return self._min_heap.top()
+                    else:
+                        return self._max_heap.top()
+      #+END_SRC
+   16. [X] 二叉搜索树中第K小的元素.
+      #+BEGIN_SRC python
+        def find_k(tree, n):
+            cur_idx = [0]
+            result = []
+            def _inorder(tree):
+                if tree and not result:
+                    _inorder(tree.left)
+                    cur_idx[0] += 1
+                    if cur_idx[0] == n:
+                        result.append(tree.val)
+                    _inorder(tree.right)
+            _inorder(tree)
+            return result[0]
+      #+END_SRC
+
+** DONE 网络编程 [3/3]
+   1. [X] TCP和UDP的区别?
+      1. TCP协议在传送数据段的时候要给段标号; UDP协议不需要
+      2. TCP协议可靠; UDP协议不可靠
+      3. TCP协议是面向连接; UDP协议采用无连接
+      4. TCP协议的发送方要确认接收方是否收到数据段
+      5. TCP协议采用窗口技术和流控制
+   2. [X] 简要介绍三次握手和四次挥手.
+      - 三次握手 :: 用来建立tcp连接
+        1. 客户端向服务器发送请求
+        2. 服务器回复确认消息, 表示收到客户端请求
+        3. 客户端向服务器发送确认消息, 表示收到服务器确认消息
+      - 四次挥手 :: 用来断开tcp连接
+        1. 客户端向服务器发送断开请求
+        2. 服务器向客户端发送确认消息, 表示收到断开请求
+        3. 服务器向客户端发送确认消息, 表示断开准备完成
+        4. 客户端向服务器发送确认断开消息.
+   3. [X] 什么是粘包, socket中造成粘包的原因是什么? 哪些情况会发生粘包现象?
+      - TCP粘包就是指发送方发送的若干包数据到达接收方时粘成了一包. 主要原因是发送
+        方采用了nagle算法, 或者接收方应用层从缓存读取数据包的速度低于缓存接受数据
+        包的速度, 就会导致粘包. 客户端采用nagle算法并且发送大量间隔小, 数据量小
+        的包就会导致粘包.
+        
+** DONE 并发 [10/10]
+   1. [X] 举例说明concurrent.future中的线程池用法.
+      - 比如在网站上下载某些内容, 每个下载任务作为一个子任务提交给线程池, 线程池
+        会返回future对象作为未来的结果. 最后等待所有子任务完成即可.
+   2. [X] 说一说多线程, 多进程和协程的区别.
+      - 多进程 :: 同时启动多个进程执行任务, 消耗资源大, 通信需要额外手段, 但较为
+        安全
+      - 多线程 :: 一个进程内的多个线程共享进程内的资源, 消耗小, 通信方便, 但是需
+        要严格的互斥同步手段
+      - 协程 :: 可以在运行过程中随时中断, 将控制权转给其他的协程. 可以理解为可以
+        随时中断的子程序, 用户态的类多线程. 由于所有协程在一个线程里, 因此不存在
+        同步问题
+   3. [X] 简述GIL.
+      - 全局解释器锁, 当一个线程正在运行时, GIL会将其锁住阻止其他线程运行.
+   4. [X] 进程之间如何通信?
+      - 管道 :: 在具有亲缘关系的进程间传递数据的半双工通信方式
+      - 命名管道 :: 允许非亲缘关系进程之间进行通信的管道
+      - 共享内存 :: 一个进程创建一片共享内存区域, 其他进程也可以访问
+      - 消息队列 :: 由内核维护的消息链表, 进程可以添加和读取消息
+      - 信号 :: 用于通知进程某个事件已经发生
+      - 信号量 :: 用于进程间的同步和互斥
+      - 套接字 :: 可用于不同主机之间的进程通信机制
+   5. [X] IO多路复用的作用?
+      - 提升了系统的效率, 让一个进程可以同时启用多个IO.
+   6. [X] select, poll, epoll模型的区别?
+      - select :: 1024数量上限的IO多路复用, 要轮询IO状态
+      - poll :: 无数量上限的select, 在内核中使用链表来组织
+      - epoll :: 不需要轮询, 活动IO调用回调函数来通知
+   7. [X] 什么是并发和并行?
+      - 并发 :: 有处理多个任务的能力
+      - 并行 :: 同时处理多个任务的能力
+   8. [X] 一个线程1让线程2去调用一个函数怎么实现?
+      - 可以再进程内维护一个线程安全的消息队列, 线程1发出调用消息, 线程2从队列里
+        取得消息然后执行.
+   9. [X] 解释什么是异步非阻塞?
+      - 当发起IO请求后, 继续执行任务, 操作系统会负责将你请求的数据拷贝到你需要的位
+        置上, 当他拷贝完毕后主动通知进程, 进程收到消息之后过来处理即可.
+   10. [X] threading.local的作用?
+       - 为每个线程创建了一份资源的复制, 彻底消除了资源的不同步问题, 让每个线程操
+         作复制的资源, 不会影响其他线程.
 
        
    

@@ -6,15 +6,32 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
-DEADLINE: <2021-03-31 周三 21:20 +1d>
+DEADLINE: <2021-04-02 周五 21:20 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-03-30 周二 21:06]
+:LAST_REPEAT: [2021-04-01 周四 20:50]
 :END:
 
+- State "DONE"       from "TODO"       [2021-04-01 周四 20:50]
+- State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** WAIT [#A] 完成python考试                                           :work:
-SCHEDULED: <2021-04-01 周四 09:00>
+** TODO [#A] 完成每周周报                                            :work:
+DEADLINE: <2021-04-05 周一 12:00 +1w>
+:PROPERTIES:
+:LAST_REPEAT: [2021-04-01 周四 10:22]
+:END:
+- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
+** TODO [#C] 完成leetcode两道题                                     :learn:
+SCHEDULED: <2021-04-01 Thu 21:00 +1d>
+:PROPERTIES:
+:LINK: [[https://leetcode-cn.com][leetcode]]
+:LAST_REPEAT: [2021-03-31 Wed 23:57]
+:END:
+- State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
+- State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
+- State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
+** DONE [#A] 完成python考试                                          :work:
+CLOSED: [2021-04-01 周四 10:20] SCHEDULED: <2021-04-01 周四 09:30>
 :PROPERTIES:
 :DEPENDENCE:  [[完成python150题]] and [[学习《python核心编程》]]
 :END:
@@ -24,8 +41,6 @@ CLOSED: [2021-03-31 周三 20:27] DEADLINE: <2021-03-31 周三 21:00>
 CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
 - Note taken on [2021-03-29 周一 12:25] \\
   导师没有特殊要求，按照新入入门导引学习即可。
-** DONE [#A] 完成每周周报                                            :work:
-CLOSED: [2021-03-29 周一 10:36] DEADLINE: <2021-03-29 周一 12:00 +1w>
 ** DONE [#C] 编写cvimrc中有关vftplug插件的帮助文档
 CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 * Appointment
@@ -43,17 +58,15 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 - [ ] 键盘
 - [ ] 耳机
 * Project
-** TODO [#C] 完成leetcode两道题                                      :learn:
-SCHEDULED: <2021-04-01 Thu 21:00 +1d>
-:PROPERTIES:
-:LINK: [[https://leetcode-cn.com][leetcode]]
-:LAST_REPEAT: [2021-03-31 Wed 23:57]
-:END:
-- State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
-- State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
-- State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** SCH [#B] 完成python150题 [80%]                                   :learn:
-SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>
+** SCH [#A] 学习 利为游戏引擎                                       :learn:
+DEADLINE: <2021-04-10 周六 21:00> SCHEDULED: <2021-04-02 周五 09:00>
+*** TODO 利为引擎环境搭建
+DEADLINE: <2021-04-02 周五 21:00>
+*** WAIT 复刻简单游戏场景
+DEADLINE: <2021-04-06 周二 21:00>
+
+** DONE [#B] 完成python150题 [100%]                                 :learn:
+CLOSED: [2021-04-01 周四 19:43] SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>
 *** DONE 完成1-30题
 CLOSED: [2021-03-29 周一 21:08] DEADLINE: <2021-03-29 周一 21:00>
 :PROPERTIES:
@@ -79,18 +92,19 @@ CLOSED: [2021-03-31 周三 16:32] DEADLINE: <2021-04-01 周四 21:00>
 :PROPERTIES:
 :REFERENCE: [[file:../ref/python150题.org::第九十一题][python150题:91-120]]
 :END:
-*** TODO 完成121-150题
+*** DONE 完成121-150题
+CLOSED: [2021-04-01 周四 19:42]
 :PROPERTIES:
 :REFERENCE: [[file:../ref/python150题.org::第一百二十一题][python150题:121-150]]
 :END:
-** SCH [#B] 学习《python核心编程》[66%]                             :learn:
-DEADLINE: <2021-04-03 周六 21:00> SCHEDULED: <2021-03-29 周一 12:00>
+** DONE [#B] 学习《python核心编程》[100%]                           :learn:
+CLOSED: [2021-03-31 周三 21:05] DEADLINE: <2021-04-03 周六 21:00> SCHEDULED: <2021-03-29 周一 12:00>
 *** DONE 学习1-7章
 CLOSED: [2021-03-29 周一 17:41] DEADLINE: <2021-03-31 周三 21:00>
 *** DONE 学习8-11章
 CLOSED: [2021-03-30 周二 21:09] DEADLINE: <2021-03-30 周二 21:00>
-*** TODO 学习12-14章
-DEADLINE: <2021-03-31 周三 21:20>
+*** DONE 学习12-14章
+CLOSED: [2021-03-31 周三 21:05] DEADLINE: <2021-03-31 周三 21:20>
 :LOGBOOK:
 CLOCK: [2021-03-31 周三 14:21]--[2021-03-31 周三 14:46] =>  0:25
 CLOCK: [2021-03-31 周三 13:55]--[2021-03-31 周三 14:15] =>  0:20
@@ -105,5 +119,3 @@ CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :END:
-** 学习 利为游戏引擎                                                 :learn:
-
