@@ -44,11 +44,12 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 - [ ] 耳机
 * Project
 ** TODO [#C] 完成leetcode两道题                                      :learn:
-SCHEDULED: <2021-03-31 Wed 21:00 +1d>
+SCHEDULED: <2021-04-01 Thu 21:00 +1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
-:LAST_REPEAT: [2021-03-30 Tue 23:41]
+:LAST_REPEAT: [2021-03-31 Wed 23:57]
 :END:
+- State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** SCH [#B] 完成python150题 [80%]                                   :learn:
@@ -104,3 +105,5 @@ CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :END:
+** 学习 利为游戏引擎                                                 :learn:
+
