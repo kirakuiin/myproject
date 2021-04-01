@@ -13,14 +13,21 @@ DEADLINE: <2021-03-31 周三 21:20 +1d>
 
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** DONE [#A] 完成每周周报                                            :work:
-CLOSED: [2021-03-29 周一 10:36] DEADLINE: <2021-03-29 周一 12:00 +1w>
+** WAIT [#A] 完成python考试                                           :work:
+SCHEDULED: <2021-04-01 周四 09:00>
+:PROPERTIES:
+:DEPENDENCE:  [[完成python150题]] and [[学习《python核心编程》]]
+:END:
+** DONE [#A] 提交python作业
+CLOSED: [2021-03-31 周三 20:27] DEADLINE: <2021-03-31 周三 21:00>
 ** DONE [#A] 和导师会面                                              :work:
 CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
 - Note taken on [2021-03-29 周一 12:25] \\
   导师没有特殊要求，按照新入入门导引学习即可。
-** WAIT [#A] 完成python考试                                           :work:
-DEADLINE: <2021-04-01 Thu 21:00>
+** DONE [#A] 完成每周周报                                            :work:
+CLOSED: [2021-03-29 周一 10:36] DEADLINE: <2021-03-29 周一 12:00 +1w>
+** DONE [#C] 编写cvimrc中有关vftplug插件的帮助文档
+CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 * Appointment
 ** 组装一台性价比高的台式机用于开发和娱乐 [0/11]                    :learn:
 <2021-05-11 周二>--<2021-06-18 周五>
@@ -44,29 +51,34 @@ SCHEDULED: <2021-03-31 Wed 21:00 +1d>
 :END:
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** SCH [#B] 完成python150题 [40%]                                   :learn:
+** SCH [#B] 完成python150题 [80%]                                   :learn:
 SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>
 *** DONE 完成1-30题
 CLOSED: [2021-03-29 周一 21:08] DEADLINE: <2021-03-29 周一 21:00>
 :PROPERTIES:
 :REFERENCE: [[file:../ref/python150题.org::第一题][python150题:1-30]]
 :END:
+- Note taken on [2021-03-31 周三 16:32] \\
+  12题的描述非常不清晰.
 *** DONE 完成31-60题
 CLOSED: [2021-03-30 周二 14:40] DEADLINE: <2021-03-30 周二 21:00>
 :PROPERTIES:
 :REFERENCE: [[file:../ref/python150题.org::第三十一题][python150题:31-60]]
 :END:
-*** TODO 完成61-90题
+*** DONE 完成61-90题
+CLOSED: [2021-03-31 周三 16:32]
 :PROPERTIES:
 :REFERENCE: [[file:../ref/python150题.org::第六十一题][python150题:61-90]]
 :END:
+- Note taken on [2021-03-31 周三 12:51] \\
+  61-69题为服务端相关题目, 均跳过.
 DEADLINE: <2021-03-31 周三 21:00>
-*** SCH 完成91-120题
-DEADLINE: <2021-04-01 周四 21:00>
+*** DONE 完成91-120题
+CLOSED: [2021-03-31 周三 16:32] DEADLINE: <2021-04-01 周四 21:00>
 :PROPERTIES:
 :REFERENCE: [[file:../ref/python150题.org::第九十一题][python150题:91-120]]
 :END:
-*** SCH 完成121-150题
+*** TODO 完成121-150题
 :PROPERTIES:
 :REFERENCE: [[file:../ref/python150题.org::第一百二十一题][python150题:121-150]]
 :END:
@@ -78,6 +90,12 @@ CLOSED: [2021-03-29 周一 17:41] DEADLINE: <2021-03-31 周三 21:00>
 CLOSED: [2021-03-30 周二 21:09] DEADLINE: <2021-03-30 周二 21:00>
 *** TODO 学习12-14章
 DEADLINE: <2021-03-31 周三 21:20>
+:LOGBOOK:
+CLOCK: [2021-03-31 周三 14:21]--[2021-03-31 周三 14:46] =>  0:25
+CLOCK: [2021-03-31 周三 13:55]--[2021-03-31 周三 14:15] =>  0:20
+CLOCK: [2021-03-31 周三 12:58]--[2021-03-31 周三 13:24] =>  0:26
+CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
+:END:
 
 * Someday
 ** 学习《Unity3D 游戏开发》                                         :learn:
