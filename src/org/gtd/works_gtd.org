@@ -21,12 +21,13 @@ DEADLINE: <2021-04-05 周一 12:00 +1w>
 :LAST_REPEAT: [2021-04-01 周四 10:22]
 :END:
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode两道题                                     :learn:
-SCHEDULED: <2021-04-01 Thu 21:00 +1d>
+** TODO [#C] 完成leetcode两道题                                      :learn:
+SCHEDULED: <2021-04-02 Fri 21:00 +1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
-:LAST_REPEAT: [2021-03-31 Wed 23:57]
+:LAST_REPEAT: [2021-04-02 Fri 00:52]
 :END:
+- State "DONE"       from "TODO"       [2021-04-02 Fri 00:52]
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
@@ -44,19 +45,22 @@ CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
 ** DONE [#C] 编写cvimrc中有关vftplug插件的帮助文档
 CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 * Appointment
-** 组装一台性价比高的台式机用于开发和娱乐 [0/11]                    :learn:
+** 组装一台性价比高的台式机用于开发和娱乐                            :learn:
 <2021-05-11 周二>--<2021-06-18 周五>
-- [ ] 主板
-- [ ] 散热
-- [ ] CPU
-- [ ] 内存
-- [ ] 显卡
-- [ ] SSD硬盘
-- [ ] 电源
-- [ ] 机箱
-- [ ] 显示器
-- [ ] 键盘
-- [ ] 耳机
+
+| 组件名称 | 品牌 | 型号 | 价格 |
+|----------+------+------+------|
+| 主板     |      |      |      |
+| 散热     |      |      |      |
+| 处理器   |      |      |      |
+| 显卡     |      |      |      |
+| 内存     |      |      |      |
+| 固态硬盘 |      |      |      |
+| 电源     |      |      |      |
+| 机箱     |      |      |      |
+| 键盘     |      |      |      |
+| 耳机     |      |      |      |
+
 * Project
 ** SCH [#A] 学习 利为游戏引擎                                       :learn:
 DEADLINE: <2021-04-10 周六 21:00> SCHEDULED: <2021-04-02 周五 09:00>
