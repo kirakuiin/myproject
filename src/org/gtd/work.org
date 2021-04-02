@@ -19,7 +19,7 @@ DEADLINE: <2021-04-06 Tue 21:20 +1d>
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** TODO [#C] 完成leetcode一道题                                      :learn:
+** TODO [#C] 完成leetcode一两道题                                    :learn:
 SCHEDULED: <2021-04-03 Sat 21:00 +1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
@@ -77,8 +77,9 @@ DEADLINE: <2021-04-10 周六 21:00> SCHEDULED: <2021-04-02 周五 09:00>
 CLOSED: [2021-04-02 周五 15:12] DEADLINE: <2021-04-02 周五 21:00>
 *** DONE 复刻简单游戏场景
 CLOSED: [2021-04-02 周五 22:02] DEADLINE: <2021-04-06 周二 21:00>
-
-** DONE [#B] 完成python150题 [100%]                                 :learn:
+** SCH [#A] 归档并回顾一周的计划                                     :learn:
+DEADLINE: <2021-04-04 Sun 23:00 +1w> SCHEDULED: <2021-04-04 Sun 6:00 +1w>
+** DONE [#B] 完成python150题 [100%]                                  :learn:
 CLOSED: [2021-04-01 周四 19:43] SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>
 *** DONE 完成1-30题
 CLOSED: [2021-03-29 周一 21:08] DEADLINE: <2021-03-29 周一 21:00>

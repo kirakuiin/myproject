@@ -1,0 +1,12 @@
+#+STARTUP: INDENT LOGDONE OVERVIEW
+#+TAGS: { date(d) event(e) shopping(s) }
+#+TODO: TODO(t) SCH(s) WAIT(w) | DONE(d) CANCELED(c)
+
+
+* Inbox
+* Next Action
+* Appointment
+** TODO [#C] 组装自行车                                              :event:
+<2021-04-03 Sat 10:00>
+* Project
+* Someday
