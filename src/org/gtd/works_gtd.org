@@ -5,23 +5,27 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                            :work:
-DEADLINE: <2021-04-03 周六 21:20 +1d>
+** TODO [#A] 完成每日日报                                             :work:
+DEADLINE: <2021-04-06 Tue 21:20 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-04-02 周五 22:03]
+:LAST_REPEAT: [2021-04-03 Sat 00:52]
 :END:
 
+- State "CANCELED"   from "TODO"       [2021-04-05 Sat 9:00]
+- State "CANCELED"   from "TODO"       [2021-04-04 Sat 9:00]
+- State "CANCELED"   from "TODO"       [2021-04-03 Sat 9:00]
 - State "DONE"       from "TODO"       [2021-04-02 周五 22:03]
 - State "DONE"       from "TODO"       [2021-04-01 周四 20:50]
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** TODO [#C] 完成leetcode两道题                                      :learn:
-SCHEDULED: <2021-04-02 Fri 21:00 +1d>
+** TODO [#C] 完成leetcode一道题                                      :learn:
+SCHEDULED: <2021-04-03 Sat 21:00 +1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
-:LAST_REPEAT: [2021-04-02 Fri 00:52]
+:LAST_REPEAT: [2021-04-03 Sat 00:50]
 :END:
+- State "DONE"       from "TODO"       [2021-04-03 Sat 00:50]
 - State "DONE"       from "TODO"       [2021-04-02 Fri 00:52]
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
