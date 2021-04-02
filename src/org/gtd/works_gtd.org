@@ -6,21 +6,16 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
-DEADLINE: <2021-04-02 周五 21:20 +1d>
+DEADLINE: <2021-04-03 周六 21:20 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-04-01 周四 20:50]
+:LAST_REPEAT: [2021-04-02 周五 22:03]
 :END:
 
+- State "DONE"       from "TODO"       [2021-04-02 周五 22:03]
 - State "DONE"       from "TODO"       [2021-04-01 周四 20:50]
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** TODO [#A] 完成每周周报                                            :work:
-DEADLINE: <2021-04-05 周一 12:00 +1w>
-:PROPERTIES:
-:LAST_REPEAT: [2021-04-01 周四 10:22]
-:END:
-- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode两道题                                      :learn:
 SCHEDULED: <2021-04-02 Fri 21:00 +1d>
 :PROPERTIES:
@@ -31,6 +26,12 @@ SCHEDULED: <2021-04-02 Fri 21:00 +1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
+** SCH [#A] 完成每周周报                                             :work:
+DEADLINE: <2021-04-05 周一 12:00 +1w>
+:PROPERTIES:
+:LAST_REPEAT: [2021-04-01 周四 10:22]
+:END:
+- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** DONE [#A] 完成python考试                                          :work:
 CLOSED: [2021-04-01 周四 10:20] SCHEDULED: <2021-04-01 周四 09:30>
 :PROPERTIES:
@@ -47,27 +48,31 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 * Appointment
 ** 组装一台性价比高的台式机用于开发和娱乐                            :learn:
 <2021-05-11 周二>--<2021-06-18 周五>
-
-| 组件名称 | 品牌 | 型号 | 价格 |
-|----------+------+------+------|
-| 主板     |      |      |      |
-| 散热     |      |      |      |
-| 处理器   |      |      |      |
-| 显卡     |      |      |      |
-| 内存     |      |      |      |
-| 固态硬盘 |      |      |      |
-| 电源     |      |      |      |
-| 机箱     |      |      |      |
-| 键盘     |      |      |      |
-| 耳机     |      |      |      |
+| N | component   | brand | model | price |
+|---+-------------+-------+-------+-------|
+| / |   <3>       |       |       |       |
+|   | motherboard |       |       |       |
+|   | fan         |       |       |       |
+|   | cpu         |       |       |       |
+|   | gpu         |       |       |       |
+|   | memory      |       |       |       |
+|   | ssd         |       |       |       |
+|   | power       |       |       |       |
+|   | case        |       |       |       |
+|   | monitor     |       |       |       |
+|   | keyboard    |       |       |       |
+|   | earphone    |       |       |       |
 
 * Project
 ** SCH [#A] 学习 利为游戏引擎                                       :learn:
 DEADLINE: <2021-04-10 周六 21:00> SCHEDULED: <2021-04-02 周五 09:00>
-*** TODO 利为引擎环境搭建
-DEADLINE: <2021-04-02 周五 21:00>
-*** WAIT 复刻简单游戏场景
-DEADLINE: <2021-04-06 周二 21:00>
+:PROPERTIES:
+:LINK: [[../ref/liwei_engine.org][利为引擎]]
+:END:
+*** DONE 利为引擎环境搭建
+CLOSED: [2021-04-02 周五 15:12] DEADLINE: <2021-04-02 周五 21:00>
+*** DONE 复刻简单游戏场景
+CLOSED: [2021-04-02 周五 22:02] DEADLINE: <2021-04-06 周二 21:00>
 
 ** DONE [#B] 完成python150题 [100%]                                 :learn:
 CLOSED: [2021-04-01 周四 19:43] SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00 -3d>

@@ -1,0 +1,35 @@
+#+STARTUP: INDENT
+
+* 利为引擎
+** 启动流程
+1. 运行core/ClientLoaderWithLog.exe
+   1. 加载core/PlatformConfig.ini
+      - 读取ResPath :: 游戏资源路径(贴图, 骨骼, 音乐等)
+      - 读取ScriptPath :: 游戏脚本路径
+      - 其他窗口设置 :: 分辨率, 大小等
+   2. 检测ScriptPath下是否存在init.py和main.py
+      #+BEGIN_COMMENT
+      如果存在fls文件也可以, fls文件是若干py文件的打包合集, 引擎内可以识别fls文件
+      的内容.
+      #+END_COMMENT
+   3. 执行init.py文件
+      - 重定向输出 :: 输出定向到文件, 字符的本地化等
+      - 添加sys.path路径 :: 用于寻找python的包, 模块
+      - 其他初始化工作
+   4. 执行main.py文件
+      #+BEGIN_SRC python
+      # 文件内必须定义:
+      def Start():
+          pass
+      def Loop(delta_time):
+          pass
+      #+END_SRC
+      1. 调用Loop(delta)
+      2. 调用Start()
+
+** 注意点
+*** CNode对象AddChild和SetParent不会增加对象的引用计数.
+    如果认为创建了临时对象放到节点树中, 节点树会自动管理节点, 那你就想多了. 临时
+    对象出了作用域会直接被释放, 必须使用Entrust持久化.
+*** 局部坐标系以左下角为原点.
+    局部坐标系中目标的位置指的是目标的正中央相对于原点的位置(不是右上或者左下).

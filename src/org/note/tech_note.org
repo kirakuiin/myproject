@@ -7,4 +7,9 @@
    #+BEGIN_SRC bash
      git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
    #+END_SRC
-   
+** windows10 svn不显示状态图标                                        :git:
+1. 打开注册表regedit
+2. 找到注册表HKEY_LOCAL_MACHINE->SOFTWARE->Microsoft->Windows->CurrentVersion->Explorer->ShellIconOverlayIdentifiers
+3. 在所有Tortoisesvn系列的项上重命名, 在其名字前添加若干空格(空格越多优先级越高)直至将相关项移动到此表的前段
+4. 重启explorer进程
+注意: 如果你的Tortoisesvn系列项已经在前段了, 重启explorer进程依旧不显示图标, 那么打开Tortoisesvn的设置->图标覆盖->状态缓存, 将选项改成Windows外壳
