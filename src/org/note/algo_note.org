@@ -1,5 +1,5 @@
 #+STARTUP: OVERVIEW
-#+TAGS: 位操作(b) 递归(r) 回溯(j) 动态规划(d) 贪心(e) 排序(o) 深度优先搜索(l) 广度优先搜索(f) 启发式(i) 指针(p) 二分(k) 分治(c) 概率(n)
+#+TAGS: 位操作(b) 递归(r) 动态规划(d) 贪心(e) 排序(o) 深度优先搜索(l) 广度优先搜索(f) 启发式(i) 指针(p) 二分(k) 分治(c) 概率(n)
 #+TAGS: 并查集(u) 栈(s) 图(g) 数学(m) 序列(a) 堆(h) 队列(q) 树(t) 数据结构(z) 其他(x)
 
 * 伪代码标记说明
@@ -1203,7 +1203,7 @@ $ 1/i * (i/(i+1)) * ... * ((n-1)/n) = 1/n $, 最后可得概率为1/n。
       GENERATE_ENCODE_FROM_TREE(tree.left, encode + '0', encodes)
       GENERATE_ENCODE_FROM_TREE(tree.right, encode + '1', encodes)
 
-  def HUFFMAN_ENCODE(s):
+      def HUFFMAN_ENCODE(s):
     pq = PRIORQUEUE()
     nodes = {} # 所有元素默认初始化为0
     for c in s:
@@ -1237,7 +1237,36 @@ $ 1/i * (i/(i+1)) * ... * ((n-1)/n) = 1/n $, 最后可得概率为1/n。
     return result
 #+END_SRC
 
-** TODO 八皇后问题                                                    :其他:
+** n皇后问题                                                          :其他:
 *** 情景
+    给定一个n*n的棋盘, 求n个棋子放置在棋盘上, 并且相互之间不同行, 同列, 同斜线.
 *** 解法
+**** 回溯法                                                            :递归:
+     本质上是穷举法, 依次试探每一种可能.
+     比如第k{k >= 1 and k <= n}行第一列位置放置了一枚棋子, 然后判断当前棋子是否
+     和之前的k-1行上的棋子出现冲突, 如果没有冲突就去试探k+1的位置, 如果冲突了就判
+     断第二列是否冲突, 如果直到第n列都冲突, 则返回去处理k-1行棋子的情况.
+     当处理到第n行且未产生冲突, 则形成了一个可行的解.
 *** 伪代码
+**** 回溯法                                                            :递归:
+     #+BEGIN_SRC python
+       def N_QUEEN(n):
+         result = []
+         def _N_QUEEN(row, board):
+           if row == n:
+             result.APPEND(board)
+           else:
+             for col in 0..n:
+               for i in 0..row:
+                 if ((board[i] == col)
+                     or (row+col == i+board[i])
+                     or (row-col == i-board[i])):
+                   break
+               else:
+                 board.APPEND(col)
+                 _N_QUEEN(row+1, board)
+                 board.POP()
+         _N_QUEEN(0, [])
+         return result
+     #+END_SRC
+     

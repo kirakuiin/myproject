@@ -5,8 +5,36 @@
 
 * Inbox
 * Next Action
+** TODO [#C] 买键盘 [0/3]                                        :shopping:
+DEADLINE: <2021-04-03 周六 23:59> SCHEDULED: <2021-04-03 周六 21:00>
+- [ ] 游戏键盘
+- [ ] 打字键盘
+- [ ] ps2转usb接口
 * Appointment
-** TODO [#C] 组装自行车                                              :event:
+** DONE [#C] 组装自行车                                             :event:
+CLOSED: [2021-04-03 周六 12:00]
 <2021-04-03 Sat 10:00>
 * Project
+** SCH [#C] 自行车维护                                              :event:
+DEADLINE: <2021-04-05 周一 23:59> SCHEDULED: <2021-04-03 周六 12:00>
+*** TODO 买自行车水杯                                            :shopping:
+DEADLINE: <2021-04-03 周六 23:59>
+*** WAIT 领取保养好的自行车
+:PROPERTIES:
+:DEPENDENCE: 捷安特火炉山店老板通知
+:END:
+*** TODO 额外配一把钥匙
+** SCH [#A] 找离公司近的新房子                                      :event:
+SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
+:PROPERTIES:
+:PRICE: 2000以内
+:DISTANCE: 离公司10公里以内, 离地铁站2公里以内
+:END:
+*** TODO app上看房
+DEADLINE: <2021-04-11 周日 21:00>
+*** WAIT 联系中介或房主看房
+DEADLINE: <2021-04-18 周日 21:00>
+*** WAIT 联系搬家公司搬家
+
 * Someday
+** 买小风扇                                                      :shopping:
