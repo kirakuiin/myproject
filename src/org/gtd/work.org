@@ -4,6 +4,7 @@
 
 
 * Inbox
+
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
 SCHEDULED: <2021-04-06 周二 19:00 ++1d> DEADLINE: <2021-04-06 Tue 21:20 ++1d>
@@ -26,7 +27,17 @@ SCHEDULED: <2021-04-05 周一 09:00 ++1w> DEADLINE: <2021-04-05 周一 12:00 ++1
 :END:
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 归档并回顾一周的计划                                   :learn:
-DEADLINE: <2021-04-04 Sun 23:00 ++1w> SCHEDULED: <2021-04-04 Sun 6:00 ++1w>
+DEADLINE: <2021-04-11 周日 23:00 ++1w> SCHEDULED: <2021-04-11 周日 06:00 ++1w>
+:PROPERTIES:
+:LAST_REPEAT: [2021-04-04 周日 21:18]
+:END:
+- State "DONE"       from "TODO"       [2021-04-04 周日 21:18]
+- Note taken on [2021-04-04 周日 21:14] \\
+  1. 对使用org-mode进行gtd进行了较为充分的学习, 基本掌握了用法.
+  2. 重新读了一遍《python核心编程》, 加深了对py一些基本概念的理解.
+  3. 完成了python的入职考试, python150题.
+  4. 初步学习了一下利为引擎, 当然除了开始的几章还有例子可以参考, 后面写的太简略了.
+  5. 自行车从家里邮过来之后组好, 送到车店保养.
 ** TODO [#C] 完成leetcode一两道题                                    :learn:
 SCHEDULED: <2021-04-06 Tue 19:00 ++1d>
 :PROPERTIES:
@@ -42,31 +53,90 @@ SCHEDULED: <2021-04-06 Tue 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#C] 学习 org-mode                                          :learn:
-SCHEDULED: <2021-04-04 周日 19:00 ++1d>
+SCHEDULED: <2021-04-05 周一 19:00 ++1d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
-:LAST_REPEAT: [2021-04-03 周六 15:56]
+:LAST_REPEAT: [2021-04-04 周日 14:36]
 :END:
+- State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
 - State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
-** DONE [#A] 完成python考试                                          :work:
+** Archive                                                        :ARCHIVE:
+*** DONE [#C] 学习org-edna                                          :learn:
+CLOSED: [2021-04-04 周日 11:46] DEADLINE: <2021-04-04 周日 12:00> SCHEDULED: <2022-04-03 周日 21:00>
+:PROPERTIES:
+:LINK: [[http://www.nongnu.org/org-edna-el][org-edna manual]]
+:ARCHIVE_TIME: 2021-04-04 周日 21:12
+:END:
+- Note taken on [2021-04-04 周日 13:09] \\
+  * 表达式
+    :BLOCKER: target [cond]
+    :TRIGGER: target action
+    
+  * 操作符[op]
+    - :BLOCKER: :: 当前任务被什么东西阻挡
+    - :TRIGGER: :: 当前任务为DONE时触发什么东西
+  
+  * 目标[target]:
+    - next-sibling[-wrap] :: 下个标题, wrap代表如果没有下个标题就返回同级标题开始继续查找
+    - previous-sibling[-wrap] :: 上个标题
+    - parent :: 父标题
+    - children :: 所有孩子的列表
+    - file(PATH) :: 指定的文件
+    - ids(id1 id2...) :: 指定的id(id可以通过属性设置)
+  
+  * 动作[action]:
+    - scheduled!(TIMESTAMP) :: 触发时为 *target* 设定Scheduled TimeStamp, 时间标记和org-mode本身语法一致
+    - deadline!(TIMESTAMP) :: 触发时为 *target* 设定Deadline TimeStamp, 时间标记和org-mode本身语法一致
+    - todo!(STATE) :: 触发时为 *target* 设定TODO状态
+    - chain!(PROPERTY) :: 触发时为 *target* 增加指定的源于自身的属性
+  
+  * 条件[cond]:
+    - [!]headings? :: 是否存在标题, !代表非
+    - [!]done? :: 是否存在完成状态的标题
+    - [!]todo-state?(STATE) :: 是否存在指定状态的TODO状态
+    - [!]re-search?(REGEXP) :: 是否存在正则表达式匹配的值
+    - [!]has-property(P, V) :: 是否存在指定值的属性
+  
+  * 其他
+    - consider(EXP) :: 只能用于blocker, 代表在什么情况下block, EXP有如下取值:
+      - all :: 所有的孩子均为block则block
+      - any :: 所有的孩子任一为block即block
+      - FRACTION :: 百分之多少的孩子为block即block
+      - NUMBER :: n个孩子为block即block
+    - 条件表达式 :: if cond then THEN else ELSE endif
+    - 多条件表达式 :: 条件空格分隔, 以or逻辑连接条件
+*** DONE [#A] 完成python考试                                         :work:
 CLOSED: [2021-04-01 周四 10:20] SCHEDULED: <2021-04-01 周四 09:30>
 :PROPERTIES:
 :DEPENDENCE:  [[完成python150题]] and [[学习《python核心编程》]]
+:ARCHIVE_TIME: 2021-04-04 周日 21:12
 :END:
-** DONE [#A] 提交python作业                                          :work:
+*** DONE [#A] 提交python作业                                         :work:
 CLOSED: [2021-03-31 周三 20:27] DEADLINE: <2021-03-31 周三 21:00>
-** DONE [#A] 和导师会面                                              :work:
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-04 周日 21:12
+:END:
+*** DONE [#A] 和导师会面                                             :work:
 CLOSED: [2021-03-29 周一 12:26] DEADLINE: <2021-03-29 周一 21:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-04 周日 21:12
+:END:
 - Note taken on [2021-03-29 周一 12:25] \\
   导师没有特殊要求，按照新入入门导引学习即可。
-** DONE [#C] 编写cvimrc中有关vftplug插件的帮助文档                  :learn:
+*** DONE [#C] 编写cvimrc中有关vftplug插件的帮助文档                 :learn:
 CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-04 周日 21:12
+:END:
+
+
 * Appointment
 ** 组装一台性价比高的台式机用于开发和娱乐                            :learn:
 <2021-05-11 周二>--<2021-06-18 周五>
+#+NAME: PC_PRICES
 | N | component   | brand | model | price |
 |---+-------------+-------+-------+-------|
-| / |   <3>       |       |       |       |
+| / | <3>         | <2>   | <2>   | <2>   |
 |   | motherboard |       |       |       |
 |   | fan         |       |       |       |
 |   | cpu         |       |       |       |
@@ -78,86 +148,99 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 |   | monitor     |       |       |       |
 |   | keyboard    |       |       |       |
 |   | earphone    |       |       |       |
+#+TBLFM: $3 = $4
+
 
 * Project
-** SCH [#A] 学习 利为游戏引擎                                        :learn:
-DEADLINE: <2021-04-10 周六 21:00> SCHEDULED: <2021-04-02 周五 09:00>
+** Archive                                                        :ARCHIVE:
+*** DONE [#A] 学习 利为游戏引擎                                     :learn:
+CLOSED: [2021-04-04 周日 21:05] DEADLINE: <2021-04-10 周六 21:00> SCHEDULED: <2021-04-02 周五 09:00>
 :PROPERTIES:
 :FILE: [[../ref/liwei_engine.org][利为引擎]]
 :BLOCKER:  consider(any) children
+:ARCHIVE_TIME: 2021-04-04 周日 21:11
 :END:
-*** DONE 利为引擎环境搭建
+**** DONE 利为引擎环境搭建
 CLOSED: [2021-04-02 周五 15:12] DEADLINE: <2021-04-02 周五 21:00>
 :PROPERTIES:
 :TRIGGER: next-sibling scheduled!("++0h") todo!(TODO)
 :TRIGGER+: chain!("TRIGGER") chain!("BLOCKER")
 :BLOCKER: previous-sibling
 :END:
-*** DONE 复刻简单游戏场景
+**** DONE 复刻简单游戏场景
 CLOSED: [2021-04-02 周五 22:02] DEADLINE: <2021-04-06 周二 21:00>
 :PROPERTIES:
 :TRIGGER: next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER") chain!("BLOCKER")
 :BLOCKER: previous-sibling
 :END:
-*** DONE 渲染节点类
+**** DONE 渲染节点类
 CLOSED: [2021-04-03 周六 21:37] DEADLINE: <2021-04-06 周二 21:00>
 :PROPERTIES:
 :TRIGGER: next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER") chain!("BLOCKER")
 :BLOCKER: previous-sibling
 :END:
-*** DONE 对象生命周期管理
+**** DONE 对象生命周期管理
 CLOSED: [2021-04-03 周六 21:37] DEADLINE: <2021-04-06 周二 21:00>
 :PROPERTIES:
 :TRIGGER: next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER") chain!("BLOCKER")
 :BLOCKER: previous-sibling
 :END:
-*** TODO 坐标系
-DEADLINE: <2021-04-07 周三 21:00>
+**** DONE 坐标系
+CLOSED: [2021-04-04 周日 17:57] DEADLINE: <2021-04-07 周三 21:00>
 :PROPERTIES:
 :TRIGGER: next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :BLOCKER: previous-sibling
 :END:
-*** WAIT 触摸事件
-DEADLINE: <2021-04-07 周三 21:00>
+**** DONE 触摸事件
+CLOSED: [2021-04-04 周日 20:22] SCHEDULED: <2021-04-04 周日 17:57> DEADLINE: <2021-04-07 周三 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
+:TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
-*** WAIT 定时器
-DEADLINE: <2021-04-08 周四 21:00>
+**** DONE 定时器
+CLOSED: [2021-04-04 周日 21:05] SCHEDULED: <2021-04-04 周日 20:22> DEADLINE: <2021-04-08 周四 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
+:TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
-*** WAIT Action动画
-DEADLINE: <2021-04-08 周四 21:00>
+**** DONE Action动画
+CLOSED: [2021-04-04 周日 21:05] SCHEDULED: <2021-04-04 周日 21:05> DEADLINE: <2021-04-08 周四 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
+:TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
-*** WAIT 动画类型简介
-DEADLINE: <2021-04-09 周五 21:00>
+**** DONE 动画类型简介
+CLOSED: [2021-04-04 周日 21:05] SCHEDULED: <2021-04-04 周日 21:05> DEADLINE: <2021-04-09 周五 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
+:TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
-*** WAIT Sprite3D简介
-DEADLINE: <2021-04-09 周五 21:00>
+**** DONE Sprite3D简介
+CLOSED: [2021-04-04 周日 21:05] SCHEDULED: <2021-04-04 周日 21:05> DEADLINE: <2021-04-09 周五 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
 :TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
-** DONE [#B] 完成python150题 [100%]                                 :learn:
+*** DONE [#B] 完成python150题 [100%]                                :learn:
 CLOSED: [2021-04-01 周四 19:43] SCHEDULED: <2021-03-29 周一 11:00> DEADLINE: <2021-04-30 周五 21:00>
-*** DONE 完成1-30题
+:PROPERTIES:
+:BLOCKER:  file("../ref/python150题.org") re-search?("\*+\s+TODO")
+:ARCHIVE_TIME: 2021-04-04 周日 21:11
+:END:
+**** DONE 完成1-30题
 CLOSED: [2021-03-29 周一 21:08] DEADLINE: <2021-03-29 周一 21:00>
 :PROPERTIES:
 :FILE: [[file:../ref/python150题.org::第一题][python150题:1-30]]
 :END:
 - Note taken on [2021-03-31 周三 16:32] \\
   12题的描述非常不清晰.
-*** DONE 完成31-60题
+**** DONE 完成31-60题
 CLOSED: [2021-03-30 周二 14:40] DEADLINE: <2021-03-30 周二 21:00>
 :PROPERTIES:
 :FILE: [[file:../ref/python150题.org::第三十一题][python150题:31-60]]
 :END:
-*** DONE 完成61-90题
+**** DONE 完成61-90题
 CLOSED: [2021-03-31 周三 16:32]
 :PROPERTIES:
 :FILE: [[file:../ref/python150题.org::第六十一题][python150题:61-90]]
@@ -165,23 +248,26 @@ CLOSED: [2021-03-31 周三 16:32]
 - Note taken on [2021-03-31 周三 12:51] \\
   61-69题为服务端相关题目, 均跳过.
 DEADLINE: <2021-03-31 周三 21:00>
-*** DONE 完成91-120题
+**** DONE 完成91-120题
 CLOSED: [2021-03-31 周三 16:32] DEADLINE: <2021-04-01 周四 21:00>
 :PROPERTIES:
 :FILE: [[file:../ref/python150题.org::第九十一题][python150题:91-120]]
 :END:
-*** DONE 完成121-150题
+**** DONE 完成121-150题
 CLOSED: [2021-04-01 周四 19:42]
 :PROPERTIES:
 :FILE: [[file:../ref/python150题.org::第一百二十一题][python150题:121-150]]
 :END:
-** DONE [#B] 学习《python核心编程》[100%]                           :learn:
+*** DONE [#B] 学习《python核心编程》[100%]                          :learn:
 CLOSED: [2021-03-31 周三 21:05] DEADLINE: <2021-04-03 周六 21:00> SCHEDULED: <2021-03-29 周一 12:00>
-*** DONE 学习1-7章
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-04 周日 21:12
+:END:
+**** DONE 学习1-7章
 CLOSED: [2021-03-29 周一 17:41] DEADLINE: <2021-03-31 周三 21:00>
-*** DONE 学习8-11章
+**** DONE 学习8-11章
 CLOSED: [2021-03-30 周二 21:09] DEADLINE: <2021-03-30 周二 21:00>
-*** DONE 学习12-14章
+**** DONE 学习12-14章
 CLOSED: [2021-03-31 周三 21:05] DEADLINE: <2021-03-31 周三 21:20>
 :LOGBOOK:
 CLOCK: [2021-03-31 周三 14:21]--[2021-03-31 周三 14:46] =>  0:25
@@ -190,7 +276,7 @@ CLOCK: [2021-03-31 周三 12:58]--[2021-03-31 周三 13:24] =>  0:26
 CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
 :END:
 
+
 * Someday
 ** 学习《Unity3D 游戏开发》                                         :learn:
 ** 学习《Lua程序设计》                                               :learn:
-** 学习org-edna                                                      :learn:

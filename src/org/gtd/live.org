@@ -23,8 +23,12 @@ SCHEDULED: <2021-04-25 Sun>
 - [ ] 手柄
 - [ ] Switch配件
 * Appointment
-** DONE [#C] 组装自行车                                             :event:
+** Archive                                                        :ARCHIVE:
+*** DONE [#C] 组装自行车                                            :event:
 CLOSED: [2021-04-03 周六 12:00]
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-04 周日 21:20
+:END:
 <2021-04-03 Sat 10:00>
 * Project
 ** SCH [#C] 自行车维护                                              :event:
@@ -43,14 +47,25 @@ SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
 :PROPERTIES:
 :PRICE: 2000以内
 :DISTANCE: 离公司10公里以内, 离地铁站2公里以内
-:ORDERED: t
+:BLOCKER: children
+:BLOCKER: 
 :END:
 *** TODO app上看房
 DEADLINE: <2021-04-11 周日 21:00>
+:PROPERTIES:
+:TRIGGER: next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
+:END:
 *** WAIT 联系中介或房主看房
 DEADLINE: <2021-04-18 周日 21:00>
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:END:
 *** WAIT 联系搬家公司搬家
 DEADLINE: <2021-04-25 Sun 21:00>
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:TRIGGER+: parent todo!(DONE)
+:END:
 
 * Someday
 ** 买小风扇                                                      :shopping:
