@@ -27,6 +27,8 @@ SCHEDULED: <2021-04-05 周一 09:00 ++1w> DEADLINE: <2021-04-05 周一 12:00 ++1
 :PROPERTIES:
 :LAST_REPEAT: [2021-04-01 周四 10:22]
 :END:
+- Note taken on [2021-04-05 周一 14:10] \\
+  今天放假, 推迟到明天.
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 归档并回顾一周的计划                                   :learn:
 DEADLINE: <2021-04-11 周日 23:00 ++1w> SCHEDULED: <2021-04-11 周日 06:00 ++1w>
