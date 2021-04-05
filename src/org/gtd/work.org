@@ -5,6 +5,7 @@
 
 * Inbox
 
+
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
 SCHEDULED: <2021-04-06 周二 19:00 ++1d> DEADLINE: <2021-04-06 Tue 21:20 ++1d>
@@ -41,11 +42,12 @@ DEADLINE: <2021-04-11 周日 23:00 ++1w> SCHEDULED: <2021-04-11 周日 06:00 ++1
   4. 初步学习了一下利为引擎, 当然除了开始的几章还有例子可以参考, 后面写的太简略了.
   5. 自行车从家里邮过来之后组好, 送到车店保养.
 ** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-04-06 Tue 19:00 ++1d>
+SCHEDULED: <2021-04-07 Wed 19:00 ++1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
-:LAST_REPEAT: [2021-04-04 Sun 10:09]
+:LAST_REPEAT: [2021-04-05 Mon 22:21]
 :END:
+- State "DONE"       from "TODO"       [2021-04-05 Mon 22:21]
 - State "DONE"       from "TODO"       [2021-04-04 Sun 10:09]
 - State "DONE"       from "TODO"       [2021-04-04 Sun 10:09]
 - State "DONE"       from "TODO"       [2021-04-03 周六 19:44]
@@ -54,12 +56,13 @@ SCHEDULED: <2021-04-06 Tue 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#C] 学习 org-mode                                          :learn:
-SCHEDULED: <2021-04-05 周一 19:00 ++1d>
+** TODO [#C] 学习 org-mode                                           :learn:
+SCHEDULED: <2021-04-06 Tue 19:00 ++1d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
-:LAST_REPEAT: [2021-04-04 周日 14:36]
+:LAST_REPEAT: [2021-04-05 Mon 22:55]
 :END:
+- State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
 - State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
 - State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
 ** Archive                                                        :ARCHIVE:

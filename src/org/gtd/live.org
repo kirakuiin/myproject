@@ -33,17 +33,19 @@ CLOSED: [2021-04-03 周六 12:00]
 :END:
 <2021-04-03 Sat 10:00>
 * Project
-** SCH [#C] 自行车维护                                              :event:
-DEADLINE: <2021-04-05 周一 23:59> SCHEDULED: <2021-04-03 周六 12:00>
+** DONE [#C] 自行车维护                                              :event:
+CLOSED: [2021-04-05 Mon 22:06] DEADLINE: <2021-04-05 周一 23:59> SCHEDULED: <2021-04-03 周六 12:00>
 *** DONE 买自行车水杯                                            :shopping:
 CLOSED: [2021-04-04 Sun 00:07] DEADLINE: <2021-04-03 周六 23:59>
-*** WAIT 领取保养好的自行车
-DEADLINE: <2021-04-05 Mon 22:00>
+*** DONE 领取保养好的自行车
+CLOSED: [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
 :PROPERTIES:
 :DEPENDENCE: 捷安特火炉山店老板通知
 :END:
-*** TODO 额外配一把钥匙
-DEADLINE: <2021-04-05 Mon 22:00>
+*** CANCELED 额外配一把钥匙
+CLOSED: [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
+- Note taken on [2021-04-05 Mon 22:05] \\
+  无法配钥匙
 ** SCH [#A] 找离公司近的新房子                                      :event:
 SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
 :PROPERTIES:
