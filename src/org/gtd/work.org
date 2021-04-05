@@ -12,6 +12,8 @@ SCHEDULED: <2021-04-06 周二 19:00 ++1d> DEADLINE: <2021-04-06 Tue 21:20 ++1d>
 :LAST_REPEAT: [2021-04-03 Sat 00:52]
 :END:
 
+- Note taken on [2021-04-05 Mon 00:08] \\
+  [2022-04-03 Sun]--[2021-04-05 Mon]清明假期
 - State "CANCELED"   from "TODO"       [2021-04-05 Sat 9:00]
 - State "CANCELED"   from "TODO"       [2021-04-04 Sat 9:00]
 - State "CANCELED"   from "TODO"       [2021-04-03 Sat 9:00]

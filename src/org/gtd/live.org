@@ -13,6 +13,8 @@ DEADLINE: <2021-04-06 Tue 23:59> SCHEDULED: <2021-04-03 周六 21:00>
 - [X] 游戏键盘
 - [ ] 打字键盘
 - [ ] ps2转usb接口
+** TODO [#C] 给缺少硅胶保护的眼睛腿加套                           :shopping:
+DEADLINE: <2021-04-05 Mon 21:00> SCHEDULED: <2021-04-05 Mon 09:00>
 ** WAIT 从家里把需要的物品邮寄过来
 SCHEDULED: <2021-04-25 Sun>
 :PROPERTIES:
@@ -50,15 +52,16 @@ SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
 :BLOCKER: children
 :BLOCKER: 
 :END:
-*** TODO app上看房
-DEADLINE: <2021-04-11 周日 21:00>
+*** DONE app上看房
+CLOSED: [2021-04-05 Mon 09:05] DEADLINE: <2021-04-11 周日 21:00>
 :PROPERTIES:
 :TRIGGER: next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
-*** WAIT 联系中介或房主看房
-DEADLINE: <2021-04-18 周日 21:00>
+*** TODO 联系中介或房主看房
+SCHEDULED: <2021-04-05 Mon 09:05> DEADLINE: <2021-04-18 周日 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
+:TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
 *** WAIT 联系搬家公司搬家
 DEADLINE: <2021-04-25 Sun 21:00>
