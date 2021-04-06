@@ -57,9 +57,8 @@ CLOSED: [2021-04-03 周六 12:00]
 CLOSED: [2021-04-05 Mon 22:06] DEADLINE: <2021-04-05 周一 23:59> SCHEDULED: <2021-04-03 周六 12:00>
 *** DONE 买自行车水杯                                            :shopping:
 CLOSED: [2021-04-04 Sun 00:07] DEADLINE: <2021-04-03 周六 23:59>
-<<<<<<< HEAD
 *** DONE 领取保养好的自行车
-CLOSED: [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
+: [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
 :PROPERTIES:
 :DEPENDENCE: 捷安特火炉山店老板通知
 :END:
