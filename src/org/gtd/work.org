@@ -4,8 +4,6 @@
 
 
 * Inbox
-
-
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
 SCHEDULED: <2021-04-06 周二 19:00 ++1d> DEADLINE: <2021-04-06 Tue 21:20 ++1d>
@@ -24,10 +22,11 @@ SCHEDULED: <2021-04-06 周二 19:00 ++1d> DEADLINE: <2021-04-06 Tue 21:20 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-04-05 周一 09:00 ++1w> DEADLINE: <2021-04-05 周一 12:00 ++1w>
+SCHEDULED: <2021-04-12 周一 09:00 ++1w> DEADLINE: <2021-04-12 周一 12:00 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2021-04-01 周四 10:22]
+:LAST_REPEAT: [2021-04-06 周二 09:23]
 :END:
+- State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - Note taken on [2021-04-05 周一 14:10] \\
   今天放假, 推迟到明天.
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
@@ -159,6 +158,34 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 
 
 * Project
+** SCH 完成利为引擎各个模块的demo                                   :learn:
+DEADLINE: <2021-04-07 周三 21:00> SCHEDULED: <2021-04-06 周二 09:00>
+:PROPERTIES:
+:BLOCKER: children
+:END:
+*** TODO 坐标系变换
+SCHEDULED: <2021-04-06 周二 10:00>
+:PROPERTIES:
+:TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+*** WAIT 触摸事件
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:END:
+*** WAIT 定时器
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:END:
+*** WAIT Action
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:END:
+*** WAIT 动画
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:TRIGGER+: parent todo!(DONE)
+:END:
+
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 学习 利为游戏引擎                                     :learn:
 CLOSED: [2021-04-04 周日 21:05] DEADLINE: <2021-04-10 周六 21:00> SCHEDULED: <2021-04-02 周五 09:00>
@@ -287,3 +314,5 @@ CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
 * Someday
 ** 学习《Unity3D 游戏开发》                                         :learn:
 ** 学习《Lua程序设计》                                               :learn:
+** 学习 elisp                                                       :learn:
+
