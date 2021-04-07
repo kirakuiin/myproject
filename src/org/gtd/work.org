@@ -5,12 +5,13 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-07 周三 19:00 ++1d> DEADLINE: <2021-04-07 周三 21:20 ++1d>
+** TODO [#A] 完成每日日报                                             :work:
+SCHEDULED: <2021-04-08 周四 19:00 ++1d> DEADLINE: <2021-04-08 周四 21:20 ++1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-04-06 周二 20:47]
+:LAST_REPEAT: [2021-04-07 周三 21:45]
 :END:
 
+- State "DONE"       from "TODO"       [2021-04-07 周三 21:45]
 - State "DONE"       from "TODO"       [2021-04-06 周二 20:47]
 - Note taken on [2021-04-05 Mon 00:08] \\
   [2022-04-03 Sun]--[2021-04-05 Mon]清明假期
@@ -60,11 +61,12 @@ SCHEDULED: <2021-04-08 周四 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#C] 学习 org-mode                                          :learn:
-SCHEDULED: <2021-04-07 周三 19:00 ++1d>
+SCHEDULED: <2021-04-08 周四 19:00 ++1d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
-:LAST_REPEAT: [2021-04-06 周二 21:04]
+:LAST_REPEAT: [2021-04-07 周三 12:18]
 :END:
+- State "DONE"       from "TODO"       [2021-04-07 周三 12:18]
 - State "DONE"       from "TODO"       [2021-04-06 周二 21:04]
 - State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
 - State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
@@ -322,4 +324,3 @@ CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
 ** 学习《Unity3D 游戏开发》                                         :learn:
 ** 学习《Lua程序设计》                                               :learn:
 ** 学习 elisp                                                       :learn:
-
