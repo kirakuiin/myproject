@@ -1,16 +1,20 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW
 #+TAGS: { date(d) event(e) shopping(s) }
-#+TODO: TODO(t) SCH(s) WAIT(w) | DONE(d) CANCELED(c)
+#+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c!)
 
 
 * Inbox
 * Next Action
-** WAIT [#B] 购买家具用品 [0%]                                   :shopping:
+** WAIT [#B] 购买家具用品 [0%]                                    :shopping:
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
+:COOKIE_DATA: checkbox recursive
+:ORDERED: nil
 :END:
  - [ ] :: 床褥
- - [ ] :: 牙膏牙刷
+ - [ ] :: 牙具 [0/2]
+   - [ ] 牙膏
+   - [ ] 牙刷
  - [ ] :: 剪刀
  - [ ] :: 水果刀
  - [ ] :: 电热水壶
@@ -53,7 +57,7 @@ CLOSED: [2021-04-03 周六 12:00]
 :END:
 <2021-04-03 Sat 10:00>
 * Project
-** DONE [#C] 自行车维护                                              :event:
+** DONE [#C] 自行车维护 [100%]                                       :event: 
 CLOSED: [2021-04-05 Mon 22:06] DEADLINE: <2021-04-05 周一 23:59> SCHEDULED: <2021-04-03 周六 12:00>
 *** DONE 买自行车水杯                                            :shopping:
 CLOSED: [2021-04-04 Sun 00:07] DEADLINE: <2021-04-03 周六 23:59>
@@ -102,5 +106,7 @@ SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-25 Sun 21:00>
 :TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
 
+- Note taken on [2021-04-07 Wed 23:51] \\
+  周6上午搬
 * Someday
 ** 买小风扇                                                      :shopping:
