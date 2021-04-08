@@ -5,17 +5,16 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                             :work:
-SCHEDULED: <2021-04-08 周四 19:00 ++1d> DEADLINE: <2021-04-08 周四 21:20 ++1d>
+** TODO [#A] 完成每日日报                                            :work:
+SCHEDULED: <2021-04-09 周五 19:00 ++1d> DEADLINE: <2021-04-09 周五 21:20 ++1d>
 :PROPERTIES:
-:STYLE: habit
-:LAST_REPEAT: [2021-04-07 周三 21:45]
+:STYLE:    habit
+:LAST_REPEAT: [2021-04-08 周四 21:33]
 :END:
 
+- State "DONE"       from "TODO"       [2021-04-08 周四 21:33]
 - State "DONE"       from "TODO"       [2021-04-07 周三 21:45]
 - State "DONE"       from "TODO"       [2021-04-06 周二 20:47]
-- Note taken on [2021-04-05 Mon 00:08] \\
-  [2022-04-03 Sun]--[2021-04-05 Mon]清明假期
 - State "CANCELED"   from "TODO"       [2021-04-05 Sat 9:00]
 - State "CANCELED"   from "TODO"       [2021-04-04 Sat 9:00]
 - State "CANCELED"   from "TODO"       [2021-04-03 Sat 9:00]
@@ -27,17 +26,15 @@ SCHEDULED: <2021-04-08 周四 19:00 ++1d> DEADLINE: <2021-04-08 周四 21:20 ++1
 ** TODO [#A] 完成每周周报                                            :work:
 SCHEDULED: <2021-04-12 周一 09:00 ++1w> DEADLINE: <2021-04-12 周一 12:00 ++1w>
 :PROPERTIES:
-:STYLE: habit
+:STYLE:    habit
 :LAST_REPEAT: [2021-04-06 周二 09:23]
 :END:
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
-- Note taken on [2021-04-05 周一 14:10] \\
-  今天放假, 推迟到明天.
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 归档并回顾一周的计划                                   :learn:
 DEADLINE: <2021-04-11 周日 23:00 ++1w> SCHEDULED: <2021-04-11 周日 06:00 ++1w>
 :PROPERTIES:
-:STYLE: habit
+:STYLE:    habit
 :LAST_REPEAT: [2021-04-04 周日 21:18]
 :END:
 - State "DONE"       from "TODO"       [2021-04-04 周日 21:18]
@@ -47,13 +44,14 @@ DEADLINE: <2021-04-11 周日 23:00 ++1w> SCHEDULED: <2021-04-11 周日 06:00 ++1
   3. 完成了python的入职考试, python150题.
   4. 初步学习了一下利为引擎, 当然除了开始的几章还有例子可以参考, 后面写的太简略了.
   5. 自行车从家里邮过来之后组好, 送到车店保养.
-** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-04-09 Fri 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                   :learn:
+SCHEDULED: <2021-04-10 周六 19:00 ++1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
-:STYLE: habit
-:LAST_REPEAT: [2021-04-07 Wed 23:33]
+:STYLE:    habit
+:LAST_REPEAT: [2021-04-08 周四 22:06]
 :END:
+- State "DONE"       from "TODO"       [2021-04-08 周四 22:06]
 - State "DONE"       from "TODO"       [2021-04-07 Wed 23:33]
 - State "DONE"       from "TODO"       [2021-04-06 周二 21:54]
 - State "DONE"       from "TODO"       [2021-04-05 Mon 22:21]
@@ -69,7 +67,7 @@ SCHEDULED: <2021-04-09 Fri 19:00 ++1d>
 SCHEDULED: <2021-04-09 Fri 19:00 ++1d/2d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
-:STYLE: habit
+:STYLE:    habit
 :LAST_REPEAT: [2021-04-08 Thu 00:21]
 :END:
 - State "DONE"       from "TODO"       [2021-04-08 Thu 00:21]
@@ -170,11 +168,12 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 
 
 * Project
-** SCH 完成利为引擎各个模块的demo                                   :learn:
-DEADLINE: <2021-04-08 Thu 21:00> SCHEDULED: <2021-04-06 周二 09:00>
+** DONE 完成利为引擎各个模块的demo                                  :learn:
+CLOSED: [2021-04-08 周四 22:00] DEADLINE: <2021-04-08 Thu 21:00> SCHEDULED: <2021-04-06 周二 09:00>
 :PROPERTIES:
 :BLOCKER: children
 :END:
+- State "DONE"       from "SCH"        [2021-04-08 周四 22:00]
 *** DONE 坐标系变换
 CLOSED: [2021-04-06 周二 20:20] SCHEDULED: <2021-04-06 周二 10:00>
 :PROPERTIES:
@@ -192,20 +191,26 @@ CLOSED: [2021-04-07 Wed 23:30] SCHEDULED: <2021-04-06 周二 20:21>
 :BLOCKER: previous-sibling
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** TODO Action
-SCHEDULED: <2021-04-07 Wed 23:30>
+*** DONE Action
+CLOSED: [2021-04-08 周四 21:34] SCHEDULED: <2021-04-07 Wed 23:30>
 :PROPERTIES:
 :BLOCKER: previous-sibling
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** WAIT 动画
+- State "DONE"       from "TODO"       [2021-04-08 周四 21:34]
+*** DONE 动画类型
+CLOSED: [2021-04-08 周四 21:34] SCHEDULED: <2021-04-08 周四 21:34>
 :PROPERTIES:
 :BLOCKER: previous-sibling
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** WAIT 3d
+- State "DONE"       from "TODO"       [2021-04-08 周四 21:34]
+*** DONE Sprite3d
+CLOSED: [2021-04-08 周四 22:00] SCHEDULED: <2021-04-08 周四 21:34>
 :PROPERTIES:
 :BLOCKER: previous-sibling
 :TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 
 ** Archive                                                        :ARCHIVE:

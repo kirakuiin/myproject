@@ -5,7 +5,7 @@
 
 * Inbox
 * Next Action
-** WAIT [#B] 购买家具用品 [0%]                                    :shopping:
+** WAIT [#B] 购买家具用品 [0%]                                   :shopping:
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :COOKIE_DATA: checkbox recursive
@@ -24,20 +24,21 @@
  - [ ] :: 桌子
  - [ ] :: 人体工学椅子
  - [ ] :: 路由器
+ - [ ] :: 自行车水杯
 ** WAIT [#C] 办理电信宽带业务                                       :event:
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :END:
 DEADLINE: <2021-04-30 周五>
-** WAIT [#C] 买键盘 [1/3]                                         :shopping:
-DEADLINE: <2021-04-06 Tue 23:59> SCHEDULED: <2021-04-03 周六 21:00>
+** WAIT [#C] 买键盘 [1/3]                                        :shopping:
+DEADLINE: <2021-04-11 周日 23:59> SCHEDULED: <2021-04-03 周六 21:00>
 :PROPERTIES:
 :DEPENDENCE: 向大棠请教ps2转接口和打字键盘相关事宜
 :END:
 - [X] 红轴游戏键盘
 - [ ] 茶轴打字键盘
 - [ ] ps2转usb接口
-** WAIT [#C] 从家里把需要的物品邮寄过来                             :event:
+** WAIT [#C] 从家里把需要的物品邮寄过来 [0/4]                       :event:
 DEADLINE: <2021-04-30 周五>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
@@ -46,6 +47,14 @@ DEADLINE: <2021-04-30 周五>
 - [ ] 鼠标
 - [ ] 手柄
 - [ ] Switch配件
+** WAIT [#C] 退柯木塱的房子 [0/2]                                   :event: 
+DEADLINE: <2021-04-18 周日 21:00>
+:PROPERTIES:
+:BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
+:ORDERED: t
+:END:
+1. [ ] 打扫卫生
+2. [ ] 退还房卡, 取得押金(2*900[押金]+100[房卡]=1900)
 ** DONE [#C] 给缺少硅胶保护的眼睛腿加套                          :shopping:
 CLOSED: [2021-04-05 周一 13:01] DEADLINE: <2021-04-05 Mon 21:00> SCHEDULED: <2021-04-05 Mon 09:00>
 * Appointment
@@ -61,6 +70,8 @@ CLOSED: [2021-04-03 周六 12:00]
 CLOSED: [2021-04-05 Mon 22:06] DEADLINE: <2021-04-05 周一 23:59> SCHEDULED: <2021-04-03 周六 12:00>
 *** DONE 买自行车水杯                                            :shopping:
 CLOSED: [2021-04-04 Sun 00:07] DEADLINE: <2021-04-03 周六 23:59>
+- Note taken on [2021-04-08 周四 09:05] \\
+  下班的时候骑共享单车回家, 放到共享单车上忘了拿走了, 已丢失.
 *** DONE 领取保养好的自行车
 : [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
 :PROPERTIES:
@@ -69,7 +80,7 @@ CLOSED: [2021-04-04 Sun 00:07] DEADLINE: <2021-04-03 周六 23:59>
 *** CANCELED 额外配一把钥匙
 CLOSED: [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
 - Note taken on [2021-04-05 Mon 22:05] \\
-  无法配钥匙
+  无法配钥匙, 另外另一把在钱包里找到了, 也不需要配了.
 ** SCH [#A] 找离公司近的新房子                                      :event:
 SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
 :PROPERTIES:
@@ -105,7 +116,6 @@ SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-25 Sun 21:00>
 :TRIGGER+: parent todo!(DONE)
 :TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
-
 - Note taken on [2021-04-07 Wed 23:51] \\
   周6上午搬
 * Someday
