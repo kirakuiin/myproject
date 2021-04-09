@@ -1,10 +1,12 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW
-#+TAGS: { date(d) event(e) shopping(s) }
+#+TAGS: { Live: date(d) event(e) shopping(s) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c!)
 
 
 * Inbox
 * Next Action
+** TODO 理发                                                        :event:
+SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-11 周日 23:59>
 ** WAIT [#B] 购买家具用品 [0%]                                    :shopping:
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
@@ -50,7 +52,7 @@ DEADLINE: <2021-04-30 周五>
 - [ ] 手柄
 - [ ] Switch配件
 ** WAIT [#C] 退柯木塱的房子 [0/2]                                   :event: 
-DEADLINE: <2021-04-18 周日 21:00>
+DEADLINE: <2021-04-10 周六 09:00>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :ORDERED: t
@@ -67,6 +69,8 @@ CLOSED: [2021-04-03 周六 12:00]
 :ARCHIVE_TIME: 2021-04-04 周日 21:20
 :END:
 <2021-04-03 Sat 10:00>
+** TODO 爬火炉山                                                    :event:
+<2021-04-11 周日 09:00-12:00>
 * Project
 ** DONE [#C] 自行车维护 [100%]                                       :event: 
 CLOSED: [2021-04-05 Mon 22:06] DEADLINE: <2021-04-05 周一 23:59> SCHEDULED: <2021-04-03 周六 12:00>

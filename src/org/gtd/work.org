@@ -1,17 +1,18 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW
-#+TAGS: { learn(l) work(w) }
+#+TAGS: { Work: learn(l) work(w) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c!)
 
 
 * Inbox
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-09 周五 19:00 ++1d> DEADLINE: <2021-04-09 周五 21:20 ++1d>
+SCHEDULED: <2021-04-10 周六 19:00 ++1d> DEADLINE: <2021-04-10 周六 21:20 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-08 周四 21:33]
+:LAST_REPEAT: [2021-04-09 周五 21:46]
 :END:
 
+- State "DONE"       from "TODO"       [2021-04-09 周五 21:46]
 - State "DONE"       from "TODO"       [2021-04-08 周四 21:33]
 - State "DONE"       from "TODO"       [2021-04-07 周三 21:45]
 - State "DONE"       from "TODO"       [2021-04-06 周二 20:47]
@@ -64,18 +65,25 @@ SCHEDULED: <2021-04-10 周六 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#C] 学习 org-mode                                           :learn:
-SCHEDULED: <2021-04-09 Fri 19:00 ++1d/2d>
+SCHEDULED: <2021-04-10 周六 19:00 ++1d/2d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-08 Thu 00:21]
+:LAST_REPEAT: [2021-04-09 周五 17:37]
 :END:
+- State "DONE"       from "TODO"       [2021-04-09 周五 17:37]
 - State "DONE"       from "TODO"       [2021-04-08 Thu 00:21]
 - State "DONE"       from "TODO"       [2021-04-07 周三 12:18]
 - State "DONE"       from "TODO"       [2021-04-06 周二 21:04]
 - State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
 - State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
 - State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
+** DONE [#A] 学习神武项目简介                                       :learn:
+CLOSED: [2021-04-09 周五 10:50] DEADLINE: <2021-04-09 周五 21:00> SCHEDULED: <2021-04-09 周五 09:00>
+:PROPERTIES:
+:TRIGGER: olp("work.org" "Project/学习UI基础/UI编辑器入门") todo!(TODO) scheduled!("++0h")
+:END:
+
 ** Archive                                                        :ARCHIVE:
 *** DONE [#C] 学习org-edna                                          :learn:
 CLOSED: [2021-04-04 周日 11:46] DEADLINE: <2021-04-04 周日 12:00> SCHEDULED: <2022-04-03 周日 21:00>
@@ -147,7 +155,7 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 
 
 * Appointment
-** 组装一台性价比高的台式机用于开发和娱乐                            :learn:
+** 组装一台性价比高的台式机用于开发和娱乐                             :learn:
 <2021-05-11 周二>--<2021-06-18 周五>
 #+NAME: PC_PRICES
 | N | component   | brand | model | price |
@@ -168,6 +176,73 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 
 
 * Project
+** SCH [#A] 学习UI基础                                              :learn:
+DEADLINE: <2021-04-14 周三 21:00> SCHEDULED: <2021-04-09 周五 10:00>
+:PROPERTIES:
+:BLOCKER:  olp("work.org" "Next Action/学习神武项目简介")
+:END:
+*** DONE UI编辑器入门
+CLOSED: [2021-04-09 周五 20:20] SCHEDULED: <2021-04-09 周五 10:50> DEADLINE: <2021-04-09 周五 21:00>
+:PROPERTIES:
+:TRIGGER:  olp("work.org" "Project/学习UI基础/基础控件学习/动态数据") todo!(TODO) scheduled!("++0h")
+:END:
+
+- State "DONE"       from "TODO"       [2021-04-09 周五 20:20]
+- State "DONE"       from "TODO"       [2021-04-09 周五 20:15]
+*** WAIT 基础控件学习
+DEADLINE: <2021-04-12 周一 11:35>
+:PROPERTIES:
+:TRIGGER:  olp("work.org" "Project/学习UI基础/自定义控件/Ani3动画") todo!(TODO) scheduled!("++0h")
+:END:
+**** DONE 动态数据
+CLOSED: [2021-04-09 周五 20:21] SCHEDULED: <2021-04-09 周五 20:20>
+:PROPERTIES:
+:TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-09 周五 20:21]
+**** DONE 颜色层
+CLOSED: [2021-04-09 周五 21:43] SCHEDULED: <2021-04-09 周五 20:21>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-09 周五 21:43]
+**** TODO 按钮
+SCHEDULED: <2021-04-09 周五 21:43>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+**** WAIT 文本
+**** WAIT 定位器
+**** WAIT 输入框
+**** WAIT 图片
+**** WAIT 滚动框
+**** WAIT 进度条
+**** WAIT 抽象空间
+**** WAIT Layout
+:PROPERTIES:
+:TRIGGER+: parent todo!(DONE)
+:END:
+*** WAIT 自定义控件
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h")
+:END:
+DEADLINE: <2021-04-13 周二 11:35>
+**** WAIT Ani3动画
+:PROPERTIES:
+:TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+**** WAIT Walker
+**** WAIT 小头像
+**** WAIT 特效库
+:PROPERTIES:
+:TRIGGER+: parent todo!(DONE)
+:END:
+*** WAIT UI大作业
+DEADLINE: <2021-04-14 周三 21:00>
+:PROPERTIES:
+:TRIGGER+: parent todo!(DONE)
+:END:
+
 ** DONE 完成利为引擎各个模块的demo                                  :learn:
 CLOSED: [2021-04-08 周四 22:00] DEADLINE: <2021-04-08 Thu 21:00> SCHEDULED: <2021-04-06 周二 09:00>
 :PROPERTIES:
