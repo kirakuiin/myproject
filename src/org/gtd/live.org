@@ -7,26 +7,27 @@
 * Next Action
 ** TODO 理发                                                        :event:
 SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-11 周日 23:59>
-** WAIT [#B] 购买家具用品 [0%]                                    :shopping:
+** WAIT [#B] 购买家具用品 [58%]                                   :shopping:
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :COOKIE_DATA: checkbox recursive
 :ORDERED: nil
 :END:
- - [ ] 床褥 :: 
- - [ ] 牙具 [0/2]
-   - [ ] 牙膏 
-   - [ ] 牙刷
- - [ ] 剪刀 :: 
- - [ ] 水果刀 :: 
- - [ ] 电热水壶 :: 
+ - [X] 床褥 :: 
+ - [X] 牙具 [3/3]
+   - [X] 牙膏 
+   - [X] 牙刷
+   - [X] 牙缸
+ - [X] 剪刀 :: 
+ - [X] 水果刀 :: 
+ - [X] 电热水壶 :: 
  - [ ] 玻璃水杯 :: 
  - [ ] 拖布 :: 
- - [ ] 扫把和簸箕 :: 
+ - [X] 扫把和簸箕 :: 
  - [ ] 桌子 :: 
  - [ ] 人体工学椅子 :: 
  - [ ] 路由器 :: 
- - [ ] 自行车水杯 :: 
+ - [X] 自行车水杯 :: 
  - [ ] 鞋刷 ::
  - [ ] 硬板鞋垫 :: 无异味
 ** WAIT [#C] 办理电信宽带业务                                        :event:
@@ -52,7 +53,7 @@ DEADLINE: <2021-04-30 周五>
 - [ ] 手柄
 - [ ] Switch配件
 ** WAIT [#C] 退柯木塱的房子 [0/2]                                   :event: 
-DEADLINE: <2021-04-10 周六 09:00>
+DEADLINE: <2021-04-11 Sun 12:00>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :ORDERED: t
