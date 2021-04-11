@@ -1,18 +1,30 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW
 #+TAGS: { Work: learn(l) work(w) }
 #+TAGS: { State: future(f) }
-#+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c!)
+#+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c@)
+#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
 
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                             :work:
-SCHEDULED: <2021-04-11 周日 19:00 ++1d> DEADLINE: <2021-04-11 周日 21:20 ++1d>
+** TODO [#A] 完成每周周报                                            :work:
+SCHEDULED: <2021-04-12 周一 09:00 ++1w> DEADLINE: <2021-04-12 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-10 周六 22:17]
+:LAST_REPEAT: [2021-04-06 周二 09:23]
+:END:
+- State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
+- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
+** TODO [#A] 完成每日日报                                            :work:
+SCHEDULED: <2021-04-12 周一 19:00 ++1d> DEADLINE: <2021-04-12 周一 21:20 ++1d>
+:PROPERTIES:
+:STYLE:    habit
+:LAST_REPEAT: [2021-04-11 周日 18:53]
 :END:
 
+
+- State "CANCELED"   from "TODO"       [2021-04-11 周日 18:53] \\
+  放假
 - State "DONE"       from "TODO"       [2021-04-10 周六 22:17]
 - State "DONE"       from "TODO"       [2021-04-09 周五 21:46]
 - State "DONE"       from "TODO"       [2021-04-08 周四 21:33]
@@ -26,34 +38,15 @@ SCHEDULED: <2021-04-11 周日 19:00 ++1d> DEADLINE: <2021-04-11 周日 21:20 ++1
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-04-12 周一 09:00 ++1w> DEADLINE: <2021-04-12 周一 12:00 ++1w>
-:PROPERTIES:
-:STYLE:    habit
-:LAST_REPEAT: [2021-04-06 周二 09:23]
-:END:
-- State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
-- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#A] 归档并回顾一周的计划                                   :learn:
-DEADLINE: <2021-04-11 周日 23:00 ++1w> SCHEDULED: <2021-04-11 周日 06:00 ++1w>
-:PROPERTIES:
-:STYLE:    habit
-:LAST_REPEAT: [2021-04-04 周日 21:18]
-:END:
-- State "DONE"       from "TODO"       [2021-04-04 周日 21:18]
-- Note taken on [2021-04-04 周日 21:14] \\
-  1. 对使用org-mode进行gtd进行了较为充分的学习, 基本掌握了用法.
-  2. 重新读了一遍《python核心编程》, 加深了对py一些基本概念的理解.
-  3. 完成了python的入职考试, python150题.
-  4. 初步学习了一下利为引擎, 当然除了开始的几章还有例子可以参考, 后面写的太简略了.
-  5. 自行车从家里邮过来之后组好, 送到车店保养.
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-04-10 周六 19:00 ++1d>
+SCHEDULED: <2021-04-12 周一 19:00 ++1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-08 周四 22:06]
+:LAST_REPEAT: [2021-04-11 周日 19:31]
 :END:
+- State "DONE"       from "TODO"       [2021-04-11 周日 19:31]
+- State "DONE"       from "TODO"       [2021-04-11 周日 18:27]
 - State "DONE"       from "TODO"       [2021-04-08 周四 22:06]
 - State "DONE"       from "TODO"       [2021-04-07 Wed 23:33]
 - State "DONE"       from "TODO"       [2021-04-06 周二 21:54]
@@ -66,13 +59,14 @@ SCHEDULED: <2021-04-10 周六 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#C] 学习 org-mode                                           :learn:
-SCHEDULED: <2021-04-11 周日 19:00 ++1d/2d>
+** TODO [#C] 学习 org-mode                                          :learn:
+SCHEDULED: <2021-04-12 周一 19:00 ++1d/2d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-10 周六 22:15]
+:LAST_REPEAT: [2021-04-11 周日 19:24]
 :END:
+- State "DONE"       from "TODO"       [2021-04-11 周日 19:24]
 - State "DONE"       from "TODO"       [2021-04-10 周六 22:15]
 - State "DONE"       from "TODO"       [2021-04-09 周五 17:37]
 - State "DONE"       from "TODO"       [2021-04-08 Thu 00:21]
@@ -81,12 +75,27 @@ SCHEDULED: <2021-04-11 周日 19:00 ++1d/2d>
 - State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
 - State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
 - State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
-** DONE [#A] 学习神武项目简介                                       :learn:
-CLOSED: [2021-04-09 周五 10:50] DEADLINE: <2021-04-09 周五 21:00> SCHEDULED: <2021-04-09 周五 09:00>
+** TODO [#A] 归档并回顾一周的计划                                   :learn:
+DEADLINE: <2021-04-18 周日 23:00 ++1w> SCHEDULED: <2021-05-02 周日 06:00 ++1w>
 :PROPERTIES:
-:TRIGGER: olp("work.org" "Project/学习UI基础/UI编辑器入门") todo!(TODO) scheduled!("++0h")
+:STYLE:    habit
+:LOGGING: logrepeat DONE(@)
+:LAST_REPEAT: [2021-04-11 周日 19:36]
 :END:
-
+- State "DONE"       from "TODO"       [2021-04-11 周日 19:36] \\
+  1. org-mode大概学了50%左右, 确实是一个重量级的GTD工具
+  2. 完成了利为引擎的所有小作业
+  3. 完成了一部分UI编程的作业
+  ------------------------------------------------
+  1. 顺利搬家到大壮名城, 离公司很近
+  2. 家具基本置办齐全, 电脑相关的东西以后再考虑
+- State "DONE"       from "TODO"       [2021-04-04 周日 19:35] \\
+  1. 对使用org-mode进行gtd进行了较为充分的学习, 基本掌握了用法.
+  2. 重新读了一遍《python核心编程》, 加深了对py一些基本概念的理解.
+  3. 完成了python的入职考试, python150题.
+  4. 初步学习了一下利为引擎, 当然除了开始的几章还有例子可以参考, 后面写的太简略了.
+  ------------------------------------------------
+  5. 自行车从家里邮过来之后组好, 送到车店保养.
 ** Archive                                                        :ARCHIVE:
 *** DONE [#C] 学习org-edna                                          :learn:
 CLOSED: [2021-04-04 周日 11:46] DEADLINE: <2021-04-04 周日 12:00> SCHEDULED: <2022-04-03 周日 21:00>
@@ -157,6 +166,15 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 :END:
 
 
+** DONE [#A] 学习神武项目简介                                       :learn:
+CLOSED: [2021-04-09 周五 10:50] DEADLINE: <2021-04-09 周五 21:00> SCHEDULED: <2021-04-09 周五 09:00>
+:PROPERTIES:
+:TRIGGER: olp("work.org" "Project/学习UI基础/UI编辑器入门") todo!(TODO) scheduled!("++0h")
+:END:
+
+** DONE [#A] 搞定agenda今日only todo视图                            :learn:
+CLOSED: [2021-04-11 周日 18:30] DEADLINE: <2021-04-11 周日 23:00> SCHEDULED: <2021-04-11 周日 17:00>
+- State "DONE"       from "TODO"       [2021-04-11 周日 18:30]
 * Appointment
 ** WAIT 组装一台性价比高的台式机用于开发和娱乐               :learn:future:
 DEADLINE: <2021-10-01 周五>
@@ -186,11 +204,13 @@ DEADLINE: <2021-10-01 周五>
 DEADLINE: <2021-04-14 周三 21:00> SCHEDULED: <2021-04-09 周五 10:00>
 :PROPERTIES:
 :BLOCKER:  olp("work.org" "Next Action/学习神武项目简介")
+:TYPE_ALL: basic advance
 :END:
 *** DONE UI编辑器入门
 CLOSED: [2021-04-09 周五 20:20] SCHEDULED: <2021-04-09 周五 10:50> DEADLINE: <2021-04-09 周五 21:00>
 :PROPERTIES:
 :TRIGGER:  olp("work.org" "Project/学习UI基础/基础控件学习/动态数据") todo!(TODO) scheduled!("++0h")
+:TYPE: basic
 :END:
 
 - State "DONE"       from "TODO"       [2021-04-09 周五 20:20]
@@ -199,6 +219,7 @@ CLOSED: [2021-04-09 周五 20:20] SCHEDULED: <2021-04-09 周五 10:50> DEADLINE:
 DEADLINE: <2021-04-12 周一 11:35>
 :PROPERTIES:
 :TRIGGER:  olp("work.org" "Project/学习UI基础/自定义控件/Ani3动画") todo!(TODO) scheduled!("++0h")
+:TYPE: advance
 :END:
 **** DONE 动态数据
 CLOSED: [2021-04-09 周五 20:21] SCHEDULED: <2021-04-09 周五 20:20>

@@ -1,15 +1,23 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW
 #+TAGS: { Live: date(d) event(e) shopping(s) }
 #+TAGS: { State: future(f) }
-#+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c!)
+#+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c@)
+#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
 
 
 * Inbox
 * Next Action
-** TODO 理发                                                        :event:
-SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-11 周日 23:59>
-** TODO [#B] 购买家具用品 [60%]                                  :shopping:
-SCHEDULED: <2021-04-10 周六 13:20>
+** TODO [#C] 大壮名城G1-1018租房日志                                :event:
+DEADLINE: <2021-04-18 周日 23:00 +1w> SCHEDULED: <2021-04-17 周六 09:00 +1w>
+:PROPERTIES:
+:LOGGING: DONE(@)
+:END:
+- State "DONE"       from "TODO"       [2021-04-10 周六 13:45] \\
+  1. 每个月通过大壮名城物业缴纳电费, 水+物业费. 今天水+物业费有103元的残余, 和房东约定这个月我来缴, 明年的4月份房东来缴纳.
+  2. 房间里的马桶坏了, 电磁炉可能坏了.
+  3. 本月电费50, 物业+水103
+** WAIT [#B] 购买家具用品 [77%]                                  :shopping:
+SCHEDULED: <2021-05-10 Mon 09:00>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :COOKIE_DATA: checkbox recursive
@@ -23,48 +31,36 @@ SCHEDULED: <2021-04-10 周六 13:20>
  - [X] 剪刀 :: 
  - [X] 水果刀 :: 
  - [X] 电热水壶 :: 
- - [ ] 玻璃水杯 :: 
+ - [X] 水杯 :: 
  - [X] 拖布 :: 
  - [X] 扫把和簸箕 :: 
- - [ ] 桌子 :: 
- - [ ] 人体工学椅子 :: 
- - [X] 路由器 :: 
  - [X] 自行车水杯 :: 
- - [ ] 鞋刷 ::
- - [ ] 硬板鞋垫 :: 无异味
- - [ ] 闹钟 ::
- - [ ] 衣服勾 ::
- - [ ] 晾衣撑 :: 长一点
-** TODO [#C] 从家里把需要的物品邮寄过来 [0/4]                       :event:
-SCHEDULED: <2021-04-10 周六 13:20> DEADLINE: <2021-04-30 周五>
+ - [X] 鞋刷 ::
+ - [X] 硬板鞋垫 :: 无异味
+ - [X] 床头灯 ::
+ - [X] 落地衣架 ::
+ - [X] 衣架 ::
+ - [X] 闹钟 ::
+ - [X] 五号电池 ::
+ - [X] 脚盆 ::
+ - [X] 多功能衣架 :: 
+ - [ ] 桌子 :: 
+ - [ ] 床头柜 ::
+ - [ ] 人体工学椅子 ::
+ - [ ] 普通凳子 ::
+ - [ ] 置物架 ::
+ - [ ] 多功能螺丝套件 :: 
+** WAIT [#C] 从家里把需要的物品邮寄过来 [0/4]                       :event:
+DEADLINE: <2021-06-01 周二>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :END:
+- State "WAIT"       from "TODO"       [2021-04-11 周日 16:25] \\
+  先不急, 电脑什么都没得
 - [ ] 书籍
 - [ ] 鼠标
 - [ ] 手柄
 - [ ] Switch配件
-** DONE [#A] 联系物业修马桶                                         :event:
-CLOSED: [2021-04-10 周六 18:28] DEADLINE: <2021-04-10 周六 19:00>
-- State "DONE"       from "TODO"       [2021-04-10 周六 18:28]
-** TODO [#C] 退柯木塱的房子 [0/2]                                   :event: 
-DEADLINE: <2021-04-11 Sun 12:00>
-:PROPERTIES:
-:BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
-:ORDERED: t
-:END:
-1. [ ] 打扫卫生
-2. [ ] 退还房卡, 取得押金(2*900[押金]+100[房卡]=1900)
-** TODO [#A] 换锁芯                                                 :event:
-DEADLINE: <2021-04-11 周日 21:00>
-** TODO [#C] 大壮名城G1-1018租房日志                                :event:
-DEADLINE: <2021-04-18 周日 23:00 +1w> SCHEDULED: <2021-04-17 周六 09:00 +1w>
-:PROPERTIES:
-:LOGGING: DONE(@)
-:END:
-- State "DONE"       from "TODO"       [2021-04-10 周六 13:45] \\
-  1. 每个月通过大壮名城物业缴纳电费, 水+物业费. 今天水+物业费有103元的残余, 和房东约定这个月我来缴, 明年的4月份房东来缴纳.
-  2. 房间里的马桶坏了, 电磁炉可能坏了.
 ** WAIT [#C] 办理电信宽带业务                                       :event:
 SCHEDULED: <2021-04-10 周六 13:20>
 :PROPERTIES:
@@ -83,9 +79,50 @@ SCHEDULED: <2022-04-03 周日 09:00>
 - [X] 红轴游戏键盘
 - [ ] 茶轴打字键盘
 - [ ] ps2转usb接口
-** DONE [#C] 给缺少硅胶保护的眼睛腿加套                          :shopping:
+** Archive                                                        :ARCHIVE:
+*** DONE [#A] 理发                                                  :event:
+CLOSED: [2021-04-11 周日 16:26] SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-11 周日 23:59>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-11 周日 21:43
+:END:
+- State "DONE"       from "TODO"       [2021-04-11 周日 16:26]
+*** DONE [#A] 联系物业修马桶                                        :event:
+CLOSED: [2021-04-10 周六 18:28] DEADLINE: <2021-04-10 周六 19:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-11 周日 21:43
+:END:
+- Note taken on [2021-04-11 周日 16:30] \\
+  50 房东付款
+- State "DONE"       from "TODO"       [2021-04-10 周六 18:28]
+*** DONE [#C] 退柯木塱的房子 [2/2]                                  :event: 
+CLOSED: [2021-04-11 周日 16:21] DEADLINE: <2021-04-11 Sun 12:00>
+:PROPERTIES:
+:BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
+:ORDERED: t
+:ARCHIVE_TIME: 2021-04-11 周日 21:43
+:END:
+- Note taken on [2021-04-11 周日 16:21] \\
+  实际上还扣了300短租费和300除菌化粪费, 最后到手1300, 好坑.
+- State "DONE"       from "TODO"       [2021-04-11 周日 16:21]
+1. [X] 打扫卫生
+2. [X] 退还房卡, 取得押金(2*900[押金]+100[房卡]=1900)
+*** DONE [#A] 换锁芯                                                :event:
+CLOSED: [2021-04-11 周日 16:22] DEADLINE: <2021-04-11 周日 21:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-11 周日 21:43
+:END:
+- Note taken on [2021-04-11 周日 16:22] \\
+  100元找物业弄得, 懒得在京东上找合适的了.
+- State "DONE"       from "TODO"       [2021-04-11 周日 16:22]
+*** DONE [#C] 给缺少硅胶保护的眼睛腿加套                         :shopping:
 CLOSED: [2021-04-05 周一 13:01] DEADLINE: <2021-04-05 Mon 21:00> SCHEDULED: <2021-04-05 Mon 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-11 周日 21:43
+:END:
 * Appointment
+** WAIT [#C] 爬火炉山                                               :event:
+- State "WAIT"       from "TODO"       [2021-04-11 周日 16:29] \\
+  和同事商量一下一起去, 先不急.
 ** Archive                                                        :ARCHIVE:
 *** DONE [#C] 组装自行车                                            :event:
 CLOSED: [2021-04-03 周六 12:00]
@@ -93,25 +130,27 @@ CLOSED: [2021-04-03 周六 12:00]
 :ARCHIVE_TIME: 2021-04-04 周日 21:20
 :END:
 <2021-04-03 Sat 10:00>
-** TODO 爬火炉山                                                    :event:
-<2021-04-11 周日 09:00-12:00>
 * Project
-** DONE [#C] 自行车维护 [100%]                                       :event: 
+** Archive                                                        :ARCHIVE:
+*** DONE [#C] 自行车维护 [100%]                                     :event: 
 CLOSED: [2021-04-05 Mon 22:06] DEADLINE: <2021-04-05 周一 23:59> SCHEDULED: <2021-04-03 周六 12:00>
-*** DONE 买自行车水杯                                            :shopping:
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-11 周日 21:43
+:END:
+**** DONE 买自行车水杯                                          :shopping:
 CLOSED: [2021-04-04 Sun 00:07] DEADLINE: <2021-04-03 周六 23:59>
 - Note taken on [2021-04-08 周四 09:05] \\
   下班的时候骑共享单车回家, 放到共享单车上忘了拿走了, 已丢失.
-*** DONE 领取保养好的自行车
+**** DONE 领取保养好的自行车
 : [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
 :PROPERTIES:
 :DEPENDENCE: 捷安特火炉山店老板通知
 :END:
-*** CANCELED 额外配一把钥匙
-CLOSED: [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
-- Note taken on [2021-04-05 Mon 22:05] \\
-  无法配钥匙, 另外另一把在钱包里找到了, 也不需要配了.
-** DONE [#A] 找离公司近的新房子                                     :event:
+**** CANCELED 额外配一把钥匙
+CLOSED: [2021-04-11 周日 19:42] DEADLINE: <2021-04-05 Mon 22:00>
+- State "CANCELED"   from "TODO"       [2021-04-05 周一 22:05] \\
+  无法配钥匙, 另外另一把在钱包里找到了, 也不需要配了
+*** DONE [#A] 找离公司近的新房子                                    :event:
 CLOSED: [2021-04-10 周六 13:20] SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
 :PROPERTIES:
 :PRICE: 2000以内
@@ -120,14 +159,15 @@ CLOSED: [2021-04-10 周六 13:20] SCHEDULED: <2021-04-06 周二 21:00> DEADLINE:
 :TRIGGER:  olp("live.org" "Next Action/从家里把需要的物品邮寄过来") todo!(TODO) scheduled!("++0h")
 :TRIGGER+: olp("live.org" "Next Action/购买家具用品") todo!(TODO) scheduled!("++0h")
 :TRIGGER+: olp("live.org" "Next Action/办理电信宽带业务") todo!(TODO) scheduled!("++0h")
+:ARCHIVE_TIME: 2021-04-11 周日 21:43
 :END:
 - State "DONE"       from "SCH"        [2021-04-10 周六 13:20]
-*** DONE app上看房
+**** DONE app上看房
 CLOSED: [2021-04-05 Mon 09:05] DEADLINE: <2021-04-11 周日 21:00>
 :PROPERTIES:
 :TRIGGER: next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
-*** DONE 联系中介或房主看房
+**** DONE 联系中介或房主看房
 CLOSED: [2021-04-05 周一 13:02] SCHEDULED: <2021-04-05 Mon 09:05> DEADLINE: <2021-04-18 周日 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
@@ -140,7 +180,7 @@ CLOSED: [2021-04-05 周一 13:02] SCHEDULED: <2021-04-05 Mon 09:05> DEADLINE: <2
   设施: 冰箱, 洗衣机, 空调, 独卫, 电磁炉, 衣柜, 床
   押金: 2个月房租
   要求: 不能养宠物
-*** DONE 联系搬家公司搬家
+**** DONE 联系搬家公司搬家
 CLOSED: [2021-04-10 周六 13:20] SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-25 Sun 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
