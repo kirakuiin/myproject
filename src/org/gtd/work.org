@@ -166,14 +166,18 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 :END:
 
 
-** DONE [#A] 学习神武项目简介                                       :learn:
+*** DONE [#A] 学习神武项目简介                                      :learn:
 CLOSED: [2021-04-09 周五 10:50] DEADLINE: <2021-04-09 周五 21:00> SCHEDULED: <2021-04-09 周五 09:00>
 :PROPERTIES:
 :TRIGGER: olp("work.org" "Project/学习UI基础/UI编辑器入门") todo!(TODO) scheduled!("++0h")
+:ARCHIVE_TIME: 2021-04-11 周日 23:21
 :END:
 
-** DONE [#A] 搞定agenda今日only todo视图                            :learn:
+*** DONE [#A] 搞定agenda今日only todo视图                           :learn:
 CLOSED: [2021-04-11 周日 18:30] DEADLINE: <2021-04-11 周日 23:00> SCHEDULED: <2021-04-11 周日 17:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-11 周日 23:21
+:END:
 - State "DONE"       from "TODO"       [2021-04-11 周日 18:30]
 * Appointment
 ** WAIT 组装一台性价比高的台式机用于开发和娱乐               :learn:future:
@@ -273,51 +277,6 @@ DEADLINE: <2021-04-13 周二 11:35>
 DEADLINE: <2021-04-14 周三 21:00>
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
-:END:
-
-** DONE 完成利为引擎各个模块的demo                                  :learn:
-CLOSED: [2021-04-08 周四 22:00] DEADLINE: <2021-04-08 Thu 21:00> SCHEDULED: <2021-04-06 周二 09:00>
-:PROPERTIES:
-:BLOCKER: children
-:END:
-- State "DONE"       from "SCH"        [2021-04-08 周四 22:00]
-*** DONE 坐标系变换
-CLOSED: [2021-04-06 周二 20:20] SCHEDULED: <2021-04-06 周二 10:00>
-:PROPERTIES:
-:TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-*** DONE 触摸事件
-CLOSED: [2021-04-06 周二 20:21] SCHEDULED: <2021-04-06 周二 20:20>
-:PROPERTIES:
-:BLOCKER: previous-sibling
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-*** DONE 定时器
-CLOSED: [2021-04-07 Wed 23:30] SCHEDULED: <2021-04-06 周二 20:21>
-:PROPERTIES:
-:BLOCKER: previous-sibling
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-*** DONE Action
-CLOSED: [2021-04-08 周四 21:34] SCHEDULED: <2021-04-07 Wed 23:30>
-:PROPERTIES:
-:BLOCKER: previous-sibling
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-04-08 周四 21:34]
-*** DONE 动画类型
-CLOSED: [2021-04-08 周四 21:34] SCHEDULED: <2021-04-08 周四 21:34>
-:PROPERTIES:
-:BLOCKER: previous-sibling
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-04-08 周四 21:34]
-*** DONE Sprite3d
-CLOSED: [2021-04-08 周四 22:00] SCHEDULED: <2021-04-08 周四 21:34>
-:PROPERTIES:
-:BLOCKER: previous-sibling
-:TRIGGER+: parent todo!(DONE)
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 
 ** Archive                                                        :ARCHIVE:
@@ -444,6 +403,52 @@ CLOCK: [2021-03-31 周三 12:58]--[2021-03-31 周三 13:24] =>  0:26
 CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
 :END:
 
+
+*** DONE 完成利为引擎各个模块的demo                                 :learn:
+CLOSED: [2021-04-08 周四 22:00] DEADLINE: <2021-04-08 Thu 21:00> SCHEDULED: <2021-04-06 周二 09:00>
+:PROPERTIES:
+:BLOCKER: children
+:ARCHIVE_TIME: 2021-04-11 周日 23:21
+:END:
+- State "DONE"       from "SCH"        [2021-04-08 周四 22:00]
+**** DONE 坐标系变换
+CLOSED: [2021-04-06 周二 20:20] SCHEDULED: <2021-04-06 周二 10:00>
+:PROPERTIES:
+:TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+**** DONE 触摸事件
+CLOSED: [2021-04-06 周二 20:21] SCHEDULED: <2021-04-06 周二 20:20>
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+**** DONE 定时器
+CLOSED: [2021-04-07 Wed 23:30] SCHEDULED: <2021-04-06 周二 20:21>
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+**** DONE Action
+CLOSED: [2021-04-08 周四 21:34] SCHEDULED: <2021-04-07 Wed 23:30>
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-08 周四 21:34]
+**** DONE 动画类型
+CLOSED: [2021-04-08 周四 21:34] SCHEDULED: <2021-04-08 周四 21:34>
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-08 周四 21:34]
+**** DONE Sprite3d
+CLOSED: [2021-04-08 周四 22:00] SCHEDULED: <2021-04-08 周四 21:34>
+:PROPERTIES:
+:BLOCKER: previous-sibling
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
 
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
