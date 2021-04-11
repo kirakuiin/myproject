@@ -1,17 +1,19 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW
 #+TAGS: { Work: learn(l) work(w) }
+#+TAGS: { State: future(f) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c!)
 
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-10 周六 19:00 ++1d> DEADLINE: <2021-04-10 周六 21:20 ++1d>
+** TODO [#A] 完成每日日报                                             :work:
+SCHEDULED: <2021-04-11 周日 19:00 ++1d> DEADLINE: <2021-04-11 周日 21:20 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-09 周五 21:46]
+:LAST_REPEAT: [2021-04-10 周六 22:17]
 :END:
 
+- State "DONE"       from "TODO"       [2021-04-10 周六 22:17]
 - State "DONE"       from "TODO"       [2021-04-09 周五 21:46]
 - State "DONE"       from "TODO"       [2021-04-08 周四 21:33]
 - State "DONE"       from "TODO"       [2021-04-07 周三 21:45]
@@ -65,12 +67,13 @@ SCHEDULED: <2021-04-10 周六 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#C] 学习 org-mode                                           :learn:
-SCHEDULED: <2021-04-10 周六 19:00 ++1d/2d>
+SCHEDULED: <2021-04-11 周日 19:00 ++1d/2d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-09 周五 17:37]
+:LAST_REPEAT: [2021-04-10 周六 22:15]
 :END:
+- State "DONE"       from "TODO"       [2021-04-10 周六 22:15]
 - State "DONE"       from "TODO"       [2021-04-09 周五 17:37]
 - State "DONE"       from "TODO"       [2021-04-08 Thu 00:21]
 - State "DONE"       from "TODO"       [2021-04-07 周三 12:18]
@@ -155,8 +158,11 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 
 
 * Appointment
-** 组装一台性价比高的台式机用于开发和娱乐                             :learn:
-<2021-05-11 周二>--<2021-06-18 周五>
+** WAIT 组装一台性价比高的台式机用于开发和娱乐               :learn:future:
+DEADLINE: <2021-10-01 周五>
+- State "WAIT"       from "TODO"       [2021-04-10 周六 14:03] \\
+  1. 显卡太贵
+  2. 没钱
 #+NAME: PC_PRICES
 | N | component   | brand | model | price |
 |---+-------------+-------+-------+-------|
@@ -206,12 +212,17 @@ CLOSED: [2021-04-09 周五 21:43] SCHEDULED: <2021-04-09 周五 20:21>
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-09 周五 21:43]
-**** TODO 按钮
-SCHEDULED: <2021-04-09 周五 21:43>
+**** DONE 按钮
+CLOSED: [2021-04-10 周六 18:27] SCHEDULED: <2021-04-09 周五 21:43>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-**** WAIT 文本
+- State "DONE"       from "TODO"       [2021-04-10 周六 18:27]
+**** TODO 文本
+SCHEDULED: <2021-04-10 周六 18:27>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
 **** WAIT 定位器
 **** WAIT 输入框
 **** WAIT 图片
@@ -414,6 +425,6 @@ CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
 
 
 * Someday
-** 学习《Unity3D 游戏开发》                                         :learn:
-** 学习《Lua程序设计》                                               :learn:
-** 学习 elisp                                                       :learn:
+** 学习《Unity3D 游戏开发》                                  :learn:future:
+** 学习《Lua程序设计》                                       :learn:future:
+** 学习 elisp                                                :learn:future:

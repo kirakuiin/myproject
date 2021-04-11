@@ -1,5 +1,6 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW
 #+TAGS: { Live: date(d) event(e) shopping(s) }
+#+TAGS: { State: future(f) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c!)
 
 
@@ -7,7 +8,8 @@
 * Next Action
 ** TODO 理发                                                        :event:
 SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-11 周日 23:59>
-** WAIT [#B] 购买家具用品 [58%]                                   :shopping:
+** TODO [#B] 购买家具用品 [60%]                                  :shopping:
+SCHEDULED: <2021-04-10 周六 13:20>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :COOKIE_DATA: checkbox recursive
@@ -22,29 +24,19 @@ SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-11 周日 23:59>
  - [X] 水果刀 :: 
  - [X] 电热水壶 :: 
  - [ ] 玻璃水杯 :: 
- - [ ] 拖布 :: 
+ - [X] 拖布 :: 
  - [X] 扫把和簸箕 :: 
  - [ ] 桌子 :: 
  - [ ] 人体工学椅子 :: 
- - [ ] 路由器 :: 
+ - [X] 路由器 :: 
  - [X] 自行车水杯 :: 
  - [ ] 鞋刷 ::
  - [ ] 硬板鞋垫 :: 无异味
-** WAIT [#C] 办理电信宽带业务                                        :event:
-:PROPERTIES:
-:BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
-:END:
-DEADLINE: <2021-04-30 周五>
-** WAIT [#C] 买键盘 [1/3]                                        :shopping:
-DEADLINE: <2021-04-11 周日 23:59> SCHEDULED: <2021-04-03 周六 21:00>
-:PROPERTIES:
-:DEPENDENCE: 向大棠请教ps2转接口和打字键盘相关事宜
-:END:
-- [X] 红轴游戏键盘
-- [ ] 茶轴打字键盘
-- [ ] ps2转usb接口
-** WAIT [#C] 从家里把需要的物品邮寄过来 [0/4]                       :event:
-DEADLINE: <2021-04-30 周五>
+ - [ ] 闹钟 ::
+ - [ ] 衣服勾 ::
+ - [ ] 晾衣撑 :: 长一点
+** TODO [#C] 从家里把需要的物品邮寄过来 [0/4]                       :event:
+SCHEDULED: <2021-04-10 周六 13:20> DEADLINE: <2021-04-30 周五>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :END:
@@ -52,7 +44,10 @@ DEADLINE: <2021-04-30 周五>
 - [ ] 鼠标
 - [ ] 手柄
 - [ ] Switch配件
-** WAIT [#C] 退柯木塱的房子 [0/2]                                   :event: 
+** DONE [#A] 联系物业修马桶                                         :event:
+CLOSED: [2021-04-10 周六 18:28] DEADLINE: <2021-04-10 周六 19:00>
+- State "DONE"       from "TODO"       [2021-04-10 周六 18:28]
+** TODO [#C] 退柯木塱的房子 [0/2]                                   :event: 
 DEADLINE: <2021-04-11 Sun 12:00>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
@@ -60,6 +55,34 @@ DEADLINE: <2021-04-11 Sun 12:00>
 :END:
 1. [ ] 打扫卫生
 2. [ ] 退还房卡, 取得押金(2*900[押金]+100[房卡]=1900)
+** TODO [#A] 换锁芯                                                 :event:
+DEADLINE: <2021-04-11 周日 21:00>
+** TODO [#C] 大壮名城G1-1018租房日志                                :event:
+DEADLINE: <2021-04-18 周日 23:00 +1w> SCHEDULED: <2021-04-17 周六 09:00 +1w>
+:PROPERTIES:
+:LOGGING: DONE(@)
+:END:
+- State "DONE"       from "TODO"       [2021-04-10 周六 13:45] \\
+  1. 每个月通过大壮名城物业缴纳电费, 水+物业费. 今天水+物业费有103元的残余, 和房东约定这个月我来缴, 明年的4月份房东来缴纳.
+  2. 房间里的马桶坏了, 电磁炉可能坏了.
+** WAIT [#C] 办理电信宽带业务                                       :event:
+SCHEDULED: <2021-04-10 周六 13:20>
+:PROPERTIES:
+:BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
+:END:
+- State "WAIT"       from "TODO"       [2021-04-10 周六 13:36] \\
+  暂时没需求.
+DEADLINE: <2021-04-30 周五>
+** WAIT [#C] 买键盘 [1/3]                                        :shopping:
+SCHEDULED: <2022-04-03 周日 09:00>
+:PROPERTIES:
+:DEPENDENCE: 向大棠请教ps2转接口和打字键盘相关事宜
+:END:
+- State "WAIT"       from "TODO"       [2021-04-10 周六 13:54] \\
+  不太好买, 钱也没得, 先等等.
+- [X] 红轴游戏键盘
+- [ ] 茶轴打字键盘
+- [ ] ps2转usb接口
 ** DONE [#C] 给缺少硅胶保护的眼睛腿加套                          :shopping:
 CLOSED: [2021-04-05 周一 13:01] DEADLINE: <2021-04-05 Mon 21:00> SCHEDULED: <2021-04-05 Mon 09:00>
 * Appointment
@@ -88,8 +111,8 @@ CLOSED: [2021-04-04 Sun 00:07] DEADLINE: <2021-04-03 周六 23:59>
 CLOSED: [2021-04-05 Mon 22:05] DEADLINE: <2021-04-05 Mon 22:00>
 - Note taken on [2021-04-05 Mon 22:05] \\
   无法配钥匙, 另外另一把在钱包里找到了, 也不需要配了.
-** SCH [#A] 找离公司近的新房子                                      :event:
-SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
+** DONE [#A] 找离公司近的新房子                                     :event:
+CLOSED: [2021-04-10 周六 13:20] SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
 :PROPERTIES:
 :PRICE: 2000以内
 :DISTANCE: 离公司10公里以内, 离地铁站2公里以内
@@ -98,6 +121,7 @@ SCHEDULED: <2021-04-06 周二 21:00> DEADLINE: <2021-04-25 周日>
 :TRIGGER+: olp("live.org" "Next Action/购买家具用品") todo!(TODO) scheduled!("++0h")
 :TRIGGER+: olp("live.org" "Next Action/办理电信宽带业务") todo!(TODO) scheduled!("++0h")
 :END:
+- State "DONE"       from "SCH"        [2021-04-10 周六 13:20]
 *** DONE app上看房
 CLOSED: [2021-04-05 Mon 09:05] DEADLINE: <2021-04-11 周日 21:00>
 :PROPERTIES:
@@ -116,14 +140,14 @@ CLOSED: [2021-04-05 周一 13:02] SCHEDULED: <2021-04-05 Mon 09:05> DEADLINE: <2
   设施: 冰箱, 洗衣机, 空调, 独卫, 电磁炉, 衣柜, 床
   押金: 2个月房租
   要求: 不能养宠物
-*** TODO 联系搬家公司搬家
-SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-25 Sun 21:00>
+*** DONE 联系搬家公司搬家
+CLOSED: [2021-04-10 周六 13:20] SCHEDULED: <2021-04-10 周六 12:00> DEADLINE: <2021-04-25 Sun 21:00>
 :PROPERTIES:
 :BLOCKER: previous-sibling
 :TRIGGER+: parent todo!(DONE)
 :TRIGGER:  next-sibling scheduled!("++0h") todo!(TODO) chain!("TRIGGER")
 :END:
 - Note taken on [2021-04-07 Wed 23:51] \\
-  周6上午搬
+  周6上午搬, 用货拉拉, 8公里50元左右.
 * Someday
-** 买小风扇                                                      :shopping:
+** 买小风扇                                               :shopping:future:
