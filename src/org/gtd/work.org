@@ -8,21 +8,23 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-04-12 周一 09:00 ++1w> DEADLINE: <2021-04-12 周一 12:00 ++1w>
+SCHEDULED: <2021-04-19 周一 09:00 ++1w> DEADLINE: <2021-04-19 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-06 周二 09:23]
+:LAST_REPEAT: [2021-04-12 周一 10:47]
 :END:
+- State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-12 周一 19:00 ++1d> DEADLINE: <2021-04-12 周一 21:20 ++1d>
+SCHEDULED: <2021-04-13 周二 19:00 ++1d> DEADLINE: <2021-04-13 周二 21:20 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-11 周日 18:53]
+:LAST_REPEAT: [2021-04-12 周一 21:26]
 :END:
 
 
+- State "DONE"       from "TODO"       [2021-04-12 周一 21:26]
 - State "CANCELED"   from "TODO"       [2021-04-11 周日 18:53] \\
   放假
 - State "DONE"       from "TODO"       [2021-04-10 周六 22:17]
@@ -39,14 +41,16 @@ SCHEDULED: <2021-04-12 周一 19:00 ++1d> DEADLINE: <2021-04-12 周一 21:20 ++1
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-04-12 周一 19:00 ++1d>
+SCHEDULED: <2021-04-13 周二 19:00 ++1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-11 周日 19:31]
+:LAST_REPEAT: [2021-04-12 周一 13:25]
 :END:
+- State "DONE"       from "TODO"       [2021-04-12 周一 13:25]
 - State "DONE"       from "TODO"       [2021-04-11 周日 19:31]
-- State "DONE"       from "TODO"       [2021-04-11 周日 18:27]
+- State "DONE"       from "TODO"       [2021-04-10 周六 19:25]
+- State "DONE"       from "TODO"       [2021-04-09 周五 18:27]
 - State "DONE"       from "TODO"       [2021-04-08 周四 22:06]
 - State "DONE"       from "TODO"       [2021-04-07 Wed 23:33]
 - State "DONE"       from "TODO"       [2021-04-06 周二 21:54]
@@ -59,22 +63,6 @@ SCHEDULED: <2021-04-12 周一 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#C] 学习 org-mode                                          :learn:
-SCHEDULED: <2021-04-12 周一 19:00 ++1d/2d>
-:PROPERTIES:
-:LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
-:STYLE:    habit
-:LAST_REPEAT: [2021-04-11 周日 19:24]
-:END:
-- State "DONE"       from "TODO"       [2021-04-11 周日 19:24]
-- State "DONE"       from "TODO"       [2021-04-10 周六 22:15]
-- State "DONE"       from "TODO"       [2021-04-09 周五 17:37]
-- State "DONE"       from "TODO"       [2021-04-08 Thu 00:21]
-- State "DONE"       from "TODO"       [2021-04-07 周三 12:18]
-- State "DONE"       from "TODO"       [2021-04-06 周二 21:04]
-- State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
-- State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
-- State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
 ** TODO [#A] 归档并回顾一周的计划                                   :learn:
 DEADLINE: <2021-04-18 周日 23:00 ++1w> SCHEDULED: <2021-05-02 周日 06:00 ++1w>
 :PROPERTIES:
@@ -96,6 +84,25 @@ DEADLINE: <2021-04-18 周日 23:00 ++1w> SCHEDULED: <2021-05-02 周日 06:00 ++1
   4. 初步学习了一下利为引擎, 当然除了开始的几章还有例子可以参考, 后面写的太简略了.
   ------------------------------------------------
   5. 自行车从家里邮过来之后组好, 送到车店保养.
+** TODO [#C] 学习 org-mode                                          :learn:
+SCHEDULED: <2021-04-13 周二 19:00 ++1d/2d>
+:PROPERTIES:
+:LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
+:STYLE:    habit
+:LAST_REPEAT: [2021-04-12 周一 12:32]
+:END:
+- State "DONE"       from "TODO"       [2021-04-12 周一 12:32]
+- State "DONE"       from "TODO"       [2021-04-11 周日 19:24]
+- State "DONE"       from "TODO"       [2021-04-10 周六 22:15]
+- State "DONE"       from "TODO"       [2021-04-09 周五 17:37]
+- State "DONE"       from "TODO"       [2021-04-08 Thu 00:21]
+- State "DONE"       from "TODO"       [2021-04-07 周三 12:18]
+- State "DONE"       from "TODO"       [2021-04-06 周二 21:04]
+- State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
+- State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
+- State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
+** TODO [#A] 学习UI制作经验分享                                     :learn:
+DEADLINE: <2021-04-13 周二 11:35> SCHEDULED: <2021-04-13 周二 09:00>
 ** Archive                                                        :ARCHIVE:
 *** DONE [#C] 学习org-edna                                          :learn:
 CLOSED: [2021-04-04 周日 11:46] DEADLINE: <2021-04-04 周日 12:00> SCHEDULED: <2022-04-03 周日 21:00>
@@ -204,12 +211,12 @@ DEADLINE: <2021-10-01 周五>
 
 
 * Project
-** SCH [#A] 学习UI基础                                              :learn:
+** TODO [#A] 学习UI基础                                             :learn:
 DEADLINE: <2021-04-14 周三 21:00> SCHEDULED: <2021-04-09 周五 10:00>
 :PROPERTIES:
-:BLOCKER:  olp("work.org" "Next Action/学习神武项目简介")
 :TYPE_ALL: basic advance
 :END:
+- State "DONE"       from "SCH"        [2021-04-12 周一 21:16]
 *** DONE UI编辑器入门
 CLOSED: [2021-04-09 周五 20:20] SCHEDULED: <2021-04-09 周五 10:50> DEADLINE: <2021-04-09 周五 21:00>
 :PROPERTIES:
@@ -219,12 +226,13 @@ CLOSED: [2021-04-09 周五 20:20] SCHEDULED: <2021-04-09 周五 10:50> DEADLINE:
 
 - State "DONE"       from "TODO"       [2021-04-09 周五 20:20]
 - State "DONE"       from "TODO"       [2021-04-09 周五 20:15]
-*** WAIT 基础控件学习
-DEADLINE: <2021-04-12 周一 11:35>
+*** DONE 基础控件学习
+CLOSED: [2021-04-12 周一 19:59] DEADLINE: <2021-04-12 周一 11:35>
 :PROPERTIES:
 :TRIGGER:  olp("work.org" "Project/学习UI基础/自定义控件/Ani3动画") todo!(TODO) scheduled!("++0h")
 :TYPE: advance
 :END:
+- State "DONE"       from "WAIT"       [2021-04-12 周一 19:59]
 **** DONE 动态数据
 CLOSED: [2021-04-09 周五 20:21] SCHEDULED: <2021-04-09 周五 20:20>
 :PROPERTIES:
@@ -243,41 +251,121 @@ CLOSED: [2021-04-10 周六 18:27] SCHEDULED: <2021-04-09 周五 21:43>
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-10 周六 18:27]
-**** TODO 文本
-SCHEDULED: <2021-04-10 周六 18:27>
+**** DONE 文本
+CLOSED: [2021-04-12 周一 11:14] SCHEDULED: <2021-04-10 周六 18:27>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-**** WAIT 定位器
-**** WAIT 输入框
-**** WAIT 图片
-**** WAIT 滚动框
-**** WAIT 进度条
-**** WAIT 抽象空间
-**** WAIT Layout
+- State "DONE"       from "TODO"       [2021-04-12 周一 11:14]
+**** DONE 定位器
+CLOSED: [2021-04-12 周一 12:07] SCHEDULED: <2021-04-12 周一 11:14>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-12 周一 12:07]
+**** DONE 输入框
+CLOSED: [2021-04-12 周一 15:04] SCHEDULED: <2021-04-12 周一 12:07>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-12 周一 15:04] \\
+  1.无法创建CUIEditText对象.
+  2.SetOverLimitTips()会出现无法找到condition库的错误.
+**** DONE 图片
+CLOSED: [2021-04-12 周一 15:19] SCHEDULED: <2021-04-12 周一 15:04>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-12 周一 15:19]
+**** DONE 滚动框
+CLOSED: [2021-04-12 周一 16:48] SCHEDULED: <2021-04-12 周一 15:19>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-12 周一 16:48]
+**** DONE 进度条
+CLOSED: [2021-04-12 周一 17:30] SCHEDULED: <2021-04-12 周一 16:48>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+
+**** DONE 抽象控件
+CLOSED: [2021-04-12 周一 19:13] SCHEDULED: <2021-04-12 周一 17:30>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-12 周一 19:13] \\
+  1. 直接创建CTextObject对象会报错.
+**** DONE Layout
+CLOSED: [2021-04-12 周一 19:59] SCHEDULED: <2021-04-12 周一 19:13> \\
+1. 要设置SetItemSize
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** WAIT 自定义控件
+*** DONE 自定义控件
+CLOSED: [2021-04-12 周一 21:15]
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h")
 :END:
+- State "DONE"       from "WAIT"       [2021-04-12 周一 21:15]
 DEADLINE: <2021-04-13 周二 11:35>
-**** WAIT Ani3动画
+**** DONE Ani3动画
+CLOSED: [2021-04-12 周一 20:31] SCHEDULED: <2021-04-12 周一 19:59>
 :PROPERTIES:
 :TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-**** WAIT Walker
-**** WAIT 小头像
-**** WAIT 特效库
+- State "DONE"       from "TODO"       [2021-04-12 周一 20:31]
+**** CANCELED Walker
+CLOSED: [2021-04-12 周一 21:15] SCHEDULED: <2021-04-12 周一 20:31>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "CANCELED"   from "TODO"       [2021-04-12 周一 21:15] \\
+  缺少库文件walker
+**** CANCELED 小头像
+CLOSED: [2021-04-12 周一 21:15] SCHEDULED: <2021-04-12 周一 21:15>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "CANCELED"   from "TODO"       [2021-04-12 周一 21:15] \\
+  缺少库文件touxiangnew
+**** CANCELED 特效库
+CLOSED: [2021-04-12 周一 21:15] SCHEDULED: <2021-04-12 周一 21:15>
+:PROPERTIES:
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "CANCELED"   from "TODO"   [2021-04-12 周一 21:15] \\
+  缺少库文件effect
+**** CANCELED 物品框 
+CLOSED: [2021-04-12 周一 21:16] SCHEDULED: <2021-04-12 周一 21:15>
+:PROPERTIES:
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "CANCELED"   from "TODO"   [2021-04-12 周一 21:16] \\
+  缺少库文件dlgitem
+*** TODO UI大作业
+SCHEDULED: <2021-04-13 周二 21:15> DEADLINE: <2021-04-14 周三 21:00>
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
 :END:
-*** WAIT UI大作业
-DEADLINE: <2021-04-14 周三 21:00>
-:PROPERTIES:
-:TRIGGER+: parent todo!(DONE)
-:END:
+**** WAIT 完成第一个UI
+***** WAIT 其他功能
+****** TODO 一级界面自定义模板
+****** TODO 居中显示
+****** TODO ESC关闭
+****** TODO 屏幕内可拖动
+****** TODO 有两组按钮关联两个layer
+***** WAIT 完成Layer1
+****** TODO 富文本
+****** TODO 自定义物品框
+****** TODO 滚动框
+****** TODO 下拉组件框
+***** WAIT 完成Layer2
+****** TODO 3*3滚动列表
+**** TODO 完成第二个UI
 
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 学习 利为游戏引擎                                     :learn:
