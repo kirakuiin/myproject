@@ -1,6 +1,6 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW
-#+TAGS: { Live: date(d) event(e) shopping(s) }
-#+TAGS: { State: future(f) }
+#+TAGS: { Live : date(d) event(e) shopping(s) }
+#+TAGS: { State : future(f) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c@)
 #+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
 

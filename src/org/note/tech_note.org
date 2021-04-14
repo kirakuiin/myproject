@@ -1,15 +1,53 @@
-#+STARTUP: INDENT LOGDONE OVERVIEW
-#+TAGS: git(g)
+#+STARTUP: INDENT OVERVIEW
+#+TAGS: { Tools : git(g) svn(s) }
+#+TAGS: { Concept : uml(u) }
 
-* 工具相关
+* 工具相关                                                            :Tools:
 ** 更好看的git log                                                    :git:
 在终端输入:
    #+BEGIN_SRC bash
      git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
    #+END_SRC
-** windows10 svn不显示状态图标                                        :git:
+** windows10 svn不显示状态图标                                        :svn:
 1. 打开注册表regedit
 2. 找到注册表HKEY_LOCAL_MACHINE->SOFTWARE->Microsoft->Windows->CurrentVersion->Explorer->ShellIconOverlayIdentifiers
 3. 在所有Tortoisesvn系列的项上重命名, 在其名字前添加若干空格(空格越多优先级越高)直至将相关项移动到此表的前段
 4. 重启explorer进程
 注意: 如果你的Tortoisesvn系列项已经在前段了, 重启explorer进程依旧不显示图标, 那么打开Tortoisesvn的设置->图标覆盖->状态缓存, 将选项改成Windows外壳
+
+* 概念相关                                                          :Concept:
+** UML图                                                              :uml:
+*** 类图
+用来描述类和类之间关系的UML图
+- 类的属性 :: +|-|# name: type [= default_value]
+- 类的方法 :: +|-|# name(args list) [: return_type]
+- 类的关系(由强到弱)
+  - 泛化(Generalization) :: 指继承关系, 实线空心三角箭头, 由子类指向父类
+  - 实现(Realization) :: 指接口继承, 子类必须实现父类接口, 虚线空心三角箭头, 由子类指向父类
+  - 组合(Aggregation) :: 表明部分是整体的一部分, 且部分无法脱离整体单独存在, 实心棱形三角箭头, 棱形指向整体
+  - 聚合(Composition) :: 表明部分是整体的一部分, 部分可以脱离整体存在, 空心棱形三角箭头, 棱形指向整体
+  - 关联(Association) :: 指两个类之间有了解, 单向实线箭头指向被了解者, 双向实线
+  - 依赖(Dependency) :: 使用关系, 虚线三角箭头, 指向被使用者
+  效果图:
+  [[file:~/myproject/src/org/res/image/uml_class_diagrapm.png]]
+*** 时序图
+描述对象之间发送消息的时间顺序显示多个对象之间的动态协作的UML图
+- 角色(Actor) :: 系统角色, 可以是人或者其他系统和子系统, 以一个小人图标表示
+- 对象(Object) :: 对象位于时序图的顶部, 以一个矩形表示
+- 生命线(LifeLine) :: 时序图中每个对象和底部中心都有一条垂直的虚线, 以一条垂直的
+  虚线表
+- 控制焦点(Activation) :: 控制焦点代表时序图中在对象时间线上某段时期执行的操作,
+  以一个很窄的矩形表示
+- 消息(Message) :: 表示对象之间发送的信息, 消息分为三种类型:
+  * 同步消息(Synchronous Message)消息的发送者把控制传递给消息的接收者, 然后停止
+    活动, 等待消息的接收者放弃或者返回控制. 用来表示同步的意义. 以一条实线和实心
+    箭头表示
+  * 异步消息(Asynchronous Message)消息发送者通过消息把信号传递给消息的接收者, 然
+    后继续自己的活动, 不等待接受者返回消息或者控制. 异步消息的接收者和发送者是并
+    发工作的. 以一条实线和大于号表示
+  * 返回消息(Return Message)返回消息表示从过程调用返回. 以小于号和虚线表示
+- 自关联消息 :: 表示方法的自身调用或者一个对象内的一个方法调用另外一个方法. 以一
+  个半闭合的长方形+下方实心箭头表示
+效果图:
+[[file:../res/image/uml_sequence_diagram.png]]
+    
