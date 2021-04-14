@@ -18,13 +18,14 @@ SCHEDULED: <2021-04-19 周一 09:00 ++1w> DEADLINE: <2021-04-19 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-14 周三 19:00 ++1d> DEADLINE: <2021-04-14 周三 21:20 ++1d>
+SCHEDULED: <2021-04-15 周四 19:00 ++1d> DEADLINE: <2021-04-15 周四 21:20 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-13 周二 22:52]
+:LAST_REPEAT: [2021-04-14 周三 23:01]
 :END:
 
 
+- State "DONE"       from "TODO"       [2021-04-14 周三 23:01]
 - State "DONE"       from "TODO"       [2021-04-13 周二 22:52]
 - State "DONE"       from "TODO"       [2021-04-12 周一 21:26]
 - State "CANCELED"   from "TODO"       [2021-04-11 周日 18:53] \\
@@ -242,16 +243,21 @@ CLOCK: [2021-04-14 周三 13:03]--[2021-04-14 周三 13:23] =>  0:20
   3. 注释诠释用法
   4. 命名表明含义
   5. 合理控制深度
-*** TODO 网络交互
-SCHEDULED: <2021-04-14 周三 17:25>
+*** DONE 网络交互
+CLOSED: [2021-04-14 周三 22:57] SCHEDULED: <2021-04-14 周三 17:25>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
+- State "DONE"       from "TODO"       [2021-04-14 周三 22:57]
 :LOGBOOK:
 CLOCK: [2021-04-14 周三 19:39]--[2021-04-14 周三 20:04] =>  0:25
 CLOCK: [2021-04-14 周三 19:04]--[2021-04-14 周三 19:29] =>  0:25
 :END:
-*** WAIT 观察者+信号
+*** TODO 观察者+信号
+SCHEDULED: <2021-04-15 周四 22:57>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
 *** WAIT MVC框架
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
