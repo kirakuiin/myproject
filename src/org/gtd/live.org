@@ -1,13 +1,14 @@
-#+STARTUP: INDENT LOGDONE OVERVIEW
+#+STARTUP: INDENT LOGDONE OVERVIEW NOLOGREFILE
 #+TAGS: { Live : date(d) event(e) shopping(s) }
 #+TAGS: { State : future(f) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c@)
-#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+#+COLUMNS: %25ITEM %TODO %17Effort(Estimated Effort){:} %CLOCKSUM
+#+PROPERTY: EffORT_ALL 0 0:15 0:30 1:00 2:00 4:00 8:00
 
 
 * Inbox
 * Next Action
-** TODO [#C] 大壮名城G1-1018租房日志                                :event:
+** TODO [#A] 大壮名城G1-1018租房日志                                :event:
 DEADLINE: <2021-04-18 周日 23:00 +1w> SCHEDULED: <2021-04-17 周六 09:00 +1w>
 :PROPERTIES:
 :LOGGING: DONE(@)
@@ -16,6 +17,33 @@ DEADLINE: <2021-04-18 周日 23:00 +1w> SCHEDULED: <2021-04-17 周六 09:00 +1w>
   1. 每个月通过大壮名城物业缴纳电费, 水+物业费. 今天水+物业费有103元的残余, 和房东约定这个月我来缴, 明年的4月份房东来缴纳.
   2. 房间里的马桶坏了, 电磁炉可能坏了, 阳台灯坏了
   3. 本月电费50, 物业+水103
+** TODO [#A] 归档并回顾一周的计划                                   :event:
+DEADLINE: <2021-04-18 周日 23:00 ++1w> SCHEDULED: <2021-05-02 周日 06:00 ++1w>
+:PROPERTIES:
+:STYLE:    habit
+:LOGGING: logrepeat DONE(@)
+:LAST_REPEAT: [2021-04-11 周日 19:36]
+:END:
+- State "DONE"       from "TODO"       [2021-04-11 周日 19:36] \\
+  1. org-mode大概学了50%左右, 确实是一个重量级的GTD工具
+  2. 完成了利为引擎的所有小作业
+  3. 完成了一部分UI编程的作业
+  ------------------------------------------------
+  1. 顺利搬家到大壮名城, 离公司很近
+  2. 家具基本置办齐全, 电脑相关的东西以后再考虑
+- State "DONE"       from "TODO"       [2021-04-04 周日 19:35] \\
+  1. 对使用org-mode进行gtd进行了较为充分的学习, 基本掌握了用法.
+  2. 重新读了一遍《python核心编程》, 加深了对py一些基本概念的理解.
+  3. 完成了python的入职考试, python150题.
+  4. 初步学习了一下利为引擎, 当然除了开始的几章还有例子可以参考, 后面写的太简略了.
+  ------------------------------------------------
+  5. 自行车从家里邮过来之后组好, 送到车店保养.
+** TODO [#A] 每月归档到年度文件                                     :event:
+DEADLINE: <2021-04-30 周五 23:00 ++1m> SCHEDULED: <2021-04-30 周五 09:00 ++1m>
+:PROPERTIES:
+:STYLE:    habit
+:LOGGING: logrepeat DONE(@)
+:END:
 ** WAIT [#B] 购买家具用品 [81%]                                  :shopping:
 SCHEDULED: <2021-05-10 Mon 09:00>
 :PROPERTIES:

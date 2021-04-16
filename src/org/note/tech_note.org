@@ -51,3 +51,106 @@
 效果图:
 [[file:../res/image/uml_sequence_diagram.png]]
     
+** PlantUML语法                                                       :uml:
+*** 类图
+#+BEGIN_SRC plantuml
+@startuml
+/' ========== 定义 ========== '/
+/'这种格式是注释'/
+skinparam packageStyle rectangle /'全局包样式, 可以为rectangle, database, folder'/
+                                 /'cloud, frame, node等样式'/
+package Package <<node>> #FF0000{ /'包, 其中Package是名字, <<xxx>> 代表样式
+                                  /'#开头的3个8位16进制数代表颜色, 可以用#red这种预定义的颜色'/
+class Object <<template>> #red-blue{ /'类图 <<>>之间为模板 #后面代表颜色渐变  '/
+-- annotation -- /'注解'/
+- type private_data /'-代表private'/
+.. annotation .. /'注解'/
++ int public_method(int, int) /'+代表public, 参数用逗号隔开 '/
+__ /'单分割线'/
+# void protect_method() /'#代表protected'/
+== /'双分隔线'/
+~ package_private_method() /'~代表package_private'/
+.. /'省略号'/
+}
+note left: This is class Object /'类图的左边会出现笔记, 同理right, bottom, top'/
+
+class ChildObject <? extends int> {} /'定义泛型'/
+
+abstract class ABC { /'这是抽象类'/
+- int private_data
++ {static} int static_member /'静态成员'/
++ {static} static_method() /'静态方法'/
++ {abstract} abstract_method() /'抽象方法'/
+}
+
+note "This is interface" as inf_note /'定义note为inf_note'/
+interface Interface { /'这是接口, 不能有非静态成员, 所有方法必须为公开抽象方法'/
++ {static} static_member /'静态成员'/
++ {abstract} abstract_method() /'抽象方法'/
+}
+Interface .. inf_note /'关联note到Interface上'/
+
+enum Enum { /'这是枚举'/
+ENUM_1
+ENUM_2
+}
+
+set namespaceSeparator :: /'定义命名空间分隔符, 默认为.'/
+namespace namespace_1 <<cloud>> #blue { /'这是命名空间, 不同包之间不允许同名类出现, 而这个可以'/
+class Nm1Object {}
+}
+class namespace_2::Nm2Object {} /'隐式定义命名空间'/
+/' ========== 关系 ========== '/
+Animal <|-- Bird /'泛化关系'/
+Fly <|.. Bird /'实现关系'/
+Bird "1"*--"2" Wings /'组合关系'/
+Nest "1"o--"n" Bird  /'聚合关系'/
+Bird "1"-->"1" Climate : 鸟类活动和气候有关 /'关联关系'/
+Animal ..> Water : 鸟类需要水 > /'依赖关系'/
+Bold -[bold]- Bold /'任意关系的--和..之间可以加上[config]来设置线的样式'/
+                   /'如bold, dotted, dashed, hidden, plain, #red等'/
+}
+@enduml
+#+END_SRC
+*** 时序图
+#+BEGIN_SRC plantuml
+@startuml
+/'这是注释'/
+participant as Foo #red   /'指定参与者, 重命名为Foo, 颜色为红色'/
+actor "a 1" as Foo1       /'指定角色, 名称加引号可以包含非字母符号'/
+boundary Foo2 #blue       /'指定边界, 一般指交互部分, 颜色为蓝色/
+control     as Foo3       /'指定控制'/
+entity      as Foo4       /'指定实体, 一般指内部对象'/
+database    as Foo5       /'指定数据库'/
+collections as Foo6       /'指定集合'/
+queue       as Foo7       /'指定队列'/
+/'以上命令影响对象的图案'/
+autonumber 10 5 /'消息自动编号, 从10开始, 间隔5'/
+Foo --> Foo1 ++ : To actor   /'虚线 激活生命线'/
+Foo1 --> Foo2 -- : To Foo2  /' 销毁生命线'/
+Foo -> New ** : Create /'创建目标实例'/
+Foo -> New !! : Destroy /'销毁目标实例'/
+Foo2 --> Foo1 --++ #gold : Oops /'同时创建销毁, 生命线颜色为金色'/
+note left: this is a not /'单行note, 参数可以为right'/
+Foo -> Foo2 : To boundary /'实线'/
+return : 返回数据 /' 相当于Foo2 --> Foo --'/
+...延迟...  /'延迟图案'/
+Foo -[#red]> Foo3 : To control\n  /'红色箭头, 消息换行'/
+newpage /'分页'/
+Foo ->x Foo4 : To entity  /'丢失消息'/
+||| /'额外垂直空间'/
+alt condition1  /'条件分组'/
+    Foo ->> Foo5 : To database /'细箭头'/
+else condition2  /'否则分组'/
+    Foo <-> Foo6 : To collections /'双向箭头'/
+    loop 1000 /'循环'/
+        Foo -/ Foo7 : To queue /'半边箭头'/
+    end /'loop 结束'/
+    group my-group /'自定义分组'/
+    Foo -> Foo /'自循环'/
+    end
+end /'alt 结束'/
+[->Foo : 单向消息 /'不关心来源'/
+Foo->] : 单向消息 /'不关心接受方'/
+@enduml
+#+END_SRC
