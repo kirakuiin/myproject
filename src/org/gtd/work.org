@@ -44,14 +44,15 @@ SCHEDULED: <2021-04-17 周六 19:00 ++1d> DEADLINE: <2021-04-17 周六 21:20 ++1
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-04-17 周六 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                    :learn:
+SCHEDULED: <2021-04-18 Sun 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-16 周五 09:50]
+:LAST_REPEAT: [2021-04-17 Sat 09:47]
 :END:
+- State "DONE"       from "TODO"       [2021-04-17 Sat 09:47]
 - State "DONE"       from "TODO"       [2021-04-16 周五 09:50]
 - State "DONE"       from "TODO"       [2021-04-15 周四 09:30]
 - State "DONE"       from "TODO"       [2021-04-14 周三 09:23]
@@ -207,7 +208,6 @@ DEADLINE: <2021-10-01 周五>
 |   | keyboard    |       |       |       |
 |   | earphone    |       |       |       |
 #+TBLFM: $3 = $4
-
 
 * Project
 ** SCH 客户端常用功能                                               :learn:

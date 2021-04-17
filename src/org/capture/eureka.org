@@ -1,1 +1,2 @@
-* Eureka
+#+STARTUP: INDENT CONTENT
+* Inbox

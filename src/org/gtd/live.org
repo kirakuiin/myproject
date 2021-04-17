@@ -8,8 +8,8 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 大壮名城G1-1018租房日志                                :event:
-DEADLINE: <2021-04-18 周日 23:00 +1w> SCHEDULED: <2021-04-17 周六 09:00 +1w>
+** TODO [#A] 大壮名城G1-1018租房月志                                 :event:
+DEADLINE: <2021-04-11 Sun 23:00 +1m> SCHEDULED: <2021-04-10 Sat 09:00 +1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
