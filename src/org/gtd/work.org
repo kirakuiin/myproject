@@ -19,11 +19,12 @@ SCHEDULED: <2021-04-19 周一 09:00 ++1w> DEADLINE: <2021-04-19 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-17 周六 19:00 ++1d> DEADLINE: <2021-04-17 周六 21:20 ++1d>
+SCHEDULED: <2021-04-18 周日 19:00 ++1d> DEADLINE: <2021-04-18 周日 21:20 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-16 周五 21:55]
+:LAST_REPEAT: [2021-04-17 周六 18:50]
 :END:
+- State "DONE"       from "TODO"       [2021-04-17 周六 18:50]
 - State "DONE"       from "TODO"       [2021-04-16 周五 21:55]
 - State "DONE"       from "TODO"       [2021-04-15 周四 22:01]
 - State "DONE"       from "TODO"       [2021-04-14 周三 23:01]
@@ -95,8 +96,18 @@ SCHEDULED: <2021-04-18 周日 19:00 ++1d/2d>
 - State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
 - State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
 - State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
-** TODO [#A] 资源类型学习                                           :learn:
-SCHEDULED: <2021-04-17 周六 13:00>
+** DONE [#A] 资源类型学习                                           :learn:
+CLOSED: [2021-04-17 周六 17:30] SCHEDULED: <2021-04-17 周六 13:00>
+- State "DONE"       from "TODO"       [2021-04-17 周六 17:30]
+:LOGBOOK:
+CLOCK: [2021-04-17 周六 17:12]--[2021-04-17 周六 17:30] =>  0:18
+CLOCK: [2021-04-17 周六 16:42]--[2021-04-17 周六 17:07] =>  0:25
+CLOCK: [2021-04-17 周六 16:12]--[2021-04-17 周六 16:37] =>  0:25
+CLOCK: [2021-04-17 周六 15:42]--[2021-04-17 周六 16:07] =>  0:25
+CLOCK: [2021-04-17 周六 14:37]--[2021-04-17 周六 15:02] =>  0:25
+CLOCK: [2021-04-17 周六 14:07]--[2021-04-17 周六 14:32] =>  0:25
+CLOCK: [2021-04-17 周六 13:17]--[2021-04-17 周六 13:42] =>  0:25
+:END:
 ** Archive                                                        :ARCHIVE:
 *** DONE [#C] 学习org-edna                                          :learn:
 CLOSED: [2021-04-04 周日 11:46] DEADLINE: <2021-04-04 周日 12:00> SCHEDULED: <2022-04-03 周日 21:00>
@@ -225,7 +236,7 @@ CLOSED: [2021-04-16 周五 17:36] SCHEDULED: <2021-04-16 周五 17:10>
 CLOCK: [2021-04-16 周五 17:11]--[2021-04-16 周五 17:36] =>  0:25
 :END:
 *** TODO 导表工具
-SCHEDULED: <2021-04-17 周六 17:36>
+SCHEDULED: <2021-04-18 周日 17:36>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:

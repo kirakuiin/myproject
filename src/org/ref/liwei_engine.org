@@ -47,6 +47,18 @@
 强引用非常容易导致进程阻塞
 *** spine对象最后调用的AddAnimation如果不循环的话, 会导致动画停止
 *** CTextObject和CUIEditText直接构造会报错
+*** 单个摄像机渲染顺序
+GlobalZ < 0 的任何对象
+         ↓   
+GlobalZ == 0 的无透明的3d网格对象
+         ↓   
+GlobalZ == 0 的透明3d网格对象, 以及从属的CSprite等2d对象
+         ↓   
+GlobalZ == 0 的其他任何对象
+         ↓   
+GlobalZ == 0 且设置了SetIsNoDepthTest(True)的对象
+         ↓   
+GlobalZ > 0 的任何对象
 ** UI规范
 *** 命名
 **** 文件命名
