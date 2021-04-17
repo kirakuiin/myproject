@@ -9,7 +9,7 @@
 * Inbox
 * Next Action
 ** TODO [#A] 大壮名城G1-1018租房月志                                 :event:
-DEADLINE: <2021-04-11 Sun 23:00 +1m> SCHEDULED: <2021-04-10 Sat 09:00 +1m>
+DEADLINE: <2021-05-12 周三 23:00 +1m> SCHEDULED: <2021-05-12 周三 09:00 +1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
@@ -18,12 +18,20 @@ DEADLINE: <2021-04-11 Sun 23:00 +1m> SCHEDULED: <2021-04-10 Sat 09:00 +1m>
   2. 房间里的马桶坏了, 电磁炉可能坏了, 阳台灯坏了
   3. 本月电费50, 物业+水103
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2021-04-18 周日 23:00 ++1w> SCHEDULED: <2021-05-02 周日 06:00 ++1w>
+DEADLINE: <2021-04-25 周日 23:00 ++1w> SCHEDULED: <2021-04-24 周六 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2021-04-11 周日 19:36]
+:LAST_REPEAT: [2021-04-17 周六 23:21]
 :END:
+- State "DONE"       from "TODO"       [2021-04-17 周六 23:21] \\
+  1. 学习UI基础, 完成了UI大作业
+  2. 学习UI制作经验分享
+  3. 学习代码设计, 学会了plantuml类图和时序图的语法, 完成了mvsn作业
+  4. 学习了基本资源类型(Sprite3d, Particle3d, 等等)
+  5. 学习了文本链接和导表的用法, 完成了导表作业
+  ------------------------------------------------
+  1. 打扫了新的公寓, 弄得比较干净了
 - State "DONE"       from "TODO"       [2021-04-11 周日 19:36] \\
   1. org-mode大概学了50%左右, 确实是一个重量级的GTD工具
   2. 完成了利为引擎的所有小作业
@@ -182,8 +190,11 @@ CLOSED: [2021-04-03 周六 12:00]
 :ARCHIVE_TIME: 2021-04-04 周日 21:20
 :END:
 <2021-04-03 Sat 10:00>
-** DONE [#C] 大扫除                                                 :event:
+*** DONE [#C] 大扫除                                                :event:
 CLOSED: [2021-04-13 周二 08:40] SCHEDULED: <2021-04-12 周一 23:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-17 周六 23:41
+:END:
 - State "DONE"       from "TODO"       [2021-04-13 周二 08:40]
 * Project
 ** Archive                                                        :ARCHIVE:

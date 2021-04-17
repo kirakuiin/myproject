@@ -10,20 +10,23 @@
 ** WAIT 项目调试工具                                                :learn:
 * Next Action
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-04-19 周一 09:00 ++1w> DEADLINE: <2021-04-19 周一 12:00 ++1w>
+SCHEDULED: <2021-04-24 周六 18:00 ++1w> DEADLINE: <2021-04-26 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-12 周一 10:47]
+:LAST_REPEAT: [2021-04-17 周六 23:29]
 :END:
+- State "DONE"       from "TODO"       [2021-04-17 周六 23:29]
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-18 周日 19:00 ++1d> DEADLINE: <2021-04-18 周日 21:20 ++1d>
+SCHEDULED: <2021-04-19 周一 19:00 ++1d> DEADLINE: <2021-04-19 周一 21:20 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-17 周六 18:50]
+:LAST_REPEAT: [2021-04-17 周六 23:47]
 :END:
+- State "CANCELED"   from "TODO"       [2021-04-17 周六 23:47] \\
+  放假
 - State "DONE"       from "TODO"       [2021-04-17 周六 18:50]
 - State "DONE"       from "TODO"       [2021-04-16 周五 21:55]
 - State "DONE"       from "TODO"       [2021-04-15 周四 22:01]
@@ -96,18 +99,6 @@ SCHEDULED: <2021-04-18 周日 19:00 ++1d/2d>
 - State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
 - State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
 - State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
-** DONE [#A] 资源类型学习                                           :learn:
-CLOSED: [2021-04-17 周六 17:30] SCHEDULED: <2021-04-17 周六 13:00>
-- State "DONE"       from "TODO"       [2021-04-17 周六 17:30]
-:LOGBOOK:
-CLOCK: [2021-04-17 周六 17:12]--[2021-04-17 周六 17:30] =>  0:18
-CLOCK: [2021-04-17 周六 16:42]--[2021-04-17 周六 17:07] =>  0:25
-CLOCK: [2021-04-17 周六 16:12]--[2021-04-17 周六 16:37] =>  0:25
-CLOCK: [2021-04-17 周六 15:42]--[2021-04-17 周六 16:07] =>  0:25
-CLOCK: [2021-04-17 周六 14:37]--[2021-04-17 周六 15:02] =>  0:25
-CLOCK: [2021-04-17 周六 14:07]--[2021-04-17 周六 14:32] =>  0:25
-CLOCK: [2021-04-17 周六 13:17]--[2021-04-17 周六 13:42] =>  0:25
-:END:
 ** Archive                                                        :ARCHIVE:
 *** DONE [#C] 学习org-edna                                          :learn:
 CLOSED: [2021-04-04 周日 11:46] DEADLINE: <2021-04-04 周日 12:00> SCHEDULED: <2022-04-03 周日 21:00>
@@ -177,7 +168,6 @@ CLOSED: [2021-03-31 周三 12:44] DEADLINE: <2021-04-03 周六 22:00>
 :ARCHIVE_TIME: 2021-04-04 周日 21:12
 :END:
 
-
 *** DONE [#A] 学习神武项目简介                                      :learn:
 CLOSED: [2021-04-09 周五 10:50] DEADLINE: <2021-04-09 周五 21:00> SCHEDULED: <2021-04-09 周五 09:00>
 :PROPERTIES:
@@ -191,10 +181,26 @@ CLOSED: [2021-04-11 周日 18:30] DEADLINE: <2021-04-11 周日 23:00> SCHEDULED:
 :ARCHIVE_TIME: 2021-04-11 周日 23:21
 :END:
 - State "DONE"       from "TODO"       [2021-04-11 周日 18:30]
-** DONE [#A] 学习UI制作经验分享                                     :learn:
+*** DONE [#A] 资源类型学习                                          :learn:
+CLOSED: [2021-04-17 周六 17:30] SCHEDULED: <2021-04-17 周六 13:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-17 周六 23:41
+:END:
+- State "DONE"       from "TODO"       [2021-04-17 周六 17:30]
+:LOGBOOK:
+CLOCK: [2021-04-17 周六 17:12]--[2021-04-17 周六 17:30] =>  0:18
+CLOCK: [2021-04-17 周六 16:42]--[2021-04-17 周六 17:07] =>  0:25
+CLOCK: [2021-04-17 周六 16:12]--[2021-04-17 周六 16:37] =>  0:25
+CLOCK: [2021-04-17 周六 15:42]--[2021-04-17 周六 16:07] =>  0:25
+CLOCK: [2021-04-17 周六 14:37]--[2021-04-17 周六 15:02] =>  0:25
+CLOCK: [2021-04-17 周六 14:07]--[2021-04-17 周六 14:32] =>  0:25
+CLOCK: [2021-04-17 周六 13:17]--[2021-04-17 周六 13:42] =>  0:25
+:END:
+*** DONE [#A] 学习UI制作经验分享                                    :learn:
 CLOSED: [2021-04-13 周二 10:21] DEADLINE: <2021-04-13 周二 11:35> SCHEDULED: <2021-04-13 周二 09:00>
 :PROPERTIES:
 :FILE:     [[file:../ref/liwei_engine.org::*UI规范][UI规范]]
+:ARCHIVE_TIME: 2021-04-17 周六 23:41
 :END:
 - State "DONE"       from "TODO"       [2021-04-13 周二 10:21]
 * Appointment
@@ -222,7 +228,7 @@ DEADLINE: <2021-10-01 周五>
 
 * Project
 ** SCH 客户端常用功能                                               :learn:
-DEADLINE: <2021-04-20 周二 21:00> SCHEDULED: <2021-04-16 周五 17:10>
+DEADLINE: <2021-04-19 周一 21:00> SCHEDULED: <2021-04-16 周五 17:10>
 :PROPERTIES:
 :EFFORT: 4:00
 :END:
@@ -235,14 +241,22 @@ CLOSED: [2021-04-16 周五 17:36] SCHEDULED: <2021-04-16 周五 17:10>
 :LOGBOOK:
 CLOCK: [2021-04-16 周五 17:11]--[2021-04-16 周五 17:36] =>  0:25
 :END:
-*** TODO 导表工具
-SCHEDULED: <2021-04-18 周日 17:36>
+*** DONE 导表工具
+CLOSED: [2021-04-17 周六 23:18] SCHEDULED: <2021-04-18 周日 17:36>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** WAIT 常用工具 [0/2]
+- State "DONE"       from "TODO"       [2021-04-17 周六 23:18]
+:LOGBOOK:
+CLOCK: [2021-04-17 周六 23:12]--[2021-04-17 周六 23:18] =>  0:06
+CLOCK: [2021-04-17 周六 22:42]--[2021-04-17 周六 23:07] =>  0:25
+CLOCK: [2021-04-17 周六 22:12]--[2021-04-17 周六 22:37] =>  0:25
+:END:
+*** TODO 常用工具 [0/2]
+SCHEDULED: <2021-04-18 周日 12:00>
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - [ ] 循环引用和Functor
 - [ ] 引擎IO和文件IO
@@ -374,8 +388,7 @@ CLOCK: [2021-03-31 周三 12:58]--[2021-03-31 周三 13:24] =>  0:26
 CLOCK: [2021-03-31 周三 10:19]--[2021-03-31 周三 11:37] =>  1:18
 :END:
 
-
-*** DONE 完成利为引擎各个模块的demo                                 :learn:
+*** DONE [#B] 完成利为引擎各个模块的demo                            :learn:
 CLOSED: [2021-04-08 周四 22:00] DEADLINE: <2021-04-08 Thu 21:00> SCHEDULED: <2021-04-06 周二 09:00>
 :PROPERTIES:
 :BLOCKER: children
@@ -421,10 +434,13 @@ CLOSED: [2021-04-08 周四 22:00] SCHEDULED: <2021-04-08 周四 21:34>
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 
-** DONE [#A] 学习代码设计                                           :learn:
+*** DONE [#A] 学习代码设计                                          :learn:
 CLOSED: [2021-04-16 周五 16:28] DEADLINE: <2021-04-15 周四 21:00> SCHEDULED: <2021-04-14 周三 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-04-17 周六 23:41
+:END:
 - State "DONE"       from "SCH"        [2021-04-16 周五 16:28]
-*** DONE OOP要点
+**** DONE OOP要点
 CLOSED: [2021-04-14 周三 17:25] SCHEDULED: <2021-04-14 周三 10:30>
 :PROPERTIES:
 :TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
@@ -442,7 +458,7 @@ CLOCK: [2021-04-14 周三 13:03]--[2021-04-14 周三 13:23] =>  0:20
   3. 注释诠释用法
   4. 命名表明含义
   5. 合理控制深度
-*** DONE 网络交互
+**** DONE 网络交互
 CLOSED: [2021-04-14 周三 22:57] SCHEDULED: <2021-04-14 周三 17:25>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
@@ -452,7 +468,7 @@ CLOSED: [2021-04-14 周三 22:57] SCHEDULED: <2021-04-14 周三 17:25>
 CLOCK: [2021-04-14 周三 19:39]--[2021-04-14 周三 20:04] =>  0:25
 CLOCK: [2021-04-14 周三 19:04]--[2021-04-14 周三 19:29] =>  0:25
 :END:
-*** DONE 观察者+信号
+**** DONE 观察者+信号
 CLOSED: [2021-04-15 周四 15:20] SCHEDULED: <2021-04-15 周四 09:50>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
@@ -461,7 +477,7 @@ CLOSED: [2021-04-15 周四 15:20] SCHEDULED: <2021-04-15 周四 09:50>
 :LOGBOOK:
 CLOCK: [2021-04-15 周四 14:50]--[2021-04-15 周四 15:15] =>  0:25
 :END:
-*** DONE MVC框架
+**** DONE MVC框架
 CLOSED: [2021-04-16 周五 16:28] SCHEDULED: <2021-04-15 周四 15:20>
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
@@ -486,14 +502,15 @@ CLOCK: [2021-04-15 周四 15:52]--[2021-04-15 周四 16:17] =>  0:25
 CLOCK: [2021-04-15 周四 15:20]--[2021-04-15 周四 15:45] =>  0:25
 :END:
 
-** DONE [#A] 学习UI基础                                             :learn:
+*** DONE [#A] 学习UI基础                                            :learn:
 CLOSED: [2021-04-13 周二 22:49] DEADLINE: <2021-04-14 周三 21:00> SCHEDULED: <2021-04-09 周五 10:00>
 :PROPERTIES:
 :TYPE_ALL: basic advance
+:ARCHIVE_TIME: 2021-04-17 周六 23:41
 :END:
 - State "DONE"       from "TODO"       [2021-04-13 周二 22:49]
 - State "DONE"       from "SCH"        [2021-04-12 周一 21:16]
-*** DONE UI编辑器入门
+**** DONE UI编辑器入门
 CLOSED: [2021-04-09 周五 20:20] SCHEDULED: <2021-04-09 周五 10:50> DEADLINE: <2021-04-09 周五 21:00>
 :PROPERTIES:
 :TRIGGER:  olp("work.org" "Project/学习UI基础/基础控件学习/动态数据") todo!(TODO) scheduled!("++0h")
@@ -502,44 +519,44 @@ CLOSED: [2021-04-09 周五 20:20] SCHEDULED: <2021-04-09 周五 10:50> DEADLINE:
 
 - State "DONE"       from "TODO"       [2021-04-09 周五 20:20]
 - State "DONE"       from "TODO"       [2021-04-09 周五 20:15]
-*** DONE 基础控件学习
+**** DONE 基础控件学习
 CLOSED: [2021-04-12 周一 19:59] DEADLINE: <2021-04-12 周一 11:35>
 :PROPERTIES:
 :TRIGGER:  olp("work.org" "Project/学习UI基础/自定义控件/Ani3动画") todo!(TODO) scheduled!("++0h")
 :TYPE: advance
 :END:
 - State "DONE"       from "WAIT"       [2021-04-12 周一 19:59]
-**** DONE 动态数据
+***** DONE 动态数据
 CLOSED: [2021-04-09 周五 20:21] SCHEDULED: <2021-04-09 周五 20:20>
 :PROPERTIES:
 :TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-09 周五 20:21]
-**** DONE 颜色层
+***** DONE 颜色层
 CLOSED: [2021-04-09 周五 21:43] SCHEDULED: <2021-04-09 周五 20:21>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-09 周五 21:43]
-**** DONE 按钮
+***** DONE 按钮
 CLOSED: [2021-04-10 周六 18:27] SCHEDULED: <2021-04-09 周五 21:43>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-10 周六 18:27]
-**** DONE 文本
+***** DONE 文本
 CLOSED: [2021-04-12 周一 11:14] SCHEDULED: <2021-04-10 周六 18:27>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-12 周一 11:14]
-**** DONE 定位器
+***** DONE 定位器
 CLOSED: [2021-04-12 周一 12:07] SCHEDULED: <2021-04-12 周一 11:14>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-12 周一 12:07]
-**** DONE 输入框
+***** DONE 输入框
 CLOSED: [2021-04-12 周一 15:04] SCHEDULED: <2021-04-12 周一 12:07>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
@@ -547,66 +564,66 @@ CLOSED: [2021-04-12 周一 15:04] SCHEDULED: <2021-04-12 周一 12:07>
 - State "DONE"       from "TODO"       [2021-04-12 周一 15:04] \\
   1.无法创建CUIEditText对象.
   2.SetOverLimitTips()会出现无法找到condition库的错误.
-**** DONE 图片
+***** DONE 图片
 CLOSED: [2021-04-12 周一 15:19] SCHEDULED: <2021-04-12 周一 15:04>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-12 周一 15:19]
-**** DONE 滚动框
+***** DONE 滚动框
 CLOSED: [2021-04-12 周一 16:48] SCHEDULED: <2021-04-12 周一 15:19>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-12 周一 16:48]
-**** DONE 进度条
+***** DONE 进度条
 CLOSED: [2021-04-12 周一 17:30] SCHEDULED: <2021-04-12 周一 16:48>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 
-**** DONE 抽象控件
+***** DONE 抽象控件
 CLOSED: [2021-04-12 周一 19:13] SCHEDULED: <2021-04-12 周一 17:30>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-12 周一 19:13] \\
   1. 直接创建CTextObject对象会报错.
-**** DONE Layout
+***** DONE Layout
 CLOSED: [2021-04-12 周一 19:59] SCHEDULED: <2021-04-12 周一 19:13> \\
 1. 要设置SetItemSize
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** DONE 自定义控件
+**** DONE 自定义控件
 CLOSED: [2021-04-12 周一 21:15]
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h")
 :END:
 - State "DONE"       from "WAIT"       [2021-04-12 周一 21:15]
 DEADLINE: <2021-04-13 周二 11:35>
-**** DONE Ani3动画
+***** DONE Ani3动画
 CLOSED: [2021-04-12 周一 20:31] SCHEDULED: <2021-04-12 周一 19:59>
 :PROPERTIES:
 :TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-12 周一 20:31]
-**** CANCELED Walker
+***** CANCELED Walker
 CLOSED: [2021-04-12 周一 21:15] SCHEDULED: <2021-04-12 周一 20:31>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "CANCELED"   from "TODO"       [2021-04-12 周一 21:15] \\
   缺少库文件walker
-**** CANCELED 小头像
+***** CANCELED 小头像
 CLOSED: [2021-04-12 周一 21:15] SCHEDULED: <2021-04-12 周一 21:15>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "CANCELED"   from "TODO"       [2021-04-12 周一 21:15] \\
   缺少库文件touxiangnew
-**** CANCELED 特效库
+***** CANCELED 特效库
 CLOSED: [2021-04-12 周一 21:15] SCHEDULED: <2021-04-12 周一 21:15>
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
@@ -614,7 +631,7 @@ CLOSED: [2021-04-12 周一 21:15] SCHEDULED: <2021-04-12 周一 21:15>
 :END:
 - State "CANCELED"   from "TODO"   [2021-04-12 周一 21:15] \\
   缺少库文件effect
-**** CANCELED 物品框 
+***** CANCELED 物品框 
 CLOSED: [2021-04-12 周一 21:16] SCHEDULED: <2021-04-12 周一 21:15>
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
@@ -622,55 +639,55 @@ CLOSED: [2021-04-12 周一 21:16] SCHEDULED: <2021-04-12 周一 21:15>
 :END:
 - State "CANCELED"   from "TODO"   [2021-04-12 周一 21:16] \\
   缺少库文件dlgitem
-*** DONE UI大作业
+**** DONE UI大作业
 CLOSED: [2021-04-13 周二 22:49] SCHEDULED: <2021-04-13 周二 11:00> DEADLINE: <2021-04-14 周三 21:00>
 :PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
 :END:
-**** DONE 完成第一个UI
+***** DONE 完成第一个UI
 CLOSED: [2021-04-13 周二 21:49]
 - State "DONE"       from "WAIT"       [2021-04-13 周二 21:49]
-***** DONE 其他功能
+****** DONE 其他功能
 CLOSED: [2021-04-13 周二 15:58]
 - State "DONE"       from "WAIT"       [2021-04-13 周二 15:58]
-****** DONE 一级界面自定义模板
+******* DONE 一级界面自定义模板
 CLOSED: [2021-04-13 周二 15:58]
 - State "DONE"       from "TODO"       [2021-04-13 周二 15:58]
-****** DONE 居中显示
+******* DONE 居中显示
 CLOSED: [2021-04-13 周二 15:58]
 - State "DONE"       from "TODO"       [2021-04-13 周二 15:58]
-****** DONE ESC关闭
+******* DONE ESC关闭
 CLOSED: [2021-04-13 周二 15:58]
 - State "DONE"       from "TODO"       [2021-04-13 周二 15:58]
-****** DONE 屏幕内可拖动
+******* DONE 屏幕内可拖动
 CLOSED: [2021-04-13 周二 15:58]
 - State "DONE"       from "TODO"       [2021-04-13 周二 15:58]
-****** DONE 有两组按钮关联两个layer
+******* DONE 有两组按钮关联两个layer
 CLOSED: [2021-04-13 周二 15:58]
 - State "DONE"       from "TODO"       [2021-04-13 周二 15:58]
-***** DONE 完成Layer1
+****** DONE 完成Layer1
 CLOSED: [2021-04-13 周二 21:49]
 - State "DONE"       from "WAIT"       [2021-04-13 周二 21:49]
-****** DONE 富文本
+******* DONE 富文本
 CLOSED: [2021-04-13 周二 15:58]
 - State "DONE"       from "TODO"       [2021-04-13 周二 15:58]
-****** CANCELED 自定义物品框
+******* CANCELED 自定义物品框
 CLOSED: [2021-04-13 周二 21:49]
 - State "CANCELED"   from "TODO"       [2021-04-13 周二 21:49] \\
   代码库里缺少文件dlgitem
-****** DONE 滚动框
+******* DONE 滚动框
 CLOSED: [2021-04-13 周二 21:44]
 - State "DONE"       from "TODO"       [2021-04-13 周二 21:44]
-****** DONE 下拉组件框
+******* DONE 下拉组件框
 CLOSED: [2021-04-13 周二 21:44]
 - State "DONE"       from "TODO"       [2021-04-13 周二 21:44]
-***** DONE 完成Layer2
+****** DONE 完成Layer2
 CLOSED: [2021-04-13 周二 21:43]
 - State "DONE"       from "WAIT"       [2021-04-13 周二 21:43]
-****** DONE 3*3滚动列表
+******* DONE 3*3滚动列表
 CLOSED: [2021-04-13 周二 17:24]
 - State "DONE"       from "TODO"       [2021-04-13 周二 17:24]
-**** DONE 完成第二个UI
+***** DONE 完成第二个UI
 CLOSED: [2021-04-13 周二 22:49]
 
 - State "DONE"       from "TODO"       [2021-04-13 周二 22:49] //
