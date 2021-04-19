@@ -8,7 +8,6 @@
 
 
 * Inbox
-** WAIT 项目调试工具                                                :learn:
 * Next Action
 ** TODO [#A] 完成每周周报                                            :work:
 SCHEDULED: <2021-04-24 周六 18:00 ++1w> DEADLINE: <2021-04-26 周一 12:00 ++1w>
@@ -21,11 +20,12 @@ SCHEDULED: <2021-04-24 周六 18:00 ++1w> DEADLINE: <2021-04-26 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-19 周一 19:00 ++1d> DEADLINE: <2021-04-19 周一 21:20 ++1d>
+SCHEDULED: <2021-04-20 周二 19:00 ++1d> DEADLINE: <2021-04-20 周二 21:20 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-17 周六 23:47]
+:LAST_REPEAT: [2021-04-19 周一 22:01]
 :END:
+- State "DONE"       from "TODO"       [2021-04-19 周一 22:01]
 - State "CANCELED"   from "TODO"       [2021-04-17 周六 23:47] \\
   放假
 - State "DONE"       from "TODO"       [2021-04-17 周六 18:50]
@@ -233,43 +233,72 @@ DEADLINE: <2021-10-01 周五>
 #+TBLFM: $3 = $4
 
 * Project
-** SCH 客户端常用功能                                               :learn:
-DEADLINE: <2021-04-19 周一 21:00> SCHEDULED: <2021-04-16 周五 17:10>
+** SCH 大作业                                                       :learn:
+DEADLINE: <2021-04-24 周六 21:00> SCHEDULED: <2021-04-19 周一 13:00>
 :PROPERTIES:
-:EFFORT: 4:00
-:END:
-*** DONE 文本链接功能
-CLOSED: [2021-04-16 周五 17:36] SCHEDULED: <2021-04-16 周五 17:10>
-:PROPERTIES:
-:TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-04-16 周五 17:36]
+:BLOCKER: children
+:END:                          
+*** DONE 阅读代码规范                                              :ATTACH:
+CLOSED: [2021-04-19 周一 15:01] SCHEDULED: <2021-04-19 周一 11:30>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:ID:       8d2f5874-274c-469c-94b2-b7deec102799
+:ATTACH: [[attachment:liwei_engine.org::*代码规范][代码规范]]
+:END:                          
+- State "DONE"       from "TODO"       [2021-04-19 周一 15:01]
 :LOGBOOK:
-CLOCK: [2021-04-16 周五 17:11]--[2021-04-16 周五 17:36] =>  0:25
+CLOCK: [2021-04-19 周一 13:40]--[2021-04-19 周一 14:05] =>  0:25
+CLOCK: [2021-04-19 周一 13:10]--[2021-04-19 周一 13:35] =>  0:25
 :END:
-*** DONE 导表工具
-CLOSED: [2021-04-17 周六 23:18] SCHEDULED: <2021-04-18 周日 17:36>
+*** DONE 搭建环境
+CLOSED: [2021-04-19 周一 15:40] SCHEDULED: <2021-04-19 周一 15:01>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-- State "DONE"       from "TODO"       [2021-04-17 周六 23:18]
+- State "DONE"       from "TODO"       [2021-04-19 周一 15:40]
 :LOGBOOK:
-CLOCK: [2021-04-17 周六 23:12]--[2021-04-17 周六 23:18] =>  0:06
-CLOCK: [2021-04-17 周六 22:42]--[2021-04-17 周六 23:07] =>  0:25
-CLOCK: [2021-04-17 周六 22:12]--[2021-04-17 周六 22:37] =>  0:25
+CLOCK: [2021-04-19 周一 15:02]--[2021-04-19 周一 15:27] =>  0:25
 :END:
-*** TODO 常用工具 [0/2]
-SCHEDULED: <2021-04-18 周日 12:00>
+*** DONE 阅读源码分析结构
+CLOSED: [2021-04-19 周一 15:58] SCHEDULED: <2021-04-19 周一 15:40>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-19 周一 15:58]
+:LOGBOOK:
+CLOCK: [2021-04-19 周一 15:30]--[2021-04-19 周一 15:55] =>  0:25
+:END:
+*** DONE 设计数据导表
+CLOSED: [2021-04-19 周一 17:15] SCHEDULED: <2021-04-19 周一 15:58>
 :PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-19 周一 17:15]
+:LOGBOOK:
+CLOCK: [2021-04-19 周一 17:01]--[2021-04-19 周一 17:15] =>  0:14
+CLOCK: [2021-04-19 周一 16:31]--[2021-04-19 周一 16:56] =>  0:25
+CLOCK: [2021-04-19 周一 16:01]--[2021-04-19 周一 16:26] =>  0:25
+:END:
+*** DONE 设计界面
+CLOSED: [2021-04-19 周一 22:01] SCHEDULED: <2021-04-19 周一 17:15>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-19 周一 22:01]
+- Note taken on [2021-04-19 周一 20:47] \\
+  按钮路径 Res/g3/newg3/hengfenye1.plist
+:LOGBOOK:
+CLOCK: [2021-04-19 周一 20:43]--[2021-04-19 周一 21:08] =>  0:25
+CLOCK: [2021-04-19 周一 20:13]--[2021-04-19 周一 20:38] =>  0:25
+CLOCK: [2021-04-19 周一 19:43]--[2021-04-19 周一 20:08] =>  0:25
+CLOCK: [2021-04-19 周一 19:13]--[2021-04-19 周一 19:38] =>  0:25
+:END:
+*** TODO 完成商城页面制作
+SCHEDULED: <2021-04-20 周二 22:01>
+:PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-- [ ] 循环引用和Functor
-- [ ] 引擎IO和文件IO
-** WAIT 大作业                                                      :learn:
-*** 阅读代码规范
-*** 搭建环境
-*** 完成商城页面制作
 ** ArChive                                                        :ARCHIVE:
 *** DONE [#A] 学习利为游戏引擎                               :learn:ATTACH:
 CLOSED: [2021-04-04 周日 21:05] DEADLINE: <2021-04-10 周六 21:00> SCHEDULED: <2021-04-02 周五 09:00>
@@ -701,6 +730,64 @@ CLOSED: [2021-04-13 周二 22:49]
 
 - State "DONE"       from "TODO"       [2021-04-13 周二 22:49] //
   好像有点问题, 缩放的比例有点不对劲, 先这样
+** DONE [#A] 学习调试工具                                           :learn:
+CLOSED: [2021-04-19 周一 11:24] SCHEDULED: <2021-04-19 周一 11:10> DEADLINE: <2021-04-19 周一 21:00>
+:PROPERTIES:
+:BLOCKER: children
+:END:                          
+- State "DONE"       from "SCH"        [2021-04-19 周一 11:24]
+:LOGBOOK:
+CLOCK: [2021-04-19 周一 11:13]--[2021-04-19 周一 11:25] =>  0:12
+:END:
+*** DONE 真机调试
+CLOSED: [2021-04-19 周一 11:17] SCHEDULED: <2021-04-19 周一 11:10>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+- State "DONE"       from "TODO"       [2021-04-19 周一 11:17]
+*** DONE 性能profile
+CLOSED: [2021-04-19 周一 11:24] SCHEDULED: <2021-04-19 周一 11:17>
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+** DONE 客户端常用功能                                              :learn:
+CLOSED: [2021-04-19 周一 10:56] DEADLINE: <2021-04-19 周一 21:00> SCHEDULED: <2021-04-16 周五 17:10>
+:PROPERTIES:
+:EFFORT: 4:00
+:END:
+- State "DONE"       from "SCH"        [2021-04-19 周一 10:56]
+*** DONE 文本链接功能
+CLOSED: [2021-04-16 周五 17:36] SCHEDULED: <2021-04-16 周五 17:10>
+:PROPERTIES:
+:TRIGGER: next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-16 周五 17:36]
+:LOGBOOK:
+CLOCK: [2021-04-16 周五 17:11]--[2021-04-16 周五 17:36] =>  0:25
+:END:
+*** DONE 导表工具
+CLOSED: [2021-04-17 周六 23:18] SCHEDULED: <2021-04-18 周日 17:36>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-17 周六 23:18]
+:LOGBOOK:
+CLOCK: [2021-04-17 周六 23:12]--[2021-04-17 周六 23:18] =>  0:06
+CLOCK: [2021-04-17 周六 22:42]--[2021-04-17 周六 23:07] =>  0:25
+CLOCK: [2021-04-17 周六 22:12]--[2021-04-17 周六 22:37] =>  0:25
+:END:
+*** DONE 常用工具 [2/2]
+CLOSED: [2021-04-19 周一 10:56] SCHEDULED: <2021-04-19 周一 10:00>
+:PROPERTIES:
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+:LOGBOOK:
+CLOCK: [2021-04-19 周一 10:30]--[2021-04-19 周一 10:55] =>  0:25
+:END:
+- [X] 循环引用和Functor
+- [X] 引擎IO和文件IO
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
 ** 学习《Lua程序设计》                                       :learn:future:

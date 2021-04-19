@@ -92,3 +92,98 @@ Wrong: m_happen, m_ID_Scroll
 **** 抽象控件可以将已经创建好的某个控件转为自定义控件
 **** 按F5可以快速重新加载
 **** 定位器用来定位子界面的位置, 无其他功能
+** 代码规范
+- 统一Tab缩进而不是4个空格
+- 每个函数之间使用两空行分隔
+- 使用utf-8, 文件头加上# -*- coding: utf-8 -*-
+- 换行符使用\r\n
+- import 独立一行, 不要用from xx import *语法
+- 导入顺序为: 标准库->引擎->基础->功能
+- 空格使用pep8规范
+- 对于代码技巧性的部分使用注释
+- 不允许直接打印变量(print), 采用打印接口打印
+- 每个语句独占一行
+- 命名:
+  1. 标识符采用英文命名
+  2. 函数命名像全局变量一样采用骆驼式, 动宾结构
+  3. 变量作用域越大, 名字携带的信息就越多
+  4. 全局变量g_开头, 后面采用骆驼式写法
+  5. 全局常量全部大写, 下划线连接单词
+  6. 实例对象临时添加属性, 所有字母小写
+  7. 成员变量m_开头, 后面采用骆驼式写法, 具体规则为:
+     #+NAME: class_member_naming_rules
+     | type   | prefix | suffix       | example      |
+     |--------+--------+--------------+--------------|
+     | real   |        |              | m_Number     |
+     | string |        |              | m_Name       |
+     | bool   | Is     |              | m_IsUpdate   |
+     | list   |        | List         | m_PlayerList |
+     | tuple  |        | List         | m_PlayerList |
+     | dict   |        | Dict         | m_PlayerDict |
+     | UI     | UI     | control type | m_UIStartBtn |
+  8. 普通变量亦采用骆驼式写法, 具体规则为:
+     | type   | prefix      | suffix | example     |
+     |--------+-------------+--------+-------------|
+     | real   | i, f        |        | iMaxVal     |
+     | string | s           |        | sName       |
+     | bool   | b           |        | bDone       |
+     | list   | (elem type) | List   | fTimeList   |
+     | tuple  | (elem type) | List   | sNameList   |
+     | dict   | (elem type) | Dict   | iPlayerDict |
+  9. 比较单例使用is或is not
+  10. 坚持使用return语句, 无内容返回则return None
+- 约定:
+  1. 回调函数除了OnClose均在代码里声明
+  2. 资源类型文件采用固定路径命名, 而不是可替换文本
+  3. 如果使用try, 则必须用misc.PrintContent()打印报错信息
+  4. 使用format来格式化字符串
+  5. TODO格式为: # TODO(your name)\r\n# Your purpose
+  6. 每行最大长度为100
+- 代码注释:
+  1. 针对引擎对象进行处理, 每当第二次赋值时采用注释
+      #+BEGIN_SRC python
+        self.m_EngineObj = CreateEngineObj()
+        self.m_EngineObjList.append(self.m_EngineObj)
+        # sefl.m_EngineObj.addDYRef() 
+      #+END_SRC
+  2. 所有对象释放的时候需要添加
+      #+BEGIN_SRC python
+        # decDYRef(self.m_EngineObj)
+        self.m_EngineObj = None
+        # decDYRefList(self.m_EngineObjList)
+        self.m_EngineObjList = []
+      #+END_SRC
+  3. 其他类接口来自增加引用和减少引用时不需要添加
+      #+BEGIN_SRC python
+        oSpr = CImage.node("xx")
+        self.m_ScrollBox.AppendItem(oSpr)
+      #+END_SRC
+  4. 如果不是新创建的对象, 则需要添加
+      #+BEGIN_SRC python
+        engineobj = self.m_EngineObj
+        self.m_ScrollBox.AppendItem(engineobj)
+        # engineobj.addDYRef()
+      #+END_SRC
+- 协议:
+  1. 不要在收发包之中做逻辑处理
+  2. 有子协议的统一定义获取子协议的接口
+  3. 不要定义多个接口使用同一个子协议号
+- 一级界面都要加入界面栈互斥管理组SetGroupDlg(True, "main")
+- url地址统一写到gameurl中
+- 避免重复造轮子
+- 使用mvc实现独立功能
+- 回调函数的触发一般放到最后面, 以防取到非最新数据
+- 不要直接在外部访问某个实例的类成员, 最好在类里统一封装出一个通用的Get接口
+- bug高发区:
+  * 界面所有属性需要提前定义, 不要动态创建
+  * deepcopy时要检查里面是否包含实例
+  * 最终呈现给玩家的字符串使用misc.GetLan("")包装
+  * 默认参数不用可变类型
+  * 不要遍历过程中删除可迭代容器内容
+  * 界面的Close, ModuleReset函数下不能创建对象
+  * 定时器是否可重入, 多次调用是否会生成多个定时器导致泄露
+  * 闭包是否有self引用导致循环
+  * C-S同步不要用倒计时
+- 性能问题:
+  * 不要用while True这种可能死循环的写法, 可以用一个比较大的数作为边界
+  * 刷新函数职能单一
