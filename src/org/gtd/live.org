@@ -52,20 +52,21 @@ DEADLINE: <2021-04-30 周五 23:00 ++1m> SCHEDULED: <2021-04-30 周五 09:00 ++1
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
 :END:
-** WAIT [#B] 购买家具用品 [81%]                                  :shopping:
+** WAIT [#B] 购买家具用品 [83%]                                  :shopping:
 SCHEDULED: <2021-05-10 Mon 09:00>
 :PROPERTIES:
 :BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :COOKIE_DATA: checkbox recursive
 :ORDERED: nil
 :END:
-- [X] 床上用品 [7/7]
+- [X] 床上用品 [8/8]
   - [X] 床褥 ::
   - [X] 被子 ::
   - [X] 被套 ::
   - [X] 枕套 ::
   - [X] 枕头 ::
   - [X] 床单 ::
+  - [X] 毛毯 ::
   - [X] 床刷 ::
 - [X] 洗涤用品 [21/21]
   - [X] 洗衣液 ::
@@ -97,10 +98,10 @@ SCHEDULED: <2021-05-10 Mon 09:00>
   - [X] 水杯 ::
   - [X] 剪刀 ::
   - [ ] 果盘 ::
-- [-] 家具 [2/7]
+- [-] 家具 [3/7]
   - [X] 床头灯 ::
   - [X] 挂钩 ::
-  - [ ] 床头柜 ::
+  - [X] 床头柜 ::
   - [ ] 桌子 ::
   - [ ] 人体工学椅子 ::
   - [ ] 普通凳子 ::

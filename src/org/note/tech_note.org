@@ -53,6 +53,9 @@
     
 ** PlantUML语法                                                       :uml:
 *** 类图
+:PROPERTIES:
+:LINK: [[https://plantuml.com/zh/class-diagram][类图]]
+:END:
 #+BEGIN_SRC plantuml
 @startuml
 /' ========== 定义 ========== '/
@@ -113,7 +116,10 @@ Bold -[bold]- Bold /'任意关系的--和..之间可以加上[config]来设置�
 @enduml
 #+END_SRC
 *** 时序图
-#+BEGIN_SRC plantuml
+:PROPERTIES:
+:LINK: [[https://plantuml.com/zh/sequence-diagram][时序图]] 
+:End:
+#+begin_SRC plantuml
 @startuml
 /'这是注释'/
 participant as Foo #red   /'指定参与者, 重命名为Foo, 颜色为红色'/
