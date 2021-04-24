@@ -1,4 +1,4 @@
-#+STARTUP: INDENT LOGDONE OVERVIEW NOLOGREFILE
+#+STARTUP: INDENT LOGDONE OVERVIEW NOLOGREFILE LATEXPREVIEW INLINEIMAGES
 #+TAGS: { Work : learn(l) work(w) }
 #+TAGS: { State : future(f) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c@)
@@ -6,6 +6,7 @@
 #+PROPERTY: EffORT_all 0 0:15 0:30 1:00 2:00 4:00 8:00
 #+PROPERTY: ATTACH
 #+CATEGORY: work
+#+OPTIONS: tex:t
 
 
 * Inbox
@@ -21,11 +22,14 @@ SCHEDULED: <2021-04-24 周六 18:00 ++1w> DEADLINE: <2021-04-26 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-23 周五 19:00 ++1d> DEADLINE: <2021-04-23 周五 23:59 ++1d>
+SCHEDULED: <2021-04-25 周日 19:00 ++1d> DEADLINE: <2021-04-25 周日 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-22 周四 23:07]
+:LAST_REPEAT: [2021-04-24 周六 10:35]
 :END:
+- State "CANCELED"   from "TODO"       [2021-04-24 周六 10:35] \\
+  放假
+- State "DONE"       from "TODO"       [2021-04-23 周五 23:14]
 - State "DONE"       from "TODO"       [2021-04-22 周四 23:07]
 - State "DONE"       from "TODO"       [2021-04-21 周三 22:20]
 - State "DONE"       from "TODO"       [2021-04-20 周二 20:57]
@@ -54,13 +58,15 @@ SCHEDULED: <2021-04-23 周五 19:00 ++1d> DEADLINE: <2021-04-23 周五 23:59 ++1
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-04-24 周六 19:00 ++1d>
+SCHEDULED: <2021-04-26 周一 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-22 周四 22:14]
+:LAST_REPEAT: [2021-04-24 周六 21:44]
 :END:
+- State "DONE"       from "TODO"       [2021-04-24 周六 21:44]
+- State "DONE"       from "TODO"       [2021-04-24 周六 10:42]
 - State "DONE"       from "TODO"       [2021-04-22 周四 22:14]
 - State "DONE"       from "TODO"       [2021-04-21 周三 22:24]
 - State "DONE"       from "TODO"       [2021-04-20 周二 22:07]
@@ -89,13 +95,15 @@ SCHEDULED: <2021-04-24 周六 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#C] 学习 org-mode                                   :learn:ATTACH:
-SCHEDULED: <2021-04-24 周六 19:00 ++1d/2d>
+SCHEDULED: <2021-04-26 周一 19:00 ++1d/2d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-22 周四 09:45]
+:LAST_REPEAT: [2021-04-24 周六 21:44]
 :ID:       6f5bc712-dafb-4bc3-87d1-6c308c2395c8
 :END:
+- State "DONE"       from "TODO"       [2021-04-24 周六 21:44]
+- State "DONE"       from "TODO"       [2021-04-24 周六 11:15]
 - State "DONE"       from "TODO"       [2021-04-22 周四 09:45]
 - State "DONE"       from "TODO"       [2021-04-21 周三 22:59]
 - State "DONE"       from "TODO"       [2021-04-20 周二 21:59]
@@ -225,38 +233,38 @@ CLOSED: [2021-04-13 周二 10:21] DEADLINE: <2021-04-13 周二 11:35> SCHEDULED:
 ** WAIT 组装一台性价比高的台式机用于开发和娱乐               :learn:future:
 DEADLINE: <2021-10-01 周五>
 - State "WAIT"       from "TODO"       [2021-04-10 周六 14:03] \\
-  1. 显卡太贵
+  1. 显卡太贵[fn:1]
   2. 没钱
+#+CAPTION[零件表]:
 #+NAME: PC_PRICES
 | N | component   | brand | model | price |
 |---+-------------+-------+-------+-------|
-| / | <3>         | <2>   | <2>   | <2>   |
-|   | motherboard |       |       |       |
-|   | fan         |       |       |       |
-|   | cpu         |       |       |       |
-|   | gpu         |       |       |       |
-|   | memory      |       |       |       |
-|   | ssd         |       |       |       |
-|   | power       |       |       |       |
-|   | case        |       |       |       |
-|   | monitor     |       |       |       |
-|   | keyboard    |       |       |       |
-|   | earphone    |       |       |       |
+| / | <3>         |   <2> | <2>   | <2>   |
+|   | motherboard |     0 |       |       |
+|   | fan         |     0 |       |       |
+|   | cpu         |     0 |       |       |
+|   | gpu         |     0 |       |       |
+|   | memory      |     0 |       |       |
+|   | ssd         |     0 |       |       |
+|   | power       |     0 |       |       |
+|   | case        |     0 |       |       |
+|   | monitor     |     0 |       |       |
+|   | keyboard    |     0 |       |       |
+|   | earphone    |     0 |       |       |
 #+TBLFM: $3 = $4
-
 * Project
 ** SCH 大作业                                                       :learn:
 DEADLINE: <2021-04-24 周六 21:00> SCHEDULED: <2021-04-19 周一 13:00>
 :PROPERTIES:
 :BLOCKER: children
-:END:                          
+:END:
 *** DONE 阅读代码规范                                              :ATTACH:
 CLOSED: [2021-04-19 周一 15:01] SCHEDULED: <2021-04-19 周一 11:30>
-:PROPERTIES:                          
+:PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :ID:       8d2f5874-274c-469c-94b2-b7deec102799
 :ATTACH: [[attachment:liwei_engine.org::*代码规范][代码规范]]
-:END:                          
+:END:
 - State "DONE"       from "TODO"       [2021-04-19 周一 15:01]
 :LOGBOOK:
 CLOCK: [2021-04-19 周一 13:40]--[2021-04-19 周一 14:05] =>  0:25
@@ -273,7 +281,7 @@ CLOCK: [2021-04-19 周一 15:02]--[2021-04-19 周一 15:27] =>  0:25
 :END:
 *** DONE 阅读源码分析结构
 CLOSED: [2021-04-19 周一 15:58] SCHEDULED: <2021-04-19 周一 15:40>
-:PROPERTIES:                          
+:PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-19 周一 15:58]
@@ -307,7 +315,7 @@ CLOCK: [2021-04-19 周一 19:13]--[2021-04-19 周一 19:38] =>  0:25
 :END:
 *** DONE 完成类设计
 CLOSED: [2021-04-20 周二 16:43] SCHEDULED: <2021-04-20 周二 10:00>
-:PROPERTIES:                          
+:PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-04-20 周二 16:43]
@@ -383,18 +391,36 @@ CLOCK: [2021-04-22 周四 11:01]--[2021-04-22 周四 11:26] =>  0:25
 CLOCK: [2021-04-22 周四 10:31]--[2021-04-22 周四 10:56] =>  0:25
 CLOCK: [2021-04-22 周四 10:01]--[2021-04-22 周四 10:26] =>  0:25
 :END:
-*** TODO 实现视图层
-SCHEDULED: <2021-04-23 周五 09:05>
+*** DONE 实现视图层
+CLOSED: [2021-04-23 周五 23:13] SCHEDULED: <2021-04-23 周五 09:05>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
+- State "DONE"       from "TODO"       [2021-04-23 周五 23:13]
 :LOGBOOK:
+CLOCK: [2021-04-23 周五 17:12]--[2021-04-23 周五 17:37] =>  0:25
+CLOCK: [2021-04-23 周五 16:42]--[2021-04-23 周五 17:07] =>  0:25
+CLOCK: [2021-04-23 周五 16:07]--[2021-04-23 周五 16:32] =>  0:25
+CLOCK: [2021-04-23 周五 15:37]--[2021-04-23 周五 16:02] =>  0:25
+CLOCK: [2021-04-23 周五 15:07]--[2021-04-23 周五 15:32] =>  0:25
+CLOCK: [2021-04-23 周五 14:37]--[2021-04-23 周五 15:02] =>  0:25
+CLOCK: [2021-04-23 周五 14:02]--[2021-04-23 周五 14:27] =>  0:25
+CLOCK: [2021-04-23 周五 13:32]--[2021-04-23 周五 13:57] =>  0:25
+CLOCK: [2021-04-23 周五 13:02]--[2021-04-23 周五 13:27] =>  0:25
+CLOCK: [2021-04-23 周五 10:51]--[2021-04-23 周五 11:16] =>  0:25
+CLOCK: [2021-04-23 周五 10:21]--[2021-04-23 周五 10:46] =>  0:25
+CLOCK: [2021-04-23 周五 09:51]--[2021-04-23 周五 10:16] =>  0:25
+CLOCK: [2021-04-23 周五 09:21]--[2021-04-23 周五 09:46] =>  0:25
 CLOCK: [2021-04-22 周四 20:35]--[2021-04-22 周四 21:00] =>  0:25
 CLOCK: [2021-04-22 周四 20:05]--[2021-04-22 周四 20:30] =>  0:25
 :END:
-*** WAIT 实现额外功能
+*** TODO 实现额外功能
+SCHEDULED: <2021-04-25 周日 9:00>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
 *** WAIT 调试并完成
-:PROPERTIES:                          
+:PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
 :END:
 ** ArChive                                                        :ARCHIVE:
@@ -832,20 +858,20 @@ CLOSED: [2021-04-13 周二 22:49]
 CLOSED: [2021-04-19 周一 11:24] SCHEDULED: <2021-04-19 周一 11:10> DEADLINE: <2021-04-19 周一 21:00>
 :PROPERTIES:
 :BLOCKER: children
-:END:                          
+:END:
 - State "DONE"       from "SCH"        [2021-04-19 周一 11:24]
 :LOGBOOK:
 CLOCK: [2021-04-19 周一 11:13]--[2021-04-19 周一 11:25] =>  0:12
 :END:
 *** DONE 真机调试
 CLOSED: [2021-04-19 周一 11:17] SCHEDULED: <2021-04-19 周一 11:10>
-:PROPERTIES:                          
+:PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:                          
+:END:
 - State "DONE"       from "TODO"       [2021-04-19 周一 11:17]
 *** DONE 性能profile
 CLOSED: [2021-04-19 周一 11:24] SCHEDULED: <2021-04-19 周一 11:17>
-:PROPERTIES:                          
+:PROPERTIES:
 :TRIGGER+: parent todo!(DONE)
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
@@ -890,3 +916,7 @@ CLOCK: [2021-04-19 周一 10:30]--[2021-04-19 周一 10:55] =>  0:25
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
 ** 学习《Lua程序设计》                                       :learn:future:
 ** 学习 elisp                                                :learn:future:
+
+* Footnotes
+
+[fn:1] 狂潮太可怕了, 我服了
