@@ -1,6 +1,6 @@
 #+STARTUP: INDENT OVERVIEW
 #+TAGS: { Tools : git(g) svn(s) }
-#+TAGS: { Concept : uml(u) }
+#+TAGS: { Concept : uml(u) design(d) }
 
 * 工具相关                                                            :Tools:
 ** 更好看的git log                                                    :git:
@@ -29,7 +29,7 @@
   - 关联(Association) :: 指两个类之间有了解, 单向实线箭头指向被了解者, 双向实线
   - 依赖(Dependency) :: 使用关系, 虚线三角箭头, 指向被使用者
   效果图:
-  [[file:~/myproject/src/org/res/image/uml_class_diagrapm.png]]
+  [[file:../res/image/uml_class_diagram.png]]
 *** 时序图
 描述对象之间发送消息的时间顺序显示多个对象之间的动态协作的UML图
 - 角色(Actor) :: 系统角色, 可以是人或者其他系统和子系统, 以一个小人图标表示
@@ -160,3 +160,22 @@ end /'alt 结束'/
 Foo->] : 单向消息 /'不关心接受方'/
 @enduml
 #+END_SRC
+** MVC模式
+MVC 模式(Model–view–controller)是软件工程中的一种软件架构模式, 它把软件系统分为
+三个基本部分:模型(Model),视图(View)和控制器(Controller).
+MVC模式中三个组件的详细介绍如下:
+- 模型(<<<Model>>>) :: 用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法
+  "Model"有对数据直接访问的权力, 例如对数据库的访问."Model"不依赖"View"和
+  "Controller", 也就是说, Model不关心它会被如何显示或是如何被操作.但是
+  Model中数据的变化一般会通过一种刷新机制被公布.为了实现这种机制, 那些用于监视此
+  Model的View 必须事先在此Model上注册, 由此, View可以了解在数据Model上发生的
+  改变.(比如:观察者模式(软件设计模式)).
+- 视图(<<<View>>>) :: 能够实现数据有目的的显示(理论上, 这不是必需的).在 View 中一
+  般没有程序上的逻辑.为了实现View上的刷新功能, View需要访问它监视的数据模型(Model)
+  , 因此应该事先在被它监视的数据那里注册.
+- 控制器(<<<Controller>>>) :: 起到不同层面间的组织作用, 用于控制应用程序的流程.它
+  处理事件并作出响应."事件"包括用户的行为和数据Model上的改变.
+  
+效果图:
+[[file:../res/image/mvc_diagram.png]]
+  

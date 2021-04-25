@@ -53,9 +53,9 @@ GlobalZ == 0 的无透明的3d网格对象
          ↓   
 GlobalZ == 0 的透明3d网格对象, 以及从属的CSprite等2d对象
          ↓   
-GlobalZ == 0 的其他任何对象
+GlobalZ == 0 的其他任何对象(2d对象)
          ↓   
-GlobalZ == 0 且设置了SetIsNoDepthTest(True)的对象
+GlobalZ == 0 且设置了SetIsNoDepthTest(True)的对象(一般来说是3d透明网格对象)及其下挂节点
          ↓   
 GlobalZ > 0 的任何对象
 ** UI规范
