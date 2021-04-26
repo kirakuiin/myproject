@@ -1,4 +1,7 @@
-#+STARTUP: INDENT LOGDONE OVERVIEW NOLOGREFILE
+#+STARTUP: INDENT LOGDONE OVERVIEW NOLOGREFILE LATEXPREVIEW INLINEIMAGES
+#+AUTHOR: kirakuiin
+#+EMAIL: wang.zhuowei@foxmail.com
+#+LANGUAGE: zh-Cn
 #+TAGS: { Live : date(d) event(e) shopping(s) }
 #+TAGS: { State : future(f) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c@)

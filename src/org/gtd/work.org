@@ -1,4 +1,7 @@
 #+STARTUP: INDENT LOGDONE OVERVIEW NOLOGREFILE LATEXPREVIEW INLINEIMAGES
+#+AUTHOR: kirakuiin
+#+EMAIL: wang.zhuowei@foxmail.com
+#+LANGUAGE: zh-Cn
 #+TAGS: { Work : learn(l) work(w) }
 #+TAGS: { State : future(f) }
 #+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d!) CANCELED(c@)
@@ -23,12 +26,13 @@ SCHEDULED: <2021-05-01 周六 18:00 ++1w> DEADLINE: <2021-05-03 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-04-26 周一 19:00 ++1d> DEADLINE: <2021-04-26 周一 23:59 ++1d>
+SCHEDULED: <2021-04-27 周二 19:00 ++1d> DEADLINE: <2021-04-27 周二 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-25 周日 21:56]
+:LAST_REPEAT: [2021-04-26 周一 23:07]
 :END:
 
+- State "DONE"       from "TODO"       [2021-04-26 周一 23:07]
 - State "DONE"       from "TODO"       [2021-04-25 周日 21:56]
 - State "CANCELED"   from "TODO"       [2021-04-24 周六 10:35] \\
   放假
@@ -61,13 +65,14 @@ SCHEDULED: <2021-04-26 周一 19:00 ++1d> DEADLINE: <2021-04-26 周一 23:59 ++1
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-04-26 周一 19:00 ++1d>
+SCHEDULED: <2021-04-27 周二 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-24 周六 21:44]
+:LAST_REPEAT: [2021-04-26 周一 23:07]
 :END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 23:07]
 - State "DONE"       from "TODO"       [2021-04-24 周六 21:44]
 - State "DONE"       from "TODO"       [2021-04-24 周六 10:42]
 - State "DONE"       from "TODO"       [2021-04-22 周四 22:14]
@@ -97,13 +102,14 @@ SCHEDULED: <2021-04-26 周一 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#C] 学习 org-mode                                   :learn:
-SCHEDULED: <2021-04-26 周一 19:00 ++1d/2d>
+** TODO [#C] 学习 org-mode                                          :learn:
+SCHEDULED: <2021-04-27 周二 19:00 ++1d/2d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-24 周六 21:44]
+:LAST_REPEAT: [2021-04-26 周一 12:03]
 :END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 12:03]
 - State "DONE"       from "TODO"       [2021-04-24 周六 21:44]
 - State "DONE"       from "TODO"       [2021-04-24 周六 11:15]
 - State "DONE"       from "TODO"       [2021-04-22 周四 09:45]
@@ -127,8 +133,12 @@ SCHEDULED: <2021-04-26 周一 19:00 ++1d/2d>
 - State "DONE"       from "TODO"       [2021-04-05 Mon 22:55]
 - State "DONE"       from "TODO"       [2021-04-04 周日 14:36]
 - State "DONE"       from "TODO"       [2021-04-03 周六 15:56]
-** TODO [#A] 工作流相关系统                                         :learn:
-SCHEDULED: <2021-04-26 周一 09:00>
+** DONE [#A] 学习PMGO系统                                           :learn:
+CLOSED: [2021-04-26 周一 10:42] SCHEDULED: <2021-04-26 周一 09:00>
+- State "DONE"       from "TODO"       [2021-04-26 周一 10:42]
+:LOGBOOK:
+CLOCK: [2021-04-26 周一 10:32]--[2021-04-26 周一 10:42] =>  0:10
+:END:
 ** Archive                                                        :ARCHIVE:
 *** DONE [#C] 学习org-edna                                          :learn:
 CLOSED: [2021-04-04 周日 11:46] DEADLINE: <2021-04-04 周日 12:00> SCHEDULED: <2022-04-03 周日 21:00>
@@ -277,17 +287,108 @@ DEADLINE: <2021-10-01 周五>
 #+TBLFM: $3 = $4
 * Project
 ** SCH [#A] M8项目战斗逻辑模块梳理                                   :work:
-SCHEDULED: <2021-04-26 周一 10:30> DEADLINE: <2021-04-28 周三 21:00>
+SCHEDULED: <2021-04-27 周二 10:30> DEADLINE: <2021-04-29 周四 21:00>
 :PROPERTIES:
 :BLOCKER: children
 :END:                          
-*** TODO 总体浏览代码
+*** DONE 简单了解项目设计思路
+CLOSED: [2021-04-26 周一 20:40] SCHEDULED: <2021-04-27 周二 09:00>
 :PROPERTIES:                          
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:                          
-*** WAIT 完成梳理
+- State "DONE"       from "TODO"       [2021-04-26 周一 20:40]
+:LOGBOOK:
+CLOCK: [2021-04-26 周一 20:32]--[2021-04-26 周一 20:40] =>  0:08
+CLOCK: [2021-04-26 周一 20:02]--[2021-04-26 周一 20:27] =>  0:25
+CLOCK: [2021-04-26 周一 19:32]--[2021-04-26 周一 19:57] =>  0:25
+:END:
+*** TODO 梳理整体代码
+SCHEDULED: <2021-04-26 周一 20:40>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+*** WAIT 阅读战斗逻辑代码
+*** WAIT 整理逻辑
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
+:END:
+** DONE [#A] 整理入门教程文档                                        :work:
+CLOSED: [2021-04-26 周一 17:33] SCHEDULED: <2021-04-26 周一 13:00> DEADLINE: <2021-04-26 周一 21:00>
+:PROPERTIES:
+:BLOCKER: children
+:END:                          
+- State "DONE"       from "SCH"        [2021-04-26 周一 17:33]
+*** DONE 环境搭建 
+CLOSED: [2021-04-26 周一 12:03] SCHEDULED: <2021-04-26 周一 11:00>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+- State "DONE"       from "TODO"       [2021-04-26 周一 12:03]
+:LOGBOOK:
+CLOCK: [2021-04-26 周一 11:08]--[2021-04-26 周一 11:33] =>  0:25
+:END:
+*** DONE 利为引擎
+CLOSED: [2021-04-26 周一 15:58] SCHEDULED: <2021-04-26 周一 12:03>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 15:58]
+:LOGBOOK:
+CLOCK: [2021-04-26 周一 15:35]--[2021-04-26 周一 15:58] =>  0:23
+CLOCK: [2021-04-26 周一 15:05]--[2021-04-26 周一 15:30] =>  0:25
+CLOCK: [2021-04-26 周一 14:35]--[2021-04-26 周一 15:00] =>  0:25
+CLOCK: [2021-04-26 周一 14:05]--[2021-04-26 周一 14:30] =>  0:25
+:END:
+*** DONE UI基础
+CLOSED: [2021-04-26 周一 16:48] SCHEDULED: <2021-04-26 周一 15:58>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 16:48]
+:LOGBOOK:
+CLOCK: [2021-04-26 周一 16:17]--[2021-04-26 周一 16:42] =>  0:25
+:END:
+*** DONE 代码设计和MVC介绍
+CLOSED: [2021-04-26 周一 17:16] SCHEDULED: <2021-04-26 周一 16:48>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 17:16]
+:LOGBOOK:
+CLOCK: [2021-04-26 周一 16:58]--[2021-04-26 周一 17:16] =>  0:18
+:END:
+*** DONE 客户端常用功能
+CLOSED: [2021-04-26 周一 17:16] SCHEDULED: <2021-04-26 周一 17:16>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 17:16]
+*** DONE 项目调试工具
+CLOSED: [2021-04-26 周一 17:19] SCHEDULED: <2021-04-26 周一 17:16>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 17:19]
+*** DONE 大作业
+CLOSED: [2021-04-26 周一 17:33] SCHEDULED: <2021-04-26 周一 17:19>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 17:33]
+:LOGBOOK:
+CLOCK: [2021-04-26 周一 17:21]--[2021-04-26 周一 17:33] =>  0:12
+:END:
+*** DONE 在线更新
+CLOSED: [2021-04-26 周一 17:33] SCHEDULED: <2021-04-26 周一 17:33>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-04-26 周一 17:33]
+*** DONE 工作流相关系统
+CLOSED: [2021-04-26 周一 17:33] SCHEDULED: <2021-04-26 周一 17:33>
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 ** ArChive                                                        :ARCHIVE:
 *** DONE [#A] 学习利为游戏引擎                               :learn:ATTACH:

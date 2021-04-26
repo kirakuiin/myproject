@@ -38,6 +38,9 @@
 如果存在z值相同的兄弟, 则按加入树的顺序依序渲染.
 *** SetPos所处的坐标系永远是父节点的原始坐标, 而不是经过放缩后的
 *** GetChildren()返回的节点按z值从低到高排列
+*** Layer层要使用SetLayerColor改变颜色
+*** Layer层的SetGrey是无效的
+用Layer.GetSprite().SetGrey(True)来变灰
 *** 子类化触控事件时不要调用CreateWithFile函数
 调用静态方法生成的对象不是新类型的对象, InitWithFile函数
 *** 触控事件的触发顺序和节点渲染顺序相反
@@ -46,6 +49,7 @@
 *** 一定要特别注意传入定时器对象内的对象是否为弱引用
 强引用非常容易导致进程阻塞
 *** spine对象最后调用的AddAnimation如果不循环的话, 会导致动画停止
+*** 合理的使用SetSwallowTouches
 *** 单个摄像机渲染顺序
 GlobalZ < 0 的任何对象
          ↓   
@@ -131,7 +135,7 @@ Wrong: m_happen, m_ID_Scroll
      | tuple  | (elem type) | List   | sNameList   |
      | dict   | (elem type) | Dict   | iPlayerDict |
   9. 比较单例使用is或is not
-  10. 坚持使用return语句, 无内容返回则return None
+  10. 坚持使用return语句, 如果有返回值但是返回None则显式return None
 - 约定:
   1. 回调函数除了OnClose均在代码里声明
   2. 资源类型文件采用固定路径命名, 而不是可替换文本
@@ -187,3 +191,5 @@ Wrong: m_happen, m_ID_Scroll
 - 性能问题:
   * 不要用while True这种可能死循环的写法, 可以用一个比较大的数作为边界
   * 刷新函数职能单一
+
+** 坑

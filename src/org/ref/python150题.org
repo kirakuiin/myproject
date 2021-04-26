@@ -62,7 +62,7 @@
       - sName :: 字符串变量
       - m_Name :: 类成员字符变量
 
-** DONE 字符串 [11/11]
+** DONE 数据类型字符串 [11/11]
   1. [X] 列举Python中的基本数据类型?
      - 数字(Numbers), 字符串(String), 列表(List), 元组(Tuple), 字典(Dict),
        集合(Set).
