@@ -1,0 +1,44 @@
+#+STARTUP: INDENT
+
+#+CAPTION: 游戏启动环节
+#+BEGIN_SRC plantuml
+  @startuml
+  start
+  partition init #red {
+      :初始化""sys.path"";
+      :初始化UI路径;
+      :初始化导表路径;
+      :初始化yibug;
+      :重定向标准输出和错误;
+  }
+  partition main #orange {
+      :""启动游戏逻辑"";
+      repeat
+      :""执行主循环"";
+      repeat while (exit) is (no) not (yes)
+      stop
+  }
+  @enduml
+#+END_SRC
+
+#+CAPTION: 游戏逻辑执行
+#+BEGIN_SRC plantuml
+  @startuml
+  start
+  :初始化全局变量;
+  :初始化导演类;
+  :初始化分辨率;
+  :初始化场景;
+  :加载资源;
+  fork
+      :初始化网络;
+  fork again
+      :初始化界面管理器;
+      :初始化uuid;
+      :初始化gm命令;
+      :打开登录界面;
+      :跳转到战斗界面;
+  end fork
+  end
+  @enduml
+#+END_SRC

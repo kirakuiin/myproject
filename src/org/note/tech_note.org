@@ -50,117 +50,206 @@
   个半闭合的长方形+下方实心箭头表示
 效果图:
 [[file:../res/image/uml_sequence_diagram.png]]
-    
+
+*** 活动图
+描述系统活动的顺序
+- 活动状态图(Activity) :: 活动状态用于表达状态机中的非原子的运行. 使用平滑圆角矩
+  形表示
+- 动作状态(Actions) :: 动作状态是指原子的, 不可中断的动作, 并在此动作完成后通过完
+  成转换转向另一个状态. 使用平滑圆角矩形表示
+- 动作状态约束(Action Constraints) :: 动作状态约束: 用来约束动作状态. 使用折页
+  矩形表示
+- 动作流(Control Flow) :: 动作之间的转换称之为动作流活动图的转换. 使用带箭头直线
+  表示
+- 开始节点(Initial Node) :: 活动开始节点. 使用实心黑色圆点表示
+- 终止节点(Final Node) ::
+  - 活动终止节点(activity final nodes) :: 活动终止节点表示整个活动的结束. 使用
+    圆圈+内部实心黑色圆点表示
+  - 流程终止节点(flow final nodes) :: 流程终止节点表示是子流程的结束. 使用圆圈
+    +内部十字叉
+- 对象(Objects) :: 使用矩形方框表示
+- 数据存储对象(DataStore) :: 使用关键字<<datastore>>. 使用矩形方框表示, 内含关键
+  字
+- 对象流(Object Flows) :: 对象流是动作状态或者活动状态与对象之间的依赖关系, 表示
+  动作使用对象或动作对对象的影响
+- 分支与合并(Decision and Merge Nodes) :: 选择分支. 使用棱形表示
+- 分叉与汇合(Fork and Join Nodes) :: 分叉用于将动作流分为两个或多个并发运行的分支
+  , 而汇合则用于同步这些并发分支, 以达到共同完成一项事务的目的, 使用加粗黑线表示
+- 泳道(Partition) :: 泳道将活动图中的活动划分为若干组, 并把每一组指定给负责这组活
+  动的业务组织, 即对象. 使用垂直直线分隔表示
 ** PlantUML语法                                                       :uml:
 *** 类图
 :PROPERTIES:
 :LINK: [[https://plantuml.com/zh/class-diagram][类图]]
 :END:
 #+BEGIN_SRC plantuml
-@startuml
-/' ========== 定义 ========== '/
-/'这种格式是注释'/
-skinparam packageStyle rectangle /'全局包样式, 可以为rectangle, database, folder'/
-                                 /'cloud, frame, node等样式'/
-package Package <<node>> #FF0000{ /'包, 其中Package是名字, <<xxx>> 代表样式
-                                  /'#开头的3个8位16进制数代表颜色, 可以用#red这种预定义的颜色'/
-class Object <<template>> #red-blue{ /'类图 <<>>之间为模板 #后面代表颜色渐变  '/
--- annotation -- /'注解'/
-- type private_data /'-代表private'/
-.. annotation .. /'注解'/
-+ int public_method(int, int) /'+代表public, 参数用逗号隔开 '/
-__ /'单分割线'/
-# void protect_method() /'#代表protected'/
-== /'双分隔线'/
-~ package_private_method() /'~代表package_private'/
-.. /'省略号'/
-}
-note left: This is class Object /'类图的左边会出现笔记, 同理right, bottom, top'/
+  @startuml
+  title Class Diagram
+  /' ========== 定义 ========== '/
+  /'这种格式是注释'/
+  skinparam packageStyle rectangle /'全局包样式, 可以为rectangle, database, folder'/
+                                   /'cloud, frame, node等样式'/
+  package Package <<node>> #FF0000{ /'包, 其中Package是名字, <<xxx>> 代表样式'/
+                                    /'#开头的3个8位16进制数代表颜色, 可以用#red这种预定义的颜色'/
+  class Object <<template>> #red-blue{ /'类图 <<>>之间为模板 #后面代表颜色渐变  '/
+  -- annotation -- /'注解'/
+  - type private_data /'-代表private'/
+  .. annotation .. /'注解'/
+  + int public_method(int, int) /'+代表public, 参数用逗号隔开 '/
+  __ /'单分割线'/
+  # void protect_method() /'#代表protected'/
+  == /'双分隔线'/
+  ~ package_private_method() /'~代表package_private'/
+  .. /'省略号'/
+  }
+  note left: This is class Object /'类图的左边会出现笔记, 同理right, bottom, top'/
 
-class ChildObject <? extends int> {} /'定义泛型'/
+  class ChildObject <? extends int> {} /'定义泛型'/
 
-abstract class ABC { /'这是抽象类'/
-- int private_data
-+ {static} int static_member /'静态成员'/
-+ {static} static_method() /'静态方法'/
-+ {abstract} abstract_method() /'抽象方法'/
-}
+  abstract class ABC { /'这是抽象类'/
+  - int private_data
+  + {static} int static_member /'静态成员'/
+  + {static} static_method() /'静态方法'/
+  + {abstract} abstract_method() /'抽象方法'/
+  }
 
-note "This is interface" as inf_note /'定义note为inf_note'/
-interface Interface { /'这是接口, 不能有非静态成员, 所有方法必须为公开抽象方法'/
-+ {static} static_member /'静态成员'/
-+ {abstract} abstract_method() /'抽象方法'/
-}
-Interface .. inf_note /'关联note到Interface上'/
+  note "This is interface" as inf_note /'定义note为inf_note'/
+  interface Interface { /'这是接口, 不能有非静态成员, 所有方法必须为公开抽象方法'/
+  + {static} static_member /'静态成员'/
+  + {abstract} abstract_method() /'抽象方法'/
+  }
+  Interface .. inf_note /'关联note到Interface上'/
 
-enum Enum { /'这是枚举'/
-ENUM_1
-ENUM_2
-}
+  enum Enum { /'这是枚举'/
+  ENUM_1
+  ENUM_2
+  }
+  note left
+  enum
+  ====
+  end note
 
-set namespaceSeparator :: /'定义命名空间分隔符, 默认为.'/
-namespace namespace_1 <<cloud>> #blue { /'这是命名空间, 不同包之间不允许同名类出现, 而这个可以'/
-class Nm1Object {}
-}
-class namespace_2::Nm2Object {} /'隐式定义命名空间'/
-/' ========== 关系 ========== '/
-Animal <|-- Bird /'泛化关系'/
-Fly <|.. Bird /'实现关系'/
-Bird "1"*--"2" Wings /'组合关系'/
-Nest "1"o--"n" Bird  /'聚合关系'/
-Bird "1"-->"1" Climate : 鸟类活动和气候有关 /'关联关系'/
-Animal ..> Water : 鸟类需要水 > /'依赖关系'/
-Bold -[bold]- Bold /'任意关系的--和..之间可以加上[config]来设置线的样式'/
-                   /'如bold, dotted, dashed, hidden, plain, #red等'/
-}
-@enduml
+  set namespaceSeparator :: /'定义命名空间分隔符, 默认为.'/
+  namespace namespace_1 <<cloud>> #blue { /'这是命名空间, 不同包之间不允许同名类出现, 而这个可以'/
+  class Nm1Object {}
+  }
+  class namespace_2::Nm2Object  /'隐式定义命名空间'/
+  /' ========== 关系 ========== '/
+  Animal <|-- Bird /'泛化关系'/
+  Fly <|.. Bird /'实现关系'/
+  Bird "1"*--"2" Wings /'组合关系'/
+  Nest o-- Bird  /'聚合关系'/
+  Bird "1"-->"1" Climate : 鸟类活动和气候有关 /'关联关系'/
+  Animal ..> Water : 鸟类需要水 > /'依赖关系'/
+  Bold -[bold]- Bold /'任意关系的--和..之间可以加上[config]来设置线的样式'/
+                     /'如bold, dotted, dashed, hidden, plain, #red等'/
+  }
+  @enduml
 #+END_SRC
 *** 时序图
 :PROPERTIES:
 :LINK: [[https://plantuml.com/zh/sequence-diagram][时序图]] 
 :End:
-#+begin_SRC plantuml
-@startuml
-/'这是注释'/
-participant as Foo #red   /'指定参与者, 重命名为Foo, 颜色为红色'/
-actor "a 1" as Foo1       /'指定角色, 名称加引号可以包含非字母符号'/
-boundary Foo2 #blue       /'指定边界, 一般指交互部分, 颜色为蓝色/
-control     as Foo3       /'指定控制'/
-entity      as Foo4       /'指定实体, 一般指内部对象'/
-database    as Foo5       /'指定数据库'/
-collections as Foo6       /'指定集合'/
-queue       as Foo7       /'指定队列'/
-/'以上命令影响对象的图案'/
-autonumber 10 5 /'消息自动编号, 从10开始, 间隔5'/
-Foo --> Foo1 ++ : To actor   /'虚线 激活生命线'/
-Foo1 --> Foo2 -- : To Foo2  /' 销毁生命线'/
-Foo -> New ** : Create /'创建目标实例'/
-Foo -> New !! : Destroy /'销毁目标实例'/
-Foo2 --> Foo1 --++ #gold : Oops /'同时创建销毁, 生命线颜色为金色'/
-note left: this is a not /'单行note, 参数可以为right'/
-Foo -> Foo2 : To boundary /'实线'/
-return : 返回数据 /' 相当于Foo2 --> Foo --'/
-...延迟...  /'延迟图案'/
-Foo -[#red]> Foo3 : To control\n  /'红色箭头, 消息换行'/
-newpage /'分页'/
-Foo ->x Foo4 : To entity  /'丢失消息'/
-||| /'额外垂直空间'/
-alt condition1  /'条件分组'/
-    Foo ->> Foo5 : To database /'细箭头'/
-else condition2  /'否则分组'/
-    Foo <-> Foo6 : To collections /'双向箭头'/
-    loop 1000 /'循环'/
-        Foo -/ Foo7 : To queue /'半边箭头'/
-    end /'loop 结束'/
-    group my-group /'自定义分组'/
-    Foo -> Foo /'自循环'/
-    end
-end /'alt 结束'/
-[->Foo : 单向消息 /'不关心来源'/
-Foo->] : 单向消息 /'不关心接受方'/
-@enduml
+#+BEGIN_SRC plantuml :file ~/sequencedlg.puml
+  @startuml
+  /'这是注释'/
+  title Sequence Diagram  /'这是标题'/
+  participant Foo #red   /'指定参与者, 重命名为Foo, 颜色为红色'/
+  actor "a 1" as Foo1       /'指定角色, 名称加引号可以包含非字母符号'/
+  boundary Foo2 #blue       /'指定边界, 一般指交互部分, 颜色为蓝色'/
+  control  Foo3       /'指定控制'/
+  entity   Foo4       /'指定实体, 一般指内部对象'/
+  database Foo5       /'指定数据库'/
+  collections Foo6       /'指定集合'/
+  queue       Foo7       /'指定队列'/
+  /'以上命令影响对象的图案'/
+  Foo -> Foo1 ++ : To actor   /'虚线 激活生命线'/
+  Foo1 -> Foo2 -- : To Foo2  /' 销毁生命线'/
+  Foo -> New ** : Create /'创建目标实例'/
+  Foo -> New !! : Destroy /'销毁目标实例'/
+  Foo2 -> Foo1 --++ #gold : Oops /'同时创建销毁, 生命线颜色为金色'/
+  note left: this is a not /'单行note, 参数可以为right'/
+  Foo -> Foo2 : To boundary /'实线'/
+  return : 返回数据 /' 相当于Foo2 --> Foo --'/
+  ...延迟...  /'延迟图案'/
+  Foo -[#red]> Foo3 : To control\n  /'红色箭头, 消息换行'/
+  Foo ->x Foo4 : To entity  /'丢失消息'/
+  ||| /'额外垂直空间'/
+  alt condition1  /'条件分组'/
+      Foo ->> Foo5 : To database /'细箭头'/
+  else condition2  /'否则分组'/
+      Foo <-> Foo6 : To collections /'双向箭头'/
+      loop 1000 /'循环'/
+          Foo -/ Foo7 : To queue /'半边箭头'/
+      end /'loop 结束'/
+      group my-group /'自定义分组'/
+      Foo -> Foo /'自循环'/
+      end
+  end /'alt 结束'/
+  [->Foo : 单向消息 /'不关心来源'/
+  Foo->] : 单向消息 /'不关心接受方'/
+  newpage /'分页'/
+  @enduml
 #+END_SRC
-** MVC模式
+
+#+RESULTS:
+[[file:~/sequencedlg.puml]]
+
+*** 活动图
+:PROPERTIES:
+:LINK: [[https://plantuml.com/zh/activity-diagram-beta][活动图]]
+:End:
+#+BEGIN_SRC plantuml
+  @startuml
+  title Activity Diagram
+  |#orange|swimlane1|  /'泳道'/
+  start   /'开始'/
+  partition initial #green{  /'分组'/
+      :**init**;  /'活动 **代表加粗'/
+  note right  /'这是注释'/
+      //This is an example//
+      ====
+      ,* ""ooops""
+  end note
+  }
+  repeat  /'循环'/
+  if (hello?) then (yes)  /'条件语句'/
+      -> normal arrow;
+      #blue:hello;  /'#开始代表颜色'/
+  elseif (kill?) then (yes)
+      -[#green,dotted]-> special arrow;  /'特殊箭头'/
+      #FF0000:__hello__;  /'__代表下划线'/
+      kill  /'终止'/
+  elseif (split?) then (yes)
+  split  /'划分'/
+      :s1|  /'共有7种分隔符号 ; | < > / ] }'/
+  split again
+      :s2<
+  split again
+      :s3>
+  end split
+  elseif (fork?) then (yes)
+  fork  /'并行'/
+  :f1;
+  fork again
+  :f2;
+  detach  /'分离'/
+  end fork
+  else (no)
+      end   /'流程终止'/
+  endif
+  start
+  backward:get input;  /'循环活动'/
+  repeat while (input?) is (yes) not (no)
+  |#purple|swimlane2|
+  while (continue?) is (c)
+  :print;
+  endwhile (n)
+  #yellow:(C)  /'连接器'/
+  stop  /'活动中止'/
+  @enduml
+#+END_SRC
+** MVC模式                                                         :design:
 MVC 模式(Model–view–controller)是软件工程中的一种软件架构模式, 它把软件系统分为
 三个基本部分:模型(Model),视图(View)和控制器(Controller).
 MVC模式中三个组件的详细介绍如下:
@@ -178,4 +267,26 @@ MVC模式中三个组件的详细介绍如下:
   
 效果图:
 [[file:../res/image/mvc_diagram.png]]
-  
+** 游戏CS架构同步模式
+*** 帧同步
+服务器只负责转发数据, 不做任何处理, 由客户端根据服务端发来的数据做战斗逻辑运算
+- 优点
+  1. 流量消耗小
+  2. 可以离线游戏
+  3. 服务端保存操作可以轻松实现回放|观战
+  4. 开发效率相对较高(因为服务器基本不需要变化, 可以在多个项目使用)
+- 缺点
+  1. 安全性差
+  2. 断线重连需要追回时间
+*** 状态同步
+服务器负责战斗逻辑计算, 并将计算的结果发给各个服务器, 每个客户端实际上相当于一个
+表现层
+- 优点
+  1. 安全性高
+  2. 可以很容易的实现断线重连(重新生成场景即可)
+- 缺点
+  1. 流量消耗大
+  2. 不能离线游戏
+  3. 服务端需要保存大量数据方能实现回放|观战
+  4. 开发效率相对较低(实现功能需要和客户端交流, 会耽误时间)
+
