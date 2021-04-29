@@ -68,7 +68,6 @@ DEADLINE: <2021-04-30 周五 23:00 ++1m> SCHEDULED: <2021-04-30 周五 09:00 ++1
 ** WAIT [#B] 购买家具用品 [83%]                                  :shopping:
 SCHEDULED: <2021-05-10 Mon 09:00>
 :PROPERTIES:
-:BLOCKER:  olp("live.org" "Project/找离公司近的新房子")
 :COOKIE_DATA: checkbox recursive
 :ORDERED: nil
 :END:
