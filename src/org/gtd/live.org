@@ -127,17 +127,31 @@ SCHEDULED: <2021-05-10 Mon 09:00>
   - [X] 五号电池 ::
   - [X] 电蚊香 ::
   - [ ] 多功能螺丝套件 ::
-** WAIT [#C] 从家里把需要的物品邮寄过来 [0/4]                       :event:
-DEADLINE: <2021-06-01 周二>
+** DONE [#C] 从家里把需要的物品邮寄过来 [3/3]                        :event:
+CLOSED: [2021-05-01 Sat 19:27] DEADLINE: <2021-06-01 周二>
 :PROPERTIES:
 :END:
+- State "DONE"       from "WAIT"       [2021-05-01 Sat 19:27]
 - State "WAIT"       from "TODO"       [2021-04-11 周日 16:25] \\
   先不急, 电脑什么都没得
-- [ ] 书籍
-- [ ] 鼠标
-- [ ] 手柄
-- [ ] Switch配件
-** WAIT [#C] 办理电信宽带业务                                       :event:
+- [X] 书籍 [14/14]
+  - [X] 代码整洁之道
+  - [X] 重构
+  - [X] Effective C
+  - [X] Effective Modern C++
+  - [X] 流畅的python
+  - [X] STL源码剖析
+  - [X] 编译原理
+  - [X] 具体数学
+  - [X] 设计模式
+  - [X] 人月神话
+  - [X] 编程之美
+  - [X] 算法导论
+  - [X] 生命是什么
+  - [X] 字帖
+- [X] 手柄
+- [X] Switch配件
+** WAIT [#C] 办理电信宽带业务                                        :event:
 SCHEDULED: <2021-04-10 周六 13:20>
 :PROPERTIES:
 :END:
