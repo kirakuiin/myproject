@@ -78,14 +78,15 @@ SCHEDULED: <2021-05-06 Thu 19:00 ++1d> DEADLINE: <2021-05-06 Thu 23:59 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-05-03 Mon 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                   :learn:
+SCHEDULED: <2021-05-04 周二 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-02 Sun 23:06]
+:LAST_REPEAT: [2021-05-03 周一 13:57]
 :END:
+- State "DONE"       from "TODO"       [2021-05-03 周一 13:57]
 - State "DONE"       from "TODO"       [2021-05-02 Sun 23:06]
 - State "DONE"       from "TODO"       [2021-05-01 Sat 23:14]
 - State "DONE"       from "TODO"       [2021-04-29 周四 09:10]
@@ -121,13 +122,14 @@ SCHEDULED: <2021-05-03 Mon 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#C] 学习 org-mode                                           :learn:
-SCHEDULED: <2021-05-03 Mon 19:00 ++1d/2d>
+** TODO [#C] 学习 org-mode                                          :learn:
+SCHEDULED: <2021-05-04 周二 19:00 ++1d/2d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-02 Sun 22:54]
+:LAST_REPEAT: [2021-05-03 周一 13:57]
 :END:
+- State "DONE"       from "TODO"       [2021-05-03 周一 13:57]
 - State "DONE"       from "TODO"       [2021-05-02 Sun 22:54]
 - State "DONE"       from "TODO"       [2021-05-01 Sat 23:26]
 - State "DONE"       from "TODO"       [2021-04-29 周四 09:45]
