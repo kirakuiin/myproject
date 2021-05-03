@@ -25,14 +25,24 @@ SCHEDULED: <2021-05-01 周六 18:00 ++1w> DEADLINE: <2021-05-03 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-05-01 周六 19:00 ++1d> DEADLINE: <2021-05-01 周六 23:59 ++1d>
+** TODO [#A] 完成每日日报                                             :work:
+SCHEDULED: <2021-05-06 Thu 19:00 ++1d> DEADLINE: <2021-05-06 Thu 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-30 周五 22:56]
+:LAST_REPEAT: [2021-05-01 Sat 23:04]
 :END:
 
-- State "DONE"       from "TODO"       [2021-04-30 周五 22:56]
+- State "CANCELED"   from "TODO"       [2021-05-05 Wed 21:04] \\
+  51假期
+- State "CANCELED"   from "TODO"       [2021-05-04 Tue 22:55] \\
+  51假期
+- State "CANCELED"   from "TODO"       [2021-05-03 Mon 19:02] \\
+  51假期
+- State "CANCELED"   from "TODO"       [2021-05-02 Sun 20:15] \\
+  51假期
+- State "CANCELED"   from "TODO"       [2021-05-01 Sat 23:02] \\
+  51假期
+  
 - State "DONE"       from "TODO"       [2021-04-29 周四 21:59]
 - State "DONE"       from "TODO"       [2021-04-28 周三 23:04]
 - State "DONE"       from "TODO"       [2021-04-27 周二 21:45]
@@ -68,16 +78,16 @@ SCHEDULED: <2021-05-01 周六 19:00 ++1d> DEADLINE: <2021-05-01 周六 23:59 ++1
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-05-02 周日 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                    :learn:
+SCHEDULED: <2021-05-03 Mon 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-30 周五 09:13]
+:LAST_REPEAT: [2021-05-02 Sun 23:06]
 :END:
-- State "DONE"       from "TODO"       [2021-04-30 周五 09:13]
-- State "DONE"       from "TODO"       [2021-04-30 周五 08:54]
+- State "DONE"       from "TODO"       [2021-05-02 Sun 23:06]
+- State "DONE"       from "TODO"       [2021-05-01 Sat 23:14]
 - State "DONE"       from "TODO"       [2021-04-29 周四 09:10]
 - State "DONE"       from "TODO"       [2021-04-28 周三 08:40]
 - State "DONE"       from "TODO"       [2021-04-27 周二 23:44]
@@ -111,14 +121,15 @@ SCHEDULED: <2021-05-02 周日 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#C] 学习 org-mode                                          :learn:
-SCHEDULED: <2021-05-01 周六 19:00 ++1d/2d>
+** TODO [#C] 学习 org-mode                                           :learn:
+SCHEDULED: <2021-05-03 Mon 19:00 ++1d/2d>
 :PROPERTIES:
 :LINK: [[https://orgmode.org/manual/index.html#SEC_Contents][org manual]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-04-30 周五 09:15]
+:LAST_REPEAT: [2021-05-02 Sun 22:54]
 :END:
-- State "DONE"       from "TODO"       [2021-04-30 周五 09:15]
+- State "DONE"       from "TODO"       [2021-05-02 Sun 22:54]
+- State "DONE"       from "TODO"       [2021-05-01 Sat 23:26]
 - State "DONE"       from "TODO"       [2021-04-29 周四 09:45]
 - State "DONE"       from "TODO"       [2021-04-28 周三 08:59]
 - State "DONE"       from "TODO"       [2021-04-27 周二 09:27]
