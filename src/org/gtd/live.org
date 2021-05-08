@@ -142,6 +142,25 @@ SCHEDULED: <2021-05-10 Mon 09:00>
   - [X] 五号电池 ::
   - [X] 电蚊香 ::
   - [ ] 多功能螺丝套件 ::
+** WAIT [#C] 办理电信宽带业务                                        :event:
+SCHEDULED: <2021-04-10 周六 13:20>
+:PROPERTIES:
+:END:
+- State "WAIT"       from "TODO"       [2021-04-10 周六 13:36] \\
+  暂时没需求.
+DEADLINE: <2021-04-30 周五>
+** DONE [#C] 买键盘 [3/3]                                        :shopping:
+CLOSED: [2021-05-08 周六 15:45] SCHEDULED: <2022-04-03 周日 09:00>
+:PROPERTIES:
+:DEPENDENCE: 向大棠请教ps2转接口和打字键盘相关事宜
+:END:
+- State "DONE"       from "WAIT"       [2021-05-08 周六 15:45] \\
+  没买, 公司配了一个青轴, 自己买了个红轴, 完美
+- State "WAIT"       from "TODO"       [2021-04-10 周六 13:54] \\
+  不太好买, 钱也没得, 先等等.
+- [X] 红轴游戏键盘
+- [X] 茶轴打字键盘
+- [X] ps2转usb接口
 ** DONE [#C] 从家里把需要的物品邮寄过来 [3/3]                        :event:
 CLOSED: [2021-05-01 Sat 19:27] DEADLINE: <2021-06-01 周二>
 :PROPERTIES:
@@ -166,23 +185,6 @@ CLOSED: [2021-05-01 Sat 19:27] DEADLINE: <2021-06-01 周二>
   - [X] 字帖
 - [X] 手柄
 - [X] Switch配件
-** WAIT [#C] 办理电信宽带业务                                        :event:
-SCHEDULED: <2021-04-10 周六 13:20>
-:PROPERTIES:
-:END:
-- State "WAIT"       from "TODO"       [2021-04-10 周六 13:36] \\
-  暂时没需求.
-DEADLINE: <2021-04-30 周五>
-** WAIT [#C] 买键盘 [1/3]                                        :shopping:
-SCHEDULED: <2022-04-03 周日 09:00>
-:PROPERTIES:
-:DEPENDENCE: 向大棠请教ps2转接口和打字键盘相关事宜
-:END:
-- State "WAIT"       from "TODO"       [2021-04-10 周六 13:54] \\
-  不太好买, 钱也没得, 先等等.
-- [X] 红轴游戏键盘
-- [ ] 茶轴打字键盘
-- [ ] ps2转usb接口
 * Appointment
 ** TODO 第二针aero新冠疫苗接种                                      :event:
 - Note taken on [2021-04-21 周三 15:58] \\
