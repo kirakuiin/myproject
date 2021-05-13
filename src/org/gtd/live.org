@@ -12,22 +12,33 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 大壮名城G1-1018租房月志                                 :event:
-DEADLINE: <2021-05-12 周三 23:00 +1m> SCHEDULED: <2021-05-12 周三 09:00 +1m>
+** TODO [#A] 大壮名城G1-1018租房月志                                :event:
+DEADLINE: <2021-06-12 周六 23:00 +1m> SCHEDULED: <2021-06-12 周六 09:00 +1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
+- State "DONE"       from "TODO"       [2021-05-12 周三 09:21] \\
+  1. 房租2000, 本月电费200(实际每月40左右), 物业+水103
 - State "DONE"       from "TODO"       [2021-04-10 周六 13:45] \\
   1. 每个月通过大壮名城物业缴纳电费, 水+物业费. 今天水+物业费有103元的残余, 和房东约定这个月我来缴, 明年的4月份房东来缴纳.
   2. 房间里的马桶坏了, 电磁炉可能坏了, 阳台灯坏了
   3. 本月电费50, 物业+水103
-** TODO [#A] 归档并回顾一周的计划                                    :event:
-DEADLINE: <2021-05-09 Sun 23:00 ++1w> SCHEDULED: <2021-05-08 Sat 18:00 ++1w>
+  4. 1+2(一个月房租+两个月押金) 6000
+** TODO [#A] 归档并回顾一周的计划                                   :event:
+DEADLINE: <2021-05-16 周日 23:00 ++1w> SCHEDULED: <2021-05-15 周六 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2021-05-02 Sun 23:07]
+:LAST_REPEAT: [2021-05-09 周日 10:11]
 :END:
+- State "DONE"       from "TODO"       [2021-05-09 周日 10:11] \\
+  1. 完成了英雄山模块
+  2. 完成了英雄山模块的GM功能
+  3. 结局了导表生成器会将所有纯数字字符串改为数字的bug(动态替换json.Encoder解析模块)
+  4. 完成了org-mode的学习
+  ------------------------------------------------
+  1. 公司给内网机配备了青轴机械键盘, 不用买了
+  2. 把老家的书籍和switch配件
 - State "DONE"       from "TODO"       [2021-05-02 Sun 23:07] \\
   1. 简单学习了PMGO系统的用法
   2. 完成了神武手游客户端教程的问题总结
@@ -149,10 +160,12 @@ SCHEDULED: <2021-04-10 周六 13:20>
 - State "WAIT"       from "TODO"       [2021-04-10 周六 13:36] \\
   暂时没需求.
 DEADLINE: <2021-04-30 周五>
-** DONE [#C] 买键盘 [3/3]                                        :shopping:
+** Archive                                                        :ARCHIVE:
+*** DONE [#C] 买键盘 [3/3]                                       :shopping:
 CLOSED: [2021-05-08 周六 15:45] SCHEDULED: <2022-04-03 周日 09:00>
 :PROPERTIES:
 :DEPENDENCE: 向大棠请教ps2转接口和打字键盘相关事宜
+:ARCHIVE_TIME: 2021-05-09 周日 10:16
 :END:
 - State "DONE"       from "WAIT"       [2021-05-08 周六 15:45] \\
   没买, 公司配了一个青轴, 自己买了个红轴, 完美
@@ -161,9 +174,10 @@ CLOSED: [2021-05-08 周六 15:45] SCHEDULED: <2022-04-03 周日 09:00>
 - [X] 红轴游戏键盘
 - [X] 茶轴打字键盘
 - [X] ps2转usb接口
-** DONE [#C] 从家里把需要的物品邮寄过来 [3/3]                        :event:
+*** DONE [#C] 从家里把需要的物品邮寄过来 [3/3]                      :event:
 CLOSED: [2021-05-01 Sat 19:27] DEADLINE: <2021-06-01 周二>
 :PROPERTIES:
+:ARCHIVE_TIME: 2021-05-09 周日 10:16
 :END:
 - State "DONE"       from "WAIT"       [2021-05-01 Sat 19:27]
 - State "WAIT"       from "TODO"       [2021-04-11 周日 16:25] \\
