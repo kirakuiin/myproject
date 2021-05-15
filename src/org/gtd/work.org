@@ -14,12 +14,14 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-05-14 周五 19:00 ++1d> DEADLINE: <2021-05-14 周五 23:59 ++1d>
+SCHEDULED: <2021-05-16 周日 19:00 ++1d> DEADLINE: <2021-05-16 周日 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-13 周四 23:25]
+:LAST_REPEAT: [2021-05-15 周六 21:33]
 :END:
 
+- State "DONE"       from "TODO"       [2021-05-15 周六 21:33]
+- State "DONE"       from "TODO"       [2021-05-14 周五 23:32]
 - State "DONE"       from "TODO"       [2021-05-13 周四 23:25]
 - State "DONE"       from "TODO"       [2021-05-12 周三 21:21]
 - State "DONE"       from "TODO"       [2021-05-11 周二 21:16]
@@ -89,13 +91,15 @@ SCHEDULED: <2021-05-15 周六 18:00 ++1w> DEADLINE: <2021-05-17 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-05-14 周五 19:00 ++1d>
+SCHEDULED: <2021-05-16 周日 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-13 周四 09:00]
+:LAST_REPEAT: [2021-05-15 周六 23:44]
 :END:
+- State "DONE"       from "TODO"       [2021-05-15 周六 23:44]
+- State "DONE"       from "TODO"       [2021-05-14 周五 09:54]
 - State "DONE"       from "TODO"       [2021-05-13 周四 09:00]
 - State "DONE"       from "TODO"       [2021-05-12 周三 09:18]
 - State "DONE"       from "TODO"       [2021-05-11 周二 08:55]
@@ -143,13 +147,15 @@ SCHEDULED: <2021-05-14 周五 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#A] 学习《游戏编程模式》                            :learn:ATTACH:
-SCHEDULED: <2021-05-14 周五 09:00 ++1d>
+SCHEDULED: <2021-05-16 周日 09:00 ++1d>
 :PROPERTIES:
 :ID:       b2e6045c-58c3-4359-90d4-74fb2660b8da
 :ATTACH: [[attachment:游戏编程模式.org][游戏编程模式笔记]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-12 周三 21:21]
+:LAST_REPEAT: [2021-05-15 周六 21:33]
 :END:
+- State "CANCELED"   from "TODO"       [2021-05-15 周六 21:33] \\
+  没时间
 - State "CANCELED"   from "TODO"       [2021-05-12 周三 21:21] \\
   没时间
 - State "DONE"       from "TODO"       [2021-05-10 周一 11:09]
@@ -262,11 +268,12 @@ DEADLINE: <2021-10-01 周五>
 |   | earphone    |     0 |       |       |
 #+TBLFM: $3 = $4
 * Project
-** SCH [#A] 制作真机包                                               :work:
-SCHEDULED: <2021-05-10 周一 15:00> DEADLINE: <2021-05-15 周六 18:00>
+** DONE [#A] 制作真机包                                              :work:
+CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-10 周一 15:00> DEADLINE: <2021-05-15 周六 18:00>
 :PROPERTIES:
 :BLOCKER: children
 :END:                          
+- State "DONE"       from "SCH"        [2021-05-15 周六 17:12]
 *** DONE 学习真机包导出流程
 CLOSED: [2021-05-11 周二 13:08] SCHEDULED: <2021-05-10 周一 16:00>
 :PROPERTIES:                          
@@ -299,14 +306,21 @@ CLOCK: [2021-05-11 周二 14:09]--[2021-05-11 周二 14:34] =>  0:25
 CLOCK: [2021-05-11 周二 13:39]--[2021-05-11 周二 14:04] =>  0:25
 CLOCK: [2021-05-11 周二 13:09]--[2021-05-11 周二 13:34] =>  0:25
 :END:
-*** TODO 配置ios工程
-SCHEDULED: <2021-05-14 周五 00:05>
+*** DONE 配置ios工程
+CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-14 周五 00:05>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** WAIT 集成到云效平台自动导出
+- State "DONE"       from "TODO"       [2021-05-15 周六 17:12]
+:LOGBOOK:
+CLOCK: [2021-05-14 周五 10:47]
+CLOCK: [2021-05-14 周五 10:17]--[2021-05-14 周五 10:42] =>  0:25
+:END:
+*** DONE 集成到云效平台自动导出
+CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-15 周六 17:12>
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 ** WAIT [#A] M8项目战斗逻辑模块梳理                                  :work:
 SCHEDULED: <2021-04-27 周二 10:30>

@@ -289,4 +289,60 @@ MVC模式中三个组件的详细介绍如下:
   2. 不能离线游戏
   3. 服务端需要保存大量数据方能实现回放|观战
   4. 开发效率相对较低(实现功能需要和客户端交流, 会耽误时间)
+** python相同模组重复导入问题
+编写代码时碰到一个问题, 在不同文件使用相同的import语句导入一个模块, 结果产生了多个模块对象,
+这里解释一下这个问题:
+首先, 明确一个概念, import的模块都存在sys.modules这个字典之中.
+python的几种导入方式:
+- 标准导入 :: 直接从系统搜索路径里寻找模块(sys.path)
+  #+BEGIN_VERSE
+  import xxx
+  如果采用此种方式导入的话, 在sys.modules里的键值为'xxx'
+  #+END_VERSE
+- 包导入 :: 这里不讨论相对导入, 只讨论绝对导入
+  #+BEGIN_VERSE
+  import yyy.zz
+  如果采用此种方式导入的话, 在sys.modules里的键值为'yyy.zz'
+  import xx.yyy.zz
+  如果采用此种方式导入的话, 在sys.modules里的键值为'xx.yyy.zz'
+  #+END_VERSE
 
+考虑这样一种场景:
+目录结构为:
+#+BEGIN_VERSE
+xx/
+  yy/
+    zz/
+      __init__.py
+      z2.py
+    __init__.py
+    z1.py
+    common.py
+  __init__.py
+#+END_VERSE
+假设z1和z2都需要使用common, 并且sys.path里包含/xx/yy/, /xx/
+- 如果z1中的代码为 ~import common~ ::
+  #+BEGIN_VERSE
+  这种情况下虽然此路径也在sys.path中, 但是因为z1和common在
+  同一个包的相同路径下, 因此优先使用包导入(先特殊后一般).
+  注意: 此时导入到sys.modules里的键为xx.yy.common, 即相同路径下使用无前缀导入存放的键是完整包路径
+       等价于 ~import xx.yy.common~
+  #+END_VERSE
+- 如果z1中的代码为 ~import yy.common~ ::
+  #+BEGIN_VERSE
+  此时导入到sys.modules的键为yy.common
+  #+END_VERSE
+- 如果z2中的代码为 ~import common~ ::
+  #+BEGIN_VERSE
+  此时无法使用包导入, 所以使用的是标准导入, 首先在sys.modules内加入键为xx.yy.zz.common, 值
+  为None的项, 然后加入键为common的模组对象
+  #+END_VERSE
+- 如果z2中的代码为 ~import yy.common~ ::
+  #+BEGIN_VERSE
+  此时导入到sys.modules的键为yy.common
+  #+END_VERSE
+- 如果z2中的代码为 ~import xx.yy.common~ ::
+  #+BEGIN_VERSE
+  此时导入到sys.modules的键为xx.yy.common
+  #+END_VERSE
+总结以上的所有情况, 导入一个模组一共产生了三个模组实例. 为了避免此情况发生, 导入时使用完整包路径导入
