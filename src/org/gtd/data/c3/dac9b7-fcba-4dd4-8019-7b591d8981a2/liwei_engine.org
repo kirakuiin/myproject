@@ -196,7 +196,7 @@ Wrong: m_happen, m_ID_Scroll
 *** 常规知识
 1. table用户表的格式字段可以自定义被引用时的输出格式({字段名})
 ** 构建流程
-*** Andriod
+*** Android
 **** 本地编译方法
 1. 安装Android Studio
 2. 下载android_demo到本地
@@ -242,4 +242,21 @@ Wrong: m_happen, m_ID_Scroll
 - 使用手机模拟器, 打开usb调试模式, 连接到as后, 在android studio右下角
   可以看到Device File Explorer, logcat会实时打印日志, 也可以参考
 *** Ios
+有很多内容和android是相同的, 如果这里没说明参考android
+**** 本地编译方法
+1. 找一台环境已经配置好的macos虚拟机, 假设使用xcode11.3
+2. 先参照文档手游整包工程配置说明文档的ios部分进行配置
+3. 申请证书和描述文件, 这里注意一下:
+   1. 这两个都要双击使用, 并且在xcode工程中要严格匹配
+   2. 如果signing界面一直loading, 很有可能是虚拟机太卡导致的, 等一晚上应该就可以了
+4. 在Classes/AppDelegate.h中可以控制部分库的加载(android不需要), 如果有库导入错误注意这里
+5. 将打包好的data.fls放到Data/中, 将Res.pak放到Resources中
+6. 以上完成之后即可成功构建并运行
+**** 持续交付
+基本和本地编译一致, 但要注意以下几点:
+1. 构建机对Resources中的资源监测很严格, 注意删除违规资源
+2. xcode中build setting中CFBundleVersion对应的$(CURRENT_PROJECT_VERSION)这个变量
+   自己设置, 现在不会自动替换
+**** 真机包外网调试方法
+- 下载iTools, 如果应用打开了文件共享, 找到此应用双击可以浏览此应用的日志
 ** 坑

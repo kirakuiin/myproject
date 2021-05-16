@@ -14,12 +14,14 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-05-16 周日 19:00 ++1d> DEADLINE: <2021-05-16 周日 23:59 ++1d>
+SCHEDULED: <2021-05-17 周一 19:00 ++1d> DEADLINE: <2021-05-17 周一 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-15 周六 21:33]
+:LAST_REPEAT: [2021-05-16 周日 13:30]
 :END:
 
+- State "CANCELED"   from "TODO"       [2021-05-16 周日 13:30] \\
+  放假
 - State "DONE"       from "TODO"       [2021-05-15 周六 21:33]
 - State "DONE"       from "TODO"       [2021-05-14 周五 23:32]
 - State "DONE"       from "TODO"       [2021-05-13 周四 23:25]
@@ -78,11 +80,12 @@ SCHEDULED: <2021-05-16 周日 19:00 ++1d> DEADLINE: <2021-05-16 周日 23:59 ++1
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-05-15 周六 18:00 ++1w> DEADLINE: <2021-05-17 周一 12:00 ++1w>
+SCHEDULED: <2021-05-22 周六 18:00 ++1w> DEADLINE: <2021-05-24 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-09 周日 23:58]
+:LAST_REPEAT: [2021-05-16 周日 23:48]
 :END:
+- State "DONE"       from "TODO"       [2021-05-16 周日 23:48]
 - State "DONE"       from "TODO"       [2021-05-09 周日 23:58]
 - State "DONE"       from "TODO"       [2021-05-03 周一 22:50]
 - State "DONE"       from "TODO"       [2021-04-25 周日 21:56]
@@ -91,13 +94,14 @@ SCHEDULED: <2021-05-15 周六 18:00 ++1w> DEADLINE: <2021-05-17 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-05-16 周日 19:00 ++1d>
+SCHEDULED: <2021-05-17 周一 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-15 周六 23:44]
+:LAST_REPEAT: [2021-05-16 周日 13:30]
 :END:
+- State "DONE"       from "TODO"       [2021-05-16 周日 13:30]
 - State "DONE"       from "TODO"       [2021-05-15 周六 23:44]
 - State "DONE"       from "TODO"       [2021-05-14 周五 09:54]
 - State "DONE"       from "TODO"       [2021-05-13 周四 09:00]
@@ -147,13 +151,15 @@ SCHEDULED: <2021-05-16 周日 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#A] 学习《游戏编程模式》                            :learn:ATTACH:
-SCHEDULED: <2021-05-16 周日 09:00 ++1d>
+SCHEDULED: <2021-05-17 周一 09:00 ++1d>
 :PROPERTIES:
 :ID:       b2e6045c-58c3-4359-90d4-74fb2660b8da
 :ATTACH: [[attachment:游戏编程模式.org][游戏编程模式笔记]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-15 周六 21:33]
+:LAST_REPEAT: [2021-05-16 周日 23:21]
 :END:
+- State "CANCELED"   from "TODO"       [2021-05-16 周日 23:21] \\
+  没时间
 - State "CANCELED"   from "TODO"       [2021-05-15 周六 21:33] \\
   没时间
 - State "CANCELED"   from "TODO"       [2021-05-12 周三 21:21] \\
@@ -235,8 +241,11 @@ CLOCK: [2021-05-08 周六 10:33]--[2021-05-08 周六 10:58] =>  0:25
 CLOCK: [2021-05-08 周六 10:03]--[2021-05-08 周六 10:28] =>  0:25
 CLOCK: [2021-05-08 周六 09:33]--[2021-05-08 周六 09:58] =>  0:25
 :END:
-** DONE [#A] 客户端本地处理容错                                      :work:
+*** DONE [#A] 客户端本地处理容错                                     :work:
 CLOSED: [2021-05-10 周一 14:41] SCHEDULED: <2021-05-10 周一 09:30>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-05-16 周日 23:48
+:END:
 - State "DONE"       from "TODO"       [2021-05-10 周一 14:41]
 :LOGBOOK:
 CLOCK: [2021-05-10 周一 14:09]--[2021-05-10 周一 14:34] =>  0:25
@@ -268,60 +277,6 @@ DEADLINE: <2021-10-01 周五>
 |   | earphone    |     0 |       |       |
 #+TBLFM: $3 = $4
 * Project
-** DONE [#A] 制作真机包                                              :work:
-CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-10 周一 15:00> DEADLINE: <2021-05-15 周六 18:00>
-:PROPERTIES:
-:BLOCKER: children
-:END:                          
-- State "DONE"       from "SCH"        [2021-05-15 周六 17:12]
-*** DONE 学习真机包导出流程
-CLOSED: [2021-05-11 周二 13:08] SCHEDULED: <2021-05-10 周一 16:00>
-:PROPERTIES:                          
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:                          
-- State "DONE"       from "TODO"       [2021-05-11 周二 13:08]
-:LOGBOOK:
-CLOCK: [2021-05-10 周一 17:20]--[2021-05-10 周一 17:45] =>  0:25
-CLOCK: [2021-05-10 周一 16:50]--[2021-05-10 周一 17:15] =>  0:25
-CLOCK: [2021-05-10 周一 16:20]--[2021-05-10 周一 16:45] =>  0:25
-:END:
-*** DONE 配置android工程                                           :ATTACH:
-CLOSED: [2021-05-14 周五 00:05] SCHEDULED: <2021-05-11 周二 13:08>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:ID:       c3dac9b7-fcba-4dd4-8019-7b591d8981a2
-:ATTACH: [[attachment:liwei_engine.org::#Android][android攻略]]
-:END:
-- State "DONE"       from "TODO"       [2021-05-14 周五 00:05]
-:LOGBOOK:
-CLOCK: [2021-05-11 周二 20:24]--[2021-05-11 周二 20:49] =>  0:25
-CLOCK: [2021-05-11 周二 19:54]--[2021-05-11 周二 20:19] =>  0:25
-CLOCK: [2021-05-11 周二 19:24]--[2021-05-11 周二 19:49] =>  0:25
-CLOCK: [2021-05-11 周二 16:44]--[2021-05-11 周二 17:09] =>  0:25
-CLOCK: [2021-05-11 周二 16:14]--[2021-05-11 周二 16:39] =>  0:25
-CLOCK: [2021-05-11 周二 15:44]--[2021-05-11 周二 16:09] =>  0:25
-CLOCK: [2021-05-11 周二 15:14]--[2021-05-11 周二 15:39] =>  0:25
-CLOCK: [2021-05-11 周二 14:39]--[2021-05-11 周二 15:04] =>  0:25
-CLOCK: [2021-05-11 周二 14:09]--[2021-05-11 周二 14:34] =>  0:25
-CLOCK: [2021-05-11 周二 13:39]--[2021-05-11 周二 14:04] =>  0:25
-CLOCK: [2021-05-11 周二 13:09]--[2021-05-11 周二 13:34] =>  0:25
-:END:
-*** DONE 配置ios工程
-CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-14 周五 00:05>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-05-15 周六 17:12]
-:LOGBOOK:
-CLOCK: [2021-05-14 周五 10:47]
-CLOCK: [2021-05-14 周五 10:17]--[2021-05-14 周五 10:42] =>  0:25
-:END:
-*** DONE 集成到云效平台自动导出
-CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-15 周六 17:12>
-:PROPERTIES:                          
-:TRIGGER+: parent todo!(DONE)
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
 ** WAIT [#A] M8项目战斗逻辑模块梳理                                  :work:
 SCHEDULED: <2021-04-27 周二 10:30>
 :PROPERTIES:
@@ -438,6 +393,61 @@ CLOCK: [2021-04-29 周四 16:40]--[2021-04-29 周四 17:05] =>  0:25
 CLOCK: [2021-04-29 周四 16:05]--[2021-04-29 周四 16:30] =>  0:25
 CLOCK: [2021-04-29 周四 15:35]--[2021-04-29 周四 16:00] =>  0:25
 CLOCK: [2021-04-29 周四 15:05]--[2021-04-29 周四 15:30] =>  0:25
+:END:
+*** DONE [#A] 制作真机包                                             :work:
+CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-10 周一 15:00> DEADLINE: <2021-05-15 周六 18:00>
+:PROPERTIES:
+:BLOCKER: children
+:ARCHIVE_TIME: 2021-05-16 周日 23:48
+:END:                          
+- State "DONE"       from "SCH"        [2021-05-15 周六 17:12]
+**** DONE 学习真机包导出流程
+CLOSED: [2021-05-11 周二 13:08] SCHEDULED: <2021-05-10 周一 16:00>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+- State "DONE"       from "TODO"       [2021-05-11 周二 13:08]
+:LOGBOOK:
+CLOCK: [2021-05-10 周一 17:20]--[2021-05-10 周一 17:45] =>  0:25
+CLOCK: [2021-05-10 周一 16:50]--[2021-05-10 周一 17:15] =>  0:25
+CLOCK: [2021-05-10 周一 16:20]--[2021-05-10 周一 16:45] =>  0:25
+:END:
+**** DONE 配置android工程                                         :ATTACH:
+CLOSED: [2021-05-14 周五 00:05] SCHEDULED: <2021-05-11 周二 13:08>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:ID:       c3dac9b7-fcba-4dd4-8019-7b591d8981a2
+:ATTACH: [[attachment:liwei_engine.org::#Android][android攻略]]
+:END:
+- State "DONE"       from "TODO"       [2021-05-14 周五 00:05]
+:LOGBOOK:
+CLOCK: [2021-05-11 周二 20:24]--[2021-05-11 周二 20:49] =>  0:25
+CLOCK: [2021-05-11 周二 19:54]--[2021-05-11 周二 20:19] =>  0:25
+CLOCK: [2021-05-11 周二 19:24]--[2021-05-11 周二 19:49] =>  0:25
+CLOCK: [2021-05-11 周二 16:44]--[2021-05-11 周二 17:09] =>  0:25
+CLOCK: [2021-05-11 周二 16:14]--[2021-05-11 周二 16:39] =>  0:25
+CLOCK: [2021-05-11 周二 15:44]--[2021-05-11 周二 16:09] =>  0:25
+CLOCK: [2021-05-11 周二 15:14]--[2021-05-11 周二 15:39] =>  0:25
+CLOCK: [2021-05-11 周二 14:39]--[2021-05-11 周二 15:04] =>  0:25
+CLOCK: [2021-05-11 周二 14:09]--[2021-05-11 周二 14:34] =>  0:25
+CLOCK: [2021-05-11 周二 13:39]--[2021-05-11 周二 14:04] =>  0:25
+CLOCK: [2021-05-11 周二 13:09]--[2021-05-11 周二 13:34] =>  0:25
+:END:
+**** DONE 配置ios工程
+CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-14 周五 00:05>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-05-15 周六 17:12]
+:LOGBOOK:
+CLOCK: [2021-05-14 周五 10:47]
+CLOCK: [2021-05-14 周五 10:17]--[2021-05-14 周五 10:42] =>  0:25
+:END:
+**** DONE 集成到云效平台自动导出
+CLOSED: [2021-05-15 周六 17:12] SCHEDULED: <2021-05-15 周六 17:12>
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:

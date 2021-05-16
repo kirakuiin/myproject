@@ -290,59 +290,39 @@ MVC模式中三个组件的详细介绍如下:
   3. 服务端需要保存大量数据方能实现回放|观战
   4. 开发效率相对较低(实现功能需要和客户端交流, 会耽误时间)
 ** python相同模组重复导入问题
-编写代码时碰到一个问题, 在不同文件使用相同的import语句导入一个模块, 结果产生了多个模块对象,
-这里解释一下这个问题:
-首先, 明确一个概念, import的模块都存在sys.modules这个字典之中.
-python的几种导入方式:
-- 标准导入 :: 直接从系统搜索路径里寻找模块(sys.path)
-  #+BEGIN_VERSE
-  import xxx
-  如果采用此种方式导入的话, 在sys.modules里的键值为'xxx'
-  #+END_VERSE
-- 包导入 :: 这里不讨论相对导入, 只讨论绝对导入
-  #+BEGIN_VERSE
-  import yyy.zz
-  如果采用此种方式导入的话, 在sys.modules里的键值为'yyy.zz'
-  import xx.yyy.zz
-  如果采用此种方式导入的话, 在sys.modules里的键值为'xx.yyy.zz'
-  #+END_VERSE
+编写代码时碰到一个问题, 在不同文件使用相同的import语句导入一个模块, 结果产生了多个模块对象.
+首先明确几个概念:
+1. 模块对象存储在sys.modules字典中, 其中键为模块的__name__, 值为模块对象
+3. 模块的__name__变量是由import的时候决定的
+2. 在没有明确指定包结构的情况下, Python 是根据__name__来决定一个模块在包中的结构, 如果是__main__,
+   则它本身是顶层模块, 没有包结构. 如果是A.B.C结构, 那么顶层模块是A。基本上遵循这样的原则:
+   - 绝对导入 :: 一个模块只能导入自身的子模块或和它的顶层模块同级别的模块及其子模块(import yy.xxx)
+   - 相对导入 :: 一个模块必须有包结构且只能导入它的顶层模块内部的模块(import xxx, from . import xxx)
+   - 标准导入 :: 直接导入sys.path内可以找到的模块(无论包内包外) (import xxx)
 
-考虑这样一种场景:
-目录结构为:
+#+CAPTION: 例子
 #+BEGIN_VERSE
-xx/
+假设目录结构为:
+zz/
   yy/
-    zz/
-      __init__.py
-      z2.py
     __init__.py
-    z1.py
-    common.py
+    xxx.py
+    main.py
   __init__.py
+  test.py
+假设zz/, yy/在sys.path之中
+
+以下语句为main.py内的语句:
+~import xxx~  # xxx在同一个包下的隐式相对导入, 等于from yy import xxx, 或from . import xxx
+则xxx模块内__name__ == 'yy.xxx'
+~import yy.xxx~  # 绝对导入
+则xxx模块内__name__ == 'yy.xxx'
+
+以下语句为test.py内的语句:
+~import xxx~
+则xxx模块内__name__ == 'xxx'  # 标准导入
 #+END_VERSE
-假设z1和z2都需要使用common, 并且sys.path里包含/xx/yy/, /xx/
-- 如果z1中的代码为 ~import common~ ::
-  #+BEGIN_VERSE
-  这种情况下虽然此路径也在sys.path中, 但是因为z1和common在
-  同一个包的相同路径下, 因此优先使用包导入(先特殊后一般).
-  注意: 此时导入到sys.modules里的键为xx.yy.common, 即相同路径下使用无前缀导入存放的键是完整包路径
-       等价于 ~import xx.yy.common~
-  #+END_VERSE
-- 如果z1中的代码为 ~import yy.common~ ::
-  #+BEGIN_VERSE
-  此时导入到sys.modules的键为yy.common
-  #+END_VERSE
-- 如果z2中的代码为 ~import common~ ::
-  #+BEGIN_VERSE
-  此时无法使用包导入, 所以使用的是标准导入, 首先在sys.modules内加入键为xx.yy.zz.common, 值
-  为None的项, 然后加入键为common的模组对象
-  #+END_VERSE
-- 如果z2中的代码为 ~import yy.common~ ::
-  #+BEGIN_VERSE
-  此时导入到sys.modules的键为yy.common
-  #+END_VERSE
-- 如果z2中的代码为 ~import xx.yy.common~ ::
-  #+BEGIN_VERSE
-  此时导入到sys.modules的键为xx.yy.common
-  #+END_VERSE
-总结以上的所有情况, 导入一个模组一共产生了三个模组实例. 为了避免此情况发生, 导入时使用完整包路径导入
+此时main和test模块虽然导入了一个模块, 但是在sys.modules里面产生了两个模块对象, 因此可以得出以下结论:
+1. 禁止使用隐式相对导入, 在python2.7中可以通过 ~from __future__ import absolute_import~ 来禁止隐式相对导入
+2. 使用绝对导入的时候使用相同的前缀, 即都使用import yy.xxx的形式, 要么都是用zz.yy.xxx
+3. 包外对象导入包内模块时, 也使用绝对导入形式, 不要使用标准导入
