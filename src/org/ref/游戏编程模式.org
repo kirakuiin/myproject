@@ -1,4 +1,4 @@
-#+STARTUP: INDENT
+#+STARTUP: INDENT NUM
 
 * 架构, 游戏和性能
   1. 游戏编程流程图:
@@ -26,3 +26,29 @@
      #+END_VERSE
   5. 经典名言: 提前优化是万恶之源
   6. 如果要做一些有趣的游戏, 请乐在其中
+
+* 命令模式
+1. 什么是命令
+   #+BEGIN_VERSE
+   命令就是面向对象化的回调
+   通过命令将输入和操作解耦
+   #+END_VERSE
+2. 经典场景, 撤销和重做
+   #+BEGIN_SRC c++
+     class Command {
+      public:
+       virtual ~Command() {}
+       virtual void Execute() = 0;
+       virtual void Undo() = 0
+     };
+   #+END_SRC
+   存储一个命令栈:
+   older.. | cmd | cmd | cmd | cmd | cmd | newer..
+                    \uparrow     \uparrow     \uparrow
+                  undo   cur   redo
+   每当undo则将三个指针向前移动, redo则向后移动, 如果有新的命令则将cur后面的命令
+   全部丢弃
+3. 如果存在很多命令, 可以使用[[*][子类沙盒模式]]来在高层提供很多通用函数, 子类命令组合这些函数
+4. 如果对象模型存在分层情况, 可以使用[[*责任链][责任链模式]]来将命令转发给附属对象
+5. 如果命令是无状态的代码块, 可以使用[[*][享元模式]]来降低内存使用
+   

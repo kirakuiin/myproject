@@ -15,6 +15,9 @@
 4. 重启explorer进程
 注意: 如果你的Tortoisesvn系列项已经在前段了, 重启explorer进程依旧不显示图标, 那么打开Tortoisesvn的设置->图标覆盖->状态缓存, 将选项改成Windows外壳
 
+** 处理图片的exif(元数据)
+下载工具exiftool
+清除图片元数据: exiftool -all= -r -overwrite_original ${path}
 * 概念相关                                                          :Concept:
 ** UML图                                                              :uml:
 *** 类图
@@ -326,3 +329,10 @@ zz/
 1. 禁止使用隐式相对导入, 在python2.7中可以通过 ~from __future__ import absolute_import~ 来禁止隐式相对导入
 2. 使用绝对导入的时候使用相同的前缀, 即都使用import yy.xxx的形式, 要么都是用zz.yy.xxx
 3. 包外对象导入包内模块时, 也使用绝对导入形式, 不要使用标准导入
+
+** python from import 问题
+1. ~from xx import yy~, 导入本地的yy对象是xx.yy对象的复制品, 如果xx.yy变化
+   并不会影响本地的yy变量. 如果想要共享同一个变量请使用 ~import xx~, xx.yy这样的使用方法
+2. 如果yy是可变类型(list, dict), 使用append这类操作是可以共享变化的, 一旦使用=等赋值语句
+   则会导致本地yy的id改变
+
