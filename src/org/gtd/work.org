@@ -13,13 +13,15 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-05-19 周三 19:00 ++1d> DEADLINE: <2021-05-19 周三 23:59 ++1d>
+** TODO [#A] 完成每日日报                                             :work:
+SCHEDULED: <2021-05-20 Thu 19:00 ++1d> DEADLINE: <2021-05-20 Thu 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-18 周二 23:12]
+:LAST_REPEAT: [2021-05-19 Wed 08:28]
 :END:
 
+- State "CANCELED"   from "TODO"       [2021-05-19 Wed 08:28] \\
+  调休
 - State "DONE"       from "TODO"       [2021-05-18 周二 23:12]
 - State "DONE"       from "TODO"       [2021-05-17 周一 22:06]
 - State "CANCELED"   from "TODO"       [2021-05-16 周日 13:30] \\
@@ -95,14 +97,16 @@ SCHEDULED: <2021-05-22 周六 18:00 ++1w> DEADLINE: <2021-05-24 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-05-18 周二 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                    :learn:
+SCHEDULED: <2021-05-20 Thu 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-17 周一 09:08]
+:LAST_REPEAT: [2021-05-19 Wed 08:44]
 :END:
+- State "DONE"       from "TODO"       [2021-05-19 Wed 08:44]
+- State "DONE"       from "TODO"       [2021-05-18 Tue 23:08]
 - State "DONE"       from "TODO"       [2021-05-17 周一 09:08]
 - State "DONE"       from "TODO"       [2021-05-16 周日 13:30]
 - State "DONE"       from "TODO"       [2021-05-15 周六 23:44]
@@ -172,9 +176,9 @@ SCHEDULED: <2021-05-19 周三 09:00 ++1d>
   没时间
 - State "DONE"       from "TODO"       [2021-05-10 周一 11:09]
 ** TODO [#A] 优化多伤害来源跳字表现                               :work:m8:
-SCHEDULED: <2021-05-18 周二 10:00>
+SCHEDULED: <2021-05-20 Thu 10:00>
 ** TODO [#C] 怒气进度条表现优化                                   :work:m8:
-SCHEDULED: <2021-05-19 周三 10:00>
+SCHEDULED: <2021-05-21 Fri 10:00>
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 解决导表编辑器生成bug                              :m8:learn:
 CLOSED: [2021-05-09 周日 10:05]
@@ -292,10 +296,8 @@ DEADLINE: <2021-10-01 周五>
 |   | keyboard    |     0 |       |       |
 |   | earphone    |     0 |       |       |
 #+TBLFM: $3 = $4
-* DONE Project
-CLOSED: [2021-05-18 周二 23:32]
-- State "DONE"       from              [2021-05-18 周二 23:32]
-** WAIT [#A] M8项目战斗逻辑模块梳理                               :m8:work:
+* Project
+** WAIT [#A] M8项目战斗逻辑模块梳理                                :m8:work:
 SCHEDULED: <2021-04-27 周二 10:30>
 :PROPERTIES:
 :BLOCKER: children
