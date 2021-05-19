@@ -157,14 +157,16 @@ SCHEDULED: <2021-05-20 Thu 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 学习《游戏编程模式》                            :learn:ATTACH:
-SCHEDULED: <2021-05-19 周三 09:00 ++1d>
+** TODO [#A] 学习《游戏编程模式》                             :learn:ATTACH:
+SCHEDULED: <2021-05-20 Thu 09:00 ++1d>
 :PROPERTIES:
 :ID:       b2e6045c-58c3-4359-90d4-74fb2660b8da
 :ATTACH: [[attachment:游戏编程模式.org][游戏编程模式笔记]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-18 周二 23:12]
+:LAST_REPEAT: [2021-05-19 Wed 18:04]
 :END:
+- State "CANCELED"   from "TODO"       [2021-05-19 Wed 18:04] \\
+  调休不在公司
 - State "CANCELED"   from "TODO"       [2021-05-18 周二 23:12] \\
   没时间
 - State "DONE"       from "TODO"       [2021-05-17 周一 22:02]
@@ -296,6 +298,7 @@ DEADLINE: <2021-10-01 周五>
 |   | keyboard    |     0 |       |       |
 |   | earphone    |     0 |       |       |
 #+TBLFM: $3 = $4
+可能还需要线缆收纳, 硅脂, 防静电手环等设备
 * Project
 ** WAIT [#A] M8项目战斗逻辑模块梳理                                :m8:work:
 SCHEDULED: <2021-04-27 周二 10:30>
