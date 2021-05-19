@@ -206,7 +206,9 @@ CLOSED: [2021-05-01 Sat 19:27] DEADLINE: <2021-06-01 周二>
 - [X] 手柄
 - [X] Switch配件
 * Appointment
-** TODO 第二针aero新冠疫苗接种                                      :event:
+** DONE 第二针aero新冠疫苗接种                                       :event:
+CLOSED: [2021-05-19 Wed 13:32]
+- State "DONE"       from "TODO"       [2021-05-19 Wed 13:32]
 - Note taken on [2021-04-21 周三 15:58] \\
   必须携带单据打第二针, 单据在公司抽屉第二层
 <2021-05-12 周三>--<2021-06-15 周二>
