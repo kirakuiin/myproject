@@ -263,3 +263,4 @@ Wrong: m_happen, m_ID_Scroll
 **** 真机包外网调试方法
 - 下载iTools, 如果应用打开了文件共享, 找到此应用双击可以浏览此应用的日志
 ** 坑
+1. Richtext的SetString调用之后SetAlignMode会失效

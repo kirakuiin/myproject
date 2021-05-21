@@ -13,13 +13,15 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                             :work:
-SCHEDULED: <2021-05-20 Thu 19:00 ++1d> DEADLINE: <2021-05-20 Thu 23:59 ++1d>
+** TODO [#A] 完成每日日报                                            :work:
+SCHEDULED: <2021-05-22 周六 19:00 ++1d> DEADLINE: <2021-05-22 周六 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-19 Wed 08:28]
+:LAST_REPEAT: [2021-05-21 周五 16:46]
 :END:
 
+- State "DONE"       from "TODO"       [2021-05-21 周五 16:46]
+- State "DONE"       from "TODO"       [2021-05-20 周四 21:29]
 - State "CANCELED"   from "TODO"       [2021-05-19 Wed 08:28] \\
   调休
 - State "DONE"       from "TODO"       [2021-05-18 周二 23:12]
@@ -97,14 +99,16 @@ SCHEDULED: <2021-05-22 周六 18:00 ++1w> DEADLINE: <2021-05-24 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-05-20 Thu 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                   :learn:
+SCHEDULED: <2021-05-22 周六 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-19 Wed 08:44]
+:LAST_REPEAT: [2021-05-21 周五 08:54]
 :END:
+- State "DONE"       from "TODO"       [2021-05-21 周五 08:54]
+- State "DONE"       from "TODO"       [2021-05-20 周四 09:15]
 - State "DONE"       from "TODO"       [2021-05-19 Wed 08:44]
 - State "DONE"       from "TODO"       [2021-05-18 Tue 23:08]
 - State "DONE"       from "TODO"       [2021-05-17 周一 09:08]
@@ -157,14 +161,17 @@ SCHEDULED: <2021-05-20 Thu 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 学习《游戏编程模式》                             :learn:ATTACH:
-SCHEDULED: <2021-05-20 Thu 09:00 ++1d>
+** TODO [#A] 学习《游戏编程模式》                            :learn:ATTACH:
+SCHEDULED: <2021-05-22 周六 09:00 ++1d>
 :PROPERTIES:
 :ID:       b2e6045c-58c3-4359-90d4-74fb2660b8da
 :ATTACH: [[attachment:游戏编程模式.org][游戏编程模式笔记]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-19 Wed 18:04]
+:LAST_REPEAT: [2021-05-21 周五 16:46]
 :END:
+- State "CANCELED"   from "TODO"       [2021-05-21 周五 16:46] \\
+  生病
+- State "DONE"       from "TODO"       [2021-05-20 周四 10:09]
 - State "CANCELED"   from "TODO"       [2021-05-19 Wed 18:04] \\
   调休不在公司
 - State "CANCELED"   from "TODO"       [2021-05-18 周二 23:12] \\
@@ -177,10 +184,12 @@ SCHEDULED: <2021-05-20 Thu 09:00 ++1d>
 - State "CANCELED"   from "TODO"       [2021-05-12 周三 21:21] \\
   没时间
 - State "DONE"       from "TODO"       [2021-05-10 周一 11:09]
-** TODO [#A] 优化多伤害来源跳字表现                               :work:m8:
-SCHEDULED: <2021-05-20 Thu 10:00>
-** TODO [#C] 怒气进度条表现优化                                   :work:m8:
-SCHEDULED: <2021-05-21 Fri 10:00>
+** TODO [#B] 学习ui编辑器制作动画的方法                          :learn:m8:
+SCHEDULED: <2021-05-21 周五 17:00>
+** TODO [#A] 宠物详情突破的属性不同步                             :work:m8:
+SCHEDULED: <2021-05-24 周一 09:00>
+** TODO [#A] 支持服务器外测服                                     :work:m8:
+SCHEDULED: <2021-05-23 周日 09:00>
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 解决导表编辑器生成bug                              :m8:learn:
 CLOSED: [2021-05-09 周日 10:05]
@@ -269,6 +278,18 @@ CLOCK: [2021-05-10 周一 13:39]--[2021-05-10 周一 14:04] =>  0:25
 CLOCK: [2021-05-10 周一 13:09]--[2021-05-10 周一 13:34] =>  0:25
 CLOCK: [2021-05-10 周一 11:10]--[2021-05-10 周一 11:35] =>  0:25
 :END:
+** DONE [#B] 制作显示服务器时间的GM指令                           :work:m8:
+CLOSED: [2021-05-21 周五 11:19] SCHEDULED: <2021-05-21 周五 09:00>
+- State "DONE"       from "TODO"       [2021-05-21 周五 11:19]
+- State "DONE"       from "TODO"       [2021-05-20 周四 23:45]
+** DONE [#A] 战斗胜利后屏蔽暂停按钮                               :work:m8:
+CLOSED: [2021-05-20 周四 23:45] SCHEDULED: <2021-05-21 周五 15:00>
+** DONE [#A] 优化多伤害来源跳字表现                               :work:m8:
+CLOSED: [2021-05-20 周四 15:09] SCHEDULED: <2021-05-20 Thu 10:00>
+- State "DONE"       from "TODO"       [2021-05-20 周四 15:09]
+** DONE [#C] 怒气进度条表现优化                                   :work:m8:
+CLOSED: [2021-05-20 周四 16:46] SCHEDULED: <2021-05-20 周四 15:00>
+- State "DONE"       from "TODO"       [2021-05-20 周四 16:46]
 ** DONE [#B] 英雄山关卡进度接入网络协议                           :m8:work:
 CLOSED: [2021-05-18 周二 10:24] SCHEDULED: <2021-05-17 周一 14:00>
 - State "DONE"       from "TODO"       [2021-05-18 周二 10:24]
@@ -299,8 +320,10 @@ DEADLINE: <2021-10-01 周五>
 |   | earphone    |     0 |       |       |
 #+TBLFM: $3 = $4
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
-* Project
-** WAIT [#A] M8项目战斗逻辑模块梳理                                :m8:work:
+* DONE Project
+CLOSED: [2021-05-21 周五 16:46]
+- State "DONE"       from              [2021-05-21 周五 16:46]
+** WAIT [#A] M8项目战斗逻辑模块梳理                               :m8:work:
 SCHEDULED: <2021-04-27 周二 10:30>
 :PROPERTIES:
 :BLOCKER: children
