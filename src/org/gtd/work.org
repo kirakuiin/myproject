@@ -13,13 +13,15 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-05-22 周六 19:00 ++1d> DEADLINE: <2021-05-22 周六 23:59 ++1d>
+** TODO [#A] 完成每日日报                                             :work:
+SCHEDULED: <2021-05-23 Sun 19:00 ++1d> DEADLINE: <2021-05-23 Sun 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-21 周五 16:46]
+:LAST_REPEAT: [2021-05-22 Sat 11:41]
 :END:
 
+- State "CANCELED"   from "TODO"       [2021-05-22 Sat 11:41] \\
+  放假
 - State "DONE"       from "TODO"       [2021-05-21 周五 16:46]
 - State "DONE"       from "TODO"       [2021-05-20 周四 21:29]
 - State "CANCELED"   from "TODO"       [2021-05-19 Wed 08:28] \\
@@ -99,14 +101,15 @@ SCHEDULED: <2021-05-22 周六 18:00 ++1w> DEADLINE: <2021-05-24 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-05-22 周六 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                    :learn:
+SCHEDULED: <2021-05-23 Sun 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-21 周五 08:54]
+:LAST_REPEAT: [2021-05-22 Sat 12:39]
 :END:
+- State "DONE"       from "TODO"       [2021-05-22 Sat 12:39]
 - State "DONE"       from "TODO"       [2021-05-21 周五 08:54]
 - State "DONE"       from "TODO"       [2021-05-20 周四 09:15]
 - State "DONE"       from "TODO"       [2021-05-19 Wed 08:44]
@@ -161,14 +164,16 @@ SCHEDULED: <2021-05-22 周六 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 学习《游戏编程模式》                            :learn:ATTACH:
-SCHEDULED: <2021-05-22 周六 09:00 ++1d>
+** TODO [#A] 学习《游戏编程模式》                             :learn:ATTACH:
+SCHEDULED: <2021-05-23 Sun 09:00 ++1d>
 :PROPERTIES:
 :ID:       b2e6045c-58c3-4359-90d4-74fb2660b8da
 :ATTACH: [[attachment:游戏编程模式.org][游戏编程模式笔记]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-05-21 周五 16:46]
+:LAST_REPEAT: [2021-05-22 Sat 12:39]
 :END:
+- State "CANCELED"   from "TODO"       [2021-05-22 Sat 12:39] \\
+  生病
 - State "CANCELED"   from "TODO"       [2021-05-21 周五 16:46] \\
   生病
 - State "DONE"       from "TODO"       [2021-05-20 周四 10:09]
@@ -320,10 +325,8 @@ DEADLINE: <2021-10-01 周五>
 |   | earphone    |     0 |       |       |
 #+TBLFM: $3 = $4
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
-* DONE Project
-CLOSED: [2021-05-21 周五 16:46]
-- State "DONE"       from              [2021-05-21 周五 16:46]
-** WAIT [#A] M8项目战斗逻辑模块梳理                               :m8:work:
+* Project
+** WAIT [#A] M8项目战斗逻辑模块梳理                                :m8:work:
 SCHEDULED: <2021-04-27 周二 10:30>
 :PROPERTIES:
 :BLOCKER: children
