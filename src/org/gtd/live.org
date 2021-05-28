@@ -25,12 +25,21 @@ DEADLINE: <2021-06-12 周六 23:00 +1m> SCHEDULED: <2021-06-12 周六 09:00 +1m>
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2021-05-23 周日 23:00 ++1w> SCHEDULED: <2021-05-22 周六 18:00 ++1w>
+DEADLINE: <2021-05-30 周日 23:00 ++1w> SCHEDULED: <2021-05-29 周六 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2021-05-16 周日 23:32]
+:LAST_REPEAT: [2021-05-24 周一 09:02]
 :END:
+- State "DONE"       from "TODO"       [2021-05-23 周日 22:02] \\
+  1. 完成了大量m8界面优化相关的工单
+  2. 将英雄山部分接入网络协议
+  3. 实现了显示服务器时间的功能
+  ------------------------------------------------
+  1. 接种了第二针新冠疫苗
+  2. 购买了工学椅, 升降桌还有一些其他杂物, 家具置办齐全
+  ------------------------------------------------
+  1. 这周接种疫苗之后当晚就去吃了海鲜烧烤, 导致腹泻发烧, 要注意
 - State "DONE"       from "TODO"       [2021-05-16 周日 23:32] \\
   1. 完成了客户端本地文件读取容错处理
   2. 完成了ios和android平台真机包的制作
@@ -143,11 +152,12 @@ CLOSED: [2021-05-01 Sat 19:27] DEADLINE: <2021-06-01 周二>
   - [X] 字帖
 - [X] 手柄
 - [X] Switch配件
-** DONE [#B] 购买家具用品 [100%]                                  :shopping:
+*** DONE [#B] 购买家具用品 [100%]                                :shopping:
 CLOSED: [2021-05-19 Wed 18:03] SCHEDULED: <2021-05-10 Mon 09:00>
 :PROPERTIES:
 :COOKIE_DATA: checkbox recursive
 :ORDERED: nil
+:ARCHIVE_TIME: 2021-05-24 周一 10:55
 :END:
 - State "DONE"       from "WAIT"       [2021-05-19 Wed 18:03]
 - [X] 床上用品 [8/8]
@@ -210,8 +220,12 @@ CLOSED: [2021-05-19 Wed 18:03] SCHEDULED: <2021-05-10 Mon 09:00>
 ** WAIT [#C] 爬火炉山                                               :event:
 - State "WAIT"       from "TODO"       [2021-04-11 周日 16:29] \\
   和同事商量一下一起去, 先不急.
-** DONE 第二针aero新冠疫苗接种                                       :event:
+** Archive                                                        :ARCHIVE:
+*** DONE 第二针aero新冠疫苗接种                                     :event:
 CLOSED: [2021-05-19 Wed 13:32]
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-05-24 周一 10:55
+:END:
 - State "DONE"       from "TODO"       [2021-05-19 Wed 13:32]
 - Note taken on [2021-04-21 周三 15:58] \\
   必须携带单据打第二针, 单据在公司抽屉第二层

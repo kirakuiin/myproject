@@ -264,3 +264,5 @@ Wrong: m_happen, m_ID_Scroll
 - 下载iTools, 如果应用打开了文件共享, 找到此应用双击可以浏览此应用的日志
 ** 坑
 1. Richtext的SetString调用之后SetAlignMode会失效
+2. 新建新的UI文件夹时如果导入失败, 可能是没有加__init__.py
+3. IOS如果首次登陆时没有弹出网络权限配置请求, 可以使用C_sys.IsEnableNetwork来主动触发

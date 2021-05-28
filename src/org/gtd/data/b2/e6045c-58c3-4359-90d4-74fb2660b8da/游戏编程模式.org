@@ -103,3 +103,74 @@
 3. 如果不能预测共有多少享元, 那么最好按需创建, 可以使用[[*][工厂模式]]管理创建操作
 4. 为了更方便的管理享元, 可以使用[[*对象池模式][对象池模式]]来管理
 5. [[*状态机模式][状态机模式]]的状态也可以使用享元来表现
+
+* 观察者模式
+1. 什么是观察者
+   #+BEGIN_VERSE
+   在对象之间定义一种一对多的关系, 以便当某个对象改变时, 与他存在依赖关系的所有对象
+   都能收到通知并自动更新
+   #+END_VERSE
+2. 经典场景, 成就系统
+   #+BEGIN_SRC c++
+     class Observer {
+      public:
+       virtual ~Observer() {}
+       virtual void onNotify(const Entity& entity, Event event) = 0;
+     };
+
+     class Achievements: public Observer {
+      public:
+       virtual void onNotify(const Entity& entity, Event event) {
+         switch (event) {
+           case EVENT_FELL:
+             if (entity.isHero()) {
+               unlock(ACHIEVEMENT_FELL);  // 解锁跌落成就
+             }
+             break;
+         }
+       }
+
+      private:
+       void unlock(Achievement achievement) {
+         // 解锁成就
+       }
+     };
+
+     class Subject {
+      public:
+       void addObserver(Observer* observer) {
+         // 加到观察者列表中
+       }
+
+       // 移除观察者等其他操作
+
+      protected:
+       void notify(const Entity& entity, Event event) {  // 通知所有观察者
+         for(auto& observer : _observers) {
+           observer->onNotify(entity, event)
+         }
+       }
+
+      private:
+       Observer* _observers[MAX_OBSERVERS];
+     };
+
+     class Physics: public Subject {  // 物理系统
+      public:
+       void updateEntity(Entity& entity) {
+         notify(entity, EVENT_FELL);  // 发出掉落信号
+       }
+       // 其他接口
+     };
+   #+End_src
+   当玩家坠地时解锁成就玩家坠落, 但是很明显玩家坠地属于物理系统, 而在物理系统处理成就
+   会非常奇怪, 而且玩家坠地也有可能有声音, 动画等等特效, 很明显不能将这些效果和物理系统
+   耦合到一起, 物理系统只应该处理物理相关的事.
+   通过将成就系统注册为物理系统的观察者, 使得物理无需和成就系统耦合. 物理系统只需要
+   处理物理相关的事件并广播出去, 并不关心其他系统如何处理, 最终实现了成就系统和物理
+   系统同步且两者可以独立变化
+3. 当一个观察者或被观察者过期时, 注意两者的销毁
+4. 观察者适用于处理不相关模块的通信问题, 不适用于在单个紧凑的内部模块内通信使用
+5. 目前更流行使用更灵活的观察者方法, 比如注册一个观察函数, 而不是继承一个类
+
+* 原型模式
