@@ -140,7 +140,7 @@ SCHEDULED: <2021-04-10 周六 13:20>
   暂时没需求.
 DEADLINE: <2021-04-30 周五>
 * Appointment
-** TODO [#B] 组装一台性价比高的台式机用于开发和娱乐       :shopping:future:
+** TODO [#B] 组装一台性价比高的台式机用于开发和娱乐               :shopping:
 <2021-06-01 周二>--<2021-06-30 周三>
 - State "WAIT"       from "TODO"       [2021-04-10 周六 14:03] \\
   1. 显卡太贵
