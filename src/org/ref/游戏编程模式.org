@@ -41,6 +41,17 @@
        virtual void Execute() = 0;
        virtual void Undo() = 0
      };
+
+     class EditCommand: public Command {
+      public:
+       EditCommand() {}
+       void Execute() {
+         // do something
+       }
+       void Undo() {
+         // undo it
+       }
+     };
    #+END_SRC
    存储一个命令栈:
    older.. | cmd | cmd | cmd | cmd | cmd | newer..
@@ -226,9 +237,64 @@
    通过为每个怪物json设置原型字段, 可以有效实现相似怪物的属性共享, 新建怪物类型也
    非常简单, 使用prototype字段设置一个原型
 3. 实现原型的clone时, 一定要注意对象的拷贝问题(深拷贝, 浅拷贝)
-4. [[*类型对象][类型对象模式]]和和原型模式有共同点
+4. [[*类型对象][类型对象模式]]和和原型模式有一定的共同点
 
 * 单例模式
+1. 什么是单例
+   #+BEGIN_VERSE
+   确保一个类只有一个实例, 并为其提供一个全局访问入口
+   #+END_VERSE
+2. 经典场景, 文件系统
+   #+BEGIN_SRC c++
+     class FileSystem {
+      public:
+       static FileSystem& instance() {
+         #if PLATFORM = PLAYSTATION4
+           static FileSystem* instance = new PS4FileSystem();
+         #elif PLATFORM = SWITCH
+           static FileSystem* instance = new SwitchFileSystem();
+         #endif
+         return *instance
+       }
+       virtual ~FileSystem() {}
+       virtual char* read(char* path) = 0;
+       virtual void write(char* path, char* text) = 0;
+
+      private:
+       FileSystem() {}
+     };
+
+     class PS4FileSystem: public FileSystem {
+      public:
+       virtual char* read(char* path) {}
+       virtual void write(char* path, char* text) {}
+     };
+
+     class SwitchFileSystem: public FileSystem {
+      public:
+       virtual char* read(char* path) {}
+       virtual void write(char* path, char* text) {}
+     };
+   #+End_src
+   C++11保证局部静态变量只会初始化一次且线程安全, 通过instace接口, 全局
+   都访问同一个FileSystem实例, 通过继承和简单的编译跳转实现了跨平台的文件
+   系统功能封装
+3. 不要滥用单例模式
+   1. 他是一个全局变量
+      1. 由于任何位置都能修改单例, 导致追踪问题时需要额外考虑全局单例状态, 导致
+         代码晦涩难懂
+      2. 全局变量促进了耦合, 由于单例的易访问性, 使用者很可能在任何位置都不自主的
+         使用单例, 导致不相干的模块耦合到一起
+      3. 对并发不友好
+   2. 延迟初始化不一定是件好事, 在错误的时间初始化可能导致游戏明显卡顿, 所以
+      很多时候会选择静态类初始化, 此时单例没有意义
+4. 单例的替代品
+   1. 首先考虑你是否真的需要单例
+   2. 是否可以通过传参的方式替代单例
+   3. 是否可以在基类中获取
+   4. 将分散的单例作为成员变量封装到一个全局对象中
+   5. 使用[[*服务定位器][服务定位器]]来访问
+   6. [[*子类沙盒][子类沙盒]]可以为子类提供一些共享的状态访问, 而不必全局可见
 * 状态模式
 * 双缓冲
 * 游戏循环
