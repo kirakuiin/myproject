@@ -13,13 +13,16 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                             :work:
-SCHEDULED: <2021-06-02 Wed 19:00 ++1d> DEADLINE: <2021-06-02 Wed 23:59 ++1d>
+** TODO [#A] 完成每日日报                                            :work:
+SCHEDULED: <2021-06-05 周六 19:00 ++1d> DEADLINE: <2021-06-05 周六 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-01 Tue 11:36]
+:LAST_REPEAT: [2021-06-04 周五 21:59]
 :END:
 
+- State "DONE"       from "TODO"       [2021-06-04 周五 21:59]
+- State "DONE"       from "TODO"       [2021-06-03 周四 21:11]
+- State "DONE"       from "TODO"       [2021-06-02 周三 21:18]
 - State "CANCELED"   from "TODO"       [2021-06-01 Tue 11:36] \\
   儿童节放假
 - State "DONE"       from "TODO"       [2021-05-31 周一 21:38]
@@ -115,14 +118,17 @@ SCHEDULED: <2021-06-05 周六 18:00 ++1w> DEADLINE: <2021-06-07 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-06-02 Wed 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                   :learn:
+SCHEDULED: <2021-06-05 周六 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-01 Tue 11:37]
+:LAST_REPEAT: [2021-06-04 周五 09:28]
 :END:
+- State "DONE"       from "TODO"       [2021-06-04 周五 09:28]
+- State "DONE"       from "TODO"       [2021-06-03 周四 08:59]
+- State "DONE"       from "TODO"       [2021-06-02 周三 08:49]
 - State "DONE"       from "TODO"       [2021-06-01 Tue 11:37]
 - State "DONE"       from "TODO"       [2021-05-31 周一 21:39]
 - State "DONE"       from "TODO"       [2021-05-30 Sun 10:08]
@@ -185,14 +191,17 @@ SCHEDULED: <2021-06-02 Wed 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 学习《游戏编程模式》                             :learn:ATTACH:
-SCHEDULED: <2021-06-02 周三 09:00 ++1d>
+** TODO [#A] 学习《游戏编程模式》                            :learn:ATTACH:
+SCHEDULED: <2021-06-05 周六 09:00 ++1d>
 :PROPERTIES:
 :ID:       b2e6045c-58c3-4359-90d4-74fb2660b8da
 :ATTACH: [[attachment:游戏编程模式.org][游戏编程模式笔记]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-01 周二 21:31]
+:LAST_REPEAT: [2021-06-04 周五 10:37]
 :END:
+- State "DONE"       from "TODO"       [2021-06-04 周五 10:37]
+- State "DONE"       from "TODO"       [2021-06-03 周四 09:52]
+- State "DONE"       from "TODO"       [2021-06-02 周三 10:43]
 - State "DONE"       from "TODO"       [2021-06-01 周二 21:31]
 - State "DONE"       from "TODO"       [2021-05-31 周一 21:39]
 - State "DONE"       from "TODO"       [2021-05-28 周五 19:07]
@@ -220,20 +229,41 @@ SCHEDULED: <2021-05-31 周一 13:00> DEADLINE: <2021-06-05 周六 21:00>
 :PROPERTIES:
 :BLOCKER: children
 :END:                          
-*** TODO 阅读设计文档并绘制需要的界面 [3/4]
+*** DONE 阅读设计文档并绘制需要的界面 [4/4]
+CLOSED: [2021-06-02 周三 13:16] SCHEDULED: <2021-06-02 周三 09:30>
 :PROPERTIES:                          
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:                          
+- State "DONE"       from "TODO"       [2021-06-02 周三 13:16]
 - [X] 阅读设计文档
 - [X] 小队配置界面
-- [ ] 队伍卡界面
+- [X] 队伍卡界面
 - [X] 战斗中指示界面
-*** WAIT 实现导表
-*** WAIT 设计模型层 [0%]
-- [ ] 设计模型层
-- [ ] 绘制uml
-*** WAIT 实现模型层
-*** WAIT 实现界面层, 连接战斗界面
+*** DONE 实现导表
+CLOSED: [2021-06-02 周三 14:07] SCHEDULED: <2021-06-02 周三 13:16>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-02 周三 14:07]
+*** DONE 设计模型层 [100%]
+CLOSED: [2021-06-02 周三 17:40] SCHEDULED: <2021-06-02 周三 14:07>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-02 周三 17:40]
+- [X] 设计模型层
+- [X] 绘制uml
+*** DONE 实现模型层
+CLOSED: [2021-06-03 周四 19:18] SCHEDULED: <2021-06-02 周三 17:40>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-03 周四 19:18]
+*** TODO 实现界面层, 连接战斗界面
+SCHEDULED: <2021-06-03 周四 19:18>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
 *** WAIT 测试
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
