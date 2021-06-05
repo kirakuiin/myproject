@@ -132,7 +132,7 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
   2. 完成了多益的入职培训
   3. 找到了一处还不错的房子
   4. 认识了很多很棒的同事
-** WAIT [#C] 办理电信宽带业务                                        :event:
+** TODO [#C] 办理电信宽带业务                                       :event:
 SCHEDULED: <2021-04-10 周六 13:20>
 :PROPERTIES:
 :END:
