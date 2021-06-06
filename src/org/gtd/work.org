@@ -268,17 +268,29 @@ CLOSED: [2021-06-02 周三 17:40] SCHEDULED: <2021-06-02 周三 14:07>
 - State "DONE"       from "TODO"       [2021-06-02 周三 17:40]
 - [X] 设计模型层
 - [X] 绘制uml
-*** DONE 实现模型层
+*** DONE 实现模型层 [100%]
 CLOSED: [2021-06-03 周四 19:18] SCHEDULED: <2021-06-02 周三 17:40>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 - State "DONE"       from "TODO"       [2021-06-03 周四 19:18]
-*** TODO 实现界面层, 连接战斗界面
+- [X] 重构战斗布局模型层部分代码
+- [X] 实现多人战斗模型
+*** TODO 实现界面层, 连接战斗界面 [30%]
 SCHEDULED: <2021-06-03 周四 19:18>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
+- [X] 重构战斗界面, 增加钩子
+- [X] 小队拖动功能
+- [X] 多队上阵切换功能
+- [ ] 战斗结束处理
+- [ ] 单人三队入场条件判断
+- [ ] 人员未满无法进行战斗
+- [ ] 多队车轮战斗
+- [ ] 单人三队英雄选择状态共享
+- [ ] 战斗结束后生命状态的传递
+- [ ] 红点功能
 *** WAIT 测试
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
