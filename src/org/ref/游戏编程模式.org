@@ -664,7 +664,216 @@
      - 必须要保持两个集合同步
 5. 这一部分与[[*游戏循环][游戏循环]]和[[*组件模式][组件模式]]共同构成了游戏引擎的核心部分
 * 字节码
+1. 什么是字节码
+   #+BEGIN_VERSE
+   "通过将行为编码成虚拟机指令, 从而使其具备数据的灵活性"
+   指令集定义了一套可以执行的底层操作. 一系列指令被编码为字节序列. 虚拟机逐步执行
+   指令栈上的这些指令. 通过组合指令, 即可完成高级行为
+   #+END_VERSE
+2. 经典场景, 法术API
+   #+CAPTION: 堆栈虚拟机
+   #+BEGIN_SRC c++
+     // 基本操作
+     void playSound(int id);
+     void setHealth(int witch, int value);
+     void getHealth(int witch);
+     void spawnParticles(int id);
+
+     enum Instruction {  // 指令集
+       INST_LITERAL = 0x00,  // 字面值
+       INST_SET_HEALTH = 0x01,
+       INST_GET_HEALTH = 0x02,
+       INST_ADD = 0x03,
+       INST_PLAY_SOUND = 0x04,
+       INST_SPAWN_PARTICLES = 0x05,
+     };
+
+     class VM { // 虚拟机
+      public:
+       VM(): _stackSize(0) {}
+
+       void interpret(char bytecode[], int size) {
+         for (int i = 0; i < size; ++i) {
+           char instruction = bytecode[i];
+           switch(instruction) {
+             case INST_LITERAL:
+               push(bytecode[++i]);
+               break;
+             case INST_SET_HEALTH:
+               int health= pop();
+               int witch = pop();
+               setHealth(witch, health);
+               break;
+             case INST_GET_HEALTH:
+               int witch = pop();
+               push(getHealth(witch));
+               break;
+             case INST_ADD:
+               int b = pop();
+               int a = pop();
+               push(a+b);
+               break;
+             // case xx:
+             // ...
+           }
+         }
+       }
+
+      private:
+       int pop() {
+         assert(_stackSize > 0);
+         return _stack[--_stackSize];
+       }
+
+       void push(int value) {
+         assert(_stackSize < MAX_STACK);
+         _stack[_stackSize] = value;
+         _stackSize += 1;
+       }
+
+       static const int MAX_STACK = 128;
+       int _stackSize;
+       int _stack[MAX_STACK]; // 栈用来存储操作数, 栈顶为当前操作的操作数
+     };
+   #+END_SRC
+   如果想要模拟一个将一个巫师的生命值设置为两个巫师生命总和的法术
+   假设巫师0生命为20, 巫师1生命为40
+   可以执行以下字节码:
+   | bytecode        | vm stack    | comment           |
+   |-----------------+-------------+-------------------|
+   | INST_LITERAL 0  | [0]         | set witch0 index  |
+   | INST_LITERAL 0  | [0, 0]      | set witch0 index  |
+   | INST_GET_HEALTH | [0, 20]     | get witch0 health |
+   | INST_LITERAL 1  | [0, 20, 1]  | set witch index   |
+   | INST_GET_HEALTH | [0, 20, 40] | get witch1 health |
+   | INST_ADD        | [0, 60]     | add health        |
+   | INST_SET_HEALTH | []          | set witch0 health |
+
+   虽然只实现了一个支持很小指令集的虚拟机, 但是已经可以通过组合实现很多法术效果,
+   并且由于字节紧密排列, 执行的速度非常快. 由于我们只提供了有限的指令, 任何通过
+   字节码执行的行为都不会对游戏产生破坏.
+3. 使用场景
+   如果你的游戏中需要定义大量行为, 并且实现的语言有如下特征
+   * 编程语言太底层了, 编写起来繁琐易错
+   * 因为编译时间或者其他原因, 迭代缓慢
+   * 它的安全性很低, 想要确保定义的行为不会让行为崩溃, 需要把他们从代码库移到沙箱
+4. 如果使用字节码, 一定要控制字节码的规模, 在他超出你的控制之前一定约束好范围
+5. 指令应该如何访问堆栈
+   * 基于栈的虚拟机 [推荐]
+     - 指令很小, 因为参数隐式位于栈顶
+     - 代码生成简单
+     - 指令数量更多
+   * 基于寄存器的虚拟机
+     - 指令更大, 因为需要记录参数在栈中的偏移量
+     - 代码生成复杂
+     - 指令更少, 性能更高
+6. 应该有哪些指令
+   * 外部基本操作, 比如播放动画, 声音等等
+   * 内部基本操作, 操作虚拟机栈内值得操作, 比如运算, 比较等等
+   * 控制流, 为栈实现跳转功能, 即修改栈顶指针的位置
+   * 抽象化, 提供可调用过程, 本质上也是跳转, 不过需要记录返回的地址
+7. 值应当如何表达
+   * 单一数据类型
+     - 很简单
+     - 表达能力很差
+   * 标签表达 [推荐]
+     每个值由两部分组成, 一个是它的类型, 一个是它的值
+     - 运行时可以完成对值的检查, 很安全
+     - 占用更多的内存
+   * 不带标签的联合体
+     - 紧凑
+     - 快速
+     - 不安全, 因为无法类型检查, 一段代码可能就会破坏整个程序
+   * 接口 [不建议使用, 使用多态会严重降低效率]
+8. 如何生成字节码
+   * 定义一种基于文本的语言, 类似lua, python
+     - 你要定义语法, 定义一个对用户友好的语言是很困难的
+     - 你要实现一个分析器
+     - 你必须处理语法错误
+     - 对非技术人员不友好
+   * 实现一个图形化界面来编辑操作 [推荐]
+     - 操作友好
+     - 不容易出错, 因为你可以在ui里限制用户的操作
+     - 移植性较差
+9. 字节码是[[*解释器模式][解释器模式]]的兄弟版, 他们都提供了一种用数据来组合行为的方法, 事实上
+   生成字节码的工具经常会有一个内部对象树来表达代码, 遍历解析它来生成字节码,
+   这正是[[*解释器模式][解释器模式]]做的事. 他们的区别在于字节码只在生成阶段使用[[*解释器模式][解释器模式]], 执行
+   阶段使用更加高效的字节码
 * 子类沙盒
+1. 什么是子类沙盒
+   #+BEGIN_VERSE
+   "使用基类提供的操作集合来定义子类中的行为"
+   基类定义出抽象的沙盒方法和一些预定义的操作函数. 通过将他们设为保护状态
+   来确保只被子类使用, 每个派生出来的子类使用父类提供的操作来实现沙盒函数
+   #+END_VERSE
+2. 经典场景, 超级英雄
+   #+BEGIN_SRC cpp
+     class SuperPower { // 父类沙盒
+      public:
+       virtual ~SuperPower() {}
+
+      protected:
+       virtual void activate() = 0;
+
+       void move(double x, double y, double z) {
+         // implement
+       }
+
+       void playSound(soundId) {
+         // implement
+       }
+
+       void spawnPariticles(int type, int count) {
+         // implement
+       }
+     };
+
+     class IronMan: public SuperPower {
+      protected:
+       void activate() override {
+         move(0, 0, 20);
+         playSound(0x1);
+         spawnPariticles(0x2, 10);
+       }
+     };
+
+     class SpiderMan: public SuperPower {
+      protected:
+       void activate() override {
+         move(30, 30, 30);
+         spawnPariticles(0x1, 30);
+       }
+     }
+   #+END_SRC
+   实际上是一个非常温和的模式, 父类封装一些子类可能用到的操作, 子类调用即可. 这
+   种方式将耦合全部集中到了父类, 子类会很清爽
+3. 使用场景
+   * 你有一个带有大量子类的基类
+   * 基类能够提供所有子类可能需要执行操作的集合
+   * 子类之间有重复的代码
+   * 你希望子类和其他部分最小耦合
+4. 需要提供的操作
+   * 如果基类提供的方法只被少数子类使用, 那么不必将其加入基类
+   * 如果某个耦合是非侵入性的(即不修改任何状态), 那么它是非常安全的, 那么可以放到
+     子类中, 反之应该放到基类
+   * 如果仅仅是提供系统调用的二次封装, 有些时候可能不需要在基类包装(这个要具体分析)
+5. 为子类提供什么样的操作
+   一般来说是提供函数供子类调用, 但是如果有大量的某个模块的相关函数, 可以将他们包
+   装到一个新的类中, 基类提供这个类的实例供子类调用, 有如下优点:
+   - 减少了基类函数数量
+   - 辅助类和基类都更加容易维护
+   - 降低了基类和其他模块的耦合
+6. 基类如何初始化依赖状态
+   - 构造函数初始化 :: 这是最简单的方案, 但是每个子类都要承担起初始化基类的责任,
+     不方便修改
+   - 分段初始化 :: 提供一个Init函数, 但是有可能有忘记调用的风险, 可能需要包装一
+     个工厂函数来降低这种风险
+   - 静态初始化 :: 可以将基类依赖的对象静态化(如果可以), 可以确保所有子类共享一个
+     实例
+   - [[*服务定位器][服务定位器]] :: 不在基类内部持有依赖对象, 在调用函数的时候使用动态获取
+7. [[*更新方法][更新方法]]一般也是一个沙盒函数
+8. [[*模板函数模式][模板函数模式]]与沙盒相反, 它是基类定义骨架, 子类来实现
+9. 可以将此模式当成[[*外观模式][外观模式]]的一个变种
 * 类型对象
 * 组件模式
 * 事件队列

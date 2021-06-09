@@ -336,5 +336,22 @@ zz/
    并不会影响本地的yy变量. 如果想要共享同一个变量请使用 ~import xx~, ~xx.yy~ 这样的使用方法
 2. 如果yy是可变类型(list, dict), 使用append这类操作是可以共享变化的, 一旦使用=等赋值语句
    则会导致本地yy的id改变, 发生重新绑定
+** python lambda 的陷阱
+当你在类方法里使用lambda函数或者内部函数创建一个闭包的时候, 闭包对象内部会持有被
+引用对象的引用, 如果你没有将lambda闭包对象保存起来, 离开作用域lambda自然消失,
+此时无事发生; 如果你将其保存了起来并且这个被引用对象是self, 那么此时会产生循环引
+用.
+#+BEGIN_SRC python
+  class Test(object):
+      def __init__(self):
+          # 这里已经产生了循环引用了, 即便你用弱引用方法包装对象A
+          # 闭包还是会会持有self的引用
+          self.B = lambda: self.Print
 
-   
+      def __del__(self):
+          print('Test is be deleted')
+
+      def Print(self):
+          """输出自身"""
+          print('Test')
+#+END_SRC
