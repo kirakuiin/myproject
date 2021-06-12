@@ -174,20 +174,23 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
   2. 没钱
 #+CAPTION[零件表]:
 #+NAME: PC_PRICES
-| N | component   | brand | model | price |
-|---+-------------+-------+-------+-------|
-| / | <3>         |   <2> | <2>   | <2>   |
-|   | motherboard |     0 |       |       |
-|   | fan         |     0 |       |       |
-|   | cpu         |     0 |       |       |
-|   | gpu         |     0 |       |       |
-|   | memory      |     0 |       |       |
-|   | ssd         |     0 |       |       |
-|   | power       |     0 |       |       |
-|   | case        |     0 |       |       |
-|   | monitor     |     0 |       |       |
-|   | keyboard    |     0 |       |       |
-|   | earphone    |     0 |       |       |
+| component   | brand    | model                | price |
+|-------------+----------+----------------------+-------|
+| motherboard | ASUS     | BB550M-ZAKU          |   749 |
+| cpu         | AMD      | Ryzen7-5800X         |  2950 |
+| memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1899 |
+| ssd         | SAMSUNG  | 980                  |  1069 |
+| hdd         | TOSHIBA  | P300                 |   269 |
+| gpu         | None     |                      |       |
+| power       | SEASONIC | FOCUS-GX1000         |   999 |
+| case        | PHANTEKS | P500A                |   699 |
+| watercool   | NZXT     | Kraken-Z73           |  1699 |
+| monitor     | MSI      | MAG274QRF-QD         |  2299 |
+| keyboard    | DURGOD   | K320w(silver)        |   669 |
+| earphone    | None     |                      |       |
+| mouse       | None     |                      |       |
+|             |          |                      | 13301 |
+#+TBLFM: @15$4=vsum(+@I..@-1)
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
 ** WAIT 爬火炉山                                                     :event:
 - State "WAIT"       from "TODO"       [2021-04-11 周日 16:29] \\
