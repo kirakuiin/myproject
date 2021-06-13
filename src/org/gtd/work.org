@@ -261,76 +261,15 @@ SCHEDULED: <2021-06-13 Sun 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-05-10 周一 11:09]
 ** TODO [#A] 准备转正报告                                            :work:
 SCHEDULED: <2021-06-07 周一 19:03>
-** DONE [#A] 编写季度报告                                            :work:
+** Archive                                                        :ARCHIVE:
+*** DONE [#A] 编写季度报告                                           :work:
 CLOSED: [2021-06-07 周一 18:09] SCHEDULED: <2021-06-06 周日 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-06-13 周日 17:37
+:END:
 - State "DONE"       from "TODO"       [2021-06-07 周一 18:09]
 * Appointment
 * Project
-** DONE [#A] 单人多队战斗                                         :work:m8:
-CLOSED: [2021-06-11 周五 16:54] SCHEDULED: <2021-05-31 周一 13:00> DEADLINE: <2021-06-05 周六 21:00>
-:PROPERTIES:
-:BLOCKER: children
-:END:                          
-- State "DONE"       from "SCH"        [2021-06-11 周五 16:54]
-*** DONE 阅读设计文档并绘制需要的界面 [4/4]
-CLOSED: [2021-06-02 周三 13:16] SCHEDULED: <2021-06-02 周三 09:30>
-:PROPERTIES:                          
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:                          
-- State "DONE"       from "TODO"       [2021-06-02 周三 13:16]
-- [X] 阅读设计文档
-- [X] 小队配置界面
-- [X] 队伍卡界面
-- [X] 战斗中指示界面
-*** DONE 实现导表
-CLOSED: [2021-06-02 周三 14:07] SCHEDULED: <2021-06-02 周三 13:16>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-06-02 周三 14:07]
-*** DONE 设计模型层 [100%]
-CLOSED: [2021-06-02 周三 17:40] SCHEDULED: <2021-06-02 周三 14:07>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-06-02 周三 17:40]
-- [X] 设计模型层
-- [X] 绘制uml
-*** DONE 实现模型层 [100%]
-CLOSED: [2021-06-03 周四 19:18] SCHEDULED: <2021-06-02 周三 17:40>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-06-03 周四 19:18]
-- [X] 重构战斗布局模型层部分代码
-- [X] 实现多人战斗模型
-*** DONE 实现界面层, 连接战斗界面 [100%]
-CLOSED: [2021-06-10 周四 21:07] SCHEDULED: <2021-06-03 周四 19:18>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-06-10 周四 21:07]
-- [X] 重构战斗界面, 增加钩子
-- [X] 小队拖动功能
-- [X] 多队上阵切换功能
-- [X] 多队车轮战斗
-- [X] 战斗结束处理
-- [X] 单人三队入场条件判断
-- [X] 有小队无人则无法进行战斗
-- [X] 战斗结束后生命状态的传递
-- [X] 单人三队英雄选择状态共享
-- [X] 红点功能
-*** DONE 测试 [100%]
-CLOSED: [2021-06-11 周五 16:54] SCHEDULED: <2021-06-10 周四 21:07>
-:PROPERTIES:                          
-:TRIGGER+: parent todo!(DONE)
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- [X] :: 队伍颜色处理
-- [X] :: 拖动后不交换当前队伍
-- [X] :: 红点信号没有及时同步
-- [X] :: 3v3加载错误
-- [X] :: 更新uml图
 ** WAIT [#A] M8项目战斗逻辑模块梳理                               :m8:work:
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 制作临时组队功能                                    :work:m8:
@@ -386,6 +325,72 @@ CLOSED: [2021-05-28 周五 15:54] SCHEDULED: <2021-05-27 周四 21:32>
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 >>>>>>> 20c01406f2670741a6120775b4c578240da7b3c5
+*** DONE [#A] 单人多队战斗                                        :work:m8:
+CLOSED: [2021-06-11 周五 16:54] SCHEDULED: <2021-05-31 周一 13:00> DEADLINE: <2021-06-05 周六 21:00>
+:PROPERTIES:
+:BLOCKER: children
+:ARCHIVE_TIME: 2021-06-13 周日 17:37
+:END:                          
+- State "DONE"       from "SCH"        [2021-06-11 周五 16:54]
+**** DONE 阅读设计文档并绘制需要的界面 [4/4]
+CLOSED: [2021-06-02 周三 13:16] SCHEDULED: <2021-06-02 周三 09:30>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+- State "DONE"       from "TODO"       [2021-06-02 周三 13:16]
+- [X] 阅读设计文档
+- [X] 小队配置界面
+- [X] 队伍卡界面
+- [X] 战斗中指示界面
+**** DONE 实现导表
+CLOSED: [2021-06-02 周三 14:07] SCHEDULED: <2021-06-02 周三 13:16>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-02 周三 14:07]
+**** DONE 设计模型层 [100%]
+CLOSED: [2021-06-02 周三 17:40] SCHEDULED: <2021-06-02 周三 14:07>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-02 周三 17:40]
+- [X] 设计模型层
+- [X] 绘制uml
+**** DONE 实现模型层 [100%]
+CLOSED: [2021-06-03 周四 19:18] SCHEDULED: <2021-06-02 周三 17:40>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-03 周四 19:18]
+- [X] 重构战斗布局模型层部分代码
+- [X] 实现多人战斗模型
+**** DONE 实现界面层, 连接战斗界面 [100%]
+CLOSED: [2021-06-10 周四 21:07] SCHEDULED: <2021-06-03 周四 19:18>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-10 周四 21:07]
+- [X] 重构战斗界面, 增加钩子
+- [X] 小队拖动功能
+- [X] 多队上阵切换功能
+- [X] 多队车轮战斗
+- [X] 战斗结束处理
+- [X] 单人三队入场条件判断
+- [X] 有小队无人则无法进行战斗
+- [X] 战斗结束后生命状态的传递
+- [X] 单人三队英雄选择状态共享
+- [X] 红点功能
+**** DONE 测试 [100%]
+CLOSED: [2021-06-11 周五 16:54] SCHEDULED: <2021-06-10 周四 21:07>
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- [X] :: 队伍颜色处理
+- [X] :: 拖动后不交换当前队伍
+- [X] :: 红点信号没有及时同步
+- [X] :: 3v3加载错误
+- [X] :: 更新uml图
 * Someday
 ** 学习《代码之外的生存指南》                                :learn:future:
 ** 学习《Unity3D 游戏开发》                                  :learn:future:

@@ -13,10 +13,12 @@
 * Inbox
 * Next Action
 ** TODO [#A] 大壮名城G1-1018租房月志                                :event:
-DEADLINE: <2021-06-12 周六 23:00 +1m> SCHEDULED: <2021-06-12 周六 09:00 +1m>
+DEADLINE: <2021-07-12 周一 23:00 +1m> SCHEDULED: <2021-07-12 周一 09:00 +1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
+- State "DONE"       from "TODO"       [2021-06-13 周日 17:42] \\
+  1. 房租2000, 电费100(开了空调), 物业+水117, 办理了电信300m宽带
 - State "DONE"       from "TODO"       [2021-05-12 周三 09:21] \\
   1. 房租2000, 本月电费200(实际每月40左右), 物业+水103
 - State "DONE"       from "TODO"       [2021-04-10 周六 13:45] \\
@@ -179,35 +181,23 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
 | motherboard | ASUS     | B550M-ZAKU           |   749 |
 | cpu         | AMD      | Ryzen7-5800X         |  2950 |
 | memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1899 |
-| ssd         | SAMSUNG  | 980(1TB)             |  1069 |
-| hdd         | TOSHIBA  | P300(1TB)            |   269 |
+| ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |
+| ssd(app)    | SAMSUNG  | 980(1TB)             |  1069 |
 | gpu         | None     |                      |       |
 | power       | SEASONIC | FOCUS-GX1000         |   999 |
 | case        | PHANTEKS | P500A                |   699 |
+| fan         | PHANTEKS | Halos(14*1, 12*3)    |   360 |
 | watercool   | NZXT     | Kraken-Z73           |  1699 |
-| fan         | None     |                      |       |
-| monitor     | MSI      | MAG274QRF-QD         |  2299 |
+| Monitor     | MSI      | MAG274QRF-QD         |  2299 |
 | keyboard    | DURGOD   | K320w(silver)        |   669 |
 | earphone    | None     |                      |       |
-| mouse       | None     |                      |       |
-|             |          |                      | 13301 |
+| mouse       | Logitech | PRO-WIRELESS         |   599 |
+|             |          |                      | 14490 |
 #+TBLFM: @16$4=vsum(+@I..@-1)
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
 ** WAIT 爬火炉山                                                     :event:
 - State "WAIT"       from "TODO"       [2021-04-11 周日 16:29] \\
   和同事商量一下一起去, 先不急.
-** DONE 处理宽带光衰问题                                             :date:
-CLOSED: [2021-06-11 周五 20:10]
-- State "DONE"       from "TODO"       [2021-06-11 周五 17:10]
-<2021-06-12 Sat 09:00>--<2021-06-13 Sun 21:00>
-** DONE 办理电信宽带业务                                            :event:
-CLOSED: [2021-06-07 Mon 20:17] SCHEDULED: <2021-04-10 周六 13:20>
-:PROPERTIES:
-:END:
-- State "DONE"       from "TODO"       [2021-06-07 Mon 20:17] \\
-  129每月, 下行300上行，下行40
-- State "WAIT"       from "TODO"       [2021-04-10 周六 13:36] \\
-  暂时没需求.
 ** TODO 手机号码切换                                                :event:
 SCHEDULED: <2021-06-12 周六 09:00>
 - [ ] 切换手机号绑定(18516114761\rightarrow19128277021 [0%]
@@ -222,5 +212,22 @@ SCHEDULED: <2021-06-12 周六 09:00>
   - [ ] QQ
   - [ ] Steam
 - [ ] 联通手机号停机
+** Archive                                                        :ARCHIVE:
+*** DONE 处理宽带光衰问题                                            :date:
+CLOSED: [2021-06-11 周五 20:10]
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-06-13 周日 17:37
+:END:
+- State "DONE"       from "TODO"       [2021-06-11 周五 17:10]
+<2021-06-12 Sat 09:00>--<2021-06-13 Sun 21:00>
+*** DONE 办理电信宽带业务                                           :event:
+CLOSED: [2021-06-07 Mon 20:17] SCHEDULED: <2021-04-10 周六 13:20>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-06-13 周日 17:37
+:END:
+- State "DONE"       from "TODO"       [2021-06-07 Mon 20:17] \\
+  129每月, 下行300上行，下行40
+- State "WAIT"       from "TODO"       [2021-04-10 周六 13:36] \\
+  暂时没需求.
 * Project
 * Someday
