@@ -176,21 +176,22 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
 #+NAME: PC_PRICES
 | component   | brand    | model                | price |
 |-------------+----------+----------------------+-------|
-| motherboard | ASUS     | BB550M-ZAKU          |   749 |
+| motherboard | ASUS     | B550M-ZAKU           |   749 |
 | cpu         | AMD      | Ryzen7-5800X         |  2950 |
 | memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1899 |
-| ssd         | SAMSUNG  | 980                  |  1069 |
-| hdd         | TOSHIBA  | P300                 |   269 |
+| ssd         | SAMSUNG  | 980(1TB)             |  1069 |
+| hdd         | TOSHIBA  | P300(1TB)            |   269 |
 | gpu         | None     |                      |       |
 | power       | SEASONIC | FOCUS-GX1000         |   999 |
 | case        | PHANTEKS | P500A                |   699 |
 | watercool   | NZXT     | Kraken-Z73           |  1699 |
+| fan         | None     |                      |       |
 | monitor     | MSI      | MAG274QRF-QD         |  2299 |
 | keyboard    | DURGOD   | K320w(silver)        |   669 |
 | earphone    | None     |                      |       |
 | mouse       | None     |                      |       |
 |             |          |                      | 13301 |
-#+TBLFM: @15$4=vsum(+@I..@-1)
+#+TBLFM: @16$4=vsum(+@I..@-1)
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
 ** WAIT 爬火炉山                                                     :event:
 - State "WAIT"       from "TODO"       [2021-04-11 周日 16:29] \\
