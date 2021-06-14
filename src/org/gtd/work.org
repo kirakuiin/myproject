@@ -13,13 +13,15 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                             :work:
-SCHEDULED: <2021-06-14 Mon 19:00 ++1d> DEADLINE: <2021-06-14 Mon 23:59 ++1d>
+** TODO [#A] 完成每日日报                                            :work:
+SCHEDULED: <2021-06-15 周二 19:00 ++1d> DEADLINE: <2021-06-15 周二 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-13 Sun 01:34]
+:LAST_REPEAT: [2021-06-14 周一 16:46]
 :END:
 
+- State "CANCELED"   from "TODO"       [2021-06-14 周一 16:46] \\
+  放假
 - State "CANCELED"   from "TODO"       [2021-06-13 Sun 01:34] \\
   放假
 - State "CANCELED"   from "TODO"       [2021-06-12 Sat 09:33] \\
