@@ -176,23 +176,23 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
   2. 没钱
 #+CAPTION[零件表]:
 #+NAME: PC_PRICES
-| component   | brand    | model                | price |
-|-------------+----------+----------------------+-------|
-| motherboard | ASUS     | B550M-ZAKU           |   749 |
-| cpu         | AMD      | Ryzen7-5800X         |  2950 |
-| memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1899 |
-| ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |
-| ssd(app)    | SAMSUNG  | 980(1TB)             |  1069 |
-| gpu         | None     |                      |       |
-| power       | SEASONIC | FOCUS-GX1000         |   999 |
-| case        | PHANTEKS | P500A                |   699 |
-| fan         | PHANTEKS | Halos(14*1, 12*3)    |   360 |
-| watercool   | NZXT     | Kraken-Z73           |  1699 |
-| Monitor     | MSI      | MAG274QRF-QD         |  2299 |
-| keyboard    | DURGOD   | K320w(silver)        |   669 |
-| earphone    | None     |                      |       |
-| mouse       | Logitech | PRO-WIRELESS         |   599 |
-|             |          |                      | 14490 |
+| component   | brand    | model                | price | lowest |
+|-------------+----------+----------------------+-------+--------|
+| motherboard | ASUS     | B550M-ZAKU           |   749 |  3219  |
+| cpu         | AMD      | Ryzen7-5800X         |  2950 |        |
+| memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1899 |  1349  |
+| ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |        |
+| ssd(app)    | SAMSUNG  | 980(1TB)             |  1069 |        |
+| gpu         | None     |                      |       |        |
+| power       | SEASONIC | FOCUS-GX1000         |   999 |        |
+| case        | PHANTEKS | P500A                |   699 |  399   |
+| fan         | PHANTEKS | Halos(14*1, 12*3)    |   360 |  280   |
+| watercool   | NZXT     | Kraken-Z73           |  1699 |  1679  |
+| Monitor     | MSI      | MAG274QRF-QD         |  2299 |  1879  |
+| keyboard    | DURGOD   | K320w(silver)        |   669 |        |
+| earphone    | KINGSTON | HyperX-Cloud-Flight  |   599 |  559   |
+| mouse       | LOGITECH | PRO-WIRELESS         |   599 |        |
+|             |          |                      | 15089 |        |
 #+TBLFM: @16$4=vsum(+@I..@-1)
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
 ** WAIT 爬火炉山                                                     :event:
