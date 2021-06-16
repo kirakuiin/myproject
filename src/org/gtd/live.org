@@ -176,28 +176,25 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
   2. 没钱
 #+CAPTION[零件表]:
 #+NAME: PC_PRICES
-| component   | brand    | model                | price | lowest | diff |
-|-------------+----------+----------------------+-------+--------+------|
-| motherboard | ASUS     | B550M-ZAKU           |   749 |    949 | -200 |
-| cpu         | AMD      | Ryzen7-5800X         |  2950 |   2999 |  -49 |
-| memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1899 |   1349 |  550 |
-| ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |    449 |   50 |
-| ssd(app)    | SAMSUNG  | 980(1TB)             |  1069 |    939 |  130 |
-| gpu         | None     |                      |       |        |    0 |
-| power       | SEASONIC | FOCUS-GX1000         |  1299 |    899 |  400 |
-| case        | PHANTEKS | P500A                |   699 |    399 |  300 |
-| fan         | PHANTEKS | Halos(14*1, 12*3)    |   360 |    280 |   80 |
-| watercool   | NZXT     | Kraken-Z73           |  1699 |   1679 |   20 |
-| Monitor     | MSI      | MAG274QRF-QD         |  2299 |   1879 |  420 |
-| keyboard    | DURGOD   | K320w(silver)        |   669 |    629 |   40 |
-| earphone    | KINGSTON | HyperX-Cloud-Flight  |   599 |    559 |   40 |
-| mouse       | LOGITECH | PRO-WIRELESS         |   849 |    599 |  250 |
-|             |          |                      | 15639 |  13608 | 2031 |
+| component   | brand    | model                | price | lowest | diff | date |
+|-------------+----------+----------------------+-------+--------+------+------|
+| motherboard | ASUS     | B550M-ZAKU           |   749 |    949 | -200 |      |
+| cpu         | AMD      | Ryzen7-5800X         |  2950 |   2999 |  -49 |      |
+| memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1899 |   1349 |  550 |      |
+| ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |    449 |   50 | 6.16 |
+| ssd(app)    | SAMSUNG  | 980(1TB)             |   993 |    939 |   54 | 6.16 |
+| gpu         | None     |                      |       |        |    0 |      |
+| power       | SEASONIC | FOCUS-GX1000         |  1299 |    899 |  400 |      |
+| case        | PHANTEKS | P500A                |   597 |    399 |  198 | 6.15 |
+| Fan         | PHANTEKS | Halos(14*1, 12*3)    |   360 |    280 |   80 | 6.16 |
+| watercool   | NZXT     | Kraken-Z73           |  1693 |   1679 |   14 | 6.15 |
+| Monitor     | MSI      | MAG274QRF-QD         |  1991 |   1879 |  112 | 6.16 |
+| keyboard    | DURGOD   | K320w(silver)        |   616 |    629 |  -13 | 6.16 |
+| earphone    | KINGSTON | HyperX-Cloud-Flight  |   596 |    559 |   37 | 6.16 |
+| mouse       | LOGITECH | PRO-WIRELESS         |   596 |    599 |   -3 | 6.16 |
+|             |          |                      | 14838 |  13608 | 1923 |      |
 #+Tblfm: $6=$4-$5::@16$4=vsum(+@I..@-1)::@16$5=vsum(+@I..@-1)
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
-** WAIT 爬火炉山                                                     :event:
-- State "WAIT"       from "TODO"       [2021-04-11 周日 16:29] \\
-  和同事商量一下一起去, 先不急.
 ** TODO 手机号码切换                                                :event:
 SCHEDULED: <2021-06-12 周六 09:00>
 - [ ] 切换手机号绑定(18516114761\rightarrow19128277021 [0%]
@@ -212,6 +209,9 @@ SCHEDULED: <2021-06-12 周六 09:00>
   - [ ] QQ
   - [ ] Steam
 - [ ] 联通手机号停机
+** WAIT 爬火炉山                                                     :event:
+- State "WAIT"       from "TODO"       [2021-04-11 周日 16:29] \\
+  和同事商量一下一起去, 先不急.
 ** Archive                                                        :ARCHIVE:
 *** DONE 处理宽带光衰问题                                            :date:
 CLOSED: [2021-06-11 周五 20:10]

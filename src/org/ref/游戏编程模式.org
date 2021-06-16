@@ -969,7 +969,170 @@
    * 和[[*享元模式][享元模式]]的区别在于, 享元模式着重于节省内存, 而此模式在于组织性和灵活性
    * 和[[*状态模式][状态模式]]都把部分工作交给另一个代理对象
 * 组件模式
+1. 什么是组件模式
+   #+BEGIN_VERSE
+   "允许一个单一的实体跨越多个不同域而不会导致耦合"
+   单一实体横跨了多个域. 为了能够保持域之间的相互隔离, 每个域的代码都独立的放在自
+   己的组件类里. 实体本身简化为组件的容器.
+   #+END_VERSE
+2. 经典场景, 游戏实体
+   #+BEGIN_SRC c++
+     class GameObject {  // 游戏实体类
+      public:
+       GameObject(InputComponent* input,
+                  PhysicsComponent* physics,
+                  GraphicsComponent* graphics):
+           _input(input), _physics(physics), _graphics(graphics) {}
+
+       void update(World& world, Graphics& graphics) {
+         _input->update(*this);
+         _physics->update(*this, world);
+         _graphics->update(*this, graphics);
+       }
+
+       int velocity;
+       int x, y;
+
+      private:
+       InputComponent* _input;
+       PhysicsComponent* _physics;
+       GraphicsComponent* _graphics;
+     };
+
+     class InputComponent {  // 输入组件基类
+      public:
+       virtual ~InputComponent() {}
+       virtual update(GameObject& obj) = 0;
+     };
+
+     class PhysicsComponent {  // 物理组件基类
+      public:
+       virtual ~PhysicsComponent() {}
+       virtual upadte(GameObject& obj, World& world) = 0;
+     };
+
+     class GraphicsComponent() {  // 图形组件基类
+     public:
+       virtual ~GraphicsComponent() {}
+       virtual update(GameObject& obj, Graphics& graphic) = 0;
+     };
+
+     class MonsterInput: public InputComponent {
+       // 怪物输入组件
+     };
+
+     class MonsterPhysics: public PhysicsComponent {
+       // 怪物物理组件
+     };
+
+     class MonsterGraphics: public GraphicsComponent {
+       // 怪物图形组件
+     };
+
+     GameObject* createMonster() {  // 创建怪物对象
+       return new GameObject(
+           new MonsterInput(),
+           new MonsterPhysics(),
+           new MonsterGraphics());
+     }
+   #+END_SRC
+   通过将游戏实体的操作分担给各个组件对象, 可以通过灵活的组合来创建满足所有需求的
+   游戏实体, 实现了游戏实体和其他组件实体的解耦
+3. 使用场景
+   * 你有一个涉及多个域的类, 但是你希望多个域之间保持隔离
+   * 一个类越来越庞大, 难以开发
+   * 你希望定义许多共享不同能力的对象, 但采用继承又无法让你精准的重用代码
+4. 对象如何获得组件
+   * 如果实体自己创建自己需要的组件
+     - 确保了类一定能够正确的初始化自己需要的组件
+     - 丧失了灵活性
+   * 由外部代码提供
+     - 对象变得非常灵活
+     - 对象可以从具体的组件对象中解耦
+5. 组件之间如何传递消息
+   * 通过修改组件容器对象的状态
+     - 组件解耦, 互相之间不知道对方存在
+     - 会将组件容器变得混乱, 因为有些状态是某些组件不需要的
+     - 状态的修改顺序将会决定程序的运行结果, 非常容易导致bug
+   * 组件之间相互引用
+     - 简单快速
+     - 组件之间出现了局部耦合
+   * 通过消息事件, 消息队列来传递
+     - 组件解耦
+     - 容器对象可以保持简单
+   建议从最简单地开始, 根据需求动态修改传递小心的办法
+6. 和[[*策略模式][策略模式]]非常相似, 只不过策略模式一般都没有状态, 只是一个算法, 而组件一般是包
+   含状态的
 * 事件队列
+1. 什么是事件队列
+   #+BEGIN_VERSE
+   "对消息或事件的发送和受理进行时间上的解耦"
+   通过一个先进先出的队列存储一系列通知或请求, 发出通知后系统会将请求置入队列并立
+   即返回, 随后处理器从事件队列获取感兴趣的事件并处理这些请求. 这一过程将使消息的
+   发送者和受理者解耦, 使得对消息的处理变得动态且非实时.
+   #+END_VERSE
+2. 经典场景, 音效引擎
+   #+BEGIN_SRC c++
+     struct PlayMessage {  // 播放声音消息
+       SoundId id;
+       int volume;
+     };
+
+     class Audio {
+      public:
+       static void init() {_numPending = 0;}
+       static void playSound(SoundId id, int volume) {
+         _pending.push(PlayMessage(id, volume));
+       }
+
+       static void update() {
+         if (_pending.empty()) return;
+         head = _pending.pop();
+         ResourceId resource = loadSound(head.id);
+         int channel = findOpenChannel();
+         if (channel == -1) return;
+         startSound(resource, channel, head.volume);
+       }
+
+      private:
+       static std::queue<PlayMessage> _pending;  // 消息队列
+       static int _numPending;
+     };
+   #+END_SRC
+   通常会将Audio放到一个单独的线程专门处理声音播放, 通常会对这个类进行一些线程安
+   全的处理以防发生竞争. 通过事件队列, 将播放声音的请求和实际播放的操作解耦, 将
+   播放声音的请求变为了一个异步接口.
+3. 使用情景
+   如果你只想对一条消息的发送者和接收者进行解耦, 那么诸如[[*观察者模式][观察者模式]]或
+   [[*命令模式][命令模式]]可以满足你的需求. 当你对某个问题上对时间进行解耦时, 使用事件队列. 不过
+   使用前要注意:
+   * 事件队列一般是全局变量, 全局变量一般是糟糕的
+   * 事件队列里面的消息并不是实时的, 当你处理的时候很有可能环境已经发生了变化
+   * 事件处理方一般不要发送事件, 这很可能导致反馈循环
+4. 入队的是什么
+   * 如果是事件(描述已经发生的事情, 类似异步的观察者)
+     - 你会允许多个监听器
+     - 可访问队列的域会更广
+   * 如果是消息(我们希望在将来发生的行为, 类似异步API)
+     - 一般只有一个监听器
+5. 谁能从队列里读取
+   * 单播队列
+     - 队列成为消息处理者的实现细节, 封装性更好
+     - 你不必担心多个监听器竞争的情况
+   * 广播队列
+     - 事件可以被删除, 如果某个时刻没有监听器, 事件会被丢弃
+     - 可能需要过滤事件, 监听器需要过滤收到的事件
+   * 工作队列(每个事件只会被一个监听者处理的广播队列)
+     - 需要做好规划, 找到处理事件的最优监听者
+6. 谁可以写入队列
+   * 一个写入者
+     - 你隐式的知道事件的来源
+     - 通常允许多个读取者
+   * 多个写入者
+     - 小心反馈循环, 因为任何东西都可能放入队列之中
+     - 你可能想要得到发送方的引用, 事件里面可能需要存储发送方本身
+7. 注意队列对象的生命周期, 是内存自己管理, 还是自己手动管理
+8. 可以将事件队列理解为[[*观察者模式][观察者模式]]的异步版本
 * 服务定位器
 * 数据局部性
 * 脏标记模式
