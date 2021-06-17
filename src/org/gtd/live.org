@@ -178,12 +178,12 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
 #+NAME: PC_PRICES
 | component   | brand    | model                | price | lowest | diff | date |
 |-------------+----------+----------------------+-------+--------+------+------|
-| motherboard | ASUS     | B550M-ZAKU           |   749 |    949 | -200 |      |
-| cpu         | AMD      | Ryzen7-5800X         |  2950 |   2999 |  -49 |      |
+| motherboard | ASUS-ROG | STRIX B550-F GAMING  |  1499 |   1429 |   70 | 6.17 |
+| cpu         | AMD      | Ryzen7-5800X         |  2950 |   2999 |  -49 | 6.17 |
 | memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1899 |   1349 |  550 |      |
 | ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |    449 |   50 | 6.16 |
 | ssd(app)    | SAMSUNG  | 980(1TB)             |   993 |    939 |   54 | 6.16 |
-| gpu         | None     |                      |       |        |    0 |      |
+| gpu         | COLORFUL | GeForce-RTX-2060S    |       |        |    0 |      |
 | power       | SEASONIC | FOCUS-GX1000         |  1299 |    899 |  400 |      |
 | case        | PHANTEKS | P500A                |   597 |    399 |  198 | 6.15 |
 | Fan         | PHANTEKS | Halos(14*1, 12*3)    |   360 |    280 |   80 | 6.16 |
@@ -192,7 +192,7 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
 | keyboard    | DURGOD   | K320w(silver)        |   616 |    629 |  -13 | 6.16 |
 | earphone    | KINGSTON | HyperX-Cloud-Flight  |   596 |    559 |   37 | 6.16 |
 | mouse       | LOGITECH | PRO-WIRELESS         |   596 |    599 |   -3 | 6.16 |
-|             |          |                      | 14838 |  13608 | 1923 |      |
+|             |          |                      | 15588 |  14088 | 1500 |      |
 #+Tblfm: $6=$4-$5::@16$4=vsum(+@I..@-1)::@16$5=vsum(+@I..@-1)
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
 ** TODO 手机号码切换                                                :event:
