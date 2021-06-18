@@ -1239,8 +1239,85 @@
 * 脏标记模式
 1. 什么是脏标记模式
    #+BEGIN_VERSE
+   "将工作推迟到必要时进行计算以避免不必要的工作"
+   一组原始数据随时间变化, 一组衍生数据通过昂贵的操作由原始数据生成. 设置一个脏标
+   记来跟踪衍生数据是否和原始数据同步. 如果标记发生改变则重新计算数据, 如果未变则
+   使用缓存的衍生数据
    #+END_VERSE
-2. 经典场景
+2. 经典场景, 场景渲染
+   #+BEGIN_SRC c++
+     class Transform {
+      public:
+       static Transform origin();
+
+       Transform combine(Transform& other);  // 计算新的坐标
+     };
+
+     class Node {
+      public:
+       Node(Mesh* mesh)
+           : _mesh(mesh),
+             _local(Transform::origin),
+             _dirty(true) {}
+
+       void SetTransform(Transform local) { // 每次修改变换则设置标记
+         _local = local;
+         _dirty = true;
+       }
+
+       void Render(Transform parent_world, bool dirty) {
+         dirty |= _dirty;  // 只要父节点有修改过, 则子节点一定被修改
+         if (dirty) {
+           _world = _local.combine(parent_world);
+           _dirty = false;
+         }
+
+         if (_mesh) renderMesh(_mesh, _world);
+         for (const auto& child : _children) {
+           child->Render(_world, dirty);
+         }
+       }
+
+      private:
+       Transform _local;
+       Mesh* _mesh;
+
+       Node* _children[MAX_CHILDREN];
+       int _children_num;
+
+       Transform _world;
+       bool _dirty;
+     };
+   #+END_SRC
+   通过加入脏标记和缓存, 可以使得没变化的对象不需要重新计算, 变化了的对象无论它的
+   父节点如何变换, 最终自身只需要计算一次变换
+3. 使用场景
+   此模式用于解决相当特定的问题, 仅当性能问题严重到值得增加代码复杂度时才使用它.
+   使用前要满足以下的要求:
+   * 原始数据修改次数比衍生数据的使用次数要多, 如果每次原始数据修改都需要修改衍生
+     数据, 那脏标记毫无意义
+   * 很难递增更新数据
+4. 使用代价
+   * 延时计算是有代价的, 很多时候很多数据为了用户体验需要提前计算, 延时计算可能导
+     致明显的卡顿
+   * 必须保证每次改动都设置脏标记, 可以提供一个接口专门用来修改, 并在接口里设置脏
+     标记
+   * 必须要在内存中保存数据
+5. 何时清除脏标记
+   * 当需要计算结果时
+     - 当原始数据变化频率远大于衍生数据访问时, 优化效果显著
+   * 精心设计的检查点, 比如存档
+     - 这些工作不影响用户体验
+     - 工作执行时你失去了控制权
+   * 后台, 启动定时器
+     - 你可以调整频率
+     - 你可以做更多冗余的工作
+     - 需要支持异步操作
+6. 脏标记的追踪粒度
+   * 更精细的粒度
+     - 缓存消耗的内存更少, 只记录真正变化的数据
+   * 更粗糙的粒度
+     - 脏标记花费的内存更少
 * 对象池
 1. 什么是对象池
    #+BEGIN_VERSE

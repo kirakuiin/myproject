@@ -18,7 +18,7 @@ DEADLINE: <2021-07-12 周一 23:00 +1m> SCHEDULED: <2021-07-12 周一 09:00 +1m>
 :LOGGING: DONE(@)
 :END:
 - State "DONE"       from "TODO"       [2021-06-13 周日 17:42] \\
-  1. 房租2000, 电费100(开了空调), 物业+水117, 办理了电信300m宽带
+  1. 房租2000, 电费130(开了空调), 物业+水117, 办理了电信300m宽带(预付200)
 - State "DONE"       from "TODO"       [2021-05-12 周三 09:21] \\
   1. 房租2000, 本月电费200(实际每月40左右), 物业+水103
 - State "DONE"       from "TODO"       [2021-04-10 周六 13:45] \\
@@ -169,32 +169,6 @@ DEADLINE: <2021-06-30 Wed 23:00 ++1m> SCHEDULED: <2021-06-30 Wed 09:00 ++1m>
   3. 找到了一处还不错的房子
   4. 认识了很多很棒的同事
 * Appointment
-** TODO 组装一台性价比高的台式机用于开发和娱乐                    :shopping:
-<2021-06-01 周二>--<2021-06-30 周三>
-- State "WAIT"       from "TODO"       [2021-04-10 周六 14:03] \\
-  1. 显卡太贵
-  2. 没钱
-#+CAPTION[零件表]:
-#+NAME: PC_PRICES
-| component   | brand    | model                | price | lowest | diff | date |
-|-------------+----------+----------------------+-------+--------+------+------|
-| motherboard | ASUS-ROG | STRIX B550-F GAMING  |  1499 |   1429 |   70 | 6.17 |
-| cpu         | AMD      | Ryzen7-5800X         |  2950 |   2999 |  -49 | 6.17 |
-| memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1549 |   1349 |  200 | 6.18 |
-| ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |    449 |   50 | 6.16 |
-| ssd(app)    | SAMSUNG  | 980(1TB)             |   993 |    939 |   54 | 6.16 |
-| gpu         | COLORFUL | RTX-1063(second-h)   |  1139 |   1039 |  100 | 6.18 |
-| power       | ASUS-ROG | THOR-850             |  1689 |   1689 |    0 | 6.18 |
-| case        | PHANTEKS | P500A                |   597 |    399 |  198 | 6.15 |
-| Fan         | PHANTEKS | Halos(14*1, 12*3)    |   360 |    280 |   80 | 6.16 |
-| watercool   | NZXT     | Kraken-Z73           |  1693 |   1679 |   14 | 6.15 |
-| Monitor     | MSI      | MAG274QRF-QD         |  1991 |   1879 |  112 | 6.16 |
-| keyboard    | DURGOD   | K320w(silver)        |   616 |    629 |  -13 | 6.16 |
-| earphone    | KINGSTON | HyperX-Cloud-Flight  |   596 |    559 |   37 | 6.16 |
-| mouse       | LOGITECH | PRO-WIRELESS         |   596 |    599 |   -3 | 6.16 |
-|             |          |                      | 16767 |  15917 |  850 |      |
-#+Tblfm: $6=$4-$5::@16$4=vsum(+@I..@-1)::@16$5=vsum(+@I..@-1)
-可能还需要线缆收纳, 硅脂, 防静电手环等设备
 ** TODO 手机号码切换                                                :event:
 SCHEDULED: <2021-06-12 周六 09:00>
 - [ ] 切换手机号绑定(18516114761\rightarrow19128277021 [0%]
@@ -229,5 +203,35 @@ CLOSED: [2021-06-07 Mon 20:17] SCHEDULED: <2021-04-10 周六 13:20>
   129每月, 下行300上行，下行40
 - State "WAIT"       from "TODO"       [2021-04-10 周六 13:36] \\
   暂时没需求.
+** DONE 组装一台性价比高的台式机用于开发和娱乐                   :shopping:
+CLOSED: [2021-06-18 周五 09:29]
+- State "DONE"       from "TODO"       [2021-06-18 周五 09:29] \\
+  1. 最终还是下定决心, 在618进行一个电脑的买, 显卡忒贵了, 只能二手先顶顶了
+  2. 如果不是缺货, 一定要最后一天(618)在买, 切记, 每个都能便宜点
+<2021-06-01 周二>--<2021-06-30 周三>
+- State "WAIT"       from "TODO"       [2021-04-10 周六 14:03] \\
+  1. 显卡太贵
+  2. 没钱
+#+CAPTION[零件表]:
+#+NAME: PC_PRICES
+| component   | brand    | model                | price | lowest | diff | date |
+|-------------+----------+----------------------+-------+--------+------+------|
+| motherboard | ASUS-ROG | STRIX B550-F GAMING  |  1384 |   1429 |  -45 | 6.18 |
+| cpu         | AMD      | Ryzen9-5900X         |  3694 |   3649 |   45 | 6.18 |
+| memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1549 |   1349 |  200 | 6.18 |
+| ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |    449 |   50 | 6.16 |
+| ssd(app)    | SAMSUNG  | 980(1TB)             |   993 |    939 |   54 | 6.16 |
+| gpu         | MSI      | RTX-1063(second-h)   |  1114 |   1039 |   75 | 6.18 |
+| power       | ASUS-ROG | THOR-850             |  1689 |   1689 |    0 | 6.18 |
+| case        | PHANTEKS | P500A                |   559 |    399 |  160 | 6.15 |
+| Fan         | PHANTEKS | Halos(14*1, 12*3)    |   360 |    280 |   80 | 6.16 |
+| watercool   | NZXT     | Kraken-Z73           |  1693 |   1679 |   14 | 6.15 |
+| Monitor     | MSI      | MAG274QRF-QD         |  1949 |   1879 |   70 | 6.16 |
+| keyboard    | DURGOD   | K320w(silver)        |   616 |    629 |  -13 | 6.16 |
+| earphone    | KINGSTON | HyperX-Cloud-Flight  |   596 |    559 |   37 | 6.16 |
+| mouse       | LOGITECH | PRO-WIRELESS         |   596 |    599 |   -3 | 6.16 |
+|             |          |                      | 17291 |  16567 |  724 |      |
+#+Tblfm: $6=$4-$5::@16$4=vsum(+@I..@-1)::@16$5=vsum(+@I..@-1)
+可能还需要线缆收纳, 硅脂, 防静电手环等设备
 * Project
 * Someday
