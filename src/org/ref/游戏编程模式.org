@@ -1356,12 +1356,29 @@
 
      class ParticlePool {
       public:
-       void create(double x, double y, int lifetime) {
+       ParticlePool() {
+         // 设置下一个可用对象
+         _first_avalible = &_particles[0];
+         for (int i = 0; i < POOL_SIZE-1; ++i) {
+           _particles[i].setNext(&_particles[i+1]);
+         }
+         _particles[POOL_SIZE-1].setNext(nullptr);
+       }
+
+       Void create(double x, double y, int lifetime) {
+         Particle* new_particle = _first_avalible;
+         _first_avalible = new_particle.getNext();
+
+         new_particle->init(x, y, lifetime);
        }
 
        void animate() {
          for (int i = 0; i < POOL_SIZE; ++i) {
            _particles[i].animate();
+           if (!_particles[i].inUse()){
+             _particles[i].setNext(_first_avalible);
+             _first_avalible = &_particles[i];  // 对象使用完毕后重新加入对象池
+           }
          }
        }
 
@@ -1371,6 +1388,9 @@
        Particle* _first_avalible;
      };
    #+END_SRC
+   通过维护一个对象池, 粒子对象的创建不需要通过内存管理, 而是一次性申请一块内存自
+   己进行管理, 有效的防止了产生碎片化内存. 对象池内部通过链表来寻找下一个可用粒子
+   对象, 时间效率为O(1).
 * 空间分区
 1. 什么是空间分区
    #+BEGIN_VERSE
