@@ -1321,8 +1321,56 @@
 * 对象池
 1. 什么是对象池
    #+BEGIN_VERSE
+   "使用固定的对象池重用对象, 取代单独地分配和释放对象, 以此来达到提升性能和优化
+   内存使用之目的"
+   定义一个可重用集合的对象池类, 每个对象支持提供自身使用状态的方法. 对象池初始化
+   时预先创建整个集合, 当你向对象池请求时会返回一个未使用的对象, 当对象不使用时将
+   其置为未使用状态.
    #+END_VERSE
-2. 经典场景
+2. 经典场景, 粒子系统
+   #+BEGIN_SRC c++
+     class Particle {
+      public:
+       Particle()
+           : _frame_left(0) {}
+
+       void init(double x, double y, int lifetime);
+
+       void animate();
+
+       bool inUse() constant {return _frame_left > 0;}
+
+       Particle* getNext() {
+         return _next;
+       }
+
+       void setNext(Particle* next) {
+         _next = next;
+       }
+
+      private:
+       double _x, _y;
+       int _frame_left;
+       Particle* _next;
+     };
+
+     class ParticlePool {
+      public:
+       void create(double x, double y, int lifetime) {
+       }
+
+       void animate() {
+         for (int i = 0; i < POOL_SIZE; ++i) {
+           _particles[i].animate();
+         }
+       }
+
+      private:
+       static const int POOL_SIZE = 100;
+       Particle _particles[POOL_SIZE];
+       Particle* _first_avalible;
+     };
+   #+END_SRC
 * 空间分区
 1. 什么是空间分区
    #+BEGIN_VERSE

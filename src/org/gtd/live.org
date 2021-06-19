@@ -221,6 +221,7 @@ CLOSED: [2021-06-18 周五 09:29]
 | memory      | G.SKILL  | TridentZ-neo(16GB*2) |  1549 |   1349 |  200 | 6.18 |
 | ssd(sys)    | SAMSUNG  | 980-Pro(256GB)       |   499 |    449 |   50 | 6.16 |
 | ssd(app)    | SAMSUNG  | 980(1TB)             |   993 |    939 |   54 | 6.16 |
+| hdd(data)   | TOSHIBA  | P300(1TB)            |   269 |    241 |   28 | 6.19 |
 | gpu         | MSI      | RTX-1063(second-h)   |  1114 |   1039 |   75 | 6.18 |
 | power       | ASUS-ROG | THOR-850             |  1689 |   1689 |    0 | 6.18 |
 | case        | PHANTEKS | P500A                |   559 |    399 |  160 | 6.15 |
@@ -230,8 +231,8 @@ CLOSED: [2021-06-18 周五 09:29]
 | keyboard    | DURGOD   | K320w(silver)        |   616 |    629 |  -13 | 6.16 |
 | earphone    | KINGSTON | HyperX-Cloud-Flight  |   596 |    559 |   37 | 6.16 |
 | mouse       | LOGITECH | PRO-WIRELESS         |   596 |    599 |   -3 | 6.16 |
-|             |          |                      | 17291 |  16567 |  724 |      |
-#+Tblfm: $6=$4-$5::@16$4=vsum(+@I..@-1)::@16$5=vsum(+@I..@-1)
+|             |          |                      | 17560 |  16808 |  752 |      |
+#+Tblfm: $6=$4-$5::@17$4=vsum(+@I..@-1)::@17$5=vsum(+@I..@-1)
 可能还需要线缆收纳, 硅脂, 防静电手环等设备
 * Project
 * Someday
