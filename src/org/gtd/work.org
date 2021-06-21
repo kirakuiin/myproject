@@ -13,12 +13,14 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每日日报                                            :work:
-SCHEDULED: <2021-06-20 周日 19:00 ++1d> DEADLINE: <2021-06-20 周日 23:59 ++1d>
+** TODO [#A] 完成每日日报                                             :work:
+SCHEDULED: <2021-06-21 周一 19:00 ++1d> DEADLINE: <2021-06-21 周一 23:59 ++1d>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-19 周六 19:51]
+:LAST_REPEAT: [2021-06-20 周日 09:07]
 :END:
+- State "CANCELED"   from "TODO"       [2021-06-20 周日 09:07] \\
+  放假
 - State "DONE"       from "TODO"       [2021-06-19 周六 19:51]
 - State "DONE"       from "TODO"       [2021-06-18 周五 22:58]
 - State "DONE"       from "TODO"       [2021-06-17 周四 22:15]
@@ -121,11 +123,12 @@ SCHEDULED: <2021-06-20 周日 19:00 ++1d> DEADLINE: <2021-06-20 周日 23:59 ++1
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-06-19 周六 18:00 ++1w> DEADLINE: <2021-06-21 周一 12:00 ++1w>
+SCHEDULED: <2021-06-26 周六 18:00 ++1w> DEADLINE: <2021-06-28 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-11 周五 17:48]
+:LAST_REPEAT: [2021-06-20 周日 10:25]
 :END:
+- State "DONE"       from "TODO"       [2021-06-20 周日 10:25]
 - State "DONE"       from "TODO"       [2021-06-11 周五 17:48]
 - State "DONE"       from "TODO"       [2021-06-07 周一 10:33]
 - State "DONE"       from "TODO"       [2021-05-29 周六 18:22]
@@ -139,14 +142,17 @@ SCHEDULED: <2021-06-19 周六 18:00 ++1w> DEADLINE: <2021-06-21 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-06-20 周日 19:00 ++1d>
+SCHEDULED: <2021-06-22 周二 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-19 周六 16:24]
+:LAST_REPEAT: [2021-06-21 周一 14:31]
 :END:
 
+- State "DONE"       from "TODO"       [2021-06-21 周一 14:31]
+- State "CANCELED"   from "TODO"       [2021-06-20 周日 09:07] \\
+  装机
 - State "DONE"       from "TODO"       [2021-06-19 周六 16:24]
 - State "DONE"       from "TODO"       [2021-06-18 周五 09:16]
 - State "DONE"       from "TODO"       [2021-06-17 周四 09:35]
@@ -227,13 +233,16 @@ SCHEDULED: <2021-06-20 周日 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#A] 学习《游戏编程模式》                            :learn:ATTACH:
-SCHEDULED: <2021-06-20 周日 09:00 ++1d>
+SCHEDULED: <2021-06-22 周二 09:00 ++1d>
 :PROPERTIES:
 :STYLE:    habit
 :ATTACH:  [[attachment:游戏编程模式.org][游戏编程模式]] 
-:LAST_REPEAT: [2021-06-19 周六 19:51]
+:LAST_REPEAT: [2021-06-21 周一 15:53]
 :ID:       9f4da250-7217-4dae-b806-bb1d74142050
 :END:
+- State "DONE"       from "TODO"       [2021-06-21 周一 15:53]
+- State "CANCELED"   from "TODO"       [2021-06-20 周日 09:08] \\
+  装机
 - State "DONE"       from "TODO"       [2021-06-19 周六 19:51]
 - State "DONE"       from "TODO"       [2021-06-18 周五 11:16]
 - State "DONE"       from "TODO"       [2021-06-17 周四 11:26]
@@ -274,6 +283,8 @@ SCHEDULED: <2021-06-20 周日 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-05-10 周一 11:09]
 ** TODO [#A] 准备转正报告                                            :work:
 SCHEDULED: <2021-06-07 周一 19:03>
+** TODO [#A] 优化战斗模型层                                       :work:m8:
+SCHEDULED: <2021-06-22 周二 10:00>
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 编写季度报告                                           :work:
 CLOSED: [2021-06-07 周一 18:09] SCHEDULED: <2021-06-06 周日 09:00>
@@ -283,42 +294,6 @@ CLOSED: [2021-06-07 周一 18:09] SCHEDULED: <2021-06-06 周日 09:00>
 - State "DONE"       from "TODO"       [2021-06-07 周一 18:09]
 * Appointment
 * Project
-** DONE [#A] 组队车轮战                                           :m8:work:
-CLOSED: [2021-06-18 周五 19:27] SCHEDULED: <2021-06-15 周二 13:00> DEADLINE: <2021-06-19 周六 21:00>
-:Properties:
-:Blocker: children
-:END:                          
-- State "DONE"       from "SCH"        [2021-06-18 周五 19:27]
-*** DONE 修改组队英雄山导表
-CLOSED: [2021-06-15 周二 14:13] SCHEDULED: <2021-06-15 周二 13:00>
-:PROPERTIES:                          
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:                          
-- State "DONE"       from "TODO"       [2021-06-15 周二 14:13]
-*** DONE 实现组队多队模型
-CLOSED: [2021-06-15 周二 22:00] SCHEDULED: <2021-06-15 周二 14:13>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-06-15 周二 22:00]
-*** DONE 实现组队英雄选择组件
-CLOSED: [2021-06-16 周三 17:35] SCHEDULED: <2021-06-15 周二 22:00>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-06-16 周三 17:35]
-*** DONE 实现网络协议
-CLOSED: [2021-06-16 周三 17:35] SCHEDULED: <2021-06-16 周三 17:35>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-- State "DONE"       from "TODO"       [2021-06-16 周三 17:35]
-*** DONE 测试
-CLOSED: [2021-06-18 周五 19:27] SCHEDULED: <2021-06-16 周三 17:35>
-:PROPERTIES:                          
-:TRIGGER+: parent todo!(DONE)
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 制作临时组队功能                                    :work:m8:
 CLOSED: [2021-05-28 周五 15:54] SCHEDULED: <2021-05-25 周二 09:00> DEADLINE: <2021-05-29 周六 21:00>
@@ -439,6 +414,43 @@ CLOSED: [2021-06-11 周五 16:54] SCHEDULED: <2021-06-10 周四 21:07>
 - [X] :: 红点信号没有及时同步
 - [X] :: 3v3加载错误
 - [X] :: 更新uml图
+*** DONE [#A] 组队车轮战                                          :m8:work:
+CLOSED: [2021-06-18 周五 19:27] SCHEDULED: <2021-06-15 周二 13:00> DEADLINE: <2021-06-19 周六 21:00>
+:Properties:
+:Blocker: children
+:ARCHIVE_TIME: 2021-06-20 周日 09:43
+:END:                          
+- State "DONE"       from "SCH"        [2021-06-18 周五 19:27]
+**** DONE 修改组队英雄山导表
+CLOSED: [2021-06-15 周二 14:13] SCHEDULED: <2021-06-15 周二 13:00>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+- State "DONE"       from "TODO"       [2021-06-15 周二 14:13]
+**** DONE 实现组队多队模型
+CLOSED: [2021-06-15 周二 22:00] SCHEDULED: <2021-06-15 周二 14:13>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-15 周二 22:00]
+**** DONE 实现组队英雄选择组件
+CLOSED: [2021-06-16 周三 17:35] SCHEDULED: <2021-06-15 周二 22:00>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-16 周三 17:35]
+**** DONE 实现网络协议
+CLOSED: [2021-06-16 周三 17:35] SCHEDULED: <2021-06-16 周三 17:35>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-06-16 周三 17:35]
+**** DONE 测试
+CLOSED: [2021-06-18 周五 19:27] SCHEDULED: <2021-06-16 周三 17:35>
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
 * Someday
 ** 学习《代码之外的生存指南》                                :learn:future:
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
