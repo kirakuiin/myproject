@@ -12,13 +12,157 @@
 #+OPTIONS: tex:t
 
 * Inbox
+** TODO [#C] 算法笔记追加四叉树                                     :learn:
+SCHEDULED: <2021-06-27 周日 09:00>
 * Next Action
-** TODO [#A] 完成每日日报                                             :work:
-SCHEDULED: <2021-06-23 周三 19:00 ++1d> DEADLINE: <2021-06-23 周三 23:59 ++1d>
+** TODO [#A] 完成每周周报                                            :work:
+SCHEDULED: <2021-06-26 周六 18:00 ++1w> DEADLINE: <2021-06-28 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-22 周二 21:03]
+:LAST_REPEAT: [2021-06-20 周日 10:25]
 :END:
+- State "DONE"       from "TODO"       [2021-06-20 周日 10:25]
+- State "DONE"       from "TODO"       [2021-06-11 周五 17:48]
+- State "DONE"       from "TODO"       [2021-06-07 周一 10:33]
+- State "DONE"       from "TODO"       [2021-05-29 周六 18:22]
+- State "DONE"       from "TODO"       [2021-05-24 周一 11:00]
+- State "DONE"       from "TODO"       [2021-05-16 周日 23:48]
+- State "DONE"       from "TODO"       [2021-05-09 周日 23:58]
+- State "DONE"       from "TODO"       [2021-05-03 周一 22:50]
+- State "DONE"       from "TODO"       [2021-04-25 周日 21:56]
+- State "DONE"       from "TODO"       [2021-04-17 周六 23:29]
+- State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
+- State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
+- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
+** TODO [#C] 完成leetcode一两道题                                   :learn:
+SCHEDULED: <2021-06-26 周六 19:00 ++1d>
+:PROPERTIES:
+:EFFORT: 0:15
+:LINK: [[https://leetcode-cn.com][leetcode]]
+:STYLE:    habit
+:LAST_REPEAT: [2021-06-25 周五 09:35]
+:END:
+
+- State "DONE"       from "TODO"       [2021-06-25 周五 09:35]
+- State "DONE"       from "TODO"       [2021-06-24 周四 09:16]
+- State "DONE"       from "TODO"       [2021-06-23 周三 21:08]
+- State "DONE"       from "TODO"       [2021-06-22 周二 09:33]
+- State "DONE"       from "TODO"       [2021-06-21 周一 14:31]
+- State "CANCELED"   from "TODO"       [2021-06-20 周日 09:07] \\
+  装机
+- State "DONE"       from "TODO"       [2021-06-19 周六 16:24]
+- State "DONE"       from "TODO"       [2021-06-18 周五 09:16]
+- State "DONE"       from "TODO"       [2021-06-17 周四 09:35]
+- State "DONE"       from "TODO"       [2021-06-16 周三 08:43]
+- State "DONE"       from "TODO"       [2021-06-15 周二 09:34]
+- State "DONE"       from "TODO"       [2021-06-11 周五 09:58]
+- State "DONE"       from "TODO"       [2021-06-10 周四 09:10]
+- State "DONE"       from "TODO"       [2021-06-09 周三 08:28]
+- State "DONE"       from "TODO"       [2021-06-08 周二 09:24]
+- State "DONE"       from "TODO"       [2021-06-07 周一 09:15]
+- State "CANCELED"   from "TODO"       [2021-06-06 周日 21:34] \\
+  没时间
+- State "CANCELED"   from "TODO"       [2021-06-05 周六 19:01] \\
+  工作任务紧急, 搁置
+- State "DONE"       from "TODO"       [2021-06-04 周五 09:28]
+- State "DONE"       from "TODO"       [2021-06-03 周四 08:59]
+- State "DONE"       from "TODO"       [2021-06-02 周三 08:49]
+- State "DONE"       from "TODO"       [2021-06-01 Tue 11:37]
+- State "DONE"       from "TODO"       [2021-05-31 周一 21:39]
+- State "DONE"       from "TODO"       [2021-05-30 Sun 10:08]
+- State "DONE"       from "TODO"       [2021-05-29 周六 19:17]
+- State "DONE"       from "TODO"       [2021-05-28 周五 10:53]
+- State "DONE"       from "TODO"       [2021-05-25 周二 09:51]
+- State "DONE"       from "TODO"       [2021-05-24 周一 19:35]
+- State "DONE"       from "TODO"       [2021-05-22 Sat 12:39]
+- State "DONE"       from "TODO"       [2021-05-21 周五 08:54]
+- State "DONE"       from "TODO"       [2021-05-20 周四 09:15]
+- State "DONE"       from "TODO"       [2021-05-19 Wed 08:44]
+- State "DONE"       from "TODO"       [2021-05-18 Tue 23:08]
+- State "DONE"       from "TODO"       [2021-05-17 周一 09:08]
+- State "DONE"       from "TODO"       [2021-05-16 周日 13:30]
+- State "DONE"       from "TODO"       [2021-05-15 周六 23:44]
+- State "DONE"       from "TODO"       [2021-05-14 周五 09:54]
+- State "DONE"       from "TODO"       [2021-05-13 周四 09:00]
+- State "DONE"       from "TODO"       [2021-05-12 周三 09:18]
+- State "DONE"       from "TODO"       [2021-05-11 周二 08:55]
+- State "DONE"       from "TODO"       [2021-05-10 周一 09:00]
+- State "DONE"       from "TODO"       [2021-05-09 周日 10:05]
+- State "DONE"       from "TODO"       [2021-05-08 周六 09:30]
+- State "DONE"       from "TODO"       [2021-05-07 周五 09:18]
+- State "DONE"       from "TODO"       [2021-05-06 周四 23:04]
+- State "DONE"       from "TODO"       [2021-05-05 周三 09:12]
+- State "DONE"       from "TODO"       [2021-05-04 周二 09:20]
+- State "DONE"       from "TODO"       [2021-05-03 周一 13:57]
+- State "DONE"       from "TODO"       [2021-05-02 Sun 23:06]
+- State "DONE"       from "TODO"       [2021-05-01 Sat 23:14]
+- State "DONE"       from "TODO"       [2021-04-29 周四 09:10]
+- State "DONE"       from "TODO"       [2021-04-28 周三 08:40]
+- State "DONE"       from "TODO"       [2021-04-27 周二 23:44]
+- State "DONE"       from "TODO"       [2021-04-26 周一 23:07]
+- State "DONE"       from "TODO"       [2021-04-24 周六 21:44]
+- State "DONE"       from "TODO"       [2021-04-24 周六 10:42]
+- State "DONE"       from "TODO"       [2021-04-22 周四 22:14]
+- State "DONE"       from "TODO"       [2021-04-21 周三 22:24]
+- State "DONE"       from "TODO"       [2021-04-20 周二 22:07]
+- State "DONE"       from "TODO"       [2021-04-20 周二 08:57]
+- State "DONE"       from "TODO"       [2021-04-18 周日 18:42]
+- State "DONE"       from "TODO"       [2021-04-18 周日 18:30]
+- State "DONE"       from "TODO"       [2021-04-17 Sat 09:47]
+- State "DONE"       from "TODO"       [2021-04-16 周五 09:50]
+- State "DONE"       from "TODO"       [2021-04-15 周四 09:30]
+- State "DONE"       from "TODO"       [2021-04-14 周三 09:23]
+- State "DONE"       from "TODO"       [2021-04-13 周二 08:56]
+- State "DONE"       from "TODO"       [2021-04-12 周一 13:25]
+- State "DONE"       from "TODO"       [2021-04-11 周日 19:31]
+- State "DONE"       from "TODO"       [2021-04-10 周六 19:25]
+- State "DONE"       from "TODO"       [2021-04-09 周五 18:27]
+- State "DONE"       from "TODO"       [2021-04-08 周四 22:06]
+- State "DONE"       from "TODO"       [2021-04-07 Wed 23:33]
+- State "DONE"       from "TODO"       [2021-04-06 周二 21:54]
+- State "DONE"       from "TODO"       [2021-04-05 Mon 22:21]
+- State "DONE"       from "TODO"       [2021-04-04 Sun 10:09]
+- State "DONE"       from "TODO"       [2021-04-04 Sun 10:09]
+- State "DONE"       from "TODO"       [2021-04-03 周六 19:44]
+- State "DONE"       from "TODO"       [2021-04-03 Sat 00:50]
+- State "DONE"       from "TODO"       [2021-04-02 Fri 00:52]
+- State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
+- State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
+- State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
+** TODO [#A] 准备转正报告                                            :work:
+SCHEDULED: <2021-06-07 周一 19:03>
+** TODO [#A] 优化战斗模型层 [2/4]                                 :work:m8:
+SCHEDULED: <2021-06-22 周二 10:00>
+- [X] 组件拆分
+- [X] 基础关卡适配
+- [ ] 特殊关卡适配 [0%]
+  - [ ] 英雄山
+  - [ ] 多队
+  - [ ] 竞技场
+  - [ ] 配置关卡
+- [ ] 本地存储适配
+** TODO [#A] 学习《改善python程序的91个建议》                       :learn:
+SCHEDULED: <2021-06-28 周一 09:00 ++1d>
+:PROPERTIES:
+:STYLE:    habit
+:ATTACH: [[file:~/myproject/src/org/ref/python91个建议.org][python91个建议]]
+:END:
+** Archive                                                        :ARCHIVE:
+*** DONE [#A] 编写季度报告                                           :work:
+CLOSED: [2021-06-07 周一 18:09] SCHEDULED: <2021-06-06 周日 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-06-13 周日 17:37
+:END:
+- State "DONE"       from "TODO"       [2021-06-07 周一 18:09]
+** DONE [#A] 完成每日日报                                            :work:
+CLOSED: [2021-06-24 周四 12:27] SCHEDULED: <2021-06-24 周四 19:00> DEADLINE: <2021-06-24 周四 23:59>
+:PROPERTIES:
+:STYLE:    habit
+:LAST_REPEAT: [2021-06-23 周三 21:08]
+:END:
+- State "DONE"       from "TODO"       [2021-06-24 周四 12:27] \\
+  转正后无需写没有营养的日报了, 好耶
+- State "DONE"       from "TODO"       [2021-06-23 周三 21:08]
 - State "DONE"       from "TODO"       [2021-06-22 周二 21:03]
 - State "DONE"       from "TODO"       [2021-06-21 周一 21:04]
 - State "CANCELED"   from "TODO"       [2021-06-20 周日 09:07] \\
@@ -124,125 +268,16 @@ SCHEDULED: <2021-06-23 周三 19:00 ++1d> DEADLINE: <2021-06-23 周三 23:59 ++1
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-06-26 周六 18:00 ++1w> DEADLINE: <2021-06-28 周一 12:00 ++1w>
+** DONE [#A] 学习《游戏编程模式》                                   :learn:
+CLOSED: [2021-06-24 周四 11:10] SCHEDULED: <2021-06-25 周五 09:00>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-20 周日 10:25]
+:LAST_REPEAT: [2021-06-24 周四 11:06]
+:ATTACH: [[file:~/myproject/src/org/ref/游戏编程模式.org][游戏编程模式]]
 :END:
-- State "DONE"       from "TODO"       [2021-06-20 周日 10:25]
-- State "DONE"       from "TODO"       [2021-06-11 周五 17:48]
-- State "DONE"       from "TODO"       [2021-06-07 周一 10:33]
-- State "DONE"       from "TODO"       [2021-05-29 周六 18:22]
-- State "DONE"       from "TODO"       [2021-05-24 周一 11:00]
-- State "DONE"       from "TODO"       [2021-05-16 周日 23:48]
-- State "DONE"       from "TODO"       [2021-05-09 周日 23:58]
-- State "DONE"       from "TODO"       [2021-05-03 周一 22:50]
-- State "DONE"       from "TODO"       [2021-04-25 周日 21:56]
-- State "DONE"       from "TODO"       [2021-04-17 周六 23:29]
-- State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
-- State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
-- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-06-23 周三 19:00 ++1d>
-:PROPERTIES:
-:EFFORT: 0:15
-:LINK: [[https://leetcode-cn.com][leetcode]]
-:STYLE:    habit
-:LAST_REPEAT: [2021-06-22 周二 09:33]
-:END:
-
-- State "DONE"       from "TODO"       [2021-06-22 周二 09:33]
-- State "DONE"       from "TODO"       [2021-06-21 周一 14:31]
-- State "CANCELED"   from "TODO"       [2021-06-20 周日 09:07] \\
-  装机
-- State "DONE"       from "TODO"       [2021-06-19 周六 16:24]
-- State "DONE"       from "TODO"       [2021-06-18 周五 09:16]
-- State "DONE"       from "TODO"       [2021-06-17 周四 09:35]
-- State "DONE"       from "TODO"       [2021-06-16 周三 08:43]
-- State "DONE"       from "TODO"       [2021-06-15 周二 09:34]
-- State "DONE"       from "TODO"       [2021-06-11 周五 09:58]
-- State "DONE"       from "TODO"       [2021-06-10 周四 09:10]
-- State "DONE"       from "TODO"       [2021-06-09 周三 08:28]
-- State "DONE"       from "TODO"       [2021-06-08 周二 09:24]
-- State "DONE"       from "TODO"       [2021-06-07 周一 09:15]
-- State "CANCELED"   from "TODO"       [2021-06-06 周日 21:34] \\
+- State "DONE"       from "TODO"       [2021-06-24 周四 11:06]
+- State "CANCELED"   from "TODO"       [2021-06-23 周三 21:08] \\
   没时间
-- State "CANCELED"   from "TODO"       [2021-06-05 周六 19:01] \\
-  工作任务紧急, 搁置
-- State "DONE"       from "TODO"       [2021-06-04 周五 09:28]
-- State "DONE"       from "TODO"       [2021-06-03 周四 08:59]
-- State "DONE"       from "TODO"       [2021-06-02 周三 08:49]
-- State "DONE"       from "TODO"       [2021-06-01 Tue 11:37]
-- State "DONE"       from "TODO"       [2021-05-31 周一 21:39]
-- State "DONE"       from "TODO"       [2021-05-30 Sun 10:08]
-- State "DONE"       from "TODO"       [2021-05-29 周六 19:17]
-- State "DONE"       from "TODO"       [2021-05-28 周五 10:53]
-- State "DONE"       from "TODO"       [2021-05-25 周二 09:51]
-- State "DONE"       from "TODO"       [2021-05-24 周一 19:35]
-- State "DONE"       from "TODO"       [2021-05-22 Sat 12:39]
-- State "DONE"       from "TODO"       [2021-05-21 周五 08:54]
-- State "DONE"       from "TODO"       [2021-05-20 周四 09:15]
-- State "DONE"       from "TODO"       [2021-05-19 Wed 08:44]
-- State "DONE"       from "TODO"       [2021-05-18 Tue 23:08]
-- State "DONE"       from "TODO"       [2021-05-17 周一 09:08]
-- State "DONE"       from "TODO"       [2021-05-16 周日 13:30]
-- State "DONE"       from "TODO"       [2021-05-15 周六 23:44]
-- State "DONE"       from "TODO"       [2021-05-14 周五 09:54]
-- State "DONE"       from "TODO"       [2021-05-13 周四 09:00]
-- State "DONE"       from "TODO"       [2021-05-12 周三 09:18]
-- State "DONE"       from "TODO"       [2021-05-11 周二 08:55]
-- State "DONE"       from "TODO"       [2021-05-10 周一 09:00]
-- State "DONE"       from "TODO"       [2021-05-09 周日 10:05]
-- State "DONE"       from "TODO"       [2021-05-08 周六 09:30]
-- State "DONE"       from "TODO"       [2021-05-07 周五 09:18]
-- State "DONE"       from "TODO"       [2021-05-06 周四 23:04]
-- State "DONE"       from "TODO"       [2021-05-05 周三 09:12]
-- State "DONE"       from "TODO"       [2021-05-04 周二 09:20]
-- State "DONE"       from "TODO"       [2021-05-03 周一 13:57]
-- State "DONE"       from "TODO"       [2021-05-02 Sun 23:06]
-- State "DONE"       from "TODO"       [2021-05-01 Sat 23:14]
-- State "DONE"       from "TODO"       [2021-04-29 周四 09:10]
-- State "DONE"       from "TODO"       [2021-04-28 周三 08:40]
-- State "DONE"       from "TODO"       [2021-04-27 周二 23:44]
-- State "DONE"       from "TODO"       [2021-04-26 周一 23:07]
-- State "DONE"       from "TODO"       [2021-04-24 周六 21:44]
-- State "DONE"       from "TODO"       [2021-04-24 周六 10:42]
-- State "DONE"       from "TODO"       [2021-04-22 周四 22:14]
-- State "DONE"       from "TODO"       [2021-04-21 周三 22:24]
-- State "DONE"       from "TODO"       [2021-04-20 周二 22:07]
-- State "DONE"       from "TODO"       [2021-04-20 周二 08:57]
-- State "DONE"       from "TODO"       [2021-04-18 周日 18:42]
-- State "DONE"       from "TODO"       [2021-04-18 周日 18:30]
-- State "DONE"       from "TODO"       [2021-04-17 Sat 09:47]
-- State "DONE"       from "TODO"       [2021-04-16 周五 09:50]
-- State "DONE"       from "TODO"       [2021-04-15 周四 09:30]
-- State "DONE"       from "TODO"       [2021-04-14 周三 09:23]
-- State "DONE"       from "TODO"       [2021-04-13 周二 08:56]
-- State "DONE"       from "TODO"       [2021-04-12 周一 13:25]
-- State "DONE"       from "TODO"       [2021-04-11 周日 19:31]
-- State "DONE"       from "TODO"       [2021-04-10 周六 19:25]
-- State "DONE"       from "TODO"       [2021-04-09 周五 18:27]
-- State "DONE"       from "TODO"       [2021-04-08 周四 22:06]
-- State "DONE"       from "TODO"       [2021-04-07 Wed 23:33]
-- State "DONE"       from "TODO"       [2021-04-06 周二 21:54]
-- State "DONE"       from "TODO"       [2021-04-05 Mon 22:21]
-- State "DONE"       from "TODO"       [2021-04-04 Sun 10:09]
-- State "DONE"       from "TODO"       [2021-04-04 Sun 10:09]
-- State "DONE"       from "TODO"       [2021-04-03 周六 19:44]
-- State "DONE"       from "TODO"       [2021-04-03 Sat 00:50]
-- State "DONE"       from "TODO"       [2021-04-02 Fri 00:52]
-- State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
-- State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
-- State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 学习《游戏编程模式》                             :learn:ATTACH:
-SCHEDULED: <2021-06-23 周三 09:00 ++1d>
-:PROPERTIES:
-:STYLE:    habit
-:ATTACH:  [[attachment:游戏编程模式.org][游戏编程模式]] 
-:LAST_REPEAT: [2021-06-22 周二 11:06]
-:ID:       9f4da250-7217-4dae-b806-bb1d74142050
-:END:
 - State "DONE"       from "TODO"       [2021-06-22 周二 11:06]
 - State "DONE"       from "TODO"       [2021-06-21 周一 15:53]
 - State "CANCELED"   from "TODO"       [2021-06-20 周日 09:08] \\
@@ -285,17 +320,6 @@ SCHEDULED: <2021-06-23 周三 09:00 ++1d>
 - State "CANCELED"   from "TODO"       [2021-05-12 周三 21:21] \\
   没时间
 - State "DONE"       from "TODO"       [2021-05-10 周一 11:09]
-** TODO [#A] 准备转正报告                                            :work:
-SCHEDULED: <2021-06-07 周一 19:03>
-** TODO [#A] 优化战斗模型层                                       :work:m8:
-SCHEDULED: <2021-06-22 周二 10:00>
-** Archive                                                        :ARCHIVE:
-*** DONE [#A] 编写季度报告                                           :work:
-CLOSED: [2021-06-07 周一 18:09] SCHEDULED: <2021-06-06 周日 09:00>
-:PROPERTIES:
-:ARCHIVE_TIME: 2021-06-13 周日 17:37
-:END:
-- State "DONE"       from "TODO"       [2021-06-07 周一 18:09]
 * Appointment
 * Project
 ** Archive                                                        :ARCHIVE:
@@ -462,5 +486,8 @@ CLOSED: [2021-06-18 周五 19:27] SCHEDULED: <2021-06-16 周三 17:35>
 ** 学习《重构 改善既有代码的设计》                            :learn:future:
 ** 学习 elisp                                                 :learn:future:
 ** 温习《流畅的python》                                      :learn:future:
+** 学习《代码整洁之道》                                      :learn:future:
+** 温习《设计模式》                                          :learn:future:
+** 学习《我所理解的cocox2d》                                 :learn:future:
 ** 练习字帖                                                  :learn:future:
 ** 学习英语                                                  :learn:future:

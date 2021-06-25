@@ -1056,11 +1056,11 @@
      - 状态的修改顺序将会决定程序的运行结果, 非常容易导致bug
    * 组件之间相互引用
      - 简单快速
-     - 组件之间出现了局部耦合
+     - 组件之间出现了局部耦合, 但基本可控
    * 通过消息事件, 消息队列来传递
      - 组件解耦
      - 容器对象可以保持简单
-   建议从最简单地开始, 根据需求动态修改传递小心的办法
+   建议从最简单地开始, 根据需求动态修改传递消息的办法
 6. 和[[*策略模式][策略模式]]非常相似, 只不过策略模式一般都没有状态, 只是一个算法, 而组件一般是包
    含状态的
 * 事件队列
@@ -1231,7 +1231,7 @@
      - 可能会导致重复的工作, 可能很多类都需要这个定位器, 但是都需要各自处理
    一般原则是, 如果服务只在一个域之中使用, 那么便限制到类中. 如果更广泛的服务, 比
    如日志系统, 应该是全局的.
-* 数据局部性
+* 数据部性
 1. 什么是数据局部性
    #+BEGIN_VERSE
    "通过合理组织数据利用cpu的缓存机制来加快内存访问速度"
@@ -1501,5 +1501,111 @@
 * 空间分区
 1. 什么是空间分区
    #+BEGIN_VERSE
+   "将对象存储在根据位置组织的数据结构中来高效的定位它们"
+   对一组对象而言, 每个对象都有一个位置, 将位置存储在合适的数据结构中以便能够高效
+   查询周围的对象, 当位置变化时也要更新数据结构以便继续查询.
    #+END_VERSE
-2. 经典场景
+2. 经典场景, 方格战场
+   #+BEGIN_SRC c++
+     class Unit {  // 单位对象
+       friend class Grid;
+
+      public:
+       Unit(Grid* grid, double x, double y)
+           : _grid(grid), _x(x), _y(y), _prev(nullptr), _next(nullptr) {
+         _grid->add(this);
+       }
+
+       void move(double x, double y);
+
+      private:
+       double _x, _y;
+       Grid* _grid;
+
+       Unit* _prev;
+       Unit* _next;
+     };
+
+     class Grid { // 定位网格
+      public:
+       Grid() {
+         for (int x = 0; x < NUM_CELLS; ++x) {
+           for (int y = 0; y < NUM_CELLS; ++y) {
+             _cells[x][y] = nullptr;
+           }
+         }
+       }
+
+       void add(Unit* unit) {
+         int cellx = (int)(unit->_x / CELL_SIZE); // 计算网格位置
+         int celly = (int)(unit->_y / CELL_SIZE);
+
+         unit->_prev = nullptr;
+         unit->_next = _cells[cellx][celly];
+         _cells[cellx][celly] = unit;
+
+         if (unit->_next != nullptr) {
+           unit->_next->_prev = unit;
+         }
+       }
+
+       void handleMelee() {
+         for (int x = 0; x < NUM_CELLS; ++x) {
+           for (int y = 0; y < NUM_CELLS; ++y) {
+             handleCell(_cells[x][y]);
+           }
+         }
+       }
+
+       void handleCell(Unit* unit) {
+         // 依次处理同一网格内的战斗
+         while (unit != nullptr) {
+           Unit* other = unit->_next;
+           while (other != nullptr) {
+             if (unit->_x == other->_x && unit->_y == other->_y) {
+               handleAttack(unit, other);
+             }
+             other = other->_next;
+           }
+           unit = unit->_next;
+         }
+       }
+
+       static const int NUM_CELLS = 10;
+       static const int CELL_SIZE = 20;
+
+      private:
+       Unit* _cells[NUM_CELLS][NUM_CELLS];  // 存储单位对象
+     }
+   #+END_SRC
+   通过根据对象坐标将对象分区, 使得战斗仅检测在同一网格的单位, 有效提高了性能
+3. 使用场景
+   * 必须有一组对象, 并且都具有位置信息
+   * 你确实遇到了性能问题(只有几个单位很显然没有性能问题)
+   * 确保你的时间比空间更宝贵(本质上是空间换时间的数据结构)
+4. 分区是层级还是扁平的
+   * 扁平的
+     - 相对简单, 数据结构更加容易实现
+     - 内存使用量恒定
+     - 当对象改变位置时可以快速更新(不需要改变多个层级)
+   * 层级的
+     - 可以更有效的处理空白空间, 一个少量单位的空白区间只占用一个区间
+     - 更加有效地处理稠密的区间, 会将其递归分为若干小区间
+5. 分区依赖于对象集合吗
+   * 不依赖于对象
+     - 对象可以逐步的添加
+     - 对象可以快速的移动
+     - 分区可以不平衡
+   * 分区自适应对象
+     - 可以确保分区平衡, 性能提升非常稳定
+     - 对整个对象进行一次性分区更为高效
+6. 对象只存储于分区中吗
+   * 如果是唯一存储对象的地方
+     - 避免了维护两个集合的内存开销和复杂性, 不必维护其同步
+   * 如果存在另一个集合
+     - 遍历所有对象会更加快速, 可以用一个集合维护有效对象
+     - 需要处理同步
+7. 其他常见分区数据结构
+   - [[https://zhuanlan.zhihu.com/p/53826008][k-d树]]
+   - [[https://blog.csdn.net/sunshine543123/article/details/107041122][层次包围盒]]
+   - [[https://blog.csdn.net/zhouxuguang236/article/details/12312099][四叉树]]
