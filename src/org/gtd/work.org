@@ -15,12 +15,13 @@
 ** TODO [#C] 算法笔记追加四叉树                                     :learn:
 SCHEDULED: <2021-06-27 周日 09:00>
 * Next Action
-** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-06-26 周六 18:00 ++1w> DEADLINE: <2021-06-28 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                             :work:
+SCHEDULED: <2021-07-03 周六 18:00 ++1w> DEADLINE: <2021-07-05 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-20 周日 10:25]
+:LAST_REPEAT: [2021-06-26 周六 17:19]
 :END:
+- State "DONE"       from "TODO"       [2021-06-26 周六 17:19]
 - State "DONE"       from "TODO"       [2021-06-20 周日 10:25]
 - State "DONE"       from "TODO"       [2021-06-11 周五 17:48]
 - State "DONE"       from "TODO"       [2021-06-07 周一 10:33]
@@ -34,15 +35,16 @@ SCHEDULED: <2021-06-26 周六 18:00 ++1w> DEADLINE: <2021-06-28 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-06-26 周六 19:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                    :learn:
+SCHEDULED: <2021-06-27 周日 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-25 周五 09:35]
+:LAST_REPEAT: [2021-06-26 周六 15:51]
 :END:
 
+- State "DONE"       from "TODO"       [2021-06-26 周六 15:51]
 - State "DONE"       from "TODO"       [2021-06-25 周五 09:35]
 - State "DONE"       from "TODO"       [2021-06-24 周四 09:16]
 - State "DONE"       from "TODO"       [2021-06-23 周三 21:08]
@@ -129,8 +131,10 @@ SCHEDULED: <2021-06-26 周六 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 准备转正报告                                            :work:
+** WAIT [#A] 准备转正报告                                            :work:
 SCHEDULED: <2021-06-07 周一 19:03>
+- State "WAIT"       from "TODO"       [2021-06-26 周六 15:54] \\
+  貌似不需要报告了, 太好了, 暂时暂停
 ** TODO [#A] 优化战斗模型层 [2/4]                                 :work:m8:
 SCHEDULED: <2021-06-22 周二 10:00>
 - [X] 组件拆分
