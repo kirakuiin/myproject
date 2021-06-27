@@ -8,6 +8,7 @@
    #+BEGIN_SRC bash
      git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
    #+END_SRC
+   
 ** windows10 svn不显示状态图标                                        :svn:
 1. 打开注册表regedit
 2. 找到注册表HKEY_LOCAL_MACHINE->SOFTWARE->Microsoft->Windows->CurrentVersion->Explorer->ShellIconOverlayIdentifiers
@@ -18,6 +19,28 @@
 ** 处理图片的exif(元数据)
 下载工具exiftool
 清除图片元数据: exiftool -all= -r -overwrite_original ${path}
+
+** Windows Terminal设置powerline
+1. 在Windows中下载Windows终端
+2. 参考[[https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/powerline-setup][在Windows终端中设置Powerline]]
+  - 如果无法执行PowerShell脚本, 提示"无法加载文件 ******.ps1，因为在此系统中禁止
+    执行脚本", 请以管理员模式打开powershell并执行以下命令:
+    #+BEGIN_SRC shell
+      set-ExecutionPolicy RemoteSigned     
+    #+END_SRC
+    弹出对话框选择Y
+  - Set-Theme已经过时, 采用新的命令(查看主题和设置主题):
+    #+BEGIN_SRC shell
+      Get-PoshThemes
+      Set-PoshPrompt paradox
+    #+END_SRC
+
+** 生成rsa公钥
+执行命令:
+#+BEGIN_SRC shell
+  ssh-keygen -t rsa -C "your_email@youremail.com" 
+#+END_SRC
+一路默认即可
 * 概念相关                                                          :Concept:
 ** UML图                                                              :uml:
 *** 类图

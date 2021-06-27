@@ -1,6 +1,6 @@
 #+TAGS: { app(a) plugin(p) }
 
-* Macos Emacs 问题记录
+* Emacs 问题记录
 ** c-c++ layer clangd后端无法识别标准库                              :plugin:
    这个问题是由于cmake生成的compile_commands.json中是不包含标准库的路径的，
    即不包含-I/.../include/c++/v1，因此需要在CmakeLists.txt中使用INCLUDE_DIRECTORIES
@@ -34,4 +34,10 @@
      而今天的时间为2021-4-3 9:20, <C-c><C-t>将任务变为DONE, 状态将变为
      TODO <2021-4-3 10:20 .+1h>
      #+END_EXAMPLE
-     
+** 新建窗口在屏幕中的位置                                              :app:
+   这个是由变量 ~split-height-threshold~ 和 ~split-width-threshold~ 来决定的, 比
+   如如果将 ~split-width-threshold~ 设置为80, 那么当你创建新窗口时如果他的宽度能
+   超过80列, 那么就会水平创建窗口, 否则竖直创建窗口
+   
+** emacs默认配置读取路径                                               :app:
+   linux/unix系统默认在~目录, windows下如果想要在~目录, 必须设置环境变量$HOME=~

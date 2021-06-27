@@ -131,10 +131,6 @@ SCHEDULED: <2021-06-27 周日 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** WAIT [#A] 准备转正报告                                            :work:
-SCHEDULED: <2021-06-07 周一 19:03>
-- State "WAIT"       from "TODO"       [2021-06-26 周六 15:54] \\
-  貌似不需要报告了, 太好了, 暂时暂停
 ** TODO [#A] 优化战斗模型层 [2/4]                                 :work:m8:
 SCHEDULED: <2021-06-22 周二 10:00>
 - [X] 组件拆分
@@ -151,6 +147,10 @@ SCHEDULED: <2021-06-28 周一 09:00 ++1d>
 :STYLE:    habit
 :ATTACH: [[file:~/myproject/src/org/ref/python91个建议.org][python91个建议]]
 :END:
+** WAIT [#A] 准备转正报告                                            :work:
+SCHEDULED: <2021-06-07 周一 19:03>
+- State "WAIT"       from "TODO"       [2021-06-26 周六 15:54] \\
+  貌似不需要报告了, 太好了, 暂时暂停
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 编写季度报告                                           :work:
 CLOSED: [2021-06-07 周一 18:09] SCHEDULED: <2021-06-06 周日 09:00>
@@ -158,11 +158,12 @@ CLOSED: [2021-06-07 周一 18:09] SCHEDULED: <2021-06-06 周日 09:00>
 :ARCHIVE_TIME: 2021-06-13 周日 17:37
 :END:
 - State "DONE"       from "TODO"       [2021-06-07 周一 18:09]
-** DONE [#A] 完成每日日报                                            :work:
+*** DONE [#A] 完成每日日报                                           :work:
 CLOSED: [2021-06-24 周四 12:27] SCHEDULED: <2021-06-24 周四 19:00> DEADLINE: <2021-06-24 周四 23:59>
 :PROPERTIES:
 :STYLE:    habit
 :LAST_REPEAT: [2021-06-23 周三 21:08]
+:ARCHIVE_TIME: 2021-06-27 周日 10:12
 :END:
 - State "DONE"       from "TODO"       [2021-06-24 周四 12:27] \\
   转正后无需写没有营养的日报了, 好耶
@@ -272,12 +273,13 @@ CLOSED: [2021-06-24 周四 12:27] SCHEDULED: <2021-06-24 周四 19:00> DEADLINE:
 - State "DONE"       from "TODO"       [2021-03-31 周三 20:50]
 - State "DONE"       from "TODO"       [2021-03-30 周二 21:06]
 - State "DONE"       from "TODO"       [2021-03-29 周一 21:11]
-** DONE [#A] 学习《游戏编程模式》                                   :learn:
+*** DONE [#A] 学习《游戏编程模式》                                  :learn:
 CLOSED: [2021-06-24 周四 11:10] SCHEDULED: <2021-06-25 周五 09:00>
 :PROPERTIES:
 :STYLE:    habit
 :LAST_REPEAT: [2021-06-24 周四 11:06]
 :ATTACH: [[file:~/myproject/src/org/ref/游戏编程模式.org][游戏编程模式]]
+:ARCHIVE_TIME: 2021-06-27 周日 10:12
 :END:
 - State "DONE"       from "TODO"       [2021-06-24 周四 11:06]
 - State "CANCELED"   from "TODO"       [2021-06-23 周三 21:08] \\
