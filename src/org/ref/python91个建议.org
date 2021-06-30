@@ -1,3 +1,457 @@
 #+STARTUP: INDENT NUM
 
+* 理解pythonic概念
+#+BEGIN_VERSE
+所谓的pythonic, 即是看起来充分利用python本身的特性而编写的代码.
+比如交换使用a, b = b, a, 遍历使用for i in arr, 打开文件使用with, 这些语法都是别的
+语言所不具有的, 编程时要积极使用这些语法.
+#+END_VERSE
+1. 字符串格式化使用format
+2. 包, 模块使用小字母命名且最好短小精悍, 包仅作为命名空间, __init__.py为空
+
+* 编写pythonic代码
+#+BEGIN_VERSE
+想要编写pythonic的代码, 归根结底还是要全面掌握python特性, 不断学习官方推荐的新的
+语法, 阅读设计良好的代码库来加深对python特性的掌握, 才能写出pythonic的代码.
+#+END_VERSE
+1. 变量命名
+   * 避免无意义的单字母
+   * 命名最好有意义, 不要产生混淆
+   * 不要惧怕长命名
+2. 熟练使用工具来检查代码, 比如pylint, pep8等等
+
+* 理解python和c语言的不同之处
+#+BEGIN_VERSE
+虽然python是用c编写的, 但是很多语法规则上完全不同, 不要用c的思维套用到python上
+#+END_VERSE
+1. python使用空白缩进
+2. python单引号和双引号语义上基本一致
+3. python的三元操作符为xx if xx else xx
+4. python没有switch, 可以用if else或者字典分发代替
+
+* 在代码中适当添加注释
+#+BEGIN_VERSE
+合适的代码注释是非常有必要的, 无论是个人回顾还是提供给别人调用, 有效的注释能够节
+省大量时间.
+#+END_VERSE
+1. 注释和代码保持一定距离更加清晰
+2. 接口提供详细注释
+3. 对复杂代码的思路注释而不是对实现注释
+4. 错误的注释还不如没有注释, 所以更新代码时即时更新注释
+
+* 通过适当添加空行使得代码更加优雅
+#+BEGIN_VERSE
+使用适当的空行分隔不同逻辑可以让代码更加有条理, 更加容易阅读
+#+END_VERSE
+1. 全局定义之间空两行, 类内方法空一行, 一块代码内的不同逻辑空一行
+2. 一行不要超过80(这个应该是针对老式电脑编辑器的约定, 目前现代ide是否要保留感觉有
+   待商榷)
+3. 不要为了保持对齐而强行加入大量空白
+4. 具有紧密关系的代码间不要加空格, 比如a[3], 稀疏关系的加上空格, 比如a == b
+5. 空格可以用来强调关系, 比如-5 - 2, 强调是减法而不是负号
+
+* 编写函数的四个原则
+#+BEGIN_VERSE
+短小精悍, 设计合理, 向下兼容, 职责明确
+#+END_VERSE
+1. 函数尽量短小, 循环嵌套不超过3层
+2. 函数接口合理易用, 参数不宜过多
+3. 设计时考虑向下兼容
+4. 一个函数只做一件事, 保持同一级函数的抽象层次一致性
+
+* 将常量集中到一个文件
+#+BEGIN_VERSE
+将常量定义到一个文件之中, 便于查看和维护
+#+END_VERSE
+两种实现方式:
+   * 直接大写MAX_VALUE, 约定用法
+   * 定义一个模块:
+     #+BEGIN_SRC python
+       class _Const:
+           class ConstError(TypeError): pass
+           class ConstCaseError(ConstError): pass
+           def __setattr__(self, name, value):
+               if self.__dict__.has_key(name):
+                   raise self.ConstError, "Can't change const.%s".format(name)
+               if not name.isupper():
+                   raise self.ConstCaseError, "%s is not uppercase".format(name)
+               self.__dict__[name] = value
+
+       import sys
+       sys.modules[__name__] = _Const()
+
+       import const
+       const.MY_CONSTANT = 1
+     #+END_SRC
+     使用这种方式定义可以确保变量值不变并且一定是大写
+
+* 利用assert语句发现问题
+#+BEGIN_VERSE
+断言是用来捕获约束而不是捕获错误的
+具体来说, 断言是用来处理程序继续执行逻辑上前提条件, 而不是具体捕获异常
+#+END_VERSE
+1. 不要滥用, 影响性能
+2. python自身能处理就不要用断言
+3. 不要用来检查用户输入
+4. 可以用来检测函数返回值是否合理
+
+* 数据交换值不推荐使用中间变量
+#+BEGIN_VERSE
+pythonic的交换方式是a, b = b, a
+比传统的中间变量交换法更优雅且更高效
+#+END_VERSE
+
+* 充分利用lazy evaluation的特性
+#+BEGIN_VERSE
+利用延时计算可以节省空间, 提升性能
+#+END_VERSE
+1. 利用and, or的求值短路特性节省时间
+2. 利用生成器节省空间
+
+* 理解枚举替代实现的缺陷
+#+BEGIN_VERSE
+python3.4之前模拟的枚举存在很多缺陷, 3.4支持Enum
+#+END_VERSE
+1. 替代枚举可以重复赋值
+2. 可以进行无意义的操作
+
+* 不推荐使用type进行类型检查
+#+BEGIN_VERSE
+python的理念就是通过自动类型检查并根据需要隐式转换, 如果不行则抛出异常, 所以一般
+不会主动进行类型检查
+#+END_VERSE
+1. type无法识别继承自内建类的类型
+2. type无法识别古典类之间的区别
+3. 一定要检查使用isinstance
+
+* 尽量转换为浮点型后再做除法
+#+BEGIN_VERSE
+#+END_VERSE
+
+#+BEGIN_VERSE
+python2.7 两个整形之间默认的除法是整形除法, 会截断小数, 所以两个整数相除截断这个
+效果是你想要的, 否则手动转为浮点型
+#+END_VERSE
+1. 可以再python2.7中使用from __future__ import division来使得默认使用浮点除法
+2. 浮点数不要使用==比较, 使用a-b<=decision来指定精度进行比较
+
+* 警惕eval()的安全漏洞
+#+BEGIN_VERSE
+"eval is evil"
+#+END_VERSE
+1. 用户可能通过eval执行破坏性代码, 所以eval不能出现在用户可能会调用的位置上
+2. eval导致代码调试困难
+3. 一定要暴露给用户可以使用ast.literal_eval
+
+* 使用enumerate()获取序列迭代的索引和值
+#+BEGIN_VERSE
+enumerate可以优雅的处理同时获取索引和迭代值的问题, 更棒的一点是他是惰性的.
+#+END_VERSE
+1. 对字典使用获取的是索引和key二元组, 这个要注意
+
+* 分清==和is的使用场景
+#+BEGIN_VERSE
+is判断是不是一个对象, 而==判断是不是一个值
+#+END_VERSE
+1. 是否为同一个对象可以理解为是不是在内存中指向同一个区域
+2. == 实际上调用的是__eq__魔术方法
+
+* 考虑兼容性, 尽可能使用Unicode
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 构建合理的包层次来管理module
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 有节制的使用from ... import语法
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 优先使用绝对导入
+#+BEGIN_VERSE
+#+END_VERSE
+
+* i+=1 不等于 ++i
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 使用with自动关闭资源
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 使用else字句简化循环
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 遵循异常处理的几点基本原则
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 避免finally中可能发生的陷阱
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 深入理解None, 正确判断对象是否为空
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 连接字符串优先使用join而不是+
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 格式化字符串尽量使用format而不是%
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 区别对待可变对象和不可变对象
+#+BEGIN_VERSE
+#+END_VERSE
+
+* [], (), {}: 一致的容器初始化形式
+#+BEGIN_VERSE
+#+END_VERSE
+
 * 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
+
+* 
+#+BEGIN_VERSE
+#+END_VERSE
