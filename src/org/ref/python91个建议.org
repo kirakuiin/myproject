@@ -158,22 +158,40 @@ is判断是不是一个对象, 而==判断是不是一个值
 
 * 考虑兼容性, 尽可能使用Unicode
 #+BEGIN_VERSE
+通过统一使用unicode, 可以解决让人头疼的乱码问题
 #+END_VERSE
+1. 使用from __future__ import unicode_literals 可以让所有的字面量变为unicode
 
 * 构建合理的包层次来管理module
 #+BEGIN_VERSE
+python中的包是用来管理组织代码结构的工具, 通过一层层目录结构, 可以使得避免不同路
+径下的两个同名模块发生冲突, 并且可以根据模块的功能将其放到不同的包中, 使得代码结
+构更加清晰.
 #+END_VERSE
+1. 通过合理的使用包, 可以让代码:
+   * 便于维护和使用
+   * 最大程度避免命名冲突
+
 
 * 有节制的使用from ... import语法
 #+BEGIN_VERSE
+from import 语法虽然在有些时候减少代码量, 但是很容易导致命名冲突, 循环导入问题,
+而且也不方便在运行时打猴子补丁
 #+END_VERSE
+1. from xx import *, 最好别用
+2. from xx import ABC, 导入属性少用, 导入模块可以用
+3. import xxx, 除了导致代码变长, 用起来麻烦, 其他都是优点
 
 * 优先使用绝对导入
 #+BEGIN_VERSE
+绝对不要使用隐式相对导入, 有节制的使用相对导入, 最好使用绝对导入.
 #+END_VERSE
+1. from __future__ import absolute_import可以禁止隐式相对导入
+2. 相对导入在作为顶级模块执行时会丢失自己的层次信息, 导致相对导入失效
 
 * i+=1 不等于 ++i
 #+BEGIN_VERSE
+python不支持自增, ++i在python等效于+(+i), 所以这句话约等于无事发生
 #+END_VERSE
 
 * 使用with自动关闭资源
