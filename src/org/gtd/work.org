@@ -15,12 +15,14 @@
 ** TODO [#C] 算法笔记追加四叉树                                     :learn:
 SCHEDULED: <2021-06-27 周日 09:00>
 * Next Action
-** TODO [#A] 完成每周周报                                             :work:
-SCHEDULED: <2021-07-03 周六 18:00 ++1w> DEADLINE: <2021-07-05 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                            :work:
+SCHEDULED: <2021-07-10 周六 18:00 ++1w> DEADLINE: <2021-07-12 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-06-26 周六 17:19]
+:LAST_REPEAT: [2021-07-03 周六 17:36]
 :END:
+- State "DONE"       from "TODO"       [2021-07-03 周六 17:36]
+- State "DONE"       from "TODO"       [2021-07-03 周六 17:36]
 - State "DONE"       from "TODO"       [2021-06-26 周六 17:19]
 - State "DONE"       from "TODO"       [2021-06-20 周日 10:25]
 - State "DONE"       from "TODO"       [2021-06-11 周五 17:48]
@@ -138,8 +140,29 @@ SCHEDULED: <2021-07-02 周五 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** DONE [#A] 优化战斗模型层 [6/6]                                 :work:m8:
+** TODO [#A] 学习《改善python程序的91个建议》                       :learn:
+SCHEDULED: <2021-07-04 周日 09:00 ++1d>
+:PROPERTIES:
+:STYLE:    habit
+:ATTACH: [[file:~/myproject/src/org/ref/python91个建议.org][python91个建议]]
+:LAST_REPEAT: [2021-07-03 周六 16:40]
+:END:
+- State "DONE"       from "TODO"       [2021-07-03 周六 16:40]
+- State "DONE"       from "TODO"       [2021-07-03 周六 16:40]
+- State "DONE"       from "TODO"       [2021-07-01 周四 20:55]
+- State "DONE"       from "TODO"       [2021-06-30 周三 10:20]
+- State "DONE"       from "TODO"       [2021-06-29 周二 10:24]
+- State "DONE"       from "TODO"       [2021-06-28 周一 11:07]
+** WAIT [#A] 准备转正报告                                            :work:
+SCHEDULED: <2021-06-07 周一 19:03>
+- State "WAIT"       from "TODO"       [2021-06-26 周六 15:54] \\
+  貌似不需要报告了, 太好了, 暂时暂停
+** Archive                                                        :ARCHIVE:
+*** DONE [#A] 优化战斗模型层 [6/6]                                :work:m8:
 CLOSED: [2021-07-02 周五 20:53] SCHEDULED: <2021-06-22 周二 10:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-07-03 周六 18:06
+:END:
 - State "DONE"       from "TODO"       [2021-07-02 周五 20:53]
 - [X] 组件拆分
 - [X] 基础关卡适配
@@ -151,21 +174,6 @@ CLOSED: [2021-07-02 周五 20:53] SCHEDULED: <2021-06-22 周二 10:00>
 - [X] 本地存储适配
 - [X] 调用处修改
 - [X] 总结
-** TODO [#A] 学习《改善python程序的91个建议》                       :learn:
-SCHEDULED: <2021-07-02 周五 09:00 ++1d>
-:PROPERTIES:
-:STYLE:    habit
-:ATTACH: [[file:~/myproject/src/org/ref/python91个建议.org][python91个建议]]
-:LAST_REPEAT: [2021-07-01 周四 20:55]
-:END:
-- State "DONE"       from "TODO"       [2021-07-01 周四 20:55]
-- State "DONE"       from "TODO"       [2021-06-30 周三 10:20]
-- State "DONE"       from "TODO"       [2021-06-29 周二 10:24]
-- State "DONE"       from "TODO"       [2021-06-28 周一 11:07]
-** WAIT [#A] 准备转正报告                                            :work:
-SCHEDULED: <2021-06-07 周一 19:03>
-- State "WAIT"       from "TODO"       [2021-06-26 周六 15:54] \\
-  貌似不需要报告了, 太好了, 暂时暂停
 * Appointment
 * Project
 * Someday

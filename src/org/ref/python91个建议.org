@@ -126,9 +126,6 @@ python的理念就是通过自动类型检查并根据需要隐式转换, 如果
 
 * 尽量转换为浮点型后再做除法
 #+BEGIN_VERSE
-#+END_VERSE
-
-#+BEGIN_VERSE
 python2.7 两个整形之间默认的除法是整形除法, 会截断小数, 所以两个整数相除截断这个
 效果是你想要的, 否则手动转为浮点型
 #+END_VERSE
@@ -172,7 +169,6 @@ python中的包是用来管理组织代码结构的工具, 通过一层层目录
    * 便于维护和使用
    * 最大程度避免命名冲突
 
-
 * 有节制的使用from ... import语法
 #+BEGIN_VERSE
 from import 语法虽然在有些时候减少代码量, 但是很容易导致命名冲突, 循环导入问题,
@@ -196,39 +192,87 @@ python不支持自增, ++i在python等效于+(+i), 所以这句话约等于无�
 
 * 使用with自动关闭资源
 #+BEGIN_VERSE
+with语句是更加优雅简单的资源管理方法, 通过with管理资源可以替代老式的
+try/catch/finally式写法
+本质上支持with语法的对象实现了__enter__和__exit__两个接口用来控制
+资源状态
 #+END_VERSE
-
+1. 推荐使用contextlib中的contextmanager装饰器来实现自己的上下文管理器
+   形式大概类似于:
+   #+BEGIN_SRC python
+     @contextmanager
+     def mycontext():
+         print('__enter__')
+         # 为了确保yield的对象抛出异常能够正确__exit__, 最好还是使用try, finally
+         try:
+             yield 0  # yield之前为__enter__, 之后为__exit__, 返回的值会赋值给as的对象
+         finally:
+             print('__exit__')
+   #+END_SRC
+   
 * 使用else字句简化循环
 #+BEGIN_VERSE
+else在循环中, 非break时调用, else在异常中, 没有发生异常时调用. 合理的使用else
+可以减少状态变量的使用
 #+END_VERSE
 
 * 遵循异常处理的几点基本原则
 #+BEGIN_VERSE
+精准, 高粒度的使用异常, 注意异常捕获顺序, 正确处理异常重抛出
 #+END_VERSE
+1. 不要except所有异常
+2. try包含的语句越少越好
+3. except的异常越具体越好
+4. 越在继承链底部的异常, 越应该将他放到多个except语句的前面, 以便精准捕获
+5. 异常抛出的信息最好对开发, 用户更加友好
 
 * 避免finally中可能发生的陷阱
 #+BEGIN_VERSE
+finally不是银弹, 并不能解决一切由异常导致的问题
 #+END_VERSE
+1. 如果finally里又出现了新的异常或者直接返回, 旧的异常会丢失
+2. finally如果存在返回, 会截断正常的返回, 所以一般不在finally返回
 
 * 深入理解None, 正确判断对象是否为空
 #+BEGIN_VERSE
+None不是空, 当一个值和None比较时, 当且仅当值也为None时他们才相等, 其他情况一律不
+等
 #+END_VERSE
+1. python会根据对象的__nonzero__和__len__判断对象是否为空, 如果没实现这两个接口则
+   默认为不空
 
 * 连接字符串优先使用join而不是+
 #+BEGIN_VERSE
+在处理大规模字符串连接时, join的效率远远高于+, 所以使用join连接字符
 #+END_VERSE
+1. join一次性计算需要的内存, 然后将内容复制到新的字符串中
+2. 每+一次都在内存中复制字符串一遍, 所以大数量时效率低
 
 * 格式化字符串尽量使用format而不是%
 #+BEGIN_VERSE
+不要使用%格式化, 一律使用format
 #+END_VERSE
+1. 功能更强大, 更灵活, 更方便
+2. %最终会被format替代
 
 * 区别对待可变对象和不可变对象
 #+BEGIN_VERSE
+不可变对象的值无法改变, 而可变对象的值可以改变. 有些时候你以为不可变对象的值变了,
+实际上并不是值变了, 而是给你的标识符分配了新的对象
 #+END_VERSE
+1. 函数默认参数绝对不要使用可变参数, 所有对函数的调用, 他们的默认参数都指向同一个
+   对象
 
 * [], (), {}: 一致的容器初始化形式
 #+BEGIN_VERSE
+python默认的几种可迭代类型都支持列表解析初始化形式, 如果初始化逻辑不是特别复杂且
+占用空间不大推荐使用, 更清晰且效率更高
 #+END_VERSE
+1. 列表[i**j for i in range(10) for j in range(10) if i > 5 and j > 5]
+2. 字典{i: 0 for i in range(10)}
+3. 集合{i for i in range(10)}
+4. 元组(i for i in range(10))
+5. 函数如果支持可变参数列表, 也可用列表解析func(i for i in range(10))
 
 * 
 #+BEGIN_VERSE
@@ -470,6 +514,11 @@ python不支持自增, ++i在python等效于+(+i), 所以这句话约等于无�
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用Cython编写扩展模块
 #+BEGIN_VERSE
+使用Cython编写代码处理性能瓶颈, 这个模块根据类python代码生成c代码
 #+END_VERSE
+1. 使用pip install -U cython
+2. 代码的编写除了类型声明以外基本和Python一致
+3. 使用pyximport导入改名为.pyx结尾的原py文件, 可以无需显式编译
+4. cython支持对c函数的调用
