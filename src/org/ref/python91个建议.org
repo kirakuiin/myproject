@@ -274,123 +274,311 @@ python默认的几种可迭代类型都支持列表解析初始化形式, 如果
 4. 元组(i for i in range(10))
 5. 函数如果支持可变参数列表, 也可用列表解析func(i for i in range(10))
 
-* 
+* 记住函数传参既不是传值也不是传引用
+#+BEGIN_VERSE
+python的传参是传对象的引用, 不是传值也不是传引用
+#+END_VERSE
+1. 对于任何形参, 在内部给形参赋值都相当于给引用指向了一个新的内存, 不会修改实参
+2. 对于可变类型形参, 如果只是修改形参的值, 那么由于和实参引用的是同一个内存, 也会
+   影响到实参的值
+
+* 警惕默认参数的潜在问题
+#+BEGIN_VERSE
+默认参数不要使用可变对象, 除非你清楚的知道这样做的后果是你想要的
+#+END_VERSE
+1. 如果默认参数是可变对象, 函数内每次对可变参数的修改都会影响下一次调用, 因为可变
+   参数只会初始化一次, 后面的所有调用用的都是同一个可变参数
+2. 如果你就是想要参数动态变化的效果, 比如说默认参数是当前时间, 那么可以让参数为:
+   #+BEGIN_SRC python
+     import time
+     def print_time(time=time.time):
+         print(time())
+   #+END_SRC
+
+* 慎用变长参数
+#+BEGIN_VERSE
+变长参数会导致接口定义非常不明确, 想要调用接口要求必须对变长参数含义有精确的理解,
+脱离了接口简单易用的本意, 所以谨慎使用
+#+END_VERSE
+1. 使用变长参数时, 考虑此函数是否功能过多, 是否需要重构
+2. 如果仅仅只是想要传字典或者列表, 不要用可变参数
+3. 在参数数目不定, 实现函数多态和装饰器, 或子类调用父类方法时可以使用可变参数
+
+* 深入理解str()和repr()的区别
+#+BEGIN_VERSE
+str面向用户, repr面向解释器
+#+END_VERSE
+1. 当str没实现时会调用repr, 所以一般要实现repr
+2. 一般情况下来说有如下等式, obj == eval(repr(obj))
+3. print调用的是str, 交互环境里直接输入变量调用的是repr
+
+* 分清staticmethod和classmethod的适用场景
+#+BEGIN_VERSE
+静态方法是放置于类内的普通函数, 功能和放到类外的函数是一致的, 出于代码紧凑和组织
+原因才放到类内部, 而类方法一般用于和类本身属性有关的情况, 比如说修改类属性, 类工
+厂函数等等
+#+END_VERSE
+1. 静态方法在语义上和类没有任何关系
+2. 类方法可以动态根据调用类方法的类来修改类本身属性
+
+* 掌握字符串的基本用法
+#+BEGIN_VERSE
+字符串有很多很方便的接口, 需要仔细阅读阅读一下文档, 对接口大概心里有数
+#+END_VERSE
+1. 判断对象是否为字符串使用isinstance(obj, basestring)
+2. split('')和split()的结果是不一样的, 后者会认为所有的连续的空字符为一个间隔
+3. 字符串自带很多控制格式的接口, 可以更加准确的控制排版
+
+* 按需选择sort()和sorted()
+#+BEGIN_VERSE
+如果想要节省空间且自身是list则使用sort原地排序, 否则一般使用sorted进行排序, 它支
+持序列类型, 且不修改原对象
+#+END_VERSE
+1. 都支持key参数, reverse参数, 可以灵活的控制排序规则和结果
+2. cmp参数尽量少用, 因为效率要低于key参数
+
+* 适用copy模块深拷贝对象
+#+BEGIN_VERSE
+如果想要拷贝出一个完全独立的对象, 使用copy.deepcopy
+#+END_VERSE
+1. 浅拷贝是指仅复制最外层, 如果内层还有引用则复制出来的新对象和原对象内层指的还是
+   同一个单位
+2. 深拷贝是指遇到引用会递归拷贝其所指向的内容, 直到最底层, 所以可以复制出一个和原
+   对象完全没关系的新对象
+
+* 适用Counter进行计数统计
+#+BEGIN_VERSE
+如果有统计序列中元素数目的需求, 请使用collections.Counter
+#+END_VERSE
+1. 支持+, -, |, &等集合操作
+2. 使用elements获得所有元素, 使用most_common获得数量最多的元素及其次数
+3. 使用update, subtract来改变各个元素的数目
+
+* 深入掌握ConfigParser
+#+BEGIN_VERSE
+ConfigParser可以用来读取ini文件格式的配置信息
+#+END_VERSE
+1. getboolean()可以将0, no, false, off都转为False, 1, yes, true, on转为True, 其
+   他抛出异常
+2. 当在指定的节[section]找不到配置项时, 回去[DEFAULT]节中去寻找
+3. 配置项支持参数替换, 比如coon_str = %(user)s:%(pw)s, 如果查找的节内有user和pw的
+   定义, 则会自动替换占位符
+
+* 适用argparse处理命令行参数
+#+BEGIN_VERSE
+python提供了argparse用来优雅的处理命令行参数, 需要的时候记得使用
+#+END_VERSE
+- 示例:
+  #+BEGIN_SRC python
+    import argparse
+
+    parser = argparse.ArgumentParser(description='argsparse example')
+    # 支持参数分组
+    pos = parser.add_argument_group('positional', 'positional argument example')
+    # default代表默认参数, choices代表取值范围, help代表描述
+    pos.add_argument('str', type=str, choices=['a', 'b'], help='word')
+    # type代表期望输入的类型, list是参数名， nargs代表至少输入一个参数(可以接受多个)
+    pos.add_argument('list', type=int, nargs='+',
+                    help='positional arguments example')
+    opt = parser.add_argument_group('optional', 'optional argument example')
+    # --开始代表需要参数的参数, default为默认值
+    opt.add_argument('--name', type=str, default='dog', help='name')
+    # required代表必须输入, '-a'为'--age'简写
+    opt.add_argument('-a', '--age', type=int, required=True, help='age')
+    # 不带参数的可选参数, 一般当作开关, dest代表存储名称, action代表默认操作
+    opt.add_argument('-v', dest='verbose', action='store_true', help='verbose')
+    # 子命令sub
+    subparser = parser.add_subparsers(help='sub-command help')
+    parser_sub = subparser.add_parser('sub', help='sub help')
+    parser_sub.add_argument('--test', type=bool, help='is test')
+    parser_sub.add_argument('bool', type=str, help='bool')
+
+    args = parser.parse_args()
+    print(args)
+  #+END_SRC
+- 使用ArgumentParser实例方法exit和error来处理异常情况
+
+* 适用pandas处理大型CSV文件
+#+BEGIN_VERSE
+csv文件是指(Comma Seperated Values)文件, 一般是以,分隔的文件, excel就属于此类
+python提供了库csv用来处理这种文件类型
+#+END_VERSE
+- 实例:
+  #+BEGIN_SRC python
+    import csv
+    """假设test.csv中内容为
+    name, A, B, C, D
+    a, 1, 2, 3, 4
+    b, 5, 6, 7, 8
+    """
+    with open('test.csv', 'r+') as fp:
+        result = []
+        for row in csv.reader(fp):
+            result.append(row)
+            print(row)
+        """输出为:
+        ['name', 'A', 'B', 'C', 'D'],
+        ['a', '1', ...]
+        ['b', 'b', ...]
+        """
+        fp.seek(0)
+        # delimiter代表写入时使用的分隔符, 默认是,
+        writer = csv.writer(fp, delimiter=':')
+        # DictWriter用法和此类似
+        for row in result:
+            writer.writerow(row)
+        fp.seek(0)
+        for row in csv.DictReader(fp, delimiter=':'):
+            print(row)
+        """输出为:
+        {' B': ' 2', ' C': ' 3', ' A': ' 1', 'name': 'a', ' D': ' 4'}
+        {' B': ' 6', ' C': ' 7', ' A': ' 5', 'name': 'b', ' D': ' 8'}
+        以行标签作为键分隔
+        """
+  #+END_SRC
+- 如果碰到上百M的大文件, 使用pandas来进行处理是比较好的选择
+
+* 一般情况适用ElementTree解析XML
+#+BEGIN_VERSE
+处理xml文件时, 请使用ElementTree模块来处理
+#+END_VERSE
+1. 使用简单, 将整个xml作为树, 每一个元素的属性以字典表示
+2. 内存消耗低
+3. 支持XPath, 非常方便获取任意节点的值
+- 示例:
+  #+BEGIN_SRC python
+    try:
+        # 优先加载cElementTree, 性能更好
+        import xml.etree.cElementTree as ET
+    except ImportError:
+        import xml.etree.ElementTree as ET
+
+    """假设text.xml文件内容为:
+    <test>
+        <name author='wzw' age='10'>
+            <purpose>test</purpose>
+        </name>
+    </test>
+    """
+
+    tree = ET.parse("test.xml")
+    root = tree.getroot()
+    print('root tag={}'.format(root.tag))  # 打印根元素的tag
+    # 遍历xml文档的第二层
+    for child in root:
+        # 第二层节点的标签名称和属性
+        print('tag={} attrib={}'.format(child.tag, child.attrib))
+        for children in child:
+            # 第三层节点的标签名称和属性
+            print('tag={}, value={}'.format(children.tag, children.text))
+    # 如果不想一层层遍历, 直接使用find等接口可以直接定位到准确层级, 比如find('name/purpose').text == 'test'
+
+    """输出为:
+    root tag=test
+    tag=name attrib={'age': '10', 'author': 'wzw'}
+    tag=purpose, value=test
+    """
+  #+END_SRC
+
+* 理解模块pickle优劣
+#+BEGIN_VERSE
+pickle是python提供的一种通用的序列化/反序列化接口, 基本支持大部分python类型, 包括
+类, 函数这些比较刁钻的类型
+#+END_VERSE
+- 优点:
+  1. 接口简单易用, 使用load和dump (由于序列化出来的东西不像json一样可读, 所以带s
+     两个接口不常用)
+  2. 存储格式在不同平台的python之间通用
+  3. 支持广泛的数据类型
+  4. 模块支持扩展来处理自定义的类型
+  5. 能够自动维护对象间的引用
+- 缺点:
+  1. 不能保证操作的原子性
+  2. 存在安全性问题, 可以通过loads执行破坏性代码
+  3. python特定格式, 不同语言之间无法解析
+- 实例:
+  #+BEGIN_SRC python
+    import pickle
+    def test():
+        print('test')
+    pickle.loads(pickle.dumps(test))()
+  #+END_SRC
+
+* 序列化的另一个不错的选择
+#+BEGIN_VERSE
+python自带对json的完全支持, 对序列化性能要求不是特别高的情况优先使用.
+主要用4个接口, load, loads, dump, dumps, 不带s的操作文件, 带s操作字符串
+#+END_VERSE
+1. 简单易用, 支持多种数据类型(null, str, int, float, bool, list, dict)
+2. 存储可读性更好
+3. 支持跨平台操作
+4. 可以扩展来支持json本身不支持的类型
+5. 示例:
+   #+BEGIN_SRC python
+     import json
+     obj = {'a': {'b': [1, 2, 3], 'c': True}, 'b': 'help', 'c': 1.5}
+     sResult = json.dumps(obj)  # sResult is str
+     new_obj = json.loads(sResult)
+     print(new_obj == obj)
+   #+END_SRC
+   
+* 适用traceback获取栈信息
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 适用logging记录日志信息
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 适用threading编写多线程程序
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 适用Queue使多线程编程更安全
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 利用模块使用单例模式
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 用mixin模式让程序更加灵活
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 用发布订阅模式实现松耦合
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 用状态模式美化代码
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 理解build-in objects
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* __init__()不是构造方法
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 理解名字查找机制
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 为什么需要self参数
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 理解MRO与多继承
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 理解描述符机制
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
-#+BEGIN_VERSE
-#+END_VERSE
-
-* 
+* 区别__getattr__()和__getattribute__()方法
 #+BEGIN_VERSE
 #+END_VERSE
 
