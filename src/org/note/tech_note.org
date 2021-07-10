@@ -34,6 +34,8 @@
       Get-PoshThemes
       Set-PoshPrompt paradox
     #+END_SRC
+  - 如果打开python编码错误, 可以在配置文件(start $PROFILE)内加入 ~chcp 936~ 切换
+    中文页面
 
 ** 生成rsa公钥
 执行命令:

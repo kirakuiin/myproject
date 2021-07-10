@@ -1,4 +1,5 @@
 #+STARTUP: INDENT NUM
+#+PROPERTY: header-args:python :preamble "# -*- coding: utf-8 -*-" :exports both :results output
 
 * 理解pythonic概念
 #+BEGIN_VERSE
@@ -289,11 +290,15 @@ python的传参是传对象的引用, 不是传值也不是传引用
 1. 如果默认参数是可变对象, 函数内每次对可变参数的修改都会影响下一次调用, 因为可变
    参数只会初始化一次, 后面的所有调用用的都是同一个可变参数
 2. 如果你就是想要参数动态变化的效果, 比如说默认参数是当前时间, 那么可以让参数为:
-   #+BEGIN_SRC python
+   #+BEGIN_SRC python :session :results value
      import time
-     def print_time(time=time.time):
-         print(time())
+     def get_time(time=time.time):
+         return time()
+     get_time()
    #+END_SRC
+
+   #+RESULTS:
+   : 1625794781.86
 
 * 慎用变长参数
 #+BEGIN_VERSE
@@ -393,9 +398,37 @@ python提供了argparse用来优雅的处理命令行参数, 需要的时候记�
     parser_sub.add_argument('--test', type=bool, help='is test')
     parser_sub.add_argument('bool', type=str, help='bool')
 
-    args = parser.parse_args()
-    print(args)
+    parser.print_help()
+    # args = parser.parse_args()
   #+END_SRC
+
+  #+RESULTS:
+  #+begin_example
+  usage: [-h] [--name NAME] -a AGE [-v] {a,b} list [list ...] {sub} ...
+
+  argsparse example
+
+  positional arguments:
+    {sub}              sub-command help
+      sub              sub help
+
+  optional arguments:
+    -h, --help         show this help message and exit
+
+  positional:
+    positional argument example
+
+    {a,b}              word
+    list               positional arguments example
+
+  optional:
+    optional argument example
+
+    --name NAME        name
+    -a AGE, --age AGE  age
+    -v                 verbose
+  #+end_example
+
 - 使用ArgumentParser实例方法exit和error来处理异常情况
 
 * 适用pandas处理大型CSV文件
@@ -403,7 +436,7 @@ python提供了argparse用来优雅的处理命令行参数, 需要的时候记�
 csv文件是指(Comma Seperated Values)文件, 一般是以,分隔的文件, excel就属于此类
 python提供了库csv用来处理这种文件类型
 #+END_VERSE
-- 实例:
+- 示例:
   #+BEGIN_SRC python
     import csv
     """假设test.csv中内容为
@@ -411,16 +444,12 @@ python提供了库csv用来处理这种文件类型
     a, 1, 2, 3, 4
     b, 5, 6, 7, 8
     """
-    with open('test.csv', 'r+') as fp:
+    with open('D:\\hello\\test.csv', 'r+') as fp:
         result = []
+        print('==reader==')
         for row in csv.reader(fp):
             result.append(row)
             print(row)
-        """输出为:
-        ['name', 'A', 'B', 'C', 'D'],
-        ['a', '1', ...]
-        ['b', 'b', ...]
-        """
         fp.seek(0)
         # delimiter代表写入时使用的分隔符, 默认是,
         writer = csv.writer(fp, delimiter=':')
@@ -428,14 +457,20 @@ python提供了库csv用来处理这种文件类型
         for row in result:
             writer.writerow(row)
         fp.seek(0)
+        print('==DictReader==')
         for row in csv.DictReader(fp, delimiter=':'):
             print(row)
-        """输出为:
-        {' B': ' 2', ' C': ' 3', ' A': ' 1', 'name': 'a', ' D': ' 4'}
-        {' B': ' 6', ' C': ' 7', ' A': ' 5', 'name': 'b', ' D': ' 8'}
-        以行标签作为键分隔
-        """
   #+END_SRC
+
+  #+RESULTS:
+  : ==reader==
+  : ['name: A: B: C: D']
+  : ['a: 1: 2: 3: 4']
+  : ['b: 5: 6: 7: 8']
+  : ==DictReader==
+  : {'name: A: B: C: D': 'a: 1: 2: 3: 4'}
+  : {'name: A: B: C: D': 'b: 5: 6: 7: 8'}
+
 - 如果碰到上百M的大文件, 使用pandas来进行处理是比较好的选择
 
 * 一般情况适用ElementTree解析XML
@@ -446,7 +481,7 @@ python提供了库csv用来处理这种文件类型
 2. 内存消耗低
 3. 支持XPath, 非常方便获取任意节点的值
 - 示例:
-  #+BEGIN_SRC python
+  #+BEGIN_SRC python :results value
     try:
         # 优先加载cElementTree, 性能更好
         import xml.etree.cElementTree as ET
@@ -461,24 +496,25 @@ python提供了库csv用来处理这种文件类型
     </test>
     """
 
-    tree = ET.parse("test.xml")
+    tree = ET.parse("D:\\hello\\test.xml")
     root = tree.getroot()
-    print('root tag={}'.format(root.tag))  # 打印根元素的tag
+    result = []
+    result.append('root tag={}'.format(root.tag))  # 打印根元素的tag
     # 遍历xml文档的第二层
     for child in root:
         # 第二层节点的标签名称和属性
-        print('tag={} attrib={}'.format(child.tag, child.attrib))
+        result.append('tag={} attrib={}'.format(child.tag, child.attrib))
         for children in child:
             # 第三层节点的标签名称和属性
-            print('tag={}, value={}'.format(children.tag, children.text))
+            result.append('tag={}, value={}'.format(children.tag, children.text))
     # 如果不想一层层遍历, 直接使用find等接口可以直接定位到准确层级, 比如find('name/purpose').text == 'test'
-
-    """输出为:
-    root tag=test
-    tag=name attrib={'age': '10', 'author': 'wzw'}
-    tag=purpose, value=test
-    """
+    return '\n'.join(result)
   #+END_SRC
+
+  #+RESULTS:
+  : root tag=test
+  : tag=name attrib={'age': '10', 'author': 'wzw'}
+  : tag=purpose, value=test
 
 * 理解模块pickle优劣
 #+BEGIN_VERSE
@@ -496,13 +532,16 @@ pickle是python提供的一种通用的序列化/反序列化接口, 基本支�
   1. 不能保证操作的原子性
   2. 存在安全性问题, 可以通过loads执行破坏性代码
   3. python特定格式, 不同语言之间无法解析
-- 实例:
-  #+BEGIN_SRC python
+- 示例:
+  #+BEGIN_SRC python :session :results pp
     import pickle
     def test():
-        print('test')
-    pickle.loads(pickle.dumps(test))()
+        return 'hello world'
+    print(pickle.loads(pickle.dumps(test))())
   #+END_SRC
+
+  #+RESULTS:
+  : hello world
 
 * 序列化的另一个不错的选择
 #+BEGIN_VERSE
@@ -519,186 +558,610 @@ python自带对json的完全支持, 对序列化性能要求不是特别高的�
      obj = {'a': {'b': [1, 2, 3], 'c': True}, 'b': 'help', 'c': 1.5}
      sResult = json.dumps(obj)  # sResult is str
      new_obj = json.loads(sResult)
-     print(new_obj == obj)
+     print new_obj == obj
    #+END_SRC
+
+   #+RESULTS:
+   : True
    
 * 适用traceback获取栈信息
 #+BEGIN_VERSE
+当程序捕获了特定异常并打印错误时, 经常会丢失掉traceback信息, 通过traceback模块可
+以打印出追踪信息
 #+END_VERSE
+1. inspect模块, sys.exc_info(), 也都提供了对异常跟踪信息的获取方法
+- 示例:
+  #+begin_src python
+    import traceback
+    def f():
+        g()
+    def g():
+        k()
+    def k():
+        raise RuntimeError('Runtime test')
+
+    try:
+        f()
+    except RuntimeError as e:
+        print traceback.format_exc()  # 这里捕获了异常, 并生成了跟踪信息字符串
+  #+end_src
+
+  #+RESULTS:
+  : Traceback (most recent call last):
+  :   File "<stdin>", line 11, in <module>
+  :   File "<stdin>", line 4, in f
+  :   File "<stdin>", line 6, in g
+  :   File "<stdin>", line 8, in k
+  : RuntimeError: Runtime test
+  : 
 
 * 适用logging记录日志信息
 #+BEGIN_VERSE
+python提供了logging模块来处理日志信息, 提供了级别控制, 输出格式, 输出定向, 日志过
+滤等多种强大功能, 并且保证了线程安全, 非常强大.
 #+END_VERSE
+1. 尽量为logging去一个名字, 比如模块名, ~logger = logging.getLogger(__name__)~
+2. logging是线程安全但不保证进程安全, 所以多进程请使用不同的日志文件
+示例:
+#+begin_src python
+  import logging
+  import sys
+  sys.stderr = sys.stdout
+  logging.basicConfig(level=logging.INFO,
+                      format='%(asctime)s %(levelname)s %(message)s',)
+  logger = logging.getLogger(__name__)
+  logger.debug('this is a debug')  # 由于级别设置为info, debug不会显示
+  logger.info('this is a info')
+  logger.critical('this is a critical')
+#+end_src
+
+#+RESULTS:
+: 2021-07-08 15:49:26,249 INFO this is a info
+: 2021-07-08 15:49:26,249 CRITICAL this is a critical
 
 * 适用threading编写多线程程序
 #+BEGIN_VERSE
+threading提供了丰富的特性来操控线程, 而thread模块是以低级原始的方式控制线程, 所以
+编写多线程程序时优先使用threading模块
 #+END_VERSE
+1. threading支持各种锁, 信号量, 条件变量, 事件来控制同步和互斥
+2. threading可以join来等待线程执行结束
+3. threading支持守护线程, 支持等待所有子线程结束后主线程才退出的功能
+4. python3已经没有thread模块了, 表明了语言开发者的态度
+示例:
+#+begin_src python
+  import threading
+  import time
+  def func(s, delay):
+      time.sleep(delay)
+      print(s)
+
+  t1 = threading.Thread(target=func, args=('a', 1))
+  t2 = threading.Thread(target=func, args=('a', 2))
+  t2.setDaemon(True)
+  print('t1 is daemon? {}'.format(t1.isDaemon()))
+  print('t2 is daemon? {}'.format(t2.isDaemon()))
+  print('=== after 1 second ===')
+  t1.start()
+  t2.start()  # 由于t2线程设置了守护进程, 所以当线程1结束时程序会直接退出, 不会输出线程2的结果
+#+end_src
+
+#+RESULTS:
+: t1 is daemon? False
+: t2 is daemon? True
+: === after 1 second ===
+: a
 
 * 适用Queue使多线程编程更安全
 #+BEGIN_VERSE
+python提供了三种线程同步队列, 这三种队列都保证线程安全, 使用这三个队列传递数据时
+不需要做任何同步互斥措施
 #+END_VERSE
+1. 提供的三种队列为:
+   - Queue.Queue(maxsize), 先进先出队列
+   - Queue.LifoQueue(maxsize), 先进后出栈
+   - Queue.PriorityQueue(maxsize), 优先队列
+2. 示例:
+    #+begin_src python
+      import Queue
+      import threading
+      import time
 
-* 利用模块使用单例模式
+      class Producer(threading.Thread):
+          def __init__(self, queue, name):
+              super(Producer, self).__init__()
+              self.queue = queue  # 队列
+              self.name = name
+
+          def run(self):
+              print '{} {} start!'.format(self.__class__.__name__, self.name)
+              count = 5
+              while count:
+                  self.queue.put('{}({})'.format(self.name, count), True)
+                  count -= 1
+              self.queue.task_done()
+              print '{} {} done!'.format(self.__class__.__name__, self.name)
+
+      class Consumer(threading.Thread):
+          def __init__(self, queue, name):
+              super(Consumer, self).__init__()
+              self.queue = queue  # 队列
+              self.name = name
+
+          def run(self):
+              print '{} {} start!'.format(self.__class__.__name__, self.name)
+              result = []
+              while True:
+                  val = self.queue.get(True, 1)
+                  result.append(val)
+                  time.sleep(1)
+                  if self.queue.empty():
+                      break
+              print('{} result = {}'.format(self.name, result))
+
+      queue = Queue.Queue(3)
+      producer1 = Producer(queue, '1')
+      producer2 = Producer(queue, '2')
+      consumer1 = Consumer(queue, '1')
+      consumer2 = Consumer(queue, '2')
+      producer1.start()
+      producer2.start()
+      consumer1.start()
+      consumer2.start()
+    #+end_src
+
+    #+RESULTS:
+    : Producer 1 start!
+    : Producer 2 start!
+    : Consumer 1 start!
+    : Consumer 2 start!
+    : Producer 1 done!
+    : Producer 2 done!
+    : 1 result = ['1(5)', '1(3)', '1(1)', '2(3)', '2(2)']
+    : 2 result = ['1(4)', '1(2)', '2(5)', '2(4)', '2(1)']
+
+* 利用模块实现单例模式
 #+BEGIN_VERSE
+由于python本身的灵活性, 导致传统的单例实现模式在python中总是有着各种各样的瑕疵,
+但实际上python模块本身就是完备的单例
 #+END_VERSE
+1. 模块只初始化一次
+2. 模块的变量全部绑定到模块上
+3. import是线程安全的
+4. 如果扩展一下单例的定义, 并不需要全局唯一, 只需要所有实例的状态一致即可
 
 * 用mixin模式让程序更加灵活
 #+BEGIN_VERSE
+混入实际上是python中多重继承的一种使用方式, mixin类可以理解为带有实现的接口, 一般
+实现了某种单一功能, 宿主类为了获得这种功能从而混入(mixin)这个类, 获得了这个功能,
+使用混入避免多重继承的坏处, 最大限度的获得了代码重用的好处.
 #+END_VERSE
+1. 一般混入类要符合以下的要求:
+   - 单一职责
+   - 混入类对宿主类一无所知(但是可能要求宿主必须实现了某些接口, 有某些属性才能混入)
+   - 宿主类的原本功能不会因为去掉混入类而受到影响, 混入类本身也不存在super等调用
+     以免陷入mro的陷阱
+   - 混入类不会继承一般类, 也不能实例化
+2. python支持静态混入(定义时多重继承), 动态混入修改__bases__在python2.7.13是无法
+   实现的
+- 示例:
+  #+begin_src python
+    class Gun(object):
+        def __init__(self):
+            self.magazine = 2
+            self.left_bullet = 1
+
+        def fire(self):
+            if self.left_bullet > 0:
+                self.left_bullet -= 1
+                print 'biu', 
+
+        def reload(self):
+            print('装弹')
+            self.left_bullet = self.magazine
+
+        def empty(self):
+            return self.left_bullet == 0
+
+    class AiMinix(object):
+        def autofire(self, count):
+            for i in range(count):
+                if self.empty():
+                    self.reload()
+                self.fire()
+
+    class KnifeMinix(object):
+        def stab(self):
+            print('刺刀攻击')
+
+    # 这个武器依旧是一把枪, 而不是Ai控制或者是刺刀, 他只是混入了这两种功能
+    class BigFuckingGun(Gun, AiMinix, KnifeMinix):
+        pass
+
+    bfg = BigFuckingGun()
+    bfg.fire()
+    bfg.autofire(6)
+    bfg.stab()
+  #+end_src
+
+  #+RESULTS:
+  : biu 装弹
+  : biu biu 装弹
+  : biu biu 装弹
+  : biu biu 刺刀攻击
 
 * 用发布订阅模式实现松耦合
 #+BEGIN_VERSE
+发布订阅模式是传统观察者模式的超集, 通过将发布和订阅者的松耦合集中到中介者身上,
+发布者和订阅者实现了完全的解耦
 #+END_VERSE
+1. 发布者和订阅者对对方毫不知情, 发布者通过中介投递消息, 订阅者通过中介得到消息
+2. message的消息订阅是全局的, 所以起名要注意不要发生冲突, 可以通过uuid来生成唯一
+   名称
+- 示例:
+  #+NAME: 订阅/发布
+  #+begin_src python :result output
+    import message  # pip install message
+
+    SUBJECT = 'subject'  # 订阅的主题
+
+    def subscriber_1():
+        print('s1 receive subject')
+        ctx = message.Context()
+        ctx.discontinued = True
+        print('swallow message')
+        return ctx  # 通过返回上下文信息中断消息传递
+
+    def subscriber_2():
+        print('s2 receive subject')
+
+    def subscriber_3():
+        print('s3 receive subject')
+
+    message.sub(SUBJECT, subscriber_1)  # 订阅
+    message.sub(SUBJECT, subscriber_2)
+    message.sub(SUBJECT, subscriber_3, front=True)  # 通过front参数使得3第一个收到消息
+    message.pub(SUBJECT)  # 发布
+  #+end_src
+
+  #+RESULTS: 订阅/发布
+  : s3 receive subject
+  : s1 receive subject
+  : swallow message
+
+  #+NAME: 观察者模式
+  #+begin_src python :result output
+    import message
+
+    def greet(people):  # 观察者
+        print 'hello {}'.format(people.name)
+
+    @message.observable  # 注册为被观察对象
+    class Foo(object):
+        def __init__(self, name):
+            self.name = name
+
+        def pub_greet(self):
+            print('notify')
+            self.pub('greet', self)
+
+    foo = Foo('kesa')
+    foo.sub('greet', greet)  # 注册成为观察者
+    foo.pub_greet()  # notify
+  #+end_src
+
+  #+RESULTS: 观察者模式
+  : notify
+  : hello kesa
 
 * 用状态模式美化代码
 #+BEGIN_VERSE
+当一个类有很多不同的状态, 每个状态各自的操作, 这个时候可以使用状态模式来简化代码
 #+END_VERSE
+1. 状态模式通过将方法分派的不同的状态类中有效避免了大量ifelse语句
+2. 每个状态拥有自己独有的方法, 当在状态上调用错误的方法时可以迅速发现错误的原因
+3. 参考[[file:游戏编程模式.org::*状态模式][状态模式]]
+4. 示例:
+   #+begin_src python
+     import state  # pip install state
+
+     class StateBase(state.State):
+         """自定义状态基类, 用于实现默认的进入和离开行为
+         """
+         @state.behavior
+         def __begin__(host):  # 每次进入状态时会调用此接口, 初始化
+             pass
+
+         @state.behavior
+         def __end__(host):  # 每次离开状态时会调用此接口, 清理
+             print '{} ->'.format(host.herostate.__name__),
+
+
+     @state.stateful  # stateful用于将类状态化
+     class Hero(object):
+         """英雄类
+
+         可以做出各种各样的操作
+         """
+         @property
+         def herostate(self):
+             return state.curr(self)  # curr用于查看当前状态
+
+         class Stand(StateBase):
+             """站立状态
+             """
+             default = True  # 英雄单位默认处在站立状态, 必须有一个状态类有此属性
+             @state.behavior  # 实际上是staticmethod的别名, 状态保存在self里, 自身只有行为, 因此是静态的
+             def jump(host):  # 这个host代表的是宿主Hero类的实例,  不是自身
+                 state.switch(host, Hero.Jump)  # switch用于状态转换
+
+             @state.behavior
+             def dash(host):
+                 state.switch(host, Hero.Dash)
+
+         class Jump(StateBase):
+             """跳跃状态
+             """
+             @state.behavior
+             def smash_down(host):
+                 print('英雄砸地板')
+                 host.stand()
+
+             @state.behavior
+             def stand(host):
+                 state.switch(host, Hero.Stand)
+
+         class Dash(StateBase):
+             """冲刺状态
+             """
+             @state.behavior
+             def stand(host):
+                 state.switch(host, Hero.Stand)
+
+     print '状态变化:',
+     hero = Hero()
+     hero.jump()
+     hero.stand()
+     hero.dash()
+     hero.stand()
+     print(hero.herostate.__name__)
+     try:
+         hero.smash_down()
+     except AttributeError as e:
+         print('无法在{}时砸地板'.format(hero.herostate.__name__))
+   #+end_src
+
+   #+RESULTS:
+   : 状态变化: Stand -> Jump -> Stand -> Dash -> Stand
+   : 无法在Stand时砸地板
 
 * 理解build-in objects
 #+BEGIN_VERSE
+python之中, 一切皆是对象
 #+END_VERSE
+1. object和古典类没有基类, type的基类是object
+2. object是type的实例, type实际上是元类, 即类的模板
+3. object和所有内建类型以及衍生的用户类都是type的实例
+4. 所有用户定义古典类类型都为instance, 元类为types.ClassType
+5. 不能仅通过继承关系来判断一个类是不是古典类, 它元类是不是types.ClassType才是
+   关键, 即type(cls) == types.ClassType
+6. 一定使用新式类(继承object), py3已经移除了古典类
 
 * __init__()不是构造方法
 #+BEGIN_VERSE
+python中__new__才是传统意义上的构造方法, __init__是用来在类实例构造好之后用来初始
+化变量的
 #+END_VERSE
+1. __new__是类方法, __init__是实例方法
+2. __new__创建的实例会自动传给__init__进行初始化, 如果__new__返回的实例的类型不
+   是自身的类型则不会调用__init__
+3. __new__和__init__的参数必须一致
+4. 一般来说不需要实现__new__, 除了以下几种情况:
+   - 继承内建不可变类型, 由于__init__是无效的, 必须实现__new__
+   - 工厂函数, 单例模式, 或者元编程
 
 * 理解名字查找机制
 #+BEGIN_VERSE
+python查找名字定义时, 按照LEGB顺序查找, 即(local->enclosing->global->builtin)
 #+END_VERSE
-
+1. 作用域含义说明:
+   - 局部作用域(local) :: 函数的每次调用都会创建一个局部作用域, 函数内部的任意
+     赋值操作(=, import, def等等)都会在局部创建新的变量, 并且尽在局部作用域可见
+   - 嵌套作用域(enclosing) :: 函数内部定义函数, 相对于内层函数, 外边的这层函数定
+     义的变量处在嵌套作用域. 当内部函数如果引用了嵌套作用域的变量, 这个叫做闭包
+   - 全局作用域(global) :: 定义在单个文件最顶层的变量所处的作用域, 此作用域中所有
+     变量名此文件可见
+   - 内建作用域(built-in) :: 在标准库模块__builtin__模块内查找
+2. 函数内部想要修改全局作用域变量必须使用global关键字, 想要修改嵌套作用域变量在
+   py3可以使用nonlocal关键字, py2无法修改, 只会在局部作用域创建新的变量
+   
 * 为什么需要self参数
 #+BEGIN_VERSE
+保留self仅会让你在定义的时候多写几个字符, 但却可以让一系列python的动态特性能够
+正常运作
 #+END_VERSE
+1. self的起因是python的设计者创造语言时收到了其他语言的影响
+2. 语言本身的动态性使得使用self能带来便利, 比如子类覆盖了父类的函数, 但可以通过
+   base.methodname(self, arguments)来调用父类的接口
+3. 存在同名局部或者全局变量时, 有self更容易区分哪个是实例属性
 
-* 理解MRO与多继承
+* 理解MRO与多重继承
 #+BEGIN_VERSE
+当使用多重继承时, 如果不同父类存在相同的属性, 此时使用MRO(方法解析顺序)来决定使用
+哪一个父类的属性
 #+END_VERSE
+1. 通过访问类的__mro__属性获得方法和属性查找顺序, 越靠前越先被找到, 找到即停止
+2. 古典类使用自顶向下, 自左至右的深度优先遍历方法来决定__mro__(顶是指子类)
+3. 新式类使用C3算法来决定__mro__:
+   #+begin_quote
+   我们把类 C 的线性化(MRO)记为 L[C] = [C1, C2,…,CN].其中 C1 称为 L[C] 的头,
+   其余元素 [C2,…,CN] 称为尾. 如果一个类 C 继承自基类 B1, B2, ..., BN，那么我们
+   可以根据以下两步计算出 L[C]:
+   L[object] = [object]
+   L[C(B1…BN)] = [C] + merge(L[B1]…L[BN], [B1]…[BN])
+   
+   这里的关键在于 merge，其输入是一组列表，按照如下方式输出一个列表:
+
+     1. 检查第一个列表的头元素(如 L[B1] 的头),记作 H
+     2. 若H未出现在其它列表的尾部, 则将其输出, 并将其从所有列表中删除, 然后回到
+        步骤1; 否则, 取出下一个列表的头部记作 H, 继续该步骤
+     重复上述步骤, 直至列表为空或者不能再找出可以输出的元素. 如果是前一种情况,
+     则算法结束; 如果是后一种情况, 说明无法构建继承关系, Python会抛出异常.
+   #+end_quote
+   假设存在继承关系:
+   #+begin_example
+   class X(object), class Y(object), class A(X, Y)
+   那么使用C3算法得到如下__mro__:
+     L[object] = [object]
+     L[X] = X + merge(L[object], object) = [X, object]
+     L[Y] = Y + merge(L[object], object) = [Y, object]
+
+     L[A] = A + merge(L[X], L[Y], X, Y)
+          = A + X + merge(object, L[Y], Y)
+          = A + X + Y + merge(object, object)
+          = [A, X, Y, object]
+   #+end_example
 
 * 理解描述符机制
 #+BEGIN_VERSE
+通过.来访问实例属性和通过__dict__来访问实例属性是一样的, 但是对于类属性来说,
+.封装了查找的细节. 使用.来访问类的描述符属性会调用描述符的__get__, 类的方法
+就是描述符
 #+END_VERSE
+1. 通过实例.访问描述符会被转换为type(obj).__dict__['x'].__get__(obj, type(obj))
+2. 通过类.访问描述符会被转换为cls.__dict__['x'].__get__(None, cls)
+3. 函数, classmethod, staticmethod, property等实现都用到了描述符
 
 * 区别__getattr__()和__getattribute__()方法
 #+BEGIN_VERSE
+__getattribute__在对所有的实例属性访问的时候都会调用, 而__getattr__仅会在
+__getattribute__未找到抛出异常的时候调用
 #+END_VERSE
+1. 这两个方法只对实例有效, 对类无效
+2. 覆盖__getattribute__时注意避免无穷递归情况, 比如在里面使用self.__dict__查找属
+   性, 这个操作本身也会触发自身的调用, 会导致无穷递归, 最好使用super委托父类查找
+3. 如果__getattr__不抛出异常, 那么一定要显式的返回一个值, 不要返回None
+4. 覆盖了__getattribute__后, 性能会有所损耗
+5. 当property, 和这两个接口同时存在时, 优先__getattribute__, 然后property如果任何
+   一个抛出了AttributeError则调用__getattr__
 
-* 
+* 使用更为安全的Property
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 掌握metaclass
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 熟悉python对象协议
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 利用操作符重载实现中缀语法
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 熟悉python的迭代器协议
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 熟悉python生成器
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 基于生成器的协程和greenlet
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 理解GIL的局限性
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 对象的管理和垃圾回收
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 从PyPI安装包
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用pip和yolk安装, 管理包
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 做paster创建包
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 理解单元测试概念
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 为包编写单元测试
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 利用测试驱动开发提高代码的可测性
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用pylint检查代码风格
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 进行高效的代码审查
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 将包发布到PyPI
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 了解代码优化的基本原则
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 借助性能优化工具
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 利用cProfile定位性能瓶颈
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用memory_profiler和objgraph剖析内存使用
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 努力降低算法的复杂度
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 掌握循环优化的基本技巧
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用生成器提高效率
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用不同的数据结构优化性能
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 充分利用set的优势
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用multiprocessing客服GIL的缺陷
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用线程池提高效率
 #+BEGIN_VERSE
 #+END_VERSE
 
-* 
+* 使用C/C++模块扩展提高性能
 #+BEGIN_VERSE
 #+END_VERSE
 

@@ -1,3 +1,4 @@
+#+STARTUP: indent
 #+TAGS: { app(a) plugin(p) }
 
 * Emacs 问题记录
@@ -43,3 +44,5 @@
    linux/unix系统默认在~目录, windows下如果想要在~目录, 必须设置环境变量$HOME=~
 
 ** org-mode里面未闭合的双引号("")会导致后面的全部缩进失效              :app:
+** org-babel python语法记号                                           :app:
+参考《[[https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-python.html][Python Source Code Blocks in Org Mode]]》
