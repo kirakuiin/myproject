@@ -268,4 +268,5 @@ Wrong: m_happen, m_ID_Scroll
 3. IOS如果首次登陆时没有弹出网络权限配置请求, 可以使用C_sys.IsEnableNetwork来主动触发
 4. 严格注意信号的使用, 很多信号关联着大量的页面刷新, 滥用信号很有可能导致卡顿, 信
    号绑定的粒度尽可能大, 有效减少函数调用次数
+5. extinterface.CShadowObject是无法对非引擎对象使用的
    

@@ -230,7 +230,7 @@
   |#orange|swimlane1|  /'泳道'/
   start   /'开始'/
   partition initial #green{  /'分组'/
-      :**init**;  /'活动 **代表加粗'/
+  :**init**;  /'活动 **代表加粗'/
   note right  /'这是注释'/
       //This is an example//
       ====
@@ -239,19 +239,19 @@
   }
   repeat  /'循环'/
   if (hello?) then (yes)  /'条件语句'/
-      -> normal arrow;
-      #blue:hello;  /'#开始代表颜色'/
+  -> normal arrow;
+  #blue:hello;  /'#开始代表颜色'/
   elseif (kill?) then (yes)
-      -[#green,dotted]-> special arrow;  /'特殊箭头'/
-      #FF0000:__hello__;  /'__代表下划线'/
-      kill  /'终止'/
+  -[#green,dotted]-> special arrow;  /'特殊箭头'/
+  #FF0000:__hello__;  /'__代表下划线'/
+  kill  /'终止'/
   elseif (split?) then (yes)
   split  /'划分'/
-      :s1|  /'共有7种分隔符号 ; | < > / ] }'/
+  :s1|  /'共有7种分隔符号 ; | < > / ] }'/
   split again
-      :s2<
+  :s2<
   split again
-      :s3>
+  :s3>
   end split
   elseif (fork?) then (yes)
   fork  /'并行'/
@@ -261,7 +261,7 @@
   detach  /'分离'/
   end fork
   else (no)
-      end   /'流程终止'/
+  end   /'流程终止'/
   endif
   start
   backward:get input;  /'循环活动'/
@@ -380,3 +380,8 @@ zz/
           """输出自身"""
           print('Test')
 #+END_SRC
+
+** python __import__的fromlist参数
+__import__函数中的fromlist实际上是没有具体含义的, 你可以理解为它只是一种标记, 当
+它不为空的时候, import为我们导入前面所写的字符串中最右边的模块. 当它为空的时候,
+import将为我们导入字符串最左边的模块.

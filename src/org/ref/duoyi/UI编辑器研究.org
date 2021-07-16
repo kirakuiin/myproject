@@ -1,0 +1,442 @@
+#+STARTUP: INDENT OVERVIEW NUM
+#+PROPERTY: header-args:python :preamble "# -*- coding: utf-8 -*-" :exports code
+
+* UI编辑器界面概览
+** 视图
+点击上方菜单里面的视图选单, 会显示以下视图:
+- 项目视图: 项目目录树
+- 内容节点视图: 表明一个ui文件内部的节点关系
+- 控件视图: 所有编辑器可用的控件列表
+- 资源列表视图: 以可视化的方式显示资源文件夹里的文件
+- 属性视图: 点击控件之后控件的属性设置视图
+- 动画视图: 编辑控件的动画效果, 主要依靠关键帧实现
+- 关键帧属性视图: 点击动画视图里面关键帧后显示详细属性
+- 模板列表视图: 保存的模板会显示在这里
+- 自定义控件视图: 保存的自定义控件会显示在这里
+** 模板
+点击上方菜单文件选单, 会显示如下几个模板:
+- 从选中控件创建动画模板: 在动画视图里创建一个控件的多个关键帧形成一个动画, 保存
+  之后可以应用到其他控件上, 注意动画会产生一个_ani.py, 想要播放动画必须要加载这个
+  文件
+- 以当前文件创建模板: 将非root节点以外节点全部保存为一个模板(实际上也是个ui文件)
+  使用时从模板列表视图拖拽进行使用
+- 以选中控件创建模板: 将所有选中的节点保存为一个模板(这个是自定义控件的加强版),
+  使用方法同上
+** 顶部按钮
+* UI编辑器控件通用属性
+当你点击任意一个控件之后, 会显示控件的属性, 其含义如下:
+** 界面显示专用属性
+- 锁定: 选中锁定之后控件无法选中
+- 父子约束: 当选中时, 拖动父节点子节点也会跟着移动
+- 查看: 影响坐标的显示, 全局原点为设备屏幕的左下角, 局部原点为父节点的左下角
+- 取整: 将数值舍入取整, 注意50.5%是0.505, 所以取整之后是100%
+- 约束比例: 宽和高会保持当前比例, 当改变宽或高时, 另一个属性根据比例同时变化
+- 等比缩放: 和约束比例概念类似
+- 组件: 添加之后影响所有子节点的摆放方式, 即只能按照规则放置到指定的位置, 比如只
+  能竖直或者水平摆放
+  
+** 影响代码生成属性
+- 名称: 控件的名字, 也是代码里的名称, m_开头会保存为成员变量
+- 标签: 控件的uuid, 影响IUICode里面的创建函数名
+- 类型: 这个代表了控件的类型, 也就是控件的类
+- 关联: 这个是端游用的属性, 手游无效
+- 可见性: 未选中时代表控件默认不显示, 对应代码 ~SetVisible(False)~
+- 加载: 当加载未选中时这个控件不会创建, 需要自己手动加载创建, (根节点一定会加载)
+- 摄像机: 默认为0, 设置其他值后需要创建对应的摄像机, 对应代码 ~SetCameraMask(x)~
+- z值: 控件的局部z值, 对应 ~SetParent(obj, z=1, tag=1)里的z参数
+- 上移/下移/..: 影响控件的渲染顺序, 越靠底部越后渲染
+- 坐标: 上面的一对坐标是相对于原点的坐标, 下面的%坐标永远是相对于局部原点的, 对应
+  代码 ~SetPos(x, y)~
+- 依赖锚点: 选中时锚点生效, 否则永远使用控件左下角作为GetPos的位置, 依赖对应代码
+  ~IgnoreAnchorPointForPosition(False)~
+- 大小: 控件的大小, 对应代码 ~SetContentSize(w, h)~
+- 锚点: 代表控件的哪里代表控件的位置, 对应代码 ~SetAnchorPoint(x, y)~
+- 缩放: x, y, z轴的拉伸程度, 未设置激活深度时对应 ~SetScaleX(x), ~SetScaleY(y)~
+- 激活深度: 激活之后对z轴的缩放才会生效, 对应代码 ~SetScale(x, y, z)~, z轴主要用
+  于存在3d对象时渲染顺序问题
+- 旋转: 控件相对锚点的旋转角度, 正值代表顺时针角度, 对应代码 ~SetRotation(x)~
+- 倾斜: 控件在x轴和y轴上的倾斜程度, 正值代表延轴的正方向倾斜 对应 ~SetSkewX(x)~
+- 不透明度: 代表控件的透明程度, 255代表不透明, 对应代码 ~SetOpacity(x)~
+- 颜色混合: 代表控件的颜色, 使用rgb表示, 对应代码 ~SetColor(r, g, b)~
+- 串联: 父对象的颜色和透明度是否会影响子节点, 对应 ~SetCascadeXXEnabled(True)~
+- 固定和拉伸: 设置当控件的父节点大小变化时, 子控件的布局形式, 是边缘等距, 还是
+  等值或者等比变化, 设置之后的变化将鼠标移动到界面上或者看预览都能看到大致的效果,
+  这个信息存储在IUICode的sections里
+- 动态属性: 在控件内设置一个字典存放配置的属性
+ 
+** 特殊操作
+- 保存为自定义控件: 点击之后可以将选中的控件及其子节点保存为一个ui文件, 在自定义
+  控件选单里可以拖出来在其他文件里使用
+- 保存为动态属性控件: 为了解决一部分控件使用样式之后无法同步动态属性搞出来的解决
+  方案, 保存之后在控件列表中拖出来在其他文件里使用
+- 提升为自定义类: 可以自己实现一个类继承指定的控件, 特化部分功能. 但是这个有很大
+  的局限性, 首先你自己写的控件在界面上是无法创建的, 只能创建一个UI编辑器内置的基
+  类控件然后点击提升为自定义类, 之后仅这个控件会变为你的自定义类, 也就是说如果你
+  需要10个自定义对象, 你就要创建10个基类控件然后依次提升为自定义类. 其次你的自
+  定义类即便有特殊的属性可以设置, 但是在界面上也依旧会表现为基类
+- 样式: 可以保存当前控件设置好的特性和属性(缩放, 坐标等), 然后应用到其他的控件上
+- 动画模板: 可以应用保存的动画模板到当前控件上, 使其具有动画效果
+* 从UI编辑器到应用文件
+** 从ui编辑器到文件生成
+1. 当你在ui编辑器里面新建一个文件时, ui编辑器会在相应的位置创建一个.ui文件, 这个
+   文件的主要作用是保存编辑的文件内容, 加载到ui编辑器中来显示所有控件的可视化布局
+   #+CAPTION: ui文件结构
+   #+begin_src python
+       # signature = xxxxxx  数字签名, 不用管
+       # -*- coding: utf-8 -*-  编码说明, 不用管
+       version = (2, 0, 8)  # 编辑器版本号, 不重要
+       fps = 60  # 帧率, 不重要
+       status = ['xxxx']  # 动画状态
+       roots = ["342134324", ]  # 根节点uuid列表
+       datas = {  # 所有节点数据
+           "342134324": {  # 节点uuid
+               "type": "Screen",  # 控件的类型
+               "seq": ["87238423", ],  # 子节点uuid列表
+               "params": [  # 内部参数
+                   [
+                       "默认状态",  # 动画的状态
+                       {
+                           -1:  # 当前帧的数据, -1表示非动画状态数据
+                           [("scale_x", 2, 1.0, None), ...]  # 分别为(参数名, 参数类型, 默认值, 动画属性参数)
+                           # 每个控件的基本属性都存储在这一系列元组, 比如坐标, 放缩, 颜色等等
+                       },
+                   ],
+               ],
+           },
+           "87238423": {
+               # 和上个类似
+           },
+       }
+   #+end_src
+
+2. 当你点击保存按钮后, UI编辑器会根据保存的界面字典数据将当前文件的内容代码化, 也
+   就是根据编辑器文件的内容生成.py文件, 也会同时更新.ui文件, 这两个文件的更新操作
+   是同步的, 都是根据当前编辑器的数据来生成的, 而不是根据.ui生成.py
+
+   #+CAPTION: py文件结构
+   #+begin_src python
+     # ui文件需要的模块
+     import pubuictrl.uicomponent
+     import pubdialog.code
+
+     MODULES = {  # 生成代码使用的模块
+         pubuictrl.uicomponent,
+         pubdialog.code
+     }
+
+     # 类名:在CREATES中的下标
+     STR2IDX = {
+         "pubuictrl.uicomponent.UISprite": 0,
+     }
+
+     # 创建控件使用的类
+     CREATES = [
+         pubuictrl.uicomponent.UISprite
+     ]
+
+     class IUICode(MODULES[1].ICODE):
+         """这个类实际上和他继承的ICODE是一个纯粹的数据类
+
+         类内部都是对象的创建代码, 对象之间的关系和配置代码, 对象的实例并不存在类里
+         """
+         ROOT_WIDTH = 320   # 根节点宽度
+         ROOT_HEIGHT = 320  # 根节点高度
+         CODE_TABLE = {}  # 动态数据的内容会以{"控件名称": {"属性名":值,...}, ...}的形式存储到CODE_TABLE里面
+
+         # 每个函数的名字对应.ui文件里面的uuid
+         def _87238423_(self, parser, root, parent):
+             """创建控件对象, 配置后返回
+             """
+             obj = CREATES[0](x, y, z, ...)
+             obj.SetPos(x, y)
+             obj.SetContentSize(a, b)
+             # 动态属性初始化, 如果没有动态属性则没有这段代码
+             obj_datas = self.CODE_TABLE.get("m_Text", None)
+             if obj_datas is None:
+                 obj_datas = {
+                     "aaa": (1, 2)
+                 }
+                 self.CODE_TABLE["m_Text"] = obj_datas
+             return obj
+
+         # 若干个控件
+         def _xxxxx_(self, ...):
+             pass
+
+         def CInitRoot(self, root):
+             """根节点初始化
+             """
+             root.SetContentSize(x, y)
+             root.SetAnchorPoint(0.5, 0.5)
+
+         def _cSections(self, key="root", sections=None):
+             """实现读取文件控件节点内容
+
+             @param key: 指定的控件节点, 默认根节点
+             @param sections: 这个参数目前没用, 先不考虑
+             @return dict: 指定节点的配置信息字典
+             """
+             # 这个函数的作用实际上是根据前两个参数创建了一个字典类属性, 返回的是这个类属性的引用
+             # 这个类属性是用来缓存数据的
+             sections = self._cClsData(IUICode, "sections", sections, {})
+             # 如果sections字典长度为0, 说明类属性还没有缓存, 需要加载, 否则可以直接返回
+             if len(sections) == 0:
+                 # item的三个元素分别代表:
+                 # 1.该节点的函数名(根节点没有对应的函数, 所以为None)
+                 # 2.存放子节点的item列表(后面会追加)
+                 # 3.该节点的公共配置信息(根节点没有)
+                 item = [None, [], {}]
+                 sections['root'] = item
+                 cursors = [sections['root'], ]
+
+                 # 这个是子节点的item结构, 和根节点的是一致的
+                 item = [
+                     # _cMethod会返回函数的字符串名称, 即func.__name__, 这个返回的就是'_87238423_'
+                     self._cMethod(self._87238423_), [],
+                     {
+                         "parent": (0, 0),  # SetParent参数z和tag
+                         # parser.SetUIObject参数, 当后面的字符串为空才使用前面的
+                         # SetUIObject实际上是将生成的控件对象保存到parser的字典中, key就是这两个参数之一, 后面优先级更高
+                         "object": ("87238423", "m_Text"),
+                         # 这个参数用来记录固定和布局配置
+                         "layout": [15, [1, 2, 3, 4], [3, 4, 5, 6]],
+                         "load": False,  # 是否加载, 默认加载, 不加载不会创建此对象及其子节点
+                     }
+                 ]
+                 # 注意: 这里[-1][1]对应的正是root节点的子节点列表
+                 # 向子节点列表追加子节点item就是通过cursors来控制的
+                 cursors[-1][1].append(item)
+                 # 这里将item加入到字典中
+                 sections['m_Text'] = item
+                 # ... 其他子节点初始化操作, 和上面类似
+             # 最后sections的结构大概类似于(每个大写字母代表item三元组):
+             """
+             {
+             'root': [None, [A, B, C], {}],
+             'A': ['_aaaaa_', [A1, A2], {'object: ('aaaaa', 'A'), 'parent': (0, 0)}],
+             'A1: A1,
+             'A2': A2,
+             'B': B,
+             'C': C,
+             }
+             """
+             return sections.get(key, sections['root'])
+
+         def _cRelation(self):
+             """这个接口实际上已经没有了, 不用考虑"""
+             return {}
+
+         def _cFinalInitRelation(self):
+             """这个接口需要返回一个{"控件名称":控件属性字典}的字典
+
+             对字典里的每个元素, 首先根据名称得到控件对象, 然后调用对象的GetALInitDelegate()
+             然后代理对象调用OnFinalInit进行最后的初始化
+             """
+             return {}
+   #+end_src
+** 从生成文件到应用文件
+这里的所有的代码类似于伪代码, 相比于真实的代码删除了一部分异常处理和不重要代码.
+1. 当UI编辑器生成了.py文件之后, 客户端这边会创建一个类, 比如:
+   #+begin_src python
+     class CTestUI(combwidget.CWidgetDialog):
+         def __init__(self):
+             # 这个uitest即是UI编辑器生成的.py文件的路径
+             super(CTestUI, self).__init__("uitest")
+   #+end_src
+   通过将这个类实例化挂载到节点树上, 就可以像在ui编辑器里面那样显示界面了, 这一切
+   的奥秘都在combwidget.CWidgetDialog的__init__函数里面, 先看一下类图:
+   #+begin_src plantuml
+     @startuml
+     interface ISignalSubject #yellow {
+         + ssConnect(sig, func)
+         + ssEmit(sig, *args, **kwargs)
+         ...其他接口...
+     }
+
+     interface IDialog #yellow {
+         + OnDlgOpen()
+         + OnDlgClose()
+         ...其他接口...
+     }
+
+     class CDialogBase #red {
+         + Load(name)
+         + GetUIObject(key)
+         ...其他方法...
+     }
+
+     class CGeneralUIMgr #red {
+         + SetUIObject(skey, uiobj, skey2)
+         + GetUIObject(skey)
+         + Layout(parent, obj, params, dynamic_parent)
+         ...其他方法...
+     }
+
+     class IUICode #pink {
+         + cInitRoot(root)
+         - _cSections(key, sections)
+     }
+
+     class ICODE #red {
+         + cSection(key, parser, uiroot)
+         - {abstract} _cSections(key, sections)
+     }
+
+     class CLayerEx #red {
+         + SetPos(x, y)
+     }
+
+     class CWidgetDialog #red {
+         + GetUIData(key)
+         + GetCodeData(objname, key)
+         ...其他方法...
+     }
+
+     class CLayer #red {
+     }
+
+     class CNode #red {
+         + SetPos(x, y)
+         + SetParent(p, z, tag)
+         ...其他方法...
+     }
+
+     class CBase #red {
+         + GetRealSize()
+         + CreatePyCommandEx(dt, func, *args)
+         ...其他方法...
+     }
+
+     CWidgetDialog -[#blue,bold]-|> CLayerEx
+     CWidgetDialog -[#blue,bold]-|> CDialogBase
+     CWidgetDialog .[#green].|> IDialog
+     CWidgetDialog .[#green].|> ISignalSubject
+
+     CLayerEx -[#blue,bold]-|> CLayer
+     CLayerEx -[#blue,bold]-|> CBase
+
+     CLayer  -[#blue,bold]-|> CNode
+
+     IUICode -[#blue,bold]-|> ICODE
+
+     CDialogBase *-[#blue,bold]- CGeneralUIMgr
+     CDialogBase *-[#blue,bold]- IUICode
+     @enduml
+   #+end_src
+2. CWidgetDialog.__init__根据ui文件路径初始化:
+   #+begin_src python
+     class CWidgetDialog(xxx):
+         def __init__(self, filename):
+             # ... 其他基类初始化
+             dialogbase.CDialogBase.__init__(self) # 这里初始化了存储控件的容器
+             w, h, self.m_CodeData = self.Load(filename)  # 加载ui文件, m_CodeData存储动态属性
+             self.SetContentSize(w, h)
+             # ... 其他初始化操作
+   #+end_src
+3. CDialogBase继续执行加载操作
+   #+begin_src python
+     class CDialogBase(object):
+         def Load(self, sUIName, bUseUISize):
+             """加载ui文件
+
+             @param sUIName: ui文件路径
+             @param bUseUISize: 是否使用ui文件大小
+             """
+             # m_pUIMgr就是CGeneralUIMgr类型的容器, 用来存储控件
+             # 返回的是IUICode的实例对象, 也就是UI编辑器生成的.py里面类的实例
+             self.m_pCoder = ui.LoadUI(sUIName, self.m_pUIMgr, self, bUseUISize)
+             # 这段逻辑是将所有m_开头的ui控件设置为自己的实例属性
+             for sAttr, v in self.m_pUIMgr._m_uiobjs.items():
+                 if sAttr.startwith("m_"):
+                     setattr(self, sAttr, v)
+             return self.m_pCoder.ROOT_WIDTH, self.m_pCoder.ROOT_HEIGHT, self.m_pCoder.CODE_TABLE
+   #+end_src
+4. pub2.pubrestools.load.ui中的LoadUI继续执行加载操作
+   #+begin_src python
+     def LoadUI(sUIResModuleName, pParser, pUIRoot, bConfigRootWithResData):
+         """加载UI数据
+
+         @param sUIResModuleName: ui文件路径
+         @param pParser: CGeneralUIMgr实例, 作为存储控件的容器
+         @param pUIRoot: 控件的父节点, 现在的例子里是CWidgetDialog
+         """
+         # 实例化我们的.py文件里的IUICode对象
+         pCoder = __import__(sUIResModeleName, fromlist=['*']).IUICode()
+         pCoder.cSection('root', pParser, pUIRoot)
+         return pCoder
+   #+end_src
+5. IUICode中cSection加载过程
+   #+begin_src python
+     class ICODE(object):
+         def cSection(self, key, parser, uiroot):
+             """加载指定的ui控件及其子节点
+
+             将字典数据转化为实际的控件实例
+             """
+             # 初始化的时候key为root, 相当于得到根节点的[None, [children item], {}]三元组
+             secItem = self._cSections(key)
+             must_load = {key: True, }  # root一定需要加载
+             # 递归进行加载操作
+             self._cItSection(parser, uiroot, uiroot, secItem, must_load)
+
+             # 执行字典里控件特有的初始化
+             for sname, param in self._cFinalInitRelation():
+                 obj = parser.GetUIObject(sname)
+                 delegate = obj.GetALInitDelegate()
+                 delegate.onFinalInit(parser, uiroot, param, obj)
+
+         def _cItSection(self, parser, uiroot, parent, section, must_load):
+             funcname, subitems, objdata = section  # 拆包[函数名, 子item列表, 控件配置信息]
+             objname = objdata["object"][1]
+             # 当控件名不是必须加载并且没有load参数不是True的时候直接返回
+             # 也就是如果设置不加载会导致控件实际上没有创建
+             if objname not in must_load and not objdata.get('load', True):
+                 return
+             method = getattr(self, funcname)  # 这里得到了_xxxx_的方法对象
+             obj = method(parser, uiroot, parent)  # 创建了控件
+
+             key1, key2 = objdata.get('object')  # 3232341213, 'm_Text'
+             parser.SetUIObject(key1, obj, key2) # 可以理解为将obj以键m_Text存储到parser中
+             z, tag = objdata.get('parent')
+             obj.SetParent(parent, z, tag)  # 设置父节点
+             parser.Layout(parent, obj, objdata.get('layout'), True)  # 设置布局
+
+             # 迭代所有子节点, 完成整个节点树的配置
+             for item in subitems:
+                 self._cItSection(parser, uiroot, obj, item, must_load)
+   #+end_src
+
+** 生成流程总结
+#+begin_src plantuml
+  @startuml
+  |#red|ui编辑器生成|  /'泳道'/
+  start
+  :编辑UI文件并保存;
+  :生成IUICode的py文件;
+  |#green|CDialogWidget初始化|  /'泳道'/
+  :编写具体类并以生成的py路径初始化;
+  :创建IUIMgr实例(容器);
+  :创建代码化对象(IUICode实例);
+  |#blue|IUICode初始化|  /'泳道'/
+  :代码化对象初始化;
+  repeat
+      if (load?) then
+          :创建控件对象并放到IUIMgr中存储;
+          :设置控件的父子关系;
+          :设置布局;
+          :处理子节点;
+      else (notload)
+      endif
+  repeat while (subitems?) is (yes) not (no)
+  :处理部分组件的最终初始化;
+  stop
+
+  @enduml
+#+end_src
+
+* UI编辑器的更新步骤
+1. 更新ui编辑器到最新版本
+2. 打开ui编辑器, 查看需要的pubuictrl版本
+3. 打开client/tools/sct/sct.exe, 将pubuictrl更新到需要的版本
+4. 详细参考:
+

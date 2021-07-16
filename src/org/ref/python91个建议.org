@@ -1047,51 +1047,284 @@ __getattribute__未找到抛出异常的时候调用
 
 * 使用更为安全的Property
 #+BEGIN_VERSE
+property是实现属性管理的内建数据类型, 提供了高级的属性控制方式
 #+END_VERSE
+1. 代码更简洁, 可读性更强
+2. 更好的管理属性的访问
+3. 代码的可维护性更好
+4. 控制属性访问权下, 提高数据安全性
+5. 示例:
+   #+begin_src python
+     class Test(object):
+         def __init__(self):
+             self._x = 1
 
+         @property
+         def x(self):
+             """return x"""  # 接口文档会作为属性的文档
+             return self._x
+
+         #@x.setter  # 如果不实现这个接口, 那么x就是只读的
+         #def x(self, val):
+         #    self._x = val
+
+         #@x.deleter # 如果不实现这个接口, 那么x无法删除
+         #def x(self):
+         #    del self._x
+
+     a = Test()
+     print('x is {}'.format(a.x))
+     try:
+         del a.x
+         a.x = 3
+     except AttributeError as e:
+         print(e)
+   #+end_src
+
+   #+RESULTS:
+   : x is 1
+   : can't delete attribute
+   
 * 掌握metaclass
 #+BEGIN_VERSE
+"元类是类的模板, 正如类是实例的模板"
 #+END_VERSE
+1. 当你在思考是否需要使用元类的时候, 那你就不需要它
+2. 默认所有的新式类都用type作为元类, 如果父类设置了元类, 那么子类也会使用父类的元
+   类
+3. 元类中的方法可以作为类方法使用, 但是实例无法使用
+4. 如果两个父类用两个不同的元类, 那么多重继承需要严格限制, 如果一定要多重继承, 可
+   以新建一个元类C来继承两个父类的元类, 子类使用这个新的元类C作为元类
+5. 示例:
+   #+begin_src python
+     class TestMeta(type):
+         def __new__(cls, name, bases, attr):
+             print(name, bases, attr)
+             return type.__new__(cls, name, bases, attr)
+
+         def Hello(cls):
+             print('{} hello'.format(cls.__name__))
+
+     # 使用元类的两种方式
+     class A(object):
+         __metaclass__ = TestMeta
+     B = TestMeta('B', (object,), {'__module__': '__main__', '__metaclass__': TestMeta})
+
+     A.Hello()
+   #+end_src
+
+   #+RESULTS:
+   : ('A', (<type 'object'>,), {'__module__': '__main__', '__metaclass__': <class '__main__.TestMeta'>})
+   : ('B', (<type 'object'>,), {'__module__': '__main__', '__metaclass__': <class '__main__.TestMeta'>})
+   : A hello
 
 * 熟悉python对象协议
 #+BEGIN_VERSE
+python是一门动态语言, 内置了大量的鸭子类型, 只要对象实现了某种协议, 那么这个对象
+就支持特定的操作. 比如实现了__len__协议就可以查看容器的数量, 实现了__equal__就可
+以比较引用是否相同等等
 #+END_VERSE
+1. 协议类型:
+   - 类型转换协议, __repr__, __int__等等
+   - 比较协议, __eq__, __lt__等等
+   - 数值运算协议, __add__, __sub__等等
+   - 位运算协议, __lshift__, __rshift__等等
+   - 运算赋值协议, __iadd__, __isub__等等
+   - 一元运算协议, __pos__, __neg__等等
+   - 容器协议, __len__, __getitem__等等
+   - 可调用对象协议, __call__
+   - 属性交互和描述符协议, __enter__, __setattr__等等
+   - 哈希协议, __hash__
+2. 有很多运算协议前面会有一个r前缀, 这个代表反运算, 比如a+1调用a的__add__,
+   那么1+a调用的就是a的__radd__
+3. 不要滥用对象协议, 只有你实现的对象真的符合协议的要求才应该实现协议, 比如如果
+   你的对象不是一个容器, 那你就不应该实现__len__
 
 * 利用操作符重载实现中缀语法
 #+BEGIN_VERSE
+中缀语法在很多时候比前缀语法要更加清晰, pipe库通过重载|实现了中缀语法
 #+END_VERSE
+- 示例:
+  #+begin_src python :results value
+    import pipe
+    # 计算5-10奇数平方之积
+    arr = range(20)
+    return reduce(lambda a, b: a*b,
+                  arr | pipe.take_while(lambda x: x<10)
+                  | pipe.skip_while(lambda x: x<5)
+                  | pipe.where(lambda x: x&1)
+                  | pipe.select(lambda x: x**2),
+                  1)
+  #+end_src
 
+  #+RESULTS:
+  : 99225
+  
 * 熟悉python的迭代器协议
 #+BEGIN_VERSE
+实现了__iter__和next接口, 或者仅实现了__getitem__的容器可以使用迭代器来访问元素
 #+END_VERSE
+1. __iter__方法需要返回一个迭代器, 迭代器自身的__iter__应返回自身
+2. next()接口需要返回当前元素, 并指向下一个位置, 当无元素抛出StopIteration异常
+3. 实现了迭代器可以惰性求值(比如生成器)
+4. itertools库中提供了大量用于迭代的工具函数
+5. 示例:
+  #+begin_src python
+    class MyIter(object):
+        def __init__(self):
+            self.list = [i for i in range(10)]
+
+        def __getitem__(self, idx):
+            return self.list[idx]
+
+    print('getitem')
+    it = MyIter()
+    for i in it:
+        print i,
+
+    class MyIter(object):
+        def __init__(self):
+            self.list = [i for i in range(10)]
+            self.idx = 0
+
+        def __iter__(self):
+            # for i in self.list:
+            #     yield i
+            return self
+
+        def next(self):
+            self.idx += 1
+            if self.idx > len(self.list):
+                raise StopIteration
+            else:
+                return self.list[self.idx-1]
+
+    print('\niter')
+    it = MyIter()
+    for i in it:
+        print i,
+  #+end_src
+
+#+RESULTS:
+: getitem
+: 0 1 2 3 4 5 6 7 8 9 
+: iter
+: 0 1 2 3 4 5 6 7 8 9
 
 * 熟悉python生成器
 #+BEGIN_VERSE
+python的yield关键字会使得函数变为生成器函数, 调用函数返回一个生成器对象, 这个生成
+器实现了迭代器协议, 可以生成一个序列
 #+END_VERSE
+- 示例:
+  #+begin_src python
+    def average():
+        sum = 0
+        num = 0
+        while True:
+          try:
+              # yield表达式前后分为两部分, 第一次next或者send(None)称为预激
+              # 会将控制流转给调用方, 并返回yield后面的值, 再次调用send会使yield
+              # 表达式返回的值为send的值, 并将其赋给sum
+              sum += yield 'average={}'.format(sum/num if num > 0 else 0)
+              num += 1
+          except Exception as e:
+              print(e)
+
+    generator = average()
+    generator.send(None)
+    print generator.send(3)
+    print generator.send(13)
+    print generator.throw(TypeError, 'TypeError')  # 可以主动向生成器内部发送异常
+    print generator.send(5)
+    generator.close()  # 主动关闭生成器
+    try:
+        generator.send(3)
+    except StopIteration as e:
+        print(type(e))
+  #+end_src
+
+  #+RESULTS:
+  : average=3
+  : average=8
+  : TypeError
+  : average=8
+  : average=7
+  : <type 'exceptions.StopIteration'>
 
 * 基于生成器的协程和greenlet
 #+BEGIN_VERSE
+协程实际上是一种绿色的线程, 是由python实现的, 操作系统对此一无所知. 通过将控制权
+主动让给主线程, 可以保证在任何时刻都只有一个协程在运行, 因此相比于线程无需作同步
+控制, 但是丧失了程利用多核cpu的能力
 #+END_VERSE
+1. 通过yield关键字来将控制流转给调用者
+2. python3通过yield from使得生成器的内外层可以直接交换数据, 对协程提供了全面的
+   支持
+3. 由于python2对协程支持有限, 因此可以使用greenlet库来支持协程
 
 * 理解GIL的局限性
 #+BEGIN_VERSE
+python的GIL(全局解释器锁)可以保证任何情况下虚拟机中只有一个线程运行, 初衷是为了保
+护虚拟机中共享对象访问的互斥性. 但是在多核情况下严重影响了python的性能表现
 #+END_VERSE
+1. GIL在单核多线程情况下基本没有影响
+2. GIL在多核多线程IO密集的情况下, 性能还会有所下降
+3. 可以通过multiprocessing来绕过GIL
 
 * 对象的管理和垃圾回收
 #+BEGIN_VERSE
+python提供了垃圾回收机制, 程序员无需手动管理内存, 但是由于采用了引用计数法, 依然
+存在出现内存泄露的情况
 #+END_VERSE
+1. python提供gc模块来处理循环引用, 但当对象存在析构方法时, 可能不会立即回收, 因为
+   无法确定析构顺序
+2. gc模块提供了debug模式, 可以方便程序员修复内存泄露错误
+3. 示例:
+   #+begin_src python
+     import gc
+     print('gc state = {}'.format(gc.isenabled()))
+     class Leak(object):
+         pass
+
+     A = Leak()
+     B = Leak()
+     A.a = B
+     B.a = A  # 循环引用
+     A = None
+     B = None
+     collected = gc.collect()
+     print('collect {} objects'.format(collected))
+   #+end_src
+
+   #+RESULTS:
+   : gc state = True
+   : collect 4 objects
 
 * 从PyPI安装包
 #+BEGIN_VERSE
+当你需要一些独特的功能的时候, 很有可能不需要重复造轮子, 在PyPI上已经有大量的包提
+供了各种各样的功能, 所以登陆PyPI去查看吧
 #+END_VERSE
+1. 可以通过安装setuptools之后, 使用easy_install命令安装PyPI上最新的包
 
 * 使用pip和yolk安装, 管理包
 #+BEGIN_VERSE
+pip提供了对包版本控制的支持, 也支持对安装包的查看和删除等管理操作, 所以pip目前
+是最流行的py包管理器
 #+END_VERSE
+1. pip install xx来安装包
+2. pip list来查看安装的包
+3. pip uninstall xxx来卸载包
+4. yolk可以查看包实现了哪个插件协议
 
 * 做paster创建包
 #+BEGIN_VERSE
+通过paster可以快速生成distutils需要的setup文件
 #+END_VERSE
+1. distutils标准库支持包的构建, 安装, 发布, PyPI的登记上传
+2. 通过编写setup文件来作为distutils的入口
+3. 通过pasterscript库可以根据模板快速生成setup文件, 减少工作量
 
 * 理解单元测试概念
 #+BEGIN_VERSE
@@ -1139,7 +1372,14 @@ __getattribute__未找到抛出异常的时候调用
 
 * 掌握循环优化的基本技巧
 #+BEGIN_VERSE
+唯一原则, 减少循环内部的计算量
 #+END_VERSE
+1. 减少循环内部计算, 将内部不变的计算提到循环外
+2. 显式循环转为隐式循环, 比如求等差数列和可以循环累加也可以直接公式计算
+3. 循环内部尽量引用局部变量, 因为局部变量的查询速度更快, 因此当存在频繁使用的变量
+   时, 将其转为局部变量会提高性能
+4. 如果有嵌套循环, 尽量将内部循环计算向外层移动
+
 
 * 使用生成器提高效率
 #+BEGIN_VERSE
@@ -1147,11 +1387,20 @@ __getattribute__未找到抛出异常的时候调用
 
 * 使用不同的数据结构优化性能
 #+BEGIN_VERSE
+当解决性能的问题的时候, 除了考虑算法方面, 也需要考虑数据结构是否合适
 #+END_VERSE
+1. deque(双端队列)在元素数量频繁变化时, 性能优于list
+2. bisect模块可以对有序列表进行二分搜索(lgn)和插入, 优于列表本身的搜素(n)
+3. heapq模块可以将列表改为最大堆, 支持常用的堆操作, 比如n最大元素
+4. 当你确定你的list中的元素都是一个类型的时候, 可以使用array模块优化内存
 
 * 充分利用set的优势
 #+BEGIN_VERSE
+set在涉及到交并补等运算时效率远远高于list, 因此有这种需求的时候优先使用set
 #+END_VERSE
+1. set天生支持集合运算, 交并补操作比list更优雅
+2. set在做集合操作时效率远远高于list, 即便规模为10也有3倍以上的效率, 规模越大
+   差越明显
 
 * 使用multiprocessing客服GIL的缺陷
 #+BEGIN_VERSE

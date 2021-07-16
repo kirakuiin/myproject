@@ -13,10 +13,12 @@
 * Inbox
 * Next Action
 ** TODO [#A] 大壮名城G1-1018租房月志                                :event:
-DEADLINE: <2021-07-12 周一 23:00 +1m> SCHEDULED: <2021-07-12 周一 09:00 +1m>
+DEADLINE: <2021-08-12 周四 23:00 +1m> SCHEDULED: <2021-08-12 周四 09:00 +1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
+- State "DONE"       from "TODO"       [2021-07-12 周一 09:21] \\
+  1. 房租2000, 电费160(空调+电脑), 物业+水117, 网费113
 - State "DONE"       from "TODO"       [2021-06-13 周日 17:42] \\
   1. 房租2000, 电费130(开了空调), 物业+水117, 办理了电信300m宽带(预付200)
 - State "DONE"       from "TODO"       [2021-05-12 周三 09:21] \\

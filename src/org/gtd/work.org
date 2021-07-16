@@ -36,15 +36,20 @@ SCHEDULED: <2021-07-17 周六 18:00 ++1w> DEADLINE: <2021-07-19 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-07-11 周日 19:00 +1d>
+** TODO [#C] 完成leetcode一两道题                                   :learn:
+SCHEDULED: <2021-07-17 周六 19:00 +1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-07-10 周六 15:40]
+:LAST_REPEAT: [2021-07-16 周五 10:35]
 :END:
 
+- State "DONE"       from "TODO"       [2021-07-16 周五 10:35]
+- State "DONE"       from "TODO"       [2021-07-15 周四 09:18]
+- State "DONE"       from "TODO"       [2021-07-14 周三 10:09]
+- State "DONE"       from "TODO"       [2021-07-13 周二 09:30]
+- State "DONE"       from "TODO"       [2021-07-12 周一 09:05]
 - State "DONE"       from "TODO"       [2021-07-10 周六 15:40]
 - State "DONE"       from "TODO"       [2021-07-09 周五 09:29]
 - State "DONE"       from "TODO"       [2021-07-08 周四 09:35]
@@ -146,13 +151,16 @@ SCHEDULED: <2021-07-11 周日 19:00 +1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 学习《改善python程序的91个建议》                        :learn:
-SCHEDULED: <2021-07-11 周日 09:00 ++1d>
+** TODO [#A] 学习《改善python程序的91个建议》                       :learn:
+SCHEDULED: <2021-07-17 周六 09:00 ++1d>
 :PROPERTIES:
 :STYLE:    habit
 :ATTACH: [[file:~/myproject/src/org/ref/python91个建议.org][python91个建议]]
-:LAST_REPEAT: [2021-07-10 周六 15:40]
+:LAST_REPEAT: [2021-07-16 周五 17:34]
 :END:
+- State "DONE"       from "TODO"       [2021-07-16 周五 17:34]
+- State "DONE"       from "TODO"       [2021-07-15 周四 20:53]
+- State "DONE"       from "TODO"       [2021-07-12 周一 14:02]
 - State "DONE"       from "TODO"       [2021-07-10 周六 15:40]
 - State "DONE"       from "TODO"       [2021-07-09 周五 17:40]
 - State "DONE"       from "TODO"       [2021-07-08 周四 21:11]
@@ -164,6 +172,13 @@ SCHEDULED: <2021-07-11 周日 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-06-30 周三 10:20]
 - State "DONE"       from "TODO"       [2021-06-29 周二 10:24]
 - State "DONE"       from "TODO"       [2021-06-28 周一 11:07]
+** TODO [#A] UI控件学习 [0%]                                      :work:m8:
+DEADLINE: <2021-07-24 周六 18:00> SCHEDULED: <2021-07-19 周一 13:30>
+- [ ] 空节点
+- [ ] 矩形裁剪层
+- [ ] 贴图特效
+- [ ] 文本
+- [ ] 触摸区域
 ** WAIT [#A] 准备转正报告                                            :work:
 SCHEDULED: <2021-06-07 周一 19:03>
 - State "WAIT"       from "TODO"       [2021-06-26 周六 15:54] \\
@@ -191,8 +206,27 @@ CLOSED: [2021-07-05 周一 15:37] SCHEDULED: <2021-07-05 周一 13:30>
 :ARCHIVE_TIME: 2021-07-10 周六 17:10
 :END:
 - State "DONE"       from "TODO"       [2021-07-05 周一 15:37]
+** DONE [#A] 重构英雄界面, 性能优化和高级排序规则                 :work:m8:
+CLOSED: [2021-07-15 周四 17:24] SCHEDULED: <2021-07-15 周四 13:30>
+- State "DONE"       from "TODO"       [2021-07-15 周四 17:24]
 * Appointment
 * Project
+** SCH [#A] 英雄升星                                              :work:m8:
+SCHEDULED: <2021-07-17 周六 13:00> DEADLINE: <2021-07-24 周六 18:00>
+:PROPERTIES:
+:BLOCKER: children
+:END:                          
+*** TODO 确认需求
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                         
+*** WAIT 实现导表CP文件
+*** WAIT 制作UI界面
+*** WAIT 制作模型层
+*** WAIT 实现网络协议, 联调
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:END:
 ** Archive                                                         :ARCHIVE:
 *** DONE [#A] 英雄山关卡坐标和关卡分组                            :work:m8:
 CLOSED: [2021-07-07 周三 17:29] SCHEDULED: <2021-07-05 周一 11:00> DEADLINE: <2021-07-06 周二 21:00>
@@ -221,6 +255,36 @@ CLOSED: [2021-07-07 周三 17:29] SCHEDULED: <2021-07-07 周三 17:29>
 - State "DONE"       from "TODO"       [2021-07-07 周三 17:29]
 **** DONE 实现关卡分组功能
 CLOSED: [2021-07-07 周三 17:29] SCHEDULED: <2021-07-07 周三 17:29>
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+** DONE [#A] UI编辑器工作流程和属性详解                           :work:m8:
+CLOSED: [2021-07-14 周三 21:10] SCHEDULED: <2021-07-12 周一 14:20> DEADLINE: <2021-07-17 周六 18:00>
+:PROPERTIES:
+:BLOCKER: children
+:END:                          
+- State "DONE"       from "SCH"        [2021-07-14 周三 21:10]
+*** DONE ui文件生成步骤分析
+CLOSED: [2021-07-13 周二 20:51]
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+- State "DONE"       from "TODO"       [2021-07-13 周二 20:51]
+*** DONE ui文件加载流程分析
+CLOSED: [2021-07-13 周二 20:51] SCHEDULED: <2021-07-13 周二 20:51>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-07-13 周二 20:51]
+*** DONE ui界面通用属性含义分析
+CLOSED: [2021-07-14 周三 20:58] SCHEDULED: <2021-07-13 周二 20:51>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+- State "DONE"       from "TODO"       [2021-07-14 周三 20:58]
+*** DONE 输出文档并分享
+CLOSED: [2021-07-14 周三 21:10] SCHEDULED: <2021-07-14 周三 20:58>
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
