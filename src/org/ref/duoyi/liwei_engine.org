@@ -270,3 +270,4 @@ Wrong: m_happen, m_ID_Scroll
    号绑定的粒度尽可能大, 有效减少函数调用次数
 5. extinterface.CShadowObject是无法对非引擎对象使用的
    
+   

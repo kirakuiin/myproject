@@ -1328,43 +1328,219 @@ pip提供了对包版本控制的支持, 也支持对安装包的查看和删除
 
 * 理解单元测试概念
 #+BEGIN_VERSE
+单元测试由开发人员完成, 用来初步验证程序的正确性
 #+END_VERSE
-
+1. 单元测试有以下好处:
+   - 减少了潜在的bug
+   - 大大缩减软件修复成本
+   - 为集成测试提供基础
+2. 单元测试的步骤:
+   1. 创建测试计划
+   2. 编写测试用例准备测试数据
+   3. 编写测试脚本
+   4. 编写被测试代码, 代码完成之后执行测试脚本
+   5. 修改代码缺陷, 直到代码可接受未知
+3. 单元测试的基本原则:
+   - 一致性 :: 每次执行测试的结果是一样的
+   - 原子性 :: 每次测试的结果不是True就是是False
+   - 单一职责 :: 测试应该基于情景, 而不是方法, 如果一个方法有多种行为, 那就应该有
+     多个测试用例
+   - 隔离性 :: 不能依赖于环境设置, 也不能依赖于其他用例的结果, 用例的输入输出应该
+     是确定的
+4. 使用单元测试框架unittest
+   
 * 为包编写单元测试
 #+BEGIN_VERSE
+使用自动测试框架unittest和nosetest可以方便的自动化执行单元测试
 #+END_VERSE
+- 示例:
+  #+begin_src python
+    import unittest
+
+    class Arithmetic(object):
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+        def sum(self):
+            return self.a+self.b
+
+        def diff(self):
+            return self.a-self.b
+
+        def product(self):
+            return self.a*self.b
+
+    class TestCase(unittest.TestCase):
+        def setUp(self):
+            """初始化环境"""
+            print('run testcase')
+            self.arith = Arithmetic(4, 4)
+
+        def tearDown(self):
+            """清理环境"""
+            print('run over')
+            del self.arith
+
+        def test_add(self):
+            self.assertEqual(self.arith.sum(), 4)
+
+        def test_diff(self):
+            self.assertEqual(self.arith.diff(), 0)
+
+        def test_product(self):
+            self.assertEqual(self.arith.product(), 16)
+
+    # 运行测试用例
+    unittest.main()
+    #+end_src
+
+  #+RESULTS:
+  #+BEGIN_COMMENT
+  run testcase
+  run over
+  run testcase
+  run over
+  run testcase
+  run over
+  ======================================================================
+  FAIL: test_add (__main__.TestCase)
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+  File "<stdin>", line 30, in test_add
+  AssertionError: 8 != 4
+
+  ----------------------------------------------------------------------
+  Ran 3 tests in 0.000s
+
+  FAILED (failures=1)
+  #+END_COMMENT
 
 * 利用测试驱动开发提高代码的可测性
 #+BEGIN_VERSE
+测试驱动开发是敏捷开发中一个非常重要的理念, 强调在真正开始编码之前先行测试, 通过
+迭代完成编码, 最终目的室编写干净可用的代码
 #+END_VERSE
+- 步骤:
+  #+BEGIN_SRC plantuml
+    @startuml
+    start
+    :编写可以运行测试的初版代码;
+    repeat
+        :编写测试用例;
+        :运行测试;
+    repeat while (测试失败?) is (no) not (yes)
+    repeat
+        :修改代码使其通过测试;
+    repeat while (测试失败?) is (yes) not (no)
+    :如果可能, 对代码进行重构;
+    @enduml
+  #+END_SRC
 
 * 使用pylint检查代码风格
 #+BEGIN_VERSE
+如果团队使用pep编码风格, 那么可以使用pylint进行代码审查
 #+END_VERSE
+1. pylint的功能有:
+   - 代码风格检查, 是否符合pep8
+   - 代码错误检查
+   - 发现重复以及设计不合理的代码
+   - 和各种IDE集成
+   - 能够基于python代码生成UML
 
 * 进行高效的代码审查
 #+BEGIN_VERSE
+代码审查不是一件无聊, 形式主义的事. 它远远比你想象的要重要得多
 #+END_VERSE
+1. 代码审查会的主要目的是提高代码质量, 不允许讨论bug和如何修复
+2. 代码审查过程不应该有kpi
+3. 除非管理层真正参入到技术问题当中, 否则应避免加入审查
+4. 将代码审查作为一个学习机会而不要理解为帮别人解决问题, 代码好可以让你学习, 代码
+   不好可以让你以后避免一些糟糕的设计和实现
+5. 评审可以借助一些工具
+6. 评审的时间要控制到45-60min之内, 代码行数应当在200-400之间
+7. 对事不对人, 不要人身攻击
+8. 发现问题要及时记录
 
 * 将包发布到PyPI
 #+BEGIN_VERSE
+通过python自带的distutils工具可以很方便地的将自己编写的库上传到PyPI上供他人使用
 #+END_VERSE
+1. 使用python setup.py register来注册账号
+2. 使用python setup.py sdist upload上传库
+3. 上传成功之后可以使用pip install进行安装
 
 * 了解代码优化的基本原则
 #+BEGIN_VERSE
+代码优化代表着再不改变程序运行结果的前提下使代码运行的更快, 资源占用更少
 #+END_VERSE
+1. 优化代码前首先保证代码可以正确运行, 让正确的程序变快比让快的程序变正确要简单
+2. 优化需要权衡质量, 时间, 成本, 代码本身需要权衡时间和空间, 而且要有重点的优化,
+   毕竟80%的性能是由20%代码影响的
+3. 需要明确优化的制标, 不能说优化的很快, 而要说优化到几秒之内反应, 并且优化要站在
+   客户的角度上, 而不是开发的角度上
+4. 优化代码也要兼顾可读性
 
 * 借助性能优化工具
 #+BEGIN_VERSE
+比较常用的有Pypy和cPython
 #+END_VERSE
+1. 使用Pypy编译python代码时, 效率有显著的提高
 
 * 利用cProfile定位性能瓶颈
 #+BEGIN_VERSE
+利用cProfile可以迅速定位程序运行的性能热点, 方便开发人员对代码进行优化
 #+END_VERSE
+- 示例:
+  #+begin_src python
+    print('==cProfile==')
+    import cProfile
+    def bar():
+        pass
+    def foo():
+        s = '0'
+        for i in range(20):
+            bar()
+            s += s
+    import os
+    path = os.path.join(os.environ['TMP'], 'profile.txt')
+    cProfile.run('foo()', path)  # 使用run调用函数
+    import pstats  # pstats提供了更加直观的报表分析
+    p = pstats.Stats(path)
+    p.sort_stats('ncalls').print_stats(3)
+
+    print('==timeit==')
+    import timeit  # 短小精悍的性能测量工具
+    t = timeit.Timer('a.append(1)', 'a=[]')
+    print (t.timeit(10000))  # 执行10000次需要的时间
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  ==cProfile==
+  Thu Jul 22 20:47:18 2021    C:\Users\admin\AppData\Local\Temp\profile.txt
+
+           24 function calls in 0.001 seconds
+
+     Ordered by: call count
+     List reduced from 5 to 3 due to restriction <3>
+
+     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+         20    0.000    0.000    0.000    0.000 <stdin>:4(bar)
+          1    0.001    0.001    0.001    0.001 <stdin>:6(foo)
+          1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+  ==timeit==
+  0.0004458
+  #+end_example
 
 * 使用memory_profiler和objgraph剖析内存使用
 #+BEGIN_VERSE
+使用这两个库可以方便追踪内存的变化以及内存泄露, 还可以显示对象之间的引用关系
 #+END_VERSE
+1. 使用memory_profiler的@profiler装饰器可以很方便的统计函数的内存使用情况
+2. objgraph的showrefs可以以图片文件的形式显示对象内部的引用关系
 
 * 努力降低算法的复杂度
 #+BEGIN_VERSE
@@ -1412,18 +1588,54 @@ set在涉及到交并补等运算时效率远远高于list, 因此有这种需�
 2. set在做集合操作时效率远远高于list, 即便规模为10也有3倍以上的效率, 规模越大
    差越明显
 
-* 使用multiprocessing客服GIL的缺陷
+* 使用multiprocessing克服GIL的缺陷
 #+BEGIN_VERSE
+由于python的单个进程存在GIL, 所以并发任务可以使用multiprocessing来提高性能,
+同时跳过GIL的限制
 #+END_VERSE
-
+1. 进程通信优先考虑Pipe和Queue
+2. 尽量避免资源共享, 如果不可避免可以使用multiprocessing.Value等数据结构, 或
+   使用服务器进程管理器multiprocessing.Manager来共享数据
+   - Value等数据结构不是进程安全的
+   - Manager只能传播被管理可变对象本身的改变, 如果可变对象本身包含的可变对象发生
+     了改变则不会传播
+3. 注意不同平台间进程的差异, 最好将共享的资源作为子进程的参数传入
+   - Linux子进程会共享父进程中的资源
+   - Windows父子进程相对独立
+4. 不要使用terminate来终止进程
+     
 * 使用线程池提高效率
 #+BEGIN_VERSE
+当需要大量线程来完成任务, 但每个任务的持续时间很短时, 可以使用线程池来复用线程,
+减少创建和销毁线程的开销
 #+END_VERSE
+1. 可以通过自己实现工作类和线程池管理器来实现一个线程池:
+   - 工作类负责处理具体的任务, 一般继承自Threading
+   - 线程池管理器管理线程队列和结果队列, 负责创建销毁线程对象和管理队列数据
+2. python3.2的concurrent.futures.ThreadPoolExecutor提供了完备的线程池功能
 
 * 使用C/C++模块扩展提高性能
 #+BEGIN_VERSE
+通过python提供的api, 可以很方便的将c/c++代码编译为python的模块, 可以将对性能要求
+较高的部分使用c/c++编写
 #+END_VERSE
-
+1. 编写步骤:
+   1. 使用c语言编写函数, 需要包含以下部分:
+      - 导出函数 :: 带有PyObject* self 和 PyObject* args作为参数
+      - 初始化函数 :: 以init开头, 使py解释器可以正确初始化
+      - 方法列表 :: 提供给外部使用的接口列表, 每个元素是一个结构体:
+        #+begin_src c
+          struct PyMethodDef {
+            char* ml_name;  // 方法名
+            PyCFunction ml_meth;  // 导出函数
+            int ml_flags;  // 参数传递方法
+            char* ml_doc;  // 方法描述
+          }
+        #+end_src
+   2. 编写setup脚本供distutils模块使用
+   3. 使用python setup.py build进行编译
+   4. 将生成的so文件复制到python的site_packages目录下, 即可import模块
+      
 * 使用Cython编写扩展模块
 #+BEGIN_VERSE
 使用Cython编写代码处理性能瓶颈, 这个模块根据类python代码生成c代码
