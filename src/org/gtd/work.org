@@ -13,12 +13,13 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-08-28 周六 18:00 ++1w> DEADLINE: <2021-08-30 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                             :work:
+SCHEDULED: <2021-09-04 周六 18:00 ++1w> DEADLINE: <2021-09-06 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-08-21 周六 16:25]
+:LAST_REPEAT: [2021-08-28 周六 17:09]
 :END:
+- State "DONE"       from "TODO"       [2021-08-28 周六 17:09]
 - State "DONE"       from "TODO"       [2021-08-21 周六 16:25]
 - State "DONE"       from "TODO"       [2021-08-07 周六 17:17]
 - State "DONE"       from "TODO"       [2021-07-31 周六 18:29]
@@ -41,14 +42,18 @@ SCHEDULED: <2021-08-28 周六 18:00 ++1w> DEADLINE: <2021-08-30 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-08-22 周日 19:00 ++1d>
+SCHEDULED: <2021-08-27 周五 19:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-08-21 周六 14:33]
+:LAST_REPEAT: [2021-08-26 周四 09:51]
 :END:
 
+- State "DONE"       from "TODO"       [2021-08-26 周四 09:51]
+- State "DONE"       from "TODO"       [2021-08-25 周三 15:13]
+- State "DONE"       from "TODO"       [2021-08-24 周二 19:11]
+- State "DONE"       from "TODO"       [2021-08-23 周一 09:44]
 - State "DONE"       from "TODO"       [2021-08-21 周六 14:33]
 - State "DONE"       from "TODO"       [2021-08-20 周五 10:43]
 - State "DONE"       from "TODO"       [2021-08-19 周四 20:24]
@@ -180,6 +185,16 @@ SCHEDULED: <2021-08-22 周日 19:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
+** TODO [#A] 学习《我所理解的cocos2d-x》                          :learn:m8:
+SCHEDULED: <2021-08-27 周五 09:00 ++1d>
+:PROPERTIES:
+:EFFORT: 0:60
+:STYLE:    habit
+:LAST_REPEAT: [2021-08-26 周四 10:25]
+:END:
+- State "DONE"       from "TODO"       [2021-08-26 周四 10:25]
+** TODO [#A] 补丁制作流程分析                                          :m8:
+SCHEDULED: <2021-08-25 周三 09:00>
 ** Archive                                                         :ARCHIVE:
 *** DONE [#A] 优化删除                                                 :m8:
 CLOSED: [2021-08-05 周四 16:21] SCHEDULED: <2021-08-05 周四 11:00>
@@ -216,6 +231,8 @@ SCHEDULED: <2021-08-22 周日 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-07-31 周六 19:33]
 - State "DONE"       from "TODO"       [2021-07-28 周三 14:49]
 - State "DONE"       from "TODO"       [2021-07-27 周二 09:49]
+** DONE [#A] 临时跳过英雄山战斗                                   :work:m8:
+CLOSED: [2021-08-25 周三 15:13] SCHEDULED: <2021-08-24 周二 09:00>
 * Appointment
 * Project
 ** Archive                                                         :ARCHIVE:
