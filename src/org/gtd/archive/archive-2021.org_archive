@@ -2150,3 +2150,202 @@ CLOCK: [2021-05-25 周二 13:12]--[2021-05-25 周二 13:37] =>  0:25
 - State "DONE"       from "TODO"       [2021-07-28 周三 13:40]
 
 * begin: <2021-08-01 周四>
+* Archive                                                           :ARCHIVE:
+** DONE [#A] 优化删除                                                    :m8:
+   CLOSED: [2021-08-05 周四 16:21] SCHEDULED: <2021-08-05 周四 11:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-08-30 周一 21:03
+   :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+ - State "DONE"       from "TODO"       [2021-08-05 周四 16:21]
+
+** DONE [#A] 给队友穿戴装备                                              :m8:
+   CLOSED: [2021-08-12 周四 10:16] SCHEDULED: <2021-08-12 周四 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-08-30 周一 21:03
+   :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+
+** DONE [#A] 学习《代码整洁之道》                                     :learn:
+   SCHEDULED: <2021-08-22 周日 09:00 ++1d>
+   :PROPERTIES:
+   :EFFORT:   0:60
+   :STYLE:    habit
+   :LAST_REPEAT: [2021-08-21 周六 15:41]
+   :ARCHIVE_TIME: 2021-08-30 周一 21:03
+   :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+ - State "DONE"       from "TODO"       [2021-08-21 周六 15:41]
+ - State "DONE"       from "TODO"       [2021-08-20 周五 21:03]
+ - State "DONE"       from "TODO"       [2021-08-19 周四 21:01]
+ - State "DONE"       from "TODO"       [2021-08-16 周一 10:10]
+ - State "DONE"       from "TODO"       [2021-08-13 周五 21:06]
+ - State "DONE"       from "TODO"       [2021-08-12 周四 17:01]
+ - State "DONE"       from "TODO"       [2021-08-11 周三 09:50]
+ - State "DONE"       from "TODO"       [2021-08-09 周一 11:29]
+ - State "DONE"       from "TODO"       [2021-08-07 周六 16:52]
+ - State "DONE"       from "TODO"       [2021-08-05 周四 16:21]
+ - State "DONE"       from "TODO"       [2021-08-04 周三 10:27]
+ - State "DONE"       from "TODO"       [2021-08-03 周二 09:42]
+ - State "DONE"       from "TODO"       [2021-08-02 周一 11:35]
+ - State "DONE"       from "TODO"       [2021-07-31 周六 19:33]
+ - State "DONE"       from "TODO"       [2021-07-28 周三 14:49]
+ - State "DONE"       from "TODO"       [2021-07-27 周二 09:49]
+
+** DONE [#A] 补丁制作流程分析                                            :m8:
+   CLOSED: [2021-08-30 周一 20:42] SCHEDULED: <2021-08-25 周三 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-08-30 周一 21:03
+   :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+
+** DONE [#A] 临时跳过英雄山战斗                                     :work:m8:
+   CLOSED: [2021-08-25 周三 15:13] SCHEDULED: <2021-08-24 周二 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-08-30 周一 21:03
+   :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+
+** DONE [#A] 英雄分解                                               :m8:work:
+   CLOSED: [2021-08-05 周四 16:21] SCHEDULED: <2021-08-02 周一 09:00> DEADLINE: <2021-08-05 周四 14:57>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2021-08-30 周一 21:03
+   :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+   :ARCHIVE_OLPATH: Project/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:                          
+ - State "DONE"       from "SCH"        [2021-08-05 周四 16:21]
+*** DONE 确认需求
+    CLOSED: [2021-08-03 周二 10:02] SCHEDULED: <2021-08-03 周二 10:00>
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:                          
+ - State "DONE"       from "TODO"       [2021-08-03 周二 10:02]
+*** DONE 模型信号设计
+    CLOSED: [2021-08-03 周二 10:02] SCHEDULED: <2021-08-03 周二 10:02>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+ - State "DONE"       from "TODO"       [2021-08-03 周二 10:02]
+*** DONE 界面实现
+    CLOSED: [2021-08-03 周二 16:12] SCHEDULED: <2021-08-03 周二 10:02>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+ - State "DONE"       from "TODO"       [2021-08-03 周二 16:12]
+*** DONE 网络协议实现
+    CLOSED: [2021-08-03 周二 20:57] SCHEDULED: <2021-08-03 周二 16:12>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+ - State "DONE"       from "TODO"       [2021-08-03 周二 20:57]
+*** DONE 测试
+    CLOSED: [2021-08-05 周四 16:21] SCHEDULED: <2021-08-03 周二 20:57>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+ - State "DONE"       from "TODO"       [2021-08-05 周四 16:21]
+
+* Archive                                                           :ARCHIVE:
+** DONE [#A] 英雄山阵容和装备ui调整                                      :m8:
+   CLOSED: [2021-08-12 周四 10:16] SCHEDULED: <2021-08-09 周一 11:00> DEADLINE: <2021-08-12 周四 21:00>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2021-08-30 周一 21:03
+   :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+   :ARCHIVE_OLPATH: Project/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:                          
+*** DONE 确认需求
+    CLOSED: [2021-08-07 周六 15:57]
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:                          
+ - State "DONE"       from "TODO"       [2021-08-07 周六 15:57]
+*** DONE 制作英雄显示框
+    CLOSED: [2021-08-11 周三 09:30] SCHEDULED: <2021-08-09 周一 11:00>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 制作装备显示框
+    CLOSED: [2021-08-11 周三 09:30] SCHEDULED: <2021-08-11 周三 09:30>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 处理信号同步
+    CLOSED: [2021-08-11 周三 09:30] SCHEDULED: <2021-08-11 周三 09:30>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 测试 
+    CLOSED: [2021-08-12 周四 10:16] SCHEDULED: <2021-08-11 周三 09:30>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+
+** DONE [#A] 实现基础商店功能                                            :m8:
+   CLOSED: [2021-08-19 周四 20:24] SCHEDULED: <2021-08-16 周一 13:00> DEADLINE: <2021-08-20 周五 21:00>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2021-08-30 周一 21:03
+   :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+   :ARCHIVE_OLPATH: Project/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:                          
+*** DONE 确认需求
+    CLOSED: [2021-08-16 周一 16:21]
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:                          
+*** DONE 设计模型层, 实现模型层并完成单元测试
+    CLOSED: [2021-08-16 周一 16:21] SCHEDULED: <2021-08-16 周一 16:21>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 实现网络协议
+    CLOSED: [2021-08-16 周一 16:21] SCHEDULED: <2021-08-16 周一 16:21>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 实现界面层
+    CLOSED: [2021-08-18 周三 15:24] SCHEDULED: <2021-08-16 周一 16:21>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 联调
+    CLOSED: [2021-08-19 周四 20:24] SCHEDULED: <2021-08-18 周三 15:24>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+
+* begin: <2021-09-01 周三>
