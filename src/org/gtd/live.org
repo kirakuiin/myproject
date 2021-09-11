@@ -13,7 +13,7 @@
 * Inbox
 * Next Action
 ** TODO [#A] 大壮名城G1-1018租房月志                                :event:
-DEADLINE: <2021-10-12 周二 23:00 +1m> SCHEDULED: <2021-10-12 周二 09:00 +1m>
+DEADLINE: <2021-09-12 周日 23:00 +1m> SCHEDULED: <2021-09-12 周日 09:00 +1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
@@ -30,13 +30,37 @@ DEADLINE: <2021-10-12 周二 23:00 +1m> SCHEDULED: <2021-10-12 周二 09:00 +1m>
   2. 房间里的马桶坏了, 电磁炉可能坏了, 阳台灯坏了
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
-** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2021-09-12 周日 23:00 ++1w> SCHEDULED: <2021-09-11 周六 18:00 ++1w>
+** TODO [#A] 归档并回顾一周的计划                                    :event:
+DEADLINE: <2021-09-19 周日 23:00 ++1w> SCHEDULED: <2021-09-18 周六 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2021-09-04 周六 15:56]
+:LAST_REPEAT: [2021-09-11 周六 15:27]
 :END:
+- State "DONE"       from "TODO"       [2021-09-11 周六 15:27] \\
+  1. 处理了补丁的外链部分没有差异的问题
+     原因: 这个是由于代码里的外链版本和代码的版本是独立的, 无论检出什么版本的代码
+     外链永远都是最新的
+     方案: 将代码和外链检出到一个新的svn目录, 这个目录相当于去掉了外链. 然后以这个
+     目录的不同版本最为制作补丁的基础
+  2. 学习pub代码
+     - publink
+     - pubnetprint
+     - pubinternational
+     - pubairtest
+     - pubvshop
+     - pubkeyboard
+  3. 规范模块重启代码
+     为所有模块内存在全局变量的模块增加了两个接口:
+     - OnRestartClear
+     - OnReLoginReset
+     用来在重启/重登时还原环境
+  4. 完善m8delegate
+  5. 学习《我所理解的cocos2d-x》 5-6章
+  ------------------------------------------------
+  1. 上头了, 满命雷神, 但我不后悔QWQ
+  ------------------------------------------------
+  1. 在公司不要连wifi, 外网机只用来查资料, 切记切记
 - State "DONE"       from "TODO"       [2021-09-04 周六 15:56] \\
   1. 完成了开发版本补丁工具链的制作
      - 平台补丁号同步脚本

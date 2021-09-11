@@ -1800,60 +1800,7 @@ CLOCK: [2021-05-25 周二 13:12]--[2021-05-25 周二 13:37] =>  0:25
   :ARCHIVE_OLPATH: Project
   :ARCHIVE_CATEGORY: work
   :END:
-** DONE [#A] 制作临时组队功能                                       :work:m8:
-   CLOSED: [2021-05-28 周五 15:54] SCHEDULED: <2021-05-25 周二 09:00> DEADLINE: <2021-05-29 周六 21:00>
-   :PROPERTIES:
-   :BLOCKER:  children
-   :ARCHIVE_TIME: 2021-05-29 周六 17:08
-   :END:                          
-- State "DONE"       from "SCH"        [2021-05-28 周五 15:54]
-*** DONE 阅读设计文档并绘制初版界面
-    CLOSED: [2021-05-26 周三 15:24] SCHEDULED: <2021-05-25 周二 13:13>
-    :PROPERTIES:                          
-    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-    :END:                          
-- State "DONE"       from "TODO"       [2021-05-26 周三 15:24]
-:LOGBOOK:
-CLOCK: [2021-05-25 周二 15:47]--[2021-05-25 周二 16:12] =>  0:25
-CLOCK: [2021-05-25 周二 15:17]--[2021-05-25 周二 15:42] =>  0:25
-CLOCK: [2021-05-25 周二 14:42]--[2021-05-25 周二 15:07] =>  0:25
-CLOCK: [2021-05-25 周二 14:12]--[2021-05-25 周二 14:37] =>  0:25
-CLOCK: [2021-05-25 周二 13:42]--[2021-05-25 周二 14:07] =>  0:25
-CLOCK: [2021-05-25 周二 13:12]--[2021-05-25 周二 13:37] =>  0:25
-:END:
-*** DONE 设计模型层 
-    CLOSED: [2021-05-26 周三 23:20] SCHEDULED: <2021-05-26 周三 15:24>
-    :PROPERTIES:
-    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-    :END:
-- State "DONE"       from "TODO"       [2021-05-26 周三 23:20]
-*** DONE 实现模型层
-    CLOSED: [2021-05-27 周四 09:51] SCHEDULED: <2021-05-26 周三 23:20>
-    :PROPERTIES:
-    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-    :END:
-
-- State "DONE"       from "TODO"       [2021-05-27 周四 09:51]
-*** DONE 完成网络协议和交互
-    CLOSED: [2021-05-27 周四 13:46] SCHEDULED: <2021-05-27 周四 09:51>
-    :PROPERTIES:
-    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-    :END:
-- State "DONE"       from "TODO"       [2021-05-27 周四 13:46]
-*** DONE 实现界面层
-    CLOSED: [2021-05-27 周四 21:32] SCHEDULED: <2021-05-27 周四 13:46>
-    :PROPERTIES:
-    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-    :END:
-- State "DONE"       from "TODO"       [2021-05-27 周四 21:32]
-*** DONE 测试
-    CLOSED: [2021-05-28 周五 15:54] SCHEDULED: <2021-05-27 周四 21:32>
-    :PROPERTIES:                          
-    :TRIGGER+: parent todo!(DONE)
-    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-    :END:
->>>>>>> 20c01406f2670741a6120775b4c578240da7b3c5
-** DONE [#A] 单人多队战斗                                           :work:m8:
+** DONE [#A] 单人多队战斗                                          :work:m8:
    CLOSED: [2021-06-11 周五 16:54] SCHEDULED: <2021-05-31 周一 13:00> DEADLINE: <2021-06-05 周六 21:00>
    :PROPERTIES:
    :BLOCKER:  children
@@ -1919,6 +1866,44 @@ CLOCK: [2021-05-25 周二 13:12]--[2021-05-25 周二 13:37] =>  0:25
 - [X] :: 红点信号没有及时同步
 - [X] :: 3v3加载错误
 - [X] :: 更新uml图
+** DONE [#A] 战场模型重构                                          :m8:work:
+   CLOSED: [2021-06-28 周一 19:27] SCHEDULED: <2021-06-21 周一 13:00> DEADLINE: <2021-06-28 周一 21:00>
+   :Properties:
+   :Blocker:  children
+   :ARCHIVE_TIME: 2021-06-28 周一 19:07
+   :END:                          
+- State "DONE"       from "SCH"        [2021-06-22 周二 18:27]
+*** DONE 重新设计模型, 解耦
+    CLOSED: [2021-06-22 周二 18:30] SCHEDULED: <2021-06-21 周一 09:00>
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:                          
+- State "DONE"       from "TODO"       [2021-06-23 周三 22:13]
+*** DONE 实现关卡, 敌人, 规则组件
+    CLOSED: [2021-06-23 周三 22:00] SCHEDULED: <2021-06-23 周三 09:13>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+- State "DONE"       from "TODO"       [2021-06-25 周五 22:00]
+*** DONE 实现战场组件
+    CLOSED: [2021-06-25 周五 17:35] SCHEDULED: <2021-06-24 周四 09:00>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+- State "DONE"       from "TODO"       [2021-06-26 周六 17:35]
+*** DONE 逐步替换现有代码
+    CLOSED: [2021-06-26 周六 17:35] SCHEDULED: <2021-06-26 周六 09:35>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+- State "DONE"       from "TODO"       [2021-06-28 周一 17:35]
+*** DONE 测试
+    CLOSED: [2021-06-28 周一 17:27] SCHEDULED: <2021-06-28 周一 09:35>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+
 ** DONE [#A] 组队车轮战                                             :m8:work:
    CLOSED: [2021-06-18 周五 19:27] SCHEDULED: <2021-06-15 周二 13:00> DEADLINE: <2021-06-19 周六 21:00>
    :Properties:
@@ -2017,7 +2002,7 @@ CLOCK: [2021-05-25 周二 13:12]--[2021-05-25 周二 13:37] =>  0:25
   :ARCHIVE_OLPATH: Project
   :ARCHIVE_CATEGORY: work
   :END:
-** DONE [#A] 英雄山关卡坐标和关卡分组                               :work:m8:
+** DONE [#A] 英雄山关卡坐标和关卡分组                              :work:m8:
    CLOSED: [2021-07-07 周三 17:29] SCHEDULED: <2021-07-05 周一 11:00> DEADLINE: <2021-07-06 周二 21:00>
    :PROPERTIES:
    :BLOCKER:  children

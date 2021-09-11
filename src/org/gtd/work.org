@@ -13,12 +13,13 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-09-11 周六 18:00 ++1w> DEADLINE: <2021-09-13 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                             :work:
+SCHEDULED: <2021-09-18 周六 18:00 ++1w> DEADLINE: <2021-09-20 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-09-04 周六 16:04]
+:LAST_REPEAT: [2021-09-11 周六 15:42]
 :END:
+- State "DONE"       from "TODO"       [2021-09-11 周六 15:42]
 - State "DONE"       from "TODO"       [2021-09-04 周六 16:04]
 - State "DONE"       from "TODO"       [2021-08-28 周六 17:09]
 - State "DONE"       from "TODO"       [2021-08-21 周六 16:25]
@@ -42,15 +43,19 @@ SCHEDULED: <2021-09-11 周六 18:00 ++1w> DEADLINE: <2021-09-13 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-09-05 周日 09:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                    :learn:
+SCHEDULED: <2021-09-12 周日 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-09-03 周五 11:32]
+:LAST_REPEAT: [2021-09-11 周六 13:33]
 :END:
 
+- State "DONE"       from "TODO"       [2021-09-11 周六 13:33]
+- State "DONE"       from "TODO"       [2021-09-10 周五 11:11]
+- State "DONE"       from "TODO"       [2021-09-09 周四 14:47]
+- State "DONE"       from "TODO"       [2021-09-06 周一 09:21]
 - State "DONE"       from "TODO"       [2021-09-04 周六 11:32]
 - State "DONE"       from "TODO"       [2021-09-03 周五 10:34]
 - State "DONE"       from "TODO"       [2021-09-02 周四 09:32]
@@ -189,32 +194,55 @@ SCHEDULED: <2021-09-05 周日 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 学习《我所理解的cocos2d-x》                         :learn:m8:
-SCHEDULED: <2021-09-05 周日 09:00 ++1d>
+** TODO [#A] 学习《我所理解的cocos2d-x》                          :learn:m8:
+SCHEDULED: <2021-09-12 周日 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:60
 :STYLE:    habit
-:LAST_REPEAT: [2021-09-04 周六 15:52]
+:LAST_REPEAT: [2021-09-11 周六 15:11]
 :END:
+- State "DONE"       from "TODO"       [2021-09-11 周六 15:11]
 - State "DONE"       from "TODO"       [2021-09-04 周六 15:52]
 - State "DONE"       from "TODO"       [2021-09-03 周五 13:24]
 - State "DONE"       from "TODO"       [2021-09-02 周四 10:49]
 - State "DONE"       from "TODO"       [2021-08-31 周二 09:33]
 - State "DONE"       from "TODO"       [2021-08-26 周四 10:25]
-** TODO [#A] 规范模块重启代码                                          :m8:
-SCHEDULED: <2021-09-06 周一 09:00>
-** TODO [#A] 编写季度报告                                              :m8:
-DEADLINE: <2021-09-08 周三 21:00> SCHEDULED: <2021-09-06 周一 13:00>
-** TODO [#A] 处理补丁未能同步外链问题                                  :m8:
-SCHEDULED: <2021-09-06 周一 14:00>
+** DONE [#A] 规范模块重启代码                                          :m8:
+CLOSED: [2021-09-10 周五 20:28] SCHEDULED: <2021-09-06 周一 09:00>
+** DONE [#A] 完善m8delegate                                            :m8:
+CLOSED: [2021-09-10 周五 20:28] SCHEDULED: <2021-09-10 周五 11:13>
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 优化游戏启动流程                                    :work:m8:
 CLOSED: [2021-09-04 周六 15:52] SCHEDULED: <2021-09-02 周四 13:00>
 :PROPERTIES:
 :ARCHIVE_TIME: 2021-09-04 周六 16:04
 :END:
+** DONE [#A] 编写季度报告                                               :m8:
+CLOSED: [2021-09-06 周一 17:30] DEADLINE: <2021-09-08 周三 21:00> SCHEDULED: <2021-09-06 周一 13:00>
+** DONE [#A] 处理补丁未能同步外链问题                                  :m8:
+CLOSED: [2021-09-08 周三 15:44] SCHEDULED: <2021-09-06 周一 14:00>
 * Appointment
 * Project
+** SCH [#A] 分享pub代码                                                :m8:
+SCHEDULED: <2021-09-08 周三 13:39> DEADLINE: <2021-10-02 周六 18:00>
+:PROPERTIES:
+:BLOCKER: children
+:END:                          
+*** DONE 分享publink, pubnetprint, pubinternational, pubairtest, pubvshop, pubkeyboard
+CLOSED: [2021-09-09 周四 14:40] DEADLINE: <2021-09-11 周六 18:00> SCHEDULED: <2021-09-08 周三 15:00>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+*** TODO 分享pubeditor, pubrestools, pubonlineupdate, publockfile, pubbigdata
+SCHEDULED: <2021-09-13 周一 13:40>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+*** WAIT 分享pubuilocation, pubnotch, pubaccount_extension, pubtest1_black, pub_shenhe_textcheckdata_new
+*** WAIT 分享pubpingqueue, pubconfirmbox, publogmgr, pubsafemodule, pubaccessdata
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:END:
 * Someday
 ** 学习《代码之外的生存指南》                                :learn:future:
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
