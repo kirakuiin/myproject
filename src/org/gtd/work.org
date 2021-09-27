@@ -14,11 +14,12 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-09-25 周六 18:00 ++1w> DEADLINE: <2021-09-27 周一 12:00 ++1w>
+SCHEDULED: <2021-10-02 周六 18:00 ++1w> DEADLINE: <2021-10-04 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-09-19 周日 19:44]
+:LAST_REPEAT: [2021-09-27 周一 17:27]
 :END:
+- State "DONE"       from "TODO"       [2021-09-27 周一 09:27]
 - State "DONE"       from "TODO"       [2021-09-19 周日 19:44]
 - State "DONE"       from "TODO"       [2021-09-11 周六 15:42]
 - State "DONE"       from "TODO"       [2021-09-04 周六 16:04]
@@ -45,14 +46,19 @@ SCHEDULED: <2021-09-25 周六 18:00 ++1w> DEADLINE: <2021-09-27 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-09-20 周一 09:00 ++1d>
+SCHEDULED: <2021-09-28 周二 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-09-19 周日 10:06]
+:LAST_REPEAT: [2021-09-27 周一 09:12]
 :END:
 
+- State "DONE"       from "TODO"       [2021-09-27 周一 09:12]
+- State "DONE"       from "TODO"       [2021-09-26 周日 09:17]
+- State "DONE"       from "TODO"       [2021-09-25 周六 09:06]
+- State "DONE"       from "TODO"       [2021-09-24 周五 09:16]
+- State "DONE"       from "TODO"       [2021-09-20 周一 09:23]
 - State "DONE"       from "TODO"       [2021-09-19 周日 10:06]
 - State "DONE"       from "TODO"       [2021-09-17 周五 09:19]
 - State "DONE"       from "TODO"       [2021-09-16 周四 09:36]
@@ -199,13 +205,15 @@ SCHEDULED: <2021-09-20 周一 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 学习《我所理解的cocos2d-x》                         :learn:m8:
-SCHEDULED: <2021-09-17 周五 09:00 ++1d>
+** TODO [#A] 学习《我所理解的cocos2d-x》                          :learn:m8:
+SCHEDULED: <2021-09-27 周一 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:60
 :STYLE:    habit
-:LAST_REPEAT: [2021-09-16 周四 20:47]
+:LAST_REPEAT: [2021-09-26 周日 20:28]
 :END:
+- State "DONE"       from "TODO"       [2021-09-26 周日 20:28]
+- State "DONE"       from "TODO"       [2021-09-25 周六 20:40]
 - State "DONE"       from "TODO"       [2021-09-16 周四 20:47]
 - State "DONE"       from "TODO"       [2021-09-11 周六 15:11]
 - State "DONE"       from "TODO"       [2021-09-04 周六 15:52]
@@ -241,8 +249,8 @@ CLOSED: [2021-09-08 周三 15:44] SCHEDULED: <2021-09-06 周一 14:00>
 :END:
 * Appointment
 * Project
-** SCH [#A] 分享pub代码                                                :m8:
-SCHEDULED: <2021-09-08 周三 13:39> DEADLINE: <2021-10-02 周六 18:00>
+** DONE [#A] 分享pub代码                                               :m8:
+CLOSED: [2021-09-24 周五 09:51] SCHEDULED: <2021-09-08 周三 13:39> DEADLINE: <2021-10-02 周六 18:00>
 :PROPERTIES:
 :BLOCKER: children
 :END:                          
@@ -256,14 +264,16 @@ CLOSED: [2021-09-15 周三 16:22] SCHEDULED: <2021-09-13 周一 13:40>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** TODO 分享pubuilocation, pubaccount_extension, pubtest1_black
-SCHEDULED: <2021-09-15 周三 16:22>
+*** DONE 分享pubqrcode, pubaccount_extension, pubtest1_black
+CLOSED: [2021-09-20 周一 10:58] SCHEDULED: <2021-09-15 周三 16:22>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** WAIT 分享publogmgr, pubsafemodule, pubaccessdata
+*** DONE 分享publogmgr, pubsafemodule, pubaccessdata
+CLOSED: [2021-09-24 周五 09:51] SCHEDULED: <2021-09-20 周一 10:58>
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 ** SCH [#A] 迁移多队战斗代码                                           :m8:
 SCHEDULED: <2021-09-15 周三 16:30> DEADLINE: <2021-10-15 周五 18:00>
@@ -275,12 +285,16 @@ CLOSED: [2021-09-19 周日 09:52] SCHEDULED: <2021-09-16 周四 09:00>
 :PROPERTIES:                          
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:                          
-*** TODO 确定迁移思路
-SCHEDULED: <2021-09-19 周日 09:52>
+*** DONE 确定迁移思路
+CLOSED: [2021-09-24 周五 09:17] SCHEDULED: <2021-09-19 周日 09:52>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** WAIT 逐步迁移代码
+*** TODO 逐步迁移代码
+SCHEDULED: <2021-09-24 周五 09:17>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
 *** WAIT 测试
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
