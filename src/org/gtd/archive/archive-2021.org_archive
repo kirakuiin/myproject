@@ -2334,3 +2334,114 @@ CLOCK: [2021-05-25 周二 13:12]--[2021-05-25 周二 13:37] =>  0:25
     :END:
 
 * begin: <2021-09-01 周三>
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2021-09-30 周四 18:15
+  :ARCHIVE_FILE: ~/myproject/src/org/gtd/live.org
+  :ARCHIVE_OLPATH: Appointment
+  :ARCHIVE_CATEGORY: live
+  :END:
+** DONE 理发                                                          :event:
+   CLOSED: [2021-09-04 周六 15:45]
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-09-04 周六 16:04
+   :END:
+<2021-09-02 周四 19:00>
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2021-09-30 周四 18:15
+  :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 优化游戏启动流程                                       :work:m8:
+   CLOSED: [2021-09-04 周六 15:52] SCHEDULED: <2021-09-02 周四 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-09-04 周六 16:04
+   :END:
+** DONE [#A] 规范模块重启代码                                            :m8:
+   CLOSED: [2021-09-10 周五 20:28] SCHEDULED: <2021-09-06 周一 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-09-15 周三 10:55
+   :END:
+** DONE [#A] 完善m8delegate                                              :m8:
+   CLOSED: [2021-09-10 周五 20:28] SCHEDULED: <2021-09-10 周五 11:13>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-09-15 周三 10:55
+   :END:
+** DONE [#A] 编写季度报告                                                :m8:
+   CLOSED: [2021-09-06 周一 17:30] DEADLINE: <2021-09-08 周三 21:00> SCHEDULED: <2021-09-06 周一 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-09-15 周三 10:55
+   :END:
+** DONE [#A] 处理补丁未能同步外链问题                                    :m8:
+   CLOSED: [2021-09-08 周三 15:44] SCHEDULED: <2021-09-06 周一 14:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-09-15 周三 10:55
+   :END:
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2021-09-30 周四 18:15
+  :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+  :ARCHIVE_OLPATH: Project
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 分享pub代码                                                 :m8:
+   CLOSED: [2021-09-24 周五 09:51] SCHEDULED: <2021-09-08 周三 13:39> DEADLINE: <2021-10-02 周六 18:00>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2021-09-30 周四 17:37
+   :END:                          
+*** DONE 分享publink, pubnetprint, pubinternational, pubairtest, pubvshop, pubkeyboard
+    CLOSED: [2021-09-09 周四 14:40] DEADLINE: <2021-09-11 周六 18:00> SCHEDULED: <2021-09-08 周三 15:00>
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:                          
+*** DONE 分享pubeditor, pubrestools, pubonlineupdate, publockfile, pubbigdata, pubnotch, pubconfirmbox, pub_shenhe_textcheckdata_new, pubpingqueue
+    CLOSED: [2021-09-15 周三 16:22] SCHEDULED: <2021-09-13 周一 13:40>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 分享pubqrcode, pubaccount_extension, pubtest1_black
+    CLOSED: [2021-09-20 周一 10:58] SCHEDULED: <2021-09-15 周三 16:22>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 分享publogmgr, pubsafemodule, pubaccessdata
+    CLOSED: [2021-09-24 周五 09:51] SCHEDULED: <2021-09-20 周一 10:58>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+** DONE [#A] 迁移多队战斗代码                                            :m8:
+   CLOSED: [2021-09-30 周四 16:31] SCHEDULED: <2021-09-15 周三 16:30> DEADLINE: <2021-10-15 周五 18:00>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2021-09-30 周四 17:37
+   :END:                          
+*** DONE 阅读新的战斗框架
+    CLOSED: [2021-09-19 周日 09:52] SCHEDULED: <2021-09-16 周四 09:00>
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:                          
+*** DONE 确定迁移思路
+    CLOSED: [2021-09-24 周五 09:17] SCHEDULED: <2021-09-19 周日 09:52>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 逐步迁移代码
+    CLOSED: [2021-09-28 周二 20:04] SCHEDULED: <2021-09-24 周五 09:17>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 测试
+    CLOSED: [2021-09-30 周四 16:31] SCHEDULED: <2021-09-28 周二 20:04>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+
+* begin: <2021-10-07 周四>
