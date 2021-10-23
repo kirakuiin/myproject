@@ -14,11 +14,13 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-10-09 周六 18:00 ++1w> DEADLINE: <2021-10-11 周一 12:00 ++1w>
+SCHEDULED: <2021-10-30 周六 18:00 ++1w> DEADLINE: <2021-11-01 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-09-30 周四 18:06]
+:LAST_REPEAT: [2021-10-16 周六 17:17]
 :END:
+- State "DONE"       from "TODO"       [2021-10-16 周六 17:17]
+- State "DONE"       from "TODO"       [2021-10-09 周六 16:46]
 - State "DONE"       from "TODO"       [2021-09-30 周四 18:06]
 - State "DONE"       from "TODO"       [2021-09-27 周一 09:27]
 - State "DONE"       from "TODO"       [2021-09-19 周日 19:44]
@@ -47,14 +49,24 @@ SCHEDULED: <2021-10-09 周六 18:00 ++1w> DEADLINE: <2021-10-11 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-10-09 周六 09:00 ++1d>
+SCHEDULED: <2021-10-23 周六 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-10-08 周五 09:14]
+:LAST_REPEAT: [2021-10-22 周五 09:32]
 :END:
 
+- State "DONE"       from "TODO"       [2021-10-22 周五 09:32]
+- State "DONE"       from "TODO"       [2021-10-21 周四 09:24]
+- State "DONE"       from "TODO"       [2021-10-19 周二 20:57]
+- State "DONE"       from "TODO"       [2021-10-18 周一 09:23]
+- State "DONE"       from "TODO"       [2021-10-15 周五 17:07]
+- State "DONE"       from "TODO"       [2021-10-14 周四 09:29]
+- State "DONE"       from "TODO"       [2021-10-13 周三 09:16]
+- State "DONE"       from "TODO"       [2021-10-12 周二 09:42]
+- State "DONE"       from "TODO"       [2021-10-11 周一 10:32]
+- State "DONE"       from "TODO"       [2021-10-09 周六 09:45]
 - State "DONE"       from "TODO"       [2021-10-08 周五 09:14]
 - State "DONE"       from "TODO"       [2021-10-07 周四 09:54]
 - State "DONE"       from "TODO"       [2021-09-30 周四 14:51]
@@ -211,16 +223,21 @@ SCHEDULED: <2021-10-09 周六 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-31 Wed 23:57]
 - State "DONE"       from "TODO"       [2021-03-30 Tue 23:41]
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
-** TODO [#A] 规定UI层级                                           :work:m8:
-SCHEDULED: <2021-10-11 周一 10:00>
-** TODO [#A] 删除battle代码                                       :work:m8:
-SCHEDULED: <2021-10-08 周五 17:18>
-** DONE [#A] 学习《我所理解的cocos2d-x》                         :learn:m8:
+** TODO [#B] 学习《重构 改善既有代码的设计》                        :learn:
+SCHEDULED: <2021-10-12 周三 09:00 ++1d>
+** Archive                                                         :ARCHIVE:
+*** DONE [#A] 删除battle代码                                      :work:m8:
+CLOSED: [2021-10-09 周六 16:14] SCHEDULED: <2021-10-08 周五 17:18>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-10-09 周六 16:48
+:END:
+*** DONE [#A] 学习《我所理解的cocos2d-x》                        :learn:m8:
 SCHEDULED: <2021-10-09 周六 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:60
 :STYLE:    habit
 :LAST_REPEAT: [2021-10-08 周五 16:19]
+:ARCHIVE_TIME: 2021-10-09 周六 16:48
 :END:
 - State "DONE"       from "TODO"       [2021-10-08 周五 16:19]
 - State "DONE"       from "TODO"       [2021-10-07 周四 11:22]
@@ -235,16 +252,61 @@ SCHEDULED: <2021-10-09 周六 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-09-02 周四 10:49]
 - State "DONE"       from "TODO"       [2021-08-31 周二 09:33]
 - State "DONE"       from "TODO"       [2021-08-26 周四 10:25]
-** DONE [#A] 整合并优化英雄选择框                                  :work:m8:
+*** DONE [#A] 整合并优化英雄选择框                                :work:m8:
 CLOSED: [2021-10-07 周四 17:40] SCHEDULED: <2021-10-07 周四 13:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-10-09 周六 16:48
+:END:
+*** DONE [#A] 战斗优化                                            :work:m8:
+CLOSED: [2021-10-14 周四 09:30] SCHEDULED: <2021-10-11 周一 15:07>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-10-16 周六 17:18
+:END:
+*** DONE [#A] 优化战斗指令                                        :work:m8:
+CLOSED: [2021-10-11 周一 15:07] SCHEDULED: <2021-10-09 周六 16:48>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-10-16 周六 17:18
+:END:
+*** DONE [#A] 实现战斗胜利动画播放                                     :m8:
+CLOSED: [2021-10-15 周五 16:15] SCHEDULED: <2021-10-14 周四 13:09>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-10-16 周六 17:18
+:END:
+*** DONE [#A] 调整英雄模型比例                                         :m8:
+CLOSED: [2021-10-15 周五 16:16] SCHEDULED: <2021-10-14 周四 14:06>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-10-16 周六 17:18
+:END:
+** TODO [#A] 支持战斗cmd进度条                                         :m8:
+SCHEDULED: <2021-10-21 周四 20:45>
+** DONE [#A] 支持测试战场阵容导入导出                                   :m8:
+CLOSED: [2021-10-23 周六 10:10] SCHEDULED: <2021-10-21 周四 20:46>
 * Appointment
 * Project
+** SCH [#A] 战斗表现学习                                               :m8:
+SCHEDULED: <2021-10-15 周五 09:00> DEADLINE: <2021-10-23 周六 18:00>
+:PROPERTIES:
+:BLOCKER: children
+:END:                          
+*** DONE 法术编辑器, 动画编辑器的使用方法
+CLOSED: [2021-10-19 周二 20:46] SCHEDULED: <2021-10-15 周五 17:00>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+*** TODO 导表定义技能方式和其表现逻辑
+SCHEDULED: <2021-10-19 周二 20:46>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+*** WAIT spine动画
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:END:
 * Someday
 ** 学习《代码之外的生存指南》                                :learn:future:
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
 ** 学习《Lua程序设计》                                       :learn:future:
-** 学习《重构 改善既有代码的设计》                            :learn:future:
-** 学习 elisp                                                 :learn:future:
+** 学习 elisp                                                :learn:future:
 ** 温习《流畅的python》                                      :learn:future:
 ** 温习《设计模式》                                          :learn:future:
 ** 练习字帖                                                  :learn:future:
