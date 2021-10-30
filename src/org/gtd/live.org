@@ -543,6 +543,6 @@ CLOSED: [2021-10-16 周六 10:33]
 <2021-10-16 周六 10:33>
 ** DONE 枪火激活码两个                                              :event:
 CLOSED: [2021-10-23 周六 14:48]
-6HBCSW3NKCQEESM5, 感恩戴德一天
+6HBCSW3NKCQEESM5[已经送给方周], 感恩戴德一天
 * Project
 * Someday
