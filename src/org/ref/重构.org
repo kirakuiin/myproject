@@ -1,0 +1,2 @@
+#+STARTUP: INDENT NUM
+#+PROPERTY: header-args:python :preamble "# -*- coding: utf-8 -*-" :exports both :results output

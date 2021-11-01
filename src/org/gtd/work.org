@@ -13,12 +13,13 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每周周报                                            :work:
+** TODO [#A] 完成每周周报                                             :work:
 SCHEDULED: <2021-10-30 周六 18:00 ++1w> DEADLINE: <2021-11-01 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-10-16 周六 17:17]
+:LAST_REPEAT: [2021-10-25 周一 09:32]
 :END:
+- State "DONE"       from "TODO"       [2021-10-25 周一 09:32]
 - State "DONE"       from "TODO"       [2021-10-16 周六 17:17]
 - State "DONE"       from "TODO"       [2021-10-09 周六 16:46]
 - State "DONE"       from "TODO"       [2021-09-30 周四 18:06]
@@ -49,14 +50,17 @@ SCHEDULED: <2021-10-30 周六 18:00 ++1w> DEADLINE: <2021-11-01 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-10-23 周六 09:00 ++1d>
+SCHEDULED: <2021-10-28 周四 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-10-22 周五 09:32]
+:LAST_REPEAT: [2021-10-27 周三 10:27]
 :END:
 
+- State "DONE"       from "TODO"       [2021-10-27 周三 10:27]
+- State "DONE"       from "TODO"       [2021-10-26 周二 20:26]
+- State "DONE"       from "TODO"       [2021-10-25 周一 10:19]
 - State "DONE"       from "TODO"       [2021-10-22 周五 09:32]
 - State "DONE"       from "TODO"       [2021-10-21 周四 09:24]
 - State "DONE"       from "TODO"       [2021-10-19 周二 20:57]
@@ -277,11 +281,28 @@ CLOSED: [2021-10-15 周五 16:16] SCHEDULED: <2021-10-14 周四 14:06>
 :PROPERTIES:
 :ARCHIVE_TIME: 2021-10-16 周六 17:18
 :END:
-** TODO [#A] 支持战斗cmd进度条                                         :m8:
-SCHEDULED: <2021-10-21 周四 20:45>
-** DONE [#A] 支持测试战场阵容导入导出                                   :m8:
+*** DONE [#A] 支持测试战场阵容导入导出                                 :m8:
 CLOSED: [2021-10-23 周六 10:10] SCHEDULED: <2021-10-21 周四 20:46>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-10-25 周一 09:26
+:END:
+*** DONE [#A] 服务器战斗日志导入功能                                   :m8:
+CLOSED: [2021-10-22 周五 09:24] SCHEDULED: <2021-10-20 周三 09:24>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-10-25 周一 09:26
+:END:
+** DONE [#A] 支持战斗cmd进度条                                          :m8:
+CLOSED: [2021-10-26 周二 16:54] SCHEDULED: <2021-10-21 周四 20:45>
+** DONE [#A] 编写年度总结                                              :m8:
+CLOSED: [2021-10-25 周一 19:27] SCHEDULED: <2021-10-23 周六 09:25>
+** TODO [#A] 战斗表现优化                                              :m8:
+SCHEDULED: <2021-10-27 周三 11:00>
+** DONE [#A] 布阵界面的显示和配置不一致bug                              :m8:
+CLOSED: [2021-10-27 周三 13:35] SCHEDULED: <2021-10-27 周三 11:34>
 * Appointment
+** DONE 年度面谈                                                        :m8:
+CLOSED: [2021-10-28 周四 20:30]
+<2021-10-28 周四 10:30>
 * Project
 ** SCH [#A] 战斗表现学习                                               :m8:
 SCHEDULED: <2021-10-15 周五 09:00> DEADLINE: <2021-10-23 周六 18:00>
