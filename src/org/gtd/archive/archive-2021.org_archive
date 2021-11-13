@@ -2445,3 +2445,142 @@ CLOCK: [2021-05-25 周二 13:12]--[2021-05-25 周二 13:37] =>  0:25
     :END:
 
 * begin: <2021-10-07 周四>
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2021-11-01 周一 11:37
+  :ARCHIVE_FILE: ~/myproject/src/org/gtd/live.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: live
+  :END:
+** DONE [#A] 补胎                                                     :event:
+   CLOSED: [2021-10-18 周一 09:04] SCHEDULED: <2021-10-14 周四 09:32>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-25 周一 09:26
+   :END:
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2021-11-01 周一 11:37
+  :ARCHIVE_FILE: ~/myproject/src/org/gtd/live.org
+  :ARCHIVE_OLPATH: Appointment
+  :ARCHIVE_CATEGORY: live
+  :END:
+** DONE 西域胡杨部门聚餐                                               :date:
+   CLOSED: [2021-10-16 周六 10:32]
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-16 周六 17:18
+   :END:
+<2021-10-14 周四 17:00>
+** DONE 领取社保卡                                                    :event:
+   CLOSED: [2021-10-16 周六 10:33]
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-16 周六 17:18
+   :END:
+<2021-10-16 周六 10:33>
+** DONE 枪火激活码两个                                                :event:
+   CLOSED: [2021-10-23 周六 14:48]
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-25 周一 09:26
+   :END:
+6HBCSW3NKCQEESM5[已经送给方周], 感恩戴德一天
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2021-11-01 周一 11:37
+  :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 删除battle代码                                         :work:m8:
+   CLOSED: [2021-10-09 周六 16:14] SCHEDULED: <2021-10-08 周五 17:18>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-09 周六 16:48
+   :END:
+** DONE [#A] 学习《我所理解的cocos2d-x》                           :learn:m8:
+   SCHEDULED: <2021-10-09 周六 09:00 ++1d>
+   :PROPERTIES:
+   :EFFORT:   0:60
+   :STYLE:    habit
+   :LAST_REPEAT: [2021-10-08 周五 16:19]
+   :ARCHIVE_TIME: 2021-10-09 周六 16:48
+   :END:
+- State "DONE"       from "TODO"       [2021-10-08 周五 16:19]
+- State "DONE"       from "TODO"       [2021-10-07 周四 11:22]
+- State "DONE"       from "TODO"       [2021-09-30 周四 16:31]
+- State "DONE"       from "TODO"       [2021-09-28 周二 10:51]
+- State "DONE"       from "TODO"       [2021-09-26 周日 20:28]
+- State "DONE"       from "TODO"       [2021-09-25 周六 20:40]
+- State "DONE"       from "TODO"       [2021-09-16 周四 20:47]
+- State "DONE"       from "TODO"       [2021-09-11 周六 15:11]
+- State "DONE"       from "TODO"       [2021-09-04 周六 15:52]
+- State "DONE"       from "TODO"       [2021-09-03 周五 13:24]
+- State "DONE"       from "TODO"       [2021-09-02 周四 10:49]
+- State "DONE"       from "TODO"       [2021-08-31 周二 09:33]
+- State "DONE"       from "TODO"       [2021-08-26 周四 10:25]
+** DONE [#A] 整合并优化英雄选择框                                   :work:m8:
+   CLOSED: [2021-10-07 周四 17:40] SCHEDULED: <2021-10-07 周四 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-09 周六 16:48
+   :END:
+** DONE [#A] 战斗优化                                               :work:m8:
+   CLOSED: [2021-10-14 周四 09:30] SCHEDULED: <2021-10-11 周一 15:07>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-16 周六 17:18
+   :END:
+** DONE [#A] 优化战斗指令                                           :work:m8:
+   CLOSED: [2021-10-11 周一 15:07] SCHEDULED: <2021-10-09 周六 16:48>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-16 周六 17:18
+   :END:
+** DONE [#A] 实现战斗胜利动画播放                                        :m8:
+   CLOSED: [2021-10-15 周五 16:15] SCHEDULED: <2021-10-14 周四 13:09>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-16 周六 17:18
+   :END:
+** DONE [#A] 调整英雄模型比例                                            :m8:
+   CLOSED: [2021-10-15 周五 16:16] SCHEDULED: <2021-10-14 周四 14:06>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-16 周六 17:18
+   :END:
+** DONE [#A] 支持测试战场阵容导入导出                                    :m8:
+   CLOSED: [2021-10-23 周六 10:10] SCHEDULED: <2021-10-21 周四 20:46>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-25 周一 09:26
+   :END:
+** DONE [#A] 服务器战斗日志导入功能                                      :m8:
+   CLOSED: [2021-10-22 周五 09:24] SCHEDULED: <2021-10-20 周三 09:24>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-10-25 周一 09:26
+   :END:
+** DONE [#A] 支持战斗cmd进度条                                           :m8:
+   CLOSED: [2021-10-26 周二 16:54] SCHEDULED: <2021-10-21 周四 20:45>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-11-01 周一 11:20
+   :END:
+** DONE [#A] 编写年度总结                                                :m8:
+   CLOSED: [2021-10-25 周一 19:27] SCHEDULED: <2021-10-23 周六 09:25>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-11-01 周一 11:20
+   :END:
+** DONE [#A] 布阵界面的显示和配置不一致bug                               :m8:
+   CLOSED: [2021-10-27 周三 13:35] SCHEDULED: <2021-10-27 周三 11:34>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-11-01 周一 11:20
+   :END:
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2021-11-01 周一 11:37
+  :ARCHIVE_FILE: ~/myproject/src/org/gtd/work.org
+  :ARCHIVE_OLPATH: Appointment
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE 年度面谈                                                         :m8:
+   CLOSED: [2021-10-28 周四 20:30]
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2021-11-01 周一 11:20
+   :END:
+<2021-10-28 周四 10:30>
+
+* begin: <2021-11-01 周一>

@@ -14,11 +14,14 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每周周报                                             :work:
-SCHEDULED: <2021-10-30 周六 18:00 ++1w> DEADLINE: <2021-11-01 周一 12:00 ++1w>
+SCHEDULED: <2021-11-20 周六 18:00 ++1w> DEADLINE: <2021-11-22 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-10-25 周一 09:32]
+:LAST_REPEAT: [2021-11-13 周六 16:44]
 :END:
+- State "DONE"       from "TODO"       [2021-11-13 周六 16:44]
+- State "DONE"       from "TODO"       [2021-11-08 周一 09:19]
+- State "DONE"       from "TODO"       [2021-11-01 周一 11:28]
 - State "DONE"       from "TODO"       [2021-10-25 周一 09:32]
 - State "DONE"       from "TODO"       [2021-10-16 周六 17:17]
 - State "DONE"       from "TODO"       [2021-10-09 周六 16:46]
@@ -49,15 +52,17 @@ SCHEDULED: <2021-10-30 周六 18:00 ++1w> DEADLINE: <2021-11-01 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-10-28 周四 09:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                   :learn:
+SCHEDULED: <2021-11-03 周三 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-10-27 周三 10:27]
+:LAST_REPEAT: [2021-11-02 周二 09:43]
 :END:
 
+- State "DONE"       from "TODO"       [2021-11-02 周二 09:43]
+- State "DONE"       from "TODO"       [2021-11-01 周一 20:21]
 - State "DONE"       from "TODO"       [2021-10-27 周三 10:27]
 - State "DONE"       from "TODO"       [2021-10-26 周二 20:26]
 - State "DONE"       from "TODO"       [2021-10-25 周一 10:19]
@@ -230,79 +235,17 @@ SCHEDULED: <2021-10-28 周四 09:00 ++1d>
 ** TODO [#B] 学习《重构 改善既有代码的设计》                        :learn:
 SCHEDULED: <2021-10-12 周三 09:00 ++1d>
 ** Archive                                                         :ARCHIVE:
-*** DONE [#A] 删除battle代码                                      :work:m8:
-CLOSED: [2021-10-09 周六 16:14] SCHEDULED: <2021-10-08 周五 17:18>
+*** DONE [#A] 战斗表现优化-前后摇解析器                                :m8:
+CLOSED: [2021-11-08 周一 09:09] SCHEDULED: <2021-11-03 周三 11:00>
 :PROPERTIES:
-:ARCHIVE_TIME: 2021-10-09 周六 16:48
+:ARCHIVE_TIME: 2021-11-08 周一 09:17
 :END:
-*** DONE [#A] 学习《我所理解的cocos2d-x》                        :learn:m8:
-SCHEDULED: <2021-10-09 周六 09:00 ++1d>
+*** DONE [#A] 处理协议施法者order为0的问题                             :m8:
+CLOSED: [2021-11-03 周三 16:28] SCHEDULED: <2021-11-03 周三 11:15>
 :PROPERTIES:
-:EFFORT: 0:60
-:STYLE:    habit
-:LAST_REPEAT: [2021-10-08 周五 16:19]
-:ARCHIVE_TIME: 2021-10-09 周六 16:48
+:ARCHIVE_TIME: 2021-11-08 周一 09:17
 :END:
-- State "DONE"       from "TODO"       [2021-10-08 周五 16:19]
-- State "DONE"       from "TODO"       [2021-10-07 周四 11:22]
-- State "DONE"       from "TODO"       [2021-09-30 周四 16:31]
-- State "DONE"       from "TODO"       [2021-09-28 周二 10:51]
-- State "DONE"       from "TODO"       [2021-09-26 周日 20:28]
-- State "DONE"       from "TODO"       [2021-09-25 周六 20:40]
-- State "DONE"       from "TODO"       [2021-09-16 周四 20:47]
-- State "DONE"       from "TODO"       [2021-09-11 周六 15:11]
-- State "DONE"       from "TODO"       [2021-09-04 周六 15:52]
-- State "DONE"       from "TODO"       [2021-09-03 周五 13:24]
-- State "DONE"       from "TODO"       [2021-09-02 周四 10:49]
-- State "DONE"       from "TODO"       [2021-08-31 周二 09:33]
-- State "DONE"       from "TODO"       [2021-08-26 周四 10:25]
-*** DONE [#A] 整合并优化英雄选择框                                :work:m8:
-CLOSED: [2021-10-07 周四 17:40] SCHEDULED: <2021-10-07 周四 13:00>
-:PROPERTIES:
-:ARCHIVE_TIME: 2021-10-09 周六 16:48
-:END:
-*** DONE [#A] 战斗优化                                            :work:m8:
-CLOSED: [2021-10-14 周四 09:30] SCHEDULED: <2021-10-11 周一 15:07>
-:PROPERTIES:
-:ARCHIVE_TIME: 2021-10-16 周六 17:18
-:END:
-*** DONE [#A] 优化战斗指令                                        :work:m8:
-CLOSED: [2021-10-11 周一 15:07] SCHEDULED: <2021-10-09 周六 16:48>
-:PROPERTIES:
-:ARCHIVE_TIME: 2021-10-16 周六 17:18
-:END:
-*** DONE [#A] 实现战斗胜利动画播放                                     :m8:
-CLOSED: [2021-10-15 周五 16:15] SCHEDULED: <2021-10-14 周四 13:09>
-:PROPERTIES:
-:ARCHIVE_TIME: 2021-10-16 周六 17:18
-:END:
-*** DONE [#A] 调整英雄模型比例                                         :m8:
-CLOSED: [2021-10-15 周五 16:16] SCHEDULED: <2021-10-14 周四 14:06>
-:PROPERTIES:
-:ARCHIVE_TIME: 2021-10-16 周六 17:18
-:END:
-*** DONE [#A] 支持测试战场阵容导入导出                                 :m8:
-CLOSED: [2021-10-23 周六 10:10] SCHEDULED: <2021-10-21 周四 20:46>
-:PROPERTIES:
-:ARCHIVE_TIME: 2021-10-25 周一 09:26
-:END:
-*** DONE [#A] 服务器战斗日志导入功能                                   :m8:
-CLOSED: [2021-10-22 周五 09:24] SCHEDULED: <2021-10-20 周三 09:24>
-:PROPERTIES:
-:ARCHIVE_TIME: 2021-10-25 周一 09:26
-:END:
-** DONE [#A] 支持战斗cmd进度条                                          :m8:
-CLOSED: [2021-10-26 周二 16:54] SCHEDULED: <2021-10-21 周四 20:45>
-** DONE [#A] 编写年度总结                                              :m8:
-CLOSED: [2021-10-25 周一 19:27] SCHEDULED: <2021-10-23 周六 09:25>
-** TODO [#A] 战斗表现优化                                              :m8:
-SCHEDULED: <2021-10-27 周三 11:00>
-** DONE [#A] 布阵界面的显示和配置不一致bug                              :m8:
-CLOSED: [2021-10-27 周三 13:35] SCHEDULED: <2021-10-27 周三 11:34>
-* Appointment
-** DONE 年度面谈                                                        :m8:
-CLOSED: [2021-10-28 周四 20:30]
-<2021-10-28 周四 10:30>
+** Appointment
 * Project
 ** SCH [#A] 战斗表现学习                                               :m8:
 SCHEDULED: <2021-10-15 周五 09:00> DEADLINE: <2021-10-23 周六 18:00>
@@ -314,14 +257,16 @@ CLOSED: [2021-10-19 周二 20:46] SCHEDULED: <2021-10-15 周五 17:00>
 :PROPERTIES:                          
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:                          
-*** TODO 导表定义技能方式和其表现逻辑
-SCHEDULED: <2021-10-19 周二 20:46>
+*** DONE 导表定义技能方式和其表现逻辑
+CLOSED: [2021-11-01 周一 14:11] SCHEDULED: <2021-10-19 周二 20:46>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** WAIT spine动画
+*** TODO spine动画
+SCHEDULED: <2021-11-01 周一 14:11>
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 * Someday
 ** 学习《代码之外的生存指南》                                :learn:future:
