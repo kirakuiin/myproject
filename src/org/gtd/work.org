@@ -14,11 +14,12 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每周周报                                             :work:
-SCHEDULED: <2021-11-20 周六 18:00 ++1w> DEADLINE: <2021-11-22 周一 12:00 ++1w>
+SCHEDULED: <2021-11-27 周六 18:00 ++1w> DEADLINE: <2021-11-29 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-11-13 周六 16:44]
+:LAST_REPEAT: [2021-11-20 周六 16:54]
 :END:
+- State "DONE"       from "TODO"       [2021-11-20 周六 16:54]
 - State "DONE"       from "TODO"       [2021-11-13 周六 16:44]
 - State "DONE"       from "TODO"       [2021-11-08 周一 09:19]
 - State "DONE"       from "TODO"       [2021-11-01 周一 11:28]
@@ -245,7 +246,23 @@ CLOSED: [2021-11-03 周三 16:28] SCHEDULED: <2021-11-03 周三 11:15>
 :PROPERTIES:
 :ARCHIVE_TIME: 2021-11-08 周一 09:17
 :END:
-** Appointment
+*** DONE [#A] 处理行为嵌套问题                                         :m8:
+CLOSED: [2021-11-17 周三 09:10] SCHEDULED: <2021-11-15 周一 09:10>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-11-20 周六 16:58
+:END:
+*** DONE [#A] 接入怒气表现                                             :m8:
+CLOSED: [2021-11-20 周六 16:32] SCHEDULED: <2021-11-20 周六 16:31>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-11-20 周六 16:58
+:END:
+** TODO [#A] 优化新表现存在的问题                                      :m8:
+SCHEDULED: <2021-11-17 周三 09:12>
+1. 死亡暂停行为播放
+2. 识别角色出手结束
+** TODO [#A] 学习《代码之外的生存指南》                      :learn:
+SCHEDULED: <2021-11-20 周六>
+* Appointment
 * Project
 ** SCH [#A] 战斗表现学习                                               :m8:
 SCHEDULED: <2021-10-15 周五 09:00> DEADLINE: <2021-10-23 周六 18:00>
@@ -269,7 +286,6 @@ SCHEDULED: <2021-11-01 周一 14:11>
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
 * Someday
-** 学习《代码之外的生存指南》                                :learn:future:
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
 ** 学习《Lua程序设计》                                       :learn:future:
 ** 学习 elisp                                                :learn:future:
