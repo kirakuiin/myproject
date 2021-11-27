@@ -13,12 +13,13 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每周周报                                             :work:
-SCHEDULED: <2021-11-27 周六 18:00 ++1w> DEADLINE: <2021-11-29 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                            :work:
+SCHEDULED: <2021-12-04 周六 18:00 ++1w> DEADLINE: <2021-12-06 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-11-20 周六 16:54]
+:LAST_REPEAT: [2021-11-27 周六 16:51]
 :END:
+- State "DONE"       from "TODO"       [2021-11-27 周六 16:51]
 - State "DONE"       from "TODO"       [2021-11-20 周六 16:54]
 - State "DONE"       from "TODO"       [2021-11-13 周六 16:44]
 - State "DONE"       from "TODO"       [2021-11-08 周一 09:19]
@@ -54,14 +55,20 @@ SCHEDULED: <2021-11-27 周六 18:00 ++1w> DEADLINE: <2021-11-29 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-11-03 周三 09:00 ++1d>
+SCHEDULED: <2021-11-29 周一 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-11-02 周二 09:43]
+:LAST_REPEAT: [2021-11-24 周三 13:58]
 :END:
 
+- State "DONE"       from "TODO"       [2021-11-29 周一 13:58]
+- State "DONE"       from "TODO"       [2021-11-27 周六 13:49]
+- State "DONE"       from "TODO"       [2021-11-26 周五 11:27]
+- State "DONE"       from "TODO"       [2021-11-25 周四 11:19]
+- State "DONE"       from "TODO"       [2021-11-24 周三 17:21]
+- State "DONE"       from "TODO"       [2021-11-23 周二 15:04]
 - State "DONE"       from "TODO"       [2021-11-02 周二 09:43]
 - State "DONE"       from "TODO"       [2021-11-01 周一 20:21]
 - State "DONE"       from "TODO"       [2021-10-27 周三 10:27]
@@ -262,6 +269,16 @@ SCHEDULED: <2021-11-17 周三 09:12>
 2. 识别角色出手结束
 ** TODO [#A] 学习《代码之外的生存指南》                      :learn:
 SCHEDULED: <2021-11-20 周六>
+** DONE [#A] 小狗钱钱阅后总结                                        :learn:
+CLOSED: [2021-11-27 周六 17:05] DEADLINE: <2021-11-30 周二> SCHEDULED: <2021-11-22 周一 09:31>
+** TODO [#A] 阅读穷爸爸,富爸爸                                      :learn:
+SCHEDULED: <2021-11-29 周一 09:34>
+** TODO [#A] 阅读 <解读基金, 我的投资观与实践>                      :learn:
+DEADLINE: <2021-12-01 周三> SCHEDULED: <2021-11-22 周一 09:36>
+** DONE [#A] 英雄山站章节地图改为拖拽浏览                              :m8:
+CLOSED: [2021-11-26 周五 16:44] SCHEDULED: <2021-11-24 周三 16:43>
+** TODO [#A] 整理游戏功能和玩法                                        :m8:
+SCHEDULED: <2021-11-29 周一 09:00>
 * Appointment
 * Project
 ** SCH [#A] 战斗表现学习                                               :m8:
