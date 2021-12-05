@@ -574,6 +574,13 @@ DEADLINE: <2021-11-30 周二 23:00 ++1m> SCHEDULED: <2021-11-30 周二 09:00 ++1
   2. 完成了多益的入职培训
   3. 找到了一处还不错的房子
   4. 认识了很多很棒的同事
+** TODO [#A] 整理财务情况, 设计投资计划                             :event:
+SCHEDULED: <2021-12-20 周一 19:59 +1m>
+:PROPERTIES:
+:STYLE:    habit
+:LOGGING: logrepeat DONE(@)
+:LAST_REPEAT: [2021-11-20 周六 20:08]
+:END:
 * Appointment
 ** WAIT 购买xbox精英二代手柄                                     :shopping:
 <2021-11-01 周一 09:00>
