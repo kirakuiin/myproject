@@ -1,0 +1,32 @@
+#+STARTUP: INDENT OVERVIEW
+
+* TODO 单词记录
+  SCHEDULED: <2022-12-06 周二 +1y>
+  :PROPERTIES:
+  :STYLE:    habit
+  :LOGGING: logrepeat DONE(@)
+  :LAST_REPEAT: [2021-12-06 周一 20:24]
+  :END:
+  - State "DONE"       from "TODO"       [2021-12-06 周一 20:24] \\
+    Cease: 停止
+    Ease: 减轻
+    Deprive: 剥夺
+    Consecutive: 连续的
+    
+    经济学术语:
+    Bond: 债券
+    Stock: 股票
+    Capital: 本金
+    Return: 回报
+    Inflation: 通货膨胀
+    Deflation: 通货紧缩
+    Dividend: 股息
+    Interest: 利息
+    Fund: 资金
+    Turbulent: 震荡
+    Fluctuation: 波动
+    Downturn: 低迷
+    Recover: 复苏
+    Diversified portfolio: 多元化投资组合
+    Lump-sum payment: 一次性支付
+    Decline: 衰退

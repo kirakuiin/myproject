@@ -55,15 +55,16 @@ SCHEDULED: <2021-12-11 周六 18:00 ++1w> DEADLINE: <2021-12-13 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-12-06 周一 09:00 ++1d>
+** TODO [#C] 完成leetcode一两道题                                    :learn:
+SCHEDULED: <2021-12-07 周二 09:00 ++1d>
 :PROPERTIES:
 :EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-12-03 周五 13:38]
+:LAST_REPEAT: [2021-12-06 周一 10:57]
 :END:
 
+- State "DONE"       from "TODO"       [2021-12-06 周一 10:57]
 - State "DONE"       from "TODO"       [2021-12-04 周六 14:38]
 - State "DONE"       from "TODO"       [2021-12-03 周五 10:44]
 - State "DONE"       from "TODO"       [2021-12-02 周四 09:11]
@@ -285,8 +286,8 @@ CLOSED: [2021-12-02 周四 20:05] DEADLINE: <2021-12-04 周六 13:00> SCHEDULED:
 - [X] 英雄脚下光环
 - [X] 道具ui合并
 - [X] 道具底图
-** TODO [#A] 编写年报                                                  :m8:
-DEADLINE: <2021-12-08 周三> SCHEDULED: <2021-12-06 周一 16:09>
+** DONE [#A] 编写年报                                                   :m8:
+CLOSED: [2021-12-06 周一 15:46] DEADLINE: <2021-12-08 周三> SCHEDULED: <2021-12-06 周一 16:09>
 * Appointment
 * Project
 ** SCH [#A] 战斗表现学习                                               :m8:

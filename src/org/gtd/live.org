@@ -612,7 +612,12 @@ SCHEDULED: <2021-12-20 周一 19:59 +1m>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2021-11-20 周六 20:08]
+:END:
+** TODO [#A] 自学unity                                              :event:
+SCHEDULED: <2021-12-12 周日 09:00 +1w>
+:PROPERTIES:
+:STYLE:    habit
+:LOGGING: logrepeat DONE(@)
 :END:
 * Appointment
 ** WAIT 购买xbox精英二代手柄                                     :shopping:
