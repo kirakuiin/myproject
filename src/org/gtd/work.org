@@ -13,12 +13,14 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每周周报                                             :work:
-SCHEDULED: <2021-12-11 周六 18:00 ++1w> DEADLINE: <2021-12-13 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                            :work:
+SCHEDULED: <2021-12-18 周六 18:00 ++1w> DEADLINE: <2021-12-20 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-12-04 周六 16:13]
+:LAST_REPEAT: [2021-12-11 周六 16:38]
 :END:
+- State "DONE"       from "TODO"       [2021-12-11 周六 16:38]
+- State "DONE"       from "TODO"       [2021-12-11 周六 16:34]
 - State "DONE"       from "TODO"       [2021-12-04 周六 16:13]
 - State "DONE"       from "TODO"       [2021-11-27 周六 16:51]
 - State "DONE"       from "TODO"       [2021-11-20 周六 16:54]
@@ -56,14 +58,16 @@ SCHEDULED: <2021-12-11 周六 18:00 ++1w> DEADLINE: <2021-12-13 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                    :learn:
-SCHEDULED: <2021-12-07 周二 09:00 ++1d>
+SCHEDULED: <2021-12-10 周五 09:00 ++1d>
 :PROPERTIES:
-:EFFORT: 0:15
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-12-06 周一 10:57]
+:LAST_REPEAT: [2021-12-09 周四 13:40]
 :END:
 
+- State "DONE"       from "TODO"       [2021-12-09 周四 13:40]
+- State "DONE"       from "TODO"       [2021-12-08 周三 10:43]
+- State "DONE"       from "TODO"       [2021-12-07 周二 10:37]
 - State "DONE"       from "TODO"       [2021-12-06 周一 10:57]
 - State "DONE"       from "TODO"       [2021-12-04 周六 14:38]
 - State "DONE"       from "TODO"       [2021-12-03 周五 10:44]
@@ -249,12 +253,32 @@ SCHEDULED: <2021-12-07 周二 09:00 ++1d>
 - State "DONE"       from "TODO"       [2021-03-30 周二 09:49]
 ** TODO [#B] 学习《重构 改善既有代码的设计》                        :learn:
 SCHEDULED: <2021-10-12 周三 09:00 ++1d>
-** TODO [#A] 学习《代码之外的生存指南》                             :learn:
-SCHEDULED: <2021-11-20 周六>
 ** TODO [#A] 阅读穷爸爸,富爸爸                                      :learn:
 SCHEDULED: <2021-11-29 周一 09:34>
-** TODO [#A] 整理游戏功能和玩法                                        :m8:
-SCHEDULED: <2021-11-29 周一 09:00>
+** TODO [#A] 学习《代码之外的生存指南》                             :learn:
+SCHEDULED: <2021-11-20 周六 +1d>
+:LOGBOOK:
+CLOCK: [2021-12-11 周六 16:26]--[2021-12-11 周六 16:33] =>  0:07
+CLOCK: [2021-12-11 周六 14:21]--[2021-12-11 周六 14:46] =>  0:25
+CLOCK: [2021-12-10 周五 20:27]--[2021-12-10 周五 20:52] =>  0:25
+CLOCK: [2021-12-10 周五 19:57]--[2021-12-10 周五 20:22] =>  0:25
+:END:
+** TODO [#A] 处理备战界面属性未刷新的问题                              :m8:
+:PROPERTIES:
+:Effort:   4:00
+:END:
+:LOGBOOK:
+CLOCK: [2021-12-10 周五 17:27]--[2021-12-10 周五 17:40] =>  0:13
+CLOCK: [2021-12-10 周五 16:52]--[2021-12-10 周五 17:17] =>  0:25
+CLOCK: [2021-12-10 周五 16:22]--[2021-12-10 周五 16:47] =>  0:25
+CLOCK: [2021-12-10 周五 15:32]--[2021-12-10 周五 15:57] =>  0:25
+CLOCK: [2021-12-10 周五 14:48]--[2021-12-10 周五 15:13] =>  0:25
+CLOCK: [2021-12-10 周五 13:49]--[2021-12-10 周五 14:14] =>  0:25
+CLOCK: [2021-12-10 周五 13:19]--[2021-12-10 周五 13:44] =>  0:25
+CLOCK: [2021-12-10 周五 11:28]--[2021-12-10 周五 11:39] =>  0:11
+CLOCK: [2021-12-10 周五 10:58]--[2021-12-10 周五 11:23] =>  0:25
+CLOCK: [2021-12-10 周五 10:28]--[2021-12-10 周五 10:53] =>  0:25
+:END:
 ** Archive                                                         :ARCHIVE:
 *** DONE [#A] 优化新表现存在的问题                                     :m8:
 CLOSED: [2021-11-30 周二 15:42] SCHEDULED: <2021-11-17 周三 09:12>
@@ -286,8 +310,31 @@ CLOSED: [2021-12-02 周四 20:05] DEADLINE: <2021-12-04 周六 13:00> SCHEDULED:
 - [X] 英雄脚下光环
 - [X] 道具ui合并
 - [X] 道具底图
-** DONE [#A] 编写年报                                                   :m8:
+*** DONE [#A] 道具品质和英雄山装备稀有度统一                         :work:
+CLOSED: [2021-12-10 周五 10:27] SCHEDULED: <2021-12-07 周二 16:58>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-12-11 周六 16:38
+:END:
+*** DONE [#A] 整理游戏功能和玩法                                       :m8:
+CLOSED: [2021-12-08 周三 10:31] SCHEDULED: <2021-11-29 周一 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-12-11 周六 16:38
+:END:
+*** DONE [#A] 编写年报                                                 :m8:
 CLOSED: [2021-12-06 周一 15:46] DEADLINE: <2021-12-08 周三> SCHEDULED: <2021-12-06 周一 16:09>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-12-11 周六 16:38
+:END:
+*** DONE [#A] 战斗内法宝激活效果                                     :work:
+CLOSED: [2021-12-07 周二 15:12] SCHEDULED: <2021-12-07 周二 15:12>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-12-11 周六 16:38
+:END:
+*** DONE [#A] 建立星级底图映射关系                                   :work:
+CLOSED: [2021-12-09 周四 16:57] SCHEDULED: <2021-12-07 周二 16:57>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-12-11 周六 16:38
+:END:
 * Appointment
 * Project
 ** SCH [#A] 战斗表现学习                                               :m8:

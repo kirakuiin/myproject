@@ -1,19 +1,47 @@
 #+STARTUP: INDENT OVERVIEW
 
 * TODO 单词记录
-  SCHEDULED: <2022-12-06 周二 +1y>
+SCHEDULED: <2024-12-06 周五 +1y>
   :PROPERTIES:
   :STYLE:    habit
-  :LOGGING: logrepeat DONE(@)
-  :LAST_REPEAT: [2021-12-06 周一 20:24]
+  :LOGGING:  logrepeat DONE(@)
+  :LAST_REPEAT: [2021-12-08 周三 10:55]
   :END:
+  - State "DONE"       from "TODO"       [2021-12-08 周三 10:55] \\
+    Stimulate: 刺激
+    Contraction: 收缩
+    Maturity: 到期
+    Severe: 严重
+
+    经济学术语:
+    Loan: 贷款
+    Equity: 产权
+  - State "DONE"       from "TODO"       [2021-12-07 周二 15:17] \\
+    Reasoning: 推理
+    Panic: 恐慌
+    Disastrous: 惨重
+    Considerable: 大量
+    Momentum: 动量
+    Compound: 复合
+    Flee: 逃跑
+    Eclipse by: 黯然失色
+    Turmoil: 动荡
+    Backfire: 适得其反
+    Cumulative: 累积
+
+    经济学术语:
+    Principal: 本金
+    Pay off: 抵消, 清偿
+    Recession: 经济衰退
   - State "DONE"       from "TODO"       [2021-12-06 周一 20:24] \\
     Cease: 停止
     Ease: 减轻
     Deprive: 剥夺
     Consecutive: 连续的
+    Decline: 衰退
     
     经济学术语:
+    Wage: 工资
     Bond: 债券
     Stock: 股票
     Capital: 本金
@@ -29,4 +57,4 @@
     Recover: 复苏
     Diversified portfolio: 多元化投资组合
     Lump-sum payment: 一次性支付
-    Decline: 衰退
+    Long-term investment: 长期投资
