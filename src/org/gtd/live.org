@@ -39,13 +39,20 @@ DEADLINE: <2022-01-12 周三 23:00 +1m> SCHEDULED: <2022-01-12 周三 09:00 +1m>
   2. 房间里的马桶坏了, 电磁炉可能坏了, 阳台灯坏了
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
-** TODO [#A] 归档并回顾一周的计划                                    :event:
-DEADLINE: <2021-12-27 周一 23:00 ++1w> SCHEDULED: <2021-12-25 周六 18:00 ++1w>
+** TODO [#A] 归档并回顾一周的计划                                   :event:
+DEADLINE: <2022-01-03 周一 23:00 ++1w> SCHEDULED: <2022-01-01 周六 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2021-12-18 周六 17:57]
+:LAST_REPEAT: [2021-12-25 周六 15:42]
 :END:
+- State "DONE"       from "TODO"       [2021-12-25 周六 15:42] \\
+  1. 完成第四版战斗解析器改版和测试
+     - 行为定义变更, 改为多段式行为
+     - 处理联调时第四版解析器的bug
+  2. 将受击表现从蓝图表现中分离
+  ------------------------------------------------
+  1. 弹射刷疯了, 上班都在耍, 后面要注意不能这样了
 - State "DONE"       from "TODO"       [2021-12-18 周六 17:57] \\
   1. 处理备战界面属性角色属性再升级/升星后未刷新的问题
   2. 实现了第四版战斗解析器:
@@ -637,13 +644,14 @@ SCHEDULED: <2021-12-20 周一 19:59 +1m>
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
 :END:
-** TODO [#A] 自学unity                                              :event:
-SCHEDULED: <2021-12-19 周日 09:00 +1w>
+** TODO [#A] 自学unity                                               :event:
+SCHEDULED: <2021-12-26 周日 09:00 +1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2021-12-13 周一 09:08]
+:LAST_REPEAT: [2021-12-20 周一 08:59]
 :END:
+- State "DONE"       from "TODO"       [2021-12-20 周一 08:59]
 - State "DONE"       from "TODO"       [2021-12-13 周一 09:08]
 :LOGBOOK:
 CLOCK: [2021-12-12 周日 17:38]--[2021-12-12 周日 18:03] =>  0:25

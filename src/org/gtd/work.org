@@ -14,11 +14,13 @@
 * Inbox
 * Next Action
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2021-12-18 周六 18:00 ++1w> DEADLINE: <2021-12-20 周一 12:00 ++1w>
+SCHEDULED: <2022-01-01 周六 18:00 ++1w> DEADLINE: <2022-01-03 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2021-12-11 周六 16:38]
+:LAST_REPEAT: [2021-12-25 周六 15:47]
 :END:
+- State "DONE"       from "TODO"       [2021-12-25 周六 15:47]
+- State "DONE"       from "TODO"       [2021-12-20 周一 09:00]
 - State "DONE"       from "TODO"       [2021-12-11 周六 16:38]
 - State "DONE"       from "TODO"       [2021-12-11 周六 16:34]
 - State "DONE"       from "TODO"       [2021-12-04 周六 16:13]
@@ -58,13 +60,16 @@ SCHEDULED: <2021-12-18 周六 18:00 ++1w> DEADLINE: <2021-12-20 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 完成leetcode一两道题                                   :learn:
-SCHEDULED: <2021-12-15 周三 09:00 ++1d>
+SCHEDULED: <2021-12-26 周日 09:00 ++1d>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2021-12-14 周二 10:05]
+:LAST_REPEAT: [2021-12-24 周五 09:58]
 :END:
 
+- State "DONE"       from "TODO"       [2021-12-24 周五 09:58]
+- State "DONE"       from "TODO"       [2021-12-23 周四 10:58]
+- State "DONE"       from "TODO"       [2021-12-22 周三 20:29]
 - State "DONE"       from "TODO"       [2021-12-14 周二 10:05]
 - State "DONE"       from "TODO"       [2021-12-13 周一 09:28]
 - State "DONE"       from "TODO"       [2021-12-09 周四 13:40]
@@ -346,6 +351,11 @@ CLOCK: [2021-12-10 周五 11:28]--[2021-12-10 周五 11:39] =>  0:11
 CLOCK: [2021-12-10 周五 10:58]--[2021-12-10 周五 11:23] =>  0:25
 CLOCK: [2021-12-10 周五 10:28]--[2021-12-10 周五 10:53] =>  0:25
 :END:
+*** DONE [#A] 将受击从技能释放中分离                                   :m8:
+CLOSED: [2021-12-25 周六 15:42] SCHEDULED: <2021-12-25 周六 15:41>
+:PROPERTIES:
+:ARCHIVE_TIME: 2021-12-25 周六 15:48
+:END:
 * Appointment
 * Project
 ** SCH [#A] 战斗表现学习                                               :m8:
@@ -368,12 +378,14 @@ CLOSED: [2021-11-01 周一 14:11] SCHEDULED: <2021-10-19 周二 20:46>
 :TRIGGER+: parent todo!(DONE)
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-** SCH [#A] 第四版战斗协议解析                                         :m8:
-SCHEDULED: <2021-12-14 周二 10:19> DEADLINE: <2021-12-22 周三 10:19>
+** Archive                                                         :ARCHIVE:
+*** DONE [#A] 第四版战斗协议解析                                       :m8:
+CLOSED: [2021-12-22 周三 19:38] SCHEDULED: <2021-12-14 周二 10:19> DEADLINE: <2021-12-22 周三 10:19>
 :PROPERTIES:
 :BLOCKER: children
+:ARCHIVE_TIME: 2021-12-25 周六 15:48
 :END:                          
-*** DONE 制定协议
+**** DONE 制定协议
 CLOSED: [2021-12-15 周三 09:51] SCHEDULED: <2021-12-14 周二>
 :PROPERTIES:                          
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
@@ -382,7 +394,7 @@ CLOSED: [2021-12-15 周三 09:51] SCHEDULED: <2021-12-14 周二>
 CLOCK: [2021-12-14 周二 11:05]--[2021-12-14 周二 11:30] =>  0:25
 CLOCK: [2021-12-14 周二 10:35]--[2021-12-14 周二 11:00] =>  0:25
 :END:
-*** DONE 编写解析器                          
+**** DONE 编写解析器                          
 CLOSED: [2021-12-18 周六 17:56] SCHEDULED: <2021-12-15 周三 09:51>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
@@ -413,8 +425,8 @@ CLOCK: [2021-12-15 周三 10:52]--[2021-12-15 周三 11:17] =>  0:25
 CLOCK: [2021-12-15 周三 10:22]--[2021-12-15 周三 10:47] =>  0:25
 CLOCK: [2021-12-15 周三 09:52]--[2021-12-15 周三 10:17] =>  0:25
 :END:
-*** TODO 对接测试
-SCHEDULED: <2021-12-18 周六 17:56>
+**** DONE 对接测试
+CLOSED: [2021-12-22 周三 19:38] SCHEDULED: <2021-12-18 周六 17:56>
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
