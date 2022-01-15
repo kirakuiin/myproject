@@ -12,11 +12,13 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 大壮名城G1-1018租房月志                                :event:
-DEADLINE: <2022-01-12 周三 23:00 +1m> SCHEDULED: <2022-01-12 周三 09:00 +1m>
+** TODO [#A] 大壮名城G1-1018租房月志                                 :event:
+DEADLINE: <2022-02-12 周六 23:00 +1m> SCHEDULED: <2022-02-12 周六 09:00 +1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
+- State "DONE"       from "TODO"       [2022-01-12 周四 20:44] \\
+  1. 房租2000, 电费80(空调+电脑), 物业+水117, 网费100
 - State "DONE"       from "TODO"       [2021-12-12 周日 10:26] \\
   1. 房租2000, 电费80(空调+电脑), 物业+水117, 网费100
 - State "DONE"       from "TODO"       [2021-11-12 周五 16:57] \\
@@ -40,12 +42,20 @@ DEADLINE: <2022-01-12 周三 23:00 +1m> SCHEDULED: <2022-01-12 周三 09:00 +1m>
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                    :event:
-DEADLINE: <2022-01-17 周一 23:00 ++1w> SCHEDULED: <2022-01-15 周六 18:00 ++1w>
+DEADLINE: <2022-01-24 周一 23:00 ++1w> SCHEDULED: <2022-01-22 周六 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-01-08 周六 16:17]
+:LAST_REPEAT: [2022-01-15 周六 16:25]
 :END:
+- State "DONE"       from "TODO"       [2022-01-15 周六 16:25] \\
+  1. 完成行动解析改版:
+     - 执行回调会递归合成到行动的最上层
+     - 由击中时播放行动的所有蓝图和全部效果改为仅播放行动下的第一层行为和效果
+  2. 蓝图播放支持消息施法者和被施法者
+  ------------------------------------------------
+  1. 弹射沉船了, 2w一无所获, 很痛苦
+  2. 订票搞定, 1.27回家
 - State "DONE"       from "TODO"       [2022-01-08 周六 16:17] \\
   1. 研究正交摄像机使用方式, 产出一个类用来方便的控制相机的移动以及输出
   2. 支持技能结束返回原位
@@ -676,12 +686,13 @@ SCHEDULED: <2021-12-20 周一 19:59 +1m>
 :LOGGING: logrepeat DONE(@)
 :END:
 ** TODO [#A] 自学unity                                               :event:
-SCHEDULED: <2022-01-09 周日 09:00 +1w>
+SCHEDULED: <2022-01-16 周日 09:00 +1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-01-05 周三 09:30]
+:LAST_REPEAT: [2022-01-11 周二 13:34]
 :END:
+- State "DONE"       from "TODO"       [2022-01-11 周二 13:34]
 - State "DONE"       from "TODO"       [2022-01-05 周三 09:30]
 - State "DONE"       from "TODO"       [2021-12-27 周一 20:45]
 - State "DONE"       from "TODO"       [2021-12-20 周一 08:59]
