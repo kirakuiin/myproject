@@ -43,6 +43,8 @@
   ssh-keygen -t rsa -C "your_email@youremail.com" 
 #+END_SRC
 一路默认即可
+** pycharm find in path失效
+选择File->Invalidate Caches / Restart, 清空全部缓存并重启即可解决
 * 概念相关                                                          :Concept:
 ** UML图                                                              :uml:
 *** 类图
@@ -386,6 +388,10 @@ __import__函数中的fromlist实际上是没有具体含义的, 你可以理解
 它不为空的时候, import为我们导入前面所写的字符串中最右边的模块. 当它为空的时候,
 import将为我们导入字符串最左边的模块.
 
+** python pyc骗局
+在某个时刻, 你将你包A里的__init__.py文件删掉了, 但是代码里其他地方依然可以使用
+A.X这种语法, 你很困惑, 这是为什么捏?
+答: pyc没删掉, 把pyc文件删掉就不能用了捏
 ** 协议设计的若干问题
 1. 协议本身要是明确的, 没有依赖的, 一个协议只做一件事
 2. 协议刷新数据层, 界面层监听数据层获得数据的变化, 不要协议直接修改界面, 界面不一
