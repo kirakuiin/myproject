@@ -1,0 +1,138 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file c:/Users/admin/org/gtd/live.org
+
+* begin: <2022-01-01 周六>
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-01-27 周四 16:54
+  :ARCHIVE_FILE: ~/org/gtd/live.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: live
+  :END:
+** DONE [#A] 给姥姥姥爷刘浩买点东西?                               :shopping:
+   CLOSED: [2022-01-27 周四 16:35] SCHEDULED: <2022-01-23 周日 15:01>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-27 周四 16:42
+   :END:
+
+Archived entries from file c:/Users/admin/org/gtd/live.org
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-01-27 周四 16:54
+  :ARCHIVE_FILE: ~/org/gtd/live.org
+  :ARCHIVE_OLPATH: Appointment
+  :ARCHIVE_CATEGORY: live
+  :END:
+** DONE 接种科兴第三针疫苗                                            :event:
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-22 周六 15:06
+   :END:
+<2022-01-18 周二 14:30>
+** DONE 回家过年                                                      :event:
+   CLOSED: [2022-01-27 周四 16:44] DEADLINE: <2022-02-07 周一>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-27 周四 16:44
+   :END:
+[2022-01-27 周四 20:20]: 广州南->北京西 动卧
+[2022-01-28 周五 09:59]: 北京朝阳->赤峰 动车
+[2022-02-06 周日 09:31]: 赤峰->北京朝阳 动车
+[2022-02-06 周日 15:30]: 北京大兴->广州 飞机
+
+Archived entries from file c:/Users/admin/org/gtd/work.org
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-01-27 周四 16:54
+  :ARCHIVE_FILE: ~/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 研究摄像机的使用方式                                        :m8:
+   CLOSED: [2022-01-05 周三 14:12] SCHEDULED: <2021-12-29 周三 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-08 周六 16:50
+   :END:
+** DONE [#A] Localsave迁移                                               :m8:
+   CLOSED: [2022-01-05 周三 09:30]
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-08 周六 16:50
+   :END:
+** DONE [#A] 支持技能结束返回原位                                        :m8:
+   CLOSED: [2022-01-06 周四 11:19] SCHEDULED: <2022-01-03 周一 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-08 周六 16:50
+   :END:
+** DONE [#A] 更新战斗配置文档                                            :m8:
+   CLOSED: [2022-01-07 周五 09:58] SCHEDULED: <2022-01-05 周三 14:13>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-08 周六 16:50
+   :END:
+** DONE [#A] 第三版行动触发顺序改版                                      :m8:
+   CLOSED: [2022-01-14 周五 13:26] SCHEDULED: <2022-01-10 周一 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-22 周六 15:06
+   :END:
+:LOGBOOK:
+CLOCK: [2022-01-11 周二 20:06]--[2022-01-11 周二 20:31] =>  0:25
+CLOCK: [2022-01-11 周二 19:31]--[2022-01-11 周二 19:56] =>  0:25
+CLOCK: [2022-01-11 周二 19:01]--[2022-01-11 周二 19:26] =>  0:25
+CLOCK: [2022-01-11 周二 18:31]--[2022-01-11 周二 18:56] =>  0:25
+CLOCK: [2022-01-11 周二 18:01]--[2022-01-11 周二 18:26] =>  0:25
+CLOCK: [2022-01-11 周二 17:26]--[2022-01-11 周二 17:51] =>  0:25
+CLOCK: [2022-01-11 周二 16:56]--[2022-01-11 周二 17:21] =>  0:25
+CLOCK: [2022-01-11 周二 16:26]--[2022-01-11 周二 16:51] =>  0:25
+CLOCK: [2022-01-11 周二 15:56]--[2022-01-11 周二 16:21] =>  0:25
+CLOCK: [2022-01-11 周二 15:21]--[2022-01-11 周二 15:46] =>  0:25
+CLOCK: [2022-01-11 周二 14:51]--[2022-01-11 周二 15:16] =>  0:25
+CLOCK: [2022-01-11 周二 14:21]--[2022-01-11 周二 14:46] =>  0:25
+CLOCK: [2022-01-11 周二 13:51]--[2022-01-11 周二 14:16] =>  0:25
+:END:
+** DONE [#A] 优化代码里的magic key                                       :m8:
+   CLOSED: [2022-01-22 周六 10:28] SCHEDULED: <2022-01-18 周二 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-22 周六 15:06
+   :END:
+** DONE [#A] prompt提示信息配置导表                                      :m8:
+   CLOSED: [2022-01-18 周二 11:38] SCHEDULED: <2022-01-18 周二 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-22 周六 15:06
+   :END:
+:LOGBOOK:
+CLOCK: [2022-01-18 周二 10:06]--[2022-01-18 周二 10:31] =>  0:25
+CLOCK: [2022-01-18 周二 09:36]--[2022-01-18 周二 10:01] =>  0:25
+:END:
+** DONE [#A] 优化战斗日志输出                                            :m8:
+   CLOSED: [2022-01-22 周六 10:28] SCHEDULED: <2022-01-18 周二 15:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-22 周六 15:06
+   :END:
+** DONE [#A] 死亡和受伤表现优化                                          :m8:
+   CLOSED: [2022-01-19 周三 17:16] SCHEDULED: <2022-01-19 周三 10:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-22 周六 15:06
+   :END:
+** DONE [#A] 支持任意战斗阵容导出                                        :m8:
+   CLOSED: [2022-01-25 周二 17:21] SCHEDULED: <2022-01-25 周二 17:20>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-27 周四 16:42
+   :END:
+** DONE [#A] 处理粒子在隐藏对象上播放导致卡主问题                        :m8:
+   CLOSED: [2022-01-25 周二 17:22] SCHEDULED: <2022-01-25 周二 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-27 周四 16:42
+   :END:
+** DONE [#A] 处理执行回调未展开导致播放顺序错误的问题                    :m8:
+   CLOSED: [2022-01-27 周四 16:33] SCHEDULED: <2022-01-26 周三 15:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-27 周四 16:42
+   :END:
+** DONE [#A] 处理重复发起战斗导致战斗卡死的问题                          :m8:
+   CLOSED: [2022-01-27 周四 16:34] SCHEDULED: <2022-01-27 周四 16:34>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-01-27 周四 16:42
+   :END:
+
+* begin: <2022-02-01 周二>
