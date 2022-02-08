@@ -1,0 +1,51 @@
+#+STARTUP: INDENT NUM
+
+* 创建和应用脚本
+1. 可以通过两种方式来创建脚本
+   - 直接在project某个目录下面创建
+   - 在对象上Add Component, 选择script, 不过这种脚本的目录会位于Assets目录下
+2. 通过两种方式将脚本附加到对象上
+   - 直接将脚本拖拽到对象上
+   - 在对象上Add Component中搜索脚本名字, 选择脚本
+3. 可以通过点击对象脚本组件左上角的勾来禁用脚本
+
+* 脚本结构
+#+begin_src c#
+using UnityEngine;   // 命名空间, 组织代码的主要形式
+
+public class MouseManager: MonoBehaviour  // 所有的组件脚本必须继承于MonoBehaviour
+{
+    private int value;    // 变量是数据的容器
+    void Start() {}   // 方法是类的某个功能指令
+}
+#+end_src
+
+* 基础语法
+大部分和c++一致, 这里记录一些不一样的
+1. foreach用来迭代数组, 用法为: foreach(type variable in array) {}
+
+* 组件系统
+1. 使用GetComponent<componentClass>()来获得组件, 获得的组件必须和脚本处在同一个对象上
+2. 获取到组件之后, 可以通过组件的属性或者接口来动态控制组件在游戏内的表现
+
+* 输入
+1. 通过Edit->Project Setting->Input来控制输入设置, 一些硬件的输入会被关联到一个字
+   符串上
+2. 使用Input.GetAxis(string)来获得输入
+3. 使用transform组件来进行位移
+
+* 交互
+1. 使用GameObject.Find来寻找其他游戏对象
+2. 脚本对象的类型为和脚本同名的类的类型
+3. 使用OnCollisionEnter函数接受触发的碰撞事件
+4. 必须要为对象设置碰撞, 并且至少一个对象要拥有刚体组件, 才会触发碰撞事件
+5. IsTrigger勾选后也不会触发碰撞事件, 而是触发Trigger事件
+   - OnTriggerEnter :: 进入触碰区域
+   - OnTriggerExit :: 离开触碰区域
+   - OnTriggerStay :: 停留在触碰区域, 会一直触发事件
+6. 使用Physics.RayCast可以用来检测某个射线是否碰撞到某个碰撞体
+7. 使用Debug.DrawRay可以画出光线, 注意光线必须要在Scene场景下才能看到
+
+* 实例化
+1. 使用Instantiate函数可以创建一个新的实例
+2. 使用Destroy函数来摧毁一个实例
