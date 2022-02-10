@@ -35,6 +35,10 @@ spine动画是指把角色的各部分身体部件图片绑定到一根根互相
 插槽中. 一个插槽可以同时拥有多个附件, 但只能有一个可见
 *** 皮肤
 简单来说就是一组附件的集合, 通过切换皮肤可以轻易地实现spine动画的复用
+**** 皮肤占位符
+皮肤占位符是一种特殊的附件, 每个皮肤是由不同的附件构成的, 这些附件都填充在皮肤占
+位符中。不同的皮肤之间共享相同的皮肤占位符, 皮肤之间的区别仅在于占位符下填充的附
+件不同
 *** 动画
 基于时间轴模式的骨骼变换列表
 ** 物理结构
@@ -50,9 +54,93 @@ spine动画是指把角色的各部分身体部件图片绑定到一根根互相
   数据结构: [[http://zh.esotericsoftware.com/spine-atlas-format][spine动画.altas数据结构]]
   
 * spine动画的在代码中的应用
-在两个最重要的接口setAnimation(立即播放一个动画)和addAnimation(添加一个动画到播放
-列表)中, 我们会看到一个特殊的参数track, track的作用是为了让动画可以混合. 可以让角
-色在同一时间播放多个动画. track更高的动画会覆盖track较低的动画.
+** cocos2dx
+*** CSpineAnimation
+这个类代表着一个spine动画实例化的对象
+- InitWithFile(skeletonDataFile, altasFile, scale=1, enableCache=False)
+  从数据和图集文件中创建一个CSpineAnimation对象, 其中数据和图集文件是官方spine编
+  辑器导出的
+- SetAnimation(trackIndex, name, loop=True)
+  设置当前播放的动画
+  - name :: 动画名称
+  - trackIndex :: 当前动画在哪个通道播放, 同一时间每个通道只能有一个正在播放的动画,
+    不同通道可以同时播放不同的动画, 达到动画的混合效果
+  - loop :: 是否循环播放
+- AddAnimation(trackIndex, name, loop=True, delay)
+  将动画添加到指定通道的排队队列中, 当队列里的所有动画播放完毕或当前动画播放了
+  delay秒后播放此动画
+  - delay :: 当前正在播放动画经过多少秒后播放此动画, 默认当前动画结束后播放
+- ClearTrack(trackIndex), ClearTracks()
+  清除指定通道/所有通道上正在播放的动画
+- SetEndListener(func)
+  在指定的trackIndex上动画整体结束时调用func
+  - func :: 回调函数, 接受一个trackIndex作为参数
+- SetEventListener(func)
+  美术可以在动画的关键帧上设定一系列事件, 用来通知程序在当前关键帧上应该做的事
+  - func :: 回调函数, 参数为(trackIndex, name, intValue, floatValue, stringValue)
+    - xxxValue :: 代表美术在spine编辑器的事件中设置的值
+- GetSkinName()
+  返回当前spine动画支持的所有皮肤的名字的列表
+- GetCurrentSkinName(), SetSkin(skinName)
+  获得当前皮肤的名字/设置当前应用的皮肤
+- GetTimeScale()/SetTimeScale(scale)
+  获得动画播放速率/设置动画播放速录
+- GetFPS()/SetFPS(fps)
+  获得播放帧率/设置播放帧率(不会受到系统整体帧率钳制)
+- GetSkeletonSize()
+  获得骨架的大小
+- GetAnimationNames()
+  获得所有动画的名字元组
+- GetRunningAnimation(trackIndex=-1)
+  获得当前正在播放的动画的名字, 如果指定了trackIndex, 则返回指定通道上动画的名字
+- GotoPlay(time)
+  跳转到离当前播放时间间隔为time的位置进行播放, 如果time为负数, 则向前跳
+- SetForward(isForward)
+  设置正序/倒序播放
+- GetBonesNamesDict()
+  获得所有的骨骼字典, 其中key为骨骼索引, value为骨骼名字
+- GetSlotsTuple(targetBoneName)
+  获得所有插槽的名字, 如果传入了骨骼名称, 则获得指定骨骼上插槽的名字
+- GetPlaceholdersOnSlot(targetSlotName, hasSkinInfo=True)
+  获得绑定在指定slot上占位符的名字
+  - hasSkinInfo :: 是否返回占位符对应皮肤的名字
+- GetAttachment/ReplaceAttachment(targetSlotName, targetAttachmentPlaceholder, candidateFrameName)
+  获得当前插槽上附件对象/替换插槽上的附件对象
+  - targetSlotName :: 插槽名称
+  - targetAttachmentPlaceholder :: 附件占位符名称
+  - candidateFrameName :: 新的附件对象(CSprite)
+- GetRootOffset()/SetRootOffset(x, y)
+  获得动画root相对于左下角的偏移/设置动画root相对于左下角的便宜
+  - x, y :: 偏移量, 范围[0.0, 1.0]
+- GetIKConstraintDict()
+  获得美术编辑的IK约束控制模块的字典, 格式为约束名: 约束对象
+*** CSpineBone
+代表spine动画的骨骼对象
+- GetBoneName(), GetBoneIndex()
+  返回骨骼的名称/索引
+- GetCoverStatus(), SetCoverStatus(isCover, immediate=True)
+  获得骨骼覆盖状态/是否将骨骼挂载的内容覆盖原始的spine
+  - isCover :: 是否覆盖
+  - immediate :: 立即覆盖还是帧末覆盖
+- GetAttachedSlotsTuple()
+  返回挂载在骨骼上的插槽的名字
+- GetBoneLength()
+  返回骨骼长度
+*** CSpineIKConstraint
+代表一个逆向动力学约束功能模块, 用来操作IK约束的参数, 在动画播放时, 动态调整
+骨骼姿态
+- GetName()
+  返回IK约束的名字
+- GetBlendDirection(), SetBlendDirectionName(isReverse)
+  获得IK约束混合方向
+  - isReverse :: 父级骨骼是否逆时针旋转
+- GetIKFKMix(), SetIKFKMix(mix)
+  获得IK约束和FK约束混合比例/设置混合比例
+  - mix :: 范围[0.0, 1.0], 0.0代表全部使用FK
+- GetBonesCount()
+  返回IK约束作用的骨骼数量. 1: 单骨骼, 2: 双骨骼
+- GetTarget()
+  获得IK约束的目标骨骼, 可以通过设置骨骼的变换来调整spine姿态
 * spine制作中的高级概念
 ** FK和IK
 FK是正向运动学, IK是反向运动学. fk是一种自顶向下的思路, 即如果我要运动手, 我要
@@ -62,7 +150,7 @@ FK是正向运动学, IK是反向运动学. fk是一种自顶向下的思路, �
 允许你在矩形边界内自定义多边形, 这将提高最终纹理贴图集的空间使用率, 这一功能是自
 由变形和蒙皮的基础
 *** 自由变形
-允许你移动网格的点来是图片变形, 可以实现网格的拉伸, 挤压, 弯曲, 反弹等一系列矩形
+允许你移动网格的点来使图片变形, 可以实现网格的拉伸, 挤压, 弯曲, 反弹等一系列矩形
 图片无法实现的功能
 *** 蒙皮
 蒙皮允许将网格中指定的点附加给指定骨骼, 然后附加点将随着骨骼移动. 网格则随之自动
@@ -73,3 +161,4 @@ FK是正向运动学, IK是反向运动学. fk是一种自顶向下的思路, �
 - [[http://zh.esotericsoftware.com/spine-skeleton-viewer][skeleton viewer]] :: 骨骼浏览器, 快速查看spine动画骨骼数据
 - [[https://github.com/EsotericSoftware/spine-superspineboy][super spineboy]] :: 一个使用spine动画制作的游戏, 其源代码展示了如何使用spine动画
 
+  

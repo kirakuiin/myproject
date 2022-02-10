@@ -4,9 +4,9 @@
 #+LANGUAGE: zh-Cn
 #+TAGS: { Work : learn(l) work(w) }
 #+TAGS: { State : future(f) }
-#+TODO: TODO(t) SCH(s) WAIT(w@) | DONE(d) CANCELED(c@)
+#+TODO: TODO(t) SCH(s) WAIT(w@) DOING(i) | DONE(d) CANCELED(c@)
 #+COLUMNS: %25ITEM %TODO %17Effort(Estimated Effort){:} %CLOCKSUM
-#+PROPERTY: EffORT_all 0 0:15 0:30 1:00 2:00 4:00 8:00
+#+PROPERTY: EffORT_ALL 0 0:25 0:50 1:15 1:40 2:05 2:30 2:55 3:20
 #+PROPERTY: ATTACH
 #+CATEGORY: work
 #+OPTIONS: tex:t
@@ -279,9 +279,14 @@ SCHEDULED: <2022-01-16 周日 09:00 ++1d>
 SCHEDULED: <2022-02-12 周六 09:00 ++1d>
 ** DONE [#A] 阅读穷爸爸,富爸爸                                       :learn:
 CLOSED: [2022-02-08 周二 11:34] SCHEDULED: <2021-11-29 周一 09:34>
+:LOGBOOK:
+CLOCK: [2022-02-10 周四 15:06]--[2022-02-10 周四 15:31] =>  0:25
+:END:
 ** TODO [#A] 学习《代码之外的生存指南》                             :learn:
 SCHEDULED: <2021-11-20 周六 +1d>
 :LOGBOOK:
+CLOCK: [2022-02-10 周四 14:36]--[2022-02-10 周四 15:01] =>  0:25
+CLOCK: [2022-02-10 周四 14:06]--[2022-02-10 周四 14:31] =>  0:25
 CLOCK: [2021-12-13 周一 20:04]--[2021-12-13 周一 20:29] =>  0:25
 CLOCK: [2021-12-13 周一 15:08]--[2021-12-13 周一 15:33] =>  0:25
 CLOCK: [2021-12-11 周六 16:26]--[2021-12-11 周六 16:33] =>  0:07
@@ -289,10 +294,8 @@ CLOCK: [2021-12-11 周六 14:21]--[2021-12-11 周六 14:46] =>  0:25
 CLOCK: [2021-12-10 周五 20:27]--[2021-12-10 周五 20:52] =>  0:25
 CLOCK: [2021-12-10 周五 19:57]--[2021-12-10 周五 20:22] =>  0:25
 :END:
-** TODO [#A] 优化战斗代码, 完善文档                                    :m8:
-SCHEDULED: <2022-01-07 周五 10:28>
-** TODO [#A] 隔离自学                                                  :m8:
-DEADLINE: <2022-02-09 周三 18:00> SCHEDULED: <2022-02-08 周二 13:09>
+** DONE [#A] 隔离自学                                                  :m8:
+CLOSED: [2022-02-10 周四 14:27] DEADLINE: <2022-02-09 周三 18:00> SCHEDULED: <2022-02-08 周二 13:09>
 * Appointment
 * Project
 ** SCH [#A] 战斗表现学习                                               :m8:
