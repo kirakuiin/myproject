@@ -1,10 +1,10 @@
 #+STARTUP: INDENT NUM
 
-* 羁绊证换取推荐角色 [21/81]
+* 羁绊证换取推荐角色 [39/81]
 -----水属-----
 - [ ] :: 舞娘    \star\star\star\star\star
 - [X] :: 冰魔女  \star\star\star\star\star
-- [ ] :: 水坦克  \star\star\star\star\star
+- [X] :: 水坦克  \star\star\star\star\star
 - [ ] :: 水碳    \star\star\star\star\star
 - [ ] :: 水弹    \star\star\star\star\star
 - [ ] :: 水伞  \star\star\star\star
@@ -14,8 +14,8 @@
 - [ ] :: 飞燕  \star\star\star\star
 - [X] :: 水奶  \star\star\star\star
 - [ ] :: 水粉毛  \star\star\star\star
-- [ ] :: 水狼 \star\star\star
-- [ ] :: 酒奶 \star\star\star
+- [X] :: 水狼 \star\star\star
+- [X] :: 酒奶 \star\star\star
 - [X] :: 小水龙 \star\star\star
 
 -----火属-----
@@ -24,9 +24,9 @@
 - [X] :: 船长  \star\star\star\star\star
 - [X] :: 佐仓  \star\star\star\star\star
 - [X] :: 火狼  \star\star\star\star\star
-- [ ] :: 龙妈  \star\star\star\star
+- [X] :: 龙妈  \star\star\star\star
 - [X] :: 火忍  \star\star\star\star
-- [ ] :: 火弹 \star\star\star\star
+- [X] :: 火弹 \star\star\star\star
 - [ ] :: 火记者  \star\star\star\star
 - [X] :: 火巫女 \star\star\star
 - [X] :: 蘑菇 \star
@@ -40,13 +40,13 @@
 - [ ] :: 天狗  \star\star\star\star
 - [ ] :: 鸟人  \star\star\star\star
 - [X] :: 宗士郎 \star\star\star\star
-- [ ] :: 风猫猫 \star\star\star
+- [X] :: 风猫猫 \star\star\star
 - [X] :: 猫头鹰 \star\star
   
 -----雷属-----
 - [ ] :: 老男人  \star\star\star\star\star
 - [X] :: 雷弓  \star\star\star\star\star
-- [ ] :: 雷拳  \star\star\star\star\star
+- [X] :: 雷拳  \star\star\star\star\star
 - [ ] :: 雷警察  \star\star\star\star\star
 - [ ] :: 雷龙  \star\star\star\star
 - [ ] :: 化学家  \star\star\star\star
@@ -55,42 +55,42 @@
 - [ ] :: 黑机娘 \star\star\star\star
 - [X] :: 技工 \star\star\star
 - [ ] :: 雷奶 \star\star\star
-- [ ] :: 蜜蜂 \star\star\star
+- [X] :: 蜜蜂 \star\star\star
   
 -----光属-----
 - [ ] :: 神速  \star\star\star\star\star
-- [ ] :: 光炮  \star\star\star\star\star
+- [X] :: 光炮  \star\star\star\star\star
 - [ ] :: 礼黑  \star\star\star\star\star
 - [ ] :: 普黑  \star\star\star\star\star
-- [ ] :: 王子  \star\star\star\star\star
+- [X] :: 王子  \star\star\star\star\star
 - [X] :: 光弹  \star\star\star\star
 - [X] :: 奇术师  \star\star\star\star
 - [ ] :: 莓 \star\star\star\star
 - [ ] :: 小光炮 \star\star\star\star
-- [ ] :: 光奶 \star\star\star
+- [X] :: 光奶 \star\star\star
   
 -----暗属-----
-- [ ] :: 魔女  \star\star\star\star\star
+- [X] :: 魔女  \star\star\star\star\star
 - [X] :: 暗gay  \star\star\star\star\star
 - [ ] :: 堕天  \star\star\star\star\star
 - [ ] :: 蛇女  \star\star\star\star\star
 - [X] :: 暗女仆  \star\star\star\star
 - [ ] :: 棺材哥  \star\star\star\star
-- [ ] :: 太母 \star\star\star\star
-- [ ] :: 暗法 \star\star\star\star
+- [X] :: 太母 \star\star\star\star
+- [X] :: 暗法 \star\star\star\star
 - [ ] :: 暗铳 \star\star\star\star
-- [ ] :: 丽人 \star\star\star\star
+- [X] :: 丽人 \star\star\star\star
 - [ ] :: 露娜 \star\star\star\star
-- [ ] :: 镰刀妹 \star\star\star
+- [X] :: 镰刀妹 \star\star\star
 - [ ] :: 环子哥 \star\star\star
-- [ ] :: 暗兔子 \star\star\star
+- [X] :: 暗兔子 \star\star\star
 - [ ] :: 紫苑 \star\star\star
 
 -----工具人(只需部分能力)-----
 - [ ] :: 歌姬 \star\star\star\star
 - [ ] :: 城管 \star\star\star\star
 - [ ] :: 老猫 \star\star\star\star
-- [ ] :: 男主 \star\star\star\star
+- [X] :: 男主 \star\star\star\star
 - [ ] :: 泡泡 \star\star\star\star
 - [ ] :: 不死王 \star\star\star
 - [ ] :: 火医生 \star\star\star
