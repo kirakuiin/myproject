@@ -1,12 +1,17 @@
 #+STARTUP: INDENT OVERVIEW
 
 * TODO 单词记录
-SCHEDULED: <2024-12-06 周五 +1y>
+SCHEDULED: <2025-12-06 周六 +1y>
   :PROPERTIES:
   :STYLE:    habit
   :LOGGING:  logrepeat DONE(@)
-  :LAST_REPEAT: [2021-12-08 周三 10:55]
+  :LAST_REPEAT: [2022-02-21 周一 01:34]
   :END:
+  - State "DONE"       from "TODO"       [2022-02-21 周一 01:34] \\
+    经济学术语:
+    Yield: 利率
+    Discount rate: 贴现率
+    Monetary Policy: 货币政策
   - State "DONE"       from "TODO"       [2021-12-08 周三 10:55] \\
     Stimulate: 刺激
     Contraction: 收缩
