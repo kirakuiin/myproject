@@ -13,4 +13,64 @@
   券会变得更有价值，相反，当新债券的收益率上升时，现有债券的价格就会下跌，以与
   对新债券的需求增加进行竞争。
   #+end_quote
+
+* 股票回报和货币政策
+
+Historically, stock returns have coincided with changing monetary policy.
+
+Throughout history, the economy and the stock market have experienced cycles, with declines and rallies succeeding each other, as illustrated in the image. The Federal Reserve can influence the direction of the market by changing the federal-funds rate. In a recession, the Fed’s response is usually to decrease the federal-funds rate, which is an expansionary monetary policy. A lower federal-funds rate is achieved through a process of buying government securities in exchange for cash, which is an increase in the money supply. With lower rates and a greater money supply, banks are more likely to lend and people more likely to borrow, which in turn stimulates investment and consumer spending, thus increasing economic activity. When the economy becomes overheated in an economic boom, the Fed typically reverses its stance, raising the federal-funds rate by selling government securities and restricting the money supply, which is a contractionary monetary policy. With higher rates, banks generally lend less, people are less likely to borrow, and economic activity slows.
+
+
+View larger image
+
+The graph illustrates the relationship between Fed monetary policy, market returns, and recessionary periods. Historically, recessionary periods have been marked by stock market underperformance and a lowering of the federal-funds rate. When the economy is doing poorly, the Fed typically lowers the Fed funds rate, increasing the money supply, and spurring economic activity. Conversely, the end of recessionary periods has been marked by stock market outperformance and an eventual increase in the federal-funds rate as the economic boom is reined in by a reduction in the money supply. In general, stock market outperformance follows periods of expansionary monetary policy and stock market underperformance follows periods of contractionary policy. Of course, it is difficult to predict the exact duration of economic cycles, but for the most part, the Fed’s actions and consequent rate movements coincide with up and down swings in stock performance.
+
+Stocks are not guaranteed and have been more volatile than the other asset classes.
+* 各种资产类别和市场的相关性
+Correlation is a measure of the degree to which the movements of two investments are related; the higher the correlation, the more related the performance of the investments. In a downturn, an investor would like, if possible, to be invested in the asset classes least correlated with the market. During the Great Recession, investors saw sharp declines in their portfolios, declines that diversification should have reduced. The magnitude of these losses shook many investors’ faith in the benefits of diversification. It may look like a portfolio is diversified over the long term, but a severe shock to the market can alter traditional correlation structures and expose weaknesses in diversification plans. The table shows the correlation of various asset classes with the market for three time periods: before the most recent recession, during the most recent recession, and for the entire period since January 1980 until December 2020. Since the market collapsed in 2007, the correlations of many asset classes changed significantly, and the diversification benefit they were supposed to offer was reduced. For example, diversifying into commodities, international stocks, or REITs would not have been as effective during the recession as it was beforehand. However, a few correlations stayed in the same range, and some actually declined. For example, gold and intermediate-term government bonds started moving opposite the market during the recession.
+
+
+View larger image
+
+Diversification does not eliminate the risk of investment losses. Holding a portfolio of securities for the long term does not ensure a profitable outcome, and investing in securities always involves the risk of loss. Correlation is classified into high, medium, and low categories by the monthly annualized correlation coefficient. Low correlation assets had a correlation coefficient less than or equal to 0.33; medium correlation assets were between 0.34 and 0.66; and high correlation assets were between 0.67 and 1.00. Transactions in commodities carry a high degree of risk and a substantial potential for loss. In light of the risks, you should undertake commodities transactions only if you understand the nature of the contracts (and contractual relationships) you are entering into and the extent of your exposure to risk.
+
+Risks of commodities
+Trading in commodities is not suitable for many members of the public. You should carefully consider whether this type of trading is appropriate for you in light of your experience, objectives, financial resources and other relevant circumstances. Gold/commodity investments will be subject to the risks of investing in physical commodities, including regulatory, economic and political developments, weather events, natural disasters, and market disruptions. Exposure to the commodities markets may subject the investment to greater volatility than investments in more traditional securities, such as stocks and bonds. International investments involve special risks such as fluctuations in currency, foreign taxation, economic and political risks, liquidity risks, and differences in accounting and financial standards.
+
+Risks of REITs, stocks, and bonds
+REITs are subject to certain risks, such as risks associated with general and local economic conditions, interest rate fluctuation, credit risks, liquidity risks and corporate structure. Small stocks are more volatile than large stocks, are subject to significant price fluctuations, business risks, and are thinly traded. Government bonds and Treasury bills are guaranteed by the full faith and credit of the United States government as to the timely payment of principal and interest, while stocks, REITs, commodities, gold and corporate bonds are not guaranteed. With corporate bonds, an investor is a creditor of the corporation and the bond is subject to default risk.
+
+* 金融危机之后的美国市场复苏, 平衡的投资组合
+Stock prices suffer during financial crises. However, a balanced portfolio can help mitigate some of the risk.
+
+
+View larger image
+
+This image illustrates the cumulative returns of a balanced (60% stock/40% bond) portfolio after six historical U.S. financial crises. In the short term, uncertainty from such external shocks can create sudden drops in value. For example, the balanced portfolio posted a negative return in the month following three of the six analyzed crises. Over longer periods of time, however, returns were much more attractive, and investors who stayed the course reaped considerable rewards.
+
+Beware of fear
+Fear and uncertainty might lead investors to sell their investments during tough times, putting downward pressure on prices. Trading because of these emotions can be detrimental to a portfolio’s value. By selling during downward price pressures, investors might realize short-term losses. Furthermore, this is compounded as investors wait and hesitate to get back into the market, possibly missing some or all of the potential recovery. The lesson here is that patience can pay dividends.
+
+THINGS TO KNOW
+The lesson here is that patience can pay dividends.
+Diversification is a valuable strategy, but it has its limits
+Diversification can also limit losses during turbulent market conditions. One of the main advantages of diversification is reducing risk over the long run, not necessarily increasing return. While stocks offer the potential for higher returns, the downside risk can also be extreme. A diversified portfolio can help mitigate such extreme swings in value.
+
+Diversification does not eliminate the risk of experiencing investment losses. Government bonds are guaranteed by the full faith and credit of the U.S. government as to the timely payment of principal and interest, while returns and principal invested in stocks are not guaranteed. Stocks have been more volatile than bonds.
+* 金融危机之后的美国市场复苏, 全股票投资组合
+Stock prices suffer during financial crises, but they typically recover over time.
+
+
+View larger image
+
+This image illustrates the cumulative returns of an all-stock portfolio after six historical U.S. financial crises. In the short term, uncertainty from such external shocks can create sudden drops in value. For example, the all-stock portfolio posted a negative return in the month following four of the six analyzed crises. Over longer periods of time, however, returns were much more attractive, and investors who stayed the course reaped considerable rewards.
+
+Patience is a virtue in investing
+Fear and uncertainty might lead investors to sell their investments during tough times, putting downward pressure on prices. Trading because of these emotions can be detrimental to a portfolio’s value. By selling during downward price pressures, investors might realize short-term losses. Furthermore, this is compounded as investors wait and hesitate to get back into the market, possibly missing some or all of the potential recovery. The lesson here is that patience can pay dividends.
+
+Returns and principal invested in stocks are not guaranteed.
+* 总结
+Skillful use of balancing and correlation can reduce the risk of loss during a market downturn. Different investments behave differently in different market conditions, though in rare cases they can behave contrary to how we would expect.
+
+As seen in this course, a balanced portfolio can weather the test of time over the long term. As well, an all-stock portfolio also can. The key is patience.
   
