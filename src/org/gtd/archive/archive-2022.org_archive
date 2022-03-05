@@ -136,3 +136,291 @@ CLOCK: [2022-01-18 周二 09:36]--[2022-01-18 周二 10:01] =>  0:25
    :END:
 
 * begin: <2022-02-01 周二>
+
+* Archive                                                           :ARCHIVE:
+** DONE [#A] 阅读穷爸爸,富爸爸                                        :learn:
+   CLOSED: [2022-02-08 周二 11:34] SCHEDULED: <2021-11-29 周一 09:34>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-02-28 周一 13:27
+   :ARCHIVE_FILE: ~/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+   :LOGBOOK:
+   CLOCK: [2022-02-10 周四 15:06]--[2022-02-10 周四 15:31] =>  0:25
+   :END:
+
+** DONE [#A] 隔离自学                                                    :m8:
+   CLOSED: [2022-02-10 周四 14:27] DEADLINE: <2022-02-09 周三 18:00> SCHEDULED: <2022-02-08 周二 13:09>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-02-28 周一 13:27
+   :ARCHIVE_FILE: ~/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+
+** DONE [#A] 优化战斗退出                                                :m8:
+   CLOSED: [2022-02-15 周二 10:44] SCHEDULED: <2022-02-15 周二 09:00>
+   :PROPERTIES:
+   :Effort:   0:50
+   :ARCHIVE_TIME: 2022-02-28 周一 13:27
+   :ARCHIVE_FILE: ~/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+   :LOGBOOK:
+   CLOCK: [2022-02-17 周四 11:17]--[2022-02-17 周四 11:42] =>  0:25
+   CLOCK: [2022-02-17 周四 10:47]--[2022-02-17 周四 11:12] =>  0:25
+   CLOCK: [2022-02-17 周四 10:17]--[2022-02-17 周四 10:42] =>  0:25
+   CLOCK: [2022-02-15 周二 10:16]--[2022-02-15 周二 10:41] =>  0:25
+   CLOCK: [2022-02-15 周二 09:46]--[2022-02-15 周二 10:11] =>  0:25
+   :END:
+
+** DONE [#A] 不上阵英雄无法开始战斗                                      :m8:
+   CLOSED: [2022-02-17 周四 14:17] SCHEDULED: <2022-02-17 周四 13:15>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-02-28 周一 13:27
+   :ARCHIVE_FILE: ~/org/gtd/work.org
+   :ARCHIVE_OLPATH: Next Action/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:
+   :LOGBOOK:
+   CLOCK: [2022-02-17 周四 13:35]--[2022-02-17 周四 14:00] =>  0:25
+   :END:
+
+* Archive                                                           :ARCHIVE:
+** DONE [#A] 战斗表现学习                                                :m8:
+   CLOSED: [2022-02-19 周六 13:42] SCHEDULED: <2021-10-15 周五 09:00> DEADLINE: <2021-10-23 周六 18:00>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2022-02-28 周一 13:27
+   :ARCHIVE_FILE: ~/org/gtd/work.org
+   :ARCHIVE_OLPATH: Project/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:                          
+*** DONE 法术编辑器, 动画编辑器的使用方法
+    CLOSED: [2021-10-19 周二 20:46] SCHEDULED: <2021-10-15 周五 17:00>
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:                          
+*** DONE 导表定义技能方式和其表现逻辑
+    CLOSED: [2021-11-01 周一 14:11] SCHEDULED: <2021-10-19 周二 20:46>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE spine动画
+    CLOSED: [2022-02-19 周六 13:42] DEADLINE: <2022-02-09 周三> SCHEDULED: <2022-02-08 周二>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+    - Note taken on [2022-02-19 周六 13:42] \\
+      [[file:../ref/duoyi/spine动画基础.org][spine动画基础]]
+
+** DONE [#A] 实现战斗日志浏览器                                          :m8:
+   CLOSED: [2022-02-19 周六 13:44] SCHEDULED: <2022-02-11 周五 09:18> DEADLINE: <2022-03-04 周五 09:19>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2022-02-28 周一 13:27
+   :ARCHIVE_FILE: ~/org/gtd/work.org
+   :ARCHIVE_OLPATH: Project/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:                          
+*** DONE 构思需求, 总结浏览器需要的功能
+    CLOSED: [2022-02-11 周五 10:11] SCHEDULED: <2022-02-11 周五 09:30>
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :Effort:   0:25
+    :END:                          
+    :LOGBOOK:
+    CLOCK: [2022-02-11 周五 10:11]--[2022-02-11 周五 10:36] =>  0:25
+    :END:
+*** DONE 设计界面
+    CLOSED: [2022-02-11 周五 11:33] SCHEDULED: <2022-02-11 周五 10:11>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :Effort:   0:50
+    :END:
+    :LOGBOOK:
+    CLOCK: [2022-02-11 周五 10:47]--[2022-02-11 周五 11:12] =>  0:25
+    CLOCK: [2022-02-11 周五 10:17]--[2022-02-11 周五 10:42] =>  0:25
+    :END:
+*** DONE 设计界面原型
+    CLOSED: [2022-02-12 周六 14:54] SCHEDULED: <2022-02-11 周五 13:15>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :Effort:   1:40
+    :END:
+    :LOGBOOK:
+    CLOCK: [2022-02-12 周六 13:51]--[2022-02-12 周六 14:16] =>  0:25
+    CLOCK: [2022-02-12 周六 13:16]--[2022-02-12 周六 13:41] =>  0:25
+    CLOCK: [2022-02-12 周六 11:09]--[2022-02-12 周六 11:34] =>  0:25
+    CLOCK: [2022-02-12 周六 10:39]--[2022-02-12 周六 11:04] =>  0:25
+    CLOCK: [2022-02-11 周五 15:50]--[2022-02-11 周五 16:15] =>  0:25
+    CLOCK: [2022-02-11 周五 15:20]--[2022-02-11 周五 15:45] =>  0:25
+    CLOCK: [2022-02-11 周五 14:50]--[2022-02-11 周五 15:15] =>  0:25
+    CLOCK: [2022-02-11 周五 14:20]--[2022-02-11 周五 14:45] =>  0:25
+    CLOCK: [2022-02-11 周五 13:45]--[2022-02-11 周五 14:10] =>  0:25
+    CLOCK: [2022-02-11 周五 13:15]--[2022-02-11 周五 13:40] =>  0:25
+    :END:
+*** DONE 设计数据结构
+    CLOSED: [2022-02-14 周一 14:19] SCHEDULED: <2022-02-12 周六 14:54>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :Effort:   1:40
+    :END:
+    :LOGBOOK:
+    CLOCK: [2022-02-14 周一 13:38]--[2022-02-14 周一 14:03] =>  0:25
+    CLOCK: [2022-02-14 周一 11:17]--[2022-02-14 周一 11:42] =>  0:25
+    CLOCK: [2022-02-14 周一 10:47]--[2022-02-14 周一 11:12] =>  0:25
+    :END:
+*** DONE 实现数据层
+    CLOSED: [2022-02-15 周二 14:04] SCHEDULED: <2022-02-14 周一 14:19>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :Effort:   3:20
+    :END:
+    :LOGBOOK:
+    CLOCK: [2022-02-15 周二 13:09]--[2022-02-15 周二 13:34] =>  0:25
+    CLOCK: [2022-02-15 周二 11:15]--[2022-02-15 周二 11:40] =>  0:25
+    CLOCK: [2022-02-15 周二 10:45]--[2022-02-15 周二 11:10] =>  0:25
+    CLOCK: [2022-02-14 周一 16:57]--[2022-02-14 周一 17:22] =>  0:25
+    CLOCK: [2022-02-14 周一 16:27]--[2022-02-14 周一 16:52] =>  0:25
+    CLOCK: [2022-02-14 周一 15:49]--[2022-02-14 周一 16:15] =>  0:26
+    CLOCK: [2022-02-14 周一 14:55]--[2022-02-14 周一 15:20] =>  0:25
+    CLOCK: [2022-02-14 周一 14:25]--[2022-02-14 周一 14:50] =>  0:25
+    :END:
+*** DONE 实现界面层
+    CLOSED: [2022-02-19 周六 13:41] SCHEDULED: <2022-02-15 周二 14:04>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :Effort:   6:40
+    :END:
+    - Note taken on [2022-02-16 周三 19:39] \\
+      优化:
+      1. +滚动框自动定位到高亮元素所在区间+
+      2. +最后一个浏览框如果没有子节点信息就显示详细信息+
+      3. +自动保存浏览模式+
+    :LOGBOOK:
+    CLOCK: [2022-02-18 周五 20:37]--[2022-02-18 周五 21:02] =>  0:25
+    CLOCK: [2022-02-18 周五 20:02]--[2022-02-18 周五 20:27] =>  0:25
+    CLOCK: [2022-02-18 周五 19:32]--[2022-02-18 周五 19:57] =>  0:25
+    CLOCK: [2022-02-18 周五 19:02]--[2022-02-18 周五 19:27] =>  0:25
+    CLOCK: [2022-02-18 周五 17:22]--[2022-02-18 周五 17:47] =>  0:25
+    CLOCK: [2022-02-18 周五 16:52]--[2022-02-18 周五 17:17] =>  0:25
+    CLOCK: [2022-02-18 周五 16:21]--[2022-02-18 周五 16:47] =>  0:26
+    CLOCK: [2022-02-18 周五 15:31]--[2022-02-18 周五 15:56] =>  0:25
+    CLOCK: [2022-02-18 周五 14:56]--[2022-02-18 周五 15:21] =>  0:25
+    CLOCK: [2022-02-18 周五 13:47]--[2022-02-18 周五 14:12] =>  0:25
+    CLOCK: [2022-02-18 周五 13:17]--[2022-02-18 周五 13:42] =>  0:25
+    CLOCK: [2022-02-18 周五 11:17]--[2022-02-18 周五 11:42] =>  0:25
+    CLOCK: [2022-02-18 周五 10:21]--[2022-02-18 周五 10:46] =>  0:25
+    CLOCK: [2022-02-18 周五 09:51]--[2022-02-18 周五 10:16] =>  0:25
+    CLOCK: [2022-02-17 周四 19:58]--[2022-02-17 周四 20:23] =>  0:25
+    CLOCK: [2022-02-17 周四 19:28]--[2022-02-17 周四 19:53] =>  0:25
+    CLOCK: [2022-02-17 周四 15:21]--[2022-02-17 周四 15:46] =>  0:25
+    CLOCK: [2022-02-17 周四 14:51]--[2022-02-17 周四 15:16] =>  0:25
+    CLOCK: [2022-02-17 周四 14:21]--[2022-02-17 周四 14:46] =>  0:25
+    CLOCK: [2022-02-17 周四 13:04]--[2022-02-17 周四 13:29] =>  0:25
+    CLOCK: [2022-02-16 周三 19:07]--[2022-02-16 周三 19:32] =>  0:25
+    CLOCK: [2022-02-16 周三 15:46]--[2022-02-16 周三 16:11] =>  0:25
+    CLOCK: [2022-02-16 周三 14:50]--[2022-02-16 周三 15:15] =>  0:25
+    CLOCK: [2022-02-16 周三 14:20]--[2022-02-16 周三 14:45] =>  0:25
+    CLOCK: [2022-02-16 周三 13:37]--[2022-02-16 周三 14:02] =>  0:25
+    CLOCK: [2022-02-16 周三 13:07]--[2022-02-16 周三 13:32] =>  0:25
+    CLOCK: [2022-02-16 周三 10:55]--[2022-02-16 周三 11:20] =>  0:25
+    CLOCK: [2022-02-16 周三 10:25]--[2022-02-16 周三 10:50] =>  0:25
+    CLOCK: [2022-02-16 周三 09:37]--[2022-02-16 周三 10:02] =>  0:25
+    CLOCK: [2022-02-16 周三 09:07]--[2022-02-16 周三 09:32] =>  0:25
+    CLOCK: [2022-02-15 周二 20:16]--[2022-02-15 周二 20:41] =>  0:25
+    CLOCK: [2022-02-15 周二 19:45]--[2022-02-15 周二 20:10] =>  0:25
+    CLOCK: [2022-02-15 周二 15:01]--[2022-02-15 周二 15:26] =>  0:25
+    CLOCK: [2022-02-15 周二 14:31]--[2022-02-15 周二 14:56] =>  0:25
+    CLOCK: [2022-02-15 周二 13:39]--[2022-02-15 周二 14:04] =>  0:25
+    :END:
+*** DONE 测试
+    CLOSED: [2022-02-19 周六 13:44] SCHEDULED: <2022-02-19 周六 13:41>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+
+** DONE [#A] 优化状态显示                                                :m8:
+   CLOSED: [2022-02-23 周三 15:04] SCHEDULED: <2022-02-21 周一 09:00> DEADLINE: <2022-02-24 周四 21:00>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2022-02-28 周一 13:27
+   :ARCHIVE_FILE: ~/org/gtd/work.org
+   :ARCHIVE_OLPATH: Project/Archive
+   :ARCHIVE_CATEGORY: work
+   :ARCHIVE_TODO: DONE
+   :ARCHIVE_ITAGS: ARCHIVE
+   :END:                          
+*** DONE 支持gm切换部分状态显示
+    CLOSED: [2022-02-21 周一 14:04] SCHEDULED: <2022-02-21 周一 11:00>
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :Effort:   3:20
+    :END:                          
+    :LOGBOOK:
+    CLOCK: [2022-02-21 周一 13:39]--[2022-02-21 周一 14:04] =>  0:25
+    CLOCK: [2022-02-21 周一 13:09]--[2022-02-21 周一 13:34] =>  0:25
+    CLOCK: [2022-02-21 周一 11:16]--[2022-02-21 周一 11:41] =>  0:25
+    CLOCK: [2022-02-21 周一 10:46]--[2022-02-21 周一 11:11] =>  0:25
+    CLOCK: [2022-02-21 周一 10:16]--[2022-02-21 周一 10:41] =>  0:25
+    :END:
+*** DONE 新增状态信息栏
+    CLOSED: [2022-02-23 周三 09:18] SCHEDULED: <2022-02-21 周一 14:04>
+    :PROPERTIES:
+    :Effort:   6:40
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+    :LOGBOOK:
+    CLOCK: [2022-02-22 周二 19:58]--[2022-02-22 周二 20:23] =>  0:25
+    CLOCK: [2022-02-22 周二 19:23]--[2022-02-22 周二 19:48] =>  0:25
+    CLOCK: [2022-02-22 周二 17:18]--[2022-02-22 周二 17:43] =>  0:25
+    CLOCK: [2022-02-22 周二 16:48]--[2022-02-22 周二 17:13] =>  0:25
+    CLOCK: [2022-02-22 周二 15:30]--[2022-02-22 周二 15:55] =>  0:25
+    CLOCK: [2022-02-22 周二 15:00]--[2022-02-22 周二 15:25] =>  0:25
+    CLOCK: [2022-02-22 周二 14:20]--[2022-02-22 周二 14:50] =>  0:30
+    CLOCK: [2022-02-22 周二 13:37]--[2022-02-22 周二 14:02] =>  0:25
+    CLOCK: [2022-02-22 周二 13:07]--[2022-02-22 周二 13:32] =>  0:25
+    CLOCK: [2022-02-22 周二 11:17]--[2022-02-22 周二 11:42] =>  0:25
+    CLOCK: [2022-02-22 周二 10:46]--[2022-02-22 周二 11:11] =>  0:25
+    CLOCK: [2022-02-22 周二 10:16]--[2022-02-22 周二 10:41] =>  0:25
+    CLOCK: [2022-02-22 周二 09:16]--[2022-02-22 周二 09:41] =>  0:25
+    CLOCK: [2022-02-21 周一 17:08]--[2022-02-21 周一 17:33] =>  0:25
+    CLOCK: [2022-02-21 周一 16:38]--[2022-02-21 周一 17:03] =>  0:25
+    CLOCK: [2022-02-21 周一 16:08]--[2022-02-21 周一 16:33] =>  0:25
+    CLOCK: [2022-02-21 周一 15:33]--[2022-02-21 周一 15:58] =>  0:25
+    CLOCK: [2022-02-21 周一 15:03]--[2022-02-21 周一 15:28] =>  0:25
+    :END:
+*** DONE 测试
+    CLOSED: [2022-02-23 周三 15:04] SCHEDULED: <2022-02-23 周三 09:18>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :Effort:   3:20
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+    :LOGBOOK:
+    CLOCK: [2022-02-23 周三 14:37]--[2022-02-23 周三 15:02] =>  0:25
+    CLOCK: [2022-02-23 周三 13:55]--[2022-02-23 周三 14:20] =>  0:25
+    CLOCK: [2022-02-23 周三 13:30]--[2022-02-23 周三 13:55] =>  0:25
+    CLOCK: [2022-02-23 周三 13:05]--[2022-02-23 周三 13:30] =>  0:25
+    CLOCK: [2022-02-23 周三 11:07]--[2022-02-23 周三 11:32] =>  0:25
+    CLOCK: [2022-02-23 周三 10:37]--[2022-02-23 周三 11:02] =>  0:25
+    CLOCK: [2022-02-23 周三 09:48]--[2022-02-23 周三 10:13] =>  0:25
+    CLOCK: [2022-02-23 周三 09:18]--[2022-02-23 周三 09:43] =>  0:25
+    :END:
