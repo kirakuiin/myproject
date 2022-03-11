@@ -355,7 +355,8 @@ zz/
 此时main和test模块虽然导入了一个模块, 随着import语句不同, 会在sys.modules里面产生了不同的模块对象, 因此可以得出以下结论:
 1. 禁止使用隐式相对导入, 在python2.7中可以通过 ~from __future__ import absolute_import~ 来禁止隐式相对导入
 2. 使用绝对导入的时候使用相同的前缀, 即都使用import yy.xxx的形式, 要么都是用zz.yy.xxx
-3. 包外对象导入包内模块时, 也使用绝对导入形式, 不要使用标准导入
+3. 更进一步的说, 之所以能用不同前缀的绝对导入, 是因为yy既是包里的一部分, 又在sys.path中, 所以父包如果在sys.path, 那么子包就不应该在sys.path里面
+4. 包外对象导入包内模块时, 也使用绝对导入形式, 不要使用标准导入
 
 ** python from import 问题
 你以为from xx import yy导入的量会和原本模块的xx.yy同步变化, 实际上并没有, 因为:

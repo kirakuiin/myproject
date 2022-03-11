@@ -1,12 +1,17 @@
 #+STARTUP: INDENT OVERVIEW
 
 * TODO 单词记录
-SCHEDULED: <2025-12-06 周六 +1y>
+SCHEDULED: <2028-12-06 周三 +1y>
   :PROPERTIES:
   :STYLE:    habit
   :LOGGING:  logrepeat DONE(@)
-  :LAST_REPEAT: [2022-02-21 周一 01:34]
+  :LAST_REPEAT: [2022-03-08 周二 09:36]
   :END:
+  - State "DONE"       from "TODO"       [2022-03-08 周二 09:36] \\
+    substantial: 重大的
+    subject: 受制于
+    extent: 规模
+    in light of: 鉴于
   - State "DONE"       from "TODO"       [2022-02-21 周一 01:34] \\
     经济学术语:
     Yield: 利率

@@ -28,18 +28,29 @@
   股票没有保证，并且比其他资产类别波动更大。
   #+end_quote
 * 各种资产类别和市场的相关性
-Correlation is a measure of the degree to which the movements of two investments are related; the higher the correlation, the more related the performance of the investments. In a downturn, an investor would like, if possible, to be invested in the asset classes least correlated with the market. During the Great Recession, investors saw sharp declines in their portfolios, declines that diversification should have reduced. The magnitude of these losses shook many investors’ faith in the benefits of diversification. It may look like a portfolio is diversified over the long term, but a severe shock to the market can alter traditional correlation structures and expose weaknesses in diversification plans. The table shows the correlation of various asset classes with the market for three time periods: before the most recent recession, during the most recent recession, and for the entire period since January 1980 until December 2020. Since the market collapsed in 2007, the correlations of many asset classes changed significantly, and the diversification benefit they were supposed to offer was reduced. For example, diversifying into commodities, international stocks, or REITs would not have been as effective during the recession as it was beforehand. However, a few correlations stayed in the same range, and some actually declined. For example, gold and intermediate-term government bonds started moving opposite the market during the recession.
-
-
-View larger image
-
-Diversification does not eliminate the risk of investment losses. Holding a portfolio of securities for the long term does not ensure a profitable outcome, and investing in securities always involves the risk of loss. Correlation is classified into high, medium, and low categories by the monthly annualized correlation coefficient. Low correlation assets had a correlation coefficient less than or equal to 0.33; medium correlation assets were between 0.34 and 0.66; and high correlation assets were between 0.67 and 1.00. Transactions in commodities carry a high degree of risk and a substantial potential for loss. In light of the risks, you should undertake commodities transactions only if you understand the nature of the contracts (and contractual relationships) you are entering into and the extent of your exposure to risk.
-
-Risks of commodities
-Trading in commodities is not suitable for many members of the public. You should carefully consider whether this type of trading is appropriate for you in light of your experience, objectives, financial resources and other relevant circumstances. Gold/commodity investments will be subject to the risks of investing in physical commodities, including regulatory, economic and political developments, weather events, natural disasters, and market disruptions. Exposure to the commodities markets may subject the investment to greater volatility than investments in more traditional securities, such as stocks and bonds. International investments involve special risks such as fluctuations in currency, foreign taxation, economic and political risks, liquidity risks, and differences in accounting and financial standards.
-
-Risks of REITs, stocks, and bonds
-REITs are subject to certain risks, such as risks associated with general and local economic conditions, interest rate fluctuation, credit risks, liquidity risks and corporate structure. Small stocks are more volatile than large stocks, are subject to significant price fluctuations, business risks, and are thinly traded. Government bonds and Treasury bills are guaranteed by the full faith and credit of the United States government as to the timely payment of principal and interest, while stocks, REITs, commodities, gold and corporate bonds are not guaranteed. With corporate bonds, an investor is a creditor of the corporation and the bond is subject to default risk.
+相关度是用来衡量两种投资变化相关程度的指标, 相关性越高, 投资表现的相关性就越高.
+在萧条时期, 投资者都希望自己的投资类别和市场的相关性越小越好. 但是, 很多投资者
+使用分散投资组合, 结果也有很大的亏损.
+原因在于多元化投资是有弱点的, 很多长期看起来多元化的投资, 在遭受重大市场冲击后,
+它们的结构可能会发生变化, 相关性可能会提高, 此时多元化已经不那么"多元"了.
+下表展示了三个时间段内资产类别和市场的相关性:
+[[file:../../../res/image/03.png]]
+所以分散投资不是银弹, 长期证券也可能亏损.
+** 相关系数
+按照年月化相关系数, 相关性可以分为三类:
+- 低相关度: 0-0.33
+- 中相关度: 0.33-0.66
+- 高相关度: 0.66-1
+** 商品交易的风险
+因为商品交易具有高风险和潜在的巨大损失, 所以除非您真的了解您的交易及合约, 以及您
+面临的风险. 否则不要进行商品交易.
+商品交易面临的风险包括但不限于: 监管, 经济和政治情况, 天气, 自然灾害, 市场中断,
+如果是国际商品交易还会面临货币波动, 关税, 流动性, 审计和财务标准差异等风险
+** 房地产信托, 股票和证券的风险
+- REIT的风险是固定的, 比如本地经济情况, 利率波动, 信用风险, 流动性等等
+- 小型股票比大型股票更加容易变化, 都受到价格波动, 商业风险, 交易量小等因素的影响
+- 政府证券有充分的信用担保, 因为政府会定期支付本金和利息
+- 投资者作为债权人时, 公司证券存在违约的风险
 
 * 金融危机之后的美国市场复苏, 平衡的投资组合
 Stock prices suffer during financial crises. However, a balanced portfolio can help mitigate some of the risk.
