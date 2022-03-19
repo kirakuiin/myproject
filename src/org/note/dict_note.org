@@ -1,12 +1,17 @@
 #+STARTUP: INDENT OVERVIEW
 
 * TODO 单词记录
-SCHEDULED: <2028-12-06 周三 +1y>
+SCHEDULED: <2029-12-06 周四 +1y>
   :PROPERTIES:
   :STYLE:    habit
   :LOGGING:  logrepeat DONE(@)
-  :LAST_REPEAT: [2022-03-08 周二 09:36]
+  :LAST_REPEAT: [2022-03-14 周一 09:45]
   :END:
+  - State "DONE"       from "TODO"       [2022-03-14 周一 09:45] \\
+    mitigate: 减轻
+    reap: 收割
+    hesitate: 犹豫
+    detrimental: 减少
   - State "DONE"       from "TODO"       [2022-03-08 周二 09:36] \\
     substantial: 重大的
     subject: 受制于

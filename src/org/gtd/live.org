@@ -18,16 +18,18 @@ DEADLINE: <2022-04-12 周二 23:00 +1m> SCHEDULED: <2022-04-12 周二 09:00 +1m>
 :LOGGING: DONE(@)
 :END:
 - State "DONE"       from "TODO"       [2022-03-13 周日 08:57] \\
-| date         | purpose    | value |
-|--------------+------------+-------|
-| [2022-03-12] | house rent | -2000 |
-| [2022-03-12] | takeout    |   -65 |
-| [2022-03-13] | takeout    |   -60 |
-| [2022-03-13] | shopping   |    28 |
-|              |            | -2097 |
-#+TBLFM: @6$3=vsum(@2$3..@-1$3)
+| date         | purpose     | value |
+|--------------+-------------+-------|
+| [2022-03-12] | house rent  | -2000 |
+| [2022-03-12] | takeout     |   -65 |
+| [2022-03-13] | takeout     |   -60 |
+| [2022-03-13] | shopping    |    28 |
+| [2022-03-14] | energy bill |  -100 |
+| [2022-03-15] | shopping    |   -20 |
+| [2022-03-18] | shopping    |   -18 |
+|              |             | -2235 |
+#+TBLFM: @>$3=vsum(@2$3..@-1$3)
 - State "DONE"       from "TODO"       [2022-02-10 周四 09:05] \\
-#+TBLFM: @34$3=vsum(@3$3..@-1$3)
 house rent: 2000, game: 445,  takeout: 284, fee: 218, shopping: 1373, commute: 37
 - State "DONE"       from "TODO"       [2021-10-12 周二 09:44] \\
   1. 房租2000, 电费200(空调+电脑), 物业+水117, 网费100
@@ -40,12 +42,19 @@ house rent: 2000, game: 445,  takeout: 284, fee: 218, shopping: 1373, commute: 3
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2022-03-21 周一 23:00 ++1w> SCHEDULED: <2022-03-18 周五 18:00 ++1w>
+DEADLINE: <2022-03-28 周一 23:00 ++1w> SCHEDULED: <2022-03-25 周五 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-03-11 周五 20:49]
+:LAST_REPEAT: [2022-03-19 周六 16:15]
 :END:
+- State "DONE"       from "TODO"       [2022-03-19 周六 16:15] \\
+  1. 实现了一个自动设置大小自动调整缩放的编辑器组件
+  2. 编写了编辑器组件和控件具体扩展过程的文档
+  3. 对M8现有的编辑器扩展流程编写文档进行说明
+  4. 实现了第一回合前所有技能同步释放
+  ------------------------------------------------
+  1. 环真好玩捏
 - State "DONE"       from "TODO"       [2022-03-11 周五 20:49] \\
   1. 初步完成了ui编辑器自定义控件的研究
      - 搭建了M8的自定义控件基本框架
@@ -775,13 +784,14 @@ CLOCK: [2022-02-28 周一 13:20]--[2022-02-28 周一 13:45] =>  0:25
   2. 完成了多益的入职培训
   3. 找到了一处还不错的房子
   4. 认识了很多很棒的同事
-** TODO [#A] 每周学习晨星网投资教程一篇 [1/1]                       :event:
-DEADLINE: <2022-03-20 周日 23:59 +1w> SCHEDULED: <2022-03-14 周一 09:00 +1w>
+** TODO [#A] 每周学习晨星网投资教程一篇 [0/1]                       :event:
+DEADLINE: <2022-03-27 周日 23:59 +1w> SCHEDULED: <2022-03-21 周一 09:00 +1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-03-07 周一 15:39]
+:LAST_REPEAT: [2022-03-14 周一 10:39]
 :END:
+- State "DONE"       from "TODO"       [2022-03-14 周一 10:39]
 - State "DONE"       from "TODO"       [2022-03-07 周一 15:39]
 :LOGBOOK:
 CLOCK: [2022-03-07 周一 15:27]--[2022-03-07 周一 15:39] =>  0:12
@@ -790,7 +800,7 @@ CLOCK: [2022-03-07 周一 14:27]--[2022-03-07 周一 14:52] =>  0:25
 :END:
 - State "DONE"       from "TODO"       [2022-03-06 周日 23:20]
 - State "DONE"       from "TODO"       [2022-02-28 周一 09:20]
-- [X] 第一篇
+- [ ] 第一篇
 ** WAIT [#A] 整理财务情况, 设计投资计划                             :event:
 :PROPERTIES:
 :STYLE:    habit
@@ -804,7 +814,7 @@ CLOCK: [2022-03-07 周一 14:27]--[2022-03-07 周一 14:52] =>  0:25
 :BLOCKER:  olp("live.org" "Next Action/整理财务情况, 设计投资计划")
 :LAST_REPEAT: [2022-01-22 周六 15:07]
 :END:
-** TODO [#A] 减肥 [0/3]                                             :event:
+** TODO [#A] 减肥 [2/3]                                             :event:
 SCHEDULED: <2022-03-14 周一 17:27 +1w>
 :PROPERTIES:
 :LAST_REPEAT: [2022-03-14 周一 01:23]
@@ -814,9 +824,11 @@ SCHEDULED: <2022-03-14 周一 17:27 +1w>
 - State "DONE"       from "TODO"       [2022-03-06 周日 22:06] \\
   2.5->3.5->4.0, 76.1kg
 目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月
+- [X] 跑步一次 4.5km
+- [X] 跑步一次 5.0km
 - [ ] 跑步一次 4.0km
-- [ ] 跑步一次 4.0km
-- [ ] 跑步一次 4.0km
+** TODO [#A] 续租合同                                               :event:
+DEADLINE: <2022-03-20 周日 18:00> SCHEDULED: <2022-03-20 周日 09:00>
 * Appointment
 * Project
 * Someday
