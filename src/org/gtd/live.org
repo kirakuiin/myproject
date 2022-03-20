@@ -814,11 +814,12 @@ CLOCK: [2022-03-07 周一 14:27]--[2022-03-07 周一 14:52] =>  0:25
 :BLOCKER:  olp("live.org" "Next Action/整理财务情况, 设计投资计划")
 :LAST_REPEAT: [2022-01-22 周六 15:07]
 :END:
-** TODO [#A] 减肥 [2/3]                                             :event:
-SCHEDULED: <2022-03-14 周一 17:27 +1w>
+** TODO [#A] 减肥 [3/3]                                             :event:
+SCHEDULED: <2022-03-21 周一 17:27 +1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-03-14 周一 01:23]
+:LAST_REPEAT: [2022-03-21 周一 00:36]
 :END:
+- State "DONE"       from "TODO"       [2022-03-21 周一 00:36]
 - State "DONE"       from "TODO"       [2022-03-13 周日 23:23] \\
   4.0->4.0->4.0, 75.4kg
 - State "DONE"       from "TODO"       [2022-03-06 周日 22:06] \\
@@ -826,9 +827,9 @@ SCHEDULED: <2022-03-14 周一 17:27 +1w>
 目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月
 - [X] 跑步一次 4.5km
 - [X] 跑步一次 5.0km
-- [ ] 跑步一次 4.0km
-** TODO [#A] 续租合同                                               :event:
-DEADLINE: <2022-03-20 周日 18:00> SCHEDULED: <2022-03-20 周日 09:00>
+- [X] 跑步一次 2.5km
+** DONE [#A] 续租合同                                               :event:
+CLOSED: [2022-03-21 周一 00:36] DEADLINE: <2022-03-20 周日 18:00> SCHEDULED: <2022-03-20 周日 09:00>
 * Appointment
 * Project
 * Someday
