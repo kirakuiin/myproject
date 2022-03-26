@@ -1,0 +1,3 @@
+#+STARTUP: INDENT OVERVIEW
+
+* 金字塔书写理论

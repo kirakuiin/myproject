@@ -402,3 +402,18 @@ A.X这种语法, 你很困惑, 这是为什么捏?
 5. 模型层要和界面层解耦, 即模型层设计的时候先当界面层不存在, 不要因为界面的需求而
    设计信号
    
+
+** python reload迷思
+有些时候你会发现reload没有生效, 有一个可能的原因是:
+#+begin_src python
+  # file A
+  import b
+  a = A.Example()
+  # file B
+  from C import Example
+  # file C
+  class Example(object):
+      pass
+#+end_src
+这个时候你修改C, reload, 发现a创建的还是旧的类型, 因为你用的是文件B的复制类型, 想
+要生效必须直接使用 ~a = C.Example()~

@@ -68,19 +68,18 @@
 分散投资也有亏损的情况, 但它的主要优势是降低风险, 而不是提高收益
 #+end_quote
 * 金融危机之后的美国市场复苏, 全股票投资组合
-Stock prices suffer during financial crises, but they typically recover over time.
-
-
-View larger image
-
-This image illustrates the cumulative returns of an all-stock portfolio after six historical U.S. financial crises. In the short term, uncertainty from such external shocks can create sudden drops in value. For example, the all-stock portfolio posted a negative return in the month following four of the six analyzed crises. Over longer periods of time, however, returns were much more attractive, and investors who stayed the course reaped considerable rewards.
-
-Patience is a virtue in investing
-Fear and uncertainty might lead investors to sell their investments during tough times, putting downward pressure on prices. Trading because of these emotions can be detrimental to a portfolio’s value. By selling during downward price pressures, investors might realize short-term losses. Furthermore, this is compounded as investors wait and hesitate to get back into the market, possibly missing some or all of the potential recovery. The lesson here is that patience can pay dividends.
-
-Returns and principal invested in stocks are not guaranteed.
+金融危机之后的股价, 通常周期性恢复:
+[[file:../../../res/image/05.png]]
+图片展示了在六次历史性的金融危机之后, 全股票投资组合的回报. 可以看出虽然在初期可
+能会有一定的损失, 但在长的时间内, 回报会更有吸引力, 保持耐心的投资者将会得到可观
+的回报.
+恐惧和不确定性可能会导致投资者在压力下出售资产, 这种行为除了会造成短期的损失, 更
+为关键的是, 投资者可能在犹豫中错过后续复苏带来的大量回报.
+#+begin_quote
+耐心是投资的美德
+#+end_quote
 * 总结
-Skillful use of balancing and correlation can reduce the risk of loss during a market downturn. Different investments behave differently in different market conditions, though in rare cases they can behave contrary to how we would expect.
-
-As seen in this course, a balanced portfolio can weather the test of time over the long term. As well, an all-stock portfolio also can. The key is patience.
-  
+有技巧使用平衡和相关系数可以降低市场低迷带来损失的风险, 不同的投资表在不同的市场
+情况下表现也不同. 尽管在很少的情况下表现得和我们预料的相反.
+正如课程里看到的, 平衡的投资组合可以经过时间的检验, 同样, 全股票投资组合也可以,
+关键是 **耐心**
