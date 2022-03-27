@@ -13,67 +13,6 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-04-02 周六 18:00 ++1w> DEADLINE: <2022-04-04 周一 12:00 ++1w>
-:PROPERTIES:
-:STYLE:    habit
-:LAST_REPEAT: [2022-03-26 周六 16:22]
-:END:
-- State "DONE"       from "TODO"       [2022-03-26 周六 16:22]
-- State "DONE"       from "TODO"       [2022-03-19 周六 16:27]
-- State "DONE"       from "TODO"       [2022-03-11 周五 20:56]
-- State "DONE"       from "TODO"       [2022-03-05 周六 17:02]
-- State "DONE"       from "TODO"       [2022-02-26 周六 16:40]
-- State "DONE"       from "TODO"       [2022-02-19 周六 15:46]
-- State "DONE"       from "TODO"       [2022-02-14 周一 09:45]
-- State "DONE"       from "TODO"       [2022-01-27 周四 16:42]
-- State "DONE"       from "TODO"       [2022-01-22 周六 15:07]
-- State "DONE"       from "TODO"       [2022-01-15 周六 17:21]
-- State "DONE"       from "TODO"       [2022-01-15 周六 17:21]
-- State "DONE"       from "TODO"       [2022-01-15 周六 17:21]
-- State "DONE"       from "TODO"       [2022-01-15 周六 17:21]
-- State "DONE"       from "TODO"       [2022-01-08 周六 16:50]
-- State "DONE"       from "TODO"       [2022-01-04 周二 11:10]
-- State "DONE"       from "TODO"       [2021-12-25 周六 15:47]
-- State "DONE"       from "TODO"       [2021-12-20 周一 09:00]
-- State "DONE"       from "TODO"       [2021-12-11 周六 16:38]
-- State "DONE"       from "TODO"       [2021-12-11 周六 16:34]
-- State "DONE"       from "TODO"       [2021-12-04 周六 16:13]
-- State "DONE"       from "TODO"       [2021-11-27 周六 16:51]
-- State "DONE"       from "TODO"       [2021-11-20 周六 16:54]
-- State "DONE"       from "TODO"       [2021-11-13 周六 16:44]
-- State "DONE"       from "TODO"       [2021-11-08 周一 09:19]
-- State "DONE"       from "TODO"       [2021-11-01 周一 11:28]
-- State "DONE"       from "TODO"       [2021-10-25 周一 09:32]
-- State "DONE"       from "TODO"       [2021-10-16 周六 17:17]
-- State "DONE"       from "TODO"       [2021-10-09 周六 16:46]
-- State "DONE"       from "TODO"       [2021-09-30 周四 18:06]
-- State "DONE"       from "TODO"       [2021-09-27 周一 09:27]
-- State "DONE"       from "TODO"       [2021-09-19 周日 19:44]
-- State "DONE"       from "TODO"       [2021-09-11 周六 15:42]
-- State "DONE"       from "TODO"       [2021-09-04 周六 16:04]
-- State "DONE"       from "TODO"       [2021-08-28 周六 17:09]
-- State "DONE"       from "TODO"       [2021-08-21 周六 16:25]
-- State "DONE"       from "TODO"       [2021-08-07 周六 17:17]
-- State "DONE"       from "TODO"       [2021-07-31 周六 18:29]
-- State "DONE"       from "TODO"       [2021-07-24 周六 15:39]
-- State "DONE"       from "TODO"       [2021-07-17 周六 17:16]
-- State "DONE"       from "TODO"       [2021-07-10 周六 17:35]
-- State "DONE"       from "TODO"       [2021-07-03 周六 17:36]
-- State "DONE"       from "TODO"       [2021-06-26 周六 17:19]
-- State "DONE"       from "TODO"       [2021-06-20 周日 10:25]
-- State "DONE"       from "TODO"       [2021-06-11 周五 17:48]
-- State "DONE"       from "TODO"       [2021-06-07 周一 10:33]
-- State "DONE"       from "TODO"       [2021-05-29 周六 18:22]
-- State "DONE"       from "TODO"       [2021-05-24 周一 11:00]
-- State "DONE"       from "TODO"       [2021-05-16 周日 23:48]
-- State "DONE"       from "TODO"       [2021-05-09 周日 23:58]
-- State "DONE"       from "TODO"       [2021-05-03 周一 22:50]
-- State "DONE"       from "TODO"       [2021-04-25 周日 21:56]
-- State "DONE"       from "TODO"       [2021-04-17 周六 23:29]
-- State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
-- State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
-- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** TODO [#C] 每周完成leetcode一道题 [1/1]                           :learn:
 SCHEDULED: <2022-03-28 周一 09:00 ++1w>
 :PROPERTIES:
@@ -319,8 +258,73 @@ CLOCK: [2022-03-14 周一 13:19]--[2022-03-14 周一 13:44] =>  0:25
 CLOCK: [2022-03-14 周一 11:22]--[2022-03-14 周一 11:47] =>  0:25
 CLOCK: [2022-03-14 周一 10:52]--[2022-03-14 周一 11:17] =>  0:25
 :END:
-** DONE [#A] 状态信息面板优化                                          :m8:
+*** TODO [#A] 完成每周周报                                           :work:
+SCHEDULED: <2022-04-02 周六 18:00 ++1w> DEADLINE: <2022-04-04 周一 12:00 ++1w>
+:PROPERTIES:
+:STYLE:    habit
+:LAST_REPEAT: [2022-03-26 周六 16:22]
+:ARCHIVE_TIME: 2022-03-28 周一 00:04
+:END:
+- State "DONE"       from "TODO"       [2022-03-26 周六 16:22]
+- State "DONE"       from "TODO"       [2022-03-19 周六 16:27]
+- State "DONE"       from "TODO"       [2022-03-11 周五 20:56]
+- State "DONE"       from "TODO"       [2022-03-05 周六 17:02]
+- State "DONE"       from "TODO"       [2022-02-26 周六 16:40]
+- State "DONE"       from "TODO"       [2022-02-19 周六 15:46]
+- State "DONE"       from "TODO"       [2022-02-14 周一 09:45]
+- State "DONE"       from "TODO"       [2022-01-27 周四 16:42]
+- State "DONE"       from "TODO"       [2022-01-22 周六 15:07]
+- State "DONE"       from "TODO"       [2022-01-15 周六 17:21]
+- State "DONE"       from "TODO"       [2022-01-15 周六 17:21]
+- State "DONE"       from "TODO"       [2022-01-15 周六 17:21]
+- State "DONE"       from "TODO"       [2022-01-15 周六 17:21]
+- State "DONE"       from "TODO"       [2022-01-08 周六 16:50]
+- State "DONE"       from "TODO"       [2022-01-04 周二 11:10]
+- State "DONE"       from "TODO"       [2021-12-25 周六 15:47]
+- State "DONE"       from "TODO"       [2021-12-20 周一 09:00]
+- State "DONE"       from "TODO"       [2021-12-11 周六 16:38]
+- State "DONE"       from "TODO"       [2021-12-11 周六 16:34]
+- State "DONE"       from "TODO"       [2021-12-04 周六 16:13]
+- State "DONE"       from "TODO"       [2021-11-27 周六 16:51]
+- State "DONE"       from "TODO"       [2021-11-20 周六 16:54]
+- State "DONE"       from "TODO"       [2021-11-13 周六 16:44]
+- State "DONE"       from "TODO"       [2021-11-08 周一 09:19]
+- State "DONE"       from "TODO"       [2021-11-01 周一 11:28]
+- State "DONE"       from "TODO"       [2021-10-25 周一 09:32]
+- State "DONE"       from "TODO"       [2021-10-16 周六 17:17]
+- State "DONE"       from "TODO"       [2021-10-09 周六 16:46]
+- State "DONE"       from "TODO"       [2021-09-30 周四 18:06]
+- State "DONE"       from "TODO"       [2021-09-27 周一 09:27]
+- State "DONE"       from "TODO"       [2021-09-19 周日 19:44]
+- State "DONE"       from "TODO"       [2021-09-11 周六 15:42]
+- State "DONE"       from "TODO"       [2021-09-04 周六 16:04]
+- State "DONE"       from "TODO"       [2021-08-28 周六 17:09]
+- State "DONE"       from "TODO"       [2021-08-21 周六 16:25]
+- State "DONE"       from "TODO"       [2021-08-07 周六 17:17]
+- State "DONE"       from "TODO"       [2021-07-31 周六 18:29]
+- State "DONE"       from "TODO"       [2021-07-24 周六 15:39]
+- State "DONE"       from "TODO"       [2021-07-17 周六 17:16]
+- State "DONE"       from "TODO"       [2021-07-10 周六 17:35]
+- State "DONE"       from "TODO"       [2021-07-03 周六 17:36]
+- State "DONE"       from "TODO"       [2021-06-26 周六 17:19]
+- State "DONE"       from "TODO"       [2021-06-20 周日 10:25]
+- State "DONE"       from "TODO"       [2021-06-11 周五 17:48]
+- State "DONE"       from "TODO"       [2021-06-07 周一 10:33]
+- State "DONE"       from "TODO"       [2021-05-29 周六 18:22]
+- State "DONE"       from "TODO"       [2021-05-24 周一 11:00]
+- State "DONE"       from "TODO"       [2021-05-16 周日 23:48]
+- State "DONE"       from "TODO"       [2021-05-09 周日 23:58]
+- State "DONE"       from "TODO"       [2021-05-03 周一 22:50]
+- State "DONE"       from "TODO"       [2021-04-25 周日 21:56]
+- State "DONE"       from "TODO"       [2021-04-17 周六 23:29]
+- State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
+- State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
+- State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
+*** DONE [#A] 状态信息面板优化                                         :m8:
 CLOSED: [2022-03-25 周五 09:52] DEADLINE: <2022-03-25 周五> SCHEDULED: <2022-03-17 周四 13:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-03-28 周一 00:04
+:END:
 :LOGBOOK:
 CLOCK: [2022-03-23 周三 20:31]--[2022-03-23 周三 20:56] =>  0:25
 CLOCK: [2022-03-23 周三 18:56]--[2022-03-23 周三 19:21] =>  0:25

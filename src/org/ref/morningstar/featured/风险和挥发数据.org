@@ -1,0 +1,69 @@
+#+STARTUP: INDENT NUM
+
+Risk and Volatility Data
+
+
+Reduction of Risk over Time
+Data on risk and volatility shows that the range of returns appears less volatile with longer holding periods.
+
+What you will learn
+Stock and Bond Volatility Varies
+Risk of Stock Market Loss over Time
+One of the main factors you should consider when investing is the amount of risk, or volatility, that you are prepared to assume. However, recognize that the range of returns appears less volatile with longer holding periods.
+
+Over the long term, periods of high returns tend to offset periods of low returns. With the passage of time, these offsetting periods result in the dispersion of returns gravitating or converging toward the average. In other words, while returns may fluctuate widely from year to year, holding the asset for longer periods of time results in apparent decreased volatility.
+
+GRAPHIC HERE
+This graph illustrates the range of compound annual returns for stocks, bonds, and cash over one-, five-, and 20-year holding periods. On an annual basis since 1926, the returns of large-company stocks have ranged from a high of 54% to a low of negative 43.3%. For longer holding periods of five or 20 years, however, the picture changes. The average returns range from 28.6% to negative 12.5% over five-year periods and between 17.9% and 3.1% over 20-year periods. During the worst 20-year holding period for stocks since 1926, stocks still posted a positive 20-year compound annual return. However, keep in mind that holding stocks for the long term does not ensure a profitable outcome and that investing in stocks always involves risk, including the possibility of losing the entire investment.
+
+Things To Know
+The risk of holding stocks appears to lessen with time.
+Although stockholders can expect more short-term volatility, the risk of holding stocks appears to lessen with time.
+
+Government bonds and Treasury bills are guaranteed by the full faith and credit of the U.S. government as to the timely payment of principal and interest, while stocks are not guaranteed and have been more volatile than the other asset classes. Furthermore, small-company stocks are more volatile than large-company stocks and are subject to significant price fluctuations and business risks and are thinly traded.
+
+About the data
+Small stocks are represented by the Ibbotson® Small Company Stock Index. Large stocks are represented by the Ibbotson® Large Company Stock Index. Government bonds are represented by the 20-year U.S. government bond, and Treasury bills by the 30-day U.S. Treasury bill. An investment cannot be made directly in an index. The data assumes reinvestment of all income and does not account for taxes or transaction costs.
+
+
+Stock and Bond Volatility Varies
+Stocks and bonds have experienced different levels of return over the past 96 years.
+
+GRAPHIC HERE
+Although stocks exhibited tremendous volatility before World War II, the stock market has been much less dramatic since that time. Conversely, bonds exhibited stability in earlier periods, but have seen dramatic increases in volatility over the past 30 years.
+
+One relationship has remained constant: Stocks have been more volatile than bonds on a month-to-month basis. Over the long term, however, stock investors have been rewarded for assuming this greater volatility.
+
+Government bonds are guaranteed by the full faith and credit of the U.S. government as to the timely payment of principal and interest, while stocks are not guaranteed and have been more volatile than bonds.
+
+About the data
+Large stocks are represented by the Ibbotson Large Company Stock Index. Bonds are represented by the 20-year U.S. government bond. An investment cannot be made directly in an index. The data assumes reinvestment of all income and does not account for taxes or transaction costs.
+
+
+Risk of Stock Market Loss over Time
+Though stocks are often considered by some to be risky investments, long-term gains have been demonstrated to offset short-term losses for the long-term investor.
+
+It is important to understand that, as with other investments, you can expect to experience losses from time to time when investing in the stock market. Short-term losses can even be expected for fixed-income investments, though they are generally considered less risky than stocks. With a long investment horizon, however, losses could potentially be recouped.
+
+GRAPHIC HERE
+This graph illustrates the realized losses in the stock market for the one-, five-, and 15-year periods. Of the 96 one-year periods since 1926, 25 resulted in a loss. However, increasing the holding period to five years, only 12 of the 92 overlapping five-year periods resulted in a loss. Moreover, none of the 82 overlapping 15-year periods since 1926 resulted in losses. However, keep in mind that holding stocks for the long term does not ensure a profitable outcome and that investing in stocks always involves risk, including the possibility of losing the entire investment. Stocks are not guaranteed and are more volatile than other asset classes.
+
+About the data
+Large stocks in this example are represented by the Ibbotson Large Company Stock Index. An investment cannot be made directly in an index. The data assumes reinvestment of all income and does not account for taxes or transaction costs.
+
+
+Risk Changes over Time
+The riskiness of an asset can change over time. This image shows how the risk of four traditional asset classes changed over five-year rolling periods from 1926 to 2021. Rolling-period returns are a series of overlapping, contiguous periods of returns. In this case, the first rolling period is 1926–30, the second is 1927–31, and so on.
+
+GRAPHIC HERE
+While small stocks and large stocks are more volatile than government bonds and Treasury bills, there are times when assets considered less risky exhibit greater volatility. Notice that government bonds and Treasury bills have generally been more risky since the 1980s than they were in earlier decades. Small stocks, while still the most volatile asset class, were less risky in recent periods than they were in the 1930s.
+
+Measuring risk
+Risk is measured by the standard deviation of annual returns. It measures the fluctuation of returns around the arithmetic average return of the investment. The higher the standard deviation, the greater the variability (and thus risk) of the investment returns. Government bonds and Treasury bills are guaranteed by the full faith and credit of the U.S. government as to the timely payment of principal and interest, while stocks are not guaranteed and have been more volatile than the other asset classes. Furthermore, small stocks are more volatile than large stocks, are subject to significant price fluctuations and business risks, and are thinly traded.
+
+About the data
+Small stocks are represented by the Ibbotson Small Company Stock Index. Large stocks are represented by the Ibbotson Large Company Stock Index, long-term government bonds by the 20-year U.S. government bond, and Treasury bills by the 30-day U.S. Treasury bill. An investment cannot be made directly in an index.
+
+What You Have Learned
+Stock and Bond Volatility Varies
+Risk of Stock Market Loss over Time
