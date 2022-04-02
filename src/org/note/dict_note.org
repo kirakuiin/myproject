@@ -8,6 +8,8 @@ SCHEDULED: <2029-12-06 周四 +1y>
   :LAST_REPEAT: [2022-03-14 周一 09:45]
   :END:
   - State "DONE"       from "TODO"       [2022-03-14 周一 09:45] \\
+    offset: 抵消
+    dispersion: 分散
     mitigate: 减轻
     reap: 收割
     hesitate: 犹豫
