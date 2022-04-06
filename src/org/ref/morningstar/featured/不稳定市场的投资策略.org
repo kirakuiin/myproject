@@ -1,0 +1,106 @@
+#+STARTUP: INDENT NUM
+
+* Diversification in a Volatile Market
+By investing in securities from a wide variety of asset classes, you can decrease risk and increase your returns at the same time. This process is called diversification.
+
+THINGS TO KNOW
+When you diversify, your investment portfolio is less volatile.
+There are three ways you can diversify your portfolio.
+How diversification affects your portfolio
+When you diversify, your investment portfolio is less volatile (that is, it changes less), because losses in some investments are offset by gains from others. Diversification is less risky than putting all your money in one type of investment, because if that type of investment falls, then your entire account value falls correspondingly. Certain types of investments, such as stocks and bonds, often rise or fall in opposite directions, so investing in both limits your risk. No single type of investment outperforms all others in every type of economic situation.
+
+Ways to diversify
+There are three ways you can diversify your portfolio. You can invest in different types of asset classes, such as stocks and bonds. Or, you can diversify by investing in different types of industries or sectors. For example, you can spread your stock investments across technology and healthcare stocks. Lastly, you can invest in companies of varying sizes, such as small-cap and large-cap stocks.
+
+* Tame Volatility with Limit Orders and Stop Orders
+Usually, when you buy or sell a security, you are using a market order. A market order is executed immediately, and you accept the best price the market offers at that moment. Picking the right type of order when you buy securities can greatly reduce your investment risk.
+
+THINGS TO KNOW
+Picking the right type of order when you buy securities can greatly reduce your investment risk.
+Limit orders and stop orders specify the price at which you are willing to buy or sell your security.
+When to use limit orders
+A limit order can be used to specify the price at which you are willing to buy or sell your security instead of accepting whatever price the market gives you. It tells your broker to buy or sell a security, but not beyond a certain price. This allows you to limit the price at which you buy the security (a maximum buy order) or the price for which you will sell your security (a minimum sell order). However, a limit order does not guarantee that your request will be filled. Limit orders are filled in the order in which they are placed. If there are other orders ahead of yours, stock prices could continue to rise or fall before yours is executed. This technique provides you with more control over the price at which you trade a security, but carries the risk that you may miss opportunities if the market never achieves the target price.
+
+When to use stop orders
+A stop order is another method that you can use to manage your investments in a volatile market. If you own a security or have sold short and are concerned that the market may move against you, then you can place a stop order with your broker to buy or sell securities when the market hits a trigger price. A sell stop order is set at a price below the current market price, and a buy stop order is set above the current market price. This way, you can preserve profits of securities you are holding and protect against large losses when you sell short. However, unless a limit is also placed, you must accept the price that the market gives you.
+
+How do the two differ?
+What’s the difference between a limit order and a stop order? With a limit order, you are expressing a desire to buy or sell, but only if the desired price can be obtained. You are determining the price that you want, the minimum at which you will sell, and the maximum at which you will buy. With a stop order, you are not specifically interested in buying or selling, but more interested in protecting a current position if the market moves against you. You are determining when you will buy or sell based on market prices, but you do not determine the price that you will get once the action is taken, unless you are using a stop limit order.
+
+These orders will expire unless you specify otherwise
+Unless noted otherwise, all orders are day orders, which means that the orders are canceled at the end of the day if they have not been executed. You can leave open the time by which your order must be executed by using a good-’til-canceled order. It remains open until the order is executed, until you tell your broker to cancel it, or for up to six months ending the last business day of April or October. There are also fill and kill orders, which require that the order be filled immediately or be canceled.
+
+* Hedging to Curb Volatility
+Hedging is the process of insuring an investment against risk. There are many different ways to hedge against market risk, but all types of hedging attempt to gain profits regardless of overall market changes. Successful hedging brings in healthy returns whether a security rises, falls, or stays the same. The main goal of hedging is to reduce the volatility of an investment by offsetting its risk of loss. Of course, there is no guarantee that a hedging strategy will be successful, or that a loss can be avoided in any particular situation.
+
+THINGS TO KNOW
+Hedging means insuring an investment against risk.
+Usually, derivatives are used
+Many hedging strategies involve the use of derivatives (securities that derive their values from other securities). Derivatives give investors the future opportunity to buy or sell securities at fixed prices, no matter how much the market changes. Two of the most common derivatives are options and futures. Other hedging techniques involve moving your investments around into different assets as markets change, and borrowing money off one investment to make another. Stocks, bonds, commodities, and even currency can be hedged.
+
+When you hedge, you try to remove some of the uncertainty of an investment.
+
+* Buying on Margin for Leverage
+You probably know by now that most of your security transactions will be conducted using a broker. But did you know you could borrow funds from a broker to invest?
+
+THINGS TO KNOW
+Buying more assets with borrowed money or securities is known as leveraging.
+You must open up a margin account first.
+How it works
+When you buy securities on margin, you borrow money from your broker by using your current shares as collateral. This reduces the amount of cash you have to pay up front, allowing you to buy more securities at rising prices. The process of buying more assets with borrowed money or securities is known as leveraging.
+
+Buying on margin is a risky venture. Using margins can increase your gains, but also your losses. To buy on margin, you open up a margin account. The risk is that the value of your margin securities will become worth less than your loan balance.
+
+An example
+Let’s say you buy 100 shares at $50 a share on margin. The total market value is $5,000. You must always have at least half of the total value ($2,500) in your margin account. This is called equity; the difference between your equity and the value of the securities is your debit balance, the amount borrowed. If the stock increases to $60 a share, you now have a total market value of $6,000 with $3,500 in equity (current market value minus original debit balance). This gives you an additional $500 ($3,500 of current equity minus $3,000 of current margin requirement) to receive in cash or buy more stock, giving you an even bigger market value ($7,000) for the same amount of money.
+
+If the stock drops to $40 a share, however, your total value is now $4,000 and your equity is $1,500 (current market value of $4,000 minus original debit balance of $2,500). When your equity as a percentage of current market value drops below a minimum maintenance requirement (e.g., 25 percent of current market value), you will be required to deposit additional collateral into the margin account.
+
+* Selling Short to Take Advantage of a Down Market
+Selling short is the opposite of buying low and selling high. If you think a security’s price will fall in the future, you can borrow shares from a brokerage, sell them, and, hopefully, buy them back at a lower price than you sold them for. You then return the shares to the brokerage, making a profit on the difference. Of course, if the share price rises, you will have to buy them back at a higher price than you sold them for in order to pay back the brokerage, taking a loss.
+
+THINGS TO KNOW
+You can borrow shares, sell them, and hopefully buy them back at a lower price.
+It’s all about falling prices
+Selling short is a way to profit from falling prices. A short seller does not own the security before he or she sells it. It is borrowed and then returned to close out the loan.
+
+An example
+For example, you think that stock XYZ is overvalued. You borrow 100 shares at $50 a share and then sell them for $5,000. If you are lucky, the market drops on the stock and you buy the shares back at $25 a share and return them to your broker, paying a total of $2,500. You have made $2,500. If the stock rises to $100 a share, however, you have to pay $10,000 to get them back, and you have lost $5,000.
+
+* Using Option Strategies
+An option is the right to buy or sell something at a preset price within a given timeframe. It is usually a contract to buy or sell stocks or other exchange-traded commodities. The value of the option is based on the value of the stock or index for which it is contracted. Securities, indexes, currencies, interest rates, and debt securities can be optioned.
+
+THINGS TO KNOW
+If you think the price of the security will go up, you buy a call option.
+If you think the price will go down, you buy a put option.
+Call options and put options
+If you think the market price of the underlying security will go up, you buy what is known as a call option. If you think the price will go down, you buy a put option. The owner of the call option has the right to buy the security at a set price for a fixed period of time. The owner of the put option has the right to sell the security.
+
+If an investor wants to invest in a riskier stock while limiting risk to a fixed amount, he or she can buy a call. If the investor believes the market will decline, he or she can buy a put to sell above its future market value.
+
+What is the value of an option?
+The value of an option depends on the relationship of the strike price to the market price of its underlying security. If the strike price of a call is below the market price of the security, the option is said to be "in the money," because it gives you the right to buy the security for less than its market price. Similarly, a put option is in the money if the strike price is above the market price. If the strike price of the put is below the market price, it has no intrinsic value; options with no intrinsic value are said to be out of the money.
+
+Buyer beware
+The latter scenario shows why caution is in order. Due to the special risks and complexities associated with options, they may not be suitable for all investors. Please contact your financial representative for the appropriate options disclosure documents.
+
+Each option on a stock corresponds to 100 shares. Suppose you expect a stock price to increase. You purchase an October 100 call option. If the price of the stock rises to 102, you make a profit of 2 points, or $2,000.
+
+* Straddling Uncertainty
+Purchasing an equal number of put and call options on the same security at the same time is called straddling. Why straddle? An investor may straddle if he or she feels the security is highly volatile, but is not sure which direction the security’s price will take. Straddling creates a possibility for profit while protecting the investor against volatility risk.
+
+THINGS TO KNOW
+Straddling means purchasing an equal number of put and call options.
+How losses can be limited
+A straddle’s potential loss is limited to the difference between the strike price of the call and that of the put. For example, if an investor buys an October 90 call for 5 and an October 90 put for 3, the maximum possible loss is 8. If the stock closes above 98, the investor makes a profit even though the put expires worthless. If the stock closes below 82, the investor also makes a profit, although the call is worthless. If it closes at any price between 82 and 98, the investor suffers a partial loss.
+
+* Capitalize on Future Price Movements
+A future is a legally binding contract to buy or sell a specific quantity of something in the future at a predetermined price. Futures are usually used for tangible goods such as currencies or oil. These physical goods are also called commodities. They can also be issued on other securities, such as stocks and bonds, or on stock indexes.
+
+THINGS TO KNOW
+Futures are usually used for tangible goods, but they can also be used for stocks and bonds.
+Why use futures?
+Futures are used to capitalize on future price movements. Let’s say you believe the price of wheat is going to go up six months from now. You buy a futures contract to buy wheat six months from now at today’s price. If the price of wheat goes up, you sell your contract at the higher price and make a profit. If wheat prices go down, you sell it and take a loss. Because futures contracts involve future trades, you can sell your contract now and buy it back later, meeting your agreement and realizing a difference in price.
+
+* Summary of Investment Strategies for a Volatile Market
+Profits can be made on fluctuating market prices if the right strategy is used. The key is to choose the right strategy for the right market. Volatile market strategies all have one thing in common: by settling on a specific future price, investors hope to capitalize on upward or downward market trends. Investors use diversification, limit orders, hedging, options, futures, straddles, selling short, and buying on margin to take advantage of predicted changes in market pricing.
