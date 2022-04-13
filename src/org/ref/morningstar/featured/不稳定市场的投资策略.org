@@ -1,106 +1,136 @@
 #+STARTUP: INDENT NUM
 
-* Diversification in a Volatile Market
-By investing in securities from a wide variety of asset classes, you can decrease risk and increase your returns at the same time. This process is called diversification.
+* 波动市场中的多元化
+通过投资各种资产类型的证券, 你可以减少风险并增加回报, 这个过程叫做多元化
+** 分散投资如何使波动性降低
+当您分散投资时, 你的投资组合的波动性就会降低, 因为某些投资中的收益被某些投资的回
+报抵消了, 与全部资金投入到一种类型的投资相比, 这种风险要小得多. 因为这种allin式
+投资一旦下降, 你整个账户的价值就会相应的下降. 某些投资类型, 比如股票和证券, 它们
+经常会以相反的方向上涨或下跌, 所以同时投资这两个可以控制风险. 在任何经济形势下,没
+有哪一种投资可以胜过其他所有类型的投资.
 
-THINGS TO KNOW
-When you diversify, your investment portfolio is less volatile.
-There are three ways you can diversify your portfolio.
-How diversification affects your portfolio
-When you diversify, your investment portfolio is less volatile (that is, it changes less), because losses in some investments are offset by gains from others. Diversification is less risky than putting all your money in one type of investment, because if that type of investment falls, then your entire account value falls correspondingly. Certain types of investments, such as stocks and bonds, often rise or fall in opposite directions, so investing in both limits your risk. No single type of investment outperforms all others in every type of economic situation.
+** 多元化投资的三种方式
+- 投资到不同的资产类别中, 比如股票和证券
+- 投资到不同类型的行业或者部门, 比如技术股和医疗股
+- 投资到不同大小的公司, 比如大盘股票和小盘股票
 
-Ways to diversify
-There are three ways you can diversify your portfolio. You can invest in different types of asset classes, such as stocks and bonds. Or, you can diversify by investing in different types of industries or sectors. For example, you can spread your stock investments across technology and healthcare stocks. Lastly, you can invest in companies of varying sizes, such as small-cap and large-cap stocks.
+* 使用限价单和止损单来驯服波动
+通常, 当您购买或者卖出证券时, 你使用的是市价单, 市价单立即执行, 你接受在
+那个时刻市场提供的最佳价格. 选择正确的类型来购买证券可以极大地减少投资风险.
+限价单和止损单用来指定你乐意买卖证券的价格
+** 什么时候使用限价单
+一个限价单可以用来指定你乐于买卖证券的价格, 而不是接受市场给你的任何价格,
+它告诉你的经纪人以不超过一个确定价格买卖证券. 这将允许你限制购入证券的价
+格(最大买入单), 或是卖出证券的价格(最小卖出单), 但是这不意味着你的请求会
+被执行. 限价单将会按照下达的顺序依次执行, 如果在你的限价单还有其他的单, 股
+票价格依旧升降直到你的单被执行, 这项技术可以给予你对证券交易价格更强的控制
+力, 但也可能让你错失良机.
+** 什么时候使用止损单
+止损单是另一个让你在波动市场中管理投资的办法, 如果你拥有一个证券或者卖空,
+担忧市场可能会对你不利, 那么你可以市场达到触发价格时下达止损单以买卖证券.
+卖出止损单的设定价格要低于市价, 而买入止损单的价格要高于市价, 通过这个方式
+你可以保留证券的收益, 防止卖空的巨大损失.
+** 二者有何不同
+- 限价单: 你表达了买卖的意愿, 当且仅当价格合适. 你来决定你想要的价格
+- 止损单: 你对买入卖出不是很感兴趣, 面对市场你更注意保护现在的收益, 你来根据市价
+  决定何时买卖, 但你无法决定买卖的价格
+** 期限
+除非特别说明, 所有的单都是单日生效, 这意味着如果这些单没执行的话, 则在一天结束时
+取消, 你可以使用取消有效订单保留时间来使得在订单被执行之前一直保持有效状态.
 
-* Tame Volatility with Limit Orders and Stop Orders
-Usually, when you buy or sell a security, you are using a market order. A market order is executed immediately, and you accept the best price the market offers at that moment. Picking the right type of order when you buy securities can greatly reduce your investment risk.
+* 使用对冲来抑制波动
+对冲是确保投资不受风险影响的过程, 有好多种方式来对冲风险, 但所有的对冲都试图在任
+何市场变化之下获得收益. 无论证券起落还是保持不变, 对冲都能带来不错的回报. 主要目
+标就是降低投资波动性来抵消风险带来的损失. 当然, 对冲策略不保证一定成功.
 
-THINGS TO KNOW
-Picking the right type of order when you buy securities can greatly reduce your investment risk.
-Limit orders and stop orders specify the price at which you are willing to buy or sell your security.
-When to use limit orders
-A limit order can be used to specify the price at which you are willing to buy or sell your security instead of accepting whatever price the market gives you. It tells your broker to buy or sell a security, but not beyond a certain price. This allows you to limit the price at which you buy the security (a maximum buy order) or the price for which you will sell your security (a minimum sell order). However, a limit order does not guarantee that your request will be filled. Limit orders are filled in the order in which they are placed. If there are other orders ahead of yours, stock prices could continue to rise or fall before yours is executed. This technique provides you with more control over the price at which you trade a security, but carries the risk that you may miss opportunities if the market never achieves the target price.
+** 对冲策略
+很多对冲策略都使用衍生品(从其他证券中获得价值的证券), 这种金融衍生品通常给予投资
+者在未来以固定价格交易证券的机会, 无论当时的市场如何变化. 两种常见的衍生品是期权
+和期货. 其他的对冲策略还包含在市场上变化时将你的投资移动到不同的资产类型中. 或者
+从一项投资中借钱来进行另一项投资, 又或者进行一对行情相关, 盈亏相抵, 方向相反的交
+易. 股票, 债券, 商品甚至货币都可以对冲. 当你在对冲时, 你在尝试消除投资中的一些不
+确定性.
 
-When to use stop orders
-A stop order is another method that you can use to manage your investments in a volatile market. If you own a security or have sold short and are concerned that the market may move against you, then you can place a stop order with your broker to buy or sell securities when the market hits a trigger price. A sell stop order is set at a price below the current market price, and a buy stop order is set above the current market price. This way, you can preserve profits of securities you are holding and protect against large losses when you sell short. However, unless a limit is also placed, you must accept the price that the market gives you.
+* 以保证金购买杠杆
+你也许知道大多数证券交易可以通过经纪人进行, 但你知道可以从经理那里借取资金来进行
+投资吗?
 
-How do the two differ?
-What’s the difference between a limit order and a stop order? With a limit order, you are expressing a desire to buy or sell, but only if the desired price can be obtained. You are determining the price that you want, the minimum at which you will sell, and the maximum at which you will buy. With a stop order, you are not specifically interested in buying or selling, but more interested in protecting a current position if the market moves against you. You are determining when you will buy or sell based on market prices, but you do not determine the price that you will get once the action is taken, unless you are using a stop limit order.
+使用借来的钱或者证券来购买更多资产被称为杠杆, 你必须要先开一个保证金账户
+** 杠杆如何工作
+当你使用保证金购买证券, 你使用当前股票作为抵押从你的经纪人那里借钱, 这减少了你
+需要提前支付的现金, 允许你在升值阶段购买更多的证券. 
 
-These orders will expire unless you specify otherwise
-Unless noted otherwise, all orders are day orders, which means that the orders are canceled at the end of the day if they have not been executed. You can leave open the time by which your order must be executed by using a good-’til-canceled order. It remains open until the order is executed, until you tell your broker to cancel it, or for up to six months ending the last business day of April or October. There are also fill and kill orders, which require that the order be filled immediately or be canceled.
+使用保证金购买是冒险的尝试, 使用保证金会增加你的收益, 但也会增大你的损失, 为了
+使用保证金购买, 你必须开放你的账户. 风险主要在于保证金证券的价值将低于贷款余额
 
-* Hedging to Curb Volatility
-Hedging is the process of insuring an investment against risk. There are many different ways to hedge against market risk, but all types of hedging attempt to gain profits regardless of overall market changes. Successful hedging brings in healthy returns whether a security rises, falls, or stays the same. The main goal of hedging is to reduce the volatility of an investment by offsetting its risk of loss. Of course, there is no guarantee that a hedging strategy will be successful, or that a loss can be avoided in any particular situation.
+** 一个例子
+假设你以每股50$的保证金购买了100股, 那么市场总价值是$5000, 你必须保证你的账户
+里的价值至少有2500$, 这叫做股权; 你的股权和证券之间的差额是你的借方余额, 也就是
+你借的钱的数量.
+如果股票增值到60$每股, 那么你的总市值就是6000$, 3500$的股权(6000-2500的原始借
+方余额), 这给予了你500$的收益(3500-(6000/2)).
+如果股票贬值到40$每股, 那么你的总市值就是4000$, 你的股权就是1500$(4000-2500)
+当你的股权低于最低维持百分比(比如25%), 那么你就需要存入额外的保证金来维持.
 
-THINGS TO KNOW
-Hedging means insuring an investment against risk.
-Usually, derivatives are used
-Many hedging strategies involve the use of derivatives (securities that derive their values from other securities). Derivatives give investors the future opportunity to buy or sell securities at fixed prices, no matter how much the market changes. Two of the most common derivatives are options and futures. Other hedging techniques involve moving your investments around into different assets as markets change, and borrowing money off one investment to make another. Stocks, bonds, commodities, and even currency can be hedged.
+* 利用卖空在低迷市场取得优势
+卖空是低买高卖的反面, 如果你认为证券的价格将会下跌, 你可以从券商哪里借来证券, 卖
+出, 然后并希望以低于你卖出的价格买回, 然后将证券归还最后赚取差价. 当然, 如果证券
+价格上涨, 你不得不以比卖出价格更高的价格买回它们并还给券商, 从而蒙受损失.
 
-When you hedge, you try to remove some of the uncertainty of an investment.
+** 什么是卖空
+卖空是利用价格下跌获利的行为, 一个卖空人在并不拥有证券卖出它们. 它被借来, 然后
+归还
+比如, 你认为股票XYZ被高估了, 你以50$每股的价格借了100股, 卖了5000$, 如果你很
+幸运, 这个股票下跌到了25$每股, 你仅需2500$就可以买回100股并归还给券商, 你赚了
+2500$, 如果股票上涨到$100每股, 你将掏出$10000购买股票归还, 你亏损了$5000.
 
-* Buying on Margin for Leverage
-You probably know by now that most of your security transactions will be conducted using a broker. But did you know you could borrow funds from a broker to invest?
+* 使用期权策略
+期权是在给定时间段以内以预设价格买卖某物的权利. 它通常是一份可以买卖股票或者可交
+易商品的合约. 期权的价格是基于签约的股票或者指数的价值. 证券, 指数, 货币, 利率,
+债务证券都可以使用期权
 
-THINGS TO KNOW
-Buying more assets with borrowed money or securities is known as leveraging.
-You must open up a margin account first.
-How it works
-When you buy securities on margin, you borrow money from your broker by using your current shares as collateral. This reduces the amount of cash you have to pay up front, allowing you to buy more securities at rising prices. The process of buying more assets with borrowed money or securities is known as leveraging.
+** 看涨期权和看跌期权
+如果你认为证券的价格将会上涨, 你购买看涨期权, 如果你认为价格将会下跌, 你购买看跌
+期权. 看涨期权的拥有者有权在某段时间以固定的价格购买证券, 看跌期权的拥有者有权在
+某段时间以固定的价格售出证券
 
-Buying on margin is a risky venture. Using margins can increase your gains, but also your losses. To buy on margin, you open up a margin account. The risk is that the value of your margin securities will become worth less than your loan balance.
+如果某个投资者想要投资一个有些冒险的股票并且想要控制风险, 那么他可以过购买看涨期
+权, 如果一个投资者相信市场将会下降, 那么他可以购买看跌期权, 在未来以高出市场的价
+格卖出
 
-An example
-Let’s say you buy 100 shares at $50 a share on margin. The total market value is $5,000. You must always have at least half of the total value ($2,500) in your margin account. This is called equity; the difference between your equity and the value of the securities is your debit balance, the amount borrowed. If the stock increases to $60 a share, you now have a total market value of $6,000 with $3,500 in equity (current market value minus original debit balance). This gives you an additional $500 ($3,500 of current equity minus $3,000 of current margin requirement) to receive in cash or buy more stock, giving you an even bigger market value ($7,000) for the same amount of money.
+** 期权的价值
+期权的价值取决于行使价和标的市场价的关系 如果看涨期权的行使价低于市场价, 那么这个
+期权被称作"价内", 因为它能让你以低于市场价的价格购买证券. 类似的, 如果看跌期权的
+行使价高于市场价, 也被称为"价内"期权. 如果是另外两种情况, 则期权没有价值.
 
-If the stock drops to $40 a share, however, your total value is now $4,000 and your equity is $1,500 (current market value of $4,000 minus original debit balance of $2,500). When your equity as a percentage of current market value drops below a minimum maintenance requirement (e.g., 25 percent of current market value), you will be required to deposit additional collateral into the margin account.
+** 购买注意点
+后一种情况说明了为什么买家要注意, 由于期权相关的特殊风险和复杂性, 它可能不是适合
+于所有的投资者, 请联系财务代表来获得合适的期权披露文件
 
-* Selling Short to Take Advantage of a Down Market
-Selling short is the opposite of buying low and selling high. If you think a security’s price will fall in the future, you can borrow shares from a brokerage, sell them, and, hopefully, buy them back at a lower price than you sold them for. You then return the shares to the brokerage, making a profit on the difference. Of course, if the share price rises, you will have to buy them back at a higher price than you sold them for in order to pay back the brokerage, taking a loss.
+股票每个期权对应100股, 假设你认为股票价格将会上涨, 你购买10月的100$看涨期权,
+如果股票上涨到102$, 那么你赚了(102-100)*100=2000$
 
-THINGS TO KNOW
-You can borrow shares, sell them, and hopefully buy them back at a lower price.
-It’s all about falling prices
-Selling short is a way to profit from falling prices. A short seller does not own the security before he or she sells it. It is borrowed and then returned to close out the loan.
+* 跨越不确定性
+同时购买一个证券的等量的看涨和看跌期权称为跨式交易, 如果投资者认为证券波动性高,
+但不确定证券价格变化的方向. 跨式交易使得投资者对抗波动风险, 获得收益
+** 原理
+一个跨式交易的潜在损失被限制在看涨期权和看跌期权的差价. 比如, 如果一个投资者以5$
+购买10月90$看涨期权, 以3$购买了10月90$看跌期权, 那么最大损失就是8$, 如果股票价格
+超过98$, 那么投资人在看跌期权毫无价值的情况下也能获得收益, 如果股票价格低于82$,
+那么投资人依然可以获得收益. 如果价格在82-98之间, 那么投资人承担了部分损失.
 
-An example
-For example, you think that stock XYZ is overvalued. You borrow 100 shares at $50 a share and then sell them for $5,000. If you are lucky, the market drops on the stock and you buy the shares back at $25 a share and return them to your broker, paying a total of $2,500. You have made $2,500. If the stock rises to $100 a share, however, you have to pay $10,000 to get them back, and you have lost $5,000.
+* 利用未来价格走势
+期货是具有法律约束力的合约. 在未来以提前决定的价格买卖指定数量的货物. 期货通常用
+于交易有形的货物, 比如货币和原油. 这些实物货物也被叫做商品. 它们可以在其他证券,
+股票, 指数上发行.
+尽管一般都是用于有形货物, 但也可以用于股票和债券
+** 为什么使用期货
+期货是用来利用未来的价格变动的. 假设你相信小麦价格将会在未来六个月上涨, 你以今天
+的价格购买了6个月后小麦的价格合约, 如果确实上涨了, 那么你可以以更高的价格售出合约
+来获得利润, 如果价格下跌, 你卖出合约, 遭受损害. 因为期货合约涉及了未来的交易, 你
+可以现在卖出合约然后后面买回.
 
-* Using Option Strategies
-An option is the right to buy or sell something at a preset price within a given timeframe. It is usually a contract to buy or sell stocks or other exchange-traded commodities. The value of the option is based on the value of the stock or index for which it is contracted. Securities, indexes, currencies, interest rates, and debt securities can be optioned.
-
-THINGS TO KNOW
-If you think the price of the security will go up, you buy a call option.
-If you think the price will go down, you buy a put option.
-Call options and put options
-If you think the market price of the underlying security will go up, you buy what is known as a call option. If you think the price will go down, you buy a put option. The owner of the call option has the right to buy the security at a set price for a fixed period of time. The owner of the put option has the right to sell the security.
-
-If an investor wants to invest in a riskier stock while limiting risk to a fixed amount, he or she can buy a call. If the investor believes the market will decline, he or she can buy a put to sell above its future market value.
-
-What is the value of an option?
-The value of an option depends on the relationship of the strike price to the market price of its underlying security. If the strike price of a call is below the market price of the security, the option is said to be "in the money," because it gives you the right to buy the security for less than its market price. Similarly, a put option is in the money if the strike price is above the market price. If the strike price of the put is below the market price, it has no intrinsic value; options with no intrinsic value are said to be out of the money.
-
-Buyer beware
-The latter scenario shows why caution is in order. Due to the special risks and complexities associated with options, they may not be suitable for all investors. Please contact your financial representative for the appropriate options disclosure documents.
-
-Each option on a stock corresponds to 100 shares. Suppose you expect a stock price to increase. You purchase an October 100 call option. If the price of the stock rises to 102, you make a profit of 2 points, or $2,000.
-
-* Straddling Uncertainty
-Purchasing an equal number of put and call options on the same security at the same time is called straddling. Why straddle? An investor may straddle if he or she feels the security is highly volatile, but is not sure which direction the security’s price will take. Straddling creates a possibility for profit while protecting the investor against volatility risk.
-
-THINGS TO KNOW
-Straddling means purchasing an equal number of put and call options.
-How losses can be limited
-A straddle’s potential loss is limited to the difference between the strike price of the call and that of the put. For example, if an investor buys an October 90 call for 5 and an October 90 put for 3, the maximum possible loss is 8. If the stock closes above 98, the investor makes a profit even though the put expires worthless. If the stock closes below 82, the investor also makes a profit, although the call is worthless. If it closes at any price between 82 and 98, the investor suffers a partial loss.
-
-* Capitalize on Future Price Movements
-A future is a legally binding contract to buy or sell a specific quantity of something in the future at a predetermined price. Futures are usually used for tangible goods such as currencies or oil. These physical goods are also called commodities. They can also be issued on other securities, such as stocks and bonds, or on stock indexes.
-
-THINGS TO KNOW
-Futures are usually used for tangible goods, but they can also be used for stocks and bonds.
-Why use futures?
-Futures are used to capitalize on future price movements. Let’s say you believe the price of wheat is going to go up six months from now. You buy a futures contract to buy wheat six months from now at today’s price. If the price of wheat goes up, you sell your contract at the higher price and make a profit. If wheat prices go down, you sell it and take a loss. Because futures contracts involve future trades, you can sell your contract now and buy it back later, meeting your agreement and realizing a difference in price.
-
-* Summary of Investment Strategies for a Volatile Market
-Profits can be made on fluctuating market prices if the right strategy is used. The key is to choose the right strategy for the right market. Volatile market strategies all have one thing in common: by settling on a specific future price, investors hope to capitalize on upward or downward market trends. Investors use diversification, limit orders, hedging, options, futures, straddles, selling short, and buying on margin to take advantage of predicted changes in market pricing.
+* 总结
+使用正确的策略可以在波动的市场中获益, 关键在正确的市场选择正确的策略. 所有的策略
+有一个共同点, 通过特定的未来价格, 投资者希望利用市场上升下降的趋势, 投资者利用多
+样化, 限制单, 对冲, 杠杆, 期权, 期货, 跨式交易, 卖空来利用预测市场价格变化的优势

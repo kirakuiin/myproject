@@ -13,41 +13,22 @@
 * Inbox
 * Next Action
 ** TODO [#A] 月度财务收支                                           :event:
-DEADLINE: <2022-04-12 周二 23:00 +1m> SCHEDULED: <2022-04-12 周二 09:00 +1m>
+DEADLINE: <2022-05-12 周四 23:00 +1m> SCHEDULED: <2022-05-12 周四 09:00 +1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
+- State "DONE"       from "TODO"       [2022-04-11 周一 09:19] \\
+  house rent: 2000, game: 90, takeout: 727, fee: 218, shopping: 828, commute: 12, course: -1650
+  total: 5525
 - State "DONE"       from "TODO"       [2022-03-13 周日 08:57] \\
-| date         | purpose      |   value |
-|--------------+--------------+---------|
-| [2022-03-12] | house rent   |   -2000 |
-| [2022-03-12] | takeout      |     -65 |
-| [2022-03-13] | takeout      |     -60 |
-| [2022-03-13] | shopping     |      28 |
-| [2022-03-14] | energy bill  |    -100 |
-| [2022-03-15] | shopping     |     -20 |
-| [2022-03-18] | shopping     |     -18 |
-| [2022-03-20] | takeout      |     -50 |
-| [2022-03-21] | shopping     |    -2.5 |
-| [2022-03-22] | shopping     |    -2.5 |
-| [2022-03-23] | shopping     |    -2.5 |
-| [2022-03-24] | shopping     |    -1.3 |
-| [2022-03-25] | shopping     |    -1.3 |
-| [2022-03-25] | tunic        |     -90 |
-| [2022-03-25] | cup          |    -569 |
-| [2022-03-26] | takeout      |   -24.5 |
-| [2022-03-27] | takeout      |    -100 |
-| [2022-03-28] | shopping     |    -1.3 |
-| [2022-03-29] | shopping     |    -1.3 |
-| [2022-03-30] | shopping     |    -2.5 |
-| [2022-03-31] | shopping     |    -200 |
-| [2022-04-01] | phone fee    |     -50 |
-| [2022-04-01] | property fee |    -118 |
-| [2022-04-01] | shopping     |      -5 |
-|              |              | -3456.7 |
+| date         | purpose    | value |
+|--------------+------------+-------|
+| [2022-04-12] | house rent | -2000 |
+|              |            | -2000 |
 #+TBLFM: @>$3=vsum(@2$3..@-1$3)
 - State "DONE"       from "TODO"       [2022-02-10 周四 09:05] \\
-house rent: 2000, game: 445,  takeout: 284, fee: 218, shopping: 1373, commute: 37
+house rent: 2000, game: 445, takeout: 284, fee: 218, shopping: 1373, commute: 37
+total: 4357
 - State "DONE"       from "TODO"       [2021-10-12 周二 09:44] \\
   1. 房租2000, 电费200(空调+电脑), 物业+水117, 网费100
   2. 额外疏通水池下水管道50
@@ -59,12 +40,21 @@ house rent: 2000, game: 445,  takeout: 284, fee: 218, shopping: 1373, commute: 3
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2022-04-11 周一 23:00 ++1w> SCHEDULED: <2022-04-08 周五 18:00 ++1w>
+DEADLINE: <2022-04-18 周一 23:00 ++1w> SCHEDULED: <2022-04-15 周五 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-04-01 周五 17:10]
+:LAST_REPEAT: [2022-04-09 周六 13:51]
 :END:
+- State "DONE"       from "TODO"       [2022-04-09 周六 13:51] \\
+  1. 处理容器自动添加子节点导致的bug
+  2. checkbtn增加信号
+  3. 网格增加自动调整大小选项
+  4. 新增复用滚动框控件
+  5. UI编辑器实现打开文件时自动加载组件的机制
+  6. 实现点击吞噬组件
+  ----------------------
+  1. 陷入游戏慌了, 是时候趁着这个时候学习一波了.
 - State "DONE"       from "TODO"       [2022-04-01 周五 17:10] \\
   1. UI编辑器生成控件类大部分替换为项目控件类
   2. 为所有带有点击操作的控件添加方便的设置回调接口
@@ -838,12 +828,13 @@ CLOCK: [2022-02-28 周一 13:20]--[2022-02-28 周一 13:45] =>  0:25
   3. 找到了一处还不错的房子
   4. 认识了很多很棒的同事
 ** TODO [#A] 每周学习晨星网投资教程一篇 [1/1]                       :event:
-DEADLINE: <2022-04-17 周日 23:59 +1w> SCHEDULED: <2022-04-11 周一 09:00 +1w>
+DEADLINE: <2022-04-24 周日 23:59 +1w> SCHEDULED: <2022-04-18 周一 09:00 +1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-04-02 周六 20:49]
+:LAST_REPEAT: [2022-04-12 周二 20:41]
 :END:
+- State "DONE"       from "TODO"       [2022-04-12 周二 20:41]
 - State "DONE"       from "TODO"       [2022-04-02 周六 20:49]
 - State "DONE"       from "TODO"       [2022-03-28 周一 11:40]
 - State "DONE"       from "TODO"       [2022-03-21 周一 10:50]
@@ -871,12 +862,15 @@ CLOCK: [2022-03-07 周一 14:27]--[2022-03-07 周一 14:52] =>  0:25
 :BLOCKER:  olp("live.org" "Next Action/整理财务情况, 设计投资计划")
 :LAST_REPEAT: [2022-01-22 周六 15:07]
 :END:
-** TODO [#A] 减肥 [3/3]                                             :event:
-SCHEDULED: <2022-04-04 周一 17:27 +1w>
+** TODO [#A] 减肥 [1/3]                                             :event:
+SCHEDULED: <2022-04-11 周一 17:27 +1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-04-01 周五 21:03]
+:LAST_REPEAT: [2022-04-11 周一 09:15]
 :END:
-- State "DONE"       from "TODO"       [2022-04-01 周五 21:03]
+- State "DONE"       from "TODO"       [2022-04-11 周一 09:15] \\
+  5.0->5.0->5.0, 72.6kg
+- State "DONE"       from "TODO"       [2022-04-01 周五 21:03] \\
+  5.0->5.0->5.0, 73.4kg
 - State "DONE"       from "TODO"       [2022-03-28 周一 09:28] \\
   5.0->5.0->5.0, 74.0kg
 - State "DONE"       from "TODO"       [2022-03-21 周一 00:36] \\
@@ -887,8 +881,11 @@ SCHEDULED: <2022-04-04 周一 17:27 +1w>
   2.5->3.5->4.0, 76.1kg
 目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月
 - [X] 跑步一次 5.0km
-- [X] 跑步一次 5.0km
-- [X] 跑步一次 5.0km
+- [ ] 跑步一次 5.0km
+- [ ] 跑步一次 5.0km
+** TODO [#A] 吉他学习                                               :event:
+SCHEDULED: <2022-04-17 周日 17:00 ++1w>
+广州柿子音乐培训, 吉他弹唱课程12期(45分钟一对一), 每周日下午5点开始
 * Appointment
 * Project
 * Someday

@@ -1,12 +1,24 @@
 #+STARTUP: INDENT OVERVIEW
 
 * TODO 单词记录
-SCHEDULED: <2029-12-06 周四 +1y>
+SCHEDULED: <2030-12-06 周五 +1y>
   :PROPERTIES:
   :STYLE:    habit
   :LOGGING:  logrepeat DONE(@)
-  :LAST_REPEAT: [2022-03-14 周一 09:45]
+  :LAST_REPEAT: [2022-04-13 周三 11:10]
   :END:
+  - State "DONE"       from "TODO"       [2022-04-13 周三 11:10] \\
+    tame: 驯服
+    margin: 余量
+    debit: 借债人
+    tangible: 有形的
+    wheat: 小麦
+    debt: 债务
+    leverage: 杠杆作用
+    hedge: 防止损失, 对冲
+    curb: 抑制
+    broker: 经纪人
+    sold short: 卖空
   - State "DONE"       from "TODO"       [2022-03-14 周一 09:45] \\
     offset: 抵消
     dispersion: 分散

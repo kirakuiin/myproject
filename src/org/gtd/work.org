@@ -14,12 +14,13 @@
 * Inbox
 * Next Action
 ** TODO [#C] 每周完成leetcode一道题 [1/1]                           :learn:
-SCHEDULED: <2022-04-11 周一 09:00 ++1w>
+SCHEDULED: <2022-04-18 周一 09:00 ++1w>
 :PROPERTIES:
 :LINK: [[https://leetcode-cn.com][leetcode]]
 :STYLE:    habit
-:LAST_REPEAT: [2022-04-02 周六 14:49]
+:LAST_REPEAT: [2022-04-11 周一 11:01]
 :END:
+- State "DONE"       from "TODO"       [2022-04-11 周一 11:01]
 - State "DONE"       from "TODO"       [2022-04-02 周六 14:49]
 - State "DONE"       from "TODO"       [2022-03-28 周一 09:56]
 - State "DONE"       from "TODO"       [2022-03-21 周一 09:42]
@@ -39,12 +40,15 @@ CLOCK: [2022-03-07 周一 10:24]--[2022-03-07 周一 10:49] =>  0:25
   学到了一个很新颖的思路, n个队伍比赛在每个队伍失败一次就淘汰的情况下最多打几场,
   答案是n-1场, 因为最后只有一个队伍获胜
 - [X] 完成一道题
-** TODO [#A] 每周45个番茄钟 [5/5]                                    :work:
-DEADLINE: <2022-04-08 周五 09:00 +1w> SCHEDULED: <2022-04-04 周一 09:00 +1w>
+** TODO [#A] 每周45个番茄钟 [3/5]                                    :work:
+DEADLINE: <2022-04-15 周五 09:00 +1w> SCHEDULED: <2022-04-11 周一 09:00 +1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-04-01 周五 21:03]
+:LAST_REPEAT: [2022-04-08 周五 15:48]
 :END:
-- State "DONE"       from "TODO"       [2022-04-01 周五 21:03]
+- State "DONE"       from "TODO"       [2022-04-08 周五 15:48] \\
+  34钟
+- State "DONE"       from "TODO"       [2022-04-01 周五 21:03] \\
+  50钟
 - State "DONE"       from "TODO"       [2022-03-26 周六 16:15] \\
   47钟
 - State "DONE"       from "TODO"       [2022-03-19 周六 15:13] \\
@@ -59,20 +63,20 @@ DEADLINE: <2022-04-08 周五 09:00 +1w> SCHEDULED: <2022-04-04 周一 09:00 +1w>
   52钟
 :LOGBOOK:
 :END:
-- [X] 9
-- [X] 13
-- [X] 13
-- [X] 12
 - [X] 10
-** WAIT [#B] 学习《重构 改善既有代码的设计》                        :learn:
-:PROPERTIES:
-:BLOCKER:  olp("work.org" "Next Action/每周学习《代码之外的生存指南》5篇")
-:END:
+- [X] 10
+- [X] 10
+- [ ] 12
+- [ ] 10
+** TODO [#B] 每周学习《重构 改善既有代码的设计》1章                 :learn:
+SCHEDULED: <2022-04-11 周一 ++1w>
+- [ ] :: 学习第一章
 ** TODO [#A] 每月一篇技术文档                                          :m8:
-DEADLINE: <2022-04-30 周六 ++1m> SCHEDULED: <2022-04-01 周五 09:27 ++1m>
+DEADLINE: <2022-05-30 周一 ++1m> SCHEDULED: <2022-05-01 周日 09:27 ++1m>
 :PROPERTIES:
-:LAST_REPEAT: [2022-03-08 周二 14:29]
+:LAST_REPEAT: [2022-04-13 周三 18:05]
 :END:
+- State "DONE"       from "TODO"       [2022-04-13 周三 18:05]
 - State "DONE"       from "TODO"       [2022-03-08 周二 14:29]
 :LOGBOOK:
 CLOCK: [2022-03-08 周二 13:51]--[2022-03-08 周二 14:16] =>  0:25
@@ -88,11 +92,12 @@ CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-04-09 周六 18:00 ++1w> DEADLINE: <2022-04-11 周一 12:00 ++1w>
+SCHEDULED: <2022-04-16 周六 18:00 ++1w> DEADLINE: <2022-04-18 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-04-01 周五 17:22]
+:LAST_REPEAT: [2022-04-09 周六 13:55]
 :END:
+- State "DONE"       from "TODO"       [2022-04-09 周六 13:55]
 - State "DONE"       from "TODO"       [2022-04-01 周五 17:22]
 - State "DONE"       from "TODO"       [2022-03-26 周六 16:22]
 - State "DONE"       from "TODO"       [2022-03-19 周六 16:27]
@@ -149,6 +154,25 @@ SCHEDULED: <2022-04-09 周六 18:00 ++1w> DEADLINE: <2022-04-11 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
+** DONE [#A] UI编辑器优化                                              :m8:
+CLOSED: [2022-04-11 周一 19:44] SCHEDULED: <2022-04-06 周三 12:00>
+:LOGBOOK:
+CLOCK: [2022-04-11 周一 18:54]--[2022-04-11 周一 19:19] =>  0:25
+CLOCK: [2022-04-11 周一 17:19]--[2022-04-11 周一 17:44] =>  0:25
+CLOCK: [2022-04-11 周一 16:48]--[2022-04-11 周一 17:14] =>  0:26
+CLOCK: [2022-04-11 周一 16:18]--[2022-04-11 周一 16:43] =>  0:25
+CLOCK: [2022-04-11 周一 15:48]--[2022-04-11 周一 16:13] =>  0:25
+CLOCK: [2022-04-11 周一 15:13]--[2022-04-11 周一 15:38] =>  0:25
+CLOCK: [2022-04-11 周一 14:43]--[2022-04-11 周一 15:08] =>  0:25
+CLOCK: [2022-04-11 周一 14:13]--[2022-04-11 周一 14:38] =>  0:25
+CLOCK: [2022-04-11 周一 13:43]--[2022-04-11 周一 14:08] =>  0:25
+:END:
+- [X] check按钮信号
+- [X] 复用滚动框加到编辑器中
+- [X] 网格增加自动调整大小选项
+- [X] 吞噬点击控件, 点击提示控件
+** DONE [#A] 处理右键提示失效                                          :m8:
+CLOSED: [2022-04-11 周一 10:31] SCHEDULED: <2022-04-11 周一 09:30>
 * Appointment
 * Project
 * Someday
