@@ -1,0 +1,62 @@
+#+STARTUP: INDENT NUM
+
+* Introduction to Short-Term Focus
+Too much focus on the short term can work against your investment success.
+
+When planning an investment decision, do you think in terms of weeks or months? Sometimes that is appropriate, but for a great many decisions in life, it is too short.
+
+Short-term focus is a kind of myopia that makes an investor focus on the short term. It can be bad for your success as an investor. Let’s take a look at why that is.
+
+
+* Short-Term Focus
+Do you focus too heavily on the short term at the expense of the long term?
+
+
+[[file:../../../res/image/short_01.png]]
+
+When an investor suffers from short-term focus, he or she inappropriately focuses on short-term risk as opposed to long-term risk. Given today’s technology and instant access to information via the Internet, it is inevitable that many investors will check their investment performance on a frequent basis.
+
+Most investors know why they are investing: they have long-term goals that they are trying to achieve. Yet, they often exhibit very short-term behavior, such as frequent trading and/or overreacting to the short-term volatility of investments. It is imperative that these individuals resist the temptation to behave as if their time horizon were far shorter than it truly is.
+
+
+* Short-Term Focus: Avoiding Potential Near-Term Losses
+In a study titled "Risk Aversion or Myopia? Choices in Repeated Gambles and Retirement Investments," Shlomo Benartzi and Richard Thaler, professors at the Anderson School at UCLA and the University of Chicago, respectively, studied a group of defined contribution plan participants. The participants were divided into two groups and each group was told they could choose between only two funds, A and B. They were then given some information about the historical returns of these funds and were asked to decide, based on this information, how much of their retirement money they would invest in each fund. The returns for the funds were derived from actual stock and bond returns. The manipulation in the experiment was the manner in which the fund returns were displayed.
+
+
+[[file:../../../res/image/short_02.png]]
+
+One group was shown a distribution of one-year returns for both stocks and bonds. The other group was shown a distribution of 30-year returns. The academics predicted that subjects viewing the one-year chart would invest less in stocks than subjects viewing the 30-year return chart. They based their forecast on the fact that the one-year chart accentuated the perceived risk of investing in stocks. They stated that over a one-year period, the likelihood of stocks underperforming bonds is about a third, while over a 30-year period the likelihood is about 5%.
+
+Things To Know
+Exposure to frequency of returns tends to affect an investor’s tolerance for risk.
+What the study found
+The results found that the group looking at the distribution of one-year returns allocated their portfolios much more conservatively: 60% to bonds and 40% to stocks. In contrast, the group that saw the 30-year return distribution allocated their portfolios more aggressively: 10% to bonds and 90% to stocks. Exposure to frequency of returns tends to affect an investor’s tolerance for risk.
+
+Know the risks
+Diversification does not eliminate the risk of investment losses. Government bonds are guaranteed by the full faith and credit of the United States government as to the timely payment of principal and interest, while stocks are not guaranteed and have been more volatile than bonds.
+
+Source: Shlomo Benartzi and Richard H. Thaler, "Risk Aversion or Myopia? Choices in Repeated Gambles and Retirement Investments," Management Science, March 1999, Vol. 45, No. 3, pp. 364–381. The returns for the funds were derived from the CRSP (Center for Research in Security Prices, Booth School of Business, The University of Chicago) value-weighted NYSE index for stocks and Ibbotson’s annual returns on five-year government bonds.
+
+
+* Short-Term Focus: Coping with Near-Term Fluctuations
+It’s tempting for investors to monitor their investment accounts on a regular basis. Instant access to real-time quotes and a barrage of media reports on daily stock market fluctuations can make it difficult for investors with a long-term investment horizon to stay focused on their goals. In reality, these daily market movements may not be as extreme as they seem. As investors look longer term, their perception often changes.
+
+
+[[file:../../../res/image/short_03.png]]
+
+Keep short-term fluctuations in perspective
+Short-term market fluctuations can be quite volatile, and the probability of realizing a loss within any given day is high. However, the likelihood of realizing a loss has historically decreased over longer holding periods. The graph illustrates that while the probability of losing money on a daily basis over the past 20 years was 45%, the probability dropped dramatically when analyzing an annual time period—15%.
+
+Things To Know
+As investors look longer term, their perception often changes.
+Periodic review of an investment portfolio is necessary, but investors shouldn’t let short-term swings affect their view of the future.
+
+Returns and principal invested in stocks are not guaranteed. Probability of loss is calculated as the number of negative periods divided by the number of total periods using the specified frequency of data.
+
+About the data
+Stocks are represented by the Ibbotson® Large Company Stock Index. An investment cannot be made directly in an index.
+
+* Summary of Short-Term Focus
+Do you base your investment decisions on weeks or months rather than years? If you do, you are not alone, and you are using short-term focus. In some cases it can work against successful financial planning.
+
+Behavioral economists have begun exploring our nonrational side as it relates to economic behavior. Short-term focus is one of these behaviors. If you learn to identify short-term focus in your own thinking, you will be better armed to see possible bad choices.

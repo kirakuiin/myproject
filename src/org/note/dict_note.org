@@ -17,8 +17,10 @@ SCHEDULED: <2030-12-06 周五 +1y>
     leverage: 杠杆作用
     hedge: 防止损失, 对冲
     curb: 抑制
+    savvy: 有悟性的
     broker: 经纪人
     sold short: 卖空
+    collateral: 抵押品
   - State "DONE"       from "TODO"       [2022-03-14 周一 09:45] \\
     offset: 抵消
     dispersion: 分散
