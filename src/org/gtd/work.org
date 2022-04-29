@@ -14,17 +14,11 @@
 * Inbox
 * Next Action
 ** TODO [#C] 每周完成leetcode一道题 [1/1]                           :learn:
-SCHEDULED: <2022-04-18 周一 09:00 ++1w>
+SCHEDULED: <2022-05-02 周一 09:00 ++1w>
 :PROPERTIES:
-:LINK: [[https://leetcode-cn.com][leetcode]]
-:STYLE:    habit
-:LAST_REPEAT: [2022-04-11 周一 11:01]
+:LAST_REPEAT: [2022-04-29 周五 15:47]
 :END:
-- State "DONE"       from "TODO"       [2022-04-11 周一 11:01]
-- State "DONE"       from "TODO"       [2022-04-02 周六 14:49]
-- State "DONE"       from "TODO"       [2022-03-28 周一 09:56]
-- State "DONE"       from "TODO"       [2022-03-21 周一 09:42]
-- State "DONE"       from "TODO"       [2022-03-14 周一 09:39]
+- State "DONE"       from "TODO"       [2022-04-29 周五 15:47]
 :LOGBOOK:
 CLOCK: [2022-03-29 周二 09:22]--[2022-03-29 周二 09:47] =>  0:25
 CLOCK: [2022-03-28 周一 09:35]--[2022-03-28 周一 09:56] =>  0:21
@@ -32,6 +26,17 @@ CLOCK: [2022-03-14 周一 09:30]--[2022-03-14 周一 09:39] =>  0:09
 CLOCK: [2022-03-07 周一 11:10]--[2022-03-07 周一 11:35] =>  0:25
 CLOCK: [2022-03-07 周一 10:24]--[2022-03-07 周一 10:49] =>  0:25
 :END:
+:PROPERTIES:
+:LINK: [[https://leetcode-cn.com][leetcode]]
+:STYLE:    habit
+:LAST_REPEAT: [2022-04-18 周一 10:40]
+:END:
+- State "DONE"       from "TODO"       [2022-04-18 周一 10:40]
+- State "DONE"       from "TODO"       [2022-04-11 周一 11:01]
+- State "DONE"       from "TODO"       [2022-04-02 周六 14:49]
+- State "DONE"       from "TODO"       [2022-03-28 周一 09:56]
+- State "DONE"       from "TODO"       [2022-03-21 周一 09:42]
+- State "DONE"       from "TODO"       [2022-03-14 周一 09:39]
 - State "DONE"       from "TODO"       [2022-03-07 周一 11:41]
 - State "DONE"       from "TODO"       [2022-02-28 周一 09:24]
 - State "DONE"       from "TODO"       [2022-02-21 周一 09:53]
@@ -40,11 +45,13 @@ CLOCK: [2022-03-07 周一 10:24]--[2022-03-07 周一 10:49] =>  0:25
   学到了一个很新颖的思路, n个队伍比赛在每个队伍失败一次就淘汰的情况下最多打几场,
   答案是n-1场, 因为最后只有一个队伍获胜
 - [X] 完成一道题
-** TODO [#A] 每周45个番茄钟 [4/5]                                    :work:
-DEADLINE: <2022-04-15 周五 09:00 +1w> SCHEDULED: <2022-04-11 周一 09:00 +1w>
+** TODO [#A] 每周45个番茄钟 [0/5]                                    :work:
+DEADLINE: <2022-05-06 周五 09:00 +1w> SCHEDULED: <2022-05-02 周一 09:00 +1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-04-08 周五 15:48]
+:LAST_REPEAT: [2022-04-29 周五 15:03]
 :END:
+- State "DONE"       from "TODO"       [2022-04-29 周五 15:03] \\
+  10钟 痔疮犯了, 没法认真工作
 - State "DONE"       from "TODO"       [2022-04-08 周五 15:48] \\
   34钟
 - State "DONE"       from "TODO"       [2022-04-01 周五 21:03] \\
@@ -63,18 +70,19 @@ DEADLINE: <2022-04-15 周五 09:00 +1w> SCHEDULED: <2022-04-11 周一 09:00 +1w>
   52钟
 :LOGBOOK:
 :END:
-- [X] 10
-- [X] 10
-- [X] 10
-- [X] 8
 - [ ] 10
-** TODO [#B] 每周学习《重构 改善既有代码的设计》1章                 :learn:
-SCHEDULED: <2022-04-18 周一 ++1w>
+- [ ] 10
+- [ ] 10
+- [ ] 8
+- [ ] 10
+** TODO [#B] 每周学习《重构 改善既有代码的设计》1章 [1/1]           :learn:
+SCHEDULED: <2022-04-25 周一 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-04-14 周四 20:36]
+:LAST_REPEAT: [2022-04-22 周五 17:15]
 :END:
+- State "DONE"       from "TODO"       [2022-04-22 周五 17:15]
 - State "DONE"       from "TODO"       [2022-04-14 周四 20:36]
-- [ ] :: 学习第三章
+- [X] :: 学习第三章
 ** TODO [#A] 每月一篇技术文档                                          :m8:
 DEADLINE: <2022-05-30 周一 ++1m> SCHEDULED: <2022-05-01 周日 09:27 ++1m>
 :PROPERTIES:
@@ -95,12 +103,14 @@ CLOCK: [2022-03-07 周一 17:25]--[2022-03-07 周一 17:50] =>  0:25
 CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
-** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-04-23 周六 18:00 ++1w> DEADLINE: <2022-04-25 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                             :work:
+SCHEDULED: <2022-05-07 周六 18:00 ++1w> DEADLINE: <2022-05-09 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-04-16 周六 16:21]
+:LAST_REPEAT: [2022-04-29 周五 17:14]
 :END:
+- State "DONE"       from "TODO"       [2022-04-29 周五 17:14]
+- State "DONE"       from "TODO"       [2022-04-25 周一 09:51]
 - State "DONE"       from "TODO"       [2022-04-16 周六 16:21]
 - State "DONE"       from "TODO"       [2022-04-09 周六 13:55]
 - State "DONE"       from "TODO"       [2022-04-01 周五 17:22]
@@ -160,12 +170,10 @@ SCHEDULED: <2022-04-23 周六 18:00 ++1w> DEADLINE: <2022-04-25 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
 ** WAIT [#B] 场景编辑器可行性研究                                      :m8:
-SCHEDULED: <2022-04-15 周五 09:19>
+SCHEDULED: <2022-04-22 周五 09:19>
 :PROPERTIES:
-:BLOCKER:  olp("work.org" "Next Action/蓝图扩展")
+:BLOCKER:  olp("work.org" "Project/战斗进度条")
 :END:
-** TODO [#A] 蓝图扩展                                                  :m8:
-SCHEDULED: <2022-04-14 周四 09:20>
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] UI编辑器优化                                             :m8:
 CLOSED: [2022-04-11 周一 19:44] SCHEDULED: <2022-04-06 周三 12:00>
@@ -192,8 +200,49 @@ CLOSED: [2022-04-11 周一 10:31] SCHEDULED: <2022-04-11 周一 09:30>
 :PROPERTIES:
 :ARCHIVE_TIME: 2022-04-16 周六 16:20
 :END:
+*** DONE [#A] 蓝图扩展                                                 :m8:
+CLOSED: [2022-04-21 周四 20:17] SCHEDULED: <2022-04-14 周四 09:20>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-04-25 周一 09:40
+:END:
 * Appointment
 * Project
+** SCH [#A] 战斗进度条                                                 :m8:
+SCHEDULED: <2022-04-24 周日 09:00> DEADLINE: <2022-04-30 周六 21:00>
+:PROPERTIES:
+:BLOCKER: children
+:END:                          
+*** DONE 分析需求
+CLOSED: [2022-04-25 周一 13:24] SCHEDULED: <2022-04-25 周一 11:00>
+:PROPERTIES:                          
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:                          
+*** DONE 验证自身回合
+CLOSED: [2022-04-25 周一 13:26] SCHEDULED: <2022-04-25 周一 13:24>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+*** DONE 设计实现方案
+CLOSED: [2022-04-29 周五 15:02] SCHEDULED: <2022-04-25 周一 13:26>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+*** DONE 实现数据处理层
+CLOSED: [2022-04-29 周五 15:02] SCHEDULED: <2022-04-29 周五 15:02>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+*** DONE 实现界面层
+CLOSED: [2022-04-29 周五 15:02] SCHEDULED: <2022-04-29 周五 15:02>
+:PROPERTIES:
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
+*** TODO 测试
+SCHEDULED: <2022-04-29 周五 15:02>
+:PROPERTIES:                          
+:TRIGGER+: parent todo!(DONE)
+:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+:END:
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
 ** 学习《Lua程序设计》                                       :learn:future:

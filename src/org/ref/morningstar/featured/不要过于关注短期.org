@@ -1,62 +1,60 @@
 #+STARTUP: INDENT NUM
 
-* Introduction to Short-Term Focus
-Too much focus on the short term can work against your investment success.
-
-When planning an investment decision, do you think in terms of weeks or months? Sometimes that is appropriate, but for a great many decisions in life, it is too short.
-
-Short-term focus is a kind of myopia that makes an investor focus on the short term. It can be bad for your success as an investor. Let’s take a look at why that is.
+* 介绍短期关注
+过于关注短期不利于你的投资成功. 当计划一次投资决定时, 你用几周还是数月来考虑? 有
+些时候这是值合适的, 但是对于一生中的许多决定来说, 这个时间还是太短了.
+短期关注是一种让投资者过于关注短期的短视, 作为投资者来说, 这不利于你获得成功.
 
 
-* Short-Term Focus
-Do you focus too heavily on the short term at the expense of the long term?
-
-
+* 短期关注
+你是否过于关注短期而忽视了长期
 [[file:../../../res/image/short_01.png]]
 
-When an investor suffers from short-term focus, he or she inappropriately focuses on short-term risk as opposed to long-term risk. Given today’s technology and instant access to information via the Internet, it is inevitable that many investors will check their investment performance on a frequent basis.
+当一个投资者受短期关注影响时, 他不合适的关注于短期风险而不是长期风险, 鉴于今天的
+和通过互联网对信息即时的访问, 很多投资者频繁的查看投资表现是无法避免的.
 
-Most investors know why they are investing: they have long-term goals that they are trying to achieve. Yet, they often exhibit very short-term behavior, such as frequent trading and/or overreacting to the short-term volatility of investments. It is imperative that these individuals resist the temptation to behave as if their time horizon were far shorter than it truly is.
+很多投资者明白为什么他们要投资: 他们尝试完成他们的长期目标, 但他们通常表现出非常
+短期的行为. 比如说频繁交易或对短期波动反应过度. 它们迫切的抵抗诱惑, 好像它们的时
+间范围比其他人短得多.
 
-
-* Short-Term Focus: Avoiding Potential Near-Term Losses
-In a study titled "Risk Aversion or Myopia? Choices in Repeated Gambles and Retirement Investments," Shlomo Benartzi and Richard Thaler, professors at the Anderson School at UCLA and the University of Chicago, respectively, studied a group of defined contribution plan participants. The participants were divided into two groups and each group was told they could choose between only two funds, A and B. They were then given some information about the historical returns of these funds and were asked to decide, based on this information, how much of their retirement money they would invest in each fund. The returns for the funds were derived from actual stock and bond returns. The manipulation in the experiment was the manner in which the fund returns were displayed.
-
+* 避免潜在的近期损失
+在一项题为"风险厌恶还是短视, 重复赌博还是退休投资"的研究中, 两个学者分别研究了固
+定缴款计划的参与者, 参与者被分为两组, 每组都被告知它们只能在两个基金A和B中选择.
+他们被告知了基金的历史回报信息, 根据基于这个信息决定在每个基金内投入多少退休金.
+基金的回报实际来自于股票和债券的回报.
 
 [[file:../../../res/image/short_02.png]]
 
-One group was shown a distribution of one-year returns for both stocks and bonds. The other group was shown a distribution of 30-year returns. The academics predicted that subjects viewing the one-year chart would invest less in stocks than subjects viewing the 30-year return chart. They based their forecast on the fact that the one-year chart accentuated the perceived risk of investing in stocks. They stated that over a one-year period, the likelihood of stocks underperforming bonds is about a third, while over a 30-year period the likelihood is about 5%.
+一组看股票和债券一年的回报分布, 另一组看30年的回报分布, 学者们预测与浏览30年回报
+图的试验者相比, 浏览一年回报图的实验者会更少的投资于股票. 他们的预测基于这样一个
+事实, 那就是一年图强调了投资股票的风险. 一年股票回报小于债券的概率有1/3, 而30年
+则不到5%
 
-Things To Know
-Exposure to frequency of returns tends to affect an investor’s tolerance for risk.
-What the study found
-The results found that the group looking at the distribution of one-year returns allocated their portfolios much more conservatively: 60% to bonds and 40% to stocks. In contrast, the group that saw the 30-year return distribution allocated their portfolios more aggressively: 10% to bonds and 90% to stocks. Exposure to frequency of returns tends to affect an investor’s tolerance for risk.
+** 研究发现了什么
+结果发现看一年图的小组更保守的分配了他们的退休金, 60%债券和40%股票, 相对的, 看
+30年图的小组将90%的投资于股票, 剩下的投资于债券.
 
-Know the risks
-Diversification does not eliminate the risk of investment losses. Government bonds are guaranteed by the full faith and credit of the United States government as to the timely payment of principal and interest, while stocks are not guaranteed and have been more volatile than bonds.
+#+begin_quote
+对回报披露的频率往往会影响投资者对风险的承受能力
+#+end_quote
 
-Source: Shlomo Benartzi and Richard H. Thaler, "Risk Aversion or Myopia? Choices in Repeated Gambles and Retirement Investments," Management Science, March 1999, Vol. 45, No. 3, pp. 364–381. The returns for the funds were derived from the CRSP (Center for Research in Security Prices, Booth School of Business, The University of Chicago) value-weighted NYSE index for stocks and Ibbotson’s annual returns on five-year government bonds.
-
-
-* Short-Term Focus: Coping with Near-Term Fluctuations
-It’s tempting for investors to monitor their investment accounts on a regular basis. Instant access to real-time quotes and a barrage of media reports on daily stock market fluctuations can make it difficult for investors with a long-term investment horizon to stay focused on their goals. In reality, these daily market movements may not be as extreme as they seem. As investors look longer term, their perception often changes.
-
+* 应对短期波动
+投资者很想定期监视他们的投资账户, 即时访问实时报价和媒体对股票市场波动的日常报道
+会让他们无法专注于长期投资目标, 实际上日常市场的走势可能并不像看起来那么极端. 随
+着投资者目光逐渐长远, 他们的看法也会发生变化
 
 [[file:../../../res/image/short_03.png]]
 
-Keep short-term fluctuations in perspective
-Short-term market fluctuations can be quite volatile, and the probability of realizing a loss within any given day is high. However, the likelihood of realizing a loss has historically decreased over longer holding periods. The graph illustrates that while the probability of losing money on a daily basis over the past 20 years was 45%, the probability dropped dramatically when analyzing an annual time period—15%.
+** 保持对短期波动的看法
+短期市场波动可能会非常大, 在任意一天亏损的可能性都很高, 但是在长持有期内实现损失
+的可能性会降低, 图片展示了过去20年每日损失的可能性高达45%, 但是年度损失可能性只
+有15%
 
-Things To Know
-As investors look longer term, their perception often changes.
-Periodic review of an investment portfolio is necessary, but investors shouldn’t let short-term swings affect their view of the future.
+#+begin_quote
+投资者关注长期, 他们的看法会发生变化
+周期性的回顾投资组合是必要的, 但投资者不应因短期的摇摆而影响未来的看法
+#+end_quote
 
-Returns and principal invested in stocks are not guaranteed. Probability of loss is calculated as the number of negative periods divided by the number of total periods using the specified frequency of data.
-
-About the data
-Stocks are represented by the Ibbotson® Large Company Stock Index. An investment cannot be made directly in an index.
-
-* Summary of Short-Term Focus
-Do you base your investment decisions on weeks or months rather than years? If you do, you are not alone, and you are using short-term focus. In some cases it can work against successful financial planning.
-
-Behavioral economists have begun exploring our nonrational side as it relates to economic behavior. Short-term focus is one of these behaviors. If you learn to identify short-term focus in your own thinking, you will be better armed to see possible bad choices.
+* 总结
+你是否基于周或月而不是年度来做投资决定? 如果你这样做了, 那您不是孤单的, 但这个可
+能会影响你财务计划是否能够获得成功.

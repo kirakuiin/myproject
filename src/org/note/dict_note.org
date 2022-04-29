@@ -1,12 +1,17 @@
 #+STARTUP: INDENT OVERVIEW
 
 * TODO 单词记录
-SCHEDULED: <2030-12-06 周五 +1y>
+SCHEDULED: <2031-12-06 周六 +1y>
   :PROPERTIES:
   :STYLE:    habit
   :LOGGING:  logrepeat DONE(@)
-  :LAST_REPEAT: [2022-04-13 周三 11:10]
+  :LAST_REPEAT: [2022-04-18 周一 10:53]
   :END:
+  - State "DONE"       from "TODO"       [2022-04-18 周一 10:53] \\
+    in terms of: 按照
+    implication: 含义
+    likelihood: 可能性
+    myopia: 短视
   - State "DONE"       from "TODO"       [2022-04-13 周三 11:10] \\
     tame: 驯服
     margin: 余量

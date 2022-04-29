@@ -60,3 +60,184 @@ bug
 集中在20%的代码上, 你需要做的就是通过工具找到20%, 优化它.
 一个不断重构, 结构良好的程序很容易定位到性能热点, 从而帮助你更轻松的优化速度
 
+* 代码的坏味道
+** 重复代码
+定义:
+在一个以上的地点看到相同的代码, 相同的表达式, 应将其提取为一个函数
+方案:
+1. Extract Method
+2. Pull Up Method
+3. Form Template Method
+4. Substitute Algorithm
+5. Extract Class
+** 过长函数
+定义:
+每当你觉得需要对代码进行注释, 或者出现嵌套条件, 循环时, 你应该将函数变小
+方案:
+1. Extract Method
+2. Replace Temp with Query
+3. Introduce Parameter Object
+4. Preserve Whole Object
+5. Replace Method with Method Object
+6. Decompose Conditional
+** 过大的类
+定义:
+想要用单个类做太多的事, 应拆分为不同的类
+方案:
+1. Extract Class
+2. Extract Subclass
+3. Extract Interface
+4. Duplicate Observed Data
+** 过长参数列表
+定义:
+参数过长导致修改, 理解都非常困难, 应该拆分为多个函数
+方案:
+1. Replace Parameter with Method
+2. Preserve Whole Object
+3. Introduce Parameter Object
+注意:
+如果你不希望被调用对象和调用对象产生依赖关系, 可以将数据从对象拆出来作为参数
+** 发散式变化
+定义:
+某个类经常因为不同的原因在不同的方向发生变化. 应该一个类只因为一个原因发生变化.
+方案:
+1. Extract Class
+** 霰弹式修改
+定义:
+每当你遇到某种变化, 你都需要在不同的类中进行小修改. 应该只在一个类内进行修改.
+方案:
+1. Move Method
+2. Move Field
+3. Inline Class
+** 依恋情结
+定义:
+函数对某个类的兴趣比自己所在的类的兴趣还要大, 请将它移动到它更喜欢的类中
+方案:
+1. Move Method
+2. Extract Method
+** 数据泥团
+定义:
+在好多地方看到相同的三四项数据, 应该将他们封装
+方案:
+1. Extract Class
+2. Introduce Parameter Object
+3. Preserve Whole Object
+注意:
+一个好的判断方式是, 删掉众多数据项中的一个, 其他数据有没有失去意义. 失去是明确的封装信号
+** 基本类型偏执
+定义:
+不喜欢因为一些小任务创建对象, 哪怕只有两三个关联的数据也应该创造新的类型
+方案:
+1. Replace Data Value with Object
+2. Replace Type Code with Class
+3. Replace Type Code with Subclasses
+4. Replace Type Code with State/Strategy
+5. Extract Class
+6. Introduce Parameter Object
+7. Replace Array with Object
+** switch惊悚
+定义:
+多处代码存在相同的switch语句, 难以修改. 应用多态取代之
+方案:
+1. Extract Method
+2. Move Method
+3. Replace Type Code with Subclasses
+4. Replace Type Code with State/Strategy
+5. Replace Conditional with Polymorphism
+6. Replace Parameter with Explicit Methods
+7. Introduce Null Object
+** 平行继承体系
+定义:
+每当你为一个类增加子类, 也要为另一个类添加子类. 一般让一个体系的继承实例引用另一个
+方案:
+1. Move Method
+2. Move Field
+** 冗余类
+定义:
+某个类实际已经没什么功能但依然存在, 请让他庄严的消失吧.
+方案:
+1. Collapse Hierarchy
+2. Inline Class
+** 夸夸其谈未来性
+定义:
+因为未来可能做某事提前加上了某些类或者接口. 请让所有用不上的东西消失
+方案:
+1. Collapse Hierarchy
+2. Inline Class
+3. Remove Parameter
+4. Rename Method
+** 令人迷惑的暂时字段
+定义:
+类内的某个变量仅为某种特定的情况而设定. 请将这些变量抽离出去作为一个单独的对象
+方案:
+1. Extract Class
+2. Introduce Null Object
+** 过度耦合的消息链
+定义:
+a.b().c().d().e(), 客户端与查找过程紧密耦合. 应符合迪米特法则
+方案:
+1. Hide Delegate
+2. Extract Method
+3. Move Method
+** 中间人
+定义:
+某个类有一半的函数都委托给其他类. 此时应直接和负责功能的对象打交道
+方案:
+1. Remove Middle Man
+2. InlineMethod
+3. Replace Delegation with Inheritance
+** 狎昵关系
+定义:
+两个类过于亲密, 探究彼此private的成分. 应拆散
+方案:
+1. Move Method
+2. Move Field
+3. Change Bidirectional Associatioon to Unidirectional
+4. Extract Class
+5. Hide Delegate
+6. Replace Inheritance with Delegation
+** 异曲同工的类
+定义:
+两个函数做一件事, 却有着不同的签名.
+方案:
+1. Rename Method
+2. Move Method
+3. Extract Superclass
+** 不完美的库类
+定义:
+库的功能无法满足我们的需求, 但又无法直接进行修改
+方案:
+1. Introduce Foreign Method
+2. Introduce Local Extension
+** 纯粹的数据类
+定义:
+只拥有读写数据的接口, 无其他功能, 被其他类过分操纵
+方案:
+1. Encapsulate Field
+2. Encapsulate Collection
+3. Remove Setting Method
+4. Move Method
+5. Extract Method
+** 被拒绝的遗赠
+定义:
+子类不想继承超类的部分函数和数据.
+方案:
+1. Replace Inheritance with Delegation
+** 过多的注释
+定义:
+把注释当做除臭剂来用, 因为代码糟糕才加注释
+方案:
+1. Extract Method
+2. Rename Method
+3. Introduce Assertion
+* 构筑测试体系
+* 重构列表
+* 重新组织函数
+* 在对象之间搬移特性
+* 重新组织数据
+* 简化条件表达式
+* 简化函数调用
+* 处理概括关系
+* 大型重构
+* 重构, 复用与实现
+* 重构工具
