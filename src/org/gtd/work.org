@@ -14,10 +14,11 @@
 * Inbox
 * Next Action
 ** TODO [#C] 每周完成leetcode一道题 [1/1]                           :learn:
-SCHEDULED: <2022-05-02 周一 09:00 ++1w>
+SCHEDULED: <2022-05-09 周一 09:00 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-04-29 周五 15:47]
+:LAST_REPEAT: [2022-05-05 周四 10:51]
 :END:
+- State "DONE"       from "TODO"       [2022-05-05 周四 10:51]
 - State "DONE"       from "TODO"       [2022-04-29 周五 15:47]
 :LOGBOOK:
 CLOCK: [2022-03-29 周二 09:22]--[2022-03-29 周二 09:47] =>  0:25
@@ -103,12 +104,13 @@ CLOCK: [2022-03-07 周一 17:25]--[2022-03-07 周一 17:50] =>  0:25
 CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
-** TODO [#A] 完成每周周报                                             :work:
-SCHEDULED: <2022-05-07 周六 18:00 ++1w> DEADLINE: <2022-05-09 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                            :work:
+SCHEDULED: <2022-05-14 周六 18:00 ++1w> DEADLINE: <2022-05-16 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-04-29 周五 17:14]
+:LAST_REPEAT: [2022-05-07 周六 20:37]
 :END:
+- State "DONE"       from "TODO"       [2022-05-07 周六 20:37]
 - State "DONE"       from "TODO"       [2022-04-29 周五 17:14]
 - State "DONE"       from "TODO"       [2022-04-25 周一 09:51]
 - State "DONE"       from "TODO"       [2022-04-16 周六 16:21]
