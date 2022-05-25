@@ -1,131 +1,93 @@
 #+STARTUP: INDENT NUM
 
-* Introduction to Dealing with Financial Stress
-Money is a very common source of stress. Some simple techniques can help you start to deal with this stress.
+* 介绍: 处理财务压力
+钱是一种非常常见的压力来源, 有一些简单的技巧来帮助你应对这种压力.
+只要有钱, 压力就一直伴随着我们. 如果你不知所措, 感受到了压力的影响, 你并不孤单, 也从未孤单.
+有些人认为成为百万富翁就可以解决所有问题和他们的压力, 但真相可能并非如此, 这可能会带来更大的压力.
+某时我们在不知不觉中承受着金融压力, 重要的一步就是识别它是如何影响你的. 除此之外, 你可以做很多事情来缓解症状甚至处理问题本身.
 
-Stress over money has been with us for as long as there has been money, so if you are overwhelmed or feeling the effects of stress, you are not alone, and you never have been alone.
+* 财务压力如何影响你的健康
+没人能够免疫财务压力, 如果不加以管理, 压力将会导致失眠障碍, 焦虑, 抑郁. 好消息是有多种办法来管理财务造成的压力.
 
-Some people think that just having a million dollars would solve all their problems and their stress, but the truth is, it probably wouldn’t, and it might bring even more stress—like aggressive relatives you haven’t seen in 30 years!
+管理财务压力的第一步是认识到它是如何影响你的生活的:
+- 你在参与不健康的应对方式. 比如抽烟, 酗酒, 暴食, 吸毒. 有人尝试用有伤害性但是带来兴奋感的活动来管理压力, 事实证明这将带来更多压力.
+- 你不将钱用到重要的事情上. 比如饮食和医疗, 当陷入到预算紧张的情况时, 有人会牺牲不必要的支出. 这将会导致更大的压力, 损害身体状况.
+- 你有不健康的思维过程, 当时局艰难, 很容易消极, 消极思想会伤害你的情绪和身体, 导致抑郁和焦虑.
+- 你因为压力而失眠, 压力会导致我们的睡眠模式变得更糟, 如果压力影响了你的睡眠, 将导致情绪低落, 压力提高.
 
-Sometimes we are suffering from financial stress without even knowing it. So an important step is to identify how it is affecting you. Beyond that, there is much you can do to relieve the symptoms and start attacking the problem itself. This tutorial is a very basic set of ideas and reminders to help you with that.
+一些常见的缓解压力的方式:
+- 锻炼
+- 参加瑜伽课程
+- 冥想
+- 呼吸技巧
+- 散步
+- 按摩
+- 肌肉放松
+- 听轻松舒缓的音乐
 
+* 减少对不确定经济的焦虑
+在动荡的经济环境中, 非常容易感到紧张或焦虑, 然而, 你可以选择让压力压倒你的生活, 或者管理压力让自己尽可能获得快乐健康.
 
-* How Financial Stress Can Affect Your Health
-No one is immune to financial stress. If unmanaged, stress can lead to damaging conditions like sleep disorders, anxiety, and depression. The good news is that there are ways to manage stress caused by your finances.
+1. 思考什么是你可以控制的, 什么是你无法控制的
+   尽自己的力量让财务情况变好, 如果有你无法控制的因素, 放下他们
+2. 不要纠结于可能的情况
+   例如, 你认为自己可能会失业, 请不要让这种恐惧笼罩你, 请在当前情况下尽力而为
+3. 知道何时放下报纸, 关闭电视
+   保持对金融事件了解是很哈的, 但是媒体经常夸张事实, 所以要定时的了解这些消息
+4. 专注于好的事情
+   想想你做了什么, 你拥有什么, 那些用钱买不到的东西. 与考虑不断变化的经济相比, 这会更为明智
+5. 练习感恩并探索放松技巧
+   每早晚思考想想感恩的是什么. 每天抽空放松一下, 比如散步, 瑜伽.
 
-THINGS TO KNOW
-The first step toward managing your financial stress is becoming aware of how it affects your life.
-The first step toward managing your financial stress is becoming aware of how it affects your life. Read below to see if stress is affecting your life in the following ways:
+* 停止和伴侣在财务上的争吵
+和伴侣在财务问题上吵架是很常见的, 但是这对你们的关系和财务情况都不会有帮助.
 
-You are taking part in unhealthy ways of coping, like smoking, excessive drinking, overeating, or using drugs
-Some people try to manage stress by doing harmful activities that feel exciting or fun, but they are unhealthy and actually lead to more stress.
+1. 在争论开始之前, 了解双方对金钱的看法是很重要的. 如果两人都了解对方的财务看法, 那么你们不太可能发生争论.
+2. 一起计划和预算是很重要的, 让双方都了解你们的收支, 债务, 财务关键点. 如果两人为了共同点目标而奋斗, 那么关系会更好
+3. 寻找答案而不是助长问题, 不要发泄挫败感
+4. 如果讨论变得过于紧张严肃, 深呼吸保持镇定, 在开放和冷静中讨论所有事务是非常重要的. 两个人可以散步, 看视频, 讨论其他话题来缓和气氛
+5. 如果协商失败, 可以寻求专业人员的帮助, 这并不丢人
 
-You aren’t using money for important items like food and healthcare
-When caught in a budget crunch, some people sacrifice necessities in order to pay for nonnecessities. This can lead to more stress and a decrease in physical well-being.
+* 减少财务压力, 不健康的应对行为
+** 不健康的应对压力的方式
+当处于经济压力之下时, 人们可能用不健康的行为来应对压力. 当你第一次开始从事时, 你可能会觉得压力有所减轻, 但到最后只会增加更多压力.
 
-You have unhealthy thought processes
-When times are tough, it’s easy to get negative. However, negative thoughts can have harmful emotional and physical effects, and cause depression or anxiety.
+不健康的应对行为可能导致身体和精神两方面的问题, 常见的不健康方式有:
+- 暴饮暴食
+- 酗酒
+- 嗑药
+- 咖啡因
+- 吸烟
+- 赌博
 
-You are losing sleep because of stress
-Sometimes stress can cause our sleep patterns to shift for the worse. If stress is affecting your sleep, it can cause moodiness, impairment of immune and cognitive functioning, and greater levels of stress.
+** 健康的应对压力方式
+有部分行为被证明可以有效减小压力, 且对身体健康有益. 健康的应对压力行为有:
+- 锻炼
+- 健康饮食
+- 听平静的音乐
+- 散步
+- 旅行
+- 参加瑜伽课
+- 使用冥想或者呼吸技术
 
-Now that you are aware of common activities that lead to increased stress levels, you can find out what to do to avoid them. You can feel better about finances by keeping a budget, learning what to do to get out of debt, and also by learning stress-reducing techniques that will help you relieve not only financial stress, but the overall levels of stress in your life. Some helpful stress-relieving techniques you may want to explore are:
+** 记录面对压力的感受和解决方式
+记录下面对压力的感受可以帮助你积极的释放情绪, 写下经历的事情可以帮助你找到解决金钱问题的方案.
 
-exercise
-taking a yoga class
-meditation
-breathing techniques
-massage
-taking a walk
-progressive muscle relaxation
-listening to relaxing music
+** 什么时候寻求帮助
+如果你面对压力时有问题, 或者不能停止使用不健康的方式应对, 咨询你的医生来寻求帮助.
 
-
-* Reduce Your Anxiety over an Uncertain Economy
-In a tumultuous economic climate, it’s easy to feel anxious or nervous. However, you can make a choice to let the stress overpower your life, or you can manage the stress you feel and aim to live as happily and healthfully as you can. If your stress over the economy is running rampant, here are some tips to better handle your feelings:
-
-THINGS TO KNOW
-You can make a choice to let the stress overpower your life, or you can manage the stress.
-Think about what you can change and what you can’t change
-Do your part to change your financial situation for the better, but if there are factors you can’t control, don’t let them get you down. Do as much as you can for you and your family’s finances, and then let go of what you can’t control.
-
-Don’t dwell on possible circumstances
-For instance, if you think you might lose your job, don’t let that fear overtake you. If you do, you might start performing poorly in your present job or cause yourself stress-related illness. Instead, give your best in your current situation and know that doing the best you can is the best thing you can do.
-
-Know when to put down the newspaper or turn off the TV
-It’s great to stay educated on financial happenings, but know that the media can often paint a dreadful, fear-ridden picture. Give yourself a certain amount of time each day or week to educate yourself on financial topics, and then switch to a more calming activity.
-
-Stay focused on the good
-Think about what you do have and what you will have, no matter what: family, close friends, and the things you have that money can’t buy. When you consider this, it’s easy to see that it’s better and wiser to focus on the best parts of your life rather than the life of an everchanging economy.
-
-Practice being grateful and explore relaxation techniques
-Take time each morning or evening to think about what you are grateful for. This could be having food to eat, a place to live, loved ones, or anything else that makes you feel good. Also, take time each day to relax. You can take a yoga class, practice meditation at home, take a hot bath, or take a walk outside.
-
-
-* How to Stop Arguing with Your Partner over Finances
-It’s common for couples to fight about finances. But battling with your partner won’t help your finances or the well-being of your relationship. Instead, find out how you and your partner can work together for financial freedom:
-
-THINGS TO KNOW
-Know both your view of money and your partner’s.
-Before the arguments have a chance to start …
-Know both your view of money and your partner’s. If the two of you understand one another’s financial outlooks, you’ll be better able to know where the other is coming from and you’ll be less likely to fight. In addition, when you get everything out on the table, you can compromise and make decisions that help both of you get what you need.
-Budget and plan together. Make sure both of you know the amount of money that’s being made, where it’s going, what debt you have, and other key financial points. Your family will operate better if two people are working with one another for common goals.
-Look for answers
-Aim for solutions, rather than contributing to problems. In arguments, we all want to vent our frustrations. But what’s more important is discussing problems with a focus on finding solutions. When you and your partner discuss financial issues, keeping your eyes on finding solutions will reduce problems and stress.
-If things get too heated …
-If you feel an argument flaring up over finances, breathe and stay calm. It’s important to discuss all matters with an open and calm mind, especially when you’re talking about money. Therefore, when you discuss money, put on some calming music, hold hands, use calming breathing techniques, or try some other way to help the two of you stay tranquil while you discuss what’s important.
-Feel free to take breaks while you talk. If things get too heated, take a walk together and chat about something else. Or, take a walk alone so each person can clear his or her head. You can even consider watching a funny movie to lighten the mood. Whatever way you choose to spend your break, when you rejoin to discuss, you’ll be better able to talk calmly and rationally about the important topics at hand.
-If all else fails …
-If you’ve tried all of the above tips, and things still aren’t getting better, consider seeing a financial advisor. If your marriage is rocky because of finance-related fights, it may be wise to consider seeing a marriage counselor. Don’t be shy to ask for help when it’s needed.
-
-* Reducing Financial Stress: Replacing Unhealthy Coping Behaviors
-Unhealthy Ways of Dealing with Stress
-When under financial stress, people may indulge in unhealthy coping behaviors. As you first start engaging in these behaviors, they may feel like stress-reducers, but in the end, they add more stress to your life. Common unhealthy coping behaviors include:
-
-THINGS TO KNOW
-Unhealthy coping behaviors can lead to both physical and mental problems.
-overeating
-drinking
-drug use
-caffeine consumption
-smoking
-gambling
-Many of these unhealthy coping behaviors can lead to both physical and mental problems. Overeating or smoking, for example, can cause a slew of potential health complications. Excessive drinking is not only physically harmful, but it can lead to depression and cause strain in relationships. In addition, instead of helping you out of debt or other financial problems, these types of behaviors cost you money along with your physical and mental wellbeing.
-
-Healthy Ways of Dealing with Stress
-There are other coping behaviors that not only soothe your financial stress, but lead to a more happy and healthy life. Instead of partaking in coping behaviors that cause more stress, try these behaviors that are proven to reduce stress:
-
-exercising
-eating well
-listening to calming music
-taking a walk outside
-journaling
-taking a yoga class
-using meditation or breathing techniques
-Document feelings and solutions
-Keeping note of what you feel during stressful times can help you get your emotions out in a positive way. Writing down what you are going through and what you feel can help create solutions for your money problems.
-
-When to Get Help
-If you are having problems coping with stress, or cannot stop unhealthy ways of coping, talk to your doctor about finding help. Your employee assistance program or your employer may also provide referrals to support groups for stress and other resources to help you find healthy ways to reduce stress in your life.
-
-* Summary of Dealing with Financial Stress
-Having a Financial Plan Can Reduce Financial Stress
-When people want to get serious about putting their financial lives on track, they create financial action plans. So, too, do they make action plans for reducing stress.
-
-The value of having a plan is that you can see where you need to go and what you need to do. It keeps you on track and promises that, if you do what it says and nothing unexpected happens to it, you will get where you need to go. Without such a plan, you probably won’t; you probably wouldn’t even know the end result if and when you saw it.
-
-At the very least, just the fact of having a plan can reduce stress. But you want to go further than that. A plan can:
-
-Show you how and where and why you are experiencing stress
-Identify triggers for stress
-Discipline your spending
-Help you identify which stress relievers work best for you
-Set a schedule for practicing stress relief exercises
-Show you solutions that you hadn’t thought of before
-Creating a stress action plan can be as simple as setting some goals and some means of achieving them. Let’s look at some examples:
-
-Practical Ideas I Can Start with Today
-Identify broad areas of my financial life that cause me stress.
-Identify specific stress triggers that lead me to engage in unhealthy behaviors.
-Identify my unhealthy behaviors that I use to deal with stress.
-Identify and try out healthy reactions to my triggers.
+* 总结
+** 拥有财务计划可以降低财务压力
+当人们想要认真记录生活中的财务时, 它们创建了财务活动计划, 这个计划告诉你应该怎么做, 你将获得什么. 如果没有这份计划显然你将对未来一无所知, 这也是压力的来源.
+计划的具体好处有:
+- 展示面对压力的时间, 地点, 原因
+- 确定压力的诱因
+- 约束你的花费
+- 帮助你确定哪种压力缓解方案对你最有效
+- 创建减压练习计划
+- 向你展示你以前从未想过的解决方案
+** 压力行动计划举例
+- 今天可以开始的想法
+- 确定财务生活中产生压力的广泛区域
+- 确定导致自己从事不健康行为的特定压力触发因素
+- 确定我的应对压力的不健康行为

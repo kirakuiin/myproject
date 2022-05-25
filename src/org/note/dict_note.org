@@ -11,7 +11,10 @@ SCHEDULED: <2031-12-06 周六 +1y>
     in terms of: 按照
     implication: 含义
     likelihood: 可能性
+    relieve: 缓解
+    symptom: 症状
     myopia: 短视
+    massage: 按摩
   - State "DONE"       from "TODO"       [2022-04-13 周三 11:10] \\
     tame: 驯服
     margin: 余量
