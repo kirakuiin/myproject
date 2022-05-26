@@ -10,6 +10,7 @@ def init():
 
     @return:
     """
+    set_speed()
     engine.init_engine()
 
 
@@ -52,6 +53,15 @@ def set_show_track(is_show):
     @return:
     """
     global_vars.is_show_track = is_show
+
+
+def set_speed(speed: float=1.0):
+    """设置游戏速率
+
+    @param speed:
+    @return:
+    """
+    global_vars.speed_times = speed
 
 
 def register_handle(event_type, handle_func):

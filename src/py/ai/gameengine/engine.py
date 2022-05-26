@@ -50,7 +50,7 @@ def start_engine():
         clock.tick(defines.FPS)
         global_vars.run_time = time.time() - global_vars.start_time
         handle_event()
-        update(global_vars.scene, clock.get_time()/defines.MS_PER_SECOND)
+        update(global_vars.scene, clock.get_time()/defines.MS_PER_SECOND*global_vars.speed_times)
         render()
     pygame.quit()
 

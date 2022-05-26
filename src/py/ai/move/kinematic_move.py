@@ -4,6 +4,7 @@
 import case
 import math2d
 from . import defines
+from . import algorithm
 
 
 @case.register_case(__name__)
@@ -27,7 +28,7 @@ class KinematicSeekCase(case.Case):
 
     def update(self, dt):
         self._character.velocity = self.get_velocity()
-        if math2d.distance(self._character.get_world_pos(), self._target.get_world_pos()) <= 5:
+        if algorithm.is_close_enough(self._character, self._target):
             self.quit_engine()
 
 
