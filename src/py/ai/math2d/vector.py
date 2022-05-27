@@ -3,6 +3,8 @@
 import functools
 from numpy import *
 
+import math2d
+
 
 def vector(x: float=0.0, y: float=0.0) -> ndarray:
     """向量
@@ -22,6 +24,15 @@ def position(x: float=0, y: float=0) -> ndarray:
     @return:
     """
     return array([x, y, 1])
+
+
+def as_vector(angle: float) -> ndarray:
+    """将角度转化为单位向量
+
+    @param angle:
+    @return:
+    """
+    return rotate(vector(1, 0), angle)
 
 
 @functools.singledispatch
@@ -65,7 +76,7 @@ def distance(v1: ndarray, v2: ndarray) -> float:
     return norm(v2-v1)
 
 
-def vector_degrees(vec: ndarray) -> float:
+def as_degrees(vec: ndarray) -> float:
     """求向量相对x轴的角度
 
     @param vec:

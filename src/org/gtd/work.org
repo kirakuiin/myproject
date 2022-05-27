@@ -14,10 +14,11 @@
 * Inbox
 * Next Action
 ** TODO [#C] 每周完成leetcode一道题 [1/1]                           :learn:
-SCHEDULED: <2022-05-23 周一 09:00 ++1w>
+SCHEDULED: <2022-05-30 周一 09:00 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-05-18 周三 16:31]
+:LAST_REPEAT: [2022-05-26 周四 15:44]
 :END:
+- State "DONE"       from "TODO"       [2022-05-26 周四 15:44]
 - State "DONE"       from "TODO"       [2022-05-18 周三 16:31]
 - State "DONE"       from "TODO"       [2022-05-10 周二 09:15]
 - State "DONE"       from "TODO"       [2022-05-05 周四 10:51]
@@ -180,8 +181,10 @@ SCHEDULED: <2022-05-28 周六 18:00 ++1w> DEADLINE: <2022-05-30 周一 12:00 ++1
 CLOSED: [2022-05-18 周三 16:30] SCHEDULED: <2022-05-16 周一 13:12>
 ** DONE [#A] 优化战前表现                                               :m8:
 CLOSED: [2022-05-20 周五 15:07] SCHEDULED: <2022-05-18 周三 16:32>
-** TODO [#A] 跳字显示总伤害                                            :m8:
-SCHEDULED: <2022-05-20 周五 09:00>
+** DONE [#A] 跳字显示总伤害                                             :m8:
+CLOSED: [2022-05-26 周四 14:33] SCHEDULED: <2022-05-20 周五 09:00>
+** DONE [#A] 优化英雄详情技能槽位                                      :m8:
+CLOSED: [2022-05-26 周四 14:33] SCHEDULED: <2022-05-26 周四 09:00>
 * Appointment
 * Project
 ** Archive                                                         :ARCHIVE:

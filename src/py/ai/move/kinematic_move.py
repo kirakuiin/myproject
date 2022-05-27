@@ -28,7 +28,7 @@ class KinematicSeekCase(case.Case):
 
     def update(self, dt):
         self._character.velocity = self.get_velocity()
-        if algorithm.is_close_enough(self._character, self._target):
+        if algorithm.is_close_enough(self._character.get_world_pos(), self._target.get_world_pos()):
             self.quit_engine()
 
 

@@ -27,10 +27,11 @@ class ArgParser(object):
         self._parser.add_argument('-t', '--type', type=str, required=False,
                                   help='运行某个类型的全部示例')
         self._parser.add_argument('-i', '--index', type=int, required=False,
-                                  default=0,
-                                  help='从某个类型的第几个开始执行')
+                                  default=0, help='从某个类型的第几个开始执行')
         self._parser.add_argument('-n', '--name', type=str, required=False,
                                   help='执行某个类型指定的类')
+        self._parser.add_argument('-m', '--times', type=float, required=False,
+                                  help='实例运行速度倍数', default=1.0)
         self._parser.add_argument('-s', dest='single', action='store_true', help='仅运行单个示例')
         self._parser.add_argument('-k', dest='track', action='store_true', help='显示绘制轨迹')
         self._parser.add_argument('-d', dest='display', action='store_true', help='显示全部示例名称')
@@ -45,6 +46,9 @@ class ArgParser(object):
 
     def get_cls_name(self) -> str:
         return self._args.name
+
+    def get_times(self) -> float:
+        return self._args.times
 
     def is_single(self) -> bool:
         return self._args.single
@@ -70,11 +74,21 @@ def _run_case_by_param(arg_parser):
     run_case.run_by_type(base_type, idx)
 
 
+def _show_run_config(arg_parser):
+    print('=====配置清单=====')
+    print('是否显示绘制轨迹: {}'.format(arg_parser.is_show_track()))
+    print('是否运行单个示例: {}'.format(arg_parser.is_single()))
+    print('运行速度: {:.1f}x'.format(arg_parser.get_times()))
+    print('=====示例输出=====')
+
+
 if __name__ == '__main__':
     parser = ArgParser()
     if parser.is_display_info():
         print(run_case.get_all_case_info())
     else:
+        _show_run_config(parser)
+        gameengine.set_speed(parser.get_times())
         gameengine.set_show_track(parser.is_show_track())
         _run_case_by_param(parser)
 

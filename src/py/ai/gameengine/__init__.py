@@ -10,7 +10,6 @@ def init():
 
     @return:
     """
-    set_speed()
     engine.init_engine()
 
 
