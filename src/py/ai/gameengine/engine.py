@@ -7,6 +7,7 @@ import time
 from . import defines
 from . import global_vars
 from . import uiobject
+from . import camera
 
 
 HandleInfo = collections.defaultdict(list)  # 事件回调容器
@@ -20,7 +21,9 @@ def init_engine():
     pygame.init()
     global_vars.screen = pygame.display.set_mode((defines.SCREEN_WIDTH, defines.SCREEN_HEIGHT))
     global_vars.scene = uiobject.UIObject()
+    global_vars.camera_mgr = camera.CameraMgr()
     pygame.display.set_caption(defines.SCREEN_TITLE)
+    HandleInfo.clear()
     clean_screen()
 
 
@@ -47,11 +50,11 @@ def start_engine():
     clock = pygame.time.Clock()
     render()
     while global_vars.is_running:
-        clock.tick(defines.FPS)
         global_vars.run_time = time.time() - global_vars.start_time
         handle_event()
         update(global_vars.scene, clock.get_time()/defines.MS_PER_SECOND*global_vars.speed_times)
         render()
+        clock.tick(defines.FPS)
     pygame.quit()
 
 
@@ -75,8 +78,7 @@ def render():
     """
     if not global_vars.is_show_track:
         clean_screen()
-    root = global_vars.scene
-    root.render(uiobject.Transform(), False)
+    global_vars.camera_mgr.render_all_camera()
     pygame.display.update()
 
 

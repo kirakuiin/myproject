@@ -2,50 +2,14 @@
 """
 
 import weakref
+import bisect
 
 import pygame
 import math2d
 
 from . import global_vars
+from . import camera
 from . import defines
-
-
-class Transform(object):
-    """变换信息"""
-    def __init__(self, pos: math2d.ndarray=math2d.position(0, 0), rotate: float=0, scale: float=1.0):
-        self.pos = pos  # 位置
-        self.rotate = rotate  # 旋转角度
-        self.scale = float(scale)  # 放缩比例
-
-    def __repr__(self):
-        return '{}(pos: {}, rotate: {}, scale: {})'.format(
-            self.__class__.__name__, self.pos, self.rotate, self.scale)
-
-    def combine(self, other):
-        """组合两个变换, 生成一个新的变换
-
-        @param other: 另一个变换
-        @return: 新的变换
-        """
-        pos = self.get_transform_matrix(other.pos, other.rotate, other.scale) @ self.pos
-        scale = other.scale*self.scale
-        rotate = other.rotate+self.rotate
-        return self.__class__(pos, rotate, scale)
-
-    @staticmethod
-    def get_transform_matrix(pos: math2d.ndarray, rotate: float, scale: float):
-        """根据偏移, 旋转, 缩放来获得变换矩阵
-
-        @param pos: 偏移
-        @param rotate: 旋转
-        @param scale: 缩放
-        @return: 3阶变换矩阵
-        """
-        base = math2d.eye(3)
-        base = math2d.scale_matrix(scale)@base
-        base = math2d.rotate_matrix(rotate)@base
-        base = math2d.translate_matrix(pos)@base
-        return base
 
 
 class UIObject(object):
@@ -58,8 +22,8 @@ class UIObject(object):
         self._children = []   # 孩子列表
 
         self._color = (255, 255, 255)  # 颜色
-        self._local = Transform()  # 局部变换
-        self._world = Transform()  # 世界变换
+        self._local = math2d.Transform()  # 局部变换
+        self._world = math2d.Transform()  # 世界变换
         self._dirty = True   # 脏标记
         self._order = 0  # 绘制顺序, 越大越后绘制
         self._is_visible = True  # 是否可见
@@ -98,10 +62,10 @@ class UIObject(object):
 
     def set_scale(self, scale: float):
         self._dirty = True
-        self._local.scale = float(scale)
+        self._local.scales = math2d.array((scale, scale))
 
-    def get_scale(self) -> float:
-        return self._local.scale
+    def get_scale(self) -> math2d.ndarray:
+        return self._local.scales
 
     def set_rotate(self, rotate: float):
         self._dirty = True
@@ -121,29 +85,39 @@ class UIObject(object):
         """
         pass
 
-    def render(self, parent_transform: Transform, dirty: bool):
+    def render(self, parent_transform: math2d.Transform, dirty: bool, camera: camera.Camera):
+        """渲染对象
+
+        @param parent_transform: 父变换
+        @param dirty: 脏标记
+        @param camera: 渲染用摄像机
+        @return:
+        """
         dirty = self._dirty | dirty
         if dirty:
             self._world = self._local.combine(parent_transform)
             self._dirty = False
-        self._render_order_lt_zero(dirty)
-        self._render_self()
-        self._render_order_ge_zero(dirty)
+        self._render_order_lt_zero(dirty, camera)
+        self._render_self(camera)
+        self._render_order_ge_zero(dirty, camera)
 
-    def _render_order_lt_zero(self, dirty):
+    def _render_order_lt_zero(self, dirty, camera):
         for child in self._children[:self._split_idx]:
-            child.render(self._world, dirty)
+            child.render(self._world, dirty, camera)
 
-    def _render_self(self):
-        self._is_visible and self.draw()
+    def _render_self(self, camera):
+        if self._is_visible:
+            transform = camera.get_after_camera_transform(self._world)
+            camera.is_in_camera_view(transform) and self.draw(camera.get_viewport_transform(transform))
 
-    def _render_order_ge_zero(self, dirty):
+    def _render_order_ge_zero(self, dirty, camera):
         for child in self._children[self._split_idx:]:
-            child.render(self._world, dirty)
+            child.render(self._world, dirty, camera)
 
-    def draw(self):
+    def draw(self, transform):
         """绘制自身的逻辑
 
+        @param transform: 最终变换
         @return:
         """
         pass
@@ -154,23 +128,8 @@ class UIObject(object):
     def add_child(self, child, order=0):
         child.set_order(order)
         child._parent = weakref.ref(self)
-        self._insert_child_keep_order(child)
-        self._update_split_idx()
-
-    def _insert_child_keep_order(self, child):
-        for idx in range(len(self._children)-1, -1, -1):
-            if child.get_order() >= self._children[idx].get_order():
-                self._children.insert(idx+1, child)
-                break
-        else:
-            self._children.insert(0, child)
-
-    def _update_split_idx(self):
-        self._split_idx = len(self._children)
-        for idx, child in enumerate(self._children):
-            if child.get_order() >= 0:
-                self._split_idx = idx
-                break
+        bisect.insort(self._children, child, key=lambda obj: obj.get_order())
+        self._split_idx = bisect.bisect_left(self._children, 0, key=lambda obj: obj.get_order())
 
     def remove_child(self, child):
         if child in self._children:
@@ -205,10 +164,10 @@ class Circle(UIObject):
         super().__init__()
         self.radius = radius  # 半径
 
-    def draw(self):
+    def draw(self, transform):
         pygame.draw.circle(global_vars.screen, self._color,
-                           UIObject.get_screen_coord(self._world.pos),
-                           self.radius*self._world.scale,)
+                           UIObject.get_screen_coord(transform.pos),
+                           self.radius*transform.scales[0],)
 
 
 class Triangle(UIObject):
@@ -217,12 +176,12 @@ class Triangle(UIObject):
         super().__init__()
         self.radius = radius  # 从中心到顶点的距离
 
-    def draw(self,):
-        pygame.draw.polygon(global_vars.screen, self._color, self._calc_three_points())
+    def draw(self, transform):
+        pygame.draw.polygon(global_vars.screen, self._color, self._calc_three_points(transform))
 
-    def _calc_three_points(self):
-        top_vec = math2d.rotate(math2d.vector(0, self.radius*self._world.scale), self._world.rotate)
+    def _calc_three_points(self, transform):
+        top_vec = math2d.rotate(math2d.vector(0, self.radius*transform.scales[0]), transform.rotate)
         left_vec = math2d.rotate(top_vec, 120)
         right_vec = math2d.rotate(left_vec, 120)
-        return [UIObject.get_screen_coord(math2d.translate(self._world.pos, vec))
+        return [UIObject.get_screen_coord(math2d.translate(transform.pos, vec))
                 for vec in [top_vec, left_vec, right_vec]]

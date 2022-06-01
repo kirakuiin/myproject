@@ -159,7 +159,7 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
         body.set_color(255, 0, 0)
         head = uiobject.Triangle(6)
         head.set_color(0, 255, 0)
-        head.set_pos(12, 0)
+        head.set_pos(10, 0)
         head.set_rotate(-90)
         self.add_child(body, 1)
         self.add_child(head)

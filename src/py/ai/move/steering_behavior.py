@@ -158,3 +158,4 @@ class SteeringWander(case.Case):
         output = algorithm.get_wander_acc(self._character)
         self._character.set_velocity_acc(output.velocity_acc)
         self._character.set_angular_acc(output.angular_acc)
+        self.quit_over_time(10)

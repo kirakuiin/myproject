@@ -9,3 +9,4 @@ is_show_track = False  # 是否显示绘制轨迹
 
 screen = None  # 屏幕对象
 scene = None  # 场景节点
+camera_mgr = None  # 相机管理器

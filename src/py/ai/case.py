@@ -4,6 +4,8 @@
 """
 
 import collections
+import pygame
+import math2d
 import gameengine
 from gameengine import uiobject
 from gameengine import global_vars
@@ -71,6 +73,7 @@ class Case(uiobject.UIObject):
         @return:
         """
         gameengine.init()
+        self.register_handle(pygame.KEYUP, self.camera_control)
 
     def start_engine(self):
         """启动引擎
@@ -124,5 +127,30 @@ class Case(uiobject.UIObject):
     def update(self, dt):
         if self.get_runtime() > 5:
             self.quit_engine()
+
+    def camera_control(self, event):
+        """相机控制接口
+
+        @param event:
+        @return:
+        """
+        camera = gameengine.get_main_camera()
+        pos, rotation, focus = camera.get_camera_param(True, True, True)
+        if event.key == pygame.K_a:
+            camera.set_lookat(pos+math2d.vector(-10, 0))
+        elif event.key == pygame.K_d:
+            camera.set_lookat(pos+math2d.vector(10, 0))
+        elif event.key == pygame.K_w:
+            camera.set_lookat(pos+math2d.vector(0, 10))
+        elif event.key == pygame.K_s:
+            camera.set_lookat(pos+math2d.vector(0, -10))
+        elif event.key == pygame.K_q:
+            camera.set_rotation(rotation+10)
+        elif event.key == pygame.K_e:
+            camera.set_rotation(rotation-10)
+        elif event.key == pygame.K_z:
+            camera.set_focus(focus*2)
+        elif event.key == pygame.K_c:
+            camera.set_focus(focus/2)
 
 

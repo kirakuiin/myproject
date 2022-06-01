@@ -3,6 +3,8 @@
 
 from . import global_vars
 from . import engine
+from . import camera
+from .util import *
 
 
 def init():
@@ -61,6 +63,22 @@ def set_speed(speed: float=1.0):
     @return:
     """
     global_vars.speed_times = speed
+
+
+def get_camera_mgr() -> camera.CameraMgr:
+    """获得摄像机管理器
+
+    @return:
+    """
+    return global_vars.camera_mgr
+
+
+def get_main_camera() -> camera.Camera:
+    """返回主摄像机
+
+    @return:
+    """
+    return get_camera_mgr().get_main_camera()
 
 
 def register_handle(event_type, handle_func):
