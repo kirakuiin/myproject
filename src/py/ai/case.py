@@ -124,10 +124,6 @@ class Case(uiobject.UIObject):
         if self.get_runtime() > time:
             self.quit_engine()
 
-    def update(self, dt):
-        if self.get_runtime() > 5:
-            self.quit_engine()
-
     def camera_control(self, event):
         """相机控制接口
 

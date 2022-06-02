@@ -9,7 +9,7 @@ import math2d
 
 from . import global_vars
 from . import camera
-from . import defines
+from . import util
 
 
 class UIObject(object):
@@ -146,16 +146,6 @@ class UIObject(object):
         else:
             return None
 
-    @staticmethod
-    def get_screen_coord(pos: math2d.ndarray) -> list:
-        """将坐标转换为屏幕坐标
-
-        @param pos:
-        @return: [x, y]
-        """
-        screen_pos = math2d.position(pos[0], defines.SCREEN_HEIGHT-pos[1])
-        return [screen_pos[0], screen_pos[1]]
-
 
 class Circle(UIObject):
     """圆环
@@ -165,8 +155,7 @@ class Circle(UIObject):
         self.radius = radius  # 半径
 
     def draw(self, transform):
-        pygame.draw.circle(global_vars.screen, self._color,
-                           UIObject.get_screen_coord(transform.pos),
+        pygame.draw.circle(global_vars.screen, self._color, util.get_window_coord(transform.pos),
                            self.radius*transform.scales[0],)
 
 
@@ -183,5 +172,26 @@ class Triangle(UIObject):
         top_vec = math2d.rotate(math2d.vector(0, self.radius*transform.scales[0]), transform.rotate)
         left_vec = math2d.rotate(top_vec, 120)
         right_vec = math2d.rotate(left_vec, 120)
-        return [UIObject.get_screen_coord(math2d.translate(transform.pos, vec))
+        return [util.get_window_coord(math2d.translate(transform.pos, vec))
                 for vec in [top_vec, left_vec, right_vec]]
+
+
+class Lines(UIObject):
+    """直线"""
+    def __init__(self, second_point, *other_points, line_width=1, is_close=False):
+        super().__init__()
+        self.line_width = line_width
+        self.points = [second_point] + list(other_points)
+        self.is_close = is_close  # 是否首尾相连
+
+    def draw(self, transform):
+        pygame.draw.lines(global_vars.screen, self._color, self.is_close, self._calc_points_coord(transform),
+                          max(1, int(transform.scales[0]*self.line_width)))
+
+    def _calc_points_coord(self, transform):
+        result = []
+        origin = self.get_pos()
+        for point in [self.get_pos()]+self.points:
+            vec = math2d.rotate_matrix(transform.rotate) @ math2d.scale_matrix(transform.scales) @ (point-origin)
+            result.append(util.get_window_coord(transform.pos+vec))
+        return result

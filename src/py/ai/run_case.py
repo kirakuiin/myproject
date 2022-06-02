@@ -11,6 +11,7 @@
 
 import case
 import move
+import test
 import pprint
 
 

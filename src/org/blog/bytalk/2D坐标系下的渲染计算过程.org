@@ -1,0 +1,98 @@
+#+STARTUP: INDENT OVERVIEW latexpreview
+#+OPTIONS: tex:t
+
+* 2D坐标系下的渲染计算过程
+  许多2D游戏引擎都是以父子节点的形式来组织游戏对象, 那么引擎是如何根据父子关系和每个节点各自的变换属性来计算每个节点在显
+  示屏上的分布呢? 下面分享一种据此组织形式来计算对象分布的方法.
+** 基础知识
+在进行分享之前, 需要对一些基本的概念有一定的了解, 下面简单介绍一下这些概念
+*** 2D坐标系统
+对于2D坐标系统下的任意一个对象, 可以以三个属性表明其在空间内的基本属性, 这三个属性分别是: 位置, 旋转, 缩放. 我们把这三个
+属性合称为对象的<<<变换信息>>>.
+- 位置: 位置可以用点(x, y)来表示. 为了方便后续计算, 我们选择用齐次坐标(x, y, 1)来表示2D坐标系统中的一点
+- 旋转: 用一个浮点值来表示. 为了方便理解, 我们采用角度而不是弧度来表示旋转程度, 逆时针为旋转的正方向
+- 缩放: 用一个浮点值来表示
+所以我们可以得到这样的结构体来表示一个对象在2D坐标系统中的基本属性:
+#+begin_src python
+  class Transform(object):
+      position  # (0, 0, 1)
+      rotation  # (0.0)
+      scale     # (1.0)
+#+end_src
+*** 局部变换信息和世界变换信息
+每个对像自身内部存储的变换信息都是局部信息, 是以父节点为原点的变换信息. 而在屏幕上渲染需要的是世界变换信息, 因此渲染的计
+算过程实际上就算是将每个节点的局部变换信息转换为世界变换信息的过程
+*** 变换
+如果我们已经知道了一个平面上一点的位置(x, y, 1), 如何通过数学的方法来表示位置的变化呢? 我们把平面上一点位置变为另一点的
+过程称之为变换. 举个例子:
+#+begin_example
+已知一点(2, 2, 1), 如果将其向平移(-1, -1), 旋转90度, 放大至2倍, 那么新的位置的是多少?
+#+end_example
+这个例子里面的三种操作分别代表三种变换矩阵, 是修改位置的三种基本变换过程(使用@表示矩阵乘法):
+- 位移变换: 修改对象的位置(position), 假设想要一点(x, y, 1)平移(a, b), 那么相当于运算(translate):
+  [1, 0, a]   [x]   [x+a]
+  [0, 1, b] @ [y] = [y+b]
+  [0, 0, 1]   [1]   [ 1 ]
+- 旋转变换: 修改对象的旋转(rotation), 假设想要一点(x, y, 1)围绕原点旋转a度, 那么相当于运算(rotate):
+  [cos(a), -sin(a), 0]   [x]   [xcos(a)-ysin(a)]
+  [sin(a), cos(a),  0] @ [y] = [xsin(a)+ycos(a)]
+  [0,       0,      1]   [1]   [       1       ]
+- 缩放变换: 修改对象的缩放(scale), 假设想要一点(x, y, 1)离原点距离缩放a倍, 那么相当于运算(scale):
+  [a, 0, 0]   [x]   [ax]
+  [0, a, 0] @ [y] = [ay]
+  [0, 0, 1]   [1]   [ 1]
+在这个例子里面, 我们通过如下的计算过程来得到新的位置:
+#+begin_example
+根据问题题干, 我们需要先平移, 然后旋转, 最后缩放, 而矩阵乘法是右结合的, 最后可得等式:
+scale(2) @ rotate(90) @ translate(-1, -1) @ (2, 2, 1) = (-2, 2, 1)
+#+end_example
+
+*** 变换叠加
+多个变换之间是可以叠加的, 但是如果想要变换之间相不干扰则需要符合一定的顺序, 那就是先做所缩放变换, 然后是旋转变换,
+最后是位移变换. 如果先进行位移变换, 那么后续的缩放变换就会同时缩放位移的偏移量.
+** 基本环境
+在开始介绍渲染计算过程之前, 必须先做出几个对环境的假设:
+1. 每个游戏对象都有一个变换信息的属性, 并且存储着自身的子对象
+   #+begin_src python
+     class GameObject(object):
+         transform: Transform
+         children: list
+   #+end_src
+2. 存在一个根节点(root)作为渲染的原点, 位于屏幕的左下角. 右和上分别代表x轴正向和y轴正向
+3. 每个节点的变换信息都是局部的, 而不是全局的
+** 一个节点的世界变换计算过程
+假设目前有一对象A(局部变换为AT)被渲染, 并且已知其父对象P的世界变换PWT, 我们想要通过这两个参数来求出对象A的世界变换AWT.
+*** AWT.scale计算过程
+我们知道AT相对于P的, 所以AWT.scale应该是在PWT.scale的基础上进行计算, 所以AWT.scale = AT.scale*PWT.scale
+*** AWT.rotation计算过程
+和缩放同理, 旋转也是在父世界变换的基础上进行的, 所以AWT.rotation = AT.rotation+PWT.rotation
+*** AWT.position计算过程
+位置的计算过程要相对复杂一点, 因为除了父世界变换位置的影响, 如果父世界变换放缩十倍, 那么子节点相对于父节点的距离也需要缩
+放十倍, 如果父世界变换旋转了180度, 那么子节点的相对位置也应该移动以父世界变换位置为对称中心的对称点上. 所以位置会同时受
+到父世界变换的三个属性影响. 结合变换叠加规则, 可以得到公式:
+#+begin_quote
+AWT.position = translate(PWT.position.x, PWT.position.y) @ rotate(PWT.rotation) @ scale(PWT.scale) @ AT.position
+#+end_quote
+*** 总结
+以上三个计算过程可以以一段伪代码进行概括:
+#+begin_src python
+  def combine(t: Transform, wt: Transform) -> Transform:
+      """根据父世界变换计算自身的世界变换"""
+      world_scale = t.scale * wt.scale
+      world_rotation = t.rotation + wt.rotation
+      world_position = translate(wt.position.x, wt.position.y) @ rotate(wt.rotation) @ scale(wt.scale) @ t.position
+      return Transform(world_position, world_rotation, world_scale)
+#+end_src
+** 渲染过程
+如果我们已知一个对象节点树, 那么渲染过程就是从根节点开始计算自身世界变换, 作为参数传入到所有的子节点中并重复执行此过程直
+到所有的节点都渲染完毕. 伪代码如下:
+#+begin_src python
+  def render(node: GameObject, world_transform: Transform):
+      world_transform = combine(node.transform, world_transform)
+      draw(node, world_transform)  # 对象根据世界变换参数绘制自身
+      for child in node.children:
+          render(child, world_transform)
+#+end_src
+根节点的父世界变换一般为Transform([0, 0, 1], 0, 1), 所以根节点的自身世界变换就是根节点的局部变换
+
+     
