@@ -53,7 +53,7 @@ class Camera(object):
         """
         self._watch_info.rotate = rotate
 
-    def get_camera_param(self, lookat=True, rotation=False, focus=False) -> tuple:
+    def get_camera_param(self, lookat=False, rotation=False, focus=False):
         """获得相机参数
 
         @param lookat: 是否返回位置
@@ -65,7 +65,7 @@ class Camera(object):
         lookat and result.append(self._watch_info.pos)
         rotation and result.append(self._watch_info.rotate)
         focus and result.append(self._watch_info.scales[0])
-        return tuple(result)
+        return result[0] if len(result) == 1 else result
 
     def get_priority(self) -> int:
         """返回渲染优先级
@@ -89,12 +89,22 @@ class Camera(object):
         """
         return self._is_enable
 
-    def get_after_camera_transform(self, world_transform: math2d.Transform) -> math2d.Transform:
-        """获得经过摄像机处理过的变换
+    def get_viewport_transform(self, transform: math2d.Transform):
+        """返回视口变换
 
-        @param world_transform: 世界变换
-        @return: 处理后变换
+        如果变换不在视口内在返回空
+        @param transform:
+        @return:
         """
+        transform = self._get_after_camera_transform(transform)
+        if self._is_in_camera_view(transform):
+            x, y, w, h = self._output_area
+            return transform.combine(math2d.Transform(
+                math2d.position(x, y), scales=math2d.array((w/util.get_window_width(), h/util.get_window_height()))))
+        else:
+            return None
+
+    def _get_after_camera_transform(self, world_transform: math2d.Transform) -> math2d.Transform:
         transform = self._to_camera_coord(world_transform)
         transform = self._apply_camera_transform(transform)
         transform = self._to_origin_coord(transform)
@@ -109,23 +119,8 @@ class Camera(object):
     def _to_origin_coord(self, transform):
         return transform.combine(math2d.Transform(math2d.vector(*util.get_window_size())/2))
 
-    def get_viewport_transform(self, transform: math2d.Transform) -> bool:
-        """返回视口变换
-
-        @param transform:
-        @return:
-        """
-        x, y, w, h = self._output_area
-        return transform.combine(math2d.Transform(math2d.position(x, y),
-                                                  scales=math2d.array((w/util.get_window_width(), h/util.get_window_height()))))
-
     @staticmethod
-    def is_in_camera_view(transform: math2d.Transform) -> bool:
-        """输出对象是否位于相机视野中
-
-        @param transform:
-        @return:
-        """
+    def _is_in_camera_view(transform: math2d.Transform) -> bool:
         return 0 <= transform.pos[0] <= util.get_window_width() and 0 <= transform.pos[1] <= util.get_window_height()
 
 

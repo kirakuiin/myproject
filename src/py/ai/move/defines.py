@@ -121,14 +121,14 @@ class StaticObj(uiobject.UIObject):
         self._init_ui()
 
     def _init_ui(self):
-        body = uiobject.Circle(10)
-        body.set_color(255, 0, 0)
-        head = uiobject.Triangle(6)
-        head.set_color(0, 255, 0)
-        head.set_pos(12, 0)
-        head.set_rotate(-90)
-        self.add_child(body, 1)
-        self.add_child(head)
+        self._body = uiobject.Circle(10)
+        self._body.set_color(255, 0, 0)
+        self._head = uiobject.Triangle(6)
+        self._head.set_color(0, 255, 0)
+        self._head.set_pos(12, 0)
+        self._head.set_rotate(-90)
+        self.add_child(self._body, 1)
+        self.add_child(self._head)
 
     def update(self, dt):
         self.set_pos_vec(self.get_pos()+self.velocity*dt)
@@ -155,14 +155,14 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
         self._init_ui()
 
     def _init_ui(self):
-        body = uiobject.Circle(10)
-        body.set_color(255, 0, 0)
-        head = uiobject.Triangle(6)
-        head.set_color(0, 255, 0)
-        head.set_pos(10, 0)
-        head.set_rotate(-90)
-        self.add_child(body, 1)
-        self.add_child(head)
+        self._body = uiobject.Circle(10)
+        self._body.set_color(255, 0, 0)
+        self._head = uiobject.Triangle(6)
+        self._head.set_color(0, 255, 0)
+        self._head.set_pos(10, 0)
+        self._head.set_rotate(-90)
+        self.add_child(self._body, 1)
+        self.add_child(self._head)
 
     def update(self, dt):
         half_t_sq = 0.5*(dt**2)

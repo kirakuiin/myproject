@@ -1,16 +1,15 @@
 """游戏引擎入口"""
 
-import pygame
+import sys
 import collections
+import pygame
 import time
 
 from . import defines
 from . import global_vars
 from . import uiobject
 from . import camera
-
-
-HandleInfo = collections.defaultdict(list)  # 事件回调容器
+from . import event
 
 
 def init_engine():
@@ -19,11 +18,11 @@ def init_engine():
     @return:
     """
     pygame.init()
-    global_vars.screen = pygame.display.set_mode((defines.SCREEN_WIDTH, defines.SCREEN_HEIGHT))
-    global_vars.scene = uiobject.UIObject()
-    global_vars.camera_mgr = camera.CameraMgr()
     pygame.display.set_caption(defines.SCREEN_TITLE)
-    HandleInfo.clear()
+    global_vars.screen = pygame.display.set_mode((defines.SCREEN_WIDTH, defines.SCREEN_HEIGHT))
+    global_vars.scene = uiobject.Scene()
+    global_vars.camera_mgr = camera.CameraMgr()
+    global_vars.event_mgr = event.EventMgr()
     clean_screen()
 
 
@@ -47,39 +46,17 @@ def start_engine():
     """
     global_vars.start_time = time.time()
     global_vars.is_running = True
+    global_vars.event_mgr.register(pygame.QUIT, lambda evt: quit_engine())
     clock = pygame.time.Clock()
     render()
     while global_vars.is_running:
         global_vars.run_time = time.time() - global_vars.start_time
-        handle_event()
+        global_vars.event_mgr.propagate()
         update(global_vars.scene, clock.get_time()/defines.MS_PER_SECOND*global_vars.speed_times)
+        clear_expired_obj()
         render()
         clock.tick(defines.FPS)
     pygame.quit()
-
-
-def handle_event():
-    """处理事件
-
-    @return:
-    """
-    for event in pygame.event.get():
-        if event.type in HandleInfo:
-            for cb in HandleInfo[event.type]:
-                cb(event)
-        if event.type == pygame.QUIT:
-            quit_engine()
-
-
-def render():
-    """渲染画面
-
-    @return:
-    """
-    if not global_vars.is_show_track:
-        clean_screen()
-    global_vars.camera_mgr.render_all_camera()
-    pygame.display.update()
 
 
 def update(root, dt):
@@ -92,3 +69,28 @@ def update(root, dt):
     root.update(dt)
     for child in root.get_children():
         update(child, dt)
+
+
+def clear_expired_obj():
+    """清理过期对象
+
+    @return:
+    """
+    queue = collections.deque(global_vars.scene.get_children())
+    while queue:
+        cur = queue.popleft()
+        if sys.getrefcount(cur) == 3:
+            cur.get_parent().remove_child(cur)
+        else:
+            queue.extend(cur.get_children())
+
+
+def render():
+    """渲染画面
+
+    @return:
+    """
+    if not global_vars.is_show_track:
+        clean_screen()
+    global_vars.camera_mgr.render_all_camera()
+    pygame.display.update()

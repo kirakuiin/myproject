@@ -27,7 +27,11 @@ class UIObject(object):
         self._dirty = True   # 脏标记
         self._order = 0  # 绘制顺序, 越大越后绘制
         self._is_visible = True  # 是否可见
+        self._is_swallow = False  # 是否吞噬点击
         self._split_idx = 0  # 绘制先后分隔坐标
+
+    def __repr__(self):
+        return '{}(pos={})'.format(self.__class__.__name__, self.get_pos())
 
     def set_visible(self, is_visible: bool):
         self._is_visible = is_visible
@@ -37,6 +41,12 @@ class UIObject(object):
 
     def set_order(self, order: int):
         self._order = order
+        self._update_scene_order()
+
+    def _update_scene_order(self):
+        scene = self.get_scene()
+        if scene:
+            scene.calc_order()
 
     def get_order(self) -> int:
         return self._order
@@ -102,16 +112,16 @@ class UIObject(object):
         self._render_order_ge_zero(dirty, camera)
 
     def _render_order_lt_zero(self, dirty, camera):
-        for child in self._children[:self._split_idx]:
+        for child in self.get_pre_children():
             child.render(self._world, dirty, camera)
 
     def _render_self(self, camera):
         if self._is_visible:
-            transform = camera.get_after_camera_transform(self._world)
-            camera.is_in_camera_view(transform) and self.draw(camera.get_viewport_transform(transform))
+            transform = camera.get_viewport_transform(self._world)
+            transform and self.draw(transform)
 
     def _render_order_ge_zero(self, dirty, camera):
-        for child in self._children[self._split_idx:]:
+        for child in self.get_post_children():
             child.render(self._world, dirty, camera)
 
     def draw(self, transform):
@@ -125,26 +135,90 @@ class UIObject(object):
     def get_children(self) -> list:
         return self._children
 
+    def get_pre_children(self) -> list:
+        return self.get_children()[:self._split_idx]
+
+    def get_post_children(self) -> list:
+        return self.get_children()[self._split_idx:]
+
     def add_child(self, child, order=0):
+        child.set_parent(weakref.proxy(self))
         child.set_order(order)
-        child._parent = weakref.ref(self)
         bisect.insort(self._children, child, key=lambda obj: obj.get_order())
         self._split_idx = bisect.bisect_left(self._children, 0, key=lambda obj: obj.get_order())
+        self._update_scene_order()
 
     def remove_child(self, child):
         if child in self._children:
             self._children.remove(child)
             child.set_parent(None)
+            self._update_scene_order()
 
     def set_parent(self, parent):
         self._dirty = True
         self._parent = parent
 
     def get_parent(self):
-        if self._parent and self._parent():
-            return self._parent()
-        else:
-            return None
+        return self._parent
+
+    def get_scene(self):
+        parent = self
+        while parent.get_parent():
+            parent = parent.get_parent()
+        return parent if isinstance(parent, Scene) else None
+
+    def set_swallow(self, is_swallow: bool):
+        self._is_swallow = is_swallow
+
+    def is_swallow(self) -> bool:
+        return self._is_swallow
+
+    def on_begin(self, btn: int, pos: math2d.ndarray) -> bool:
+        """开始点击时调用此接口
+        @return:
+        """
+        return True
+
+    def on_motion(self, btn: int, pos: math2d.ndarray, delta: math2d.ndarray):
+        """按住移动时调用此接口
+        @return:
+        """
+        pass
+
+    def on_end(self, btn: int, pos: math2d.ndarray):
+        """释放鼠标时调用此接口
+        @return:
+        """
+        pass
+
+
+class Scene(UIObject):
+    """场景
+    """
+    def __init__(self):
+        super().__init__()
+        self._render_list = []  # 渲染顺序列表
+
+    def calc_order(self):
+        """计算渲染顺序
+        """
+        self._render_list = []
+        self._pre_traversal(self)
+        self._render_list = self._render_list[::-1]
+
+    def _pre_traversal(self, node: UIObject):
+        for child in node.get_pre_children():
+            self._pre_traversal(child)
+        self._render_list.append(weakref.ref(node))
+        for child in node.get_post_children():
+            self._pre_traversal(child)
+
+    def get_render_order(self) -> list:
+        """返回渲染顺序
+
+        @return:
+        """
+        return self._render_list
 
 
 class Circle(UIObject):
@@ -195,3 +269,26 @@ class Lines(UIObject):
             vec = math2d.rotate_matrix(transform.rotate) @ math2d.scale_matrix(transform.scales) @ (point-origin)
             result.append(util.get_window_coord(transform.pos+vec))
         return result
+
+
+class Text(UIObject):
+    """文本"""
+    def __init__(self, size=24, font_path='Arial', bold=False, italic=False):
+        super().__init__()
+        self._font_size = size
+        self._font_path = font_path
+        self._param = {'bold': bold, 'italic': italic}
+        self._text = ''
+
+    def set_text(self, text):
+        self._text = text
+
+    def draw(self, transform):
+        font_obj = self._get_font_obj(transform.scales[0])
+        surface = font_obj.render(self._text, True, self._color)
+        delta = math2d.vector(0, surface.get_height())
+        global_vars.screen.blit(surface, util.get_window_coord(transform.pos+delta))
+
+    def _get_font_obj(self, scale):
+        font_size = max(1, int(self._font_size*scale))
+        return pygame.font.SysFont(self._font_path, font_size, **self._param)

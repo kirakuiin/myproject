@@ -73,7 +73,8 @@ class Case(uiobject.UIObject):
         @return:
         """
         gameengine.init()
-        self.register_handle(pygame.KEYUP, self.camera_control)
+        self.register_handle(pygame.KEYUP, self.rotate_control)
+        self.register_handle(pygame.MOUSEWHEEL, self.scale_control)
 
     def start_engine(self):
         """启动引擎
@@ -124,29 +125,39 @@ class Case(uiobject.UIObject):
         if self.get_runtime() > time:
             self.quit_engine()
 
-    def camera_control(self, event):
-        """相机控制接口
+    def scale_control(self, event):
+        """相机缩放控制
 
         @param event:
         @return:
         """
         camera = gameengine.get_main_camera()
-        pos, rotation, focus = camera.get_camera_param(True, True, True)
-        if event.key == pygame.K_a:
-            camera.set_lookat(pos+math2d.vector(-10, 0))
-        elif event.key == pygame.K_d:
-            camera.set_lookat(pos+math2d.vector(10, 0))
-        elif event.key == pygame.K_w:
-            camera.set_lookat(pos+math2d.vector(0, 10))
-        elif event.key == pygame.K_s:
-            camera.set_lookat(pos+math2d.vector(0, -10))
-        elif event.key == pygame.K_q:
+        focus = camera.get_camera_param(focus=True)
+        if event.y == 1:
+            camera.set_focus(focus*2)
+        else:
+            camera.set_focus(focus/2)
+
+    def rotate_control(self, event):
+        """相机旋转控制
+
+        @param event:
+        @return:
+        """
+        camera = gameengine.get_main_camera()
+        rotation = camera.get_camera_param(rotation=True)
+        if event.key == pygame.K_q:
             camera.set_rotation(rotation+10)
         elif event.key == pygame.K_e:
             camera.set_rotation(rotation-10)
-        elif event.key == pygame.K_z:
-            camera.set_focus(focus*2)
-        elif event.key == pygame.K_c:
-            camera.set_focus(focus/2)
 
+    def on_begin(self, btn: int, pos: math2d.ndarray) -> bool:
+        if btn == pygame.BUTTON_RIGHT:
+            return True
+        else:
+            return False
 
+    def on_motion(self, btn: int, pos: math2d.ndarray, delta: math2d.ndarray):
+        camera = gameengine.get_main_camera()
+        camera_pos = camera.get_camera_param(lookat=True)
+        camera.set_lookat(camera_pos-delta)

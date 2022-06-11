@@ -88,4 +88,4 @@ def register_handle(event_type, handle_func):
     @param handle_func: 处理函数
     @return:
     """
-    engine.HandleInfo[event_type].append(handle_func)
+    global_vars.event_mgr.register(event_type, handle_func)
