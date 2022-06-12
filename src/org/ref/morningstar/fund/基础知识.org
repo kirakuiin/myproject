@@ -1,0 +1,108 @@
+#+STARTUP: INDENT NUM
+
+
+* Introduction to Mutual Fund Basics
+Mutual funds are ready-made portfolios that offer professional management, diversification, and other convenient features.
+
+What you will learn
+What Is a Mutual Fund and How Does It Work?
+Diversification in Mutual Funds
+Do-It-Yourself Mutual Fund Investing
+Mutual Fund Management
+What do you know?
+Although many other kinds of investments can be structured to provide the benefits of mutual funds, mutual funds provide the convenience of having them all packaged and ready to go. Mutual funds are ready-made portfolios of securities designed to achieve specific investment goals. They have the advantage of professional management, diversification, and ease of transfer to other funds in the same family should your investment goals change. If you are new to investing, or if you have limited time to research individual stock and bond offerings, then mutual funds might be the way to help build your portfolio. All mutual funds come with a prospectus that gives you all the details you need to know in order to make an informed investment decision.
+
+* What Is a Mutual Fund and How Does It Work?
+A mutual fund is an investment company that raises money from investors to invest in stocks, bonds, and other securities. It is a portfolio made up of several individual investments. When those investments gain or lose value, you gain or lose as well. When they pay dividends, you get a share of them. Mutual funds also offer professional management and diversification. They do much of your investing work for you.
+
+Investing in mutual funds involves risk, including possible loss of principal. Investments in specialized industry sectors have additional risks, which are outlined in the prospectus.
+
+THINGS TO KNOW
+A mutual fund is a package made up of several individual investments.
+The term "mutual fund" is used most often to mean open-end funds.
+Open-end and closed-end
+Mutual funds may be open-end or closed-end funds. The term mutual funds is used most often to mean open-end funds. Open-end funds issue new shares continuously as investors buy them. Investors redeem their shares directly to the fund, which in turn must buy them back.
+
+Closed-end funds issue a fixed number of shares that the funds may redeem only upon termination of their trusts. Shareholders in a closed-end fund may, however, sell their shares through a broker on the secondary market to other investors, but not back to the fund. Closed-end funds are commonly referred to as exchange-traded funds (ETFs).
+
+Investing in mutual funds involves risk, including possible loss of principal. Investments in specialized industry sectors have additional risks, which are outlined in the prospectus.
+
+
+* Diversification in Mutual Funds
+Diversification in investing means acquiring securities with assets that are unrelated to one another.
+
+THINGS TO KNOW
+Diversification is built in to mutual funds.
+Diversification spreads investment risk.
+About diversification
+For instance, a diversified stock portfolio might include technology, food service, and petroleum industry stocks. The products and markets of these companies are generally unrelated enough that no one economic factor—like a drop in oil prices, for instance—should have a dramatic effect on the performance of the entire portfolio.
+
+It is not easy to design a diversified portfolio. First, there is the time-consuming task of weighing and balancing the risks of each investment you include in your portfolio. You also need sufficient capital to purchase the broad scope of investments needed in sufficient quantities to take advantage of low transaction costs.
+
+A built-in feature
+Diversification is built in to mutual funds. Mutual funds collect money from many investors, pool it, and then buy different securities. These investments may include stocks, bonds, money market instruments, and derivatives. How much of each type of investment a fund buys depends on what the fund’s objective is. If the objective is growth, the fund may choose more stocks. If it is to pay its shareholders steady income, it may choose bonds and other interest- or dividend-paying securities.
+
+Advantages of diversifying
+Diversification lets you spread investment risk over several companies, industries, and types of securities. By investing in different types of securities, you may help reduce the risks inherent in each market. When one market goes down, another may go up. Stocks, bonds, and other assets do not typically rise and fall together. Therefore, when you have several different types of securities within a mutual fund and one of them performs poorly, the effect on the overall portfolio should be less impactful.
+
+There is no guarantee that a diversified portfolio will enhance overall returns or outperform a non-diversified portfolio. Additionally, it should not be assumed that owning a mutual fund alone will achieve the concept of diversification. Be certain to consider the fund’s written objective in relation to your objectives, time horizon, and risk tolerance when you diversify. Diversification does not ensure against market risk.
+
+* Do-It-Yourself Mutual Fund Investing
+One of the advantages of mutual funds is that they make it easy for you to buy and sell shares on your own.
+
+THINGS TO KNOW
+Most mutual fund shares can be purchased directly from the fund, though some investors prefer to buy through brokers.
+You sell shares directly back to the fund.
+Both the public offering price and net asset value are quoted in the financial pages.
+How to buy shares
+Most mutual fund shares can be purchased directly from the mutual fund company. Buying mutual fund shares is easy to do. You simply contact the fund, which will send you an application form to fill out and return with your money. Each time you buy more shares, you will receive another investment form.
+
+Although you can buy shares yourself, many investors prefer to have a broker or advisor do it for them. Brokers and other financial advisors offer investment advice about funds, in return for which they may receive commissions or fees.
+
+Buying shares automatically
+You can also set up an automatic investment plan when you complete your fund application. With an automatic investment plan, you can have a set amount of money withdrawn from your bank or credit union account each month and sent to the fund. Funds that require a minimum initial investment may waive this amount if you agree to an automatic investment plan.
+
+Selling shares
+Shares may also be sold back to the fund. You can redeem shares by contacting the fund company and requesting to redeem shares. Many funds allow you to redeem shares over the telephone, but some require written requests. The fund’s prospectus, a document that describes the fund’s investments and performance, also explains your options for redeeming shares.
+
+About mutual fund prices
+Current mutual fund public offering price (POP) and net asset value (NAV) are quoted daily in the financial pages. To calculate NAV, fund managers add the total value of the fund’s assets, subtract all liabilities, and then divide by the total number of shares that the public owns (called outstanding shares). The POP is the NAV plus the sales charge, if any.
+
+Investors should carefully consider the investment objectives, risks, charges and expenses of a mutual fund before investing. The prospectus contains this and other information about the mutual fund. To obtain a prospectus, contact your financial advisor. Please read the prospectus carefully before investing.
+
+* Mutual Fund Management
+A mutual fund is only as good as its management policy. The fund's prospectus provides details on the people in charge of managing the fund.
+
+THINGS TO KNOW
+The mutual fund's prospectus describes the people in charge of managing the fund.
+The chapter of a mutual fund prospectus that describes the fund's management includes the board of directors, the advisor, the portfolio managers, the transfer agent, and the distributor.
+
+Board of directors
+The role of the board of directors is stated briefly.
+
+Advisor
+The advisor makes investment decisions. The advisor section spells out in detail what the advisor does. It also provides the advisor's mailing address and the name of the controlling shareholder of the advisor.
+
+Portfolio managers
+The prospectus describes the portfolio managers. Each manager is briefly profiled with his or her educational and work history. Some managers manage more than one fund.
+
+Transfer agent
+The transfer agent, who disburses dividends, is identified. In many funds, the transfer agent is also the advisor. This part of the management chapter also describes how the transfer agent is compensated for its services.
+
+Distributor
+The distributor, who distributes shares to investors, is identified. In some funds, the distributor is related to the advisor.
+
+While you may not recognize famous names in the management section, you should check to see that the managers have strong backgrounds in the kind of investments that the fund specializes in.
+
+* Summary of Mutual Fund Basics
+Mutual funds are a convenient way to invest in stocks, bonds, and other securities. The main advantage of using mutual funds over buying individual securities is that a mutual fund is a professionally managed portfolio. A mutual fund provides diversification of your investment over several securities held within the fund's portfolio. You can also choose funds based upon their investment objectives and how those objectives match your own.
+
+If you are new to investing, or don't have the time and inclination to research and manage a portfolio on your own, you might consider comparing the benefits and costs of mutual funds for your investment objectives.
+
+Practical Ideas I Can Start With Today
+Research a variety of mutual funds based on my investment objectives and my risk tolerance.
+What You Have Learned
+What Is a Mutual Fund and How Does It Work?
+Diversification in Mutual Funds
+Do-It-Yourself Mutual Fund Investing
+Mutual Fund Management
