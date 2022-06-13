@@ -2,6 +2,8 @@
 
 import math2d
 import bisect
+import pygame
+import contextlib
 
 from . import global_vars
 from . import util
@@ -12,11 +14,29 @@ class Camera(object):
 
     每个摄像机将会渲染一副新的图像到指定的位置
     """
-    def __init__(self, priority: int=0):
+    MAX_SCALE_VAL = 32  # 最大缩放倍数
+
+    def __init__(self, priority: int=0, watch_num: int=0):
         self._output_area = (0, 0, util.get_window_width(), util.get_window_height())  # 输出区域
         self._watch_info = math2d.Transform(math2d.position(util.get_window_width()/2, util.get_window_height()/2))   # 观察信息
         self._priority = priority  # 渲染优先级, 越高越后渲染
+        self._watch_num = watch_num  # 观察编号
         self._is_enable = True  # 是否启用
+
+    def set_watch_num(self, num: int):
+        """设置观察编号
+
+        @param num:
+        @return:
+        """
+        self._watch_num = num
+
+    def get_watch_num(self) -> int:
+        """返回观察编号
+
+        @return:
+        """
+        return self._watch_num
 
     def set_output_area(self, x: int, y: int, w: int, h: int):
         """设置摄像机输出位置
@@ -29,6 +49,18 @@ class Camera(object):
         """
         self._output_area = x, y, w, h
 
+    @contextlib.contextmanager
+    def clip_camera_area(self):
+        """启动相机裁剪
+
+        @return:
+        """
+        x, y, w, h = self._output_area
+        rect = pygame.Rect(util.get_window_coord(math2d.position(x, h+y)), (w, h))
+        global_vars.screen.set_clip(rect)
+        yield None
+        global_vars.screen.set_clip(None)
+
     def set_lookat(self, position: math2d.ndarray):
         """设置聚集位置
 
@@ -40,9 +72,11 @@ class Camera(object):
     def set_focus(self, factor: float):
         """设置聚焦倍数
 
+        倍数位于0.03-32之间
         @param factor: 聚焦倍数
         @return:
         """
+        factor = min(max(1/self.MAX_SCALE_VAL, factor), self.MAX_SCALE_VAL)
         self._watch_info.scales = math2d.array((factor, factor))
 
     def set_rotation(self, rotate: float=0.0):
@@ -96,13 +130,10 @@ class Camera(object):
         @param transform:
         @return:
         """
+        x, y, w, h = self._output_area
         transform = self._get_after_camera_transform(transform)
-        if self._is_in_camera_view(transform):
-            x, y, w, h = self._output_area
-            return transform.combine(math2d.Transform(
-                math2d.position(x, y), scales=math2d.array((w/util.get_window_width(), h/util.get_window_height()))))
-        else:
-            return None
+        return transform.combine(math2d.Transform(
+            math2d.position(x, y), scales=math2d.array((w/util.get_window_width(), h/util.get_window_height()))))
 
     def _get_after_camera_transform(self, world_transform: math2d.Transform) -> math2d.Transform:
         transform = self._to_camera_coord(world_transform)
@@ -118,10 +149,6 @@ class Camera(object):
 
     def _to_origin_coord(self, transform):
         return transform.combine(math2d.Transform(math2d.vector(*util.get_window_size())/2))
-
-    @staticmethod
-    def _is_in_camera_view(transform: math2d.Transform) -> bool:
-        return 0 <= transform.pos[0] <= util.get_window_width() and 0 <= transform.pos[1] <= util.get_window_height()
 
 
 class CameraMgr(object):
@@ -165,4 +192,5 @@ class CameraMgr(object):
         """
         for camera in self._camera_list:
             if camera.is_enable():
-                global_vars.scene.render(math2d.Transform(), False, camera)
+                with camera.clip_camera_area():
+                    global_vars.scene.render(math2d.Transform(), False, camera)

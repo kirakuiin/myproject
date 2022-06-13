@@ -3,6 +3,7 @@
 
 import math2d
 from gameengine import uiobject
+from gameengine import defines
 
 
 class KinematicInterface(object):
@@ -122,9 +123,9 @@ class StaticObj(uiobject.UIObject):
 
     def _init_ui(self):
         self._body = uiobject.Circle(10)
-        self._body.set_color(255, 0, 0)
+        self._body.set_color(*defines.RED)
         self._head = uiobject.Triangle(6)
-        self._head.set_color(0, 255, 0)
+        self._head.set_color(*defines.GREEN)
         self._head.set_pos(12, 0)
         self._head.set_rotate(-90)
         self.add_child(self._body, 1)
@@ -156,9 +157,9 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
 
     def _init_ui(self):
         self._body = uiobject.Circle(10)
-        self._body.set_color(255, 0, 0)
+        self._body.set_color(*defines.RED)
         self._head = uiobject.Triangle(6)
-        self._head.set_color(0, 255, 0)
+        self._head.set_color(*defines.GREEN)
         self._head.set_pos(10, 0)
         self._head.set_rotate(-90)
         self.add_child(self._body, 1)

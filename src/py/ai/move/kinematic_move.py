@@ -3,6 +3,7 @@
 
 import case
 import math2d
+from gameengine import defines as color
 from . import defines
 from . import algorithm
 
@@ -15,7 +16,7 @@ class KinematicSeekCase(case.Case):
         self._character.set_pos(50, 50)
         self._target = defines.StaticObj(math2d.vector(0, 0))
         self._target.set_pos(400, 400)
-        self._target.set_color(0, 255, 0)
+        self._target.set_color(*color.GREEN)
         self._speed = 100
 
         self.add_child(self._character)

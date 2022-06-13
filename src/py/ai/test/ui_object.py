@@ -3,7 +3,9 @@
 
 import case
 import math2d
+
 from gameengine import uiobject
+from gameengine import defines
 
 
 @case.register_case(__name__)
@@ -48,12 +50,31 @@ class LinesCase(case.Case):
 class TextCase(case.Case):
     """文本绘制"""
     def init_case(self):
-        self._text = uiobject.Text()
+        self._text = uiobject.Text(bold=True, italic=True)
         self._text.set_pos(400, 400)
         self._text.set_text('hello world')
-        self._text.set_color(255, 0, 0)
+        self._text.set_color(*defines.RED)
         self._text.set_scale(3)
         self.add_child(self._text)
+
+    def update(self, dt: float):
+        self.quit_over_time(5)
+
+
+@case.register_case(__name__)
+class CoordLineCase(case.Case):
+    """坐标线绘制"""
+    def init_case(self):
+        self._horizon_lines = [
+            uiobject.CoordLine(uiobject.CoordLine.LineType.HORIZON, val)
+            for val in range(0, 801, 100)
+        ]
+        self._vertlines = [
+            uiobject.CoordLine(uiobject.CoordLine.LineType.VERTICAL, val)
+            for val in range(0, 801, 100)
+        ]
+        for node in self._horizon_lines+self._vertlines:
+            self.add_child(node)
 
     def update(self, dt: float):
         self.quit_over_time(5)

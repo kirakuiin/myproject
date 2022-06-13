@@ -1,6 +1,7 @@
 """可绘制对象基类
 """
 
+import enum
 import weakref
 import bisect
 
@@ -10,6 +11,7 @@ import math2d
 from . import global_vars
 from . import camera
 from . import util
+from . import defines
 
 
 class UIObject(object):
@@ -21,7 +23,7 @@ class UIObject(object):
         self._parent = None   # 父节点
         self._children = []   # 孩子列表
 
-        self._color = (255, 255, 255)  # 颜色
+        self._color = defines.WHITE  # 颜色
         self._local = math2d.Transform()  # 局部变换
         self._world = math2d.Transform()  # 世界变换
         self._dirty = True   # 脏标记
@@ -29,9 +31,16 @@ class UIObject(object):
         self._is_visible = True  # 是否可见
         self._is_swallow = False  # 是否吞噬点击
         self._split_idx = 0  # 绘制先后分隔坐标
+        self._watch_num = 0  # 观察编号
 
     def __repr__(self):
         return '{}(pos={})'.format(self.__class__.__name__, self.get_pos())
+
+    def set_watch_num(self, num: int, is_set_child=True):
+        self._watch_num = num
+        if is_set_child:
+            for child in self._children:
+                child.set_watch_num(num)
 
     def set_visible(self, is_visible: bool):
         self._is_visible = is_visible
@@ -116,9 +125,8 @@ class UIObject(object):
             child.render(self._world, dirty, camera)
 
     def _render_self(self, camera):
-        if self._is_visible:
-            transform = camera.get_viewport_transform(self._world)
-            transform and self.draw(transform)
+        if self._is_visible and self._watch_num == camera.get_watch_num():
+            self.draw(camera.get_viewport_transform(self._world))
 
     def _render_order_ge_zero(self, dirty, camera):
         for child in self.get_post_children():
@@ -292,3 +300,40 @@ class Text(UIObject):
     def _get_font_obj(self, scale):
         font_size = max(1, int(self._font_size*scale))
         return pygame.font.SysFont(self._font_path, font_size, **self._param)
+
+
+class CoordLine(UIObject):
+    """坐标线
+    """
+    MAX_VALUE = 10000000
+
+    class LineType(enum.Enum):
+        VERTICAL = 0
+        HORIZON = 1
+
+    def __init__(self, type: LineType, value):
+        super(CoordLine, self).__init__()
+        self._text = Text(20)
+        self._text.set_text(str(value))
+        self.add_child(self._text)
+        self._init_line(type, value)
+
+    def _init_line(self, type, value):
+        if type == CoordLine.LineType.HORIZON:
+            self.set_pos(-self.MAX_VALUE, value)
+            self._end_point = math2d.position(self.MAX_VALUE, value)
+            self._text.set_pos(self.MAX_VALUE, 0)
+        else:
+            self.set_pos(value, -self.MAX_VALUE)
+            self._end_point = math2d.position(value, self.MAX_VALUE)
+            self._text.set_pos(0, self.MAX_VALUE)
+        self.set_color(*defines.BLUE)
+        self._text.set_color(*defines.BLUE)
+
+    def draw(self, transform):
+        pygame.draw.aaline(global_vars.screen, self.get_color(),
+                           util.get_window_coord(transform.pos), self._get_end_point(transform))
+
+    def _get_end_point(self, transform):
+        vec = math2d.rotate_matrix(transform.rotate) @ math2d.scale_matrix(transform.scales) @ (self._end_point-self.get_pos())
+        return util.get_window_coord(transform.pos+vec)

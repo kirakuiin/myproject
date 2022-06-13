@@ -13,10 +13,13 @@
 * Inbox
 * Next Action
 ** TODO [#A] 月度财务收支                                           :event:
-DEADLINE: <2022-06-12 周日 23:00 +1m> SCHEDULED: <2022-06-12 周日 09:00 +1m>
+DEADLINE: <2022-07-12 周二 23:00 ++1m> SCHEDULED: <2022-07-12 周日 09:00 ++1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
+- State "DONE"       from "TODO"       [2022-06-13 周一 09:31] \\
+  house rent: 2000, shopping: 100, commute: 20, fee: 204, takeout: 410
+  total 2732
 - State "DONE"       from "TODO"       [2022-05-17 周二 16:00] \\
   house rent: 2000, game: 30, takeout: commute: 22, shopping: 2821, takeout: 707
   total: 5580
@@ -24,21 +27,13 @@ DEADLINE: <2022-06-12 周日 23:00 +1m> SCHEDULED: <2022-06-12 周日 09:00 +1m>
   house rent: 2000, game: 90, takeout: 727, fee: 218, shopping: 828, commute: 12, course: -1650
   total: 5525
 - State "DONE"       from "TODO"       [2022-03-13 周日 08:57] \\
-| date         | purpose    |   value |
-|--------------+------------+---------|
-| [2022-05-17] | house rent |   -2000 |
-| [2022-05-17] | shopping   |    -3.3 |
-| [2022-05-18] | shopping   |    -1.3 |
-| [2022-05-21] | takeout    |     -80 |
-| [2022-05-25] | shopping   |    -3.5 |
-| [2022-05-28] | commute    |     -20 |
-| [2022-05-28] | shopping   |     -60 |
-| [2022-05-29] | takeout    |     -80 |
-| [2022-06-03] | takeout    |     -80 |
-| [2022-06-04] | takeout    |     -80 |
-| [2022-06-04] | fee        |    -100 |
-| [2022-06-05] | takeout    |     -50 |
-|              |            | -2458.1 |
+| date         | purpose    | value |
+|--------------+------------+-------|
+| [2022-06-12] | house rent | -2000 |
+| [2022-06-12] | takeout    |   -65 |
+| [2022-06-12] | shopping   |  -110 |
+| [2022-06-12] | commute    |   -10 |
+|              |            | -2185 |
 #+TBLFM: @>$3=vsum(@2$3..@-1$3)
 - State "DONE"       from "TODO"       [2022-02-10 周四 09:05] \\
 house rent: 2000, game: 445, takeout: 284, fee: 218, shopping: 1373, commute: 37
@@ -54,12 +49,22 @@ total: 4357
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2022-06-13 周一 23:00 ++1w> SCHEDULED: <2022-06-10 周五 18:00 ++1w>
+DEADLINE: <2022-06-20 周一 23:00 ++1w> SCHEDULED: <2022-06-17 周五 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-06-06 周一 10:59]
+:LAST_REPEAT: [2022-06-11 周六 17:50]
 :END:
+- State "DONE"       from "TODO"       [2022-06-11 周六 17:50] \\
+  1. 编写季度报告
+  2. 编辑器整合
+     - 将六边形编辑器, 日志浏览器, spine编辑器, 分辨率浏览器等多个编辑器整合到一个入口中
+     - 提供便捷的查看文档, 重载编辑器代码的功能
+  3. 战斗日志编辑器资源替换
+     - 战斗日志资源目前使用fantasy_ui
+  4. 去除netwardefine和intregion之中交叉的定义, 维护一份常量
+  -------------------------------
+  1. 还是不够努力捏, 53/250, 加班时长差好多
 - State "DONE"       from "TODO"       [2022-06-06 周一 10:59] \\
   1. 同步游戏和编辑器中spine对象的设置
   2. 屏蔽ui编辑器自定义扩展对图片的支持
@@ -980,10 +985,12 @@ CLOCK: [2022-03-07 周一 14:27]--[2022-03-07 周一 14:52] =>  0:25
 :LAST_REPEAT: [2022-01-22 周六 15:07]
 :END:
 ** TODO [#A] 减肥                                                   :event:
-SCHEDULED: <2022-06-06 周一 17:27 ++1w>
+SCHEDULED: <2022-06-13 周一 17:27 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-06-06 周一 09:24]
+:LAST_REPEAT: [2022-06-11 周六 17:54]
 :END:
+- State "DONE"       from "TODO"       [2022-06-11 周六 17:54] \\
+  下雨, 未跑, 69.95kg
 - State "DONE"       from "TODO"       [2022-06-06 周一 09:24] \\
   4.0, 70.0kg, 下雨
 - State "DONE"       from "TODO"       [2022-05-30 周一 09:13] \\
@@ -1012,10 +1019,12 @@ SCHEDULED: <2022-06-06 周一 17:27 ++1w>
   2.5->3.5->4.0, 76.1kg
 目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月
 ** TODO [#A] 吉他学习                                               :event:
-SCHEDULED: <2022-06-05 周日 17:00 ++1w>
+SCHEDULED: <2022-06-19 周日 17:00 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-05-30 周一 09:12]
+:LAST_REPEAT: [2022-06-13 周一 09:25]
 :END:
+- State "DONE"       from "TODO"       [2022-06-13 周一 09:25] \\
+  am和弦练习, 虫儿飞练习
 - State "DONE"       from "TODO"       [2022-05-30 周一 09:12] \\
   和弦转换, am和弦预习, 下次上课+10m
 - State "DONE"       from "TODO"       [2022-05-16 周一 13:12] \\
