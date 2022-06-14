@@ -2,10 +2,13 @@
 """
 
 import enum
+import itertools
 import weakref
 import bisect
 
 import pygame
+
+import gameengine
 import math2d
 
 from . import global_vars
@@ -302,33 +305,60 @@ class Text(UIObject):
         return pygame.font.SysFont(self._font_path, font_size, **self._param)
 
 
+class FixSizeText(Text):
+    """大小不随缩放改变的文本"""
+    def __init__(self, size=24, font_path='Arial', bold=False, italic=False):
+        super().__init__(size, font_path, bold, italic)
+        self._font_obj = pygame.font.SysFont(font_path, size, bold, italic)
+
+    def _get_font_obj(self, scale):
+        return self._font_obj
+
+
 class CoordLine(UIObject):
     """坐标线
     """
     MAX_VALUE = 10000000
 
-    class LineType(enum.Enum):
+    class LineType(enum.IntEnum):
         VERTICAL = 0
         HORIZON = 1
 
+    @classmethod
+    def create_horizon(cls, value):
+        return cls(CoordLine.LineType.HORIZON, value)
+
+    @classmethod
+    def create_vertical(cls, value):
+        return cls(CoordLine.LineType.VERTICAL, value)
+
     def __init__(self, type: LineType, value):
         super(CoordLine, self).__init__()
-        self._text = Text(20)
-        self._text.set_text(str(value))
-        self.add_child(self._text)
-        self._init_line(type, value)
+        self._text = FixSizeText(20)
+        self._type = type
+        self._init_line(value)
 
-    def _init_line(self, type, value):
-        if type == CoordLine.LineType.HORIZON:
+    def set_value(self, value):
+        if self._type == CoordLine.LineType.HORIZON:
             self.set_pos(-self.MAX_VALUE, value)
             self._end_point = math2d.position(self.MAX_VALUE, value)
-            self._text.set_pos(self.MAX_VALUE, 0)
         else:
             self.set_pos(value, -self.MAX_VALUE)
             self._end_point = math2d.position(value, self.MAX_VALUE)
-            self._text.set_pos(0, self.MAX_VALUE)
+        self._text.set_text(str(int(value)))
+
+    def _init_line(self, value):
+        self.set_value(value)
+        self.move_text(0)
+        self.add_child(self._text)
         self.set_color(*defines.BLUE)
         self._text.set_color(*defines.BLUE)
+
+    def move_text(self, delta):
+        if self._type == CoordLine.LineType.HORIZON:
+            self._text.set_pos(self.MAX_VALUE+delta, 0)
+        else:
+            self._text.set_pos(0, self.MAX_VALUE+delta)
 
     def draw(self, transform):
         pygame.draw.aaline(global_vars.screen, self.get_color(),
@@ -337,3 +367,63 @@ class CoordLine(UIObject):
     def _get_end_point(self, transform):
         vec = math2d.rotate_matrix(transform.rotate) @ math2d.scale_matrix(transform.scales) @ (self._end_point-self.get_pos())
         return util.get_window_coord(transform.pos+vec)
+
+
+class CoordSystem(UIObject):
+    """坐标系统
+    """
+    def __init__(self, cam: camera.Camera, space=200):
+        super().__init__()
+        self._space = space  # 间隔
+        self._vert_lines = {}
+        self._hor_lines = {}
+        self._cam_transform = cam.get_camera_transform().copy()
+        self._update_line()
+        self._init_camera(cam)
+        self.set_watch_num(cam.get_watch_num())
+
+    def _update_line(self):
+        origin, size = self._calc_cam_rect()
+        space = self._get_space()
+        vert_begin, vert_end = self._get_edge_value(origin[0]), self._get_edge_value(origin[0]+size[0])
+        hor_begin, hor_end = self._get_edge_value(origin[1]), self._get_edge_value(origin[1]+size[1])
+        self._fill_line(self._vert_lines, CoordLine.LineType.VERTICAL, vert_begin-space, vert_end+2*space)
+        self._fill_line(self._hor_lines, CoordLine.LineType.HORIZON, hor_begin-space, hor_end+2*space)
+        self._update_line_text()
+
+    def _get_space(self):
+        return self._space/self._cam_transform.scales[0]
+
+    def _get_edge_value(self, val):
+        return val-val%self._get_space()
+
+    def _fill_line(self, destination, type, begin, end):
+        space = self._get_space()
+        range_set = set(i*space for i in range(int(begin/space), int(end/space)))
+        for val in list(destination.keys()):
+            range_set.remove(val) if val in range_set else destination.pop(val)
+        for val in range_set:
+            destination[val] = CoordLine(type, val)
+            destination[val].set_watch_num(self._watch_num)
+            self.add_child(destination[val])
+
+    def _init_camera(self, cam:camera.Camera):
+        cam.listen_transform(self._update_cam_info)
+
+    def _update_cam_info(self, transform: math2d.Transform):
+        self._cam_transform = transform.copy()
+        self._update_line()
+
+    def _calc_cam_rect(self):
+        lookat, rotate, focus = self._cam_transform
+        center = math2d.scale(camera.Camera.get_screen_center(), 1/focus)
+        origin, size = camera.Camera.get_view_rect()
+        return origin+lookat-center, math2d.scale(size, 1/focus)
+
+    def _update_line_text(self):
+        origin, _ = self._calc_cam_rect()
+        for line in self._hor_lines.values():
+            line.move_text(origin[0])
+        for line in self._vert_lines.values():
+            line.move_text(origin[1])
+

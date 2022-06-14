@@ -69,6 +69,14 @@ class Case(uiobject.UIObject):
         """
         return '示例: {}[{}], 位于{}'.format(cls.__doc__, cls.__name__, cls.BaseType)
 
+    def set_case_param(self, coord_unit):
+        """设置用例参数
+
+        @param coord_unit: 坐标轴单位
+        @return:
+        """
+        self._coord_unit = coord_unit
+
     def init_engine(self):
         """初始化引擎
 
@@ -78,7 +86,7 @@ class Case(uiobject.UIObject):
         self.register_handle(pygame.KEYUP, self.rotate_control)
         self.register_handle(pygame.MOUSEWHEEL, self.scale_control)
         self._init_camera_info()
-        self._init_coord()
+        self._coord_unit and self._init_coord()
 
     def _init_camera_info(self):
         self._scale_info = uiobject.Text(20)
@@ -96,12 +104,12 @@ class Case(uiobject.UIObject):
         self.add_child(self._center_info)
         self.add_child(self._rotate_info)
         gameengine.get_camera_mgr().add_camera(camera.Camera(1, 1))
-        self._update_camera_info()
+        gameengine.get_main_camera().listen_transform(self._update_camera_info)
+        self._update_camera_info(gameengine.get_main_camera().get_camera_transform())
 
-    def _update_camera_info(self):
-        cam = gameengine.get_main_camera()
-        lookat, rotate, scale = cam.get_camera_param(True, True, True)
-        self._scale_info.set_text('{:.2f}x'.format(scale))
+    def _update_camera_info(self, transform):
+        lookat, rotate, scale = transform
+        self._scale_info.set_text('{:.2f}x'.format(scale[0]))
         self._rotate_info.set_text('{}°'.format(rotate))
         self._center_info.set_text('{}, {}'.format(lookat[0], lookat[1]))
 
@@ -110,11 +118,10 @@ class Case(uiobject.UIObject):
         self._lookat.set_watch_num(1)
         self._lookat.set_color(*defines.GREEN)
         self._lookat.set_pos(gameengine.get_window_width()/2, gameengine.get_window_height()/2)
-        self._coord_lines = [uiobject.CoordLine(uiobject.CoordLine.LineType.VERTICAL, 0),
-                             uiobject.CoordLine(uiobject.CoordLine.LineType.HORIZON, 0)]
         self.add_child(self._lookat)
-        for node in self._coord_lines:
-            self.add_child(node, -1)
+        self._coord_sys = uiobject.CoordSystem(gameengine.get_main_camera(), self._coord_unit)
+        self._lookat.set_watch_num(1)
+        self.add_child(self._coord_sys)
 
     def start_engine(self):
         """启动引擎
@@ -172,12 +179,11 @@ class Case(uiobject.UIObject):
         @return:
         """
         camera = gameengine.get_main_camera()
-        focus = camera.get_camera_param(focus=True)
+        focus = camera.get_camera_transform().scales[0]
         if event.y == 1:
             camera.set_focus(focus*2)
         else:
             camera.set_focus(focus/2)
-        self._update_camera_info()
 
     def rotate_control(self, event):
         """相机旋转控制
@@ -186,22 +192,23 @@ class Case(uiobject.UIObject):
         @return:
         """
         camera = gameengine.get_main_camera()
-        rotation = camera.get_camera_param(rotation=True)
+        rotation = camera.get_camera_transform().rotate
         if event.key == pygame.K_q:
             camera.set_rotation(rotation+10)
         elif event.key == pygame.K_e:
             camera.set_rotation(rotation-10)
-        self._update_camera_info()
 
     def on_begin(self, btn: int, pos: math2d.ndarray) -> bool:
         if btn == pygame.BUTTON_RIGHT:
             return True
+        elif btn == pygame.BUTTON_LEFT:
+            cam = gameengine.get_main_camera()
+            cam.move(pos-camera.Camera.get_screen_center())
         else:
             return False
 
     def on_motion(self, btn: int, pos: math2d.ndarray, delta: math2d.ndarray):
         cam = gameengine.get_main_camera()
-        camera_pos = cam.get_camera_param(lookat=True)
-        cam.set_lookat(camera_pos-delta)
-        self._update_camera_info()
+        cam.move(-delta)
+
 

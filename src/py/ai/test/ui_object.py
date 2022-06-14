@@ -2,6 +2,7 @@
 """
 
 import case
+import gameengine
 import math2d
 
 from gameengine import uiobject
@@ -67,14 +68,25 @@ class CoordLineCase(case.Case):
     def init_case(self):
         self._horizon_lines = [
             uiobject.CoordLine(uiobject.CoordLine.LineType.HORIZON, val)
-            for val in range(0, 801, 100)
+            for val in range(0, 100, 20)
         ]
         self._vertlines = [
             uiobject.CoordLine(uiobject.CoordLine.LineType.VERTICAL, val)
-            for val in range(0, 801, 100)
+            for val in range(0, 100, 20)
         ]
         for node in self._horizon_lines+self._vertlines:
             self.add_child(node)
+
+    def update(self, dt: float):
+        self.quit_over_time(5)
+
+
+@case.register_case(__name__)
+class CoordSystemCase(case.Case):
+    """坐标系统绘制"""
+    def init_case(self):
+        self._system = uiobject.CoordSystem(gameengine.get_main_camera(), 300)
+        self.add_child(self._system)
 
     def update(self, dt: float):
         self.quit_over_time(5)

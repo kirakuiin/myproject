@@ -1,5 +1,5 @@
 """简易2D摄像机"""
-
+import gameengine
 import math2d
 import bisect
 import pygame
@@ -7,6 +7,7 @@ import contextlib
 
 from . import global_vars
 from . import util
+from common import signal
 
 
 class Camera(object):
@@ -18,10 +19,11 @@ class Camera(object):
 
     def __init__(self, priority: int=0, watch_num: int=0):
         self._output_area = (0, 0, util.get_window_width(), util.get_window_height())  # 输出区域
-        self._watch_info = math2d.Transform(math2d.position(util.get_window_width()/2, util.get_window_height()/2))   # 观察信息
+        self._watch_info = math2d.Transform(Camera.get_screen_center())   # 观察信息
         self._priority = priority  # 渲染优先级, 越高越后渲染
         self._watch_num = watch_num  # 观察编号
         self._is_enable = True  # 是否启用
+        self._transform_signal = signal.Signal()  # 相机变换信号
 
     def set_watch_num(self, num: int):
         """设置观察编号
@@ -61,6 +63,14 @@ class Camera(object):
         yield None
         global_vars.screen.set_clip(None)
 
+    def listen_transform(self, cb):
+        """监听相机变换
+
+        @param cb:
+        @return:
+        """
+        self._transform_signal.connect(cb)
+
     def set_lookat(self, position: math2d.ndarray):
         """设置聚集位置
 
@@ -68,6 +78,17 @@ class Camera(object):
         @return:
         """
         self._watch_info.pos = position
+        self._transform_signal.emit(self._watch_info)
+
+    def move(self, delta: math2d.ndarray):
+        """根据相机当前变换在世界坐标下移动聚焦位置
+
+        @param delta: 偏移量
+        @return:
+        """
+        lookat, rotate, focus = self._watch_info
+        delta = math2d.rotate(math2d.scale(delta, 1/focus), rotate)
+        self.set_lookat(lookat+delta)
 
     def set_focus(self, factor: float):
         """设置聚焦倍数
@@ -78,6 +99,7 @@ class Camera(object):
         """
         factor = min(max(1/self.MAX_SCALE_VAL, factor), self.MAX_SCALE_VAL)
         self._watch_info.scales = math2d.array((factor, factor))
+        self._transform_signal.emit(self._watch_info)
 
     def set_rotation(self, rotate: float=0.0):
         """设置相机旋转程度
@@ -86,20 +108,13 @@ class Camera(object):
         @return:
         """
         self._watch_info.rotate = rotate
+        self._transform_signal.emit(self._watch_info)
 
-    def get_camera_param(self, lookat=False, rotation=False, focus=False):
+    def get_camera_transform(self) -> math2d.Transform:
         """获得相机参数
-
-        @param lookat: 是否返回位置
-        @param rotation: 是否返回旋转
-        @param focus: 是否返回聚焦倍数
         @return:
         """
-        result = []
-        lookat and result.append(self._watch_info.pos)
-        rotation and result.append(self._watch_info.rotate)
-        focus and result.append(self._watch_info.scales[0])
-        return result[0] if len(result) == 1 else result
+        return self._watch_info
 
     def get_priority(self) -> int:
         """返回渲染优先级
@@ -126,7 +141,6 @@ class Camera(object):
     def get_viewport_transform(self, transform: math2d.Transform):
         """返回视口变换
 
-        如果变换不在视口内在返回空
         @param transform:
         @return:
         """
@@ -149,6 +163,21 @@ class Camera(object):
 
     def _to_origin_coord(self, transform):
         return transform.combine(math2d.Transform(math2d.vector(*util.get_window_size())/2))
+
+    @staticmethod
+    def get_screen_center() -> math2d.ndarray:
+        """返回摄像机中心屏幕坐标
+        @return:
+        """
+        return math2d.position(util.get_window_width()/2, util.get_window_height()/2)
+
+    @staticmethod
+    def get_view_rect() -> tuple:
+        """返回观察矩形
+
+        @return:
+        """
+        return math2d.position(), math2d.vector(*gameengine.get_window_size())
 
 
 class CameraMgr(object):

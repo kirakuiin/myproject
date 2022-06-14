@@ -9,10 +9,25 @@
 
 """
 
-import case
+# 导入测试模块
 import move
 import test
+# 导入测试模块结束
+
+import case
 import pprint
+
+
+case_param = {}  # 用例执行参数
+
+
+def set_case_param(**kwargs):
+    """设置用例参数
+    @param kwargs:
+    @return:
+    """
+    global case_param
+    case_param = kwargs
 
 
 def get_all_case_info() -> str:
@@ -84,6 +99,7 @@ def run_single_by_name(base_type: str, cls_name: str):
 
 def _run_instance(cls):
     instance = cls()
+    instance.set_case_param(**case_param)
     instance.init_engine()
     instance.init_case()
     instance.start_engine()

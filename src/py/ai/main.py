@@ -32,6 +32,8 @@ class ArgParser(object):
                                   help='执行某个类型指定的类')
         self._parser.add_argument('-m', '--times', type=float, required=False,
                                   help='实例运行速度倍数', default=1.0)
+        self._parser.add_argument('-c', '--coord', type=int, required=False,
+                                  help='显示坐标轴(0为不显示, 大于0则设置单位)', default=200)
         self._parser.add_argument('-s', dest='single', action='store_true', help='仅运行单个示例')
         self._parser.add_argument('-k', dest='track', action='store_true', help='显示绘制轨迹')
         self._parser.add_argument('-d', dest='display', action='store_true', help='显示全部示例名称')
@@ -49,6 +51,9 @@ class ArgParser(object):
 
     def get_times(self) -> float:
         return self._args.times
+
+    def get_coord_unit(self) -> int:
+        return abs(self._args.coord)
 
     def is_single(self) -> bool:
         return self._args.single
@@ -79,6 +84,11 @@ def _show_run_config(arg_parser):
     print('是否显示绘制轨迹: {}'.format(arg_parser.is_show_track()))
     print('是否运行单个示例: {}'.format(arg_parser.is_single()))
     print('运行速度: {:.1f}x'.format(arg_parser.get_times()))
+    coord = arg_parser.get_coord_unit()
+    if coord > 0:
+        print('坐标轴单位: {} pix'.format(coord))
+    else:
+        print('坐标轴: 关闭')
     print('=====示例输出=====')
 
 
@@ -90,5 +100,6 @@ if __name__ == '__main__':
         _show_run_config(parser)
         gameengine.set_speed(parser.get_times())
         gameengine.set_show_track(parser.is_show_track())
+        run_case.set_case_param(coord_unit=parser.get_coord_unit())
         _run_case_by_param(parser)
 

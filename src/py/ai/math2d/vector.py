@@ -153,6 +153,16 @@ class Transform(object):
         return '{}(pos: {}, rotate: {}, scale: {})'.format(
             self.__class__.__name__, self.pos, self.rotate, self.scales)
 
+    def __iter__(self):
+        return iter((self.pos, self.rotate, self.scales))
+
+    def copy(self):
+        """返回一个复制
+
+        @return:
+        """
+        return Transform(*self)
+
     def combine(self, other):
         """组合两个变换, 生成一个新的变换
 
