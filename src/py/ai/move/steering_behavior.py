@@ -3,6 +3,8 @@
 
 import case
 import math2d
+from gameengine import uiobject
+from gameengine import defines as color
 from . import defines
 from . import algorithm
 
@@ -159,3 +161,29 @@ class SteeringWander(case.Case):
         self._character.set_velocity_acc(output.velocity_acc)
         self._character.set_angular_acc(output.angular_acc)
         self.quit_over_time(10)
+
+
+@case.register_case(__name__)
+class SteeringPathFollowing(case.Case):
+    """转向路径跟随"""
+    PATH_OFFSET = 100
+
+    def init_case(self):
+        self._character = defines.DynamicObj(math2d.vector(40, 0))
+        self._character.set_pos(120, 120)
+        self._character.set_constant(max_velocity=80)
+        self._path = defines.LinePath([math2d.position(100, 100), math2d.position(100, 350), math2d.position(350, 350),
+                                       math2d.position(350, 500), math2d.position(500, 500), math2d.position(500, 750),
+                                       math2d.position(600, 0)])
+        self._near_point = uiobject.Circle(3)
+        self._near_point.set_color(*color.ORANGE)
+
+        self.add_child(self._character)
+        self.add_child(self._path)
+        self.add_child(self._near_point)
+
+    def update(self, dt):
+        near_point = self._path.get_line_point(self._character.get_pos(), self.PATH_OFFSET)
+        self._near_point.set_pos_vec(near_point)
+        self._character.set_velocity_acc(algorithm.get_seek_acc(self._character.position(), near_point, 200))
+        self.quit_over_time()

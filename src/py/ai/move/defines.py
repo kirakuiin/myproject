@@ -228,3 +228,42 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
     def _set_value_if_not_none(self, attr, value):
         if value is not None:
             setattr(self, attr, value)
+
+
+class LinePath(uiobject.UIObject):
+    """直线路径
+    """
+    def __init__(self, points: list):
+        super().__init__()
+        self._lines = [math2d.Line(points[i], points[i+1]) for i in range(len(points)-1)]
+        self._lines_obj = uiobject.Lines(points[1], *points[2:])
+        self._lines_obj.set_pos_vec(points[0])
+        self.add_child(self._lines_obj)
+
+    def get_line_point(self, point: math2d.ndarray, offset: float):
+        line_idx = self._get_near_line_idx(point)
+        return self._get_point_by_offset(line_idx, point, offset)
+
+    def _get_near_line_idx(self, point):
+        near_idx, min_dis = -1, float('inf')
+        for idx, line in enumerate(self._lines):
+            near = line.near_point(point)
+            dis = math2d.distance(point, near)
+            if dis < min_dis:
+                min_dis = dis
+                near_idx = idx
+        return near_idx
+
+    def _get_point_by_offset(self, line_idx, point, offset):
+        cur_point = self._lines[line_idx].near_point(point)
+        while offset and line_idx < len(self._lines):
+            cur_line = self._lines[line_idx]
+            dis = math2d.distance(cur_line.end, cur_point)
+            if dis <= offset:
+                offset -= dis
+                cur_point = cur_line.end
+                line_idx += 1
+            else:
+                cur_point = cur_point+(math2d.normalize(cur_line.as_vector())*offset)
+                offset = 0
+        return cur_point

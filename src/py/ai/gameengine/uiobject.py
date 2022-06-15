@@ -362,7 +362,6 @@ class CoordLine(UIObject):
             self._end_point = math2d.position(value, self.MAX_VALUE)
         self._text.set_text(str(int(value)))
 
-
     def adjust_value_pos(self, delta):
         """调整坐标轴上坐标数值的位置
 
@@ -375,12 +374,12 @@ class CoordLine(UIObject):
             self._text.set_pos(0, self.MAX_VALUE+delta)
 
     def draw(self, transform):
-        pygame.draw.aaline(global_vars.screen, self.get_color(),
-                           util.get_window_coord(transform.pos), self._get_end_point(transform))
+        begin, end = util.get_window_coord(transform.pos), util.get_window_coord(self._get_end_point(transform))
+        pygame.draw.aaline(global_vars.screen, self.get_color(), begin, end)
 
     def _get_end_point(self, transform):
         vec = math2d.rotate_matrix(transform.rotate) @ math2d.scale_matrix(transform.scales) @ (self._end_point-self.get_pos())
-        return util.get_window_coord(transform.pos+vec)
+        return transform.pos+vec
 
 
 class CoordSystem(UIObject):
