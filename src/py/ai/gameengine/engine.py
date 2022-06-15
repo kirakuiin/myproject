@@ -90,7 +90,6 @@ def render():
 
     @return:
     """
-    if not global_vars.is_show_track:
-        clean_screen()
+    clean_screen()
     global_vars.camera_mgr.render_all_camera()
     pygame.display.update()

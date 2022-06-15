@@ -35,7 +35,6 @@ class ArgParser(object):
         self._parser.add_argument('-c', '--coord', type=int, required=False,
                                   help='显示坐标轴(0为不显示, 大于0则设置单位)', default=200)
         self._parser.add_argument('-s', dest='single', action='store_true', help='仅运行单个示例')
-        self._parser.add_argument('-k', dest='track', action='store_true', help='显示绘制轨迹')
         self._parser.add_argument('-d', dest='display', action='store_true', help='显示全部示例名称')
 
         self._args = self._parser.parse_args()
@@ -58,9 +57,6 @@ class ArgParser(object):
     def is_single(self) -> bool:
         return self._args.single
 
-    def is_show_track(self) -> bool:
-        return self._args.track
-
     def is_display_info(self) -> bool:
         return self._args.display
 
@@ -81,7 +77,6 @@ def _run_case_by_param(arg_parser):
 
 def _show_run_config(arg_parser):
     print('=====配置清单=====')
-    print('是否显示绘制轨迹: {}'.format(arg_parser.is_show_track()))
     print('是否运行单个示例: {}'.format(arg_parser.is_single()))
     print('运行速度: {:.1f}x'.format(arg_parser.get_times()))
     coord = arg_parser.get_coord_unit()
@@ -99,7 +94,6 @@ if __name__ == '__main__':
     else:
         _show_run_config(parser)
         gameengine.set_speed(parser.get_times())
-        gameengine.set_show_track(parser.is_show_track())
         run_case.set_case_param(coord_unit=parser.get_coord_unit())
         _run_case_by_param(parser)
 

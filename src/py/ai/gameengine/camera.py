@@ -164,20 +164,21 @@ class Camera(object):
     def _to_origin_coord(self, transform):
         return transform.combine(math2d.Transform(math2d.vector(*util.get_window_size())/2))
 
+    def get_view_rect(self) -> tuple:
+        """返回观察矩形
+
+        @return:
+        """
+        size = math2d.scale(math2d.vector(*gameengine.get_window_size()), 1/self._watch_info.scales)
+        origin = self._watch_info.pos-size/2
+        return origin, size
+
     @staticmethod
     def get_screen_center() -> math2d.ndarray:
         """返回摄像机中心屏幕坐标
         @return:
         """
         return math2d.position(util.get_window_width()/2, util.get_window_height()/2)
-
-    @staticmethod
-    def get_view_rect() -> tuple:
-        """返回观察矩形
-
-        @return:
-        """
-        return math2d.position(), math2d.vector(*gameengine.get_window_size())
 
 
 class CameraMgr(object):

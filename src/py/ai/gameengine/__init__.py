@@ -47,15 +47,6 @@ def get_scene():
     return global_vars.scene
 
 
-def set_show_track(is_show):
-    """是指是否绘制运动轨迹
-
-    @param is_show:
-    @return:
-    """
-    global_vars.is_show_track = is_show
-
-
 def set_speed(speed: float=1.0):
     """设置游戏速率
 
