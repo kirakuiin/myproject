@@ -69,6 +69,19 @@ def get_wander_acc(src_obj: Kinematic, brake_radius=30, near_time=0.25,
     return Output(velocity_acc, angular_acc)
 
 
+def get_separation_acc(src_obj: Kinematic, target_objs: list, threshold: float=100.0, decay_coe: float=100.0):
+    """计算分离加速度
+    """
+    final_acc = math2d.vector()
+    for target in target_objs:
+        distance = math2d.distance(src_obj.position(), target.position())
+        if distance < threshold:
+            direction = math2d.normalize(src_obj.position()-target.position())
+            final_acc += decay_coe*(threshold-distance)/threshold*direction
+    final_acc = math2d.normalize(final_acc)*min(src_obj.max_velocity_acc(), math2d.norm(final_acc))
+    return final_acc
+
+
 def get_speed_by_distance(distance, max_speed, brake_radius):
     """根据距离来计算合适的速度
 

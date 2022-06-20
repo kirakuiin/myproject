@@ -187,3 +187,31 @@ class SteeringPathFollowing(case.Case):
         self._near_point.set_pos_vec(near_point)
         self._character.set_velocity_acc(algorithm.get_seek_acc(self._character.position(), near_point, 200))
         self.quit_over_time()
+
+
+@case.register_case(__name__)
+class SteeringSeparation(case.Case):
+    """转向分离"""
+    def init_case(self):
+        self._character = defines.DynamicObj(math2d.vector(100, 0))
+        self._character.set_pos(200, 400)
+        self._character.set_constant(max_velocity=80, resistance_ratio=0, max_velocity_acc=1000)
+        self.add_child(self._character)
+        self._init_targets()
+
+    def _init_targets(self):
+        self._target_1 = defines.DynamicObj(math2d.vector())
+        self._target_1.set_pos(400, 390)
+        self.add_child(self._target_1)
+        self._target_2 = defines.DynamicObj(math2d.vector())
+        self._target_2.set_pos(370, 600)
+        self.add_child(self._target_2)
+        self._target_3 = defines.DynamicObj(math2d.vector())
+        self._target_3.set_pos(600, 530)
+        self.add_child(self._target_3)
+
+        self._target_list = [self._target_1, self._target_2, self._target_3]
+
+    def update(self, dt):
+        self._character.set_velocity_acc(algorithm.get_separation_acc(self._character, self._target_list))
+        self.quit_over_time()

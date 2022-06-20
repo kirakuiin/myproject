@@ -49,12 +49,21 @@ total: 4357
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2022-06-20 周一 23:00 ++1w> SCHEDULED: <2022-06-17 周五 18:00 ++1w>
+DEADLINE: <2022-06-27 周一 23:00 ++1w> SCHEDULED: <2022-06-24 周五 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-06-11 周六 17:50]
+:LAST_REPEAT: [2022-06-18 周六 19:11]
 :END:
+- State "DONE"       from "TODO"       [2022-06-18 周六 19:11] \\
+  1. 完成特殊跳字工单
+  2. 技能ui增加行动条的特殊显示模式
+  3. 法术编辑器扩展:
+     1. 支持使用sid导入战士, 并初始化缩放
+     2. 支持使用场景, 和游戏内的战斗场景保持一致
+     3. 同步ui中的站位信息
+  -------------------------------
+  1. 弹的我头晕了
 - State "DONE"       from "TODO"       [2022-06-11 周六 17:50] \\
   1. 编写季度报告
   2. 编辑器整合
@@ -741,7 +750,7 @@ DEADLINE: <2022-06-20 周一 23:00 ++1w> SCHEDULED: <2022-06-17 周五 18:00 ++1
   1. 自行车从家里邮过来之后组好, 送到车店保养.
   ------------------------------------------------
 ** TODO [#A] 每月报告及归档                                         :event:
-DEADLINE: <2022-06-30 周四 23:00 ++1m> SCHEDULED: <2022-06-30 周四 09:00 ++1m>
+DEADLINE: <2022-07-30 周六 23:00 ++1m> SCHEDULED: <2022-07-30 周六 09:00 ++1m>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
@@ -948,7 +957,7 @@ CLOCK: [2022-02-28 周一 13:20]--[2022-02-28 周一 13:45] =>  0:25
   3. 找到了一处还不错的房子
   4. 认识了很多很棒的同事
 ** TODO [#A] 每周学习晨星网投资教程一篇 [1/1]                       :event:
-DEADLINE: <2022-05-22 周日 23:59 ++1w> SCHEDULED: <2022-05-16 周一 09:00 ++1w>
+DEADLINE: <2022-06-19 周日 23:59 ++1w> SCHEDULED: <2022-06-20 周一 09:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
@@ -984,11 +993,13 @@ CLOCK: [2022-03-07 周一 14:27]--[2022-03-07 周一 14:52] =>  0:25
 :BLOCKER:  olp("live.org" "Next Action/整理财务情况, 设计投资计划")
 :LAST_REPEAT: [2022-01-22 周六 15:07]
 :END:
-** TODO [#A] 减肥                                                   :event:
-SCHEDULED: <2022-06-13 周一 17:27 ++1w>
+** TODO [#A] 减肥                                                    :event:
+SCHEDULED: <2022-06-20 周一 17:27 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-06-11 周六 17:54]
+:LAST_REPEAT: [2022-06-18 周六 14:00]
 :END:
+- State "DONE"       from "TODO"       [2022-06-18 周六 14:00] \\
+  下雨, 70.0kg
 - State "DONE"       from "TODO"       [2022-06-11 周六 17:54] \\
   下雨, 未跑, 69.95kg
 - State "DONE"       from "TODO"       [2022-06-06 周一 09:24] \\

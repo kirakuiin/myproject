@@ -112,11 +112,12 @@ CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-06-18 周六 18:00 ++1w> DEADLINE: <2022-06-20 周一 12:00 ++1w>
+SCHEDULED: <2022-06-25 周六 18:00 ++1w> DEADLINE: <2022-06-27 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-06-11 周六 17:53]
+:LAST_REPEAT: [2022-06-18 周六 19:13]
 :END:
+- State "DONE"       from "TODO"       [2022-06-18 周六 19:13]
 - State "DONE"       from "TODO"       [2022-06-11 周六 17:53]
 - State "DONE"       from "TODO"       [2022-06-06 周一 10:58]
 - State "DONE"       from "TODO"       [2022-05-30 周一 09:17]
@@ -183,8 +184,6 @@ SCHEDULED: <2022-06-18 周六 18:00 ++1w> DEADLINE: <2022-06-20 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#A] 特殊跳字实现                                              :m8:
-SCHEDULED: <2022-06-10 周五 16:45>
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 编写季度报告                                             :m8:
 CLOSED: [2022-06-10 周五 16:42] SCHEDULED: <2022-05-31 周二 14:00>
@@ -205,6 +204,11 @@ CLOSED: [2022-06-09 周四 20:35] SCHEDULED: <2022-06-08 周三 20:35>
 CLOSED: [2022-06-10 周五 16:42] SCHEDULED: <2022-06-09 周四 20:36>
 :PROPERTIES:
 :ARCHIVE_TIME: 2022-06-11 周六 17:53
+:END:
+*** DONE [#A] 特殊跳字实现                                             :m8:
+CLOSED: [2022-06-18 周六 14:01] SCHEDULED: <2022-06-10 周五 16:45>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-06-18 周六 19:11
 :END:
 * Appointment
 * Project
