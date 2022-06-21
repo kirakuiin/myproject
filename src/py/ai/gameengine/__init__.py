@@ -56,6 +56,14 @@ def set_speed(speed: float=1.0):
     global_vars.speed_times = speed
 
 
+def get_speed() -> float:
+    """返回游戏速度
+
+    @return:
+    """
+    return global_vars.speed_times
+
+
 def get_camera_mgr() -> camera.CameraMgr:
     """获得摄像机管理器
 

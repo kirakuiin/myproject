@@ -215,3 +215,83 @@ class SteeringSeparation(case.Case):
     def update(self, dt):
         self._character.set_velocity_acc(algorithm.get_separation_acc(self._character, self._target_list))
         self.quit_over_time()
+
+
+@case.register_case(__name__)
+class SteeringCollisionAvoidance(case.Case):
+    """转向避免碰撞"""
+    def init_case(self):
+        self._character = defines.DynamicObj(math2d.vector(100, 0))
+        self._character.set_pos(200, 400)
+        self._character.set_constant(resistance_ratio=0, max_velocity_acc=1000, max_velocity=50)
+        self.add_child(self._character)
+        self._init_targets()
+
+    def _init_targets(self):
+        self._target_1 = defines.DynamicObj(math2d.vector(0, -50))
+        self._target_1.set_pos(400, 605)
+        self._target_1.set_constant(resistance_ratio=0)
+        self.add_child(self._target_1)
+        self._target_2 = defines.DynamicObj(math2d.vector(0, 40))
+        self._target_2.set_pos(500, 100)
+        self._target_2.set_constant(resistance_ratio=0)
+        self.add_child(self._target_2)
+
+        self._target_list = [self._target_1, self._target_2]
+
+    def update(self, dt):
+        self._character.set_velocity_acc(algorithm.get_avoid_acc(self._character, self._target_list))
+        self.quit_over_time()
+
+
+@case.register_case(__name__)
+class SteeringObstacleAvoidance(case.Case):
+    """转向避免障碍物"""
+    LOOK_AHEAD = 100
+    REFLEX_DIS = 50
+
+    def init_case(self):
+        self._character = defines.DynamicObj(math2d.vector(-80, 60))
+        self._character.set_pos(400, 200)
+        self._character.set_constant(resistance_ratio=0, max_velocity=100, max_velocity_acc=200)
+        self.add_child(self._character)
+        self._init_walls()
+
+    def _init_walls(self):
+        self._lines = [math2d.Line(math2d.position(100, 100), math2d.position(100, 600)),
+                       math2d.Line(math2d.position(100, 600), math2d.position(200, 700)),
+                       math2d.Line(math2d.position(200, 700), math2d.position(600, 700)),
+                       math2d.Line(math2d.position(600, 700), math2d.position(700, 600))]
+        self._detector = defines.CollisionDetector(self._lines)
+        self._lines_objs = []
+        for line in self._lines:
+            line_obj = uiobject.Lines(line.end)
+            line_obj.set_pos_vec(line.begin)
+            self._lines_objs.append(line_obj)
+            self.add_child(line_obj)
+
+    def update(self, dt):
+        begin = self._character.position()
+        end = begin+math2d.normalize(self._character.velocity())*self.LOOK_AHEAD
+        self._show_ray(begin, end)
+        collision = self._detector.get_collision(math2d.Line(begin, end))
+        if collision:
+            self._show_point(collision)
+            self._character.set_velocity_acc(
+                algorithm.get_seek_acc(self._character.position(), collision.position+collision.normal*self.REFLEX_DIS, self._character.max_velocity_acc()))
+        else:
+            self._normal_point = None
+        self.quit_over_time()
+
+    def _show_ray(self, begin, end):
+        self._ray_line = uiobject.Lines(end)
+        self._ray_line.set_color(*color.GREEN)
+        self._ray_line.set_pos_vec(begin)
+        self.add_child(self._ray_line)
+
+    def _show_point(self, collision: defines.CollisionOutput):
+        position = collision.position+collision.normal*self.REFLEX_DIS
+        self._normal_point = uiobject.Circle(5)
+        self._normal_point.set_color(*color.ORANGE)
+        self._normal_point.set_pos_vec(position)
+        self.add_child(self._normal_point)

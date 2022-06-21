@@ -62,27 +62,57 @@ def get_wander_acc(src_obj: Kinematic, brake_radius=30, near_time=0.25,
 
     在对象的前方创建一个虚拟目标, 虚拟目标出现在以对象前方固定偏移为圆心的圆环的某个位置上
     """
-    circle_center = src_obj.position() + math2d.as_vector(src_obj.rotation())*wander_offset
-    target_pos = circle_center + math2d.as_vector(src_obj.rotation()+math2d.rand_bio()*wander_rate)*wander_radius
+    circle_center = src_obj.position() + math2d.as_vector(src_obj.rotation()) * wander_offset
+    target_pos = circle_center + math2d.as_vector(src_obj.rotation() + math2d.rand_bio() * wander_rate) * wander_radius
     angular_acc = get_face_acc(src_obj, target_pos, brake_radius, near_time)
-    velocity_acc = src_obj.max_velocity_acc()*math2d.as_vector(src_obj.rotation())
+    velocity_acc = src_obj.max_velocity_acc() * math2d.as_vector(src_obj.rotation())
     return Output(velocity_acc, angular_acc)
 
 
-def get_separation_acc(src_obj: Kinematic, target_objs: list, threshold: float=100.0, decay_coe: float=100.0):
+def get_separation_acc(src_obj: Kinematic, des_objs: list, threshold: float = 100.0, decay_coe: float = 100.0):
     """计算分离加速度
     """
     final_acc = math2d.vector()
-    for target in target_objs:
-        distance = math2d.distance(src_obj.position(), target.position())
+    for des in des_objs:
+        distance = math2d.distance(src_obj.position(), des.position())
         if distance < threshold:
-            direction = math2d.normalize(src_obj.position()-target.position())
-            final_acc += decay_coe*(threshold-distance)/threshold*direction
-    final_acc = math2d.normalize(final_acc)*min(src_obj.max_velocity_acc(), math2d.norm(final_acc))
+            direction = math2d.normalize(src_obj.position() - des.position())
+            final_acc += decay_coe * (threshold - distance) / threshold * direction
+    final_acc = math2d.normalize(final_acc) * min(src_obj.max_velocity_acc(), math2d.norm(final_acc))
     return final_acc
 
 
-def get_speed_by_distance(distance, max_speed, brake_radius):
+def get_avoid_acc(src_obj: Kinematic, des_objs: list, radius: float = 10.0):
+    """根据未来最近点的位置来判断是否进行躲避
+    """
+    des_obj, shortest_time = _find_nearest_obj(src_obj, des_objs, radius)
+    if des_obj is None:
+        return math2d.vector()
+    src_future_pos = src_obj.position() + shortest_time * src_obj.velocity()
+    des_future_pos = des_obj.position() + shortest_time * des_obj.velocity()
+    nearest_dis, cur_dis = (
+    math2d.distance(src_future_pos, des_future_pos), math2d.distance(src_obj.position(), des_obj.position()))
+    if nearest_dis <= 0 or cur_dis <= 2 * radius:
+        direction = src_obj.position() - des_obj.position()
+    else:
+        direction = src_future_pos - des_future_pos
+    return src_obj.max_velocity_acc() * math2d.normalize(direction)
+
+
+def _find_nearest_obj(src_obj: Kinematic, des_objs: list, radius: float):
+    shortest_time = float('inf')
+    first_collision_obj = None
+    for des in des_objs:
+        near_time = get_near_time(src_obj.position(), src_obj.velocity(), des.position(), des.velocity())
+        distance = math2d.distance(src_obj.position() + near_time * src_obj.velocity(),
+                                   des.position() + near_time * des.velocity())
+        if 0 <= near_time < shortest_time and distance <= 2 * radius:
+            first_collision_obj = des
+            shortest_time = near_time
+    return first_collision_obj, shortest_time
+
+
+def get_speed_by_distance(distance, max_speed, brake_radius) -> math2d.ndarray:
     """根据距离来计算合适的速度
 
     距离越近速度越低, 当距离为0时速度应为0
@@ -97,7 +127,7 @@ def get_speed_by_distance(distance, max_speed, brake_radius):
         return max_speed * distance / brake_radius
 
 
-def get_match_acc(src_speed, des_speed, max_acc=100.0, near_time=0.25):
+def get_match_acc(src_speed, des_speed, max_acc=100.0, near_time=0.25) -> math2d.ndarray:
     """计算匹配指定角速度所需要的加速度
 
     @param src_speed: 源速度
@@ -112,7 +142,7 @@ def get_match_acc(src_speed, des_speed, max_acc=100.0, near_time=0.25):
     return acc
 
 
-def is_close_enough(src_pos: math2d.ndarray, des_pos: math2d.ndarray, near_threshold=5):
+def is_close_enough(src_pos: math2d.ndarray, des_pos: math2d.ndarray, near_threshold=5) -> bool:
     """判断两个对象是否足够接近
 
     @param src_pos: 来源位置
@@ -121,3 +151,22 @@ def is_close_enough(src_pos: math2d.ndarray, des_pos: math2d.ndarray, near_thres
     @return:
     """
     return math2d.distance(src_pos, des_pos) < near_threshold
+
+
+def get_near_time(src_pos: math2d.ndarray, src_vec: math2d.ndarray, des_pos: math2d.ndarray,
+                  des_vec: math2d.ndarray) -> float:
+    """判断两个对象到达最近距离所需要的时间
+
+    如果返回值小于0则代表永远不会接近
+    @param src_pos: 来源位置
+    @param src_vec: 来源速度
+    @param des_pos: 目标位置
+    @param des_vec: 目标速度
+    @return: float
+    """
+    dp = des_pos - src_pos
+    dv = src_vec - des_vec
+    length = math2d.norm(dv)
+    if length <= 0:
+        return 0 if math2d.norm(dp) == 0 else -1
+    return math2d.dot(dp, dv) / length ** 2

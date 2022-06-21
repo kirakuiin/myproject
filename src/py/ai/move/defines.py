@@ -110,6 +110,13 @@ class AccOutput(object):
         self.angular_acc = angular_acc  # 角加速度
 
 
+class CollisionOutput(object):
+    """碰撞输出"""
+    def __init__(self, position: math2d.ndarray=math2d.position(), normal: math2d.ndarray=math2d.vector()):
+        self.position = position  # 碰撞点坐标
+        self.normal = normal  # 碰撞点法线
+
+
 class StaticObj(uiobject.UIObject):
     """静态运动物体
 
@@ -267,3 +274,39 @@ class LinePath(uiobject.UIObject):
                 cur_point = cur_point+(math2d.normalize(cur_line.as_vector())*offset)
                 offset = 0
         return cur_point
+
+
+class CollisionDetector(object):
+    """碰撞检测器"""
+    def __init__(self, collision_lines):
+        self._collision_lines = collision_lines  # 碰撞线
+
+    def get_collision(self, ray_line: math2d.Line):
+        """检测碰撞
+
+        未碰撞则返回None
+        @param ray_line:
+        @return:
+        """
+        nearest_line, nearest_distance = self._get_nearest(ray_line)
+        if nearest_line:
+            position = ray_line.begin + math2d.normalize(ray_line.as_vector())*nearest_distance
+            normal = nearest_line.normal()
+            if math2d.dot(ray_line.as_vector(), normal) >= 0:
+                normal = -normal
+            return CollisionOutput(position, normal)
+        else:
+            return None
+
+    def _get_nearest(self, ray_line):
+        nearest_distance = float('inf')
+        nearest_line = None
+        for line in self._collision_lines:
+            if math2d.is_intersection(line, ray_line):
+                point = math2d.line_intersect(line, ray_line)
+                distance = math2d.distance(point, ray_line.begin)
+                if distance < nearest_distance:
+                    nearest_distance = distance
+                    nearest_line = line
+        return nearest_line, nearest_distance
+

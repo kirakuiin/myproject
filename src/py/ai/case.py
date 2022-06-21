@@ -83,10 +83,11 @@ class Case(uiobject.UIObject):
         @return:
         """
         gameengine.init()
-        self.register_handle(pygame.KEYUP, self.rotate_control)
+        self.register_handle(pygame.KEYUP, self.key_control)
         self.register_handle(pygame.MOUSEWHEEL, self.scale_control)
         self._init_camera_info()
         self._coord_unit and self._init_coord()
+        self._speed_time = gameengine.get_speed()
 
     def _init_camera_info(self):
         self._scale_info = uiobject.Text(20)
@@ -185,8 +186,8 @@ class Case(uiobject.UIObject):
         else:
             camera.set_focus(focus/2)
 
-    def rotate_control(self, event):
-        """相机旋转控制
+    def key_control(self, event):
+        """键盘控制
 
         @param event:
         @return:
@@ -197,6 +198,8 @@ class Case(uiobject.UIObject):
             camera.set_rotation(rotation+10)
         elif event.key == pygame.K_e:
             camera.set_rotation(rotation-10)
+        elif event.key == pygame.K_p:
+            gameengine.set_speed(self._speed_time) if gameengine.get_speed() == 0 else gameengine.set_speed(00000000)
 
     def on_begin(self, btn: int, pos: math2d.ndarray) -> bool:
         if btn == pygame.BUTTON_RIGHT:
