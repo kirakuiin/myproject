@@ -3,6 +3,7 @@
 import math2d
 from .defines import KinematicInterface as Kinematic
 from .defines import AccOutput as Output
+from .defines import CollisionDetector as Detector
 
 
 def get_seek_acc(src_pos, des_pos, acc):
@@ -110,6 +111,18 @@ def _find_nearest_obj(src_obj: Kinematic, des_objs: list, radius: float):
             first_collision_obj = des
             shortest_time = near_time
     return first_collision_obj, shortest_time
+
+
+def get_obstacle_acc(src_obj: Kinematic, detector: Detector, look_ahead: float=100, avoid_distance: float=50):
+    """获得避障加速度
+    """
+    begin = src_obj.position()
+    end = begin+math2d.normalize(src_obj.velocity())*look_ahead
+    collision = detector.get_collision(math2d.Line(begin, end))
+    if collision:
+        return get_seek_acc(src_obj.position(), collision.position+collision.normal*avoid_distance, src_obj.max_velocity_acc())
+    else:
+        return math2d.vector()
 
 
 def get_speed_by_distance(distance, max_speed, brake_radius) -> math2d.ndarray:

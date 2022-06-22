@@ -248,7 +248,7 @@ class SteeringCollisionAvoidance(case.Case):
 class SteeringObstacleAvoidance(case.Case):
     """转向避免障碍物"""
     LOOK_AHEAD = 100
-    REFLEX_DIS = 50
+    AVOID_DIS = 50
 
     def init_case(self):
         self._character = defines.DynamicObj(math2d.vector(-80, 60))
@@ -271,27 +271,15 @@ class SteeringObstacleAvoidance(case.Case):
             self.add_child(line_obj)
 
     def update(self, dt):
-        begin = self._character.position()
-        end = begin+math2d.normalize(self._character.velocity())*self.LOOK_AHEAD
-        self._show_ray(begin, end)
-        collision = self._detector.get_collision(math2d.Line(begin, end))
-        if collision:
-            self._show_point(collision)
-            self._character.set_velocity_acc(
-                algorithm.get_seek_acc(self._character.position(), collision.position+collision.normal*self.REFLEX_DIS, self._character.max_velocity_acc()))
-        else:
-            self._normal_point = None
+        acc = algorithm.get_obstacle_acc(self._character, self._detector, self.LOOK_AHEAD, self.AVOID_DIS)
+        math2d.norm(acc) > 0 and self._character.set_velocity_acc(acc)
+        self._show_ray()
         self.quit_over_time()
 
-    def _show_ray(self, begin, end):
-        self._ray_line = uiobject.Lines(end)
+    def _show_ray(self):
+        begin = self._character.position()
+        end = self._character.position()+math2d.normalize(self._character.velocity())*self.LOOK_AHEAD
+        self._ray_line = uiobject.Lines(begin, end)
         self._ray_line.set_color(*color.GREEN)
         self._ray_line.set_pos_vec(begin)
         self.add_child(self._ray_line)
-
-    def _show_point(self, collision: defines.CollisionOutput):
-        position = collision.position+collision.normal*self.REFLEX_DIS
-        self._normal_point = uiobject.Circle(5)
-        self._normal_point.set_color(*color.ORANGE)
-        self._normal_point.set_pos_vec(position)
-        self.add_child(self._normal_point)

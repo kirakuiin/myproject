@@ -109,6 +109,9 @@ class AccOutput(object):
         self.velocity_acc = velocity_acc  # 加速度
         self.angular_acc = angular_acc  # 角加速度
 
+    def __add__(self, other):
+        return AccOutput(self.velocity_acc+other.velocity_acc, self.angular_acc+other.angular_acc)
+
 
 class CollisionOutput(object):
     """碰撞输出"""
