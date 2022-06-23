@@ -233,13 +233,15 @@ class Scene(UIObject):
 class Circle(UIObject):
     """圆环
     """
-    def __init__(self, radius: float):
+    def __init__(self, radius: float, line_width=0):
         super().__init__()
         self.radius = radius  # 半径
+        self.line_width = line_width  # 宽度
 
     def draw(self, transform):
+        width = 0 if self.line_width == 0 else int(max(1, self.line_width*transform.scales[0]))
         pygame.draw.circle(global_vars.screen, self._color, util.get_window_coord(transform.pos),
-                           self.radius*transform.scales[0],)
+                           self.radius*transform.scales[0], width)
 
 
 class Triangle(UIObject):

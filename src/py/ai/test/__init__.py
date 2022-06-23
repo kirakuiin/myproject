@@ -1,5 +1,5 @@
 """基础功能测试
 """
 
-from . import ui_object
-from . import engine_func
+from . import ui_object_case
+from . import engine_func_case

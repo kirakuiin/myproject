@@ -1,4 +1,4 @@
-"""ui对象测试
+"""ui对象示例
 """
 
 import case
@@ -9,7 +9,7 @@ from gameengine import defines
 
 
 @case.register_case(__name__)
-class CircleCase(case.Case):
+class Circle(case.Case):
     """圆环绘制"""
     def init_case(self):
         self._circle = uiobject.Circle(100)
@@ -21,7 +21,7 @@ class CircleCase(case.Case):
 
 
 @case.register_case(__name__)
-class TriangleCase(case.Case):
+class Triangle(case.Case):
     """三角绘制"""
     def init_case(self):
         self._triangle = uiobject.Triangle(100)
@@ -33,7 +33,7 @@ class TriangleCase(case.Case):
 
 
 @case.register_case(__name__)
-class LinesCase(case.Case):
+class Lines(case.Case):
     """线体绘制"""
     def init_case(self):
         self._line = uiobject.Lines(math2d.position(120, 120), math2d.position(500, 140),
@@ -47,7 +47,7 @@ class LinesCase(case.Case):
 
 
 @case.register_case(__name__)
-class TextCase(case.Case):
+class Text(case.Case):
     """文本绘制"""
     def init_case(self):
         self._text = uiobject.Text(bold=True, italic=True)

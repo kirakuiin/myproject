@@ -1,4 +1,4 @@
-"""引擎功能测试
+"""引擎功能示例
 """
 
 import case
@@ -9,8 +9,8 @@ from gameengine import defines
 
 
 @case.register_case(__name__)
-class CameraClipCase(case.Case):
-    """相机裁剪测试"""
+class CameraClip(case.Case):
+    """相机裁剪"""
     def init_case(self):
         self._circle = uiobject.Circle(100)
         self._circle.set_pos(400, 400)

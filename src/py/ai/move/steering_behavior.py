@@ -1,285 +1,247 @@
 """转向行为
 """
 
-import case
 import math2d
-from gameengine import uiobject
-from gameengine import defines as color
+import collections
+import weakref
+
 from . import defines
 from . import algorithm
 
 
-@case.register_case(__name__)
-class SteeringSeekCase(case.Case):
-    """转向寻找"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(100, 0))
-        self._character.set_pos(400, 300)
-        self._character.set_constant(max_velocity=1000, resistance_ratio=20)
-        self._target = defines.DynamicObj(math2d.vector(0, 0))
-        self._target.set_pos(400, 400)
+class SteeringBehaviorInterface(object):
+    """转向行为接口"""
+    def get_steering_output(self) -> defines.AccOutput:
+        """返回转向输出
 
-        self.add_child(self._character)
-        self.add_child(self._target)
-
-    def update(self, dt):
-        self._character.set_velocity_acc(algorithm.get_seek_acc(self._character.position(), self._target.position(), 100))
-        if algorithm.is_close_enough(self._character.position(), self._target.position(), 10):
-            self.quit_engine()
+        @return:
+        """
+        pass
 
 
-@case.register_case(__name__)
-class SteeringArriveCase(case.Case):
-    """转向到达"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(-80, 100))
-        self._character.set_pos(100, 100)
-        self._target = defines.DynamicObj(math2d.vector(0, 0))
-        self._target.set_pos(300, 300)
+class BlendedSteering(SteeringBehaviorInterface):
+    """转向行为混合"""
+    Pair = collections.namedtuple('Pair', 'behavior, weight')
 
-        self.add_child(self._character)
-        self.add_child(self._target)
+    def __init__(self, src_obj: defines.KinematicInterface):
+        self._pairs = []  # 行为对列表
+        self._src_obj = weakref.proxy(src_obj)  # 源目标
 
-    def update(self, dt):
-        self._character.set_velocity_acc(algorithm.get_arrive_acc(self._character, self._target))
-        if algorithm.is_close_enough(self._character.position(), self._target.position(), 10):
-            self.quit_engine()
+    def add_behavior(self, behavior: SteeringBehaviorInterface, weight: float=1.0):
+        """混合行为
 
+        @param behavior: 行为
+        @param weight: 权重
+        @return:
+        """
+        pair = BlendedSteering.Pair(behavior, weight)
+        self._pairs.append(pair)
 
-@case.register_case(__name__)
-class SteeringAlignCase(case.Case):
-    """转向对齐"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(0, 0))
-        self._character.set_pos(300, 200)
-        self._character.set_scale(5)
-        self._target = defines.DynamicObj(math2d.vector(0, 0))
-        self._target.set_pos(300, 200)
-        self._target.set_rotate(550)
-        self._target.set_scale(5)
-
-        self.add_child(self._character)
-        self.add_child(self._target)
-
-    def update(self, dt):
-        self._character.set_angular_acc(algorithm.get_align_acc(self._character, self._target.rotation()))
-        if abs(math2d.angle_delta(self._character.rotation(), self._target.rotation())) < 3:
-            self.quit_engine()
+    def get_steering_output(self) -> defines.AccOutput:
+        output = defines.AccOutput()
+        for pair in self._pairs:
+            output += pair.weight*pair.behavior.get_steering_output()
+        output.velocity_acc = min(self._src_obj.max_velocity_acc(), math2d.norm(output.velocity_acc)) * math2d.normalize(output.velocity_acc)
+        output.angular_acc = min(self._src_obj.max_angular_acc(), math2d.norm(output.angular_acc)) * math2d.normalize(output.angular_acc)
+        return output
 
 
-@case.register_case(__name__)
-class SteeringVelocityMatchCase(case.Case):
-    """转向速度匹配"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(-50, -50))
-        self._character.set_pos(300, 200)
-        self._character.set_constant(resistance_ratio=0)
-        self._target = defines.DynamicObj(math2d.vector(100, 0))
-        self._target.set_pos(100, 200)
-        self._target.set_constant(resistance_ratio=0)
+class SeekBehavior(SteeringBehaviorInterface):
+    """寻找行为"""
+    def __init__(self, src_obj: defines.KinematicInterface, des_obj: defines.KinematicInterface):
+        self._src_obj = weakref.proxy(src_obj)
+        self._des_obj = weakref.proxy(des_obj)
 
-        self.add_child(self._character)
-        self.add_child(self._target)
-
-    def update(self, dt):
-        self._character.set_velocity_acc(algorithm.get_match_acc(self._character.velocity(), self._target.velocity(), 50))
-        if math2d.distance(self._character.velocity(), self._target.velocity()) < 1:
-            self.quit_engine()
+    def get_steering_output(self) -> defines.AccOutput:
+        acc = algorithm.get_seek_acc(self._src_obj.position(), self._des_obj.position(), self._src_obj.max_velocity_acc())
+        return defines.AccOutput(acc)
 
 
-@case.register_case(__name__)
-class SteeringChaseCase(case.Case):
-    """转向追逐"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(0, 50))
-        self._character.set_pos(400, 200)
-        self._character.set_constant(resistance_ratio=20, max_velocity=120)
-        self._target = defines.DynamicObj(math2d.vector(80, 0))
-        self._target.set_pos(20, 400)
-        self._target.set_constant(resistance_ratio=0)
+class ArriveBehavior(SteeringBehaviorInterface):
+    """到达行为"""
+    def __init__(self, src_obj, des_obj, brake_radius=100, near_time=0.25):
+        self._src_obj = weakref.proxy(src_obj)
+        self._des_obj = weakref.proxy(des_obj)
+        self._brake_radius = brake_radius  # 减速半径
+        self._near_time = near_time  # 接近时间
 
-        self.add_child(self._character)
-        self.add_child(self._target)
-
-    def update(self, dt):
-        self._character.set_velocity_acc(algorithm.get_chase_acc(self._character, self._target, 1))
-        if math2d.distance(self._character.position(), self._target.position()) < 15:
-            self.quit_engine()
+    def get_steering_output(self) -> defines.AccOutput:
+        distance = math2d.distance(self._src_obj.position(), self._des_obj.position())
+        speed = algorithm.get_speed_by_distance(distance, self._src_obj.max_velocity(), self._brake_radius)
+        direction = math2d.normalize(self._des_obj.position() - self._src_obj.position())
+        return defines.AccOutput(algorithm.get_match_acc(self._src_obj.velocity(), direction * speed,
+                                                         self._src_obj.max_velocity_acc(), self._near_time))
 
 
-@case.register_case(__name__)
-class SteeringFaceCase(case.Case):
-    """转向朝向"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(0, 0), -30)
-        self._character.set_pos(300, 350)
-        self._character.set_rotate(150)
-        self._target = defines.DynamicObj(math2d.vector(0, 0))
-        self._target.set_pos(400, 400)
-        self._target.set_rotate(math2d.as_degrees(self._target.get_pos() - self._character.get_pos()))
+class AlignBehavior(SteeringBehaviorInterface):
+    """对齐行为"""
+    def __init__(self, src_obj, des_obj, brake_radius=30, near_time=0.25):
+        self._src_obj = weakref.proxy(src_obj)
+        self._des_obj = weakref.proxy(des_obj)
+        self._brake_radius = brake_radius  # 减速半径
+        self._near_time = near_time  # 接近时间
 
-        self.add_child(self._character)
-        self.add_child(self._target)
-
-    def update(self, dt):
-        self._character.set_angular_acc(algorithm.get_face_acc(self._character, self._target.position()))
-        if abs(math2d.angle_delta(self._character.rotation(), self._target.rotation())) < 5:
-            self.quit_engine()
+    def get_steering_output(self) -> defines.AccOutput:
+        acc = algorithm.get_align_acc(self._src_obj, self._des_obj.rotation(), self._brake_radius, self._near_time)
+        return defines.AccOutput(angular_acc=acc)
 
 
-@case.register_case(__name__)
-class SteeringLookDirectlyCase(case.Case):
-    """转向直视"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(30, 40), -30)
-        self._character.set_pos(300, 350)
-        self._character.set_rotate(-150)
-        self._character.set_constant(resistance_ratio=0)
+class VelocityMatchBehavior(SteeringBehaviorInterface):
+    """速度匹配行为"""
+    def __init__(self, src_obj, des_obj, near_time=0.25):
+        self._src_obj = weakref.proxy(src_obj)
+        self._des_obj = weakref.proxy(des_obj)
+        self._near_time = near_time  # 接近时间
 
-        self.add_child(self._character)
-
-    def update(self, dt):
-        self._character.set_angular_acc(algorithm.get_look_direct_acc(self._character))
-        if abs(math2d.angle_delta(math2d.as_degrees(self._character.velocity()),
-                                  self._character.rotation())) < 5:
-            self.quit_engine()
+    def get_steering_output(self) -> defines.AccOutput:
+        acc = algorithm.get_match_acc(self._src_obj.velocity(), self._des_obj.velocity(),
+                                      self._src_obj.max_velocity_acc(), self._near_time)
+        return defines.AccOutput(acc)
 
 
-@case.register_case(__name__)
-class SteeringWander(case.Case):
-    """转向漫游"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(0, 40))
-        self._character.set_pos(400, 400)
-        self._character.set_rotate(90)
-        self._character.set_constant(max_angular_acc=100, max_velocity=10)
+class ChaseBehavior(SteeringBehaviorInterface):
+    """追逐行为"""
+    def __init__(self, src_obj, des_obj, max_predict_time=1):
+        self._src_obj = weakref.proxy(src_obj)
+        self._des_obj = weakref.proxy(des_obj)
+        self._max_predict_time = max_predict_time  # 最大预测时间
 
-        self.add_child(self._character)
-
-    def update(self, dt):
-        output = algorithm.get_wander_acc(self._character)
-        self._character.set_velocity_acc(output.velocity_acc)
-        self._character.set_angular_acc(output.angular_acc)
-        self.quit_over_time(10)
+    def get_steering_output(self) -> defines.AccOutput:
+        distance = math2d.distance(self._src_obj.position(), self._des_obj.position())
+        predict_time = distance / math2d.norm(self._src_obj.velocity())
+        predict_time = min(self._max_predict_time, predict_time)
+        future_des_pos = self._des_obj.position() + predict_time * self._des_obj.velocity()
+        return defines.AccOutput(algorithm.get_seek_acc(
+            self._src_obj.position(), future_des_pos, self._src_obj.max_velocity_acc()))
 
 
-@case.register_case(__name__)
-class SteeringPathFollowing(case.Case):
-    """转向路径跟随"""
-    PATH_OFFSET = 100
+class FaceBehavior(SteeringBehaviorInterface):
+    """朝向行为"""
+    def __init__(self, src_obj, des_obj, brake_radius=30, near_time=0.25):
+        self._src_obj = weakref.proxy(src_obj)
+        self._des_obj = weakref.proxy(des_obj)
+        self._brake_radius = brake_radius  # 减速半径
+        self._near_time = near_time  # 接近时间
 
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(40, 0))
-        self._character.set_pos(120, 120)
-        self._character.set_constant(max_velocity=80)
-        self._path = defines.LinePath([math2d.position(100, 100), math2d.position(100, 350), math2d.position(350, 350),
-                                       math2d.position(350, 500), math2d.position(500, 500), math2d.position(500, 750),
-                                       math2d.position(600, 0)])
-        self._near_point = uiobject.Circle(3)
-        self._near_point.set_color(*color.ORANGE)
-
-        self.add_child(self._character)
-        self.add_child(self._path)
-        self.add_child(self._near_point)
-
-    def update(self, dt):
-        near_point = self._path.get_line_point(self._character.get_pos(), self.PATH_OFFSET)
-        self._near_point.set_pos_vec(near_point)
-        self._character.set_velocity_acc(algorithm.get_seek_acc(self._character.position(), near_point, 200))
-        self.quit_over_time()
+    def get_steering_output(self) -> defines.AccOutput:
+        acc = algorithm.get_face_acc(self._src_obj, self._des_obj.position(), self._brake_radius, self._near_time)
+        return defines.AccOutput(angular_acc=acc)
 
 
-@case.register_case(__name__)
-class SteeringSeparation(case.Case):
-    """转向分离"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(100, 0))
-        self._character.set_pos(200, 400)
-        self._character.set_constant(max_velocity=80, resistance_ratio=0, max_velocity_acc=1000)
-        self.add_child(self._character)
-        self._init_targets()
+class LookDirectBehavior(SteeringBehaviorInterface):
+    """直视速度方向行为"""
+    def __init__(self, src_obj, brake_radius=30, near_time=0.25):
+        self._src_obj = weakref.proxy(src_obj)
+        self._brake_radius = brake_radius  # 减速半径
+        self._near_time = near_time  # 接近时间
 
-    def _init_targets(self):
-        self._target_1 = defines.DynamicObj(math2d.vector())
-        self._target_1.set_pos(400, 390)
-        self.add_child(self._target_1)
-        self._target_2 = defines.DynamicObj(math2d.vector())
-        self._target_2.set_pos(370, 600)
-        self.add_child(self._target_2)
-        self._target_3 = defines.DynamicObj(math2d.vector())
-        self._target_3.set_pos(600, 530)
-        self.add_child(self._target_3)
-
-        self._target_list = [self._target_1, self._target_2, self._target_3]
-
-    def update(self, dt):
-        self._character.set_velocity_acc(algorithm.get_separation_acc(self._character, self._target_list))
-        self.quit_over_time()
+    def get_steering_output(self) -> defines.AccOutput:
+        des_rot = math2d.as_degrees(self._src_obj.velocity())
+        return defines.AccOutput(angular_acc=algorithm.get_align_acc(
+            self._src_obj, des_rot, self._brake_radius, self._near_time))
 
 
-@case.register_case(__name__)
-class SteeringCollisionAvoidance(case.Case):
-    """转向避免碰撞"""
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(100, 0))
-        self._character.set_pos(200, 400)
-        self._character.set_constant(resistance_ratio=0, max_velocity_acc=1000, max_velocity=50)
-        self.add_child(self._character)
-        self._init_targets()
+class WanderBehavior(SteeringBehaviorInterface):
+    """漫游行为"""
+    def __init__(self, src_obj, brake_radius=30, near_time=0.25, wander_offset=100, wander_radius=100, wander_degree=80):
+        self._src_obj = weakref.proxy(src_obj)
+        self._brake_radius = brake_radius  # 减速半径
+        self._near_time = near_time  # 接近时间
+        self._wander_offset = wander_offset  # 漫游偏移
+        self._wander_radius = wander_radius  # 漫游半径
+        self._wander_degree = wander_degree  # 漫游角度
 
-    def _init_targets(self):
-        self._target_1 = defines.DynamicObj(math2d.vector(0, -50))
-        self._target_1.set_pos(400, 605)
-        self._target_1.set_constant(resistance_ratio=0)
-        self.add_child(self._target_1)
-        self._target_2 = defines.DynamicObj(math2d.vector(0, 40))
-        self._target_2.set_pos(500, 100)
-        self._target_2.set_constant(resistance_ratio=0)
-        self.add_child(self._target_2)
+    def get_steering_output(self) -> defines.AccOutput:
+        # 创建虚拟圆环, 并随机其上一点
+        circle_center = self._src_obj.position() + math2d.as_vector(self._src_obj.rotation()) * self._wander_offset
+        target_pos = circle_center + math2d.as_vector(self._src_obj.rotation() + math2d.rand_bio() * self._wander_degree) * self._wander_radius
 
-        self._target_list = [self._target_1, self._target_2]
-
-    def update(self, dt):
-        self._character.set_velocity_acc(algorithm.get_avoid_acc(self._character, self._target_list))
-        self.quit_over_time()
+        angular_acc = algorithm.get_face_acc(self._src_obj, target_pos, self._brake_radius, self._near_time)
+        velocity_acc = self._src_obj.max_velocity_acc() * math2d.as_vector(self._src_obj.rotation())
+        return defines.AccOutput(velocity_acc, angular_acc)
 
 
-@case.register_case(__name__)
-class SteeringObstacleAvoidance(case.Case):
-    """转向避免障碍物"""
-    LOOK_AHEAD = 100
-    AVOID_DIS = 50
+class PathFollowingBehavior(SteeringBehaviorInterface):
+    """路径跟随行为"""
+    def __init__(self, src_obj, line_path: defines.LinePath, offset=100):
+        self._src_obj = weakref.proxy(src_obj)
+        self._line_path = weakref.proxy(line_path)  # 路径对象
+        self._offset = offset  # 寻路偏移
 
-    def init_case(self):
-        self._character = defines.DynamicObj(math2d.vector(-80, 60))
-        self._character.set_pos(400, 200)
-        self._character.set_constant(resistance_ratio=0, max_velocity=100, max_velocity_acc=200)
-        self.add_child(self._character)
-        self._init_walls()
+    def get_steering_output(self) -> defines.AccOutput:
+        near_point = self.get_near_point()
+        return defines.AccOutput(algorithm.get_seek_acc(
+            self._src_obj.position(), near_point, self._src_obj.max_velocity_acc()))
 
-    def _init_walls(self):
-        self._lines = [math2d.Line(math2d.position(100, 100), math2d.position(100, 600)),
-                       math2d.Line(math2d.position(100, 600), math2d.position(200, 700)),
-                       math2d.Line(math2d.position(200, 700), math2d.position(600, 700)),
-                       math2d.Line(math2d.position(600, 700), math2d.position(700, 600))]
-        self._detector = defines.CollisionDetector(self._lines)
-        self._lines_objs = []
-        for line in self._lines:
-            line_obj = uiobject.Lines(line.end)
-            line_obj.set_pos_vec(line.begin)
-            self._lines_objs.append(line_obj)
-            self.add_child(line_obj)
+    def get_near_point(self):
+        return self._line_path.get_line_point(self._src_obj.position(), self._offset)
 
-    def update(self, dt):
-        acc = algorithm.get_obstacle_acc(self._character, self._detector, self.LOOK_AHEAD, self.AVOID_DIS)
-        math2d.norm(acc) > 0 and self._character.set_velocity_acc(acc)
-        self._show_ray()
-        self.quit_over_time()
 
-    def _show_ray(self):
-        begin = self._character.position()
-        end = self._character.position()+math2d.normalize(self._character.velocity())*self.LOOK_AHEAD
-        self._ray_line = uiobject.Lines(begin, end)
-        self._ray_line.set_color(*color.GREEN)
-        self._ray_line.set_pos_vec(begin)
-        self.add_child(self._ray_line)
+class SeparationBehavior(SteeringBehaviorInterface):
+    """分离行为"""
+    def __init__(self, src_obj, des_objs, threshold=100.0, decay_coe=100.0):
+        self._src_obj = weakref.proxy(src_obj)
+        self._des_objs = weakref.WeakSet(des_objs)  # 分离对象列表
+        self._threshold = threshold  # 触发分离操作阈值
+        self._decay_coe = decay_coe # 斥力衰变系数
+
+    def get_steering_output(self) -> defines.AccOutput:
+        final_acc = math2d.vector()
+        for des in self._des_objs:
+            distance = math2d.distance(self._src_obj.position(), des.position())
+            if distance < self._threshold:
+                direction = math2d.normalize(self._src_obj.position() - des.position())
+                final_acc += self._decay_coe * (self._threshold-distance) / self._threshold * direction
+        final_acc = math2d.normalize(final_acc) * min(self._src_obj.max_velocity_acc(), math2d.norm(final_acc))
+        return defines.AccOutput(final_acc)
+
+
+class CollisionAvoidanceBehavior(SteeringBehaviorInterface):
+    """避免碰撞行为"""
+    def __init__(self, src_obj, des_objs):
+        self._src_obj = weakref.proxy(src_obj)
+        self._des_objs = weakref.WeakSet(des_objs)  # 分离对象列表
+
+    def get_steering_output(self) -> defines.AccOutput:
+        des_obj, shortest_time = self._find_nearest_obj()
+        if des_obj is None:
+            return defines.AccOutput()
+        src_future_pos = self._src_obj.position() + shortest_time*self._src_obj.velocity()
+        des_future_pos = des_obj.position() + shortest_time*des_obj.velocity()
+        nearest_dis, cur_dis = (math2d.distance(src_future_pos, des_future_pos), math2d.distance(self._src_obj.position(), des_obj.position()))
+        if nearest_dis <= 0 or cur_dis <= 2*self._src_obj.radius():
+            direction = self._src_obj.position() - des_obj.position()
+        else:
+            direction = src_future_pos - des_future_pos
+        return defines.AccOutput(self._src_obj.max_velocity_acc() * math2d.normalize(direction))
+
+    def _find_nearest_obj(self):
+        shortest_time = float('inf')
+        first_collision_obj = None
+        for des in self._des_objs:
+            near_time = algorithm.get_near_time(self._src_obj.position(), self._src_obj.velocity(), des.position(), des.velocity())
+            distance = math2d.distance(self._src_obj.position() + near_time * self._src_obj.velocity(),
+                                       des.position() + near_time * des.velocity())
+            if 0 <= near_time < shortest_time and distance <= 2 * self._src_obj.radius():
+                first_collision_obj = des
+                shortest_time = near_time
+        return first_collision_obj, shortest_time
+
+
+class ObstacleAvoidanceBehavior(SteeringBehaviorInterface):
+    """避障行为"""
+    def __init__(self, src_obj, detector: defines.CollisionDetector, look_ahead=100, avoid_dis=50):
+        self._src_obj = weakref.proxy(src_obj)
+        self._detector = weakref.proxy(detector)  # 障碍检测器
+        self._look_ahead = look_ahead  # 探测射线长度
+        self._avoid_dis = avoid_dis  # 法线反射距离
+
+    def get_steering_output(self) -> defines.AccOutput:
+        begin = self._src_obj.position()
+        end = begin+math2d.normalize(self._src_obj.velocity())*self._look_ahead
+        collision = self._detector.get_collision(math2d.Line(begin, end))
+        if collision:
+            return defines.AccOutput(algorithm.get_seek_acc(
+                self._src_obj.position(), collision.position+collision.normal*self._avoid_dis, self._src_obj.max_velocity_acc()))
+        else:
+            return defines.AccOutput()

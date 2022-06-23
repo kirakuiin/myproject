@@ -1,5 +1,6 @@
 """基础运动学变量定义
 """
+import weakref
 
 import math2d
 from gameengine import uiobject
@@ -82,13 +83,6 @@ class KinematicInterface(object):
         @return:
         """
 
-    def set_resistance_ratio(self, ratio):
-        """设置阻力系数
-
-        @param ratio: 阻力系数
-        @return:
-        """
-
     def set_constant(self, max_velocity: float=None, max_velocity_acc: float=None,
                       max_angular: float=None, max_angular_acc: float=None, resistance_ratio: float=None):
         """设置对象的运动常量
@@ -109,8 +103,23 @@ class AccOutput(object):
         self.velocity_acc = velocity_acc  # 加速度
         self.angular_acc = angular_acc  # 角加速度
 
+    def __repr__(self):
+        return '{}(velocity_acc={}, angular_acc={})'.format(self.__class__.__name__, self.velocity_acc, self.angular_acc)
+
     def __add__(self, other):
         return AccOutput(self.velocity_acc+other.velocity_acc, self.angular_acc+other.angular_acc)
+
+    def __iadd__(self, other):
+        sum = self + other
+        self.velocity_acc = sum.velocity_acc
+        self.angular_acc = sum.angular_acc
+        return self
+
+    def __mul__(self, other):
+        return AccOutput(self.velocity_acc*other, self.angular_acc*other)
+
+    def __rmul__(self, other):
+        return self*other
 
 
 class CollisionOutput(object):
@@ -153,6 +162,7 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
     """
     def __init__(self, velocity, angular=0.0):
         super().__init__()
+        self._radius = 10  # 半径
         self._velocity = velocity  # 速度
         self._angular = angular  # 角速度
         self._velocity_acc = math2d.vector(0, 0)  # 加速度
@@ -166,7 +176,7 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
         self._init_ui()
 
     def _init_ui(self):
-        self._body = uiobject.Circle(10)
+        self._body = uiobject.Circle(self._radius)
         self._body.set_color(*defines.RED)
         self._head = uiobject.Triangle(6)
         self._head.set_color(*defines.GREEN)
@@ -174,6 +184,9 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
         self._head.set_rotate(-90)
         self.add_child(self._body, 1)
         self.add_child(self._head)
+
+    def set_color(self, r: int, g: int, b: int):
+        self._body.set_color(r, g, b)
 
     def update(self, dt):
         half_t_sq = 0.5*(dt**2)
@@ -187,6 +200,9 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
             self._velocity = math2d.normalize(self._velocity) * self._max_velocity
         if math2d.norm(self._angular) > self._max_angular:
             self._angular = math2d.normalize(self._angular) * self._max_angular
+
+    def radius(self) -> float:
+        return self._radius
 
     def position(self) -> math2d.ndarray:
         return self.get_world_pos()
@@ -223,9 +239,6 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
 
     def set_angular_acc(self, acc: float):
         self._angular_acc = acc
-
-    def set_resistance_ratio(self, ratio):
-        self._resistance_ratio = ratio
 
     def set_constant(self, max_velocity: float=None, max_velocity_acc: float=None,
                       max_angular: float=None, max_angular_acc: float=None, resistance_ratio: float=None):
@@ -282,7 +295,7 @@ class LinePath(uiobject.UIObject):
 class CollisionDetector(object):
     """碰撞检测器"""
     def __init__(self, collision_lines):
-        self._collision_lines = collision_lines  # 碰撞线
+        self._collision_lines = weakref.WeakSet(collision_lines)  # 碰撞线
 
     def get_collision(self, ray_line: math2d.Line):
         """检测碰撞

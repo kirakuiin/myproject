@@ -1,0 +1,62 @@
+"""组合转向行为示例
+"""
+
+import case
+import math2d
+from gameengine import defines as color
+from . import defines
+from . import steering_behavior
+
+
+@case.register_case(__name__)
+class Flocking(case.Case):
+    """蜂拥混合"""
+    class Bird(object):
+        def __init__(self, pos, velo):
+            self.obj = defines.DynamicObj(velo)
+            self.obj.set_constant(resistance_ratio=0)
+            self.obj.set_pos_vec(pos)
+            self.obj.set_rotate(math2d.as_degrees(velo))
+            self.behavior = steering_behavior.BlendedSteering(self.obj)
+
+        def update(self):
+            acc = self.behavior.get_steering_output()
+            self.obj.set_velocity_acc(acc.velocity_acc)
+            self.obj.set_angular_acc(acc.angular_acc)
+
+    class MasterBird(Bird):
+        def init_behavior(self):
+            self.obj.set_constant(max_velocity=30)
+            self.obj.set_color(*color.ORANGE)
+            self.behavior.add_behavior(steering_behavior.WanderBehavior(self.obj))
+
+    class SlaveBird(Bird):
+        def init_behavior(self, master_bird, other_birds):
+            self.obj.set_constant(max_velocity_acc=300, max_angular=30)
+            self.behavior.add_behavior(steering_behavior.VelocityMatchBehavior(self.obj, master_bird.obj), 1)
+            self.behavior.add_behavior(steering_behavior.LookDirectBehavior(self.obj), 1)
+            self.behavior.add_behavior(steering_behavior.ArriveBehavior(self.obj, master_bird.obj), 2)
+            self.behavior.add_behavior(steering_behavior.SeparationBehavior(
+                self.obj,[master_bird.obj]+[bird.obj for bird in other_birds]), 3)
+
+    def init_case(self):
+        self._birds = set()
+        self._master_bird = self.MasterBird(math2d.position(400, 400), math2d.vector(10, 10))
+        for i in range(5):
+            x, y = math2d.randint(200, 600), math2d.randint(200, 600)
+            bird = self.SlaveBird(math2d.position(x, y), math2d.vector())
+            self.add_child(bird.obj)
+            self._birds.add(bird)
+        self.add_child(self._master_bird.obj)
+        self._init_behavior()
+
+    def _init_behavior(self):
+        self._master_bird.init_behavior()
+        for bird in self._birds:
+            bird.init_behavior(self._master_bird, self._birds-{bird})
+
+    def update(self, dt):
+        self._master_bird.update()
+        for bird in self._birds:
+            bird.update()
+        self.quit_over_time()

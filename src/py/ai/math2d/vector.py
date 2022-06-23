@@ -161,7 +161,8 @@ def normalize(value):
     @param value: 被归一化单位
     @return:
     """
-    return value / abs(value)
+    length = abs(value)
+    return value / length if length > 0 else value
 
 
 @normalize.register

@@ -1,4 +1,4 @@
-"""运动学移动算法
+"""运动学移动算法示例
 """
 
 import case
@@ -9,7 +9,7 @@ from . import algorithm
 
 
 @case.register_case(__name__)
-class KinematicSeekCase(case.Case):
+class Seek(case.Case):
     """运动学寻找"""
     def init_case(self):
         self._character = defines.StaticObj(math2d.vector(50, 50))
@@ -34,7 +34,7 @@ class KinematicSeekCase(case.Case):
 
 
 @case.register_case(__name__)
-class KinematicWanderCase(case.Case):
+class Wander(case.Case):
     """运动学漫游"""
     def init_case(self):
         self._character = defines.StaticObj(math2d.vector(0, 0))
