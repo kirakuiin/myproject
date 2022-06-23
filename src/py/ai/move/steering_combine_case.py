@@ -60,3 +60,33 @@ class Flocking(case.Case):
         for bird in self._birds:
             bird.update()
         self.quit_over_time()
+
+
+@case.register_case(__name__)
+class Priority(case.Case):
+    """优先混合"""
+    def init_case(self):
+        self._chararcter = defines.DynamicObj(math2d.vector(100, 0))
+        self._chararcter.set_pos(300, 400)
+        self._chararcter.set_constant(resistance_ratio=0, max_velocity_acc=200)
+        self._target = defines.DynamicObj(math2d.vector())
+        self._target.set_pos(500, 500)
+        self.add_child(self._chararcter)
+        self.add_child(self._target)
+        self._init_behavior()
+
+    def _init_behavior(self):
+        seek_blend = steering_behavior.BlendedSteering(self._chararcter)
+        look = steering_behavior.FaceBehavior(self._chararcter, self._target)
+        seek = steering_behavior.SeekBehavior(self._chararcter, self._target)
+        seek_blend.add_behavior(look)
+        seek_blend.add_behavior(seek)
+        self._priority = steering_behavior.PrioritySteering()
+        sep = steering_behavior.SeparationBehavior(self._chararcter, {self._target}, decay_coe=200)
+        self._priority.add_behavior(sep)
+        self._priority.add_behavior(seek_blend)
+
+    def update(self, dt):
+        acc = self._priority.get_steering_output()
+        self._chararcter.set_velocity_acc(acc.velocity_acc)
+        self._chararcter.set_angular_acc(acc.angular_acc)

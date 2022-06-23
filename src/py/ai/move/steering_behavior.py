@@ -46,6 +46,31 @@ class BlendedSteering(SteeringBehaviorInterface):
         return output
 
 
+class PrioritySteering(SteeringBehaviorInterface):
+    """转向行为按优先级混合"""
+    EPSILON = 1e-6
+
+    def __init__(self):
+        self._priority_behaviors = []  # 行为组
+
+    def add_behavior(self, group: SteeringBehaviorInterface):
+        """添加行为组
+
+        先添加的优先级高
+        @param group: 行为组
+        @return:
+        """
+        self._priority_behaviors.append(group)
+
+    def get_steering_output(self) -> defines.AccOutput:
+        output = defines.AccOutput()
+        for group in self._priority_behaviors:
+            output = group.get_steering_output()
+            if math2d.norm(output.angular_acc) > self.EPSILON or math2d.norm(output.velocity_acc) > self.EPSILON:
+                return output
+        return output
+
+
 class SeekBehavior(SteeringBehaviorInterface):
     """寻找行为"""
     def __init__(self, src_obj: defines.KinematicInterface, des_obj: defines.KinematicInterface):
