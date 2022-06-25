@@ -33,7 +33,10 @@ DEADLINE: <2022-07-12 周二 23:00 ++1m> SCHEDULED: <2022-07-12 周日 09:00 ++1
 | [2022-06-12] | takeout    |   -65 |
 | [2022-06-12] | shopping   |  -110 |
 | [2022-06-12] | commute    |   -10 |
-|              |            | -2185 |
+| [2022-06-19] | shopping   |   -70 |
+| [2022-06-19] | takeout    |   -70 |
+| [2022-06-26] | shopping   |   -70 |
+|              |            | -2395 |
 #+TBLFM: @>$3=vsum(@2$3..@-1$3)
 - State "DONE"       from "TODO"       [2022-02-10 周四 09:05] \\
 house rent: 2000, game: 445, takeout: 284, fee: 218, shopping: 1373, commute: 37
@@ -49,12 +52,21 @@ total: 4357
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2022-06-27 周一 23:00 ++1w> SCHEDULED: <2022-06-24 周五 18:00 ++1w>
+DEADLINE: <2022-07-04 周一 23:00 ++1w> SCHEDULED: <2022-07-01 周五 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-06-18 周六 19:11]
+:LAST_REPEAT: [2022-06-25 周六 13:43]
 :END:
+- State "DONE"       from "TODO"       [2022-06-25 周六 13:43] \\
+  1. 战斗模块ui适配
+  2. 法术编辑器扩展正式接入以文档更新
+  3. 删除战斗模块无效ui和代码
+  4. 完成战斗信息面板优化工单
+  5. spine编辑器初步设计
+  6. ui重定向问题跟进
+  -------------------------------
+  1. raft start
 - State "DONE"       from "TODO"       [2022-06-18 周六 19:11] \\
   1. 完成特殊跳字工单
   2. 技能ui增加行动条的特殊显示模式
@@ -993,11 +1005,13 @@ CLOCK: [2022-03-07 周一 14:27]--[2022-03-07 周一 14:52] =>  0:25
 :BLOCKER:  olp("live.org" "Next Action/整理财务情况, 设计投资计划")
 :LAST_REPEAT: [2022-01-22 周六 15:07]
 :END:
-** TODO [#A] 减肥                                                    :event:
-SCHEDULED: <2022-06-20 周一 17:27 ++1w>
+** TODO [#A] 减肥                                                   :event:
+SCHEDULED: <2022-06-27 周一 17:27 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-06-18 周六 14:00]
+:LAST_REPEAT: [2022-06-25 周六 17:08]
 :END:
+- State "DONE"       from "TODO"       [2022-06-25 周六 17:08] \\
+  6.0km, 69.4kg
 - State "DONE"       from "TODO"       [2022-06-18 周六 14:00] \\
   下雨, 70.0kg
 - State "DONE"       from "TODO"       [2022-06-11 周六 17:54] \\

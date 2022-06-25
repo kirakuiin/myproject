@@ -112,11 +112,12 @@ CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-06-25 周六 18:00 ++1w> DEADLINE: <2022-06-27 周一 12:00 ++1w>
+SCHEDULED: <2022-07-02 周六 18:00 ++1w> DEADLINE: <2022-07-04 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-06-18 周六 19:13]
+:LAST_REPEAT: [2022-06-25 周六 14:25]
 :END:
+- State "DONE"       from "TODO"       [2022-06-25 周六 14:25]
 - State "DONE"       from "TODO"       [2022-06-18 周六 19:13]
 - State "DONE"       from "TODO"       [2022-06-11 周六 17:53]
 - State "DONE"       from "TODO"       [2022-06-06 周一 10:58]
@@ -209,6 +210,11 @@ CLOSED: [2022-06-10 周五 16:42] SCHEDULED: <2022-06-09 周四 20:36>
 CLOSED: [2022-06-18 周六 14:01] SCHEDULED: <2022-06-10 周五 16:45>
 :PROPERTIES:
 :ARCHIVE_TIME: 2022-06-18 周六 19:11
+:END:
+*** DONE [#A] 优化战斗信息面板                                         :m8:
+CLOSED: [2022-06-25 周六 13:07] SCHEDULED: <2022-06-24 周五 10:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-06-25 周六 14:37
 :END:
 * Appointment
 * Project
