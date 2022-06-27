@@ -19,58 +19,6 @@ class SteeringBehaviorInterface(object):
         pass
 
 
-class BlendedSteering(SteeringBehaviorInterface):
-    """转向行为混合"""
-    Pair = collections.namedtuple('Pair', 'behavior, weight')
-
-    def __init__(self, src_obj: defines.KinematicInterface):
-        self._pairs = []  # 行为对列表
-        self._src_obj = weakref.proxy(src_obj)  # 源目标
-
-    def add_behavior(self, behavior: SteeringBehaviorInterface, weight: float=1.0):
-        """混合行为
-
-        @param behavior: 行为
-        @param weight: 权重
-        @return:
-        """
-        pair = BlendedSteering.Pair(behavior, weight)
-        self._pairs.append(pair)
-
-    def get_steering_output(self) -> defines.AccOutput:
-        output = defines.AccOutput()
-        for pair in self._pairs:
-            output += pair.weight*pair.behavior.get_steering_output()
-        output.velocity_acc = min(self._src_obj.max_velocity_acc(), math2d.norm(output.velocity_acc)) * math2d.normalize(output.velocity_acc)
-        output.angular_acc = min(self._src_obj.max_angular_acc(), math2d.norm(output.angular_acc)) * math2d.normalize(output.angular_acc)
-        return output
-
-
-class PrioritySteering(SteeringBehaviorInterface):
-    """转向行为按优先级混合"""
-    EPSILON = 1e-6
-
-    def __init__(self):
-        self._priority_behaviors = []  # 行为组
-
-    def add_behavior(self, group: SteeringBehaviorInterface):
-        """添加行为组
-
-        先添加的优先级高
-        @param group: 行为组
-        @return:
-        """
-        self._priority_behaviors.append(group)
-
-    def get_steering_output(self) -> defines.AccOutput:
-        output = defines.AccOutput()
-        for group in self._priority_behaviors:
-            output = group.get_steering_output()
-            if math2d.norm(output.angular_acc) > self.EPSILON or math2d.norm(output.velocity_acc) > self.EPSILON:
-                return output
-        return output
-
-
 class SeekBehavior(SteeringBehaviorInterface):
     """寻找行为"""
     def __init__(self, src_obj: defines.KinematicInterface, des_obj: defines.KinematicInterface):
@@ -270,3 +218,53 @@ class ObstacleAvoidanceBehavior(SteeringBehaviorInterface):
                 self._src_obj.position(), collision.position+collision.normal*self._avoid_dis, self._src_obj.max_velocity_acc()))
         else:
             return defines.AccOutput()
+
+
+class BlendedSteering(SteeringBehaviorInterface):
+    """转向行为混合"""
+    Pair = collections.namedtuple('Pair', 'behavior, weight')
+
+    def __init__(self, src_obj: defines.KinematicInterface):
+        self._pairs = []  # 行为对列表
+        self._src_obj = weakref.proxy(src_obj)  # 源目标
+
+    def add_behavior(self, behavior: SteeringBehaviorInterface, weight: float=1.0):
+        """混合行为
+
+        @param behavior: 行为
+        @param weight: 权重
+        @return:
+        """
+        pair = BlendedSteering.Pair(behavior, weight)
+        self._pairs.append(pair)
+
+    def get_steering_output(self) -> defines.AccOutput:
+        output = defines.AccOutput()
+        for pair in self._pairs:
+            output += pair.weight*pair.behavior.get_steering_output()
+        output.velocity_acc = min(self._src_obj.max_velocity_acc(), math2d.norm(output.velocity_acc)) * math2d.normalize(output.velocity_acc)
+        output.angular_acc = min(self._src_obj.max_angular_acc(), math2d.norm(output.angular_acc)) * math2d.normalize(output.angular_acc)
+        return output
+
+
+class PrioritySteering(SteeringBehaviorInterface):
+    """转向行为按优先级混合"""
+    def __init__(self):
+        self._priority_behaviors = []  # 行为组
+
+    def add_behavior(self, group: SteeringBehaviorInterface):
+        """添加行为组
+
+        先添加的优先级高
+        @param group: 行为组
+        @return:
+        """
+        self._priority_behaviors.append(group)
+
+    def get_steering_output(self) -> defines.AccOutput:
+        output = defines.AccOutput()
+        for group in self._priority_behaviors:
+            output = group.get_steering_output()
+            if output.is_have_output():
+                return output
+        return output

@@ -7,6 +7,9 @@ from gameengine import uiobject
 from gameengine import defines
 
 
+EPSILON = 1e-6  # 误差
+
+
 class KinematicInterface(object):
     """运动学接口"""
     def position(self) -> math2d.ndarray:
@@ -99,12 +102,16 @@ class KinematicInterface(object):
 
 class AccOutput(object):
     """加速度输出"""
+
     def __init__(self, velocity_acc=math2d.vector(), angular_acc=0):
         self.velocity_acc = velocity_acc  # 加速度
         self.angular_acc = angular_acc  # 角加速度
 
     def __repr__(self):
         return '{}(velocity_acc={}, angular_acc={})'.format(self.__class__.__name__, self.velocity_acc, self.angular_acc)
+
+    def is_have_output(self):
+        return math2d.norm(self.velocity_acc) > EPSILON or math2d.norm(self.angular_acc) > EPSILON
 
     def __add__(self, other):
         return AccOutput(self.velocity_acc+other.velocity_acc, self.angular_acc+other.angular_acc)

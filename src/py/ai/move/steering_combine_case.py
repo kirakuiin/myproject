@@ -90,3 +90,4 @@ class Priority(case.Case):
         acc = self._priority.get_steering_output()
         self._chararcter.set_velocity_acc(acc.velocity_acc)
         self._chararcter.set_angular_acc(acc.angular_acc)
+        self.quit_over_time()
