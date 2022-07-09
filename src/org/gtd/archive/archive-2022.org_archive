@@ -878,3 +878,52 @@ CLOCK: [2022-04-11 周一 13:43]--[2022-04-11 周一 14:08] =>  0:25
     :END:
 
 * begin: <2022-06-01 周三>
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-07-04 周一 10:38
+  :ARCHIVE_FILE: ~/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 编写季度报告                                                :m8:
+   CLOSED: [2022-06-10 周五 16:42] SCHEDULED: <2022-05-31 周二 14:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-06-11 周六 17:53
+   :END:
+** DONE [#A] 整合项目编辑器                                              :m8:
+   CLOSED: [2022-06-09 周四 20:34] SCHEDULED: <2022-06-07 周二 20:34>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-06-11 周六 17:53
+   :END:
+** DONE [#A] 编辑器资源替换                                              :m8:
+   CLOSED: [2022-06-09 周四 20:35] SCHEDULED: <2022-06-08 周三 20:35>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-06-11 周六 17:53
+   :END:
+** DONE [#A] 战斗相关常量优化                                            :m8:
+   CLOSED: [2022-06-10 周五 16:42] SCHEDULED: <2022-06-09 周四 20:36>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-06-11 周六 17:53
+   :END:
+** DONE [#A] 特殊跳字实现                                                :m8:
+   CLOSED: [2022-06-18 周六 14:01] SCHEDULED: <2022-06-10 周五 16:45>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-06-18 周六 19:11
+   :END:
+** DONE [#A] 优化战斗信息面板                                            :m8:
+   CLOSED: [2022-06-25 周六 13:07] SCHEDULED: <2022-06-24 周五 10:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-06-25 周六 14:37
+   :END:
+** DONE [#A] 法术编辑器支持创建时自动附加场景                            :m8:
+   CLOSED: [2022-07-01 周五 10:13] SCHEDULED: <2022-07-01 周五 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-07-04 周一 09:33
+   :END:
+** DONE [#A] UI编辑器接入promote_config                                  :m8:
+   CLOSED: [2022-07-04 周一 09:34] SCHEDULED: <2022-07-04 周一 09:33>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-07-04 周一 09:34
+   :END:
+
+* begin: <2022-07-01 周五>

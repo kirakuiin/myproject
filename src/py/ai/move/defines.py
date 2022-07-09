@@ -30,6 +30,13 @@ class KinematicInterface(object):
         @return:
         """
 
+    def set_velocity(self, velocity: math2d.ndarray):
+        """设置对象速度
+
+        @param velocity:
+        @return:
+        """
+
     def max_velocity(self) -> float:
         """返回最大速度
 
@@ -219,6 +226,9 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
 
     def velocity(self) -> math2d.ndarray:
         return self._velocity
+
+    def set_velocity(self, velocity: math2d.ndarray):
+        self._velocity = velocity
 
     def velocity_acc(self) -> math2d.ndarray:
         return self._velocity_acc

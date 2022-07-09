@@ -102,3 +102,31 @@ def get_near_time(src_pos: math2d.ndarray, src_vec: math2d.ndarray, des_pos: mat
     if length <= 0:
         return 0 if math2d.norm(dp) == 0 else -1
     return math2d.dot(dp, dv) / length ** 2
+
+
+def get_firing_solution(start: math2d.ndarray, end: math2d.ndarray, speed: float, gravity: math2d.ndarray, is_shortest=True):
+    """求解从以固定速度值从一点到另一点的对象所需要的初速度方向(只受重力影响)
+
+    @param start: 起点
+    @param end: 终点
+    @param speed: 速度值
+    @param gravity: 重力
+    @param is_shortest: 是否选最短时间的速度
+    @return: 单位方向向量
+    """
+    delta = end - start
+    a = math2d.norm(gravity)**2
+    b = -4*(math2d.dot(gravity, delta)+speed**2)
+    c = 4*(math2d.norm(delta)**2)
+    root = b**2-4*a*c
+    if root < 0:  # 无实数解
+        return None
+    else:
+        times = [t for t in [math2d.sqrt((-b+math2d.sqrt(root))/(2*a)), math2d.sqrt((-b-math2d.sqrt(root))/(2*a))] if t > 0]
+        if not times:
+            return None
+        else:
+            faster_time = min(times) if is_shortest else max(times)
+            return (delta*2-gravity*(faster_time**2))/(2*speed*faster_time)
+
+
