@@ -111,12 +111,13 @@ CLOCK: [2022-03-07 周一 17:25]--[2022-03-07 周一 17:50] =>  0:25
 CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
-** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-07-16 周六 18:00 ++1w> DEADLINE: <2022-07-18 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                             :work:
+SCHEDULED: <2022-07-23 周六 18:00 ++1w> DEADLINE: <2022-07-25 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-07-09 周六 14:45]
+:LAST_REPEAT: [2022-07-18 周一 10:44]
 :END:
+- State "DONE"       from "TODO"       [2022-07-18 周一 10:44]
 - State "DONE"       from "TODO"       [2022-07-09 周六 14:45]
 - State "DONE"       from "TODO"       [2022-07-04 周一 09:41]
 - State "DONE"       from "TODO"       [2022-06-25 周六 14:25]
@@ -187,40 +188,51 @@ SCHEDULED: <2022-07-16 周六 18:00 ++1w> DEADLINE: <2022-07-18 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** DONE [#A] 登录界面成品号体验功能 
-CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-07-04 周一 14:28>
 ** TODO [#A] 特效层级优化                                              :m8:
 SCHEDULED: <2022-07-08 周五 00:00>
-** DONE [#A] spine动作名兼容                                           :m8:
+** Archive                                                        :ARCHIVE:
+*** DONE [#A] 登录界面成品号体验功能 
+CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-07-04 周一 14:28>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-07-16 周六 18:49
+:END:
+*** DONE [#A] spine动作名兼容                                          :m8:
 CLOSED: [2022-07-08 周五 17:50]
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-07-16 周六 18:49
+:END:
+** TODO [#A] 战斗特效缓存                                              :m8:
+SCHEDULED: <2022-07-20 周三 00:00>
 * Appointment
 * Project
-** DONE [#A] 优化spine编辑器                                            :m8:
+** Archive                                                        :ARCHIVE:
+*** DONE [#A] 优化spine编辑器                                          :m8:
 CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-05-18 周三 16:32> DEADLINE: <2022-06-01 周三 16:32>
 :PROPERTIES:
 :BLOCKER: children
+:ARCHIVE_TIME: 2022-07-16 周六 18:49
 :END:                          
-*** DONE 明确需求
+**** DONE 明确需求
 CLOSED: [2022-07-01 周五 10:11]
 :PROPERTIES:                          
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:                          
-*** DONE UI设计
+**** DONE UI设计
 CLOSED: [2022-07-01 周五 10:11] SCHEDULED: <2022-07-01 周五 10:11>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** DONE 模型设计
+**** DONE 模型设计
 CLOSED: [2022-07-01 周五 10:11] SCHEDULED: <2022-07-01 周五 10:11>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** DONE 编码阶段
+**** DONE 编码阶段
 CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-07-01 周五 10:11>
 :PROPERTIES:
 :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
 :END:
-*** DONE 测试
+**** DONE 测试
 CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-07-08 周五 09:15>
 :PROPERTIES:                          
 :TRIGGER+: parent todo!(DONE)

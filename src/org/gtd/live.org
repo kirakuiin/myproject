@@ -13,10 +13,13 @@
 * Inbox
 * Next Action
 ** TODO [#A] 月度财务收支                                           :event:
-DEADLINE: <2022-07-12 周二 23:00 ++1m> SCHEDULED: <2022-07-12 周日 09:00 ++1m>
+DEADLINE: <2022-08-12 周五 23:00 ++1m> SCHEDULED: <2022-08-12 周五 09:00 ++1m>
 :PROPERTIES:
 :LOGGING: DONE(@)
 :END:
+- State "DONE"       from "TODO"       [2022-07-18 周一 10:52] \\
+  house rent: 2000, shopping: 350, commute: 20, takeout: 335
+  total 2595
 - State "DONE"       from "TODO"       [2022-06-13 周一 09:31] \\
   house rent: 2000, shopping: 100, commute: 20, fee: 204, takeout: 410
   total 2732
@@ -29,14 +32,9 @@ DEADLINE: <2022-07-12 周二 23:00 ++1m> SCHEDULED: <2022-07-12 周日 09:00 ++1
 - State "DONE"       from "TODO"       [2022-03-13 周日 08:57] \\
 | date         | purpose    | value |
 |--------------+------------+-------|
-| [2022-06-12] | house rent | -2000 |
-| [2022-06-12] | takeout    |   -65 |
-| [2022-06-12] | shopping   |  -110 |
-| [2022-06-12] | commute    |   -10 |
-| [2022-06-19] | shopping   |   -70 |
-| [2022-06-19] | takeout    |   -70 |
-| [2022-06-26] | shopping   |   -70 |
-|              |            | -2395 |
+| [2022-07-12] | house rent | -2000 |
+| [2022-07-17] | food       |  -147 |
+|              |            | -2147 |
 #+TBLFM: @>$3=vsum(@2$3..@-1$3)
 - State "DONE"       from "TODO"       [2022-02-10 周四 09:05] \\
 house rent: 2000, game: 445, takeout: 284, fee: 218, shopping: 1373, commute: 37
@@ -52,12 +50,20 @@ total: 4357
   3. 本月电费50, 物业+水103
   4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2022-07-18 周一 23:00 ++1w> SCHEDULED: <2022-07-15 周五 18:00 ++1w>
+DEADLINE: <2022-08-01 周一 23:00 ++1w> SCHEDULED: <2022-07-29 周五 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-07-09 周六 14:46]
+:LAST_REPEAT: [2022-07-18 周一 10:44]
 :END:
+- State "DONE"       from "TODO"       [2022-07-18 周一 09:27] \\
+  1. 修复蓝图虚拟节点参数设置错误的问题
+  2. 处理角色近战攻击z值错误的问题
+     - 由动画播放结束设置改为只要开始移动就进行设置
+  3. 处理真机上转gbk导致的崩溃问题
+  4. 处理战斗中点击聊天框导致部分按钮显隐错误的问题
+  ---------------------------------
+  1. 喋血复仇over, 饥荒restart
 - State "DONE"       from "TODO"       [2022-07-09 周六 14:46] \\
   1. 完成新版spine编辑器
   2. 支持成品号功能
@@ -1073,11 +1079,13 @@ SCHEDULED: <2022-07-04 周一 17:27 ++1w>
 - State "DONE"       from "TODO"       [2022-03-06 周日 22:06] \\
   2.5->3.5->4.0, 76.1kg
 目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月
-** TODO [#A] 吉他学习                                               :event:
-SCHEDULED: <2022-06-19 周日 17:00 ++1w>
+** TODO [#A] 吉他学习                                                :event:
+SCHEDULED: <2022-07-17 周日 17:00 ++1w>
 :PROPERTIES:
-:LAST_REPEAT: [2022-06-13 周一 09:25]
+:LAST_REPEAT: [2022-07-13 周三 19:45]
 :END:
+- State "DONE"       from "TODO"       [2022-07-13 周三 19:45] \\
+  练习成都
 - State "DONE"       from "TODO"       [2022-06-13 周一 09:25] \\
   am和弦练习, 虫儿飞练习
 - State "DONE"       from "TODO"       [2022-05-30 周一 09:12] \\

@@ -120,13 +120,78 @@ def get_firing_solution(start: math2d.ndarray, end: math2d.ndarray, speed: float
     c = 4*(math2d.norm(delta)**2)
     root = b**2-4*a*c
     if root < 0:  # 无实数解
-        return None
+        raise math2d.NoSolutionException()
     else:
         times = [t for t in [math2d.sqrt((-b+math2d.sqrt(root))/(2*a)), math2d.sqrt((-b-math2d.sqrt(root))/(2*a))] if t > 0]
         if not times:
-            return None
+            raise math2d.NoSolutionException()
         else:
             faster_time = min(times) if is_shortest else max(times)
             return (delta*2-gravity*(faster_time**2))/(2*speed*faster_time)
+
+
+def get_firing_solution_with_resist(start: math2d.ndarray, end: math2d.ndarray, speed: float, gravity: math2d.ndarray,
+                                    simulate_func, margin: float = 1):
+    """求解从以固定速度值从一点到另一点的对象所需要的初速度方向(受重力和阻力影响)
+
+    @param start: 起点
+    @param end: 终点
+    @param speed: 速度值
+    @param gravity: 重力
+    @param simulate_func: 模拟运行结果函数
+    @param margin: 余量
+    @return: 单位方向向量
+    """
+    max_bound = math2d.as_vector(45)
+    min_bound = math2d.as_vector(-45)
+
+    def is_done(distance):
+        return abs(distance) < margin
+
+    def get_direction(angle):
+        base = end - start
+        vec = math2d.as_vector(angle)
+        return vec if base[0] >= 0 else vec*math2d.vector(-1, 1)
+
+    def get_angle(direction):
+        return math2d.degrees(math2d.arcsin(direction[1]/math2d.norm(direction)))
+
+    def check_angle(angle):
+        direction = get_direction(angle)
+        distance = simulate_func(direction)
+        return direction, distance
+
+    def set_bound(angle, distance):
+        nonlocal max_bound, min_bound
+        if distance > 0:
+            max_bound = angle
+            min_bound = -45
+            direction, distance = check_angle(min_bound)
+        else:
+            max_bound = 45
+            min_bound = angle
+            direction, distance = check_angle(max_bound)
+            if distance < 0:
+                raise math2d.NoSolutionException()
+        return direction, distance
+
+    def binary_search(direction, distance):
+        nonlocal max_bound, min_bound
+        while not is_done(distance):
+            print(min_bound, max_bound)
+            angle = (max_bound-min_bound)/2+min_bound
+            direction, distance = check_angle(angle)
+            if distance < 0:
+                min_bound = angle
+            else:
+                max_bound = angle
+        return direction
+
+    direction = get_firing_solution(start, end, speed, gravity)
+    distance = simulate_func(direction)
+    if is_done(distance):
+        return direction
+    direction, distance = set_bound(get_angle(direction), distance)
+    return binary_search(direction, distance)
 
 

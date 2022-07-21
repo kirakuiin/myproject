@@ -203,17 +203,22 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
         self._body.set_color(r, g, b)
 
     def update(self, dt):
+        pos, rot = self.simulate(dt, self.get_pos(), self.get_rotate())
+        self.set_pos_vec(pos)
+        self.set_rotate(rot)
+
+    def simulate(self, dt, cur_pos, cur_rot):
         half_t_sq = 0.5*(dt**2)
         acc = self._velocity_acc - self._resistance_ratio * math2d.normalize(self._velocity)
-        self.set_pos_vec(self.get_pos() + self._velocity*dt + half_t_sq*acc)
-        self.set_rotate(self.get_rotate() + self._angular*dt + half_t_sq*self._angular_acc)
         self._velocity = self._velocity + acc*dt
         self._angular = self._angular + self._angular_acc*dt
-
         if math2d.norm(self._velocity) > self._max_velocity:
             self._velocity = math2d.normalize(self._velocity) * self._max_velocity
         if math2d.norm(self._angular) > self._max_angular:
             self._angular = math2d.normalize(self._angular) * self._max_angular
+        pos = cur_pos + self._velocity*dt + half_t_sq*acc
+        rot = cur_rot + self._angular*dt + half_t_sq*self._angular_acc
+        return pos, rot
 
     def radius(self) -> float:
         return self._radius
