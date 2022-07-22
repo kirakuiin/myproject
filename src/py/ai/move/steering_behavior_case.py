@@ -304,3 +304,34 @@ class ObstacleAvoidance(case.Case):
         self._ray_line.set_color(*color.GREEN)
         self._ray_line.set_pos_vec(begin)
         self.add_child(self._ray_line)
+
+
+@case.register_case(__name__)
+class Jump(case.Case):
+    """转向跳跃"""
+    GRAVITY = -30
+    JUMP_SPEED = 150
+
+    def init_case(self):
+        self._jump_point = defines.JumpPoint(math2d.position(400, 400), math2d.position(600, 600))
+        self._character = defines.DynamicObj(math2d.vector(30, 0))
+        self._character.set_pos_vec(self._jump_point.takeoff_position)
+        self._character.set_constant(resistance_ratio=0, max_velocity=180)
+        self.add_child(self._character)
+        self._init_jump_pad()
+        self._behavior = steering_behavior.JumpBehavior(self._character, self._jump_point,
+                                                        self.GRAVITY, self.JUMP_SPEED)
+
+    def update(self, dt):
+        acc = self._behavior.get_steering_output().velocity_acc
+        self._character.set_velocity_acc(acc)
+        if math2d.distance(self._character.position(), self._jump_point.landing_position) < 5:
+            self.quit_engine()
+
+    def _init_jump_pad(self):
+        self._takeoff = uiobject.Lines(self._jump_point.takeoff_position+math2d.vector(10, 0), line_width=2)
+        self._takeoff.set_pos_vec(self._jump_point.takeoff_position-math2d.vector(10, 0))
+        self._landing = uiobject.Lines(self._jump_point.landing_position+math2d.vector(10, 0), line_width=2)
+        self._landing.set_pos_vec(self._jump_point.landing_position-math2d.vector(10, 0))
+        self.add_child(self._takeoff)
+        self.add_child(self._landing)

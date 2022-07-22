@@ -7,4 +7,4 @@ class MathException(Exception):
 
 class NoSolutionException(MathException):
     def __str__(self):
-        return '无解'
+        return '无解: {}'.format(self.args)

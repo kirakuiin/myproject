@@ -120,11 +120,11 @@ def get_firing_solution(start: math2d.ndarray, end: math2d.ndarray, speed: float
     c = 4*(math2d.norm(delta)**2)
     root = b**2-4*a*c
     if root < 0:  # 无实数解
-        raise math2d.NoSolutionException()
+        raise math2d.NoSolutionException('无实数解')
     else:
         times = [t for t in [math2d.sqrt((-b+math2d.sqrt(root))/(2*a)), math2d.sqrt((-b-math2d.sqrt(root))/(2*a))] if t > 0]
         if not times:
-            raise math2d.NoSolutionException()
+            raise math2d.NoSolutionException('有效时间均为负数')
         else:
             faster_time = min(times) if is_shortest else max(times)
             return (delta*2-gravity*(faster_time**2))/(2*speed*faster_time)
@@ -172,13 +172,12 @@ def get_firing_solution_with_resist(start: math2d.ndarray, end: math2d.ndarray, 
             min_bound = angle
             direction, distance = check_angle(max_bound)
             if distance < 0:
-                raise math2d.NoSolutionException()
+                raise math2d.NoSolutionException('无法到达目标')
         return direction, distance
 
     def binary_search(direction, distance):
         nonlocal max_bound, min_bound
         while not is_done(distance):
-            print(min_bound, max_bound)
             angle = (max_bound-min_bound)/2+min_bound
             direction, distance = check_angle(angle)
             if distance < 0:
@@ -195,3 +194,35 @@ def get_firing_solution_with_resist(start: math2d.ndarray, end: math2d.ndarray, 
     return binary_search(direction, distance)
 
 
+def get_jump_x_speed(jump_point, jump_speed, gravity, max_speed):
+    """获取跳跃所需要的x轴速度
+
+    @param jump_point: 跳跃点数据
+    @param jump_speed: 跳跃速度(y轴)
+    @param gravity: 重力(y轴)
+    @param max_speed: 对象的最大速度
+    @return: x轴速度
+    """
+    def calc_jump_time():
+        jump_vec = jump_point.as_vector()
+        sqrt_term = 2*gravity*jump_vec[1]+jump_speed**2
+        if sqrt_term < 0:
+            raise math2d.NoSolutionException('无实数解')
+        sqrt_term = math2d.sqrt(sqrt_term)
+        return (-jump_speed+sqrt_term)/gravity, (-jump_speed-sqrt_term)/gravity
+
+    def check_jump_time(time):
+        jump_vec = jump_point.as_vector()
+        vx = jump_vec[0]/time
+        if vx**2+jump_speed**2 > max_speed**2:
+            return False
+        else:
+            return True
+
+    short, long = calc_jump_time()
+    if check_jump_time(short):
+        return jump_point.as_vector()[0]/short
+    elif check_jump_time(long):
+        return jump_point.as_vector()[0]/long
+    else:
+        raise math2d.NoSolutionException('无法到达目标')

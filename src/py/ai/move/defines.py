@@ -348,3 +348,13 @@ class CollisionDetector(object):
                     nearest_line = line
         return nearest_line, nearest_distance
 
+
+class JumpPoint(object):
+    """跳跃点"""
+    def __init__(self, takeoff: math2d.ndarray, landing: math2d.ndarray):
+        self.takeoff_position = takeoff  # 起跳坐标
+        self.landing_position = landing  # 着陆坐标
+
+    def as_vector(self):
+        return self.landing_position - self.takeoff_position
+

@@ -220,6 +220,26 @@ class ObstacleAvoidanceBehavior(SteeringBehaviorInterface):
             return defines.AccOutput()
 
 
+class JumpBehavior(SteeringBehaviorInterface):
+    """跳跃行为"""
+    def __init__(self, src_obj: defines.KinematicInterface, jump_point: defines.JumpPoint,
+                 gravity=-30, jump_speed: float = 100):
+        self._src_obj = weakref.proxy(src_obj)
+        self._gravity = gravity  # 重力加速度
+        self._jump_speed = jump_speed # 起跳速度
+        self._is_jump = False
+        self._x_speed = algorithm.get_jump_x_speed(jump_point, self._jump_speed, self._gravity, self._src_obj.max_velocity())
+
+    def get_steering_output(self) -> defines.AccOutput:
+        if not self._is_jump:
+            self._jump()
+        return defines.AccOutput(math2d.vector(0, self._gravity))
+
+    def _jump(self):
+        self._src_obj.set_velocity(math2d.vector(self._x_speed, self._jump_speed))
+        self._is_jump = True
+
+
 class BlendedSteering(SteeringBehaviorInterface):
     """转向行为混合"""
     Pair = collections.namedtuple('Pair', 'behavior, weight')

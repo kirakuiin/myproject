@@ -76,4 +76,4 @@ class FiringWithResistCase(case.Case):
             pos, _ = self._character.simulate(dt, pos, 0)
             if abs(pos[0]-self._target.get_pos()[0]) < 5:
                 return pos[1]-self._target.get_pos()[1]
-        return math2d.NoSolutionException()
+        return math2d.NoSolutionException('无法到达目标')
