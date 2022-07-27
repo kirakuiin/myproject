@@ -58,7 +58,7 @@ class MouseEventMgr(object):
 
     def _propagate_down(self, event):
         for obj in self._get_order_list():
-            if obj() is None:
+            if obj() is None or not obj().is_enable():
                 continue
             is_recv_motion = obj().on_begin(self._cur_down_btn, math2d.position(*util.get_window_coord(event.pos)))
             is_recv_motion and self._recv_motion_list.append(obj)

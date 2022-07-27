@@ -59,20 +59,21 @@ class StaticCharacter(CharacterInterface, defines.StaticObj):
         pass
 
 
-class FormationManager(object):
+class FormationManager(CharacterInterface):
     """槽位管理器"""
     def __init__(self, pattern: PatternInterface):
         self._pattern = pattern  # 编队模式
         self._slots = []  # 槽位
         self._drift_offset = defines.Location()  # 质心偏移量
+        self._anchor_point = defines.Location()  # 锚点
 
-    def update_slots(self, anchor_point: defines.Location):
+    def update_slots(self):
         for slot in self._slots:
             location = self._pattern.get_slot_location(len(self._slots), slot.slot_num)
             location.position -= self._drift_offset.position
             location.orientation -= self._drift_offset.orientation
-            location.position = anchor_point.position+math2d.rotate(location.position, anchor_point.orientation)
-            location.orientation += anchor_point.orientation
+            location.position = self._anchor_point.position+math2d.rotate(location.position, self._anchor_point.orientation)
+            location.orientation += self._anchor_point.orientation
             slot.character.set_target(location)
 
     def add_character(self, character):
@@ -98,6 +99,13 @@ class FormationManager(object):
                 return slot.slot_num
         else:
             return None
+
+    def set_target(self, target: defines.Location):
+        self._anchor_point = target
+        self.update_slots()
+
+    def get_anchor(self) -> defines.Location:
+        return self._anchor_point
 
 
 class DefenceCirclePattern(PatternInterface):

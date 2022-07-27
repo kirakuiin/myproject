@@ -30,6 +30,8 @@ class UIObject(object):
         self._dirty = True   # 脏标记
         self._order = 0  # 绘制顺序, 越大越后绘制
         self._is_visible = True  # 是否可见
+        self._is_enable = True  # 是否启用
+        self._is_drawable = True  # 是否可以被绘制
         self._is_swallow = False  # 是否吞噬点击
         self._split_idx = 0  # 绘制先后分隔坐标
         self._watch_num = 0  # 观察编号
@@ -46,8 +48,11 @@ class UIObject(object):
     def set_visible(self, is_visible: bool):
         self._is_visible = is_visible
 
-    def get_visible(self) -> bool:
+    def is_visible(self) -> bool:
         return self._is_visible
+
+    def is_enable(self) -> bool:
+        return self._is_enable
 
     def set_order(self, order: int):
         self._order = order
@@ -105,15 +110,17 @@ class UIObject(object):
         """
         pass
 
-    def render(self, parent_transform: math2d.Transform, dirty: bool, camera: camera.Camera):
+    def render(self, parent_transform: math2d.Transform, dirty: bool, enable: bool, camera: camera.Camera):
         """渲染对象
 
         @param parent_transform: 父变换
         @param dirty: 脏标记
+        @param enable: 是否启用
         @param camera: 渲染用摄像机
         @return:
         """
         dirty = self._dirty | dirty
+        self._is_enable = self._is_visible & enable
         if dirty:
             self._world = self._local.combine(parent_transform)
             self._dirty = False
@@ -123,15 +130,15 @@ class UIObject(object):
 
     def _render_order_lt_zero(self, dirty, camera):
         for child in self.get_pre_children():
-            child.render(self._world, dirty, camera)
+            child.render(self._world, dirty, self._is_enable, camera)
 
     def _render_self(self, camera):
-        if self._is_visible and self._watch_num == camera.get_watch_num():
+        if self._is_enable and self._watch_num == camera.get_watch_num():
             self.draw(camera.get_viewport_transform(self._world))
 
     def _render_order_ge_zero(self, dirty, camera):
         for child in self.get_post_children():
-            child.render(self._world, dirty, camera)
+            child.render(self._world, dirty, self._is_enable, camera)
 
     def draw(self, transform):
         """绘制自身的逻辑

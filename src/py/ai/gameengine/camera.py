@@ -223,4 +223,4 @@ class CameraMgr(object):
         for camera in self._camera_list:
             if camera.is_enable():
                 with camera.clip_camera_area():
-                    global_vars.scene.render(math2d.Transform(), False, camera)
+                    global_vars.scene.render(math2d.Transform(), False, True, camera)
