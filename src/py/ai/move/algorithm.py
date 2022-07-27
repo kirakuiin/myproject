@@ -60,7 +60,7 @@ def get_speed_by_distance(distance: float, max_speed: float, brake_radius: float
 
 
 def get_match_acc(src_speed, des_speed, max_acc=100.0, near_time=0.25) -> math2d.ndarray:
-    """计算匹配指定角速度所需要的加速度
+    """计算匹配指定速度所需要的加速度
 
     @param src_speed: 源速度
     @param des_speed: 目标速度

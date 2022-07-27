@@ -200,6 +200,8 @@ class Case(uiobject.UIObject):
             camera.set_rotation(rotation-10)
         elif event.key == pygame.K_p:
             gameengine.set_speed(self._speed_time) if gameengine.get_speed() == 0 else gameengine.set_speed(00000000)
+        elif event.key == pygame.K_ESCAPE:
+            gameengine.quit()
 
     def on_begin(self, btn: int, pos: math2d.ndarray) -> bool:
         if btn == pygame.BUTTON_RIGHT:

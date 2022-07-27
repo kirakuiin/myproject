@@ -9,7 +9,7 @@ class AngleType(object):
     DEGREES = 2  # 度数
 
 
-def angle_delta(src_angle: float, target_angle: float, unit: AngleType=AngleType.DEGREES):
+def angle_delta(src_angle: float, target_angle: float, unit: AngleType=AngleType.DEGREES) -> float:
     """角度差值
 
     差值会在[-pi, pi]之间

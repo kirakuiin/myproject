@@ -111,12 +111,13 @@ CLOCK: [2022-03-07 周一 17:25]--[2022-03-07 周一 17:50] =>  0:25
 CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
-** TODO [#A] 完成每周周报                                             :work:
-SCHEDULED: <2022-07-23 周六 18:00 ++1w> DEADLINE: <2022-07-25 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                            :work:
+SCHEDULED: <2022-07-30 周六 18:00 ++1w> DEADLINE: <2022-08-01 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-07-18 周一 10:44]
+:LAST_REPEAT: [2022-07-23 周六 17:01]
 :END:
+- State "DONE"       from "TODO"       [2022-07-23 周六 17:01]
 - State "DONE"       from "TODO"       [2022-07-18 周一 10:44]
 - State "DONE"       from "TODO"       [2022-07-09 周六 14:45]
 - State "DONE"       from "TODO"       [2022-07-04 周一 09:41]
@@ -188,8 +189,6 @@ SCHEDULED: <2022-07-23 周六 18:00 ++1w> DEADLINE: <2022-07-25 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#A] 特效层级优化                                              :m8:
-SCHEDULED: <2022-07-08 周五 00:00>
 ** Archive                                                        :ARCHIVE:
 *** DONE [#A] 登录界面成品号体验功能 
 CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-07-04 周一 14:28>
@@ -201,8 +200,18 @@ CLOSED: [2022-07-08 周五 17:50]
 :PROPERTIES:
 :ARCHIVE_TIME: 2022-07-16 周六 18:49
 :END:
-** TODO [#A] 战斗特效缓存                                              :m8:
-SCHEDULED: <2022-07-20 周三 00:00>
+*** DONE [#A] 特效层级优化                                             :m8:
+CLOSED: [2022-07-23 周六 17:00] SCHEDULED: <2022-07-08 周五 00:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-07-23 周六 17:00
+:END:
+*** DONE [#A] 战斗特效缓存                                             :m8:
+CLOSED: [2022-07-23 周六 17:00] SCHEDULED: <2022-07-20 周三 00:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-07-23 周六 17:00
+:END:
+** DONE [#A] 受击特效优化                                              :m8:
+CLOSED: [2022-07-26 周二 13:40] SCHEDULED: <2022-07-25 周一 09:00>
 * Appointment
 * Project
 ** Archive                                                        :ARCHIVE:

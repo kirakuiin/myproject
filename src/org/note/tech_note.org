@@ -45,6 +45,8 @@
 一路默认即可
 ** pycharm find in path失效
 选择File->Invalidate Caches / Restart, 清空全部缓存并重启即可解决
+** windows商店无法打开
+可以检查一下代理设置, 有可能是开启代理导致的
 * 概念相关                                                          :Concept:
 ** UML图                                                              :uml:
 *** 类图

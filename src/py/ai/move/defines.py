@@ -143,11 +143,22 @@ class CollisionOutput(object):
         self.normal = normal  # 碰撞点法线
 
 
+class Location(object):
+    """定位"""
+    def __init__(self, position=math2d.position(), orientation=0):
+        self.position = position  # 位置
+        self.orientation = orientation  # 朝向
+
+    def __repr__(self):
+        return '{}(position={}, orientation={}'.format(self.__class__.__name__, self.position, self.orientation)
+
+
 class StaticObj(uiobject.UIObject):
     """静态运动物体
 
     通过直接修改速度来驱动物体运动
     """
+    RADIUS = 10
     def __init__(self, velocity):
         super().__init__()
         self.velocity = velocity
@@ -155,7 +166,7 @@ class StaticObj(uiobject.UIObject):
         self._init_ui()
 
     def _init_ui(self):
-        self._body = uiobject.Circle(10)
+        self._body = uiobject.Circle(self.RADIUS)
         self._body.set_color(*defines.RED)
         self._head = uiobject.Triangle(6)
         self._head.set_color(*defines.GREEN)
