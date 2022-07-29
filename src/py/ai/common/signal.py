@@ -16,7 +16,7 @@ class Signal(object):
     def connect(self, callback):
         if self._find_id_in_list(callback) is None:
             cb_id = id(callback)
-            self._cb_dict[cb_id] = function.weak_func(callback)
+            self._cb_dict[cb_id] = function.Functor(callback)
             function.finalize(callback, self._destroy, cb_id)
 
     def _find_id_in_list(self, callback):
@@ -35,4 +35,4 @@ class Signal(object):
 
     def emit(self, *args, **kwargs):
         for cb in self._cb_dict.values():
-            cb() and cb()(*args, **kwargs)
+            cb(*args, **kwargs)

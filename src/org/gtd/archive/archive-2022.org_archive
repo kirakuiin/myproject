@@ -927,3 +927,79 @@ CLOCK: [2022-04-11 周一 13:43]--[2022-04-11 周一 14:08] =>  0:25
    :END:
 
 * begin: <2022-07-01 周五>
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-07-28 周四 09:53
+  :ARCHIVE_FILE: ~/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 登录界面成品号体验功能 
+   CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-07-04 周一 14:28>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-07-16 周六 18:49
+   :END:
+** DONE [#A] spine动作名兼容                                             :m8:
+   CLOSED: [2022-07-08 周五 17:50]
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-07-16 周六 18:49
+   :END:
+** DONE [#A] 特效层级优化                                                :m8:
+   CLOSED: [2022-07-23 周六 17:00] SCHEDULED: <2022-07-08 周五 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-07-23 周六 17:00
+   :END:
+** DONE [#A] 战斗特效缓存                                                :m8:
+   CLOSED: [2022-07-23 周六 17:00] SCHEDULED: <2022-07-20 周三 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-07-23 周六 17:00
+   :END:
+** DONE [#A] 受击特效优化                                                :m8:
+   CLOSED: [2022-07-26 周二 13:40] SCHEDULED: <2022-07-25 周一 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-07-28 周四 09:32
+   :END:
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-07-28 周四 09:53
+  :ARCHIVE_FILE: ~/org/gtd/work.org
+  :ARCHIVE_OLPATH: Project
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 优化spine编辑器                                             :m8:
+   CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-05-18 周三 16:32> DEADLINE: <2022-06-01 周三 16:32>
+   :PROPERTIES:
+   :BLOCKER:  children
+   :ARCHIVE_TIME: 2022-07-16 周六 18:49
+   :END:                          
+*** DONE 明确需求
+    CLOSED: [2022-07-01 周五 10:11]
+    :PROPERTIES:                          
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:                          
+*** DONE UI设计
+    CLOSED: [2022-07-01 周五 10:11] SCHEDULED: <2022-07-01 周五 10:11>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 模型设计
+    CLOSED: [2022-07-01 周五 10:11] SCHEDULED: <2022-07-01 周五 10:11>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 编码阶段
+    CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-07-01 周五 10:11>
+    :PROPERTIES:
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+*** DONE 测试
+    CLOSED: [2022-07-08 周五 09:15] SCHEDULED: <2022-07-08 周五 09:15>
+    :PROPERTIES:                          
+    :TRIGGER+: parent todo!(DONE)
+    :TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
+    :END:
+
+    
+* begin: <2022-08-01 周一>

@@ -179,6 +179,9 @@ class StaticObj(uiobject.UIObject):
         self.set_pos_vec(self.get_pos()+self.velocity*dt)
         self.set_rotate(math2d.as_degrees(self.velocity))
 
+    def set_color(self, r: int, g: int, b: int):
+        self._body.set_color(r, g, b)
+
 
 class DynamicObj(uiobject.UIObject, KinematicInterface):
     """动态运动物体
