@@ -3,7 +3,7 @@
 
 import case
 import gameengine
-from gameengine import uiobject
+from gameengine import gameobject
 from gameengine import camera
 from gameengine import defines
 
@@ -12,9 +12,9 @@ from gameengine import defines
 class CameraClip(case.Case):
     """相机裁剪"""
     def init_case(self):
-        self._circle = uiobject.Circle(100)
+        self._circle = gameobject.Circle(100)
         self._circle.set_pos(400, 400)
-        self._red_circle= uiobject.Circle(50)
+        self._red_circle= gameobject.Circle(50)
         self._red_circle.set_pos(400, 400)
         self._red_circle.set_color(*defines.RED)
         self.add_child(self._circle)

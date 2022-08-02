@@ -268,6 +268,7 @@ class AssignFormationManager(FormationManager):
                 cost_idx = self.CostIdx(self._pattern.get_slot_cost(slot_num, slot.character), slot_num)
                 if cost_idx.cost < self.COST_MAX:
                     cost_list.append(cost_idx)
+                    # 根据角色在所有槽位的成本求出分配的难易度, 数值越低难度越大
                     assignment_ease += 1 / (1 + cost_idx.cost)
             cost_list.sort(key=operator.attrgetter('cost'))
             datum_list.append(self.CharacterSlots(slot.character, assignment_ease, cost_list))

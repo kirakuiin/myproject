@@ -7,6 +7,7 @@ import weakref
 
 import math2d
 from . import global_vars
+from . import component
 from . import util
 
 
@@ -58,11 +59,12 @@ class MouseEventMgr(object):
 
     def _propagate_down(self, event):
         for obj in self._get_order_list():
-            if obj() is None or not obj().is_enable():
+            if (obj() is None or not obj().get_component(component.Touch)
+                    or not obj().get_component(component.Touch).is_touchable()):
                 continue
             is_recv_motion = obj().on_begin(self._cur_down_btn, math2d.position(*util.get_window_coord(event.pos)))
             is_recv_motion and self._recv_motion_list.append(obj)
-            if obj().is_swallow():
+            if obj().get_component(component.Touch).is_swallow():
                 break
 
     def _is_valid_event(self, event):
@@ -73,11 +75,13 @@ class MouseEventMgr(object):
 
     def on_motion(self, event):
         for obj in self._recv_motion_list:
-            obj() and obj().on_motion(self._cur_down_btn, math2d.position(*util.get_window_coord(event.pos)),
-                                    math2d.vector(event.rel[0], -event.rel[1]))
+            obj() and obj().get_component(component.Touch).on_motion(
+                self._cur_down_btn, math2d.position(*util.get_window_coord(event.pos)),
+                math2d.vector(event.rel[0], -event.rel[1]))
 
     def on_button_up(self, event):
         for obj in self._recv_motion_list:
-            obj() and obj().on_end(self._cur_down_btn, math2d.position(*util.get_window_coord(event.pos)))
+            obj() and obj().get_component(component.Touch).on_end(
+                self._cur_down_btn, math2d.position(*util.get_window_coord(event.pos)))
         self._cur_down_btn = None
         self._recv_motion_list.clear()

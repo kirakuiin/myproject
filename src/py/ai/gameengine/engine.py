@@ -7,7 +7,7 @@ import time
 
 from . import defines
 from . import global_vars
-from . import uiobject
+from . import gameobject
 from . import camera
 from . import event
 
@@ -20,7 +20,7 @@ def init_engine():
     pygame.init()
     pygame.display.set_caption(defines.SCREEN_TITLE)
     global_vars.screen = pygame.display.set_mode((defines.SCREEN_WIDTH, defines.SCREEN_HEIGHT))
-    global_vars.scene = uiobject.Scene()
+    global_vars.scene = gameobject.Scene()
     global_vars.camera_mgr = camera.CameraMgr()
     global_vars.event_mgr = event.EventMgr()
     clean_screen()
@@ -67,7 +67,7 @@ def update(root, dt):
     @return:
     """
     root.update(dt)
-    for child in root.get_children():
+    for child in root.transform.children:
         update(child, dt)
 
 
@@ -76,13 +76,13 @@ def clear_expired_obj():
 
     @return:
     """
-    queue = collections.deque(global_vars.scene.get_children())
+    queue = collections.deque(global_vars.scene.transform.children)
     while queue:
         cur = queue.popleft()
         if sys.getrefcount(cur) == 3:
-            cur.get_parent().remove_child(cur)
+            cur.transform.get_parent().remove_child(cur)
         else:
-            queue.extend(cur.get_children())
+            queue.extend(cur.transform.children)
 
 
 def render():
