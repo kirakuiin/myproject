@@ -3,6 +3,7 @@
 import pygame
 import math2d
 
+
 def get_window_size() -> tuple:
     """返回屏幕大小
 
@@ -36,3 +37,39 @@ def get_window_coord(pos: math2d.ndarray) -> list:
     window_pos = math2d.position(pos[0], get_window_height()-pos[1])
     return [window_pos[0], window_pos[1]]
 
+
+def convert_to_world_space(game_obj, position: math2d.ndarray) -> math2d.ndarray:
+    """将局部坐标以目标节点为父节点转化为世界坐标
+
+    @param game_obj:
+    @param position:
+    @return:
+    """
+    return convert_to_world_transform(game_obj, math2d.Transform(position)).pos
+
+
+def convert_to_world_transform(game_obj, transform):
+    """将局部变换以目标节点为父节点转化为世界变换
+
+    @param game_obj:
+    @param transform:
+    @return:
+    """
+    if game_obj is None:
+        return transform
+    if game_obj.transform.get_parent() is None:
+        return game_obj.transform.transform
+    obj_world_transform = convert_to_world_transform(game_obj.transform.get_parent(), game_obj.transform.transform)
+    return transform.combine(obj_world_transform)
+
+
+def convert_to_local_space(game_obj, position: math2d.ndarray) -> math2d.ndarray:
+    """将世界坐标转化为以目标节点为父节点的局部坐标
+
+    @param game_obj:
+    @param position:
+    @return:
+    """
+    transform = convert_to_world_transform(game_obj.transform.get_parent(), game_obj.transform.transform)
+    invert_matrix =math2d.Transform.get_invert_matrix(transform.pos, transform.rotate, transform.scales)
+    return invert_matrix@position

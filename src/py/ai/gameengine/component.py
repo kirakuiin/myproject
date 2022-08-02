@@ -61,7 +61,7 @@ class Transform(EngineComponent):
         return self._parent_node and self._parent_node()
 
     def add_child(self, child, order=0):
-        child.transform.set_parent(self)
+        child.transform.set_parent(self.game_object)
         child.transform.set_order(order)
         children_list = self._get_list_by_order(order)
         bisect.insort(children_list, child, key=operator.methodcaller('get_order'))

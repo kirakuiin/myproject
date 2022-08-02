@@ -59,7 +59,7 @@ class Transform(object):
         return self.__class__(pos, rotate, scales)
 
     @staticmethod
-    def get_transform_matrix(pos: ndarray, rotate: float, scales: ndarray):
+    def get_transform_matrix(pos: ndarray, rotate: float, scales: ndarray) -> ndarray:
         """根据偏移, 旋转, 缩放来获得变换矩阵
 
         @param pos: 偏移
@@ -71,6 +71,21 @@ class Transform(object):
         base = scale_matrix(scales) @ base
         base = rotate_matrix(rotate) @ base
         base = translate_matrix(pos) @ base
+        return base
+
+    @staticmethod
+    def get_invert_matrix(pos: ndarray, rotate: float, scales: ndarray) -> ndarray:
+        """根据参量求得逆矩阵
+
+        @param pos:
+        @param rotate:
+        @param scales:
+        @return: 3阶变换矩阵
+        """
+        base = eye(3)
+        base = linalg.inv(translate_matrix(pos)) @ base
+        base = linalg.inv(rotate_matrix(rotate)) @ base
+        base = linalg.inv(scale_matrix(scales)) @ base
         return base
 
 
