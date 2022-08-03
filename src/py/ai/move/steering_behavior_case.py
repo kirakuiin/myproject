@@ -3,7 +3,7 @@
 
 import case
 import math2d
-from gameengine import gameobject
+from gameengine import uiobject
 from gameengine import defines as color
 from . import defines
 from . import algorithm
@@ -182,7 +182,7 @@ class PathFollowing(case.Case):
         self._path = defines.LinePath([math2d.position(100, 100), math2d.position(100, 350), math2d.position(350, 350),
                                        math2d.position(350, 500), math2d.position(500, 500), math2d.position(500, 750),
                                        math2d.position(600, 0)])
-        self._near_point = gameobject.Circle(3)
+        self._near_point = uiobject.Circle(3)
         self._near_point.set_color(*color.ORANGE)
         self._behavior = steering_behavior.PathFollowingBehavior(self._character, self._path)
 
@@ -225,7 +225,7 @@ class Separation(case.Case):
         self._rings = []
         for child in self.transform.children:
             if isinstance(child, defines.DynamicObj):
-                ring = gameobject.Circle(self.THRESHOLD, 1)
+                ring = uiobject.Circle(self.THRESHOLD, 1)
                 ring.set_color(*color.ORANGE)
                 child.add_child(ring)
                 self._rings.append(ring)
@@ -286,7 +286,7 @@ class ObstacleAvoidance(case.Case):
         self._detector = defines.CollisionDetector(self._lines)
         self._lines_objs = []
         for line in self._lines:
-            line_obj = gameobject.Lines(line.end)
+            line_obj = uiobject.Lines(line.end)
             line_obj.set_pos_vec(line.begin)
             self._lines_objs.append(line_obj)
             self.add_child(line_obj)
@@ -300,7 +300,7 @@ class ObstacleAvoidance(case.Case):
     def _show_ray(self):
         begin = self._character.position()
         end = self._character.position()+math2d.normalize(self._character.velocity())*self.LOOK_AHEAD
-        self._ray_line = gameobject.Lines(begin, end)
+        self._ray_line = uiobject.Lines(begin, end)
         self._ray_line.set_color(*color.GREEN)
         self._ray_line.set_pos_vec(begin)
         self.add_child(self._ray_line)
@@ -329,9 +329,9 @@ class Jump(case.Case):
             self.quit_engine()
 
     def _init_jump_pad(self):
-        self._takeoff = gameobject.Lines(self._jump_point.takeoff_position+math2d.vector(10, 0), line_width=2)
+        self._takeoff = uiobject.Lines(self._jump_point.takeoff_position+math2d.vector(10, 0), line_width=2)
         self._takeoff.set_pos_vec(self._jump_point.takeoff_position-math2d.vector(10, 0))
-        self._landing = gameobject.Lines(self._jump_point.landing_position+math2d.vector(10, 0), line_width=2)
+        self._landing = uiobject.Lines(self._jump_point.landing_position+math2d.vector(10, 0), line_width=2)
         self._landing.set_pos_vec(self._jump_point.landing_position-math2d.vector(10, 0))
         self.add_child(self._takeoff)
         self.add_child(self._landing)

@@ -3,6 +3,7 @@
 import case
 import math2d
 from gameengine import defines as color
+from gameengine import timer
 from . import defines
 from . import formation
 
@@ -54,13 +55,13 @@ class FormationWithAssignmentCase(case.Case):
         self._anchor.set_visible(False)
         self.add_child(self._anchor)
         self._formation = formation.AssignFormationManager(formation.AdventurePattern(30))
-        self._init_formation()
+        self._timer = timer.Timer.create(self._generate_formation, 1, 4)
+        self._call_time = 0
+        self._create_list = [formation.TDHEnum.HEALER, formation.TDHEnum.TANK, formation.TDHEnum.DPS, formation.TDHEnum.TANK]
 
-    def _init_formation(self):
-        self._create_char_by_type(formation.TDHEnum.HEALER)
-        self._create_char_by_type(formation.TDHEnum.TANK)
-        self._create_char_by_type(formation.TDHEnum.DPS)
-        self._create_char_by_type(formation.TDHEnum.TANK)
+    def _generate_formation(self):
+        self._create_char_by_type(self._create_list[self._call_time])
+        self._call_time += 1
 
     def _create_char_by_type(self, type):
         char = formation.StaticCharacter()

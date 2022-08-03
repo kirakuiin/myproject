@@ -7,7 +7,7 @@ import time
 
 from . import defines
 from . import global_vars
-from . import gameobject
+from . import uiobject
 from . import camera
 from . import event
 
@@ -20,7 +20,7 @@ def init_engine():
     pygame.init()
     pygame.display.set_caption(defines.SCREEN_TITLE)
     global_vars.screen = pygame.display.set_mode((defines.SCREEN_WIDTH, defines.SCREEN_HEIGHT))
-    global_vars.scene = gameobject.Scene()
+    global_vars.scene = uiobject.Scene()
     global_vars.camera_mgr = camera.CameraMgr()
     global_vars.event_mgr = event.EventMgr()
     clean_screen()

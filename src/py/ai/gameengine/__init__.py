@@ -88,3 +88,11 @@ def register_handle(event_type, handle_func):
     @return:
     """
     global_vars.event_mgr.register(event_type, handle_func)
+
+
+def get_run_time() -> float:
+    """获得运行时间
+
+    @return:
+    """
+    return global_vars.run_time

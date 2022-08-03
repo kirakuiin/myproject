@@ -3,7 +3,7 @@
 import weakref
 
 import math2d
-from gameengine import gameobject
+from gameengine import uiobject
 from gameengine import defines
 
 
@@ -153,7 +153,7 @@ class Location(object):
         return '{}(position={}, orientation={}'.format(self.__class__.__name__, self.position, self.orientation)
 
 
-class StaticObj(gameobject.GameObject):
+class StaticObj(uiobject.UIObject):
     """静态运动物体
 
     通过直接修改速度来驱动物体运动
@@ -166,9 +166,9 @@ class StaticObj(gameobject.GameObject):
         self._init_ui()
 
     def _init_ui(self):
-        self._body = gameobject.Circle(self.RADIUS)
+        self._body = uiobject.Circle(self.RADIUS)
         self._body.set_color(*defines.RED)
-        self._head = gameobject.Triangle(6)
+        self._head = uiobject.Triangle(6)
         self._head.set_color(*defines.GREEN)
         self._head.set_pos(12, 0)
         self._head.set_rotate(-90)
@@ -183,7 +183,7 @@ class StaticObj(gameobject.GameObject):
         self._body.set_color(r, g, b)
 
 
-class DynamicObj(gameobject.GameObject, KinematicInterface):
+class DynamicObj(uiobject.UIObject, KinematicInterface):
     """动态运动物体
 
     以加速度驱动速度变化
@@ -204,9 +204,9 @@ class DynamicObj(gameobject.GameObject, KinematicInterface):
         self._init_ui()
 
     def _init_ui(self):
-        self._body = gameobject.Circle(self._radius)
+        self._body = uiobject.Circle(self._radius)
         self._body.set_color(*defines.RED)
-        self._head = gameobject.Triangle(6)
+        self._head = uiobject.Triangle(6)
         self._head.set_color(*defines.GREEN)
         self._head.set_pos(10, 0)
         self._head.set_rotate(-90)
@@ -289,13 +289,13 @@ class DynamicObj(gameobject.GameObject, KinematicInterface):
             setattr(self, attr, value)
 
 
-class LinePath(gameobject.GameObject):
+class LinePath(uiobject.UIObject):
     """直线路径
     """
     def __init__(self, points: list):
         super().__init__()
         self._lines = [math2d.Line(points[i], points[i+1]) for i in range(len(points)-1)]
-        self._lines_obj = gameobject.Lines(points[1], *points[2:])
+        self._lines_obj = uiobject.Lines(points[1], *points[2:])
         self._lines_obj.set_pos_vec(points[0])
         self.add_child(self._lines_obj)
 
