@@ -129,6 +129,12 @@ class Triangle(UIObject):
 
 class Lines(UIObject):
     """直线"""
+    @classmethod
+    def create_line(cls, start, end, **kwargs):
+        line = cls(end, **kwargs)
+        line.set_pos_vec(start)
+        return line
+
     def __init__(self, second_point, *other_points, line_width=1, is_close=False):
         super().__init__()
         self.line_width = line_width
@@ -155,6 +161,8 @@ class Text(UIObject):
         self._font_size = size
         self._font_path = font_path
         self._param = {'bold': bold, 'italic': italic}
+        self._font_obj = pygame.font.SysFont(self._font_path, size, **self._param)
+        self._scale = 1
         self._text = ''
 
     def set_text(self, text):
@@ -165,6 +173,13 @@ class Text(UIObject):
         """
         self._text = text
 
+    def get_text(self) -> str:
+        """返回文本
+
+        @return:
+        """
+        return self._text
+
     def draw(self, transform):
         font_obj = self._get_font_obj(transform.scales[0])
         surface = font_obj.render(self._text, True, self.get_color())
@@ -172,15 +187,17 @@ class Text(UIObject):
         global_vars.screen.blit(surface, util.get_window_coord(transform.pos+delta))
 
     def _get_font_obj(self, scale):
-        font_size = max(1, int(self._font_size*scale))
-        return pygame.font.SysFont(self._font_path, font_size, **self._param)
+        if self._scale != scale:
+            self._scale = scale
+            font_size = max(1, int(self._font_size*scale))
+            self._font_obj = pygame.font.SysFont(self._font_path, font_size, **self._param)
+        return self._font_obj
 
 
 class FixSizeText(Text):
     """大小不随缩放改变的文本"""
     def __init__(self, size=24, font_path='Arial', bold=False, italic=False):
         super().__init__(size, font_path, bold, italic)
-        self._font_obj = pygame.font.SysFont(font_path, size, bold, italic)
 
     def _get_font_obj(self, scale):
         return self._font_obj

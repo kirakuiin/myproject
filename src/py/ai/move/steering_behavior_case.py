@@ -286,8 +286,7 @@ class ObstacleAvoidance(case.Case):
         self._detector = defines.CollisionDetector(self._lines)
         self._lines_objs = []
         for line in self._lines:
-            line_obj = uiobject.Lines(line.end)
-            line_obj.set_pos_vec(line.begin)
+            line_obj = uiobject.Lines.create_line(line.begin, line.end)
             self._lines_objs.append(line_obj)
             self.add_child(line_obj)
 
@@ -329,9 +328,9 @@ class Jump(case.Case):
             self.quit_engine()
 
     def _init_jump_pad(self):
-        self._takeoff = uiobject.Lines(self._jump_point.takeoff_position+math2d.vector(10, 0), line_width=2)
-        self._takeoff.set_pos_vec(self._jump_point.takeoff_position-math2d.vector(10, 0))
-        self._landing = uiobject.Lines(self._jump_point.landing_position+math2d.vector(10, 0), line_width=2)
-        self._landing.set_pos_vec(self._jump_point.landing_position-math2d.vector(10, 0))
+        self._takeoff = uiobject.Lines.create_line(self._jump_point.takeoff_position-math2d.vector(10, 0),
+                                                   self._jump_point.takeoff_position+math2d.vector(10, 0), line_width=2)
+        self._landing = uiobject.Lines.create_line(self._jump_point.landing_position-math2d.vector(10, 0),
+                                                   self._jump_point.landing_position+math2d.vector(10, 0), line_width=2)
         self.add_child(self._takeoff)
         self.add_child(self._landing)

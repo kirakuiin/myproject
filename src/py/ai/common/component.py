@@ -9,7 +9,7 @@ class Component(object):
         self._comp_parent = parent and weakref.ref(parent) or None
         self._comp_children = []  # 组件列表
 
-    def __str__(self):
+    def __repr__(self):
         return '\n'.join(self._display(0))
 
     def _display(self, level, indent=2):

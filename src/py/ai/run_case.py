@@ -10,8 +10,10 @@
 """
 
 # 导入测试模块
-import move
 import test
+import move
+import path
+import decision
 # 导入测试模块结束
 
 import case
