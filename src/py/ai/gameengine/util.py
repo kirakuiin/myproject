@@ -57,9 +57,9 @@ def convert_to_world_transform(game_obj, transform):
     """
     if game_obj is None:
         return transform
-    if game_obj.transform.get_parent() is None:
+    if game_obj.get_parent() is None:
         return game_obj.transform.transform
-    obj_world_transform = convert_to_world_transform(game_obj.transform.get_parent(), game_obj.transform.transform)
+    obj_world_transform = convert_to_world_transform(game_obj.get_parent(), game_obj.transform.transform)
     return transform.combine(obj_world_transform)
 
 
@@ -70,6 +70,6 @@ def convert_to_local_space(game_obj, position: math2d.ndarray) -> math2d.ndarray
     @param position:
     @return:
     """
-    transform = convert_to_world_transform(game_obj.transform.get_parent(), game_obj.transform.transform)
+    transform = convert_to_world_transform(game_obj.get_parent(), game_obj.transform.transform)
     invert_matrix =math2d.Transform.get_invert_matrix(transform.pos, transform.rotate, transform.scales)
     return invert_matrix@position

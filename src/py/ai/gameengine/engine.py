@@ -80,7 +80,7 @@ def clear_expired_obj():
     while queue:
         cur = queue.popleft()
         if sys.getrefcount(cur) == 3:
-            cur.transform.get_parent().remove_child(cur)
+            cur.get_parent().remove_child(cur)
         else:
             queue.extend(cur.transform.children)
 

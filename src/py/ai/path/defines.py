@@ -126,12 +126,12 @@ class ConnectionObj(uiobject.UIObject):
         super().__init__()
         begin, end = from_node.get_pos(), to_node.get_pos()
         self._line = uiobject.Lines.create_line(begin, end)
-        self.add_child(self._line)
         self._text = uiobject.Text()
+        self.add_child(self._line)
+        self.add_child(self._text)
         self._text.set_text(str(cost))
         self._text.set_color(*color.BLACK)
         self._text.set_pos_vec((begin+end)/2-math2d.vector(10, 10))
-        self.add_child(self._text)
 
     def __repr__(self):
         return '{}({})'.format(self.__class__.__name__, self._text.get_text())
@@ -156,18 +156,16 @@ class GraphObj(uiobject.UIObject):
         self._init_connection(graph)
 
     def _init_node_pos(self):
-        for idx, node_obj in enumerate(self._node_list):
-            base_node = self._node_list[max(0, idx-1)]
-            pos = base_node.get_pos()
-            rand_vec = math2d.normalize(math2d.vector(math2d.rand_bio(), math2d.rand_bio()))*200
-            node_obj.set_pos_vec(pos+rand_vec)
+        for node_obj in self._node_list:
+            rand_vec = math2d.vector(math2d.randint(20, 780), math2d.randint(20, 780))
+            node_obj.set_pos_vec(rand_vec)
 
     def _init_connection(self, graph):
         for node in graph.get_all_node():
             for conn in graph.get_connections(node):
                 conn_obj = ConnectionObj(conn.from_node, conn.to_node, conn.cost)
-                self._conn_dict[conn] = conn_obj
                 self.add_child(conn_obj, -1)
+                self._conn_dict[conn] = conn_obj
 
     def find_conn_obj(self, connection):
         for conn in self._conn_dict:

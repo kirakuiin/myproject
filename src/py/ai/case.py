@@ -9,7 +9,6 @@ import math2d
 import gameengine
 from gameengine import component
 from gameengine import uiobject
-from gameengine import global_vars
 from gameengine import camera
 from gameengine import defines
 

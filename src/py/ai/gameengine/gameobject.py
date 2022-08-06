@@ -28,7 +28,7 @@ class GameObject(component.EngineComponent):
         self.set_pos_vec(math2d.position(x, y))
 
     def set_pos_vec(self, position: math2d.ndarray):
-        self._transform_com.transform.pos = position
+        self._transform_com.transform.pos = math2d.position(position[0], position[1])
 
     def get_pos(self) -> math2d.ndarray:
         return self._transform_com.transform.pos
@@ -54,5 +54,17 @@ class GameObject(component.EngineComponent):
     def remove_child(self, child):
         self._transform_com.remove_child(child)
 
+    def get_parent(self):
+        return self._transform_com.get_parent()
+
     def set_parent(self, parent):
         self._transform_com.set_parent(parent)
+
+    def get_hierarchy(self):
+        return '\n'.join(self._hierarchy(0))
+
+    def _hierarchy(self, level, indent=2):
+        info = ['{}{}'.format('-'*level*indent, self.__class__.__name__)]
+        for child in self._transform_com.children:
+            info.extend(child._hierarchy(level+1, indent))
+        return info

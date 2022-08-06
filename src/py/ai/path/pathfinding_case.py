@@ -15,7 +15,6 @@ class DijkstraPathFinding(case.Case):
     def init_case(self):
         graph = self._generate_graph()
         self._graph_obj = defines.GraphObj(graph)
-        self._graph_obj.set_pos(400, 400)
         self.add_child(self._graph_obj)
         self._timer = timer.Timer.create(self.get_shortest_path, 1, 1, graph)
 
@@ -26,20 +25,18 @@ class DijkstraPathFinding(case.Case):
         node_c = defines.NodeObj('C')
         node_d = defines.NodeObj('D')
         node_e = defines.NodeObj('E')
-        self._begin = node_a
-        self._end = node_e
-        graph.add(defines.Connection(node_a, node_b, math2d.randint(1, 10)))
+        graph.add(defines.Connection(node_a, node_b, math2d.randint(5, 15)))
         graph.add(defines.Connection(node_a, node_c, math2d.randint(1, 10)))
         graph.add(defines.Connection(node_b, node_d, math2d.randint(1, 10)))
         graph.add(defines.Connection(node_c, node_d, math2d.randint(1, 10)))
         graph.add(defines.Connection(node_d, node_e, math2d.randint(1, 10)))
         graph.add(defines.Connection(node_b, node_e, math2d.randint(1, 10)))
+        self._begin = node_a
+        self._end = node_e
         return graph
 
     def get_shortest_path(self, graph):
         path = list(algorithm.dijkstra_path_find(graph, self._begin, self._end))
         for conn in path:
-            self._graph_obj.find_conn_obj(conn).set_color(*color.ORANGE)
-
-    def update(self, dt):
-        self.quit_over_time(5)
+            conn_obj = self._graph_obj.find_conn_obj(conn)
+            conn_obj.set_color(*color.ORANGE)

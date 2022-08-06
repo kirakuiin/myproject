@@ -45,5 +45,5 @@ class Timer(gameobject.GameObject):
         return self._loop_time != 0
 
     def stop(self):
-        parent = self.transform.get_parent()
+        parent = self.get_parent()
         parent and parent.remove_child(self)
