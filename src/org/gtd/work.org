@@ -112,11 +112,12 @@ CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-08-06 周六 18:00 ++1w> DEADLINE: <2022-08-08 周一 12:00 ++1w>
+SCHEDULED: <2022-08-13 周六 18:00 ++1w> DEADLINE: <2022-08-15 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-08-01 周一 17:27]
+:LAST_REPEAT: [2022-08-06 周六 16:30]
 :END:
+- State "DONE"       from "TODO"       [2022-08-06 周六 16:30]
 - State "DONE"       from "TODO"       [2022-08-01 周一 17:27]
 - State "DONE"       from "TODO"       [2022-07-23 周六 17:01]
 - State "DONE"       from "TODO"       [2022-07-18 周一 10:44]

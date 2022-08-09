@@ -11,6 +11,7 @@ from gameengine import component
 from gameengine import uiobject
 from gameengine import camera
 from gameengine import defines
+from gameengine import timer
 
 
 CaseContainer = collections.defaultdict(list)  # 示例容器
@@ -87,6 +88,7 @@ class Case(uiobject.UIObject):
         self.register_handle(pygame.KEYUP, self.key_control)
         self.register_handle(pygame.MOUSEWHEEL, self.scale_control)
         self._init_camera_info()
+        self._init_time_info()
         self._coord_unit and self._init_coord()
         self._speed_time = gameengine.get_speed()
 
@@ -115,6 +117,17 @@ class Case(uiobject.UIObject):
         self._rotate_info.set_text('{}°'.format(rotate))
         self._center_info.set_text('{}, {}'.format(lookat[0], lookat[1]))
 
+    def _init_time_info(self):
+        self._time_text = uiobject.Text(20)
+        self._time_text.set_watch_num(1)
+        self._time_text.set_pos(750, 0)
+        self._time_text.set_color(*defines.BLACK)
+        self.add_child(self._time_text)
+        self._timer = timer.Timer.create(self._update_time_info, 0.1)
+
+    def _update_time_info(self):
+        self._time_text.set_text('{:.1f}s'.format(gameengine.get_game_run_time()))
+
     def _init_coord(self):
         self._lookat = uiobject.Circle(2)
         self._lookat.set_watch_num(1)
@@ -139,7 +152,7 @@ class Case(uiobject.UIObject):
 
         @return:
         """
-        print('结束, 运行时间: {:.2f}s'.format(gameengine.get_run_time()))
+        print('结束, 运行时间: {:.2f}s'.format(gameengine.get_real_run_time()))
         gameengine.quit()
 
     def init_case(self):
@@ -164,7 +177,7 @@ class Case(uiobject.UIObject):
         @param time: 关闭时间
         @return:
         """
-        if gameengine.get_run_time() > time:
+        if gameengine.get_game_run_time() > time:
             self.quit_engine()
 
     def scale_control(self, event):

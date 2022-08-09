@@ -2,7 +2,8 @@
 """
 
 start_time = 0  # 游戏开始时间
-run_time = 0   # 游戏运行时间
+real_run_time = 0   # 游戏运行时间(现实世界)
+game_run_time = 0   # 游戏运行时间(游戏世界)
 speed_times = 1.0  # 游戏加速度
 is_running = False  # 是否正在运行
 

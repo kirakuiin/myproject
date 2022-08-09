@@ -2,41 +2,65 @@
 """
 
 import case
-import math2d
 import gameengine.defines as color
+from gameengine import uiobject
 from gameengine import timer
 from . import defines
 from . import algorithm
 
 
 @case.register_case(__name__)
-class DijkstraPathFinding(case.Case):
-    """迪杰特斯拉寻路"""
+class PathFinding(case.Case):
+    """寻路算法"""
     def init_case(self):
-        graph = self._generate_graph()
-        self._graph_obj = defines.GraphObj(graph)
-        self.add_child(self._graph_obj)
-        self._timer = timer.Timer.create(self.get_shortest_path, 1, 1, graph)
+        self._grid = defines.GridGraphObj(5, 5)
+        self._grid.set_pos(200, 200)
+        self.add_child(self._grid)
+        begin = self._grid.get_node(0, 0)
+        begin.set_begin()
+        end = self._grid.get_node(4, 4)
+        end.set_end()
+        self._timer1 = timer.Timer.create(self.get_shortest_path_dijkstra, 1, 1, begin, end)
+        self._timer2 = timer.Timer.create(self.get_shortest_path_a_star, 3, 1, begin, end)
 
-    def _generate_graph(self):
-        graph = defines.Graph()
-        node_a = defines.NodeObj('A')
-        node_b = defines.NodeObj('B')
-        node_c = defines.NodeObj('C')
-        node_d = defines.NodeObj('D')
-        node_e = defines.NodeObj('E')
-        graph.add(defines.Connection(node_a, node_b, math2d.randint(5, 15)))
-        graph.add(defines.Connection(node_a, node_c, math2d.randint(1, 10)))
-        graph.add(defines.Connection(node_b, node_d, math2d.randint(1, 10)))
-        graph.add(defines.Connection(node_c, node_d, math2d.randint(1, 10)))
-        graph.add(defines.Connection(node_d, node_e, math2d.randint(1, 10)))
-        graph.add(defines.Connection(node_b, node_e, math2d.randint(1, 10)))
-        self._begin = node_a
-        self._end = node_e
-        return graph
-
-    def get_shortest_path(self, graph):
-        path = list(algorithm.dijkstra_path_find(graph, self._begin, self._end))
+    def get_shortest_path_dijkstra(self, begin, end):
+        finder = algorithm.PathFindDijkstra(self._grid.get_graph(), begin, end)
+        path = finder.path_find()
+        cost = 0
         for conn in path:
-            conn_obj = self._graph_obj.find_conn_obj(conn)
+            conn_obj = self._grid.find_conn_obj(conn)
+            conn_obj.set_color(*color.BLUE)
+            cost += conn.cost
+        self._text_dijk = uiobject.Text()
+        self._text_dijk.set_text('dijkstra path cost: {}'.format(cost))
+        self._text_dijk.set_color(*color.BLUE)
+        self._text_dijk.set_pos(300, 150)
+        self.add_child(self._text_dijk)
+        self._show_open_close(finder.get_open_node_list(), finder.get_close_node_list())
+
+    def _show_open_close(self, open_list, close_list):
+        self._grid.reset_all()
+        for node in open_list:
+            node.set_open()
+        for node in close_list:
+            node.set_close()
+
+    def get_shortest_path_a_star(self, begin, end):
+        heuristic = defines.EuclidDistanceHeuristic(0.2)
+        heuristic.set_goal(end)
+        finder = algorithm.PathFindAStar(self._grid.get_graph(), begin, end, heuristic)
+        path = finder.path_find()
+        cost = 0
+        for conn in path:
+            conn_obj = self._grid.find_conn_obj(conn)
             conn_obj.set_color(*color.ORANGE)
+            cost += conn.cost
+        self._text_aster = uiobject.Text()
+        self._text_aster.set_text('aster path cost: {}'.format(cost))
+        self._text_aster.set_color(*color.ORANGE)
+        self._text_aster.set_pos(300, 100)
+        self.add_child(self._text_aster)
+        self._show_open_close(finder.get_open_node_list(), finder.get_close_node_list())
+
+    def update(self, dt: float):
+        self.quit_over_time(5)

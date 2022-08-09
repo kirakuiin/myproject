@@ -2,6 +2,7 @@
 """
 
 import bisect
+import heapq
 import collections
 
 import math2d
@@ -52,22 +53,50 @@ class Graph(object):
         return self._connection_map[from_node]
 
 
-class NodeRecord(object):
-    """节点记录"""
-    def __init__(self, node, connection=None, cost_so_far=0):
-        self.node = node
-        self.connection = connection
-        self.cost_so_far = cost_so_far  # 从起点到当前位置的最低代价
+class HeuristicInterface(object):
+    """启发式算法"""
+    def set_goal(self, to_node):
+        """设置启发算法的终点
 
-    def __repr__(self):
-        return '{}({}, cost={})'.format(self.__class__.__name__, self.node, self.cost_so_far)
+        @param to_node:
+        @return:
+        """
+
+    def estimate(self, from_node) -> float:
+        """返回由起点到终点的估计成本
+
+        @param from_node:
+        @return:
+        """
+
+
+class EuclidDistanceHeuristic(HeuristicInterface):
+    """欧几里得距离
+
+    估算值为两者坐标之间的距离
+    """
+    def __init__(self, scale=1.0):
+        self._goal = None
+        self._scale = scale
+
+    def set_goal(self, to_node):
+        self._goal = to_node
+
+    def estimate(self, from_node) -> float:
+        return math2d.distance(from_node.get_pos(), self._goal.get_pos())*self._scale
 
 
 class PathFindList(object):
-    """路径发现列表"""
+    """路径发现列表
+
+    由最小堆实现
+    """
     def __init__(self, first=None):
         self._path_list = []
         first and self.add(first)
+
+    def __iter__(self):
+        return iter(self._path_list)
 
     def __len__(self):
         return len(self._path_list)
@@ -75,49 +104,54 @@ class PathFindList(object):
     def __bool__(self):
         return bool(len(self))
 
-    def add(self, record: NodeRecord):
-        bisect.insort(self._path_list, record, key=lambda node: node.cost_so_far)
+    def add(self, path):
+        heapq.heappush(self._path_list, path)
 
-    def remove(self, record: NodeRecord):
-        self._path_list.remove(record)
+    def remove(self, path):
+        self._path_list.remove(path)
+        heapq.heapify(self._path_list)
 
-    def get(self):
-        """返回最小成本记录
-        @rtype: NodeRecord
-        """
+    def get_min(self):
         return self and self._path_list[0]
 
-    def contains(self, node) -> bool:
-        return bool(self.find(node))
+    def contains(self, path) -> bool:
+        return bool(self.find(path))
 
-    def find(self, node):
-        """根据节点返回记录
-
-        @rtype: NodeRecord
-        @param node:
-        """
+    def find(self, path):
         for record in self._path_list:
-            if record.node is node:
+            if record.node is path:
                 return record
         else:
             return None
 
 
-class NodeObj(uiobject.UIObject):
+class NodeObj(uiobject.Circle):
     """表示节点的图形显示"""
-    def __init__(self, name):
-        super().__init__()
-        self._circle = uiobject.Circle(20)
-        self._circle.set_color(*color.RED)
-        self._text = uiobject.Text()
-        self._text.set_text(name)
-        self._text.set_color(*color.BLACK)
-        self._text.set_pos(-8, -12)
-        self.add_child(self._circle)
-        self.add_child(self._text)
+    ORIGIN_COLOR = color.WHITE
+    def __init__(self):
+        super().__init__(10)
+        self._flag_obj = None
+        self._origin_color = self.ORIGIN_COLOR
 
-    def __repr__(self):
-        return '{}({})'.format(self.__class__.__name__, self._text.get_text())
+    def set_begin(self):
+        self._origin_color = color.RED
+        self.set_color(*self._origin_color)
+
+    def set_end(self):
+        self._origin_color = color.GREEN
+        self.set_color(*self._origin_color)
+
+    def reset(self):
+        self.set_color(*self._origin_color)
+
+    def set_open(self):
+        if self._origin_color == self.ORIGIN_COLOR:
+            self.set_color(*color.YELLOW)
+
+    def set_close(self):
+        if self._origin_color == self.ORIGIN_COLOR:
+            self.set_color(*color.PURPLE)
+
 
 
 class ConnectionObj(uiobject.UIObject):
@@ -140,34 +174,52 @@ class ConnectionObj(uiobject.UIObject):
         self._line.set_color(r, g, b)
 
 
-class GraphObj(uiobject.UIObject):
-    """图显示对象"""
-    def __init__(self, graph: Graph):
+class GridGraphObj(uiobject.UIObject):
+    """网格图对象"""
+    SPACE = 100
+    def __init__(self, w, h):
         super().__init__()
-        self._node_list = []
-        self._conn_dict = {}
-        self._init_graph(graph)
+        self._nodes = [[NodeObj() for i in range(h)] for j in range(w)]
+        self._connections = {}
+        self._graph = Graph()
+        self._init_node_pos(w, h)
+        self._fill_graph(w, h)
 
-    def _init_graph(self, graph: Graph):
-        self._node_list = graph.get_all_node()
-        for node in self._node_list:
-            self.add_child(node)
-        self._init_node_pos()
-        self._init_connection(graph)
+    def _init_node_pos(self, w, h):
+        for i in range(w):
+            for j in range(h):
+                self._nodes[i][j].set_pos(i*self.SPACE, j*self.SPACE)
+                self.add_child(self._nodes[i][j])
 
-    def _init_node_pos(self):
-        for node_obj in self._node_list:
-            rand_vec = math2d.vector(math2d.randint(20, 780), math2d.randint(20, 780))
-            node_obj.set_pos_vec(rand_vec)
+    def _fill_graph(self, w, h):
+        for i in range(w):
+            for j in range(h):
+                node = self._nodes[i][j]
+                if i < w-1:
+                    self._add_connection(node, self._nodes[i+1][j])
+                if j < h-1:
+                    self._add_connection(node, self._nodes[i][j+1])
 
-    def _init_connection(self, graph):
-        for node in graph.get_all_node():
-            for conn in graph.get_connections(node):
-                conn_obj = ConnectionObj(conn.from_node, conn.to_node, conn.cost)
-                self.add_child(conn_obj, -1)
-                self._conn_dict[conn] = conn_obj
+    def _add_connection(self, from_node, to_node):
+        cost = math2d.randint(1, 50)
+        conn = Connection(from_node, to_node, cost)
+        connObj = ConnectionObj(from_node, to_node, cost)
+        self._graph.add(conn)
+        self._connections[conn] = connObj
+        self.add_child(connObj)
+
+    def get_graph(self):
+        return self._graph
 
     def find_conn_obj(self, connection):
-        for conn in self._conn_dict:
+        for conn in self._connections:
             if conn == connection:
-                return self._conn_dict[conn]
+                return self._connections[conn]
+
+    def get_node(self, i, j):
+        return self._nodes[i][j]
+
+    def reset_all(self):
+        for nodes in self._nodes:
+            for node in nodes:
+                node.reset()

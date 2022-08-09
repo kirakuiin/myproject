@@ -90,9 +90,17 @@ def register_handle(event_type, handle_func):
     global_vars.event_mgr.register(event_type, handle_func)
 
 
-def get_run_time() -> float:
-    """获得运行时间
+def get_real_run_time() -> float:
+    """获得真实运行时间
 
     @return:
     """
-    return global_vars.run_time
+    return global_vars.real_run_time
+
+
+def get_game_run_time() -> float:
+    """获得游戏运行时间
+
+    @return:
+    """
+    return global_vars.game_run_time
