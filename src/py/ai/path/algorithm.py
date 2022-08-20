@@ -142,3 +142,18 @@ def path_find_a_star(graph: defines.Graph, begin_node, end_node, heuristic: defi
     """
     finder = PathFindAStar(graph, begin_node, end_node, heuristic)
     return finder.path_find()
+
+
+def smooth_path(input_path: list, ray_cast) -> list:
+    """路径平滑算法
+
+    @param input_path:
+    @param ray_cast: 射线检测函数
+    @return: 平滑后的路径
+    """
+    output_path = [input_path.pop(0)]
+    for idx, path in enumerate(input_path[1:]):
+        if not ray_cast(output_path[-1], path):
+            output_path.append(input_path[idx])
+    output_path.append(input_path[-1])
+    return output_path
