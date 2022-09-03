@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/game_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/catan_background.jpeg" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/REEJI.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://main.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 3
+outline_color = Color( 0.784314, 0.572549, 0.0235294, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Control2" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="BackgroundRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="TitleLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -150.0
+margin_top = 43.0
+margin_right = 150.0
+margin_bottom = 143.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "卡坦岛"
+
+[node name="StartGameBtn" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 72.0
+margin_top = -268.0
+margin_right = 204.0
+margin_bottom = -231.0
+text = "开始游戏"
+
+[node name="CharacterBtn" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 72.0
+margin_top = -196.0
+margin_right = 204.0
+margin_bottom = -159.0
+text = "角色信息"
+
+[node name="ExitBtn" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 72.0
+margin_top = -124.0
+margin_right = 204.0
+margin_bottom = -87.0
+text = "退出游戏"
+
+[node name="VersionLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -141.0
+margin_top = -31.0
+text = "版本：0.0.1"
+
+[connection signal="button_down" from="StartGameBtn" to="." method="_on_start_game"]
+[connection signal="button_down" from="CharacterBtn" to="." method="_on_edit_character_info"]
+[connection signal="button_down" from="ExitBtn" to="." method="_on_exit_game"]

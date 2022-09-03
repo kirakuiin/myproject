@@ -14,7 +14,7 @@
 * Inbox
 * Next Action
 ** TODO [#C] 每周完成leetcode一道题 [1/1]                           :learn:
-SCHEDULED: <2022-06-13 周一 09:00 ++1w>
+SCHEDULED: <2022-08-15 周一 09:00 ++1w>
 :PROPERTIES:
 :LAST_REPEAT: [2022-06-06 周一 09:37]
 :END:
@@ -112,11 +112,13 @@ CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-08-27 周六 18:00 ++1w> DEADLINE: <2022-08-29 周一 12:00 ++1w>
+SCHEDULED: <2022-09-03 周六 18:00 ++1w> DEADLINE: <2022-09-05 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-08-20 周六 17:12]
+:LAST_REPEAT: [2022-08-27 周六 18:22]
 :END:
+- State "DONE"       from "TODO"       [2022-08-27 周六 18:22]
+- State "DONE"       from "TODO"       [2022-08-27 周六 18:18]
 - State "DONE"       from "TODO"       [2022-08-20 周六 17:12]
 - State "DONE"       from "TODO"       [2022-08-20 周六 17:12]
 - State "DONE"       from "TODO"       [2022-08-20 周六 17:12]
@@ -250,6 +252,16 @@ CLOSED: [2022-08-17 周三 09:49] SCHEDULED: <2022-08-17 周三 09:00>
 CLOSED: [2022-08-20 周六 17:12] SCHEDULED: <2022-08-15 周一 00:00>
 :PROPERTIES:
 :ARCHIVE_TIME: 2022-08-20 周六 17:16
+:END:
+*** DONE [#A] 战斗日志增加时间轴浏览                                   :m8:
+CLOSED: [2022-08-27 周六 18:18] SCHEDULED: <2022-08-22 周一 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-08-27 周六 18:22
+:END:
+*** DONE [#A] 战斗状态栏支持一键展开                                   :m8:
+CLOSED: [2022-08-27 周六 18:18] SCHEDULED: <2022-08-26 周五 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-08-27 周六 18:22
 :END:
 * Appointment
 * Project
