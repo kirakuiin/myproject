@@ -9,9 +9,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -192.0
-margin_top = -16.0
-margin_right = 192.0
-margin_bottom = 16.0
+margin_top = -28.0
+margin_right = 296.0
+margin_bottom = 36.0
 rect_min_size = Vector2( 0, 32 )
 script = ExtResource( 1 )
 highlight_color = Color( 0.968627, 0.976471, 0.0313726, 1 )
@@ -20,27 +20,51 @@ origin_color = Color( 1, 1, 1, 1 )
 [node name="SelectBtn" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 5.0
+mouse_default_cursor_shape = 2
 theme = ExtResource( 2 )
 toggle_mode = true
 shortcut_in_tooltip = false
 
-[node name="HostNameLabel" type="Label" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -15.5
-margin_right = 190.0
-margin_bottom = 15.5
-text = "kirakuiin"
-
-[node name="IPLabel" type="Label" parent="."]
-anchor_left = 1.0
-anchor_top = 0.5
+[node name="InfoContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -198.0
-margin_top = -15.0
-margin_bottom = 16.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HostNameLabel" type="Label" parent="InfoContainer"]
+margin_right = 153.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+text = "kirakuiin"
+valign = 1
+
+[node name="NumLabel" type="Label" parent="InfoContainer"]
+margin_left = 157.0
+margin_right = 234.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "[1/4]"
+valign = 1
+
+[node name="StateLabel" type="Label" parent="InfoContainer"]
+margin_left = 238.0
+margin_right = 315.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "未知"
+valign = 1
+
+[node name="IPLabel" type="Label" parent="InfoContainer"]
+margin_left = 319.0
+margin_right = 488.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 text = "192.168.0.1"
+valign = 1
 
 [connection signal="toggled" from="SelectBtn" to="." method="_on_select"]
