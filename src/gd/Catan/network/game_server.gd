@@ -1,8 +1,7 @@
 extends Node
 
 
-signal player_added(player_info)
-signal player_removed(player_info)
+signal player_changed(player_info)
 signal connection_failed()
 signal connection_succeeded()
 signal server_error(what)
@@ -21,6 +20,9 @@ class PlayerInfoMgr:
         for player_info in Array(_info_dict.values()):
             if player_info.peer_id == id:
                 _info_dict.erase(player_info.name)
+
+    func get_all_info() -> Array:
+        return _info_dict.values()
 
     func reset():
         _info_dict = {}
@@ -61,22 +63,39 @@ func join_game(ip: String):
     get_tree().set_network_peer(peer)
 
 
+# 判断是否为服务器
+func is_server() -> bool:
+    return get_tree().is_network_server()
+
+
+# 获得自身peer id
+func get_peer_id() -> int:
+    return get_tree().get_network_unique_id()
+
+
 # 同步玩家信息
 remote func sync_player_info():
-    rpc("register_player_info")
-
-
-remotesync func register_player_info():
     var info = Protocol.PlayerInfo.new(PlayerConfig.get_player_name(),
             get_tree().get_network_unique_id(), PlayerConfig.get_icon_path())
-    player_mgr.add_player_info(info)
+    rpc("register_player_info", info)
+
+
+remotesync func register_player_info(player_info: Protocol.PlayerInfo):
+    player_mgr.add_player_info(player_info)
     emit_signal("player_changed")
+
+
+# 请求其他玩家信息
+remote func request_other_player_info(client_id):
+    assert(is_server())
 
 
 # all
 func _on_player_connected(id):
-    if get_tree().is_network_server():
+    if is_server():
         rpc_id(id, "sync_player_info")
+    else:
+        rpc_id(id, "request_other_player_info", get_tree().get_network_unique_id())
 
 
 func _on_player_disconnected(id):
