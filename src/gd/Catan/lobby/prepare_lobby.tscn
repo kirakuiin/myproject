@@ -227,5 +227,6 @@ margin_top = 56.0
 custom_constants/separation = 10
 
 [connection signal="item_selected" from="OptionContainer/PlayerNumContainer/PlayerNumBtn" to="." method="_on_change_num"]
+[connection signal="toggled" from="OptionContainer/FogContainer/FogCheckBtn" to="." method="_on_change_fog"]
 [connection signal="button_down" from="ExitButton" to="." method="_on_exit_prepare"]
 [connection signal="timeout" from="BroadcastTimer" to="." method="_on_broadcast"]
