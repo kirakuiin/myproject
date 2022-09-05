@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/OPPOSans-B.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://lobby/prepare_lobby.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://assets/tiles/hill.png" type="Texture" id=7]
 [ext_resource path="res://assets/tiles/mountain.png" type="Texture" id=8]
 [ext_resource path="res://assets/tiles/ocean.png" type="Texture" id=9]
-[ext_resource path="res://lobby/player_item.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "pasture.png 0"
@@ -188,26 +187,6 @@ margin_bottom = 48.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="PlayerContainer" type="VBoxContainer" parent="."]
-margin_left = 144.0
-margin_top = 168.0
-margin_right = 480.0
-margin_bottom = 768.0
-custom_constants/separation = 50
-
-[node name="PlayerListLabel" type="Label" parent="PlayerContainer"]
-margin_right = 336.0
-margin_bottom = 40.0
-text = "未就绪玩家列表"
-align = 1
-
-[node name="Control" parent="PlayerContainer" instance=ExtResource( 10 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 90.0
-margin_right = 336.0
-margin_bottom = 140.0
-
 [node name="TitleLabel" type="Label" parent="."]
 anchor_right = 1.0
 margin_bottom = 31.0
@@ -224,10 +203,28 @@ margin_right = -1520.0
 text = "退出"
 
 [node name="BroadcastTimer" type="Timer" parent="."]
-autostart = true
 __meta__ = {
 "_editor_description_": "定时广播大厅信息"
 }
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 144.0
+margin_top = 168.0
+margin_right = 480.0
+margin_bottom = 768.0
+color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[node name="PlayerListLabel" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_bottom = 40.0
+text = "未就绪玩家列表"
+align = 1
+
+[node name="PlayerContainer" type="VBoxContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 56.0
+custom_constants/separation = 10
 
 [connection signal="item_selected" from="OptionContainer/PlayerNumContainer/PlayerNumBtn" to="." method="_on_change_num"]
 [connection signal="button_down" from="ExitButton" to="." method="_on_exit_prepare"]

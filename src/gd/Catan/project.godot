@@ -19,17 +19,19 @@ config/icon="res://icon.png"
 [autoload]
 
 NetDefines="*res://network/net_defines.gd"
-SceneMgr="*res://common/scene_mgr.gd"
 Protocol="*res://network/protocol.gd"
+SceneMgr="*res://common/scene_mgr.gd"
+PlayerInfoMgr="*res://common/player_info_mgr.gd"
 PlayerConfig="*res://common/player_config.gd"
 GameServer="*res://network/game_server.gd"
+Data="*res://common/data.gd"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_height"
 
 [global]
 
