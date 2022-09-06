@@ -27,43 +27,51 @@ stretch_mode = 1
 
 [node name="TitleLabel" type="Label" parent="."]
 anchor_left = 0.5
+anchor_top = 0.202
 anchor_right = 0.5
-margin_left = -144.0
-margin_top = 176.0
-margin_right = 156.0
-margin_bottom = 276.0
+anchor_bottom = 0.202
+margin_left = -152.0
+margin_top = -50.16
+margin_right = 148.0
+margin_bottom = 49.84
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "卡坦岛"
+align = 1
+valign = 1
 
 [node name="StartGameBtn" type="Button" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 192.0
-margin_top = -504.0
-margin_right = 448.0
-margin_bottom = -440.0
+anchor_left = 0.1
+anchor_top = 0.533333
+anchor_right = 0.233333
+anchor_bottom = 0.592593
 text = "开始游戏"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="CharacterBtn" type="Button" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 192.0
-margin_top = -376.0
-margin_right = 448.0
-margin_bottom = -312.0
+anchor_left = 0.1
+anchor_top = 0.651852
+anchor_right = 0.233333
+anchor_bottom = 0.711111
 text = "角色信息"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="ExitBtn" type="Button" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 192.0
-margin_top = -248.0
-margin_right = 448.0
-margin_bottom = -184.0
+anchor_left = 0.1
+anchor_top = 0.77037
+anchor_right = 0.233333
+anchor_bottom = 0.82963
+margin_bottom = 6.10352e-05
 text = "退出游戏"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [connection signal="button_down" from="StartGameBtn" to="." method="_on_start_game"]
 [connection signal="button_down" from="CharacterBtn" to="." method="_on_edit_character_info"]
