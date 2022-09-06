@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/OPPOSans-B.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://lobby/prepare_lobby.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/tiles/hill.png" type="Texture" id=7]
 [ext_resource path="res://assets/tiles/mountain.png" type="Texture" id=8]
 [ext_resource path="res://assets/tiles/ocean.png" type="Texture" id=9]
+[ext_resource path="res://lobby/player_seat.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "pasture.png 0"
@@ -124,6 +125,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="BgMap" type="TileMap" parent="."]
+visible = false
 position = Vector2( -15, 60 )
 scale = Vector2( 0.75, 0.75 )
 tile_set = SubResource( 1 )
@@ -133,34 +135,39 @@ format = 1
 tile_data = PoolIntArray( 196623, 2, 0, 196625, 4, 0, 262158, 0, 0, 262160, 1, 0, 262162, 3, 0, 327695, 5, 0, 327697, 6, 0 )
 
 [node name="OptionContainer" type="VBoxContainer" parent="."]
-margin_left = 1248.0
-margin_top = 168.0
-margin_right = 1816.0
-margin_bottom = 768.0
+anchor_left = 0.65
+anchor_top = 0.155556
+anchor_right = 0.945833
+anchor_bottom = 0.711111
 custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="OptionLabel" type="Label" parent="OptionContainer"]
-margin_right = 568.0
+margin_right = 567.0
 margin_bottom = 40.0
 text = "参数设置"
 align = 1
 
 [node name="PlayerNumContainer" type="HBoxContainer" parent="OptionContainer"]
 margin_top = 90.0
-margin_right = 568.0
+margin_right = 567.0
 margin_bottom = 136.0
 
-[node name="PlayerNumLabel" type="Label" parent="OptionContainer/PlayerNumContainer"]
+[node name="Label" type="Label" parent="OptionContainer/PlayerNumContainer"]
 margin_top = 3.0
-margin_right = 188.0
+margin_right = 187.0
 margin_bottom = 43.0
+hint_tooltip = "参加游戏的人数范围"
+mouse_filter = 0
 size_flags_horizontal = 3
 text = "玩家人数: "
 align = 1
 
-[node name="PlayerNumBtn" type="OptionButton" parent="OptionContainer/PlayerNumContainer"]
-margin_left = 192.0
-margin_right = 568.0
+[node name="Btn" type="OptionButton" parent="OptionContainer/PlayerNumContainer"]
+margin_left = 191.0
+margin_right = 567.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -169,64 +176,138 @@ align = 1
 
 [node name="FogContainer" type="HBoxContainer" parent="OptionContainer"]
 margin_top = 186.0
-margin_right = 568.0
-margin_bottom = 234.0
+margin_right = 567.0
+margin_bottom = 232.0
 
-[node name="FogLabel" type="Label" parent="OptionContainer/FogContainer"]
-margin_top = 4.0
-margin_right = 188.0
-margin_bottom = 44.0
+[node name="Label" type="Label" parent="OptionContainer/FogContainer"]
+margin_top = 3.0
+margin_right = 187.0
+margin_bottom = 43.0
+hint_tooltip = "开启迷雾后在初始阶段无法看到每个地块上的点数"
+mouse_filter = 0
 size_flags_horizontal = 3
 text = "开启迷雾: "
 align = 1
 
-[node name="FogCheckBtn" type="CheckButton" parent="OptionContainer/FogContainer"]
-margin_left = 192.0
-margin_right = 568.0
-margin_bottom = 48.0
+[node name="Btn" type="OptionButton" parent="OptionContainer/FogContainer"]
+margin_left = 191.0
+margin_right = 567.0
+margin_bottom = 46.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+text = "关闭"
+align = 1
+
+[node name="RandResourceContainer" type="HBoxContainer" parent="OptionContainer"]
+margin_top = 282.0
+margin_right = 567.0
+margin_bottom = 328.0
+
+[node name="Label" type="Label" parent="OptionContainer/RandResourceContainer"]
+margin_top = 3.0
+margin_right = 187.0
+margin_bottom = 43.0
+hint_tooltip = "随机两种资源地块的数量会更少"
+mouse_filter = 0
+size_flags_horizontal = 3
+text = "随机资源:"
+align = 1
+
+[node name="Btn" type="OptionButton" parent="OptionContainer/RandResourceContainer"]
+margin_left = 191.0
+margin_right = 567.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "关闭"
+align = 1
+
+[node name="RandSeatContainer" type="HBoxContainer" parent="OptionContainer"]
+margin_top = 378.0
+margin_right = 567.0
+margin_bottom = 424.0
+
+[node name="Label" type="Label" parent="OptionContainer/RandSeatContainer"]
+margin_top = 3.0
+margin_right = 187.0
+margin_bottom = 43.0
+hint_tooltip = "所有玩家将以随机的顺序开始游戏"
+mouse_filter = 0
+size_flags_horizontal = 3
+text = "随机顺序:"
+align = 1
+
+[node name="Btn" type="OptionButton" parent="OptionContainer/RandSeatContainer"]
+margin_left = 191.0
+margin_right = 567.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+align = 1
 
 [node name="TitleLabel" type="Label" parent="."]
 anchor_right = 1.0
-margin_bottom = 31.0
+anchor_bottom = 0.0740741
+margin_bottom = -49.0
 custom_fonts/font = SubResource( 2 )
 text = "准备大厅"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="ExitButton" type="Button" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
+anchor_top = 0.911111
+anchor_right = 0.208333
 anchor_bottom = 1.0
-margin_top = -96.0
-margin_right = -1520.0
 text = "退出"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="BroadcastTimer" type="Timer" parent="."]
 __meta__ = {
 "_editor_description_": "定时广播大厅信息"
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 144.0
-margin_top = 168.0
-margin_right = 480.0
-margin_bottom = 768.0
+[node name="PlayerBg" type="ColorRect" parent="."]
+anchor_left = 0.075
+anchor_top = 0.22963
+anchor_right = 0.25
+anchor_bottom = 0.785185
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
 
-[node name="PlayerListLabel" type="Label" parent="ColorRect"]
+[node name="PlayerListLabel" type="Label" parent="PlayerBg"]
 anchor_right = 1.0
 margin_bottom = 40.0
 text = "未就绪玩家列表"
 align = 1
 
-[node name="PlayerContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="PlayerContainer" type="VBoxContainer" parent="PlayerBg"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 56.0
 custom_constants/separation = 10
 
-[connection signal="item_selected" from="OptionContainer/PlayerNumContainer/PlayerNumBtn" to="." method="_on_change_num"]
-[connection signal="toggled" from="OptionContainer/FogContainer/FogCheckBtn" to="." method="_on_change_fog"]
+[node name="PlayerSeat" parent="PlayerBg" instance=ExtResource( 10 )]
+margin_left = 744.0
+margin_top = 432.0
+margin_right = 408.0
+margin_bottom = -48.0005
+
+[node name="PlayerSeat" parent="." instance=ExtResource( 10 )]
+margin_left = 584.0
+margin_top = 248.0
+margin_right = -736.0
+margin_bottom = -232.0
+
+[connection signal="item_selected" from="OptionContainer/PlayerNumContainer/Btn" to="." method="_on_change_num"]
+[connection signal="item_selected" from="OptionContainer/FogContainer/Btn" to="." method="_on_change_fog"]
+[connection signal="item_selected" from="OptionContainer/RandResourceContainer/Btn" to="." method="_on_change_fog"]
+[connection signal="item_selected" from="OptionContainer/RandSeatContainer/Btn" to="." method="_on_change_fog"]
 [connection signal="button_down" from="ExitButton" to="." method="_on_exit_prepare"]
 [connection signal="timeout" from="BroadcastTimer" to="." method="_on_broadcast"]

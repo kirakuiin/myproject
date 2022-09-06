@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://player/player_icon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/images/hex_ocean.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/wooden.png" type="Texture" id=3]
+
+[node name="PlayerSeat" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1112.0
+margin_bottom = -264.0
+rect_clip_content = true
+
+[node name="TableRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="OceanRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Seat1" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.51
+anchor_right = 0.51
+anchor_bottom = 0.0
+margin_left = -67.3334
+margin_right = 67.3333
+margin_bottom = 136.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+player_color = Color( 1, 0, 0, 1 )
+order_num = 1
+
+[node name="Seat2" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.96
+anchor_top = 0.206
+anchor_right = 0.96
+anchor_bottom = 0.206
+margin_left = -129.28
+margin_top = -4.89601
+margin_right = 5.3866
+margin_bottom = 131.104
+__meta__ = {
+"_edit_use_anchors_": true
+}
+player_color = Color( 1, 0.498039, 0, 1 )
+order_num = 2
+
+[node name="Seat3" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.967
+anchor_top = 0.82
+anchor_right = 0.967
+anchor_bottom = 0.82
+margin_left = -134.936
+margin_top = -136.0
+margin_right = -0.269409
+margin_bottom = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+player_color = Color( 1, 1, 0, 1 )
+order_num = 3
+
+[node name="Seat4" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.515314
+anchor_top = 1.0
+anchor_right = 0.515314
+margin_left = -71.3734
+margin_top = -136.0
+margin_right = 63.2933
+margin_bottom = -6.10352e-05
+__meta__ = {
+"_edit_use_anchors_": true
+}
+player_color = Color( 0, 1, 0, 1 )
+order_num = 4
+
+[node name="Seat5" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.04
+anchor_top = 0.82
+anchor_right = 0.04
+anchor_bottom = 0.82
+margin_top = -136.0
+margin_right = 134.667
+margin_bottom = -6.10352e-05
+__meta__ = {
+"_edit_use_anchors_": true
+}
+player_color = Color( 0, 0, 1, 1 )
+order_num = 5
+
+[node name="Seat6" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.04
+anchor_top = 0.2
+anchor_right = 0.04
+anchor_bottom = 0.2
+margin_right = 134.667
+margin_bottom = 136.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+player_color = Color( 0.501961, 0, 1, 1 )
+order_num = 6

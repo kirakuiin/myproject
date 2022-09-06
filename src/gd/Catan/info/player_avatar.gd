@@ -7,14 +7,14 @@ var _params = null
 
 
 func set_icon(icon_path: String):
-    $ColorRect/TextureButton.texture_normal = ResourceLoader.load(icon_path)
+	$PlayerBg/TextureButton.texture_normal = ResourceLoader.load(icon_path)
 
 
 func set_button_cb(callback: FuncRef, params=null):
-    _callback = callback
-    _params = params
+	_callback = callback
+	_params = params
 
 
 func _on_button_down():
-    if _callback and _callback.is_valid():
-        _callback.call_func(_params)
+	if _callback and _callback.is_valid():
+		_callback.call_func(_params)
