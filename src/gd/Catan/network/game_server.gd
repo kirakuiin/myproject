@@ -1,119 +1,101 @@
 extends Node
 
 
-signal connection_failed()
-signal connection_succeeded()
-signal server_error()
+
+signal client_disconnected(peer_id)  # 客户端断开连接
+signal client_connected(player_info)  # 客户端成功连接
+
+signal server_refused()  # 服务器拒绝连接
+signal server_accepted()  # 服务器接受连接
+signal connection_failed() # 连接失败
 
 
 var peer = null
 
 
 func _ready():
-	get_tree().connect("network_peer_connected", self, "_on_player_connected")
-	get_tree().connect("network_peer_disconnected", self,"_on_player_disconnected")
-	get_tree().connect("connected_to_server", self, "_on_connected_ok")
-	get_tree().connect("connection_failed", self, "_on_connected_fail")
-	get_tree().connect("server_disconnected", self, "_on_server_disconnected")
+    get_tree().connect("network_peer_connected", self, "_on_player_connected")
+    get_tree().connect("network_peer_disconnected", self,"_on_player_disconnected")
+    get_tree().connect("connection_failed", self, "_on_connected_fail")
+    get_tree().connect("server_disconnected", self, "_on_server_disconnected")
 
 
 # 广播数据
 static func broadcast(data) -> PacketPeerUDP:
-	var client = PacketPeerUDP.new()
-	client.set_broadcast_enabled(true)
-	client.set_dest_address(NetDefines.BROADCAST_ADDR, NetDefines.BROAD_PORT)
-	client.put_var(data)
-	return client
+    var client = PacketPeerUDP.new()
+    client.set_broadcast_enabled(true)
+    client.set_dest_address(NetDefines.BROADCAST_ADDR, NetDefines.BROAD_PORT)
+    client.put_var(data)
+    return client
 
 
 # 创建主机
 func host_game():
-	peer = NetworkedMultiplayerENet.new()
-	peer.create_server(NetDefines.GAME_PORT, NetDefines.MAX_PEER)
-	get_tree().set_network_peer(peer)
-	PlayerInfoMgr.add_player_info(Protocol.create_player_info_by_id(get_peer_id()))
+    peer = NetworkedMultiplayerENet.new()
+    peer.create_server(NetDefines.GAME_PORT, NetDefines.MAX_PEER)
+    get_tree().set_network_peer(peer)
+    PlayerInfoMgr.add_player_info(Protocol.create_player_info_by_id(get_peer_id()))
 
 
 # 加入主机
 func join_game(ip: String):
-	peer = NetworkedMultiplayerENet.new()
-	peer.create_client(ip, NetDefines.GAME_PORT)
-	get_tree().set_network_peer(peer)
-	PlayerInfoMgr.add_player_info(Protocol.create_player_info_by_id(get_peer_id()))
+    peer = NetworkedMultiplayerENet.new()
+    peer.create_client(ip, NetDefines.GAME_PORT)
+    get_tree().set_network_peer(peer)
+    PlayerInfoMgr.add_player_info(Protocol.create_player_info_by_id(get_peer_id()))
 
 
 # 关闭连接
 func close_game():
-	if peer:
-		peer.close_connection()
-		PlayerInfoMgr.reset()
-
-
-# 发出玩家相关信号
-func emit_player(signal_name: String, player_info: Protocol.PlayerInfo):
-	emit_signal(signal_name, player_info)
+    if peer:
+        peer.close_connection()
+        PlayerInfoMgr.reset()
 
 
 # 判断是否为服务器
 func is_server() -> bool:
-	return get_tree().is_network_server()
+    return get_tree().is_network_server()
 
 
 # 获得自身peer id
 func get_peer_id() -> int:
-	return get_tree().get_network_unique_id()
+    return get_tree().get_network_unique_id()
 
 
-# 同步玩家信息
-remote func sync_player_info():
-	var info = Protocol.PlayerInfo.new(PlayerConfig.get_player_name(),
-			get_tree().get_network_unique_id(), PlayerConfig.get_icon_id())
-	rpc("register_player_info", Protocol.serialize(info))
+# 发送自身信息
+puppet func send_player_info_to_server():
+    rpc("check_player_info", Protocol.serialize(PlayerInfoMgr.get_self_info()))
 
 
-remote func register_player_info(net_data):
-	PlayerInfoMgr.add_player_info(Protocol.deserialize(net_data))
+# 服务器同意连接
+puppet func server_accept():
+    emit_signal("server_accepted")
 
 
-remotesync func remove_player_info(player_id):
-	PlayerInfoMgr.remove_player_by_id(player_id)
+# 检查客户端信息
+master func check_player_info(net_data):
+    var player_info = Protocol.deserialize(net_data) as Protocol.PlayerInfo
+    if GameState.is_accept_connection(player_info):
+        emit_signal("client_connected", player_info)
+        rpc_id(player_info.peer_id, "server_accept")
+    else:
+        peer.disconnect_peer(player_info.peer_id)
 
-
-# 请求其他玩家信息
-master func request_all_player_info(client_id):
-	var data = Protocol.serialize(PlayerInfoMgr.get_all_info())
-	rpc_id(client_id, "recv_all_player_info", data)
-
-
-remote func recv_all_player_info(net_datas: Array):
-	var info_list = Protocol.deserialize(net_datas)
-	for player_info in info_list:
-		PlayerInfoMgr.add_player_info(player_info)
-
-# all
+# all recv
 func _on_player_connected(id):
-	if is_server():
-		rpc_id(id, "sync_player_info")
-	elif id == NetDefines.SERVER_ID:
-		rpc_id(id, "request_all_player_info", get_tree().get_network_unique_id())
+    if is_server():
+        rpc_id(id, "send_player_info_to_server")
 
 
 func _on_player_disconnected(id):
-	rpc("remove_player_info", id)
+    emit_signal("client_disconnected", id)
 
 
-# clients only
-func _on_connected_ok():
-	emit_signal("connection_succeeded")
-
-
+# clients recv only
 func _on_server_disconnected():
-	PlayerInfoMgr.reset()
-	emit_signal("server_error")
+    emit_signal("server_refused")
 
 
 func _on_connected_fail():
-	get_tree().set_network_peer(null)
-	emit_signal("connection_failed")
-
-
+    get_tree().set_network_peer(null)
+    emit_signal("connection_failed")

@@ -8,22 +8,62 @@ signal player_removed(player_info)
 var _info_dict: Dictionary = {}
 
 
+func _ready():
+    GameServer.connect("connection_failed", self, "_on_connection_failed")
+    GameServer.connect("server_refused", self, "_on_server_refused")
+    GameServer.connect("client_disconnected", self, "_on_client_disconnected")
+    GameServer.connect("client_connected", self, "_on_client_connected")
+
+
 func add_player_info(player_info: Protocol.PlayerInfo):
-	if not player_info.player_name in _info_dict:
-		_info_dict[player_info.player_name] = player_info
-		emit_signal("player_added", player_info)
+    if not player_info.player_name in _info_dict:
+        _info_dict[player_info.player_name] = player_info
+        emit_signal("player_added", player_info)
 
 
-func remove_player_by_id(id):
-	for player_info in Array(_info_dict.values()):
-		if player_info.peer_id == id:
-			_info_dict.erase(player_info.player_name)
-			emit_signal("player_removed", player_info)
+func remove_player_by_id(id: int):
+    for player_info in Array(_info_dict.values()):
+        if player_info.peer_id == id:
+            _info_dict.erase(player_info.player_name)
+            emit_signal("player_removed", player_info)
+
+
+func get_self_info() -> Protocol.PlayerInfo:
+    return _info_dict[PlayerConfig.get_player_name()]
 
 
 func get_all_info() -> Array:
-	return _info_dict.values()
+    return _info_dict.values()
 
 
 func reset():
-	_info_dict = {}
+    _info_dict = {}
+
+
+# client
+puppet func recv_all_player_info(net_datas: Array):
+    var info_list = Protocol.deserialize(net_datas)
+    for player_info in info_list:
+        add_player_info(player_info)
+
+
+# server
+func broadcast_player_info(player_info):
+    add_player_info(player_info)
+    rpc("recv_all_player_info", Protocol.serialize(get_all_info()))
+
+
+func _on_server_refused():
+    reset()
+
+
+func _on_client_disconnected(peer_id: int):
+    remove_player_by_id(peer_id)
+
+
+func _on_client_connected(player_info: Protocol.PlayerInfo):
+    broadcast_player_info(player_info)
+
+
+func _on_connection_failed():
+    reset()

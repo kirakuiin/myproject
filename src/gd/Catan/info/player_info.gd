@@ -6,44 +6,44 @@ var Avatar: PackedScene = preload("res://info/player_avatar.tscn")
 
 
 func _ready():
-	randomize()
-	_init_player_name()
-	_init_avatar()
-	_init_icon_grid_item()
-	$Panel/VBoxContainer/IconContainer/PlayerAvatar.set_button_cb(funcref(self, "_on_change_icon"))
+    randomize()
+    _init_player_name()
+    _init_avatar()
+    _init_icon_grid_item()
+    $Panel/VBoxContainer/IconContainer/PlayerAvatar.set_button_cb(funcref(self, "_on_change_icon"))
 
 
 func _init_player_name():
-	var name = PlayerConfig.get_player_name()
-	$Panel/VBoxContainer/NameContainer/NameEdit.text = name
+    var name = PlayerConfig.get_player_name()
+    $Panel/VBoxContainer/NameContainer/NameEdit.text = name
 
 
 func _init_avatar():
-	var icon = Data.icon_data[PlayerConfig.get_icon_id()]
-	$Panel/VBoxContainer/IconContainer/PlayerAvatar.set_icon(icon)
+    var icon = Data.icon_data[PlayerConfig.get_icon_id()]
+    $Panel/VBoxContainer/IconContainer/PlayerAvatar.set_icon(icon)
 
 
 func _init_icon_grid_item():
-	for id in Data.icon_data:
-		var button = Avatar.instance()
-		button.set_icon(Data.icon_data[id])
-		button.set_button_cb(funcref(self, "_on_confirm_avatar"), id)
-		$IconSelectScroll/IconSelectContainer.add_child(button)
+    for id in Data.icon_data:
+        var button = Avatar.instance()
+        button.set_icon(Data.icon_data[id])
+        button.set_button_cb(funcref(self, "_on_confirm_avatar"), id)
+        $IconSelectScroll/IconSelectContainer.add_child(button)
 
 
 func _on_confirm():
-	SceneMgr.goto_scene(SceneMgr.MAIN_SCENE)
+    SceneMgr.goto_scene(SceneMgr.MAIN_SCENE)
 
 
 func _on_change_icon(id):
-	$IconSelectScroll.show()
+    $IconSelectScroll.show()
 
 
 func _on_confirm_avatar(icon_id: int):
-	$IconSelectScroll.hide()
-	$Panel/VBoxContainer/IconContainer/PlayerAvatar.set_icon(Data.icon_data[icon_id])
-	PlayerConfig.save_icon_id(icon_id)
+    $IconSelectScroll.hide()
+    $Panel/VBoxContainer/IconContainer/PlayerAvatar.set_icon(Data.icon_data[icon_id])
+    PlayerConfig.save_icon_id(icon_id)
 
 
 func _on_name_changed(new_text):
-	PlayerConfig.save_player_name(new_text)
+    PlayerConfig.save_player_name(new_text)
