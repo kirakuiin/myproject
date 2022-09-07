@@ -2,14 +2,15 @@ extends Node
 
 # 游戏状态管理
 
-var game_state: InnerStateInterface = PrepareState.new()  # 游戏状态
+var game_state: InnerStateInterface = null # 游戏状态
 
 
 func _ready():
-    GameServer.connect("connection_failed", self, "_on_connection_failed")
-    GameServer.connect("server_refused", self, "_on_server_refused")
+    GameServer.connect("server_disconnected", self, "_on_server_disconnected")
     GameServer.connect("client_disconnected", self, "_on_client_disconnected")
     GameServer.connect("client_connected", self, "_on_client_connected")
+    GameServer.connect("network_started", self, "_on_network_started")
+    GameServer.connect("network_ended", self, "_on_network_ended")
 
 
 # 切换至准备状态
@@ -27,17 +28,17 @@ func is_accept_connection(player_info: Protocol.PlayerInfo) -> bool:
     return game_state.is_accept_connection(player_info)
 
 
+# 设置最大连接数
 func set_max_conn(num: int):
-    game_state.set_max_conn(num)
-
-
-func set_cur_conn(num: int):
-    game_state.set_cur_conn(num)
+    game_state.max_conn = num
 
 
 # 内部状态
 class InnerStateInterface:
     extends Reference
+
+    var max_conn: int = 3
+    var cur_conn: int = 0
 
     func is_accept_connection(player_info: Protocol.PlayerInfo) -> bool:
         return true
@@ -45,30 +46,16 @@ class InnerStateInterface:
     func get_state() -> int:
         return 0
 
-    func set_max_conn(num: int):
-        pass
-
-    func set_cur_conn(num: int):
-        pass
 
 # 准备状态
 class PrepareState:
     extends InnerStateInterface
 
-    var _max_conn: int = 3
-    var _cur_conn: int = 0
-
     func is_accept_connection(player_info: Protocol.PlayerInfo) -> bool:
-        return _cur_conn < _max_conn
+        return cur_conn < max_conn
 
     func get_state() -> int:
         return Protocol.HostState.PREPARE
-
-    func set_max_conn(num: int):
-        _max_conn = num
-
-    func set_cur_conn(num: int):
-        _cur_conn = num
 
 
 # 游玩状态
@@ -87,17 +74,21 @@ class PlayingState:
         return Protocol.HostState.PLAYING
 
 
-func _on_server_refused():
-    to_prepare()
+func _on_server_disconnected():
+    game_state = null
 
 
 func _on_client_disconnected(peer_id: int):
-    pass
+    game_state.cur_conn -= 1
 
 
 func _on_client_connected(player_info: Protocol.PlayerInfo):
-    pass
+    game_state.cur_conn += 1
 
 
-func _on_connection_failed():
+func _on_network_started(peer_id: int):
     to_prepare()
+
+
+func _on_network_ended():
+    game_state = null

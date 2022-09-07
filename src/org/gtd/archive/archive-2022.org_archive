@@ -1003,3 +1003,82 @@ CLOCK: [2022-04-11 周一 13:43]--[2022-04-11 周一 14:08] =>  0:25
 
     
 * begin: <2022-08-01 周一>
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-09-06 周二 09:23
+  :ARCHIVE_FILE: ~/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 角色底部信息拆分                                            :m8:
+   CLOSED: [2022-08-15 周一 12:47] SCHEDULED: <2022-08-08 周一 11:10>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-15 周一 12:57
+   :END:
+** DONE [#A] 技能显示附加效用                                            :m8:
+   CLOSED: [2022-08-15 周一 12:47] SCHEDULED: <2022-08-10 周三 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-15 周一 12:57
+   :END:
+** DONE [#A] spine编辑器优化                                             :m8:
+   CLOSED: [2022-08-15 周一 12:47] SCHEDULED: <2022-08-11 周四 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-15 周一 12:57
+   :END:
+** DONE [#A] spine编辑器新增底部信息组件                                 :m8:
+   CLOSED: [2022-08-15 周一 12:47] SCHEDULED: <2022-08-11 周四 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-15 周一 12:57
+   :END:
+** DONE [#A] 修改checkbutton的onclick触发逻辑                            :3d:
+   CLOSED: [2022-08-15 周一 12:48] SCHEDULED: <2022-08-12 周五 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-15 周一 12:57
+   :END:
+** DONE [#A] ui编辑器兼容多边形控件                                      :m8:
+   CLOSED: [2022-08-15 周一 12:48] SCHEDULED: <2022-08-12 周五 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-15 周一 12:57
+   :END:
+** DONE [#A] 普通攻击支持蓝图替换功能                                    :m8:
+   CLOSED: [2022-08-15 周一 12:48] SCHEDULED: <2022-08-12 周五 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-15 周一 12:57
+   :END:
+** DONE [#A] 战场法宝灵力上限支持变化                                    :m8:
+   CLOSED: [2022-08-17 周三 09:41] SCHEDULED: <2022-08-15 周一 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-20 周六 17:16
+   :END:
+** DONE [#A] 支持饼状图控件                                              :m8:
+   CLOSED: [2022-08-17 周三 09:49]
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-20 周六 17:16
+   :END:
+** DONE [#A] 支持自定义法宝奖励显示                                      :m8:
+   CLOSED: [2022-08-17 周三 09:49] SCHEDULED: <2022-08-17 周三 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-20 周六 17:16
+   :END:
+** DONE [#A] 战斗日志编辑器增加时间统计模块                              :m8:
+   CLOSED: [2022-08-20 周六 17:12] SCHEDULED: <2022-08-15 周一 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-20 周六 17:16
+   :END:
+** DONE [#A] 战斗日志增加时间轴浏览                                      :m8:
+   CLOSED: [2022-08-27 周六 18:18] SCHEDULED: <2022-08-22 周一 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-27 周六 18:22
+   :END:
+** DONE [#A] 战斗状态栏支持一键展开                                      :m8:
+   CLOSED: [2022-08-27 周六 18:18] SCHEDULED: <2022-08-26 周五 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-08-27 周六 18:22
+   :END:
+** DONE [#A] 战斗中支持显示法宝信息                                      :m8:
+   CLOSED: [2022-09-06 周二 09:21] SCHEDULED: <2022-09-02 周五 09:20>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-09-06 周二 09:21
+   :END:
+   
+* begin: <2022-09-01 周四>

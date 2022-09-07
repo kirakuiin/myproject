@@ -10,9 +10,11 @@ var _info_dict: Dictionary = {}
 
 func _ready():
     GameServer.connect("connection_failed", self, "_on_connection_failed")
-    GameServer.connect("server_refused", self, "_on_server_refused")
+    GameServer.connect("server_disconnected", self, "_on_server_disconnected")
     GameServer.connect("client_disconnected", self, "_on_client_disconnected")
     GameServer.connect("client_connected", self, "_on_client_connected")
+    GameServer.connect("network_started", self, "_on_network_started")
+    GameServer.connect("network_ended", self, "_on_network_ended")
 
 
 func add_player_info(player_info: Protocol.PlayerInfo):
@@ -22,7 +24,7 @@ func add_player_info(player_info: Protocol.PlayerInfo):
 
 
 func remove_player_by_id(id: int):
-    for player_info in Array(_info_dict.values()):
+    for player_info in _info_dict.values():
         if player_info.peer_id == id:
             _info_dict.erase(player_info.player_name)
             emit_signal("player_removed", player_info)
@@ -34,6 +36,10 @@ func get_self_info() -> Protocol.PlayerInfo:
 
 func get_all_info() -> Array:
     return _info_dict.values()
+
+
+func get_info(name: String) -> Protocol.PlayerInfo:
+    return _info_dict[name]
 
 
 func reset():
@@ -53,7 +59,7 @@ func broadcast_player_info(player_info):
     rpc("recv_all_player_info", Protocol.serialize(get_all_info()))
 
 
-func _on_server_refused():
+func _on_server_disconnected():
     reset()
 
 
@@ -66,4 +72,12 @@ func _on_client_connected(player_info: Protocol.PlayerInfo):
 
 
 func _on_connection_failed():
+    reset()
+
+
+func _on_network_started(peer_id: int):
+    add_player_info(Protocol.create_player_info_by_id(peer_id))
+
+
+func _on_network_ended():
     reset()

@@ -39,6 +39,8 @@ static func get_cls(cls_name) -> ProtocolData:
     var map = {
         "HostInfo": HostInfo,
         "PlayerInfo": PlayerInfo,
+        "CatanSetupInfo": CatanSetupInfo,
+        "PlayerOrderInfo": PlayerOrderInfo,
     }
     return map[cls_name]
 
@@ -117,3 +119,42 @@ class PlayerInfo:
 # 创建玩家数据
 static func create_player_info_by_id(peer_id: int) -> PlayerInfo:
     return PlayerInfo.new(PlayerConfig.get_player_name(), peer_id, PlayerConfig.get_icon_id())
+
+
+# 卡坦岛设置信息
+class CatanSetupInfo:
+    extends ProtocolData
+
+    var catan_size: int
+    var is_enable_fog: bool
+    var is_random_land: bool
+    var is_random_order: bool
+    var is_random_resource: bool
+
+    func _init(size=Data.CatanSize.SMALL, fog=false, land=false, order=false, resource=false):
+        cls_name = "CatanSetupInfo"
+        catan_size = size
+        is_enable_fog = fog
+        is_random_land = land
+        is_random_order = order
+        is_random_resource = resource
+
+
+# 玩家顺序信息
+class PlayerOrderInfo:
+    extends ProtocolData
+
+    var order_to_name: Dictionary
+
+    func _init():
+        cls_name = "PlayerOrderInfo"
+        order_to_name = {}
+
+    func get_order(name: String) -> int:
+        for order in order_to_name:
+            if order_to_name[order] == name:
+                return order
+        return -1
+
+    func get_name(order: int) -> String:
+        return order_to_name.get(order, "")

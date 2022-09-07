@@ -27,6 +27,11 @@ PlayerConfig="*res://common/player_config.gd"
 PlayerInfoMgr="*res://common/player_info_mgr.gd"
 GameState="*res://game/game_state.gd"
 
+[debug]
+
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1920
