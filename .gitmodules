@@ -7,3 +7,6 @@
 [submodule "src/emacs/cemacs"]
 	path = src/emacs/cemacs
 	url = git@github.com:kirakuiin/cemacs.git
+[submodule "src/gd/Catan"]
+	path = src/gd/Catan
+	url = https://github.com/kirakuiin/Catan
