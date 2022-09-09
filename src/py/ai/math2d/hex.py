@@ -56,8 +56,8 @@ class Hex(object):
         以30°(尖顶), 或0°(平顶)的角作为起点, 逆时针排列
         @return: list[Corner]
         """
-        return [Corner(self.q+1, self.r, self.s), Corner(self.q, self.r, self.s-1), Corner(self.q, self.r+1, self.s),
-                Corner(self.q-1, self.r, self.s), Corner(self.q, self.r, self.s+1), Corner(self.q, self.r-1, self.s)]
+        return [Corner(self.q+1, self.r, self.s), Corner(self.q, self.r-1, self.s), Corner(self.q, self.r, self.s+1),
+                Corner(self.q-1, self.r, self.s), Corner(self.q, self.r+1, self.s), Corner(self.q, self.r, self.s-1)]
 
     def get_corner_index(self, corner) -> int:
         """返回顶点位于网格的下标, 以30°(尖顶), 或0°(平顶)的角作为起点
@@ -121,7 +121,7 @@ class Corner(object):
         @return: list[Hex]
         """
         if self.type == self.TYPE_POSITIVE:
-            return [Hex(self.q-1, self.r, self.s), Hex(self.q, self.r-1, self.s), Hex(self.q, self.r, self.s-1)]
+            return [Hex(self.q, self.r, self.s-1), Hex(self.q-1, self.r, self.s), Hex(self.q, self.r-1, self.s)]
         else:
             return [Hex(self.q+1, self.r, self.s), Hex(self.q, self.r+1, self.s), Hex(self.q, self.r, self.s+1)]
 
@@ -132,10 +132,10 @@ class Corner(object):
         """
         if self.type == self.TYPE_POSITIVE:
             return [Corner(self.q, self.r-1, self.s-1),
-                    Corner(self.q-1, self.r, self.s-1), Corner(self.q-1, self.r-1, self.s)]
+                    Corner(self.q-1, self.r-1, self.s), Corner(self.q-1, self.r, self.s-1)]
         else:
-            return [Corner(self.q+1, self.r+1, self.s), Corner(self.q, self.r+1, self.s+1),
-                    Corner(self.q+1, self.r, self.s+1)]
+            return [Corner(self.q+1, self.r+1, self.s), Corner(self.q+1, self.r, self.s+1),
+                    Corner(self.q, self.r+1, self.s+1)]
 
 
 class Side(object):
@@ -150,9 +150,9 @@ class Side(object):
 Orientation = collections.namedtuple("Orientation", ["f0", "f1", "f2", "f3", "b0", "b1", "b2", "b3", "start_angle"])
 
 # 尖顶六边形
-Pointy = Orientation(math.sqrt(3), math.sqrt(3)/2, 0, 3/2, math.sqrt(3)/3, -1/3, 0, 2/3, 30)
+Pointy = Orientation(math.sqrt(3), math.sqrt(3)/2, 0, -3/2, math.sqrt(3)/3, 1/3, 0, -2/3, 30)
 # 平顶六边形
-Flat = Orientation(3/2, 0, math.sqrt(3)/2, math.sqrt(3), 2/3, 0, -1/3, math.sqrt(3)/3, 0)
+Flat = Orientation(3/2, 0, -math.sqrt(3)/2, -math.sqrt(3), 2/3, 0, -1/3, -math.sqrt(3)/3, 0)
 
 
 class HexLayout(object):
@@ -188,8 +188,8 @@ def corner_to_pixel(layout: HexLayout, coord: Corner):
     index = base_hex.get_corner_index(coord)
     angle = math.radians(layout.orientation.start_angle + index*60)
     offset = vector(layout.size[0]*math.cos(angle), layout.size[1]*math.sin(angle))
-    print(offset)
-    return hex_to_pixel(layout, base_hex)+offset
+    center = hex_to_pixel(layout, base_hex)
+    return center+offset
 
 
 def get_hex_corner_pixel(layout:HexLayout, coord: Hex) -> list:
@@ -200,8 +200,6 @@ def get_hex_corner_pixel(layout:HexLayout, coord: Hex) -> list:
     @return:
     """
     result = []
-    print(coord)
     for corner in coord.get_all_corner():
-        print(corner)
         result.append(corner_to_pixel(layout, corner))
     return result

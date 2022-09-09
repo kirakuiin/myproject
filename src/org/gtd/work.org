@@ -198,6 +198,8 @@ SCHEDULED: <2022-09-10 周六 18:00 ++1w> DEADLINE: <2022-09-12 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
+** DONE [#A] 实现战斗录像功能                                          :m8:
+CLOSED: [2022-09-09 周五 19:58] SCHEDULED: <2022-09-05 周一 00:00>
 * Project
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
