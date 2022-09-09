@@ -14,8 +14,8 @@ class HexGrid(case.Case):
     def init_case(self):
         self._layout = math2d.HexLayout(math2d.vector(30, 30), math2d.position(400, 400))
         self._grid = [
-            math2d.Hex(0, 0, 0), math2d.Hex(1, -1, 0), math2d.Hex(-1, 1, 0), math2d.Hex(-1, 0, 1),
-            math2d.Hex(1, 0, -1), math2d.Hex(0, 1, -1), math2d.Hex(0, -1, 1)
+            math2d.Hex(0, 0, 0), #math2d.Hex(1, -1, 0), math2d.Hex(-1, 1, 0), math2d.Hex(-1, 0, 1),
+            #math2d.Hex(1, 0, -1), math2d.Hex(0, 1, -1), math2d.Hex(0, -1, 1)
         ]
         self._lines = []
         for hex in self._grid:

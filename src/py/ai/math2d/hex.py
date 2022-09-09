@@ -21,22 +21,22 @@ class Hex(object):
         self._s = s
 
     def __repr__(self):
-        return '{}({}, {}, {})'.format(self.__class__.__name__, self._q, self._r, self._s)
+        return '{}({}, {}, {})'.format(self.__class__.__name__, self.q, self.r, self.s)
 
     def __add__(self, other):
-        return Hex(self._q + other._q, self._r + other._r, self._s + other._s)
+        return Hex(self.q + other.q, self.r + other.r, self.s + other.s)
 
     def __sub__(self, other):
-        return Hex(self._q - other._q, self._r - other._r, self._s - other._s)
+        return Hex(self.q - other.q, self.r - other.r, self.s - other.s)
 
     def __mul__(self, other):
-        return Hex(self._q * other, self._r * other, self._s * other)
+        return Hex(self.q * other, self.r * other, self.s * other)
 
     def __rmul__(self, other):
         return self*other
 
     def __eq__(self, other):
-        return self._q == other._q and self._r == other._r and self._s == other._s
+        return self.q == other.q and self.r == other.r and self.s == other.s
 
     @property
     def q(self):
@@ -53,11 +53,19 @@ class Hex(object):
     def get_all_corner(self) -> list:
         """返回六个顶点
 
+        以30°(尖顶), 或0°(平顶)的角作为起点, 逆时针排列
         @return: list[Corner]
         """
-        return [ Corner(self._q, self._r-1, self._s), Corner(self._q+1, self._r, self._s),
-                 Corner(self._q, self._r, self._s-1), Corner(self._q, self._r+1, self._s),
-                 Corner(self._q-1, self._r, self._s), Corner(self._q-1, self._r, self._s+1) ]
+        return [Corner(self.q+1, self.r, self.s), Corner(self.q, self.r, self.s-1), Corner(self.q, self.r+1, self.s),
+                Corner(self.q-1, self.r, self.s), Corner(self.q, self.r, self.s+1), Corner(self.q, self.r-1, self.s)]
+
+    def get_corner_index(self, corner) -> int:
+        """返回顶点位于网格的下标, 以30°(尖顶), 或0°(平顶)的角作为起点
+
+        @return:
+        """
+        assert corner in self.get_all_corner(), "此顶点的不是六边形的顶点"
+        return self.get_all_corner().index(corner)
 
 
 def hex_distance(hex_a: Hex, hex_b: Hex) -> int:
@@ -67,8 +75,8 @@ def hex_distance(hex_a: Hex, hex_b: Hex) -> int:
     @param hex_b:
     @return:
     """
-    hex = hex_a-hex_b
-    return (abs(hex.q) + abs(hex.r) + abs(hex.s)) // 2
+    new_hex = hex_a - hex_b
+    return (abs(new_hex.q) + abs(new_hex.r) + abs(new_hex.s)) // 2
 
 
 class Corner(object):
@@ -76,6 +84,9 @@ class Corner(object):
 
     每个角最多被三个六边形共享
     """
+    TYPE_POSITIVE = 1  # 总和为1
+    TYPE_NEGATIVE = -1  # 总和为-1
+
     def __init__(self, q, r, s):
         assert abs(q+r+s) == 1, '顶点坐标总和绝对值必须为1'
         self._q = q
@@ -83,10 +94,10 @@ class Corner(object):
         self._s = s
 
     def __repr__(self):
-        return '{}({}, {}, {})'.format(self.__class__.__name__, self._q, self._r, self._s)
+        return '{}({}, {}, {})'.format(self.__class__.__name__, self.q, self.r, self.s)
 
     def __eq__(self, other):
-        return self._q == other._q and self._r == other._r and self._s == other._s
+        return self.q == other.q and self.r == other.r and self.s == other.s
 
     @property
     def q(self):
@@ -100,6 +111,31 @@ class Corner(object):
     def s(self):
         return self._s
 
+    @property
+    def type(self):
+        return self.TYPE_POSITIVE if sum([self.q, self.r, self.s]) == 1 else self.TYPE_NEGATIVE
+
+    def get_all_adjacency_hex(self) -> list:
+        """返回邻接的三个六边形坐标列表
+
+        @return: list[Hex]
+        """
+        if self.type == self.TYPE_POSITIVE:
+            return [Hex(self.q-1, self.r, self.s), Hex(self.q, self.r-1, self.s), Hex(self.q, self.r, self.s-1)]
+        else:
+            return [Hex(self.q+1, self.r, self.s), Hex(self.q, self.r+1, self.s), Hex(self.q, self.r, self.s+1)]
+
+    def get_all_adjacency_corner(self) -> list:
+        """获得邻接的三个顶点
+
+        @return: list[Corner]
+        """
+        if self.type == self.TYPE_POSITIVE:
+            return [Corner(self.q, self.r-1, self.s-1),
+                    Corner(self.q-1, self.r, self.s-1), Corner(self.q-1, self.r-1, self.s)]
+        else:
+            return [Corner(self.q+1, self.r+1, self.s), Corner(self.q, self.r+1, self.s+1),
+                    Corner(self.q+1, self.r, self.s+1)]
 
 
 class Side(object):
@@ -141,6 +177,21 @@ def hex_to_pixel(layout: HexLayout, coord: Hex) -> ndarray:
     return vector(x, y) + layout.origin
 
 
+def corner_to_pixel(layout: HexLayout, coord: Corner):
+    """将顶点坐标转化为屏幕坐标
+
+    @param layout:
+    @param coord:
+    @return:
+    """
+    base_hex = coord.get_all_adjacency_hex()[0]
+    index = base_hex.get_corner_index(coord)
+    angle = math.radians(layout.orientation.start_angle + index*60)
+    offset = vector(layout.size[0]*math.cos(angle), layout.size[1]*math.sin(angle))
+    print(offset)
+    return hex_to_pixel(layout, base_hex)+offset
+
+
 def get_hex_corner_pixel(layout:HexLayout, coord: Hex) -> list:
     """返回六边形所有的顶点坐标
 
@@ -149,9 +200,8 @@ def get_hex_corner_pixel(layout:HexLayout, coord: Hex) -> list:
     @return:
     """
     result = []
-    center = hex_to_pixel(layout, coord)
-    for i in range(6):
-        angle = math.radians(layout.orientation.start_angle + i*60)
-        offset = vector(layout.size[0]*math.cos(angle), layout.size[1]*math.sin(angle))
-        result.append(center+offset)
+    print(coord)
+    for corner in coord.get_all_corner():
+        print(corner)
+        result.append(corner_to_pixel(layout, corner))
     return result
