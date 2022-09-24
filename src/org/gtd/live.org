@@ -12,50 +12,38 @@
 
 * Inbox
 * Next Action
-** TODO [#A] 月度财务收支                                           :event:
-DEADLINE: <2022-08-12 周五 23:00 ++1m> SCHEDULED: <2022-08-12 周五 09:00 ++1m>
-:PROPERTIES:
-:LOGGING: DONE(@)
-:END:
-- State "DONE"       from "TODO"       [2022-07-18 周一 10:52] \\
-  house rent: 2000, shopping: 350, commute: 20, takeout: 335
-  total 2595
-- State "DONE"       from "TODO"       [2022-06-13 周一 09:31] \\
-  house rent: 2000, shopping: 100, commute: 20, fee: 204, takeout: 410
-  total 2732
-- State "DONE"       from "TODO"       [2022-05-17 周二 16:00] \\
-  house rent: 2000, game: 30, takeout: commute: 22, shopping: 2821, takeout: 707
-  total: 5580
-- State "DONE"       from "TODO"       [2022-04-11 周一 09:19] \\
-  house rent: 2000, game: 90, takeout: 727, fee: 218, shopping: 828, commute: 12, course: -1650
-  total: 5525
-- State "DONE"       from "TODO"       [2022-03-13 周日 08:57] \\
-| date         | purpose    | value |
-|--------------+------------+-------|
-| [2022-07-12] | house rent | -2000 |
-| [2022-07-17] | food       |  -147 |
-|              |            | -2147 |
-#+TBLFM: @>$3=vsum(@2$3..@-1$3)
-- State "DONE"       from "TODO"       [2022-02-10 周四 09:05] \\
-house rent: 2000, game: 445, takeout: 284, fee: 218, shopping: 1373, commute: 37
-total: 4357
-- State "DONE"       from "TODO"       [2021-10-12 周二 09:44] \\
-  1. 房租2000, 电费200(空调+电脑), 物业+水117, 网费100
-  2. 额外疏通水池下水管道50
-- State "DONE"       from "TODO"       [2021-06-13 周日 17:42] \\
-  1. 房租2000, 电费130(开了空调), 物业+水117, 办理了电信300m宽带(预付200)
-- State "DONE"       from "TODO"       [2021-04-10 周六 13:45] \\
-  1. 每个月通过大壮名城物业缴纳电费, 水+物业费. 今天水+物业费有103元的残余, 和房东约定这个月我来缴, 明年的4月份房东来缴纳.
-  2. 房间里的马桶坏了, 电磁炉可能坏了, 阳台灯坏了
-  3. 本月电费50, 物业+水103
-  4. 1+2(一个月房租+两个月押金) 6000
 ** TODO [#A] 归档并回顾一周的计划                                   :event:
-DEADLINE: <2022-09-12 周一 23:00 ++1w> SCHEDULED: <2022-09-10 周六 18:00 ++1w>
+DEADLINE: <2022-10-03 周一 23:00 ++1w> SCHEDULED: <2022-10-01 周六 18:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
 :LOGGING: logrepeat DONE(@)
-:LAST_REPEAT: [2022-09-03 周六 19:17]
+:LAST_REPEAT: [2022-09-24 周六 19:03]
 :END:
+- State "DONE"       from "TODO"       [2022-09-24 周六 19:03] \\
+  1. 接入实名认证系统
+  2. 处理json编码中文字符在ios上导致的错误
+  3. 修改部分战盟登陆的ui
+  -----------------------
+  1. 日日夜夜, 艰苦奋斗在开发卡坦岛的路上, 感觉完成50%了
+- State "DONE"       from "TODO"       [2022-09-19 周一 09:17] \\
+  1. 本地存储模块升级, 新增加密存储字段
+     - 通过将数据结构转为json字符串然后在使用md5加密
+     - 支持对元组的加密
+  2. 完成接入战盟审核系统的功能
+     - 支持战盟账号的注册, 登陆和切换
+  -----------------------
+  1. Catan稳步开发中...
+- State "DONE"       from "TODO"       [2022-09-13 周二 09:16] \\
+  1. 支持网络协议录制功能
+     - 通过gm指令来开关网络录制
+     - 录制的录像以文件的形式存放于network_records目录下
+  2. 支持录像播放器
+     - 播放时可以按需过滤需要处理的网络协议
+     - 支持对不同解包速率的模拟
+  3. 支持战斗录像播放
+     - 支持从网络协议录制导出的文件中播放战斗
+     - 播放按钮位于测试战斗的左上角
+  -----------------------
 - State "DONE"       from "TODO"       [2022-09-03 周六 19:17] \\
   1. 查找在手机上战斗受击时游戏掉帧的问题
      - 确定为击中时播放声音所致

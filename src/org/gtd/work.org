@@ -111,12 +111,16 @@ CLOCK: [2022-03-07 周一 17:25]--[2022-03-07 周一 17:50] =>  0:25
 CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
-** TODO [#A] 完成每周周报                                             :work:
-SCHEDULED: <2022-09-10 周六 18:00 ++1w> DEADLINE: <2022-09-12 周一 12:00 ++1w>
+** TODO [#A] 完成每周周报                                            :work:
+SCHEDULED: <2022-10-01 周六 18:00 ++1w> DEADLINE: <2022-10-03 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-09-05 周一 09:38]
+:LAST_REPEAT: [2022-09-24 周六 19:03]
 :END:
+- State "DONE"       from "TODO"       [2022-09-24 周六 19:03]
+- State "DONE"       from "TODO"       [2022-09-24 周六 19:03]
+- State "DONE"       from "TODO"       [2022-09-19 周一 09:20]
+- State "DONE"       from "TODO"       [2022-09-13 周二 09:16]
 - State "DONE"       from "TODO"       [2022-09-05 周一 09:38]
 - State "DONE"       from "TODO"       [2022-08-27 周六 18:22]
 - State "DONE"       from "TODO"       [2022-08-27 周六 18:18]
@@ -198,8 +202,22 @@ SCHEDULED: <2022-09-10 周六 18:00 ++1w> DEADLINE: <2022-09-12 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** DONE [#A] 实现战斗录像功能                                          :m8:
+** Archive                                                        :ARCHIVE:
+*** DONE [#A] 实现战斗录像功能                                         :m8:
 CLOSED: [2022-09-09 周五 19:58] SCHEDULED: <2022-09-05 周一 00:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-13 周二 09:26
+:END:
+*** DONE [#A] 接入战盟账号系统                                         :m8:
+CLOSED: [2022-09-19 周一 09:14] SCHEDULED: <2022-09-13 周二 09:27>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-19 周一 09:14
+:END:
+*** DONE [#A] 接入实名认证系统                                         :m8:
+CLOSED: [2022-09-24 周六 19:02] SCHEDULED: <2022-09-19 周一 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-24 周六 19:05
+:END:
 * Project
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
