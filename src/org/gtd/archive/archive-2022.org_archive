@@ -1082,3 +1082,204 @@ CLOCK: [2022-04-11 周一 13:43]--[2022-04-11 周一 14:08] =>  0:25
    :END:
    
 * begin: <2022-09-01 周四>
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-10-09 周日 16:59
+  :ARCHIVE_FILE: ~/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 实现协议录像功能                                           :m8:
+   CLOSED: [2022-09-09 周五 19:58] SCHEDULED: <2022-09-05 周一 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-09-13 周二 09:26
+   :END:
+** DONE [#A] 接入战盟账号系统                                            :m8:
+   CLOSED: [2022-09-19 周一 09:14] SCHEDULED: <2022-09-13 周二 09:27>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-09-19 周一 09:14
+   :END:
+** DONE [#A] 接入实名认证系统                                            :m8:
+   CLOSED: [2022-09-24 周六 19:02] SCHEDULED: <2022-09-19 周一 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-09-24 周六 19:05
+   :END:
+** DONE [#A] 接入防沉迷系统                                              :m8:
+   CLOSED: [2022-09-28 周三 19:55] SCHEDULED: <2022-09-26 周一 14:29>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-09-30 周五 17:27
+   :END:
+** DONE [#A] 英雄山关卡场景切换                                          :m8:
+   CLOSED: [2022-09-28 周三 19:55] SCHEDULED: <2022-09-27 周二 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-09-30 周五 17:27
+   :END:
+
+* begin: <2022-10-01 周六>
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-10-31 周一 11:45
+  :ARCHIVE_FILE: ~/org/gtd/live.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: live
+  :END:
+** DONE [#A] 吉他学习                                                 :event:
+   CLOSED: [2022-10-24 周一 09:12] SCHEDULED: <2022-09-18 周日 17:00>
+   :PROPERTIES:
+   :LAST_REPEAT: [2022-10-24 周一 09:12]
+   :ARCHIVE_TIME: 2022-10-24 周一 09:22
+   :END:
+- State "DONE"       from "TODO"       [2022-10-24 周一 09:12] \\
+  没把课程上完, 结束了
+- State "DONE"       from "TODO"       [2022-07-13 周三 19:45] \\
+  练习成都
+- State "DONE"       from "TODO"       [2022-06-13 周一 09:25] \\
+  am和弦练习, 虫儿飞练习
+- State "DONE"       from "TODO"       [2022-05-30 周一 09:12] \\
+  和弦转换, am和弦预习, 下次上课+10m
+- State "DONE"       from "TODO"       [2022-05-16 周一 13:12] \\
+  童年, 月亮代表我的心, 和弦
+- State "DONE"       from "TODO"       [2022-05-09 周一 09:33] \\
+  送别, 四季歌, 低音到高音音阶
+- State "DONE"       from "TODO"       [2022-04-18 周一 09:22] \\
+  爬格子, 音阶, 小星星, 生日快乐歌
+广州柿子音乐培训, 吉他弹唱课程12期(45分钟一对一), 每周日下午5点开始
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-10-31 周一 11:45
+  :ARCHIVE_FILE: ~/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#A] 权限申请                                                    :m8:
+   CLOSED: [2022-10-17 周一 10:48] SCHEDULED: <2022-09-26 周一 14:29>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-10-17 周一 10:58
+   :END:
+** DONE [#A] 支持角色配置头顶位置                                        :m8:
+   CLOSED: [2022-10-14 周五 10:56] SCHEDULED: <2022-10-12 周三 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-10-17 周一 10:58
+   :END:
+** DONE [#A] 弹窗高度自适应                                              :m8:
+   CLOSED: [2022-10-17 周一 10:57] SCHEDULED: <2022-10-17 周一 10:57>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-10-17 周一 10:58
+   :END:
+** DONE [#A] 支持战斗录像                                                :m8:
+   CLOSED: [2022-10-28 周五 13:15] SCHEDULED: <2022-10-14 周五 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-10-31 周一 09:59
+   :END:
+** DONE [#A] 年度报告                                                    :m8:
+   CLOSED: [2022-10-31 周一 09:45] DEADLINE: <2022-10-26 周三 21:00> SCHEDULED: <2022-10-24 周一 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-10-31 周一 09:59
+   :END:
+
+* DONE [#A] 减肥                                                      :event:
+  CLOSED: [2022-11-05 周六 16:52] SCHEDULED: <2022-08-08 周一 17:27>
+  :PROPERTIES:
+  :LAST_REPEAT: [2022-08-06 周六 16:28]
+  :ARCHIVE_TIME: 2022-11-05 周六 16:52
+  :ARCHIVE_FILE: ~/org/gtd/live.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: live
+  :ARCHIVE_TODO: DONE
+  :END:
+- State "DONE"       from "TODO"       [2022-08-06 周六 16:28] \\
+  减到70kg了, 暂时告一段落
+- State "DONE"       from "TODO"       [2022-08-06 周六 16:28] \\
+  4.0km, 69.4kg
+- State "DONE"       from "TODO"       [2022-07-25 周一 11:07] \\
+  4.0km, 68.8kg
+- State "DONE"       from "TODO"       [2022-07-04 周一 09:41]
+- 4.0km, 69.7kg
+- State "DONE"       from "TODO"       [2022-06-25 周六 17:08] \\
+  6.0km, 69.4kg
+- State "DONE"       from "TODO"       [2022-06-18 周六 14:00] \\
+  下雨, 70.0kg
+- State "DONE"       from "TODO"       [2022-06-11 周六 17:54] \\
+  下雨, 未跑, 69.95kg
+- State "DONE"       from "TODO"       [2022-06-06 周一 09:24] \\
+  4.0, 70.0kg, 下雨
+- State "DONE"       from "TODO"       [2022-05-30 周一 09:13] \\
+  3.5, 69.70kg, 下雨
+- State "DONE"       from "TODO"       [2022-05-23 周一 09:27] \\
+  4.5, 70.0kg, 下雨
+- State "DONE"       from "TODO"       [2022-05-16 周一 13:13] \\
+  4.0, 70.25kg 一直下雨
+- State "DONE"       from "TODO"       [2022-04-29 周五 15:02] \\
+  没跑, 痔疮没好
+- State "DONE"       from "TODO"       [2022-04-25 周一 09:55] \\
+  5.0->5.0, 71.0kg  痔疮犯了, 少跑了一次
+- State "DONE"       from "TODO"       [2022-04-18 周一 09:22] \\
+  5.0->5.0->5.0, 71.9kg
+- State "DONE"       from "TODO"       [2022-04-11 周一 09:15] \\
+  5.0->5.0->5.0, 72.6kg
+- State "DONE"       from "TODO"       [2022-04-01 周五 21:03] \\
+  5.0->5.0->5.0, 73.4kg
+- State "DONE"       from "TODO"       [2022-03-28 周一 09:28] \\
+  5.0->5.0->5.0, 74.0kg
+- State "DONE"       from "TODO"       [2022-03-21 周一 00:36] \\
+  4.5->5.0->2.5, 74.6kg
+- State "DONE"       from "TODO"       [2022-03-13 周日 23:23] \\
+  4.0->4.0->4.0, 75.4kg
+- State "DONE"       from "TODO"       [2022-03-06 周日 22:06] \\
+  2.5->3.5->4.0, 76.1kg
+目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月
+
+* DONE [#A] 减肥                                                      :event:
+  CLOSED: [2022-11-05 周六 16:52] SCHEDULED: <2022-08-08 周一 17:27>
+  :PROPERTIES:
+  :LAST_REPEAT: [2022-08-06 周六 16:28]
+  :ARCHIVE_TIME: 2022-11-05 周六 16:53
+  :ARCHIVE_FILE: ~/org/gtd/live.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: live
+  :ARCHIVE_TODO: DONE
+  :END:
+- State "DONE"       from "TODO"       [2022-08-06 周六 16:28] \\
+  减到70kg了, 暂时告一段落
+- State "DONE"       from "TODO"       [2022-08-06 周六 16:28] \\
+  4.0km, 69.4kg
+- State "DONE"       from "TODO"       [2022-07-25 周一 11:07] \\
+  4.0km, 68.8kg
+- State "DONE"       from "TODO"       [2022-07-04 周一 09:41]
+- 4.0km, 69.7kg
+- State "DONE"       from "TODO"       [2022-06-25 周六 17:08] \\
+  6.0km, 69.4kg
+- State "DONE"       from "TODO"       [2022-06-18 周六 14:00] \\
+  下雨, 70.0kg
+- State "DONE"       from "TODO"       [2022-06-11 周六 17:54] \\
+  下雨, 未跑, 69.95kg
+- State "DONE"       from "TODO"       [2022-06-06 周一 09:24] \\
+  4.0, 70.0kg, 下雨
+- State "DONE"       from "TODO"       [2022-05-30 周一 09:13] \\
+  3.5, 69.70kg, 下雨
+- State "DONE"       from "TODO"       [2022-05-23 周一 09:27] \\
+  4.5, 70.0kg, 下雨
+- State "DONE"       from "TODO"       [2022-05-16 周一 13:13] \\
+  4.0, 70.25kg 一直下雨
+- State "DONE"       from "TODO"       [2022-04-29 周五 15:02] \\
+  没跑, 痔疮没好
+- State "DONE"       from "TODO"       [2022-04-25 周一 09:55] \\
+  5.0->5.0, 71.0kg  痔疮犯了, 少跑了一次
+- State "DONE"       from "TODO"       [2022-04-18 周一 09:22] \\
+  5.0->5.0->5.0, 71.9kg
+- State "DONE"       from "TODO"       [2022-04-11 周一 09:15] \\
+  5.0->5.0->5.0, 72.6kg
+- State "DONE"       from "TODO"       [2022-04-01 周五 21:03] \\
+  5.0->5.0->5.0, 73.4kg
+- State "DONE"       from "TODO"       [2022-03-28 周一 09:28] \\
+  5.0->5.0->5.0, 74.0kg
+- State "DONE"       from "TODO"       [2022-03-21 周一 00:36] \\
+  4.5->5.0->2.5, 74.6kg
+- State "DONE"       from "TODO"       [2022-03-13 周日 23:23] \\
+  4.0->4.0->4.0, 75.4kg
+- State "DONE"       from "TODO"       [2022-03-06 周日 22:06] \\
+  2.5->3.5->4.0, 76.1kg
+目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月

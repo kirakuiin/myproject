@@ -13,10 +13,7 @@ class HexGrid(case.Case):
     """六边形绘制"""
     def init_case(self):
         self._layout = math2d.HexLayout(math2d.vector(30, 30), math2d.position(400, 400))
-        self._grid = [
-            math2d.Hex(0, 0, 0), math2d.Hex(1, 0, -1), math2d.Hex(1, -1, 0), math2d.Hex(0, -1, 1),
-            math2d.Hex(-1, 0, 1), math2d.Hex(-1, 1, 0), math2d.Hex(0, 1, -1)
-        ]
+        self._grid = math2d.get_spiral_ring(math2d.Hex.get_origin(), 5)
         self._lines = []
         for hex in self._grid:
             self._draw_hex(hex)

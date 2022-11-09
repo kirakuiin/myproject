@@ -112,11 +112,15 @@ CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
 ** TODO [#A] 完成每周周报                                            :work:
-SCHEDULED: <2022-10-08 周六 18:00 ++1w> DEADLINE: <2022-10-10 周一 12:00 ++1w>
+SCHEDULED: <2022-11-11 周五 12:00 ++1w> DEADLINE: <2022-11-14 周一 12:00 ++1w>
 :PROPERTIES:
 :STYLE:    habit
-:LAST_REPEAT: [2022-09-30 周五 19:20]
+:LAST_REPEAT: [2022-10-31 周一 11:44]
 :END:
+- State "DONE"       from "TODO"       [2022-11-05 周六 11:44]
+- State "DONE"       from "TODO"       [2022-10-31 周一 09:59]
+- State "DONE"       from "TODO"       [2022-10-24 周一 09:22]
+- State "DONE"       from "TODO"       [2022-10-17 周一 10:56]
 - State "DONE"       from "TODO"       [2022-09-30 周五 19:20]
 - State "DONE"       from "TODO"       [2022-09-24 周六 19:03]
 - State "DONE"       from "TODO"       [2022-09-24 周六 19:03]
@@ -203,34 +207,23 @@ SCHEDULED: <2022-10-08 周六 18:00 ++1w> DEADLINE: <2022-10-10 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
+** TODO [#A] 文字战报功能                                              :m8:
+SCHEDULED: <2022-10-26 周三 09:00>
+** DONE [#A] 攻击者特效始终位于受击者上                                 :m8:
+CLOSED: [2022-11-09 周三 17:00] SCHEDULED: <2022-10-28 周五 13:00>
 ** Archive                                                        :ARCHIVE:
-*** DONE [#A] 实现战斗录像功能                                         :m8:
-CLOSED: [2022-09-09 周五 19:58] SCHEDULED: <2022-09-05 周一 00:00>
+*** DONE [#A] 真机施法抖动问题                                         :m8:
+CLOSED: [2022-11-04 周五 17:34] SCHEDULED: <2022-10-24 周一 09:56>
 :PROPERTIES:
-:ARCHIVE_TIME: 2022-09-13 周二 09:26
+:ARCHIVE_TIME: 2022-11-05 周六 16:51
 :END:
-*** DONE [#A] 接入战盟账号系统                                         :m8:
-CLOSED: [2022-09-19 周一 09:14] SCHEDULED: <2022-09-13 周二 09:27>
+*** DONE [#A] 接入火星登录系统                                         :m8:
+CLOSED: [2022-11-04 周五 17:35] SCHEDULED: <2022-11-03 周四 14:00>
 :PROPERTIES:
-:ARCHIVE_TIME: 2022-09-19 周一 09:14
+:ARCHIVE_TIME: 2022-11-05 周六 16:51
 :END:
-*** DONE [#A] 接入实名认证系统                                         :m8:
-CLOSED: [2022-09-24 周六 19:02] SCHEDULED: <2022-09-19 周一 09:00>
-:PROPERTIES:
-:ARCHIVE_TIME: 2022-09-24 周六 19:05
-:END:
-*** DONE [#A] 接入防沉迷系统                                           :m8:
-CLOSED: [2022-09-28 周三 19:55] SCHEDULED: <2022-09-26 周一 14:29>
-:PROPERTIES:
-:ARCHIVE_TIME: 2022-09-30 周五 17:27
-:END:
-*** DONE [#A] 英雄山关卡场景切换                                       :m8:
-CLOSED: [2022-09-28 周三 19:55] SCHEDULED: <2022-09-27 周二 00:00>
-:PROPERTIES:
-:ARCHIVE_TIME: 2022-09-30 周五 17:27
-:END:
-** TODO [#A] 权限申请                                                  :m8:
-SCHEDULED: <2022-09-26 周一 14:29>
+** DONE [#A] 跳字异常                                                  :m8:
+CLOSED: [2022-11-09 周三 17:00] SCHEDULED: <2022-11-08 周二 00:00>
 * Project
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:

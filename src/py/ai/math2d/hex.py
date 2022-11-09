@@ -14,6 +14,10 @@ from . import math
 
 class Hex(object):
     """代表六边形网格中的一个六边形的位置"""
+    @classmethod
+    def get_origin(cls):
+        return cls(0, 0, 0)
+
     def __init__(self, q=0, r=0, s=0):
         assert q+r+s == 0, "六边形坐标总和必须为0"
         self._q = q
@@ -138,14 +142,6 @@ class Corner(object):
                     Corner(self.q, self.r+1, self.s+1)]
 
 
-class Side(object):
-    """代表六边形网格里的一个边
-
-    每条边最多被两个六边形共享
-    """
-    pass
-
-
 # 朝向, fx代表变换矩阵, bx代表逆矩阵
 Orientation = collections.namedtuple("Orientation", ["f0", "f1", "f2", "f3", "b0", "b1", "b2", "b3", "start_angle"])
 
@@ -155,6 +151,29 @@ Pointy = Orientation(math.sqrt(3), math.sqrt(3)/2, 0, -3/2, math.sqrt(3)/3, 1/3,
 Flat = Orientation(3/2, 0, -math.sqrt(3)/2, -math.sqrt(3), 2/3, 0, -1/3, -math.sqrt(3)/3, 0)
 
 
+# 尖顶方向
+class PointyDirection(object):
+    EAST=0
+    NORTHEAST=1
+    NORTHWEST=2
+    WEST=3
+    SOUTHWEST=4
+    SOUTHEAST=5
+
+
+# 平顶方向
+class FlatDirection(object):
+    SOUTHEAST=0
+    NORTHEAST=1
+    NORTH=2
+    NORTHWEST=3
+    SOUTHWEST=4
+    SOUTH=5
+
+# 方向列表
+Directions = [0, 1, 2, 3, 4, 5]
+
+
 class HexLayout(object):
     """决定hex坐标转换到平面坐标的规则
     """
@@ -162,6 +181,34 @@ class HexLayout(object):
         self.size = size  # 六边形的大小
         self.origin = origin  # 原点
         self.orientation = layout  # 使用的布局
+
+
+# 根据方向得到六边形
+def hex_direction(direction: int) -> Hex:
+    assert direction in Directions, "六边形方向无效"
+    dir_list = [Hex(1, 0, -1), Hex(1, -1, -0), Hex(0, -1, 1),
+                Hex(-1, 0, 1), Hex(-1, 1, 0), Hex(0, 1, -1)]
+    return dir_list[direction]
+
+
+# 构建六边形环
+def get_ring(center: Hex, radius: int) -> list:
+    assert radius > 0, "环的半径必须大于0"
+    result = []
+    hex = center+hex_direction(PointyDirection.SOUTHWEST)*radius
+    for dir in Directions:
+        for i in range(radius):
+            hex += hex_direction(dir)
+            result.append(hex)
+    return result
+
+
+# 生成螺旋
+def get_spiral_ring(center: Hex, radius: int) -> list:
+    result = [center]
+    for r in range(1, radius):
+        result.extend(get_ring(center, r))
+    return result
 
 
 def hex_to_pixel(layout: HexLayout, coord: Hex) -> ndarray:
