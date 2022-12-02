@@ -1180,16 +1180,26 @@ CLOCK: [2022-04-11 周一 13:43]--[2022-04-11 周一 14:08] =>  0:25
    :ARCHIVE_TIME: 2022-10-31 周一 09:59
    :END:
 
-* DONE [#A] 减肥                                                      :event:
-  CLOSED: [2022-11-05 周六 16:52] SCHEDULED: <2022-08-08 周一 17:27>
+* begin: <2022-11-01 周二>
+  
+* Archive                                                           :ARCHIVE:
   :PROPERTIES:
-  :LAST_REPEAT: [2022-08-06 周六 16:28]
-  :ARCHIVE_TIME: 2022-11-05 周六 16:52
+  :ARCHIVE_TIME: 2022-12-02 周五 17:43
   :ARCHIVE_FILE: ~/org/gtd/live.org
   :ARCHIVE_OLPATH: Next Action
   :ARCHIVE_CATEGORY: live
-  :ARCHIVE_TODO: DONE
   :END:
+** DONE [#A] github Catan项目接入构建系统                             :event:
+   CLOSED: [2022-11-04 周五 17:35] SCHEDULED: <2022-11-02 周三 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-05 周六 16:51
+   :END:
+** DONE [#A] 减肥                                                     :event:
+   CLOSED: [2022-11-05 周六 16:52] SCHEDULED: <2022-08-08 周一 17:27>
+   :PROPERTIES:
+   :LAST_REPEAT: [2022-08-06 周六 16:28]
+   :ARCHIVE_TIME: 2022-11-05 周六 16:54
+   :END:
 - State "DONE"       from "TODO"       [2022-08-06 周六 16:28] \\
   减到70kg了, 暂时告一段落
 - State "DONE"       from "TODO"       [2022-08-06 周六 16:28] \\
@@ -1232,54 +1242,77 @@ CLOCK: [2022-04-11 周一 13:43]--[2022-04-11 周一 14:08] =>  0:25
   2.5->3.5->4.0, 76.1kg
 目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月
 
-* DONE [#A] 减肥                                                      :event:
-  CLOSED: [2022-11-05 周六 16:52] SCHEDULED: <2022-08-08 周一 17:27>
+* Archive                                                           :ARCHIVE:
   :PROPERTIES:
-  :LAST_REPEAT: [2022-08-06 周六 16:28]
-  :ARCHIVE_TIME: 2022-11-05 周六 16:53
-  :ARCHIVE_FILE: ~/org/gtd/live.org
+  :ARCHIVE_TIME: 2022-12-02 周五 17:43
+  :ARCHIVE_FILE: ~/org/gtd/work.org
   :ARCHIVE_OLPATH: Next Action
-  :ARCHIVE_CATEGORY: live
-  :ARCHIVE_TODO: DONE
+  :ARCHIVE_CATEGORY: work
   :END:
-- State "DONE"       from "TODO"       [2022-08-06 周六 16:28] \\
-  减到70kg了, 暂时告一段落
-- State "DONE"       from "TODO"       [2022-08-06 周六 16:28] \\
-  4.0km, 69.4kg
-- State "DONE"       from "TODO"       [2022-07-25 周一 11:07] \\
-  4.0km, 68.8kg
-- State "DONE"       from "TODO"       [2022-07-04 周一 09:41]
-- 4.0km, 69.7kg
-- State "DONE"       from "TODO"       [2022-06-25 周六 17:08] \\
-  6.0km, 69.4kg
-- State "DONE"       from "TODO"       [2022-06-18 周六 14:00] \\
-  下雨, 70.0kg
-- State "DONE"       from "TODO"       [2022-06-11 周六 17:54] \\
-  下雨, 未跑, 69.95kg
-- State "DONE"       from "TODO"       [2022-06-06 周一 09:24] \\
-  4.0, 70.0kg, 下雨
-- State "DONE"       from "TODO"       [2022-05-30 周一 09:13] \\
-  3.5, 69.70kg, 下雨
-- State "DONE"       from "TODO"       [2022-05-23 周一 09:27] \\
-  4.5, 70.0kg, 下雨
-- State "DONE"       from "TODO"       [2022-05-16 周一 13:13] \\
-  4.0, 70.25kg 一直下雨
-- State "DONE"       from "TODO"       [2022-04-29 周五 15:02] \\
-  没跑, 痔疮没好
-- State "DONE"       from "TODO"       [2022-04-25 周一 09:55] \\
-  5.0->5.0, 71.0kg  痔疮犯了, 少跑了一次
-- State "DONE"       from "TODO"       [2022-04-18 周一 09:22] \\
-  5.0->5.0->5.0, 71.9kg
-- State "DONE"       from "TODO"       [2022-04-11 周一 09:15] \\
-  5.0->5.0->5.0, 72.6kg
-- State "DONE"       from "TODO"       [2022-04-01 周五 21:03] \\
-  5.0->5.0->5.0, 73.4kg
-- State "DONE"       from "TODO"       [2022-03-28 周一 09:28] \\
-  5.0->5.0->5.0, 74.0kg
-- State "DONE"       from "TODO"       [2022-03-21 周一 00:36] \\
-  4.5->5.0->2.5, 74.6kg
-- State "DONE"       from "TODO"       [2022-03-13 周日 23:23] \\
-  4.0->4.0->4.0, 75.4kg
-- State "DONE"       from "TODO"       [2022-03-06 周日 22:06] \\
-  2.5->3.5->4.0, 76.1kg
-目前77kg, 计划减到65kg, 计划每周减0.5kg, 需要24个月
+** DONE [#A] 真机施法抖动问题                                            :m8:
+   CLOSED: [2022-11-04 周五 17:34] SCHEDULED: <2022-10-24 周一 09:56>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-05 周六 16:51
+   :END:
+** DONE [#A] 接入火星登录系统                                            :m8:
+   CLOSED: [2022-11-04 周五 17:35] SCHEDULED: <2022-11-03 周四 14:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-05 周六 16:51
+   :END:
+** DONE [#A] 攻击者特效始终位于受击者上                                  :m8:
+   CLOSED: [2022-11-09 周三 17:00] SCHEDULED: <2022-10-28 周五 13:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-12 周六 17:52
+   :END:
+** DONE [#A] 跳字异常                                                    :m8:
+   CLOSED: [2022-11-09 周三 17:00] SCHEDULED: <2022-11-08 周二 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-12 周六 17:52
+   :END:
+** DONE [#A] 分析角色抖动问题                                            :m8:
+   CLOSED: [2022-11-12 周六 17:48] SCHEDULED: <2022-11-11 周五 15:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-12 周六 17:52
+   :END:
+** DONE [#A] 处理胜利动画覆盖死亡动画问题                                :m8:
+   CLOSED: [2022-11-11 周五 20:37] SCHEDULED: <2022-11-11 周五 18:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-12 周六 17:52
+   :END:
+** DONE [#A] 战斗日志改为纯数据输出                                      :m8:
+   CLOSED: [2022-11-12 周六 17:50] SCHEDULED: <2022-11-08 周二 17:49>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-12 周六 17:52
+   :END:
+** DONE [#A] 接入维护公告                                                :m8:
+   CLOSED: [2022-11-15 周二 16:40] SCHEDULED: <2022-11-11 周五 20:37>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-19 周六 17:58
+   :END:
+** DONE [#A] 优化血量继承开场表现                                        :m8:
+   CLOSED: [2022-11-15 周二 16:40] SCHEDULED: <2022-11-12 周六 17:48>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-19 周六 17:58
+   :END:
+** DONE [#A] server.ini增加服务器id配置                                  :m8:
+   CLOSED: [2022-11-14 周一 17:06] SCHEDULED: <2022-11-14 周一 15:06>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-11-19 周六 17:58
+   :END:
+** DONE [#A] 主线战斗交互优化                                            :m8:
+   CLOSED: [2022-12-01 周四 16:52] SCHEDULED: <2022-11-28 周一 09:13>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-12-02 周五 13:59
+   :END:
+** DONE [#A] 处理主线战斗跳转后无法开始战斗的bug                         :m8:
+   CLOSED: [2022-12-02 周五 10:16] SCHEDULED: <2022-12-01 周四 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-12-02 周五 13:59
+   :END:
+** DONE [#A] 战斗系统埋点数据优化                                        :m8:
+   CLOSED: [2022-12-02 周五 13:58] SCHEDULED: <2022-12-02 周五 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2022-12-02 周五 13:59
+   :END:
+
+* begin: <2022-12-01 周四>
