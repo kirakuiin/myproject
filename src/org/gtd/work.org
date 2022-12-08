@@ -211,8 +211,16 @@ SCHEDULED: <2022-12-09 周五 12:00 ++1w> DEADLINE: <2022-12-12 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#A] 文字战报功能                                              :m8:
-SCHEDULED: <2022-10-26 周三 09:00>
+** DONE [#A] 文字战报功能                                              :m8:
+CLOSED: [2022-12-06 周二 11:31] SCHEDULED: <2022-10-26 周三 09:00>
+** TODO [#A] 战斗面板优化                                              :m8:
+SCHEDULED: <2022-12-05 周一 09:00>
+** TODO [#A] 接入调查问卷                                              :m8:
+SCHEDULED: <2022-12-06 周二 09:00>
+** TODO [#A] 处理审核包问题                                            :m8:
+SCHEDULED: <2022-12-07 周三 17:59>
+** TODO [#A] 处理战斗重开报错                                          :m8:
+SCHEDULED: <2022-12-07 周三 18:00>
 * Project
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
