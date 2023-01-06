@@ -46,6 +46,7 @@ def start_engine():
     """
     global_vars.start_time = time.time()
     global_vars.is_running = True
+    global_vars.game_run_time = 0
     global_vars.event_mgr.register(pygame.QUIT, lambda evt: quit_engine())
     clock = pygame.time.Clock()
     render()

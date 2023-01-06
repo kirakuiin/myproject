@@ -1,7 +1,6 @@
 """路径基础对象定义
 """
 
-import bisect
 import heapq
 import collections
 

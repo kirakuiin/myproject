@@ -9,8 +9,8 @@ from . import component
 class GameObject(component.EngineComponent):
     """游戏对象类
     """
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent=None):
+        super().__init__(parent)
         self._transform_com = component.Transform(self)
         self.add_component(self._transform_com)
 

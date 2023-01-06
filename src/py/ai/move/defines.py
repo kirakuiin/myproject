@@ -3,6 +3,7 @@
 import weakref
 
 import math2d
+from gameengine import component
 from gameengine import uiobject
 from gameengine import defines
 
@@ -183,14 +184,13 @@ class StaticObj(uiobject.UIObject):
         self._body.set_color(r, g, b)
 
 
-class DynamicObj(uiobject.UIObject, KinematicInterface):
-    """动态运动物体
+class KinematicComponent(component.EngineComponent, KinematicInterface):
+    """动态运动组件
 
-    以加速度驱动速度变化
+    具备此组件则拥有动态运动功能
     """
-    def __init__(self, velocity, angular=0.0):
-        super().__init__()
-        self._radius = 10  # 半径
+    def __init__(self, parent, velocity=math2d.vector(0, 0), angular=0.0):
+        super().__init__(parent)
         self._velocity = velocity  # 速度
         self._angular = angular  # 角速度
         self._velocity_acc = math2d.vector(0, 0)  # 加速度
@@ -201,25 +201,10 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
         self._max_velocity = 100  # 最大速度
         self._max_angular = 100  # 最大角速度
 
-        self._init_ui()
-
-    def _init_ui(self):
-        self._body = uiobject.Circle(self._radius)
-        self._body.set_color(*defines.RED)
-        self._head = uiobject.Triangle(6)
-        self._head.set_color(*defines.GREEN)
-        self._head.set_pos(10, 0)
-        self._head.set_rotate(-90)
-        self.add_child(self._body, 1)
-        self.add_child(self._head)
-
-    def set_color(self, r: int, g: int, b: int):
-        self._body.set_color(r, g, b)
-
     def update(self, dt):
-        pos, rot = self.simulate(dt, self.get_pos(), self.get_rotate())
-        self.set_pos_vec(pos)
-        self.set_rotate(rot)
+        pos, rot = self.simulate(dt, self.game_object.get_pos(), self.game_object.get_rotate())
+        self.game_object.set_pos_vec(pos)
+        self.game_object.set_rotate(rot)
 
     def simulate(self, dt, cur_pos, cur_rot):
         half_t_sq = 0.5*(dt**2)
@@ -234,14 +219,11 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
         rot = cur_rot + self._angular*dt + half_t_sq*self._angular_acc
         return pos, rot
 
-    def radius(self) -> float:
-        return self._radius
-
     def position(self) -> math2d.ndarray:
-        return self.get_world_pos()
+        return self.game_object.get_world_pos()
 
     def rotation(self) -> float:
-        return self.get_world_rotate()
+        return self.game_object.get_world_rotate()
 
     def velocity(self) -> math2d.ndarray:
         return self._velocity
@@ -277,7 +259,7 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
         self._angular_acc = acc
 
     def set_constant(self, max_velocity: float=None, max_velocity_acc: float=None,
-                      max_angular: float=None, max_angular_acc: float=None, resistance_ratio: float=None):
+                     max_angular: float=None, max_angular_acc: float=None, resistance_ratio: float=None):
         self._set_value_if_not_none('_max_velocity', max_velocity)
         self._set_value_if_not_none('_max_velocity_acc', max_velocity_acc)
         self._set_value_if_not_none('_max_angular', max_angular)
@@ -287,6 +269,85 @@ class DynamicObj(uiobject.UIObject, KinematicInterface):
     def _set_value_if_not_none(self, attr, value):
         if value is not None:
             setattr(self, attr, value)
+
+
+class DynamicObj(uiobject.UIObject, KinematicInterface):
+    """动态运动物体
+
+    以加速度驱动速度变化
+    """
+    def __init__(self, velocity, angular=0.0):
+        super().__init__()
+        self._radius = 10  # 半径
+        self._kine_com = KinematicComponent(self, velocity, angular)  # 运动学组件
+        self.add_component(self._kine_com)
+
+        self._init_ui()
+
+    def _init_ui(self):
+        self._body = uiobject.Circle(self._radius)
+        self._body.set_color(*defines.RED)
+        self._head = uiobject.Triangle(6)
+        self._head.set_color(*defines.GREEN)
+        self._head.set_pos(10, 0)
+        self._head.set_rotate(-90)
+        self.add_child(self._body, 1)
+        self.add_child(self._head)
+
+    def radius(self):
+        return self._radius
+
+    def simulate(self, dt, cur_pos, cur_rot):
+        return self._kine_com.simulate(dt, cur_pos, cur_rot)
+
+    def set_color(self, r: int, g: int, b: int):
+        self._body.set_color(r, g, b)
+
+    def update(self, dt):
+        self._kine_com.update(dt)
+
+    def position(self) -> math2d.ndarray:
+        return self._kine_com.position()
+
+    def rotation(self) -> float:
+        return self._kine_com.rotation()
+
+    def velocity(self) -> math2d.ndarray:
+        return self._kine_com.velocity()
+
+    def set_velocity(self, velocity: math2d.ndarray):
+        self._kine_com.set_velocity(velocity)
+
+    def max_velocity(self) -> float:
+        return self._kine_com.max_velocity()
+
+    def velocity_acc(self) -> math2d.ndarray:
+        return self._kine_com.velocity_acc()
+
+    def max_velocity_acc(self) -> float:
+        return self._kine_com.max_velocity_acc()
+
+    def set_velocity_acc(self, acc: math2d.ndarray):
+        self._kine_com.set_velocity_acc(acc)
+
+    def angular(self) -> float:
+        return self._kine_com.angular()
+
+    def max_angular(self) -> float:
+        return self._kine_com.max_angular()
+
+    def angular_acc(self) -> float:
+        return self._kine_com.angular_acc()
+
+    def max_angular_acc(self) -> float:
+        return self._kine_com.max_angular_acc()
+
+    def set_angular_acc(self, acc: float):
+        self._kine_com.set_angular_acc(acc)
+
+    def set_constant(self, max_velocity: float=None, max_velocity_acc: float=None,
+                     max_angular: float=None, max_angular_acc: float=None, resistance_ratio: float=None):
+        self._kine_com.set_constant(max_velocity, max_velocity_acc, max_angular, max_angular_acc, resistance_ratio)
 
 
 class LinePath(uiobject.UIObject):
