@@ -218,53 +218,34 @@ SCHEDULED: <2023-01-20 周五 12:00 ++1w> DEADLINE: <2023-01-23 周一 12:00 ++1
 - State "DONE"       from "TODO"       [2021-04-12 周一 10:47]
 - State "DONE"       from "TODO"       [2021-04-06 周二 09:23]
 - State "DONE"       from "TODO"       [2021-03-29 周一 9:50]
-** TODO [#A] 文字战报功能                                              :m8:
-SCHEDULED: <2022-10-26 周三 09:00>
+** DONE [#A] 文字战报功能                                              :m8:
+CLOSED: [2023-02-08 周三 20:39] SCHEDULED: <2022-10-26 周三 09:00>
 ** TODO [#A] 处理战斗重开报错                                          :m8:
+** TODO [#A] 战斗中重连优化                                            :m8:
+SCHEDULED: <2023-01-31 周二 09:00>
+** TODO [#A] 处理真机运行中报错问题                                    :m8:
+SCHEDULED: <2023-01-31 周二 09:00>
+** WAIT [#C] 和公共对接新版蓝图编辑器                                  :m8:
+SCHEDULED: <2023-01-31 周二 09:00>
 ** Archive                                                        :ARCHIVE:
-*** DONE [#A] 战斗面板优化                                             :m8:
-CLOSED: [2022-12-12 周一 13:47] SCHEDULED: <2022-12-05 周一 09:00>
+*** DONE [#A] 战斗面板显示天赋信息                                     :m8:
+CLOSED: [2023-02-06 周一 15:05] SCHEDULED: <2023-01-31 周二 09:00>
 :PROPERTIES:
-:ARCHIVE_TIME: 2022-12-12 周一 14:29
+:ARCHIVE_TIME: 2023-02-06 周一 20:39
 :END:
-*** DONE [#A] 接入调查问卷                                             :m8:
-CLOSED: [2022-12-12 周一 13:47] SCHEDULED: <2022-12-06 周二 09:00>
+*** DONE [#A] 处理战报数据超限问题                                     :m8:
+CLOSED: [2023-02-06 周一 15:04] SCHEDULED: <2023-02-01 周三 09:02>
 :PROPERTIES:
-:ARCHIVE_TIME: 2022-12-12 周一 14:29
+:ARCHIVE_TIME: 2023-02-06 周一 20:39
 :END:
-*** DONE [#A] 处理审核包问题                                           :m8:
-CLOSED: [2022-12-12 周一 13:48] SCHEDULED: <2022-12-07 周三 17:59>
-:PROPERTIES:
-:ARCHIVE_TIME: 2022-12-12 周一 14:29
-:END:
-*** DONE [#A] 接入外网办公流程                                         :m8:
-CLOSED: [2022-12-12 周一 14:10] SCHEDULED: <2022-12-09 周五 14:10>
-:PROPERTIES:
-:ARCHIVE_TIME: 2022-12-12 周一 14:29
-:END:
-*** DONE [#A] 处理pc唤醒后触发重连问题                                 :m8:
-CLOSED: [2022-12-12 周一 14:31] SCHEDULED: <2022-12-12 周一 09:00>
-:PROPERTIES:
-:ARCHIVE_TIME: 2022-12-20 周二 09:34
-:END:
-*** DONE [#A] 体验审核包游戏, 发现问题                                 :m8:
-CLOSED: [2022-12-20 周二 09:28] SCHEDULED: <2022-12-08 周四 14:10>
-:PROPERTIES:
-:ARCHIVE_TIME: 2022-12-20 周二 09:34
-:END:
-*** DONE [#A] 备战界面同阵营数量表现                                   :m8:
-CLOSED: [2022-12-20 周二 09:29] SCHEDULED: <2022-12-13 周二 09:28>
-:PROPERTIES:
-:ARCHIVE_TIME: 2022-12-20 周二 09:34
-:END:
-** DONE [#A] 斗法场优化                                                 :m8:
-CLOSED: [2022-12-25 周日 09:23] SCHEDULED: <2022-12-14 周三 09:29>
-** DONE [#A] 通行证界面优化                                            :m8:
-CLOSED: [2023-01-16 周一 17:16] SCHEDULED: <2023-01-05 周四 09:38>
-** DONE [#A] 战斗速率调整                                              :m8:
-CLOSED: [2023-01-10 周二 14:52] SCHEDULED: <2023-01-10 周二 13:00>
-** DONE [#A] 正式版屏蔽日志                                            :m8:
-CLOSED: [2023-01-16 周一 17:23] SCHEDULED: <2023-01-11 周三 17:22>
+** TODO [#A] 拖拽容器灵敏度和弹性运动支持                              :m8:
+SCHEDULED: <2023-02-09 周四 13:51>
+** TODO [#A] 法宝养成相关优化                                          :m8:
+SCHEDULED: <2023-02-10 周五 13:51>
+** TODO [#A] 文字战报(分段初始化, 复用滚动框)优化                      :m8:
+SCHEDULED: <2023-02-09 周四 13:52>
+** TODO [#A] 战报数据详细化(每个技能的伤害, 治疗等等)                  :m8:
+SCHEDULED: <2023-02-08 周三 13:53>
 * Project
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
