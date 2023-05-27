@@ -111,11 +111,6 @@ CLOCK: [2022-03-07 周一 17:25]--[2022-03-07 周一 17:50] =>  0:25
 CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
-** TODO [#A] 处理战斗重开报错                                          :m8:
-** TODO [#C] 和公共对接新版蓝图编辑器                                  :m8:
-SCHEDULED: <2023-01-31 周二 09:00>
-** TODO [#A] 文字战报(分段初始化, 复用滚动框)优化                      :m8:
-SCHEDULED: <2023-02-09 周四 13:52>
 ** TODO [#A] 阵容定位调整和特殊站位支持                                :m8:
 SCHEDULED: <2023-03-21 周二 09:00>
 ** TODO [#A] 战斗协议精简                                              :m8:
@@ -128,46 +123,58 @@ SCHEDULED: <2023-03-27 周一 09:00>
 SCHEDULED: <2023-04-10 周一 09:16>
 - State "WAIT"       from "TODO"       [2023-04-11 周二 16:55] \\
   暂时无制作需求
-** TODO [#A] 走格子玩法                                                :m8:
-SCHEDULED: <2023-04-18 周二 00:00>
+** Archive                                                        :ARCHIVE:
+*** DONE [#C] 和公共对接新版蓝图编辑器                                 :m8:
+CLOSED: [2023-05-08 周一 09:15] SCHEDULED: <2023-01-31 周二 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-08 周一 09:31
+:END:
+*** DONE [#A] 处理录像播放时退出表现不正确的问题                       :m8:
+CLOSED: [2023-05-08 周一 09:19] SCHEDULED: <2023-05-04 周四 09:18>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-08 周一 09:31
+:END:
+*** DONE [#A] 文字战报(分段初始化, 复用滚动框)优化                     :m8:
+CLOSED: [2023-05-12 周五 20:15] SCHEDULED: <2023-02-09 周四 13:52>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-12 周五 20:18
+:END:
+*** DONE [#A] 走格子玩法                                               :m8:
+CLOSED: [2023-05-12 周五 20:17] SCHEDULED: <2023-04-18 周二 00:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-12 周五 20:18
+:END:
+*** DONE [#A] 处理长时间切出app导致战斗无法重连的问题                  :m8:
+CLOSED: [2023-05-12 周五 20:16] SCHEDULED: <2023-05-08 周一 20:16>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-12 周五 20:18
+:END:
+*** DONE [#A] 法术支持同排中心位置                                     :m8:
+CLOSED: [2023-05-12 周五 20:16] SCHEDULED: <2023-05-09 周二 20:16>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-12 周五 20:18
+:END:
+*** DONE [#A] 战斗录像中途退出处理                                     :m8:
+CLOSED: [2023-05-19 周五 19:23] SCHEDULED: <2023-05-14 周日 20:18>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-27 周六 17:33
+:END:
+*** DONE [#A] 调整buff蓝图播放机制                                     :m8:
+CLOSED: [2023-05-27 周六 17:25] SCHEDULED: <2023-05-19 周五 17:25>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-27 周六 17:33
+:END:
+*** DONE [#A] 支持布阵换位特效                                         :m8:
+CLOSED: [2023-05-27 周六 17:26] SCHEDULED: <2023-05-21 周日 17:26>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-27 周六 17:33
+:END:
+*** DONE [#A] 彻底删除战斗本地录像模块                                 :m8:
+CLOSED: [2023-05-27 周六 17:27] SCHEDULED: <2023-05-21 周日 17:27>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-27 周六 17:33
+:END:
 * Project
-** SCH [#B] 带徒弟                                                     :m8:
-SCHEDULED: <2023-03-01 周三 09:00> DEADLINE: <2023-04-01 周六 00:00>
-:PROPERTIES:
-:BLOCKER: children
-:END:                          
-*** DONE 第一次面谈
-CLOSED: [2023-03-01 周三 14:25]
-:PROPERTIES:                          
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:                          
-简单的聊了一下, 询问了一下徒弟的基本情况, 解答了公司制度上的一些问题(加班, 请假等). 介绍了项目组的情况还有一些日常规范.
-由于只是简单的聊了一下, 对徒弟的能力情况, 态度情况目前没有了解. 目前只能得到沟通能力正常的结论.
-*** DONE svn作业批改
-CLOSED: [2023-03-08 周三 20:48] SCHEDULED: <2023-03-15 周三 14:25>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-*** DONE python大作业批改
-CLOSED: [2023-03-10 周五 10:53] SCHEDULED: <2023-03-08 周三 20:48>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-*** DONE ui大作业批改
-CLOSED: [2023-03-18 周六 20:31] SCHEDULED: <2023-03-13 周一 20:31>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-*** TODO 第二次面谈
-SCHEDULED: <2023-03-10 周五 20:31>
-:PROPERTIES:
-:TRIGGER:  next-sibling todo!(TODO) scheduled!("++0h") chain!("TRIGGER")
-:END:
-*** WAIT 第二次面谈
-*** WAIT 结束面谈
-:PROPERTIES:                          
-:TRIGGER+: parent todo!(DONE)
-:END:
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
 ** 学习《Lua程序设计》                                       :learn:future:
