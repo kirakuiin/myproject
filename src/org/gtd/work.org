@@ -111,69 +111,26 @@ CLOCK: [2022-03-07 周一 17:25]--[2022-03-07 周一 17:50] =>  0:25
 CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
-** TODO [#A] 阵容定位调整和特殊站位支持                                :m8:
-SCHEDULED: <2023-03-21 周二 09:00>
+** DONE [#A] 阵容定位调整和特殊站位支持                                 :m8:
+CLOSED: [2023-06-10 周六 16:23] SCHEDULED: <2023-03-21 周二 09:00>
 ** TODO [#A] 战斗协议精简                                              :m8:
 SCHEDULED: <2023-03-21 周二 09:00>
 ** WAIT [#A] 主线功能2.0                                               :m8:
 SCHEDULED: <2023-03-27 周一 09:00>
 - State "WAIT"       from "TODO"       [2023-04-10 周一 09:16] \\
   1. 先制作地图编辑器, 初步搞定之后再来做这个
-** WAIT [#A] 制作地图编辑器                                            :m8:
-SCHEDULED: <2023-04-10 周一 09:16>
-- State "WAIT"       from "TODO"       [2023-04-11 周二 16:55] \\
-  暂时无制作需求
 ** Archive                                                        :ARCHIVE:
-*** DONE [#C] 和公共对接新版蓝图编辑器                                 :m8:
-CLOSED: [2023-05-08 周一 09:15] SCHEDULED: <2023-01-31 周二 09:00>
+*** DONE [#A] 实现文字检查工具                                         :m8:
+CLOSED: [2023-06-03 周六 16:52] SCHEDULED: <2023-05-30 周二 14:53>
 :PROPERTIES:
-:ARCHIVE_TIME: 2023-05-08 周一 09:31
+:ARCHIVE_TIME: 2023-06-03 周六 16:56
 :END:
-*** DONE [#A] 处理录像播放时退出表现不正确的问题                       :m8:
-CLOSED: [2023-05-08 周一 09:19] SCHEDULED: <2023-05-04 周四 09:18>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-08 周一 09:31
-:END:
-*** DONE [#A] 文字战报(分段初始化, 复用滚动框)优化                     :m8:
-CLOSED: [2023-05-12 周五 20:15] SCHEDULED: <2023-02-09 周四 13:52>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-12 周五 20:18
-:END:
-*** DONE [#A] 走格子玩法                                               :m8:
-CLOSED: [2023-05-12 周五 20:17] SCHEDULED: <2023-04-18 周二 00:00>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-12 周五 20:18
-:END:
-*** DONE [#A] 处理长时间切出app导致战斗无法重连的问题                  :m8:
-CLOSED: [2023-05-12 周五 20:16] SCHEDULED: <2023-05-08 周一 20:16>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-12 周五 20:18
-:END:
-*** DONE [#A] 法术支持同排中心位置                                     :m8:
-CLOSED: [2023-05-12 周五 20:16] SCHEDULED: <2023-05-09 周二 20:16>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-12 周五 20:18
-:END:
-*** DONE [#A] 战斗录像中途退出处理                                     :m8:
-CLOSED: [2023-05-19 周五 19:23] SCHEDULED: <2023-05-14 周日 20:18>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-27 周六 17:33
-:END:
-*** DONE [#A] 调整buff蓝图播放机制                                     :m8:
-CLOSED: [2023-05-27 周六 17:25] SCHEDULED: <2023-05-19 周五 17:25>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-27 周六 17:33
-:END:
-*** DONE [#A] 支持布阵换位特效                                         :m8:
-CLOSED: [2023-05-27 周六 17:26] SCHEDULED: <2023-05-21 周日 17:26>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-27 周六 17:33
-:END:
-*** DONE [#A] 彻底删除战斗本地录像模块                                 :m8:
-CLOSED: [2023-05-27 周六 17:27] SCHEDULED: <2023-05-21 周日 17:27>
-:PROPERTIES:
-:ARCHIVE_TIME: 2023-05-27 周六 17:33
-:END:
+** DONE [#A] 支持应用使用拖拽方式打开日志文件                          :m8:
+CLOSED: [2023-06-10 周六 16:24] SCHEDULED: <2023-06-06 周二 16:24>
+** DONE [#A] 处理拖拽容器到达边界后速度依然存在的问题                  :m8:
+CLOSED: [2023-06-10 周六 16:26] SCHEDULED: <2023-06-08 周四 00:00>
+** TODO [#A] 界面切换过渡动画                                          :m8:
+SCHEDULED: <2023-06-12 周一 09:00>
 * Project
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:

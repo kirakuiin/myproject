@@ -297,3 +297,79 @@ Archived entries from file c:/Users/admin/org/gtd/work.org
    :PROPERTIES:
    :ARCHIVE_TIME: 2023-04-28 周五 16:19
    :END:
+
+* begin: <2023-05-01 周六>
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2023-06-03 周六 16:53
+  :ARCHIVE_FILE: ~/org/gtd/work.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: work
+  :END:
+** DONE [#C] 和公共对接新版蓝图编辑器                                    :m8:
+   CLOSED: [2023-05-08 周一 09:15] SCHEDULED: <2023-01-31 周二 09:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-08 周一 09:31
+   :END:
+** DONE [#A] 处理录像播放时退出表现不正确的问题                          :m8:
+   CLOSED: [2023-05-08 周一 09:19] SCHEDULED: <2023-05-04 周四 09:18>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-08 周一 09:31
+   :END:
+** DONE [#A] 文字战报(分段初始化, 复用滚动框)优化                        :m8:
+   CLOSED: [2023-05-12 周五 20:15] SCHEDULED: <2023-02-09 周四 13:52>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-12 周五 20:18
+   :END:
+** DONE [#A] 走格子玩法                                                  :m8:
+   CLOSED: [2023-05-12 周五 20:17] SCHEDULED: <2023-04-18 周二 00:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-12 周五 20:18
+   :END:
+** DONE [#A] 处理长时间切出app导致战斗无法重连的问题                     :m8:
+   CLOSED: [2023-05-12 周五 20:16] SCHEDULED: <2023-05-08 周一 20:16>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-12 周五 20:18
+   :END:
+** DONE [#A] 法术支持同排中心位置                                        :m8:
+   CLOSED: [2023-05-12 周五 20:16] SCHEDULED: <2023-05-09 周二 20:16>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-12 周五 20:18
+   :END:
+** DONE [#A] 战斗录像中途退出处理                                        :m8:
+   CLOSED: [2023-05-19 周五 19:23] SCHEDULED: <2023-05-14 周日 20:18>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-27 周六 17:33
+   :END:
+** DONE [#A] 调整buff蓝图播放机制                                        :m8:
+   CLOSED: [2023-05-27 周六 17:25] SCHEDULED: <2023-05-19 周五 17:25>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-27 周六 17:33
+   :END:
+** DONE [#A] 支持布阵换位特效                                            :m8:
+   CLOSED: [2023-05-27 周六 17:26] SCHEDULED: <2023-05-21 周日 17:26>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-27 周六 17:33
+   :END:
+** DONE [#A] 彻底删除战斗本地录像模块                                    :m8:
+   CLOSED: [2023-05-27 周六 17:27] SCHEDULED: <2023-05-21 周日 17:27>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-27 周六 17:33
+   :END:
+
+* Archive                                                           :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2023-06-03 周六 16:54
+  :ARCHIVE_FILE: ~/org/gtd/live.org
+  :ARCHIVE_OLPATH: Next Action
+  :ARCHIVE_CATEGORY: live
+  :END:
+** DONE [#A] 办理社保医保转移手续                                     :event:
+   CLOSED: [2023-05-19 周五 19:23] SCHEDULED: <2023-04-11 周二 15:00>
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2023-05-27 周六 17:33
+   :END:
+医保必须在社保办结之后在进行转移
+
+
+* begin: <2023-06-01 周四>
