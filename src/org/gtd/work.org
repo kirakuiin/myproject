@@ -111,8 +111,6 @@ CLOCK: [2022-03-07 周一 17:25]--[2022-03-07 周一 17:50] =>  0:25
 CLOCK: [2022-03-07 周一 16:50]--[2022-03-07 周一 17:15] =>  0:25
 :END:
 - [X] 第一篇
-** DONE [#A] 阵容定位调整和特殊站位支持                                 :m8:
-CLOSED: [2023-06-10 周六 16:23] SCHEDULED: <2023-03-21 周二 09:00>
 ** TODO [#A] 战斗协议精简                                              :m8:
 SCHEDULED: <2023-03-21 周二 09:00>
 ** WAIT [#A] 主线功能2.0                                               :m8:
@@ -125,12 +123,51 @@ CLOSED: [2023-06-03 周六 16:52] SCHEDULED: <2023-05-30 周二 14:53>
 :PROPERTIES:
 :ARCHIVE_TIME: 2023-06-03 周六 16:56
 :END:
-** DONE [#A] 支持应用使用拖拽方式打开日志文件                          :m8:
+*** DONE [#A] 阵容定位调整和特殊站位支持                               :m8:
+CLOSED: [2023-06-10 周六 16:23] SCHEDULED: <2023-03-21 周二 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-19 周一 10:14
+:END:
+*** DONE [#A] 支持应用使用拖拽方式打开日志文件                         :m8:
 CLOSED: [2023-06-10 周六 16:24] SCHEDULED: <2023-06-06 周二 16:24>
-** DONE [#A] 处理拖拽容器到达边界后速度依然存在的问题                  :m8:
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-19 周一 10:14
+:END:
+*** DONE [#A] 处理拖拽容器到达边界后速度依然存在的问题                 :m8:
 CLOSED: [2023-06-10 周六 16:26] SCHEDULED: <2023-06-08 周四 00:00>
-** TODO [#A] 界面切换过渡动画                                          :m8:
-SCHEDULED: <2023-06-12 周一 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-19 周一 10:14
+:END:
+*** DONE [#A] 界面切换过渡动画                                         :m8:
+CLOSED: [2023-06-19 周一 10:00] SCHEDULED: <2023-06-12 周一 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-19 周一 10:14
+:END:
+*** DONE [#A] 制作新人手册                                             :m8:
+CLOSED: [2023-06-19 周一 10:09] SCHEDULED: <2023-06-16 周五 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-19 周一 10:14
+:END:
+*** DONE [#A] buff播放支持场地位置                                     :m8:
+CLOSED: [2023-06-21 周三 15:32] SCHEDULED: <2023-06-20 周二 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-21 周三 19:52
+:END:
+*** DONE [#A] 支持新手手册的扩展需求                                   :m8:
+CLOSED: [2023-06-21 周三 15:40] SCHEDULED: <2023-06-19 周一 15:40>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-21 周三 19:52
+:END:
+*** DONE [#A] 导表, ui, 代码部分文本替换                               :m8:
+CLOSED: [2023-06-21 周三 15:42] SCHEDULED: <2023-06-19 周一 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-21 周三 19:52
+:END:
+*** DONE [#A] 接入战盟启动                                             :m8:
+CLOSED: [2023-06-27 周二 10:40] SCHEDULED: <2023-06-19 周一 09:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-27 周二 10:40
+:END:
 * Project
 * Someday
 ** 学习《Unity3D 游戏开发》                                  :learn:future:
